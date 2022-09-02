@@ -13,10 +13,11 @@
   "dependencies": [],
   "screenshots": [],
   "platform": "1.0.0.0",
+  "target": "OnPrem",
   "application": "19.0.0.0",
   "idRanges": [
     {
-      "from": 50000,
+      "from": 1,
       "to": 51516999
     }
   ],
@@ -25,5 +26,9 @@
     "allowDownloadingSource": false,
     "includeSourceInSymbolFile": false
   },
-  "runtime": "8.0"
+  "runtime": "8.0",
+  "suppressWarnings": ["AL0200","AL0235","AL0251","AL0254","AL0374","AL0424","AL0432","AL0457","AL0467","AL0472","AL0473","AL0479","AL0482","AL0483","AL0509","AL0520","AL0557","AL0558","AL0567","AL0588","AL0592","AL0609","AL0610",
+  "AL0611","AL0626","AL0627","AL0628","AL0633","AL0634","AL0640","AL0641","AL0642","AL0643","AL0644","AL0645","AL0646",
+  "AL0647","AL0659","AL0679","AL0684","AL0700","AL0702","AL0717","AL1000","AL1003","AL1004","AL1005","AL1011","AL1025",
+  "AL1026","AL1029","AL1030","AL1055","AL1056","AL1058","AL1059","AL1072","AL0603"]
 }

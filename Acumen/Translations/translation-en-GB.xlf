@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-GB" original="Please update this value">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 2506687301 - Field 2334691854 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Application,Account Reactivation,Transfer</source>
+          <target>New Application,Account Reactivation,Transfer</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Membership Applications - Field Application Category - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2506687301 - Field 3888564659 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Permanent,Temporary,Contract,Private,Probation</source>
+          <target> ,Permanent,Temporary,Contract,Private,Probation</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Membership Applications - Field Terms Of Service - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3877038567 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Housing Deductions - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Report 704359363 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report payroll Deductions Report. - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Report 3094646314 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report payroll Allowances Report. - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Report 394159666 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;8&gt;</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report payroll Earnings Report. - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Report 2044434827 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Company Payroll Summary W.. - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Report 2049899209 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Deductions Summary W.. - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Report 2733791766 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Payments Summary W.. - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Report 3446582717 - NamedType 107086291" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <target>3</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Bank Schedule.. - NamedType GroupOrder</note>
+        </trans-unit>
+        <trans-unit id="Page 1969351490 - NamedType 1629247183" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You do not have permissions to run this wizard.</source>
+          <target>You do not have permissions to run this wizard.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Company Consolidation Wizard - NamedType PermissionsErr</note>
+        </trans-unit>
+        <trans-unit id="Page 1893087063 - Control 193980284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Info</source>
+          <target>General Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership App card 2 - Control General Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1893087063 - Control 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Application No</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership App card 2 - Control No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1893087063 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership App card 2 - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1893087063 - Action 246874499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nominee Details</source>
+          <target>Nominee Details</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership App card 2 - Action Nominee Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 735587254 - Action 246874499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nominee Details</source>
+          <target>Nominee Details</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership Application List - Action Nominee Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4281826000 - Control 193980284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Info</source>
+          <target>General Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership Application Card - Control General Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4281826000 - Control 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Application No</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership Application Card - Control No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4281826000 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership Application Card - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4281826000 - Action 963707444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next of Kin Details</source>
+          <target>Nominee Details</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership Application Card - Action Next of Kin Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2983188103 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Member Account Card - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1706104488 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page FOSA Account Application Card - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3939772484 - Control 193980284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Info</source>
+          <target>General Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Applic Card - Control General Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3939772484 - Control 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Application No</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Applic Card - Control No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3939772484 - Control 3168444338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <target>Current Adress</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Applic Card - Control Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3939772484 - Control 897878488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Communication/Location Info</source>
+          <target>Communication/Location Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Applic Card - Control Communication/Location Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3939772484 - Control 3876142846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trade Information</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Applic Card - Control Trade Information - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 646884481 - Control 193980284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Info</source>
+          <target>General Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Card - Control General Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 646884481 - Control 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Application No</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Card - Control No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 646884481 - Control 3168444338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <target>Current Adress</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Card - Control Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 646884481 - Control 897878488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Communication/Location Info</source>
+          <target>Communication/Location Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Group/Corporate Card - Control Communication/Location Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2814764230 - Control 193980284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Info</source>
+          <target>General Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Church Applications Card - Control General Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2814764230 - Control 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target>Application No</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Church Applications Card - Control No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2814764230 - Control 3168444338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Address</source>
+          <target>Current Adress</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Church Applications Card - Control Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2814764230 - Control 897878488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Communication/Location Info</source>
+          <target>Communication/Location Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Church Applications Card - Control Communication/Location Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2814764230 - Control 3876142846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trade Information</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Church Applications Card - Control Trade Information - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2546884813 - Action 246874499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nominee Details</source>
+          <target>Nominee Details</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Membership App Unemployed - Action Nominee Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1497467212 - Control 382934622 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>(Outstanding Balance/Total Loans Outstanding Balance)*(Deposits-(Total Accrued Interest+Thirdparty Loans+Mobile Loan))</source>
+          <target>(Outstanding Balance/Total Loans Outstanding Balance)*(Deposits-(Total Accrued Interest+Thirdparty Loans+Mobile Loan))</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Loan Recovery Header - Control Deposits Aportioned - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4209023904 - Control 382934622 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>(Outstanding Balance/Total Loans Outstanding Balance)*(Deposits-(Total Accrued Interest+Thirdparty Loans+Mobile Loan))</source>
+          <target>(Outstanding Balance/Total Loans Outstanding Balance)*(Deposits-(Total Accrued Interest+Thirdparty Loans+Mobile Loan))</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted Guar Recovery Header - Control Deposits Aportioned - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 48953628 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Member Account Card Rejoin - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1953736173 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cases Card - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2799639469 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cases Assigned card - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 523865684 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lead card - Control Employment Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3786039087 - Control 1654273938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employment Info</source>
+          <target>Employment Info</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Potential Opportunity Card - Control Employment Info - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
