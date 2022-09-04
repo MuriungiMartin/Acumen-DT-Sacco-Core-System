@@ -17,7 +17,7 @@ Table 51516269 "Job-Journal Line"
         field(3;"Job No.";Code[20])
         {
             Caption = 'Job No.';
-            TableRelation = Jobs;
+           // TableRelation = Jobs;
 
             trigger OnValidate()
             begin
@@ -31,18 +31,18 @@ Table 51516269 "Job-Journal Line"
                   exit;
                 end;
 
-                GetJob;
-                Job.TestBlocked;
-                //Job.TESTFIELD("Bill-to Partner No.");
-                //Cust.GET(Job."Bill-to Partner No.");
-                Validate("Job Task No.",'');
-                "Customer Price Group" := Job."Customer Price Group";
-                Validate("Currency Code",Job."Currency Code");
-                CreateDim(
-                  Database::Job,"Job No.",
-                  DimMgt.TypeToTableID2(Type),"No.",
-                  Database::"Resource Group","Resource Group No.");
-                Validate("Country/Region Code",Cust."Country/Region Code");
+              //  //;
+                // Job.TestBlocked;
+                // //Job.TESTFIELD("Bill-to Partner No.");
+                // //Cust.GET(Job."Bill-to Partner No.");
+                // Validate("Job Task No.",'');
+                // "Customer Price Group" := Job."Customer Price Group";
+                // Validate("Currency Code",Job."Currency Code");
+                // CreateDim(
+                //   Database::Job,"Job No.",
+                //   DimMgt.TypeToTableID2(Type),"No.",
+                //   Database::"Resource Group","Resource Group No.");
+                // Validate("Country/Region Code",Cust."Country/Region Code");
             end;
         }
         field(4;"Posting Date";Date)
@@ -72,7 +72,7 @@ Table 51516269 "Job-Journal Line"
             begin
                 Validate("No.",'');
                 if Type = Type::Item then begin
-                  GetLocation("Location Code");
+              //   //("Location Code");
                   Location.TestField("Directed Put-away and Pick",false);
                 end;
             end;
@@ -125,11 +125,11 @@ Table 51516269 "Job-Journal Line"
                       Item.TestField(Blocked,false);
                       Description := Item.Description;
                       "Description 2" := Item."Description 2";
-                      if Job."Language Code" <> '' then
-                        GetItemTranslation;
-                      "Posting Group" := Item."Inventory Posting Group";
-                      "Gen. Prod. Posting Group" := Item."Gen. Prod. Posting Group";
-                      Validate("Unit of Measure Code",Item."Base Unit of Measure");
+                    //   if Job."Language Code" <> '' then
+                    //     GetItemTranslation;
+                    //   "Posting Group" := Item."Inventory Posting Group";
+                    //   "Gen. Prod. Posting Group" := Item."Gen. Prod. Posting Group";
+                    //   Validate("Unit of Measure Code",Item."Base Unit of Measure");
                     end;
                   Type::"G/L Account":
                     begin
@@ -194,7 +194,7 @@ Table 51516269 "Job-Journal Line"
                    (Item."Costing Method" = Item."costing method"::Standard) then
                   UpdateAllAmounts
                 else begin
-                  GetJob;
+                  //;
                   "Unit Cost" := ROUND(
                       CurrExchRate.ExchangeAmtLCYToFCY(
                         "Posting Date","Currency Code",
@@ -218,7 +218,7 @@ Table 51516269 "Job-Journal Line"
 
             trigger OnValidate()
             begin
-                GetJob;
+                //;
                 "Unit Price" := ROUND(
                     CurrExchRate.ExchangeAmtLCYToFCY(
                       "Posting Date","Currency Code",
@@ -297,7 +297,7 @@ Table 51516269 "Job-Journal Line"
             begin
                 "Bin Code" := '';
                 if Type = Type::Item then begin
-                  GetLocation("Location Code");
+                  //("Location Code");
                   Location.TestField("Directed Put-away and Pick",false);
                   Validate(Quantity);
                 end;
@@ -331,7 +331,7 @@ Table 51516269 "Job-Journal Line"
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(1,"Shortcut Dimension 1 Code");
+                //(1,"Shortcut Dimension 1 Code");
             end;
         }
         field(32;"Shortcut Dimension 2 Code";Code[20])
@@ -342,7 +342,7 @@ Table 51516269 "Job-Journal Line"
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(2,"Shortcut Dimension 2 Code");
+                //(2,"Shortcut Dimension 2 Code");
             end;
         }
         field(33;"Work Type Code";Code[10])
@@ -398,7 +398,7 @@ Table 51516269 "Job-Journal Line"
             var
                 ItemLedgEntry: Record "Item Ledger Entry";
             begin
-                GetJob;
+                //;
                 TestField(Type,Type::Item);
                 if "Applies-to Entry" <> 0 then begin
                   ItemLedgEntry.Get("Applies-to Entry");
@@ -560,11 +560,11 @@ Table 51516269 "Job-Journal Line"
         field(1000;"Job Task No.";Code[20])
         {
             Caption = 'Job Task No.';
-            TableRelation = "Job-Task"."Grant Task No." where ("Grant No."=field("Job No."));
+           // TableRelation = "Job-Task"."Grant Task No." where ("Grant No."=field("Job No."));
 
             trigger OnValidate()
             var
-                JobTask: Record UnknownRecord53926;
+             //   JobTask: Record UnknownRecord53926;
             begin
                 if ("Job Task No." = '') or (("Job Task No." <> xRec."Job Task No.") and (xRec."Job Task No." <> '')) then begin
                   Validate("No.",'');
@@ -572,8 +572,8 @@ Table 51516269 "Job-Journal Line"
                 end;
 
                 TestField("Job No.");
-                JobTask.Get("Job No.","Job Task No.");
-                JobTask.TestField("Grant Task Type",JobTask."grant task type"::Posting);
+                // JobTask.Get("Job No.","Job Task No.");
+                // JobTask.TestField("Grant Task Type",JobTask."grant task type"::Posting);
             end;
         }
         field(1001;"Total Cost";Decimal)
@@ -615,7 +615,7 @@ Table 51516269 "Job-Journal Line"
             var
                 ItemLedgEntry: Record "Item Ledger Entry";
             begin
-                GetJob;
+                //;
                 TestField(Type,Type::Item);
                 if "Applies-from Entry" <> 0 then begin
                   TestField(Quantity);
@@ -716,7 +716,7 @@ Table 51516269 "Job-Journal Line"
 
             trigger OnValidate()
             begin
-                GetJob;
+                //;
                 "Line Amount" := ROUND(
                     CurrExchRate.ExchangeAmtLCYToFCY(
                       "Posting Date","Currency Code",
@@ -733,7 +733,7 @@ Table 51516269 "Job-Journal Line"
 
             trigger OnValidate()
             begin
-                GetJob;
+                //;
                 "Line Discount Amount" := ROUND(
                     CurrExchRate.ExchangeAmtLCYToFCY(
                       "Posting Date","Currency Code",
@@ -868,15 +868,16 @@ Table 51516269 "Job-Journal Line"
     begin
         if Type = Type::Item then
 ;
+    end;
 
     trigger OnInsert()
     begin
         LockTable;
-        JobJnlTemplate.Get("Journal Template Name");
-        JobJnlBatch.Get("Journal Template Name","Journal Batch Name");
+        // JobJnlTemplate.Get("Journal Template Name");
+        // JobJnlBatch.Get("Journal Template Name","Journal Batch Name");
 
-        ValidateShortcutDimCode(1,"Shortcut Dimension 1 Code");
-        ValidateShortcutDimCode(2,"Shortcut Dimension 2 Code");
+        //(1,"Shortcut Dimension 1 Code");
+        //(2,"Shortcut Dimension 2 Code");
         //DimMgt.InsertJnlLineDim(
         //  DATABASE::"Job Journal Line",
         //  "Journal Template Name","Journal Batch Name","Line No.",0,
@@ -905,11 +906,11 @@ Table 51516269 "Job-Journal Line"
         Cust: Record Vendor;
         ItemJnlLine: Record "Item Journal Line";
         GLAcc: Record "G/L Account";
-        Job: Record UnknownRecord53913;
+        //Job: Record UnknownRecord53913;
         WorkType: Record "Work Type";
-        JobJnlTemplate: Record UnknownRecord53916;
-        JobJnlBatch: Record UnknownRecord53922;
-        JobJnlLine: Record UnknownRecord53917;
+        // JobJnlTemplate: Record UnknownRecord53916;
+        // JobJnlBatch: Record UnknownRecord53922;
+        // JobJnlLine: Record UnknownRecord53917;
         ItemVariant: Record "Item Variant";
         ResUnitofMeasure: Record "Resource Unit of Measure";
         ResCost: Record "Resource Cost";
@@ -965,32 +966,32 @@ Table 51516269 "Job-Journal Line"
     end;
 
 
-    procedure SetUpNewLine(LastJobJnlLine: Record UnknownRecord53917)
-    begin
-        JobJnlTemplate.Get("Journal Template Name");
-        JobJnlBatch.Get("Journal Template Name","Journal Batch Name");
-        JobJnlLine.SetRange("Journal Template Name","Journal Template Name");
-        JobJnlLine.SetRange("Journal Batch Name","Journal Batch Name");
-        if JobJnlLine.Find('-') then begin
-          "Posting Date" := LastJobJnlLine."Posting Date";
-          "Document Date" := LastJobJnlLine."Posting Date";
-          "Document No." := LastJobJnlLine."Document No.";
-          Type := LastJobJnlLine.Type;
-          Validate("Line Type",LastJobJnlLine."Line Type");
-        end else begin
-          "Posting Date" := WorkDate;
-          "Document Date" := WorkDate;
-          if JobJnlBatch."No. Series" <> '' then begin
-            Clear(NoSeriesMgt);
-            "Document No." := NoSeriesMgt.TryGetNextNo(JobJnlBatch."No. Series","Posting Date");
-          end;
-        end;
-        "Recurring Method" := LastJobJnlLine."Recurring Method";
-        "Entry Type" := "entry type"::Usage;
-        "Source Code" := JobJnlTemplate."Source Code";
-        "Reason Code" := JobJnlBatch."Reason Code";
-        "Posting No. Series" := JobJnlBatch."Posting No. Series";
-    end;
+    // procedure SetUpNewLine(LastJobJnlLine: Record UnknownRecord53917)
+    // begin
+    //     JobJnlTemplate.Get("Journal Template Name");
+    //     JobJnlBatch.Get("Journal Template Name","Journal Batch Name");
+    //     JobJnlLine.SetRange("Journal Template Name","Journal Template Name");
+    //     JobJnlLine.SetRange("Journal Batch Name","Journal Batch Name");
+    //     if JobJnlLine.Find('-') then begin
+    //       "Posting Date" := LastJobJnlLine."Posting Date";
+    //       "Document Date" := LastJobJnlLine."Posting Date";
+    //       "Document No." := LastJobJnlLine."Document No.";
+    //       Type := LastJobJnlLine.Type;
+    //       Validate("Line Type",LastJobJnlLine."Line Type");
+    //     end else begin
+    //       "Posting Date" := WorkDate;
+    //       "Document Date" := WorkDate;
+    //       if JobJnlBatch."No. Series" <> '' then begin
+    //         Clear(NoSeriesMgt);
+    //         "Document No." := NoSeriesMgt.TryGetNextNo(JobJnlBatch."No. Series","Posting Date");
+    //       end;
+    //     end;
+    //     "Recurring Method" := LastJobJnlLine."Recurring Method";
+    //     "Entry Type" := "entry type"::Usage;
+    //     "Source Code" := JobJnlTemplate."Source Code";
+    //     "Reason Code" := JobJnlBatch."Reason Code";
+    //     "Posting No. Series" := JobJnlBatch."Posting No. Series";
+    // end;
 
 
     procedure CreateDim(Type1: Integer;No1: Code[20];Type2: Integer;No2: Code[20];Type3: Integer;No3: Code[20])
@@ -1013,68 +1014,69 @@ Table 51516269 "Job-Journal Line"
 ;
 
 
-    procedure ValidateShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
-    begin
-        DimMgt.ValidateDimValueCode(FieldNumber,ShortcutDimCode);
-        if "Line No." <> 0 then
-          DimMgt.SaveJnlLineDim(
-            Database::"Job Journal Line","Journal Template Name",
-            "Journal Batch Name","Line No.",0,FieldNumber,ShortcutDimCode)
-        else
-;
+//     procedure //(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+//     begin
+//         DimMgt.ValidateDimValueCode(FieldNumber,ShortcutDimCode);
+//         if "Line No." <> 0 then
+//           DimMgt.SaveJnlLineDim(
+//             Database::"Job Journal Line","Journal Template Name",
+//             "Journal Batch Name","Line No.",0,FieldNumber,ShortcutDimCode)
+//         else
+// ;
 
 
-    procedure LookupShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
-    begin
-        DimMgt.LookupDimValueCode(FieldNumber,ShortcutDimCode);
-        if "Line No." <> 0 then
-          DimMgt.SaveJnlLineDim(
-            Database::"Job Journal Line","Journal Template Name",
-            "Journal Batch Name","Line No.",0,FieldNumber,ShortcutDimCode)
-        else
-;
+//     procedure LookupShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+//     begin
+//         DimMgt.LookupDimValueCode(FieldNumber,ShortcutDimCode);
+//         if "Line No." <> 0 then
+//           DimMgt.SaveJnlLineDim(
+//             Database::"Job Journal Line","Journal Template Name",
+//             "Journal Batch Name","Line No.",0,FieldNumber,ShortcutDimCode)
+//         else
+// ;
 
 
-    procedure ShowShortcutDimCode(var ShortcutDimCode: array [8] of Code[20])
-    begin
-        /*IF "Line No." <> 0 THEN
-          DimMgt.GetDimSetIDsForFilter(
-            DATABASE::"Job Journal Line","Journal Template Name",
-            "Journal Batch Name","Line No.",0,ShortcutDimCode)
-        ELSE
-          DimMgt.ClearDimSetFilter(ShortcutDimCode);
-         */
+//     procedure ShowShortcutDimCode(var ShortcutDimCode: array [8] of Code[20])
+//     begin
+//         /*IF "Line No." <> 0 THEN
+//           DimMgt.GetDimSetIDsForFilter(
+//             DATABASE::"Job Journal Line","Journal Template Name",
+//             "Journal Batch Name","Line No.",0,ShortcutDimCode)
+//         ELSE
+//           DimMgt.ClearDimSetFilter(ShortcutDimCode);
+//          */
 
-    end;
+//     end;
 
-    local procedure GetLocation(LocationCode: Code[10])
-    begin
-        if LocationCode = '' then
-          Clear(Location)
-        else
-          if Location.Code <> LocationCode then
-            Location.Get(LocationCode);
-    end;
+    // local procedure //(LocationCode: Code[10])
+    // begin
+    //     if LocationCode = '' then
+    //       Clear(Location)
+    //     else
+    //       if Location.Code <> LocationCode then
+    //         Location.Get(LocationCode);
+    // end;
 
 
-    procedure GetJob()
-    begin
-        TestField("Job No.");
-        if "Job No." <> Job."No." then begin
-          Job.Get("Job No.");
-          if Job."Currency Code" = '' then begin
-            GetGLSetup;
-            Currency.InitRoundingPrecision;
-            AmountRoundingPrecision := GLSetup."Amount Rounding Precision";
-            UnitAmountRoundingPrecision := GLSetup."Unit-Amount Rounding Precision";
-          end else begin
-            GetCurrency;
-            Currency.Get(Job."Currency Code");
-            Currency.TestField("Amount Rounding Precision");
-            AmountRoundingPrecision := Currency."Amount Rounding Precision";
-            UnitAmountRoundingPrecision := Currency."Unit-Amount Rounding Precision";
-          end;
-        end;
+    // procedure //()
+    // begin
+    //     TestField("Job No.");
+    //     if "Job No." <> Job."No." then begin
+    //       Job.Get("Job No.");
+    //       if Job."Currency Code" = '' then begin
+    //         GetGLSetup;
+    //         Currency.InitRoundingPrecision;
+    //         AmountRoundingPrecision := GLSetup."Amount Rounding Precision";
+    //         UnitAmountRoundingPrecision := GLSetup."Unit-Amount Rounding Precision";
+    //       end else begin
+    //         GetCurrency;
+    //         Currency.Get(Job."Currency Code");
+    //         Currency.TestField("Amount Rounding Precision");
+    //         AmountRoundingPrecision := Currency."Amount Rounding Precision";
+    //         UnitAmountRoundingPrecision := Currency."Unit-Amount Rounding Precision";
+    //       end;
+    //     end;
+    // end;
     end;
 
     local procedure UpdateCurrencyFactor()
@@ -1173,7 +1175,7 @@ Table 51516269 "Job-Journal Line"
     local procedure SelectItemEntry(CurrentFieldNo: Integer)
     var
         ItemLedgEntry: Record "Item Ledger Entry";
-        JobJnlLine2: Record UnknownRecord53917;
+      //  JobJnlLine2: Record UnknownRecord53917;
     begin
         ItemLedgEntry.SetCurrentkey("Item No.",Open,"Variant Code");
         ItemLedgEntry.SetRange("Item No.","No.");
@@ -1189,12 +1191,12 @@ Table 51516269 "Job-Journal Line"
           ItemLedgEntry.SetRange(Positive,false);
 
         //IF FORM.RUNMODAL(FORM::"Item Ledger Entries",ItemLedgEntry) = ACTION::LookupOK THEN BEGIN
-          JobJnlLine2 := Rec;
-          if CurrentFieldNo = FieldNo("Applies-to Entry") then
-            JobJnlLine2.Validate("Applies-to Entry",ItemLedgEntry."Entry No.")
-          else
-            JobJnlLine2.Validate("Applies-from Entry",ItemLedgEntry."Entry No.");
-          Rec := JobJnlLine2;
+          // JobJnlLine2 := Rec;
+          // if CurrentFieldNo = FieldNo("Applies-to Entry") then
+          //   JobJnlLine2.Validate("Applies-to Entry",ItemLedgEntry."Entry No.")
+          // else
+          //   JobJnlLine2.Validate("Applies-from Entry",ItemLedgEntry."Entry No.");
+          // Rec := JobJnlLine2;
         //END;
     end;
 
@@ -1235,11 +1237,11 @@ Table 51516269 "Job-Journal Line"
 
     procedure GetItemTranslation()
     begin
-        GetJob;
-        if ItemTranslation.Get("No.","Variant Code",Job."Language Code") then begin
-          Description := ItemTranslation.Description;
-          "Description 2" := ItemTranslation."Description 2";
-        end;
+        //;
+        // if ItemTranslation.Get("No.","Variant Code",Job."Language Code") then begin
+        //   Description := ItemTranslation.Description;
+        //   "Description 2" := ItemTranslation."Description 2";
+        // end;
     end;
 
     local procedure GetGLSetup()
@@ -1253,15 +1255,15 @@ Table 51516269 "Job-Journal Line"
 
     procedure UpdateAllAmounts()
     begin
-        GetJob;
+        //;
 
         UpdateUnitCost;
         UpdateTotalCost;
-        FindPriceAndDiscount(Rec,CurrFieldNo);
-        HandleCostFactor;
-        UpdateUnitPrice;
-        UpdateTotalPrice;
-        UpdateAmountsAndDiscounts;
+       // FindPriceAndDiscount(Rec,CurrFieldNo);
+        // HandleCostFactor;
+        // UpdateUnitPrice;
+        // UpdateTotalPrice;
+        // UpdateAmountsAndDiscounts;
     end;
 
     local procedure UpdateUnitCost()
@@ -1396,21 +1398,21 @@ Table 51516269 "Job-Journal Line"
             AmountRoundingPrecision);
     end;
 
-    local procedure FindPriceAndDiscount(var JobJnlLine: Record UnknownRecord53917;CalledByFieldNo: Integer)
-    begin
-        if RetrieveCostPrice and ("No." <> '') then begin
-        //  SalesPriceCalcMgt.FindJobJnlLinePrice(JobJnlLine,CalledByFieldNo);
+   // local procedure FindPriceAndDiscount(var JobJnlLine: Record UnknownRecord53917;CalledByFieldNo: Integer)
+    // begin
+    //     if RetrieveCostPrice and ("No." <> '') then begin
+    //     //  SalesPriceCalcMgt.FindJobJnlLinePrice(JobJnlLine,CalledByFieldNo);
 
-         // IF Type <> Type::"G/L Account" THEN
-        //    PurchPriceCalcMgt.FindJobJnlLinePrice(JobJnlLine,CalledByFieldNo)
-          //ELSE BEGIN
-            // Because the SalesPriceCalcMgt.FindJobJnlLinePrice function also retrieves costs for G/L Account,
-            // cost and total cost need to get updated again.
-            UpdateUnitCost;
-            UpdateTotalCost;
-          end;
-        //END;
-    end;
+    //      // IF Type <> Type::"G/L Account" THEN
+    //     //    PurchPriceCalcMgt.FindJobJnlLinePrice(JobJnlLine,CalledByFieldNo)
+    //       //ELSE BEGIN
+    //         // Because the SalesPriceCalcMgt.FindJobJnlLinePrice function also retrieves costs for G/L Account,
+    //         // cost and total cost need to get updated again.
+    //         UpdateUnitCost;
+    //         UpdateTotalCost;
+    //       end;
+    //     //END;
+    // end;
 
     local procedure HandleCostFactor()
     begin

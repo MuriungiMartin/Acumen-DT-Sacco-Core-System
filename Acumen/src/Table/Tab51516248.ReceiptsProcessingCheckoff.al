@@ -110,7 +110,7 @@ Table 51516248 "Receipts.Processing Checkoff"
         }
         field(27;"Total Count";Integer)
         {
-            CalcFormula = sum("ReceiptsProcessing. Checkoff".Amount where ("Receipt Line No"=field(No)));
+            CalcFormula = sum("ReceiptsProcessing. Checkoff".Amount where ("Receipt Header No"=field(No)));
             FieldClass = FlowField;
         }
         field(28;"Account Name";Code[50])

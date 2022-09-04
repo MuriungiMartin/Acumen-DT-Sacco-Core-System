@@ -4,35 +4,35 @@ Table 51516257 "HR Leave Planner Lines"
 
     fields
     {
-        field(1;"Application Code";Code[20])
+        field(1; "Application Code"; Code[20])
         {
         }
-        field(3;"Leave Type";Code[20])
+        field(3; "Leave Type"; Code[20])
         {
             TableRelation = "HR Leave Types".Code;
 
             trigger OnValidate()
             begin
-                
+
                 //RESET;
                 //SETRANGE("Employee No",LeaveHeader."Employee No");
                 if LeaveHeader.Find('-') then
-                "Employee No":= LeaveHeader."Employee No";
-                
-                 /*
-                HRLeaveTypes.GET("Leave Type");
-                HREmp.GET("Employee No");
-                IF HREmp.Gender=HRLeaveTypes.Gender THEN
-                EXIT
-                ELSE
-                ERROR('This leave type is restricted to the '+ FORMAT(HRLeaveTypes.Gender) +' gender')
-                */
+                    "Employee No" := LeaveHeader."Employee No";
+
+                /*
+               HRLeaveTypes.GET("Leave Type");
+               HREmp.GET("Employee No");
+               IF HREmp.Gender=HRLeaveTypes.Gender THEN
+               EXIT
+               ELSE
+               ERROR('This leave type is restricted to the '+ FORMAT(HRLeaveTypes.Gender) +' gender')
+               */
 
             end;
         }
-        field(4;"Days Applied";Decimal)
+        field(4; "Days Applied"; Decimal)
         {
-            DecimalPlaces = 2:2;
+            DecimalPlaces = 2 : 2;
 
             trigger OnValidate()
             begin
@@ -41,158 +41,159 @@ Table 51516257 "HR Leave Planner Lines"
                 TestField("Leave Type");
                 //CALCULATE THE END DATE AND RETURN DATE
                 begin
-                if ("Days Applied" <> 0) and ("Start Date" <> 0D) then
-                "Return Date" := DetermineLeaveReturnDate("Start Date","Days Applied");
-                "End Date" := DeterminethisLeaveEndDate("Return Date");
-                Modify;
+                    if ("Days Applied" <> 0) and ("Start Date" <> 0D) then
+                        "Return Date" := DetermineLeaveReturnDate("Start Date", "Days Applied");
+                    "End Date" := DeterminethisLeaveEndDate("Return Date");
+                    Modify;
                 end;
             end;
         }
-        field(5;"Start Date";Date)
+        field(5; "Start Date"; Date)
         {
 
             trigger OnValidate()
             begin
 
-                if "Start Date"=0D then begin
-                "Return Date":=0D;
-                exit;
+                if "Start Date" = 0D then begin
+                    "Return Date" := 0D;
+                    exit;
                 end else begin
-                      if DetermineIfIsNonWorking("Start Date")= true then begin;
-                      Error('Start date must be a working day');
-                      end;
-                      Validate("Days Applied");
+                    if DetermineIfIsNonWorking("Start Date") = true then begin
+                        ;
+                        Error('Start date must be a working day');
+                    end;
+                    Validate("Days Applied");
                 end;
             end;
         }
-        field(6;"Return Date";Date)
+        field(6; "Return Date"; Date)
         {
             Caption = 'Return Date';
             Editable = false;
         }
-        field(7;"Application Date";Date)
+        field(7; "Application Date"; Date)
         {
         }
-        field(15;"Applicant Comments";Text[250])
+        field(15; "Applicant Comments"; Text[250])
         {
         }
-        field(17;"No series";Code[30])
+        field(17; "No series"; Code[30])
         {
         }
-        field(28;Selected;Boolean)
+        field(28; Selected; Boolean)
         {
         }
-        field(31;"Current Balance";Decimal)
+        field(31; "Current Balance"; Decimal)
         {
         }
-        field(3900;"End Date";Date)
+        field(3900; "End Date"; Date)
         {
             Editable = false;
         }
-        field(3901;"Total Taken";Decimal)
+        field(3901; "Total Taken"; Decimal)
         {
-            DecimalPlaces = 2:2;
+            DecimalPlaces = 2 : 2;
         }
-        field(3902;"Line No.";Integer)
+        field(3902; "Line No."; Integer)
         {
             AutoIncrement = true;
         }
-        field(3921;"E-mail Address";Date)
+        field(3921; "E-mail Address"; Date)
         {
             Editable = false;
         }
-        field(3924;"Entry No";Integer)
+        field(3924; "Entry No"; Integer)
         {
         }
-        field(3929;"Start Date Filter";Date)
+        field(3929; "Start Date Filter"; Date)
         {
             FieldClass = FlowFilter;
         }
-        field(3936;"Cell Phone Number";Text[50])
+        field(3936; "Cell Phone Number"; Text[50])
         {
         }
-        field(3937;"Request Leave Allowance";Boolean)
+        field(3937; "Request Leave Allowance"; Boolean)
         {
         }
-        field(3939;Picture;Blob)
+        field(3939; Picture; Blob)
         {
         }
-        field(3940;Names;Text[100])
+        field(3940; Names; Text[100])
         {
         }
-        field(3942;"Leave Allowance Entittlement";Boolean)
+        field(3942; "Leave Allowance Entittlement"; Boolean)
         {
         }
-        field(3943;"Leave Allowance Amount";Decimal)
+        field(3943; "Leave Allowance Amount"; Decimal)
         {
         }
-        field(3945;"Details of Examination";Text[200])
+        field(3945; "Details of Examination"; Text[200])
         {
         }
-        field(3947;"Date of Exam";Date)
+        field(3947; "Date of Exam"; Date)
         {
         }
-        field(3949;Reliever;Code[50])
+        field(3949; Reliever; Code[50])
         {
             TableRelation = "HR Employees"."No.";
 
             trigger OnValidate()
             begin
-                                    //DISPLAY RELEIVERS NAME
-                                    if HREmp.Get(Reliever) then
-                                    "Reliever Name":=HREmp.FullName;
+                //DISPLAY RELEIVERS NAME
+                if HREmp.Get(Reliever) then
+                    "Reliever Name" := HREmp.FullName;
             end;
         }
-        field(3950;"Reliever Name";Text[100])
+        field(3950; "Reliever Name"; Text[100])
         {
         }
-        field(3952;Description;Text[30])
+        field(3952; Description; Text[30])
         {
         }
-        field(3956;"Number of Previous Attempts";Text[200])
+        field(3956; "Number of Previous Attempts"; Text[200])
         {
         }
-        field(3961;"Employee No";Code[20])
+        field(3961; "Employee No"; Code[20])
         {
         }
-        field(3969;"Responsibility Center";Code[10])
+        field(3969; "Responsibility Center"; Code[10])
         {
         }
-        field(3970;"Approved days";Integer)
+        field(3970; "Approved days"; Integer)
         {
 
             trigger OnValidate()
             begin
-                 if "Approved days">"Days Applied" then
-                 Error(TEXT001);
+                if "Approved days" > "Days Applied" then
+                    Error(TEXT001);
             end;
         }
-        field(3971;"Annual Leave Account";Decimal)
+        field(3971; "Annual Leave Account"; Decimal)
         {
         }
-        field(3972;"Compassionate Leave Acc.";Decimal)
+        field(3972; "Compassionate Leave Acc."; Decimal)
         {
         }
-        field(3973;"Maternity Leave Acc.";Decimal)
+        field(3973; "Maternity Leave Acc."; Decimal)
         {
         }
-        field(3974;"Paternity Leave Acc.";Decimal)
+        field(3974; "Paternity Leave Acc."; Decimal)
         {
         }
-        field(3975;"Sick Leave Acc.";Decimal)
+        field(3975; "Sick Leave Acc."; Decimal)
         {
         }
-        field(3976;"Study Leave Acc";Decimal)
+        field(3976; "Study Leave Acc"; Decimal)
         {
         }
-        field(3977;OffDays;Decimal)
+        field(3977; OffDays; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Application Code")
+        key(Key1; "Application Code")
         {
             Clustered = true;
         }
@@ -228,23 +229,23 @@ Table 51516257 "HR Leave Planner Lines"
         TEXT001: label 'Days Approved cannot be more than applied days';
 
 
-    procedure DetermineLeaveReturnDate(var fBeginDate: Date;var fDays: Decimal) fReturnDate: Date
+    procedure DetermineLeaveReturnDate(var fBeginDate: Date; var fDays: Decimal) fReturnDate: Date
     begin
         varDaysApplied := fDays;
         fReturnDate := fBeginDate;
         repeat
-          if DetermineIfIncludesNonWorking("Leave Type") =false then begin
-            fReturnDate := CalcDate('1D', fReturnDate);
-            if DetermineIfIsNonWorking(fReturnDate) then
-              varDaysApplied := varDaysApplied + 1
-            else
-              varDaysApplied := varDaysApplied;
-            varDaysApplied := varDaysApplied - 1
-          end
-          else begin
-            fReturnDate := CalcDate('1D', fReturnDate);
-            varDaysApplied := varDaysApplied - 1;
-          end;
+            if DetermineIfIncludesNonWorking("Leave Type") = false then begin
+                fReturnDate := CalcDate('1D', fReturnDate);
+                if DetermineIfIsNonWorking(fReturnDate) then
+                    varDaysApplied := varDaysApplied + 1
+                else
+                    varDaysApplied := varDaysApplied;
+                varDaysApplied := varDaysApplied - 1
+            end
+            else begin
+                fReturnDate := CalcDate('1D', fReturnDate);
+                varDaysApplied := varDaysApplied - 1;
+            end;
         until varDaysApplied = 0;
         exit(fReturnDate);
     end;
@@ -253,8 +254,8 @@ Table 51516257 "HR Leave Planner Lines"
     procedure DetermineIfIncludesNonWorking(var fLeaveCode: Code[10]): Boolean
     begin
         if HRLeaveTypes.Get(fLeaveCode) then begin
-        if HRLeaveTypes."Inclusive of Non Working Days" = true then
-        exit(true);
+            if HRLeaveTypes."Inclusive of Non Working Days" = true then
+                exit(true);
         end;
     end;
 
@@ -264,12 +265,12 @@ Table 51516257 "HR Leave Planner Lines"
 
         HRSetup.Find('-');
         HRSetup.TestField(HRSetup."Base Calendar");
-        BaseCalendarChange.SetFilter(BaseCalendarChange."Base Calendar Code",HRSetup."Base Calendar");
-        BaseCalendarChange.SetRange(BaseCalendarChange.Date,bcDate);
+        BaseCalendarChange.SetFilter(BaseCalendarChange."Base Calendar Code", HRSetup."Base Calendar");
+        BaseCalendarChange.SetRange(BaseCalendarChange.Date, bcDate);
         if BaseCalendarChange.Find('-') then begin
-        if BaseCalendarChange.Nonworking = true then
-        //ERROR('Start date can only be a Working Day Date');
-        exit(true);
+            if BaseCalendarChange.Nonworking = true then
+                //ERROR('Start date can only be a Working Day Date');
+                exit(true);
         end;
     end;
 
@@ -279,38 +280,40 @@ Table 51516257 "HR Leave Planner Lines"
         ReturnDateLoop := true;
         fEndDate := fDate;
         if fEndDate <> 0D then begin
-          fEndDate := CalcDate('-1D', fEndDate);
-          while (ReturnDateLoop) do begin
-          if DetermineIfIsNonWorking(fEndDate) then
-            fEndDate := CalcDate('-1D', fEndDate)
-           else
-            ReturnDateLoop := false;
-          end
-          end;
+            fEndDate := CalcDate('-1D', fEndDate);
+            while (ReturnDateLoop) do begin
+                if DetermineIfIsNonWorking(fEndDate) then
+                    fEndDate := CalcDate('-1D', fEndDate)
+                else
+                    ReturnDateLoop := false;
+            end
+        end;
         exit(fEndDate);
     end;
 
 
     procedure NotifyApplicant()
+    var
+        reipient: list of [Text];
     begin
         HREmp.Get("Employee No");
         HREmp.TestField(HREmp."Company E-Mail");
 
         //GET E-MAIL PARAMETERS FOR GENERAL E-MAILS
         HREmailParameters.Reset;
-        HREmailParameters.SetRange(HREmailParameters."Associate With",HREmailParameters."associate with"::General);
-        if HREmailParameters.Find('-') then
-        begin
+        HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::General);
+        if HREmailParameters.Find('-') then begin
 
 
-             HREmp.TestField(HREmp."Company E-Mail");
-             SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",HREmp."Company E-Mail",
-             HREmailParameters.Subject,'Dear'+' '+ HREmp."First Name" +' '+
-             HREmailParameters.Body+' '+"Application Code"+' '+ HREmailParameters."Body 2",true);
-             SMTP.Send();
+            HREmp.TestField(HREmp."Company E-Mail");
+            reipient.add(HREmp."Company E-Mail");
+            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", reipient,
+            HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+            HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
+            SMTP.Send();
 
 
-        Message('Leave applicant has been notified successfully');
+            Message('Leave applicant has been notified successfully');
         end;
     end;
 }

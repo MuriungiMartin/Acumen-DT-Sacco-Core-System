@@ -173,15 +173,15 @@ Table 51516199 "HR Training Applications"
         {
             Clustered = true;
         }
-        key(Key2;'')
-        {
-            Clustered = true;
-            Enabled = false;
-        }
-        key(Key3;'')
-        {
-            Enabled = false;
-        }
+        // key(Key2;'')
+        // {
+        //     //Clustered = true;
+        //     Enabled = false;
+        // }
+        // key(Key3;'')
+        // {
+        //     Enabled = false;
+        // }
     }
 
     fieldgroups

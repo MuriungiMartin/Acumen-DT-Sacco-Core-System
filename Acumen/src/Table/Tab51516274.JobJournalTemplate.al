@@ -46,9 +46,9 @@ Table 51516274 "Job-Journal Template"
 
             trigger OnValidate()
             begin
-                JobJnlLine.SetRange("Journal Template Name",Name);
-                JobJnlLine.ModifyAll("Source Code","Source Code");
-                Modify;
+                // JobJnlLine.SetRange("Journal Template Name",Name);
+                // JobJnlLine.ModifyAll("Source Code","Source Code");
+                // Modify;
             end;
         }
         field(11;"Reason Code";Code[10])
@@ -74,21 +74,21 @@ Table 51516274 "Job-Journal Template"
                   TestField("No. Series",'');
             end;
         }
-        field(13;"Test Report Name";Text[80])
+        field(13;"Test Report Name";Text[249])
         {
             CalcFormula = lookup(AllObjWithCaption."Object Caption" where ("Object Type"=const(Report),"Object ID"=field("Test Report ID")));
             Caption = 'Test Report Name';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(14;"Form Name";Text[80])
+        field(14;"Form Name";Text[249])
         {
             CalcFormula = lookup(AllObjWithCaption."Object Caption" where ("Object Type"=const(Page),"Object ID"=field("Form ID")));
             Caption = 'Form Name';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(15;"Posting Report Name";Text[80])
+        field(15;"Posting Report Name";Text[249])
         {
             CalcFormula = lookup(AllObjWithCaption."Object Caption" where ("Object Type"=const(Report),"Object ID"=field("Posting Report ID")));
             Caption = 'Posting Report Name';
@@ -139,10 +139,10 @@ Table 51516274 "Job-Journal Template"
 
     trigger OnDelete()
     begin
-        JobJnlLine.SetRange("Journal Template Name",Name);
-        JobJnlLine.DeleteAll(true);
-        JobJnlBatch.SetRange("Journal Template Name",Name);
-        JobJnlBatch.DeleteAll;
+        // JobJnlLine.SetRange("Journal Template Name",Name);
+        // JobJnlLine.DeleteAll(true);
+        // JobJnlBatch.SetRange("Journal Template Name",Name);
+        // JobJnlBatch.DeleteAll;
     end;
 
     trigger OnRename()
@@ -155,8 +155,8 @@ Table 51516274 "Job-Journal Template"
     var
         Text000: label 'Only the %1 field can be filled in on recurring journals.';
         Text001: label 'must not be %1';
-        JobJnlBatch: Record UnknownRecord53922;
-        JobJnlLine: Record UnknownRecord53917;
+        // JobJnlBatch: Record UnknownRecord53922;
+        // JobJnlLine: Record UnknownRecord53917;
         SourceCodeSetup: Record "Source Code Setup";
         ReservEngineMgt: Codeunit "Reservation Engine Mgt.";
 }

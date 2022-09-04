@@ -6,7 +6,7 @@ Table 51516220 "HR Appraisal Eval Areas"
     {
         field(1;"Assign To";Code[20])
         {
-            TableRelation = "HR Jobs";
+           // TableRelation = "HR Jobs";
         }
         field(2;"Code";Code[20])
         {
@@ -61,9 +61,9 @@ Table 51516220 "HR Appraisal Eval Areas"
         }
         field(11;"Assigned To";Text[100])
         {
-            CalcFormula = lookup("HR Jobs"."Job Description" where ("Job ID"=field("Assign To")));
-            Editable = false;
-            FieldClass = FlowField;
+            // CalcFormula = lookup("HR Jobs"."Job Description" where ("Job ID"=field("Assign To")));
+            // Editable = false;
+            // FieldClass = FlowField;
         }
         field(12;Blocked;Boolean)
         {

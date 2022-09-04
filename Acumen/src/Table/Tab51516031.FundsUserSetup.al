@@ -10,12 +10,14 @@ Table 51516031 "Funds User Setup"
 
             trigger OnLookup()
             begin
-                UserManager.LookupUserID(UserID);
+                UserManager.LookupUser(UserID);
             end;
 
             trigger OnValidate()
+            var
+             User: record User;
             begin
-                UserManager.ValidateUserID(UserID);
+                UserManager.ValidateUserName(User,User,UserID);
             end;
         }
         field(11;"Receipt Journal Template";Code[20])
@@ -407,7 +409,7 @@ Table 51516031 "Funds User Setup"
 
     var
         UserTemp: Record "Funds User Setup";
-        UserManager: Codeunit "User Management";
+        UserManager: Codeunit UserManagementCUExt;
         SameBatch: label 'Another User has been assign to the batch:%1';
 }
 

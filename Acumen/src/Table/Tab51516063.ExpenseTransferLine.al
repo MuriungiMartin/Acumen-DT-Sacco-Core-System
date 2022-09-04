@@ -4,49 +4,49 @@ Table 51516063 "Expense Transfer Line"
 
     fields
     {
-        field(10;"Line No";Integer)
+        field(10; "Line No"; Integer)
         {
             AutoIncrement = true;
         }
-        field(11;"Document No";Code[20])
+        field(11; "Document No"; Code[20])
         {
         }
-        field(12;"Document Type";Code[20])
+        field(12; "Document Type"; Code[20])
         {
 
             trigger OnValidate()
             begin
-                ExpenseHeader.Reset;
-                ExpenseHeader.SetRange(ExpenseHeader."No.","Document No");
-                if ExpenseHeader.FindFirst then
-                  begin
-                        if (ExpenseHeader.Status=ExpenseHeader.Status::"2") or
-                        (ExpenseHeader.Status=ExpenseHeader.Status::"4")or
-                        (ExpenseHeader.Status=ExpenseHeader.Status::"1") then
-                       Error('You Cannot Insert a new record when the status of the document is not Pending');
-                  end;
+                // ExpenseHeader.Reset;
+                // ExpenseHeader.SetRange(ExpenseHeader."No.","Document No");
+                // if ExpenseHeader.FindFirst then
+                //   begin
+                //         if (ExpenseHeader.Status=ExpenseHeader.Status::"2") or
+                //         (ExpenseHeader.Status=ExpenseHeader.Status::"4")or
+                //         (ExpenseHeader.Status=ExpenseHeader.Status::"1") then
+                //        Error('You Cannot Insert a new record when the status of the document is not Pending');
+                //   end;
 
-                     FTransferHeader.Reset;
-                    FTransferHeader.SetRange(FTransferHeader.Code,"Document Type");
-                    FTransferHeader.SetRange(FTransferHeader.Type,FTransferHeader.Type::Imprest);
-                    if FTransferHeader.Find('-') then begin
-                      "Receiving Bank Account":=FTransferHeader."G/L Account";
-                      Validate("Receiving Bank Account");
-                    end;
+                //      FTransferHeader.Reset;
+                //     FTransferHeader.SetRange(FTransferHeader.Code,"Document Type");
+                //     FTransferHeader.SetRange(FTransferHeader.Type,FTransferHeader.Type::Imprest);
+                //     if FTransferHeader.Find('-') then begin
+                //       "Receiving Bank Account":=FTransferHeader."G/L Account";
+                //       Validate("Receiving Bank Account");
+                //     end;
             end;
         }
-        field(13;Date;Date)
+        field(13; Date; Date)
         {
         }
-        field(14;"Posting Date";Date)
+        field(14; "Posting Date"; Date)
         {
         }
-        field(15;"Pay Mode";Option)
+        field(15; "Pay Mode"; Option)
         {
             OptionCaption = ' ,Cash,Cheque';
             OptionMembers = " ",Cash,Cheque;
         }
-        field(16;"Receiving Bank Account";Code[20])
+        field(16; "Receiving Bank Account"; Code[20])
         {
             TableRelation = "G/L Account";
 
@@ -59,127 +59,127 @@ Table 51516063 "Expense Transfer Line"
                     ERROR('The Receiving Account cannot be Equal to the Paying Account');
                  END;
                  */
-                 GlAcc.Reset;
-                 GlAcc.SetRange(GlAcc."No.","Receiving Bank Account");
-                 if GlAcc.FindFirst then begin
-                  "Bank Name":=GlAcc.Name;
-                 end;
+                GlAcc.Reset;
+                GlAcc.SetRange(GlAcc."No.", "Receiving Bank Account");
+                if GlAcc.FindFirst then begin
+                    "Bank Name" := GlAcc.Name;
+                end;
 
             end;
         }
-        field(17;"Bank Name";Text[50])
+        field(17; "Bank Name"; Text[50])
         {
             Editable = false;
         }
-        field(18;"Bank Balance";Decimal)
+        field(18; "Bank Balance"; Decimal)
         {
-            CalcFormula = sum("Bank Account Ledger Entry".Amount where ("Bank Account No."=field("Receiving Bank Account")));
-            Editable = false;
-            FieldClass = FlowField;
-        }
-        field(19;"Bank Balance(LCY)";Decimal)
-        {
-            CalcFormula = sum("Bank Account Ledger Entry"."Amount (LCY)" where ("Bank Account No."=field("Receiving Bank Account")));
+            CalcFormula = sum("Bank Account Ledger Entry".Amount where("Bank Account No." = field("Receiving Bank Account")));
             Editable = false;
             FieldClass = FlowField;
         }
-        field(20;"Bank Account No.";Code[20])
+        field(19; "Bank Balance(LCY)"; Decimal)
+        {
+            CalcFormula = sum("Bank Account Ledger Entry"."Amount (LCY)" where("Bank Account No." = field("Receiving Bank Account")));
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(20; "Bank Account No."; Code[20])
         {
         }
-        field(21;"Currency Code";Code[20])
+        field(21; "Currency Code"; Code[20])
         {
         }
-        field(22;"Currency Factor";Decimal)
+        field(22; "Currency Factor"; Decimal)
         {
         }
-        field(23;"Amount to Receive";Decimal)
+        field(23; "Amount to Receive"; Decimal)
         {
 
             trigger OnValidate()
             begin
-                  if "Currency Code"='' then
-                    "Amount to Receive (LCY)":="Amount to Receive";
+                if "Currency Code" = '' then
+                    "Amount to Receive (LCY)" := "Amount to Receive";
 
-                  if "Amount to Receive">"Bank Balance" then
-                Error('You cannot request more  than what is in the Bank');
+                if "Amount to Receive" > "Bank Balance" then
+                    Error('You cannot request more  than what is in the Bank');
 
-                  if "Amount to Receive"<0 then
-                Error('You cannot request Negative Amount');
+                if "Amount to Receive" < 0 then
+                    Error('You cannot request Negative Amount');
             end;
         }
-        field(24;"Amount to Receive (LCY)";Decimal)
+        field(24; "Amount to Receive (LCY)"; Decimal)
         {
             Editable = false;
         }
-        field(25;"External Doc No.";Code[20])
+        field(25; "External Doc No."; Code[20])
         {
         }
-        field(37;"Global Dimension 1 Code";Code[20])
+        field(37; "Global Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,1,1';
-            TableRelation = "Dimension Value".Code where ("Global Dimension No."=const(1),"Dimension Value Type"=const(Standard));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1), "Dimension Value Type" = const(Standard));
         }
-        field(38;"Global Dimension 2 Code";Code[20])
+        field(38; "Global Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,2,2';
-            TableRelation = "Dimension Value".Code where ("Global Dimension No."=const(2),"Dimension Value Type"=const(Standard));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2), "Dimension Value Type" = const(Standard));
         }
-        field(39;"Shortcut Dimension 3 Code";Code[20])
+        field(39; "Shortcut Dimension 3 Code"; Code[20])
         {
         }
-        field(40;"Shortcut Dimension 4 Code";Code[20])
+        field(40; "Shortcut Dimension 4 Code"; Code[20])
         {
         }
-        field(41;"Shortcut Dimension 5 Code";Code[20])
+        field(41; "Shortcut Dimension 5 Code"; Code[20])
         {
         }
-        field(42;"Shortcut Dimension 6 Code";Code[20])
+        field(42; "Shortcut Dimension 6 Code"; Code[20])
         {
         }
-        field(43;"Shortcut Dimension 7 Code";Code[20])
+        field(43; "Shortcut Dimension 7 Code"; Code[20])
         {
         }
-        field(44;"Shortcut Dimension 8 Code";Code[20])
+        field(44; "Shortcut Dimension 8 Code"; Code[20])
         {
         }
-        field(45;Status;Option)
+        field(45; Status; Option)
         {
             Editable = false;
             OptionCaption = 'New,Pending Approval,Approved,Cancelled,Posted';
             OptionMembers = New,"Pending Approval",Approved,Cancelled,Posted;
         }
-        field(46;Posted;Boolean)
+        field(46; Posted; Boolean)
         {
         }
-        field(47;"Posted By";Code[20])
+        field(47; "Posted By"; Code[20])
         {
         }
-        field(48;"Date Posted";Date)
+        field(48; "Date Posted"; Date)
         {
         }
-        field(49;"Time Posted";Time)
+        field(49; "Time Posted"; Time)
         {
         }
-        field(50;Reversed;Boolean)
+        field(50; Reversed; Boolean)
         {
         }
-        field(51;"Reversed By";Code[30])
+        field(51; "Reversed By"; Code[30])
         {
         }
-        field(52;"Reversal Date";Date)
+        field(52; "Reversal Date"; Date)
         {
         }
-        field(53;"Reversal Time";Time)
+        field(53; "Reversal Time"; Time)
         {
         }
-        field(515161000;"Exchange Rate";Decimal)
+        field(515161000; "Exchange Rate"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Line No","Document No")
+        key(Key1; "Line No", "Document No")
         {
             Clustered = true;
         }

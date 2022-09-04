@@ -265,7 +265,7 @@ Table 51516225 "HR Setup1"
         }
         field(51516009;"Special Duty Table";Code[10])
         {
-            TableRelation = Table26004012;
+           // TableRelation = Table26004012;
         }
         field(51516040;"CFW Round Deduction code";Code[20])
         {
@@ -297,7 +297,7 @@ Table 51516225 "HR Setup1"
         }
         field(51516048;"Posting Group";Code[30])
         {
-            TableRelation = "Payroll Posting Groups.".Field1;
+            TableRelation = "Payroll Posting Groups."."Posting Code";
         }
         field(51516049;"Salary Advance Nos.";Code[10])
         {

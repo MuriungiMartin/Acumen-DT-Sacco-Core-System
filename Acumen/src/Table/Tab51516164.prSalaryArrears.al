@@ -6,7 +6,7 @@ Table 51516164 "prSalary Arrears"
     {
         field(1;"Employee Code";Code[10])
         {
-            TableRelation = Table55582;
+            TableRelation = "Payroll Employee.";
         }
         field(2;"Transaction Code";Code[10])
         {

@@ -1,4 +1,4 @@
-codeunit 50164 UserManagementCUExt
+codeunit 50164 "UserManagementCUExt"
 {
     trigger OnRun()
     begin

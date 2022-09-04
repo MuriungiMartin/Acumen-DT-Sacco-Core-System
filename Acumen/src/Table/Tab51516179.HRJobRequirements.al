@@ -42,7 +42,7 @@ Table 51516179 "HR Job Requirements"
         }
         field(9;"Need code";Code[10])
         {
-            TableRelation = Table0;
+           // TableRelation = Table0;
         }
         field(10;"Stage Code";Code[10])
         {

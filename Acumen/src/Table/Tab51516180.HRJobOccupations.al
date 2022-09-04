@@ -4,61 +4,61 @@ Table 51516180 "HR Job Occupations"
 
     fields
     {
-        field(2;"Employee No.";Code[20])
+        field(2; "Employee No."; Code[20])
         {
             TableRelation = "HR Employees"."No.";
 
             trigger OnValidate()
             begin
-                                HREmp.Get("Employee No.");
+                HREmp.Get("Employee No.");
 
-                                CalcFields("First Name");
-                                CalcFields("Middle Name");
-                                CalcFields("Last Name");
-                                Email:=HREmp."E-Mail";
-                                "Date of Join":=  HREmp."Date Of Joining the Company";
-                                HREmp."Job Title":="Job Id";
-                                HREmp.Validate(HREmp."Job Title");
-                                HREmp.Modify;
+                CalcFields("First Name");
+                CalcFields("Middle Name");
+                CalcFields("Last Name");
+                Email := HREmp."E-Mail";
+                "Date of Join" := HREmp."Date Of Joining the Company";
+                HREmp."Job Title" := "Job Id";
+                HREmp.Validate(HREmp."Job Title");
+                HREmp.Modify;
             end;
         }
-        field(3;"First Name";Text[30])
+        field(3; "First Name"; Text[80])
         {
-            CalcFormula = lookup("HR Employees"."First Name" where ("No."=field("Employee No.")));
+            CalcFormula = lookup("HR Employees"."First Name" where("No." = field("Employee No.")));
             FieldClass = FlowField;
         }
-        field(4;"Middle Name";Text[30])
+        field(4; "Middle Name"; Text[50])
         {
-            CalcFormula = lookup("HR Employees"."Middle Name" where ("No."=field("Employee No.")));
+            CalcFormula = lookup("HR Employees"."Middle Name" where("No." = field("Employee No.")));
             FieldClass = FlowField;
         }
-        field(5;"Last Name";Text[30])
+        field(5; "Last Name"; Text[50])
         {
-            CalcFormula = lookup("HR Employees"."Last Name" where ("No."=field("Employee No.")));
+            CalcFormula = lookup("HR Employees"."Last Name" where("No." = field("Employee No.")));
             FieldClass = FlowField;
         }
-        field(6;Extension;Text[30])
+        field(6; Extension; Text[30])
         {
             FieldClass = Normal;
         }
-        field(7;Email;Text[30])
+        field(7; Email; Text[30])
         {
             FieldClass = Normal;
         }
-        field(8;"Date of Join";Date)
+        field(8; "Date of Join"; Date)
         {
             FieldClass = Normal;
         }
-        field(9;Department;Code[20])
+        field(9; Department; Code[20])
         {
             FieldClass = Normal;
         }
-        field(55;"Job Desc";Text[50])
+        field(55; "Job Desc"; Text[50])
         {
-            CalcFormula = lookup(Table55622.Field2 where (Field1=field("Job Id")));
-            FieldClass = FlowField;
+            // CalcFormula = lookup(Table55622.Field2 where (Field1=field("Job Id")));
+            // FieldClass = FlowField;
         }
-        field(56;"Job Id";Code[100])
+        field(56; "Job Id"; Code[100])
         {
             TableRelation = "Vendor Invoice Disc."."Service Charge";
         }
@@ -66,7 +66,7 @@ Table 51516180 "HR Job Occupations"
 
     keys
     {
-        key(Key1;"Job Id","Employee No.")
+        key(Key1; "Job Id", "Employee No.")
         {
             Clustered = true;
         }

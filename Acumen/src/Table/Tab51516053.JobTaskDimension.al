@@ -5,18 +5,18 @@ Table 51516053 "Job-Task Dimension"
 
     fields
     {
-        field(1;"Job No.";Code[50])
+        field(1; "Job No."; Code[50])
         {
             Caption = 'Job No.';
             Editable = false;
             NotBlank = true;
-            TableRelation = "Job-Task"."Grant No.";
+            // TableRelation = "Job-Task"."Grant No.";
         }
-        field(2;"Job Task No.";Code[50])
+        field(2; "Job Task No."; Code[50])
         {
             Caption = 'Job Task No.';
             NotBlank = true;
-            TableRelation = "Job-Task"."Grant Task No." where ("Grant No."=field("Job No."));
+            //TableRelation = "Job-Task"."Grant Task No." where("Grant No." = field("Job No."));
 
             trigger OnValidate()
             var
@@ -25,7 +25,7 @@ Table 51516053 "Job-Task Dimension"
             begin
             end;
         }
-        field(3;"Dimension Code";Code[50])
+        field(3; "Dimension Code"; Code[50])
         {
             Caption = 'Dimension Code';
             TableRelation = Dimension.Code;
@@ -33,26 +33,26 @@ Table 51516053 "Job-Task Dimension"
             trigger OnValidate()
             begin
                 if not DimMgt.CheckDim("Dimension Code") then
-                  Error(DimMgt.GetDimErr);
+                    Error(DimMgt.GetDimErr);
                 "Dimension Value Code" := '';
             end;
         }
-        field(4;"Dimension Value Code";Code[50])
+        field(4; "Dimension Value Code"; Code[50])
         {
             Caption = 'Dimension Value Code';
-            TableRelation = "Dimension Value".Code where ("Dimension Code"=field("Dimension Code"));
+            TableRelation = "Dimension Value".Code where("Dimension Code" = field("Dimension Code"));
 
             trigger OnValidate()
             begin
-                if not DimMgt.CheckDimValue("Dimension Code","Dimension Value Code") then
-                  Error(DimMgt.GetDimErr);
+                if not DimMgt.CheckDimValue("Dimension Code", "Dimension Value Code") then
+                    Error(DimMgt.GetDimErr);
             end;
         }
     }
 
     keys
     {
-        key(Key1;"Job No.","Job Task No.","Dimension Code")
+        key(Key1; "Job No.", "Job Task No.", "Dimension Code")
         {
             Clustered = true;
         }
@@ -70,7 +70,7 @@ Table 51516053 "Job-Task Dimension"
     trigger OnInsert()
     begin
         if ("Dimension Value Code" = '') then
-          Error(Text001,TableCaption);
+            Error(Text001, TableCaption);
 
         UpdateGlobalDim("Dimension Value Code");
     end;
@@ -82,7 +82,7 @@ Table 51516053 "Job-Task Dimension"
 
     trigger OnRename()
     begin
-        Error(Text000,TableCaption);
+        Error(Text000, TableCaption);
     end;
 
     var
@@ -96,16 +96,16 @@ Table 51516053 "Job-Task Dimension"
         JobTask: Record "HR Transport Requisition";
         GLSEtup: Record "General Ledger Setup";
     begin
-        GLSEtup.Get;
-        if "Dimension Code" = GLSEtup."Global Dimension 1 Code" then begin
-          JobTask.Get("Job No.","Job Task No.");
-          JobTask."Global Dimension 1 Code" := "Dimension Value";
-          JobTask.Modify(true);
-        end else if "Dimension Code" = GLSEtup."Global Dimension 2 Code" then begin
-          JobTask.Get("Job No.","Job Task No.");
-          JobTask."Global Dimension 2 Code" := "Dimension Value";
-          JobTask.Modify(true);
-        end;
+        // GLSEtup.Get;
+        // if "Dimension Code" = GLSEtup."Global Dimension 1 Code" then begin
+        //   JobTask.Get("Job No.","Job Task No.");
+        //   JobTask."Global Dimension 1 Code" := "Dimension Value";
+        //   JobTask.Modify(true);
+        // end else if "Dimension Code" = GLSEtup."Global Dimension 2 Code" then begin
+        //   JobTask.Get("Job No.","Job Task No.");
+        //   JobTask."Global Dimension 2 Code" := "Dimension Value";
+        //   JobTask.Modify(true);
+        // end;
     end;
 }
 

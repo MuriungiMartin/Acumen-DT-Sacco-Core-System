@@ -6,14 +6,14 @@ Table 51516168 "prPayroll Variations"
     {
         field(1;"Employee Code";Code[30])
         {
-            TableRelation = "HR Employees"."No." where (Status=filter(Normal|Pension));
+            TableRelation = "HR Employees"."No.";// where (Status=filter(Normal|Pension));
 
             trigger OnValidate()
             begin
                 "Employee Names":='';
                 if "Employee Code" <> '' then begin
-                if SalaryCard.Get("Employee Code") = false then
-                Error('You must enter employee salary details first. Employee Code: %1',"Employee Code");
+              //  if SalaryCard.Get("Employee Code") = false then
+               // Error('You must enter employee salary details first. Employee Code: %1',"Employee Code");
 
                 if HREmployee.Get("Employee Code") then begin
                 "Employee Names":=HREmployee."First Name" + ' ' + HREmployee."Middle Name" + ' ' + HREmployee."Last Name";
@@ -46,13 +46,13 @@ Table 51516168 "prPayroll Variations"
                 END;
                    */
                 
-                if Transcode.Get("Transaction Code") then
-                  "Transaction Name":=Transcode."Transaction Name";
-                  Frequency:=Transcode.Frequency;
-                  "Payroll Period":=SelectedPeriod;
-                  "Period Month":=PeriodMonth;
-                  "Period Year":=PeriodYear;
-                   "Transaction Type":=Transcode."Transaction Type";
+                // if Transcode.Get("Transaction Code") then
+                //   "Transaction Name":=Transcode."Transaction Name";
+                //   Frequency:=Transcode.Frequency;
+                //   "Payroll Period":=SelectedPeriod;
+                //   "Period Month":=PeriodMonth;
+                //   "Period Year":=PeriodYear;
+                //    "Transaction Type":=Transcode."Transaction Type";
 
             end;
         }
@@ -104,7 +104,7 @@ Table 51516168 "prPayroll Variations"
         }
         field(11;Membership;Code[10])
         {
-            TableRelation = "prInstitutional Membership"."Institution No";
+          //  TableRelation = "prInstitutional Membership"."Institution No";
         }
         field(12;"Reference No";Text[100])
         {
@@ -175,17 +175,17 @@ Table 51516168 "prPayroll Variations"
     }
 
     var
-        Transcode: Record UnknownRecord55507;
-        EmployeeTrans: Record UnknownRecord55516;
+       //// Transcode: Record UnknownRecord55507;
+       // EmployeeTrans: Record UnknownRecord55516;
         MonthName: Text[100];
         HREmployee: Record "HR Employees";
-        SalaryCard: Record UnknownRecord55530;
-        SalCard: Record UnknownRecord55530;
+        // SalaryCard: Record UnknownRecord55530;
+        // SalCard: Record UnknownRecord55530;
         SalaryNotches: Record "HR Salary Notch";
         SelectedPeriod: Date;
-        objPeriod: Record UnknownRecord55506;
+       // objPeriod: Record UnknownRecord55506;
         PeriodName: Text[30];
-        PeriodTrans: Record UnknownRecord55517;
+       // PeriodTrans: Record UnknownRecord55517;
         PeriodMonth: Integer;
         PeriodYear: Integer;
 }

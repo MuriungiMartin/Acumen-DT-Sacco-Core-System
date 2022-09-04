@@ -4,95 +4,96 @@ Table 51516250 "HR Notice Board"
 
     fields
     {
-        field(1;"No.";Code[20])
+        field(1; "No."; Code[20])
         {
             Description = 'Number';
             Editable = false;
         }
-        field(2;"Notice Date";Date)
+        field(2; "Notice Date"; Date)
         {
             Description = 'Record Date';
             Editable = false;
         }
-        field(3;Title;Code[30])
+        field(3; Title; Code[30])
         {
             Description = 'Title of Info';
             TableRelation = "HR Notice Board Info Setup"."Notice Type";
 
             trigger OnValidate()
             begin
-                     if NoticeInfoSetup.Get(NoticeInfoSetup."Notice Type") then begin
-                      "Recipient Email":=NoticeInfoSetup."Group Email"
-                      end
+                if NoticeInfoSetup.Get(NoticeInfoSetup."Notice Type") then begin
+                    "Recipient Email" := NoticeInfoSetup."Group Email"
+                end
             end;
         }
-        field(4;Description;Text[250])
+        field(4; Description; Text[250])
         {
             Description = 'Info Details';
             Width = 10;
         }
-        field(5;"Event Date";Date)
+        field(5; "Event Date"; Date)
         {
 
             trigger OnValidate()
             begin
-                 if "Event Date"< "Notice Date"    then
-                 Error('Event Date Cannot be earlier than Notice Date')
+                if "Event Date" < "Notice Date" then
+                    Error('Event Date Cannot be earlier than Notice Date')
             end;
         }
-        field(6;"Event Time";Time)
+        field(6; "Event Time"; Time)
         {
         }
-        field(7;Venue;Text[50])
+        field(7; Venue; Text[50])
         {
             Description = 'Venue if for event';
         }
-        field(8;"Recipient Email";Text[30])
+        field(8; "Recipient Email"; Text[30])
         {
             Description = 'Store User ID';
             ExtendedDatatype = EMail;
         }
-        field(10;Status;Option)
+        field(10; Status; Option)
         {
             InitValue = Planning;
             OptionCaption = 'Planning,Published,Completed';
             OptionMembers = Planning,Published,Completed;
         }
-        field(11;Organiser;Code[70])
+        field(11; Organiser; Code[70])
         {
-            TableRelation = User.Field3671336;
+            // TableRelation = User.Field3671336;
         }
-        field(12;Closed;Boolean)
+        field(12; Closed; Boolean)
         {
         }
-        field(13;"Any Attachement?";Option)
+        field(13; "Any Attachement?"; Option)
         {
             OptionMembers = No,Yes;
         }
-        field(14;"No. Series";Code[20])
+        field(14; "No. Series"; Code[20])
         {
         }
-        field(15;Participant;Code[20])
+        field(15; Participant; Code[20])
         {
             TableRelation = "HR Notice Board Info Setup"."Group Name";
         }
-        field(16;"Last Date Modified";Date)
+        field(16; "Last Date Modified"; Date)
         {
             Editable = false;
         }
-        field(17;"Modified By";Code[70])
+        field(17; "Modified By"; Code[70])
         {
             Editable = false;
         }
-        field(18;"Organiser Job Title";Code[20])
+        field(18; "Organiser Job Title"; Code[20])
         {
-            TableRelation = "HR Jobs"."Job ID";
+            //  TableRelation = "HR Jobs"."Job ID";
         }
     }
 
+
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }
@@ -104,12 +105,12 @@ Table 51516250 "HR Notice Board"
 
     trigger OnInsert()
     begin
-         if "No." = '' then begin
-          HRSetup.Get;
-          HRSetup.TestField(HRSetup."Notice Board Nos.") ;
-           NoSeriesMgt.InitSeries(HRSetup."Notice Board Nos.",xRec."No. Series",0D,"No.","No. Series");
-           end;
-          "Notice Date":=Today;
+        if "No." = '' then begin
+            HRSetup.Get;
+            HRSetup.TestField(HRSetup."Notice Board Nos.");
+            NoSeriesMgt.InitSeries(HRSetup."Notice Board Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+        end;
+        "Notice Date" := Today;
     end;
 
     var

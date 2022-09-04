@@ -1,4 +1,4 @@
-enum 51001 TransactionTypesEnum
+enum 51001 "TransactionTypesEnum"
 {
     Extensible = true;
     value(0; " ")

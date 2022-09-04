@@ -91,7 +91,7 @@ Table 51516240 "HR Interview Evaluation"
         }
         field(120;"Job Title";Code[20])
         {
-            TableRelation = "HR Jobs";
+           // TableRelation = "HR Jobs";
 
             trigger OnValidate()
             begin

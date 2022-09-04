@@ -6,68 +6,68 @@ Table 51516286 "HR Insurance Schemes"
 
     fields
     {
-        field(1;"Scheme No";Code[10])
+        field(1; "Scheme No"; Code[10])
         {
             Editable = false;
 
             trigger OnValidate()
             begin
                 if "Scheme No" <> xRec."Scheme No" then begin
-                  HRSetup.Get;
-                  NoSeriesMgt.TestManual(HRSetup."HR Insurance Sch Nos");
-                  "No. Series":= '';
+                    HRSetup.Get;
+                    // NoSeriesMgt.TestManual(HRSetup."HR Insurance Sch Nos");
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(2;Insurer;Code[10])
+        field(2; Insurer; Code[10])
         {
             TableRelation = Vendor."No.";
 
             trigger OnValidate()
             begin
 
-                         Insurer1.Reset;
-                         Insurer1.SetRange(Insurer1."No.",Insurer);
-                          if Insurer1.Find('-') then begin
-                         "Insurer Name":=Insurer1.Name;
+                Insurer1.Reset;
+                Insurer1.SetRange(Insurer1."No.", Insurer);
+                if Insurer1.Find('-') then begin
+                    "Insurer Name" := Insurer1.Name;
 
-                          end;
+                end;
             end;
         }
-        field(3;"Scheme Name";Text[250])
+        field(3; "Scheme Name"; Text[250])
         {
         }
-        field(4;"In-patient limit";Decimal)
+        field(4; "In-patient limit"; Decimal)
         {
         }
-        field(5;"Out-patient limit";Decimal)
+        field(5; "Out-patient limit"; Decimal)
         {
         }
-        field(6;"Area Covered";Text[30])
+        field(6; "Area Covered"; Text[30])
         {
         }
-        field(7;"Dependants Included";Boolean)
+        field(7; "Dependants Included"; Boolean)
         {
         }
-        field(8;Comments;Text[100])
+        field(8; Comments; Text[100])
         {
         }
-        field(9;"Insurer Name";Text[250])
+        field(9; "Insurer Name"; Text[250])
         {
         }
-        field(10;"No. Series";Code[10])
+        field(10; "No. Series"; Code[10])
         {
 
             trigger OnLookup()
             begin
-                jjjjjj
+                //    jjjjjj
             end;
         }
     }
 
     keys
     {
-        key(Key1;"Scheme No")
+        key(Key1; "Scheme No")
         {
             Clustered = true;
         }
@@ -80,9 +80,9 @@ Table 51516286 "HR Insurance Schemes"
     trigger OnInsert()
     begin
         if "Scheme No" = '' then begin
-             HRSetup.Get;
-             HRSetup.TestField(HRSetup."HR Insurance Sch Nos");
-             NoSeriesMgt.InitSeries(HRSetup."HR Insurance Sch Nos",xRec."No. Series",0D,"Scheme No","No. Series");
+            HRSetup.Get;
+            //  HRSetup.TestField(HRSetup."HR Insurance Sch Nos");
+            //  NoSeriesMgt.InitSeries(HRSetup."HR Insurance Sch Nos",xRec."No. Series",0D,"Scheme No","No. Series");
         end;
     end;
 

@@ -896,6 +896,8 @@ Table 51516183 "HR Leave Application"
 
 
     procedure NotifyApplicant()
+    var
+    Recipient: List of [Text];
     begin
         HREmp.Get("Employee No");
         HREmp.TestField(HREmp."Company E-Mail");
@@ -908,7 +910,8 @@ Table 51516183 "HR Leave Application"
 
 
              HREmp.TestField(HREmp."Company E-Mail");
-             SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",HREmp."Company E-Mail",
+             Recipient.Add(HREmp."Company E-Mail");
+             SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",Recipient,
              HREmailParameters.Subject,'Dear'+' '+ HREmp."First Name" +' '+
              HREmailParameters.Body+' '+"Application Code"+' '+ HREmailParameters."Body 2",true);
              SMTP.Send();

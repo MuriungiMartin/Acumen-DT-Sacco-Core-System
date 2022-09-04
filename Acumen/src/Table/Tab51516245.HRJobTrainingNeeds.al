@@ -4,7 +4,7 @@ Table 51516245 "HR Job Training Needs"
 
     fields
     {
-        field(1;"CODE";Code[50])
+        field(1; "CODE"; Code[50])
         {
             Description = 'Primary Key';
 
@@ -12,22 +12,22 @@ Table 51516245 "HR Job Training Needs"
             begin
                 HrJobs.Reset;
                 if HrJobs.Get(CODE) then begin
-                Description:=HrJobs.Description;
-                 end;
+                    Description := HrJobs.Description;
+                end;
             end;
         }
-        field(2;"Job ID";Code[50])
+        field(2; "Job ID"; Code[50])
         {
-            TableRelation = "HR Jobs"."Job ID";
+            //  TableRelation = "HR Jobs"."Job ID";
         }
-        field(3;Description;Text[250])
+        field(3; Description; Text[250])
         {
         }
-        field(4;"Training Group";Code[50])
+        field(4; "Training Group"; Code[50])
         {
             TableRelation = "HR Training Applications"."Training Group No.";
         }
-        field(5;"No of Participants";Code[10])
+        field(5; "No of Participants"; Code[10])
         {
             TableRelation = "HR Training Applications"."No. of Participant";
         }
@@ -35,7 +35,7 @@ Table 51516245 "HR Job Training Needs"
 
     keys
     {
-        key(Key1;"CODE","Job ID")
+        key(Key1; "CODE", "Job ID")
         {
             Clustered = true;
         }

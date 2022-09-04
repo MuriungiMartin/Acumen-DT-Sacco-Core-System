@@ -1,5 +1,5 @@
 #pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0424, AW0006 // ForNAV settings
-Table 51516343 "prPayroll Periods."
+Table 51516266 "prPayroll Periods"
 {
 
     fields
@@ -16,6 +16,7 @@ Table 51516343 "prPayroll Periods."
         }
         field(4;"Date Opened";Date)
         {
+            NotBlank = true;
         }
         field(5;"Date Closed";Date)
         {
@@ -48,32 +49,5 @@ Table 51516343 "prPayroll Periods."
     fieldgroups
     {
     }
-
-    trigger OnDelete()
-    begin
-
-        PrPeriodT.Reset;
-        PrPeriodT.SetRange(PrPeriodT."Payroll Period","Date Opened");
-        if PrPeriodT.Find('-') then begin
-        if "Date Opened"<>0D then begin
-        Error('You cannot DELETE a period that has been used');
-        end
-        end
-    end;
-
-    trigger OnModify()
-    begin
-
-        PrPeriodT.Reset;
-        PrPeriodT.SetRange(PrPeriodT."Payroll Period","Date Opened");
-        if PrPeriodT.Find('-') then begin
-        if "Date Opened"<>0D then begin
-        Error('You cannot Modify a period that has been used');
-        end
-        end
-    end;
-
-    var
-        PrPeriodT: Record "prPeriod Transactions";
 }
 

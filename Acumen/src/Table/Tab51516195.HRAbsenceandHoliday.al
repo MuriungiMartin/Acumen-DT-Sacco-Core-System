@@ -248,8 +248,8 @@ Table 51516195 "HR Absence and Holiday"
     end;
 
     var
-        DifDates: Codeunit UnknownCodeunit51516113;
-        CompPayPer: Record UnknownRecord51516223;
+        // DifDates: Codeunit UnknownCodeunit51516113;
+        // CompPayPer: Record UnknownRecord51516223;
         Employee: Record "HR Employees";
         HourlyRate: Decimal;
         OK: Boolean;

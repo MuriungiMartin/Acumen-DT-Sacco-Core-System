@@ -353,10 +353,7 @@ Table 51516103 "Store Requistion Lines"
         {
             SumIndexFields = Quantity;
         }
-        key(Key3;'')
-        {
-            Enabled = false;
-        }
+      
     }
 
     fieldgroups
