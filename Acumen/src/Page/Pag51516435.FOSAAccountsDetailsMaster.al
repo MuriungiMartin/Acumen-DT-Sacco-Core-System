@@ -9,7 +9,7 @@ Page 51516435 "FOSA Accounts Details Master"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = Vendor;
-    SourceTableView = where("Creditor Type"=filter("FOSA Account"));
+    SourceTableView = where("Creditor Type" = filter("FOSA Account"));
     UsageCategory = Lists;
 
     layout
@@ -18,73 +18,73 @@ Page 51516435 "FOSA Accounts Details Master"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Signing Instructions";"Signing Instructions")
+                field("Signing Instructions"; "Signing Instructions")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category";"Account Category")
+                field("Account Category"; "Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Balance;Balance)
+                field(Balance; Balance)
                 {
                     ApplicationArea = Basic;
                     StyleExpr = CoveragePercentStyle;
                 }
-                field("Personal No.";"Personal No.")
+                field("Personal No."; "Personal No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Payroll No.';
                 }
-                field("ATM No.""";"ATM No.")
+                field("ATM No."""; "ATM No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ATM No.';
                 }
-                field("BOSA Account No";"BOSA Account No")
+                field("BOSA Account No"; "BOSA Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member No.';
                 }
-                field("Member class";"Member class")
+                field("Member class"; "Member class")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pension No";"Pension No")
+                field("Pension No"; "Pension No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Pension No';
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Net Change";"Net Change")
+                field("Net Change"; "Net Change")
                 {
                     ApplicationArea = Basic;
                 }
@@ -92,23 +92,23 @@ Page 51516435 "FOSA Accounts Details Master"
         }
         area(factboxes)
         {
-            part(Control1000000001;"FOSA Statistics FactBox")
+            part(Control1000000001; "FOSA Statistics FactBox")
             {
                 Editable = false;
                 Enabled = false;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control2;"Vendor Picture-Uploaded")
+            part(Control2; "Vendor Picture-Uploaded")
             {
                 ApplicationArea = All;
                 Caption = 'Picture';
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control1;"Vendor Signature-Uploaded")
+            part(Control1; "Vendor Signature-Uploaded")
             {
                 ApplicationArea = All;
                 Caption = 'Signature';
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -126,7 +126,7 @@ Page 51516435 "FOSA Accounts Details Master"
                     Caption = 'Ledger E&ntries';
                     Image = VendorLedger;
                     RunObject = Page "Vendor Ledger Entries";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.");
                     ShortCutKey = 'Ctrl+F7';
                 }
@@ -136,8 +136,8 @@ Page 51516435 "FOSA Accounts Details Master"
                     Caption = 'Co&mments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
-                    RunPageLink = "Table Name"=const(Vendor),
-                                  "No."=field("No.");
+                    RunPageLink = "Table Name" = const(Vendor),
+                                  "No." = field("No.");
                 }
                 action(Dimensions)
                 {
@@ -145,8 +145,8 @@ Page 51516435 "FOSA Accounts Details Master"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "Table ID"=const(23),
-                                  "No."=field("No.");
+                    RunPageLink = "Table ID" = const(23),
+                                  "No." = field("No.");
                     ShortCutKey = 'Shift+Ctrl+D';
                 }
                 separator(Action1102755228)
@@ -166,7 +166,7 @@ Page 51516435 "FOSA Accounts Details Master"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Member Account Card";
-                    RunPageLink = "No."=field("BOSA Account No");
+                    RunPageLink = "No." = field("BOSA Account No");
                 }
                 separator(Action1102755222)
                 {
@@ -182,7 +182,7 @@ Page 51516435 "FOSA Accounts Details Master"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "FOSA Account  NOK Details";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 separator(Action1102755217)
                 {
@@ -199,9 +199,9 @@ Page 51516435 "FOSA Accounts Details Master"
                     begin
 
                         Vend.Reset;
-                        Vend.SetRange(Vend."No.","No.");
+                        Vend.SetRange(Vend."No.", "No.");
                         if Vend.Find('-') then
-                        Report.Run(51516890,true,false,Vend)
+                            Report.Run(51516890, true, false, Vend)
                     end;
                 }
                 action("Page Vendor Statistics")
@@ -212,9 +212,9 @@ Page 51516435 "FOSA Accounts Details Master"
                     Promoted = true;
                     PromotedCategory = "Report";
                     RunObject = Page "Vendor Statistics";
-                    RunPageLink = "No."=field("No."),
-                                  "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                                  "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                    RunPageLink = "No." = field("No."),
+                                  "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                                  "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                     ShortCutKey = 'F7';
                 }
                 action("Loan Statement")
@@ -229,9 +229,9 @@ Page 51516435 "FOSA Accounts Details Master"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516531,true,false,Cust);
+                            Report.Run(51516531, true, false, Cust);
                     end;
                 }
             }
@@ -249,21 +249,21 @@ Page 51516435 "FOSA Accounts Details Master"
     end;
 
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Vend: Record Vendor;
         CoveragePercentStyle: Text;
         MinimumBalance: Decimal;
 
     local procedure SetStyles()
     begin
-        MinimumBalance:=1000;
-        if Balance =0 then
-          CoveragePercentStyle := 'Strong'
+        MinimumBalance := 1000;
+        if Balance = 0 then
+            CoveragePercentStyle := 'Strong'
         else
-          if Balance < MinimumBalance then
-            CoveragePercentStyle := 'Unfavorable'
-          else
-            CoveragePercentStyle := 'Favorable';
+            if Balance < MinimumBalance then
+                CoveragePercentStyle := 'Unfavorable'
+            else
+                CoveragePercentStyle := 'Favorable';
     end;
 }
 

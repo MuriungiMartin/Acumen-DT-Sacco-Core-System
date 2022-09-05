@@ -8,7 +8,7 @@ Page 51516150 "Posted Leave Applications"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "HR Leave Application";
-    SourceTableView = where(Status=filter(Posted));
+    SourceTableView = where(Status = filter(Posted));
     UsageCategory = History;
 
     layout
@@ -18,42 +18,42 @@ Page 51516150 "Posted Leave Applications"
             repeater(Control1102755000)
             {
                 Editable = false;
-                field("Application Code";"Application Code")
+                field("Application Code"; "Application Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Application No';
                     StyleExpr = true;
                 }
-                field("Employee No";"Employee No")
+                field("Employee No"; "Employee No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Type";"Leave Type")
+                field("Leave Type"; "Leave Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Days Applied";"Days Applied")
+                field("Days Applied"; "Days Applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Start Date";"Start Date")
+                field("Start Date"; "Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Return Date";"Return Date")
+                field("Return Date"; "Return Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("End Date";"End Date")
+                field("End Date"; "End Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reliever Name";"Reliever Name")
+                field("Reliever Name"; "Reliever Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -63,11 +63,11 @@ Page 51516150 "Posted Leave Applications"
         }
         area(factboxes)
         {
-            part(Control1102755006;"HR Leave Applicaitons Factbox")
+            part(Control1102755006; "HR Leave Applicaitons Factbox")
             {
-                SubPageLink = "No."=field("Employee No");
+                SubPageLink = "No." = field("Employee No");
             }
-            systempart(Control1102755004;Outlook)
+            systempart(Control1102755004; Outlook)
             {
             }
         }
@@ -88,9 +88,9 @@ Page 51516150 "Posted Leave Applications"
                 trigger OnAction()
                 begin
                     HRLeaveApp.Reset;
-                    HRLeaveApp.SetRange(HRLeaveApp."Application Code","Application Code");
+                    HRLeaveApp.SetRange(HRLeaveApp."Application Code", "Application Code");
                     if HRLeaveApp.Find('-') then
-                    Report.Run(51516610,true,true,HRLeaveApp);
+                        Report.Run(51516610, true, true, HRLeaveApp);
                 end;
             }
         }
@@ -110,7 +110,7 @@ Page 51516150 "Posted Leave Applications"
     end;
 
     var
-        ApprovalMgt: Codeunit "Approvals Mgmt.";
+        ApprovalMgt: Codeunit WorkflowIntegration;
         ApprovalEntries: Page "Approval Entries";
         ApprovalComments: Page "Approval Comments";
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,Receipt,"Staff Claim","Staff Advance",AdvanceSurrender,"Bank Slip",Grant,"Grant Surrender","Employee Requisition","Leave Application";
@@ -120,11 +120,11 @@ Page 51516150 "Posted Leave Applications"
 
     procedure TESTFIELDS()
     begin
-                                        TestField("Leave Type");
-                                        TestField("Days Applied");
-                                        TestField("Start Date");
-                                        TestField(Reliever);
-                                        TestField(Supervisor);
+        TestField("Leave Type");
+        TestField("Days Applied");
+        TestField("Start Date");
+        TestField(Reliever);
+        TestField(Supervisor);
     end;
 
 
@@ -134,19 +134,19 @@ Page 51516150 "Posted Leave Applications"
         LeaveFamilyEmployees: Record "HR Leave Family Employees";
         Employees: Record "HR Employees";
     begin
-        LeaveFamilyEmployees.SetRange(LeaveFamilyEmployees."Employee No","Employee No");
+        LeaveFamilyEmployees.SetRange(LeaveFamilyEmployees."Employee No", "Employee No");
         if LeaveFamilyEmployees.FindSet then //find the leave family employee is associated with
-        repeat
-          LeaveFamily.SetRange(LeaveFamily.Code,LeaveFamilyEmployees.Family);
-          LeaveFamily.SetFilter(LeaveFamily."Max Employees On Leave",'>0');
-          if LeaveFamily.FindSet then //find the status other employees on the same leave family
-            begin
-              Employees.SetRange(Employees."No.",LeaveFamilyEmployees."Employee No");
-              Employees.SetRange(Employees."Leave Status",Employees."leave status"::" ");
-              if Employees.Count>LeaveFamily."Max Employees On Leave" then
-              Error('The Maximum number of employees on leave for this family has been exceeded, Contact th HR manager for more information');
-            end
-        until LeaveFamilyEmployees.Next = 0;
+            repeat
+                LeaveFamily.SetRange(LeaveFamily.Code, LeaveFamilyEmployees.Family);
+                LeaveFamily.SetFilter(LeaveFamily."Max Employees On Leave", '>0');
+                if LeaveFamily.FindSet then //find the status other employees on the same leave family
+                  begin
+                    Employees.SetRange(Employees."No.", LeaveFamilyEmployees."Employee No");
+                    Employees.SetRange(Employees."Leave Status", Employees."leave status"::" ");
+                    if Employees.Count > LeaveFamily."Max Employees On Leave" then
+                        Error('The Maximum number of employees on leave for this family has been exceeded, Contact th HR manager for more information');
+                end
+            until LeaveFamilyEmployees.Next = 0;
     end;
 }
 

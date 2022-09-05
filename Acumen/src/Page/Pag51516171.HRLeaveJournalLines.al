@@ -19,7 +19,7 @@ Page 51516171 "HR Leave Journal Lines"
     {
         area(content)
         {
-            field(CurrentJnlBatchName;CurrentJnlBatchName)
+            field(CurrentJnlBatchName; CurrentJnlBatchName)
             {
                 ApplicationArea = Basic;
                 Caption = 'Batch Name';
@@ -31,63 +31,63 @@ Page 51516171 "HR Leave Journal Lines"
 
                     //Rec.RESET;
 
-                    InsuranceJnlManagement.LookupName(CurrentJnlBatchName,Rec);
+                    InsuranceJnlManagement.LookupName(CurrentJnlBatchName, Rec);
                     CurrPage.Update(false);
                 end;
 
                 trigger OnValidate()
                 begin
-                    InsuranceJnlManagement.CheckName(CurrentJnlBatchName,Rec);
-                      CurrentJnlBatchNameOnAfterVali;
+                    InsuranceJnlManagement.CheckName(CurrentJnlBatchName, Rec);
+                    CurrentJnlBatchNameOnAfterVali;
                 end;
             }
             repeater(Control1102755000)
             {
-                field("Line No.";"Line No.")
+                field("Line No."; "Line No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Period";"Leave Period")
+                field("Leave Period"; "Leave Period")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff No.";"Staff No.")
+                field("Staff No."; "Staff No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff Name";"Staff Name")
+                field("Staff Name"; "Staff Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Type";"Leave Type")
+                field("Leave Type"; "Leave Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Entry Type";"Leave Entry Type")
+                field("Leave Entry Type"; "Leave Entry Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. of Days";"No. of Days")
+                field("No. of Days"; "No. of Days")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No.";"Document No.")
+                field("Document No."; "Document No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shortcut Dimension 1 Code";"Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shortcut Dimension 2 Code";"Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
@@ -113,7 +113,7 @@ Page 51516171 "HR Leave Journal Lines"
                     trigger OnAction()
                     begin
 
-                        Codeunit.Run(Codeunit::"HR Leave Jnl.-Post",Rec);
+                        Codeunit.Run(Codeunit::"HR Leave Jnl.-Post", Rec);
 
                         CurrentJnlBatchName := GetRangemax("Journal Batch Name");
                         CurrPage.Update(false);
@@ -129,9 +129,9 @@ Page 51516171 "HR Leave Journal Lines"
 
                     trigger OnAction()
                     begin
-                        
-                        
-                        
+
+
+
                         /*
                         AllocationDone:=TRUE;
                         
@@ -263,7 +263,7 @@ Page 51516171 "HR Leave Journal Lines"
                     trigger OnAction()
                     begin
                         //IF ApprovalsMgmt.CheckSalesApprovalsWorkflowEnabled(Rec) THEN
-                          //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                        //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -291,14 +291,14 @@ Page 51516171 "HR Leave Journal Lines"
     begin
         OpenedFromBatch := ("Journal Batch Name" <> '') and ("Journal Template Name" = '');
         if OpenedFromBatch then begin
-          CurrentJnlBatchName := "Journal Batch Name";
-          InsuranceJnlManagement.OpenJournal(CurrentJnlBatchName,Rec);
-          exit;
+            CurrentJnlBatchName := "Journal Batch Name";
+            InsuranceJnlManagement.OpenJournal(CurrentJnlBatchName, Rec);
+            exit;
         end;
-        InsuranceJnlManagement.TemplateSelection(Page::"HR Leave Journal Lines",Rec,JnlSelected);
+        InsuranceJnlManagement.TemplateSelection(Page::"HR Leave Journal Lines", Rec, JnlSelected);
         if not JnlSelected then
-          Error('');
-        InsuranceJnlManagement.OpenJournal(CurrentJnlBatchName,Rec);
+            Error('');
+        InsuranceJnlManagement.OpenJournal(CurrentJnlBatchName, Rec);
     end;
 
     var
@@ -310,7 +310,7 @@ Page 51516171 "HR Leave Journal Lines"
         CurrentJnlBatchName: Code[10];
         InsuranceDescription: Text[30];
         FADescription: Text[30];
-        ShortcutDimCode: array [8] of Code[20];
+        ShortcutDimCode: array[8] of Code[20];
         OpenedFromBatch: Boolean;
         HRLeavePeriods: Record "HR Leave Periods";
         AllocationDone: Boolean;
@@ -318,32 +318,32 @@ Page 51516171 "HR Leave Journal Lines"
         OK: Boolean;
         ApprovalEntries: Record "Approval Entry";
         LLE: Record "HR Leave Ledger Entries";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
 
 
-    procedure CheckGender(Emp: Record "HR Employees";LeaveType: Record "HR Leave Types") Allocate: Boolean
+    procedure CheckGender(Emp: Record "HR Employees"; LeaveType: Record "HR Leave Types") Allocate: Boolean
     begin
 
         //CHECK IF LEAVE TYPE ALLOCATION APPLIES TO EMPLOYEE'S GENDER
 
-        if Emp.Gender=Emp.Gender::Male then begin
-         if LeaveType.Gender=LeaveType.Gender::Male then
-         Allocate:=true;
+        if Emp.Gender = Emp.Gender::Male then begin
+            if LeaveType.Gender = LeaveType.Gender::Male then
+                Allocate := true;
         end;
 
-        if Emp.Gender=Emp.Gender::Female then begin
-         if LeaveType.Gender=LeaveType.Gender::Female then
-         Allocate:=true;
+        if Emp.Gender = Emp.Gender::Female then begin
+            if LeaveType.Gender = LeaveType.Gender::Female then
+                Allocate := true;
         end;
 
-        if LeaveType.Gender=LeaveType.Gender::Both then
-        Allocate:=true;
+        if LeaveType.Gender = LeaveType.Gender::Both then
+            Allocate := true;
         exit(Allocate);
 
-        if Emp.Gender<>LeaveType.Gender then
-        Allocate:=false;
+        if Emp.Gender <> LeaveType.Gender then
+            Allocate := false;
 
         exit(Allocate);
     end;
@@ -351,7 +351,7 @@ Page 51516171 "HR Leave Journal Lines"
     local procedure CurrentJnlBatchNameOnAfterVali()
     begin
         CurrPage.SaveRecord;
-        InsuranceJnlManagement.SetName(CurrentJnlBatchName,Rec);
+        InsuranceJnlManagement.SetName(CurrentJnlBatchName, Rec);
         CurrPage.Update(false);
     end;
 

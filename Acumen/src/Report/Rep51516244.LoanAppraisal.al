@@ -1423,11 +1423,11 @@ Report 51516244 "Loan Appraisal"
         LAppraisalFee: Decimal;
         ValuationFee: Decimal;
         LoanFormFee: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         GenSetUp: Record "Sacco General Set-Up";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         PREMATURE: Decimal;
-        CustRecord: Record "Member Register";
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanApp: Record "Loans Register";
@@ -1657,11 +1657,11 @@ Report 51516244 "Loan Appraisal"
         ToDateS: Text[100];
         DivTotal: Decimal;
         CDeposits: Decimal;
-        CustDiv: Record "Member Register";
+        CustDiv: Record Customer;
         DivProg: Record "Dividends Progression";
         CDiv: Decimal;
         BDate: Date;
-        CustR: Record "Member Register";
+        CustR: Record Customer;
         LoanInsurance: Decimal;
         LoanProcessingFee: Decimal;
         ProductCharges: Record "Loan Product Charges";

@@ -15,7 +15,7 @@ Report 51516541 "Unallocated Funds"
 
     dataset
     {
-        dataitem("Member Register"; "Member Register")
+        dataitem(Customer; Customer)
         {
             DataItemTableView = where("Un-allocated Funds" = filter(<> 0));
             RequestFilterFields = "FOSA Account No.", "Loan Product Filter", "Outstanding Balance", "Date Filter";
@@ -23,16 +23,16 @@ Report 51516541 "Unallocated Funds"
             column(UserId; UserId)
             {
             }
-            column(PayrollStaffNo_Members; "Member Register"."Personal No")
+            column(PayrollStaffNo_Members; Customer."Personal No")
             {
             }
-            column(No_Members; "Member Register"."No.")
+            column(No_Members; Customer."No.")
             {
             }
-            column(Name_Members; "Member Register".Name)
+            column(Name_Members; Customer.Name)
             {
             }
-            column(EmployerCode_Members; "Member Register"."Employer Code")
+            column(EmployerCode_Members; Customer."Employer Code")
             {
             }
             column(EmployerName; EmployerName)
@@ -41,16 +41,16 @@ Report 51516541 "Unallocated Funds"
             column(PageNo_Members; Format(ReportForNav.PageNo))
             {
             }
-            column(Shares_Retained; "Member Register"."Shares Retained")
+            column(Shares_Retained; Customer."Shares Retained")
             {
             }
             column(ShareCapBF; ShareCapBF)
             {
             }
-            column(IDNo_Members; "Member Register"."ID No.")
+            column(IDNo_Members; Customer."ID No.")
             {
             }
-            column(GlobalDimension2Code_Members; "Member Register"."Global Dimension 2 Code")
+            column(GlobalDimension2Code_Members; Customer."Global Dimension 2 Code")
             {
             }
             column(Company_Name; Company.Name)
@@ -149,14 +149,14 @@ Report 51516541 "Unallocated Funds"
             }
             trigger OnPreDataItem();
             begin
-                if "Member Register".GetFilter("Member Register"."Date Filter") <> '' then
-                    DateFilterBF := '..' + Format(CalcDate('-1D', "Member Register".GetRangeMin("Member Register"."Date Filter")));
+                if Customer.GetFilter(Customer."Date Filter") <> '' then
+                    DateFilterBF := '..' + Format(CalcDate('-1D', Customer.GetRangeMin(Customer."Date Filter")));
             end;
 
             trigger OnAfterGetRecord();
             begin
                 SaccoEmp.Reset;
-                SaccoEmp.SetRange(SaccoEmp.Code, "Member Register"."Employer Code");
+                SaccoEmp.SetRange(SaccoEmp.Code, Customer."Employer Code");
                 if SaccoEmp.Find('-') then
                     EmployerName := SaccoEmp.Description;
                 SharesBF := 0;
@@ -250,7 +250,7 @@ Report 51516541 "Unallocated Funds"
         CLosingBalance: Decimal;
         OpenBalanceXmas: Decimal;
         CLosingBalanceXmas: Decimal;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         OpeningBal: Decimal;
         ClosingBal: Decimal;
         FirstRec: Boolean;

@@ -210,7 +210,7 @@ Report 51516901 "Membership Withdrawal Report"
         ApprovalSetup: Record "Table Permission Buffer";
         LocationFilter: Code[20];
         TotalApproved: Decimal;
-        cust: Record "Member Register";
+        cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
         LAppl: Record "Loans Register";
@@ -238,8 +238,8 @@ Report 51516901 "Membership Withdrawal Report"
         Date________________________Caption_Control1102755005Lbl: label 'Date..............';
         GenSetUp: Record "Sacco General Set-Up";
         LoanApp: Record "Loans Register";
-        CustRec: Record "Member Register";
-        CustRecord: Record "Member Register";
+        CustRec: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanShareRatio: Decimal;

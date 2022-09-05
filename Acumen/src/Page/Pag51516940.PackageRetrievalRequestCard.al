@@ -461,7 +461,7 @@ Page 51516940 "Package Retrieval Request Card"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
 
                         if ApprovalsMgmt.CheckPackageRetrievalApprovalsWorkflowEnabled(Rec) then
@@ -480,7 +480,7 @@ Page 51516940 "Package Retrieval Request Card"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckPackageRetrievalApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnCancelPackageRetrievalApprovalRequest(Rec);
@@ -492,10 +492,12 @@ Page 51516940 "Package Retrieval Request Card"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        Approvmgmgt: codeunit "Approvals Mgmt.";
     begin
 
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approvmgmgt.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approvmgmgt.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec.Status = Status::Approved then begin
             OpenApprovalEntriesExist := false;
@@ -537,7 +539,7 @@ Page 51516940 "Package Retrieval Request Card"
         RequestingAgentEditable: Boolean;
         ReasonForRetrieval: Boolean;
         ChargeRetrievalFeeVisible: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         ObjPackageTypes: Record "Package Types";
         RetrievalFee: Decimal;
         RetrievalFeeAccount: Code[20];

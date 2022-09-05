@@ -9,8 +9,8 @@ Page 51516908 "Loans Disb Batch List(MICRO)"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Loan Disburesment-Batching";
-    SourceTableView = where(Posted=filter(false),
-                            Source=filter(MICRO));
+    SourceTableView = where(Posted = filter(false),
+                            Source = filter(MICRO));
 
     layout
     {
@@ -18,20 +18,20 @@ Page 51516908 "Loans Disb Batch List(MICRO)"
         {
             repeater(Control1102760000)
             {
-                field(Source;Source)
+                field(Source; Source)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Loans";"No of Loans")
+                field("No of Loans"; "No of Loans")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Mode Of Disbursement";"Mode Of Disbursement")
+                field("Mode Of Disbursement"; "Mode Of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -155,10 +155,10 @@ Page 51516908 "Loans Disb Batch List(MICRO)"
         LineNo: Integer;
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sacco General Set-Up";
         PCharges: Record "Loan Product Charges";
@@ -195,7 +195,7 @@ Page 51516908 "Loans Disb Batch List(MICRO)"
         DBranch: Code[20];
         UsersID: Record User;
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -251,7 +251,7 @@ Page 51516908 "Loans Disb Batch List(MICRO)"
         Jtemplate: Code[30];
         JBatch: Code[30];
         LBatches: Record "Loan Disburesment-Batching";
-        ApprovalMgt: Codeunit "Approvals Mgmt.";
+        ApprovalMgt: Codeunit WorkflowIntegration;
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None",JV,"Member Closure","Account Opening",Batches,"Payment Voucher","Petty Cash",Requisition,Loan,Imprest,ImprestSurrender,Interbank;
 }
 

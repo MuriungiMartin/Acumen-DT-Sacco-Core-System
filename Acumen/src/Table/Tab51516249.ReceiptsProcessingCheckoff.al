@@ -105,7 +105,7 @@ Table 51516249 "ReceiptsProcessing. Checkoff"
         }
         field(25; "Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No." where("No." = field("Member No"));
+            TableRelation = Customer."No." where("No." = field("Member No"));
 
             trigger OnValidate()
             begin
@@ -215,7 +215,7 @@ Table 51516249 "ReceiptsProcessing. Checkoff"
     end;
 
     var
-        memb: Record "Member Register";
+        memb: Record Customer;
         loans: Record "Loans Register";
 }
 

@@ -3,22 +3,22 @@ Table 51516644 "HR Applicant Qualifications"
 {
     Caption = 'HR Applicant Qualifications';
     DataCaptionFields = "Employee No.";
-    DrillDownPageID = UnknownPage53960;
-    LookupPageID = UnknownPage53960;
+    // DrillDownPageID = UnknownPage53960;
+    // LookupPageID = UnknownPage53960;
 
     fields
     {
-        field(1;"Application No";Code[10])
+        field(1; "Application No"; Code[10])
         {
             Caption = 'Application No';
             TableRelation = "HR Job Applications"."Application No";
         }
-        field(2;"Employee No.";Code[20])
+        field(2; "Employee No."; Code[20])
         {
             Caption = 'Employee No.';
             NotBlank = true;
         }
-        field(3;"Qualification Description";Code[80])
+        field(3; "Qualification Description"; Code[80])
         {
             Caption = 'Qualification Description';
             NotBlank = true;
@@ -34,72 +34,72 @@ Table 51516644 "HR Applicant Qualifications"
 
             end;
         }
-        field(4;"From Date";Date)
+        field(4; "From Date"; Date)
         {
             Caption = 'From Date';
         }
-        field(5;"To Date";Date)
+        field(5; "To Date"; Date)
         {
             Caption = 'To Date';
         }
-        field(6;Type;Option)
+        field(6; Type; Option)
         {
             Caption = 'Type';
             OptionCaption = ' ,Internal,External,Previous Position';
             OptionMembers = " ",Internal,External,"Previous Position";
         }
-        field(7;Description;Text[30])
+        field(7; Description; Text[30])
         {
             Caption = 'Description';
         }
-        field(8;"Institution/Company";Text[30])
+        field(8; "Institution/Company"; Text[30])
         {
             Caption = 'Institution/Company';
         }
-        field(9;Cost;Decimal)
+        field(9; Cost; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Cost';
         }
-        field(10;"Course Grade";Text[30])
+        field(10; "Course Grade"; Text[30])
         {
             Caption = 'Course Grade';
         }
-        field(11;"Employee Status";Option)
+        field(11; "Employee Status"; Option)
         {
             Caption = 'Employee Status';
             Editable = false;
             OptionCaption = 'Active,Inactive,Terminated';
             OptionMembers = Active,Inactive,Terminated;
         }
-        field(13;"Expiration Date";Date)
+        field(13; "Expiration Date"; Date)
         {
             Caption = 'Expiration Date';
         }
-        field(14;"Qualification Type";Code[20])
+        field(14; "Qualification Type"; Code[20])
         {
             NotBlank = false;
-            TableRelation = "HR Lookup Values".Code where (Type=filter("Qualification Type"));
+            TableRelation = "HR Lookup Values".Code where(Type = filter("Qualification Type"));
         }
-        field(15;"Qualification Code";Text[200])
+        field(15; "Qualification Code"; Text[200])
         {
             NotBlank = true;
-            TableRelation = "HR Job Qualifications".Code where ("Qualification Type"=field("Qualification Type"));
+            TableRelation = "HR Job Qualifications".Code where("Qualification Type" = field("Qualification Type"));
 
             trigger OnValidate()
             begin
-                if HRQualifications.Get("Qualification Type","Qualification Code") then
-                "Qualification Description":=HRQualifications.Description;
+                if HRQualifications.Get("Qualification Type", "Qualification Code") then
+                    "Qualification Description" := HRQualifications.Description;
             end;
         }
-        field(16;"Score ID";Decimal)
+        field(16; "Score ID"; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Application No","Qualification Type","Qualification Code")
+        key(Key1; "Application No", "Qualification Type", "Qualification Code")
         {
             Clustered = true;
         }

@@ -1093,7 +1093,7 @@ Page 51516431 "FOSA Account Application Card"
                     trigger OnAction()
                     var
                         Text001: label 'This request is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         if Confirm('Are you sure you want to send Approval request for this record?', true) = false then
                             exit;
@@ -1121,7 +1121,7 @@ Page 51516431 "FOSA Account Application Card"
 
                     trigger OnAction()
                     var
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
                         if Confirm('Are you sure you want cancel Approval request for this record?', true) = false then
                             exit;
@@ -1378,7 +1378,7 @@ Page 51516431 "FOSA Account Application Card"
         Acc: Record Vendor;
         UsersID: Record User;
         Nok: Record "FOSA Account App Kin Details";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         NOKBOSA: Record "FOSA Account NOK Details";
         BranchC: Code[20];
         DimensionV: Record "Dimension Value";
@@ -1426,7 +1426,7 @@ Page 51516431 "FOSA Account Application Card"
         BranchEditable: Boolean;
         Accountype: Boolean;
         Approvalusers: Record "Status Change Permision";
-        Member: Record "Member Register";
+        Member: Record Customer;
         IncrementNoF: Code[20];
         SMSMessage: Record "SMS Messages";
         iEntryNo: Integer;
@@ -1435,7 +1435,7 @@ Page 51516431 "FOSA Account Application Card"
         CurrentAcc: Code[20];
         OpenApprovalEntriesExist: Boolean;
         EnabledApprovalWorkflowsExist: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         CanCancelApprovalForRecord: Boolean;
         EventFilter: Text;
         EnableCreateMember: Boolean;

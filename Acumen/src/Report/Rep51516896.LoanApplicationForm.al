@@ -1618,10 +1618,10 @@ Report 51516896 "Loan Application Form"
     end;
 
     var
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         GenSetUp: Record "Sacco General Set-Up";
-        Cust: Record "Member Register";
-        CustRecord: Record "Member Register";
+        Cust: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanApp: Record "Loans Register";
@@ -1851,11 +1851,11 @@ Report 51516896 "Loan Application Form"
         ToDateS: Text[100];
         DivTotal: Decimal;
         CDeposits: Decimal;
-        CustDiv: Record "Member Register";
+        CustDiv: Record Customer;
         DivProg: Record "Dividends Progression";
         CDiv: Decimal;
         BDate: Date;
-        CustR: Record "Member Register";
+        CustR: Record Customer;
         BasicPay: Decimal;
         HouseAllowance: Decimal;
         TransportAll: Decimal;

@@ -8,7 +8,7 @@ Page 51516711 "Approve Member Withdrawal card"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption';
     SourceTable = "Membership Exit";
-    SourceTableView = where("Ready to Exit"=filter(true));
+    SourceTableView = where("Ready to Exit" = filter(true));
 
     layout
     {
@@ -17,145 +17,145 @@ Page 51516711 "Approve Member Withdrawal card"
             group(General)
             {
                 Caption = 'General';
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No.";"Member No.")
+                field("Member No."; "Member No.")
                 {
                     ApplicationArea = Basic;
                     Editable = MNoEditable;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; "Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closing Date";"Closing Date")
+                field("Closing Date"; "Closing Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ClosingDateEditable;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Approved";"Date Approved")
+                field("Date Approved"; "Date Approved")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Posting Date";"Expected Posting Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Status;Status)
+                field("Expected Posting Date"; "Expected Posting Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Closure Type";"Closure Type")
+                field(Status; Status)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Closure Type"; "Closure Type")
                 {
                     ApplicationArea = Basic;
                     Editable = ClosureTypeEditable;
                 }
-                field("Sell Share Capital";"Sell Share Capital")
+                field("Sell Share Capital"; "Sell Share Capital")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Total Loan";"Total Loan")
+                field("Total Loan"; "Total Loan")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Loan BOSA';
                     Editable = false;
                 }
-                field("Total Interest";"Total Interest")
+                field("Total Interest"; "Total Interest")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Interest Due BOSA';
                     Editable = false;
                 }
-                field("Total Loans FOSA";"Total Loans FOSA")
+                field("Total Loans FOSA"; "Total Loans FOSA")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Total Oustanding Int FOSA";"Total Oustanding Int FOSA")
+                field("Total Oustanding Int FOSA"; "Total Oustanding Int FOSA")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Interest Due FOSA';
                     Editable = false;
                 }
-                field("Member Deposits";"Member Deposits")
+                field("Member Deposits"; "Member Deposits")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Share Capital";"Share Capital")
+                field("Share Capital"; "Share Capital")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Refundable Share Capital";"Refundable Share Capital")
+                field("Refundable Share Capital"; "Refundable Share Capital")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Share Capital to Sell";"Share Capital to Sell")
+                field("Share Capital to Sell"; "Share Capital to Sell")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Risk Fund";"Risk Fund")
+                field("Risk Fund"; "Risk Fund")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Net Refund';
                     Editable = false;
                     Visible = false;
                 }
-                field("Risk Fund Arrears";"Risk Fund Arrears")
+                field("Risk Fund Arrears"; "Risk Fund Arrears")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Risk Beneficiary";"Risk Beneficiary")
+                field("Risk Beneficiary"; "Risk Beneficiary")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Mode Of Disbursement";"Mode Of Disbursement")
+                field("Mode Of Disbursement"; "Mode Of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Paying Bank";"Paying Bank")
+                field("Paying Bank"; "Paying Bank")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Cheque No.";"Cheque No.")
+                field("Cheque No."; "Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("FOSA Account No.";"FOSA Account No.")
+                field("FOSA Account No."; "FOSA Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Payee;Payee)
+                field(Payee; Payee)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
@@ -198,9 +198,9 @@ Page 51516711 "Approve Member Withdrawal card"
                     trigger OnAction()
                     begin
                         cust.Reset;
-                        cust.SetRange(cust."No.","Member No.");
+                        cust.SetRange(cust."No.", "Member No.");
                         if cust.Find('-') then
-                        Report.Run(51516474,true,false,cust);
+                            Report.Run(51516474, true, false, cust);
                     end;
                 }
                 action("Clear Exit")
@@ -222,29 +222,30 @@ Page 51516711 "Approve Member Withdrawal card"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         if Confirm('Are you absolutely sure you want to exit Member') = false then
-                        exit;
+                            exit;
 
-                        if ("Closure Type"="closure type"::"Withdrawal - Death" ) or ("Closure Type"="closure type"::"Withdrawal - Death(Defaulter)") then begin
-                        cust.Reset;
-                        cust.SetRange(cust."No.","Member No.");
-                        if cust.Find('-') then begin
-                        cust.Status:=cust.Status::Deceased;
-                        cust.Blocked:=cust.Blocked::All;
-                        cust.Modify;
-                        end;
+                        if ("Closure Type" = "closure type"::"Withdrawal - Death") or ("Closure Type" = "closure type"::"Withdrawal - Death(Defaulter)") then begin
+                            cust.Reset;
+                            cust.SetRange(cust."No.", "Member No.");
+                            if cust.Find('-') then begin
+                                cust.Status := cust.Status::Deceased;
+                                cust.Blocked := cust.Blocked::All;
+                                cust.Modify;
+                            end;
                         end else
-                        cust.Reset;
-                        cust.SetRange(cust."No.","Member No.");
+                            cust.Reset;
+                        cust.SetRange(cust."No.", "Member No.");
                         if cust.Find('-') then begin
-                        cust.Status:=cust.Status::Withdrawal;
-                        cust."Closing Date":=Today;
-                        cust.Blocked:=cust.Blocked::All;
-                        cust.Modify;
+                            cust.Status := cust.Status::Withdrawal;
+                            cust."Closing Date" := Today;
+                            cust.Blocked := cust.Blocked::All;
+                            cust.Modify;
                         end;
-                        Posted:=true;
-                        "clear Exit":=true;
+                        Posted := true;
+                        "clear Exit" := true;
                         Modify;
-                        Message ('Closure posted successfully.');;
+                        Message('Closure posted successfully.');
+                        ;
                     end;
                 }
             }
@@ -259,7 +260,7 @@ Page 51516711 "Approve Member Withdrawal card"
     var
         Closure: Integer;
         Text001: label 'Not Approved';
-        cust: Record "Member Register";
+        cust: Record Customer;
         UBFRefund: Decimal;
         Generalsetup: Record "Sacco General Set-Up";
         Totalavailable: Decimal;
@@ -298,28 +299,28 @@ Page 51516711 "Approve Member Withdrawal card"
 
     procedure UpdateControl()
     begin
-        if Status=Status::Open then begin
-        MNoEditable:=true;
-        ClosingDateEditable:=false;
-        ClosureTypeEditable:=true;
+        if Status = Status::Open then begin
+            MNoEditable := true;
+            ClosingDateEditable := false;
+            ClosureTypeEditable := true;
         end;
 
-        if Status=Status::Pending then begin
-        MNoEditable:=false;
-        ClosingDateEditable:=false;
-        ClosureTypeEditable:=false
+        if Status = Status::Pending then begin
+            MNoEditable := false;
+            ClosingDateEditable := false;
+            ClosureTypeEditable := false
         end;
 
-        if Status=Status::Rejected then begin
-        MNoEditable:=false;
-        ClosingDateEditable:=false;
-        ClosureTypeEditable:=false;
+        if Status = Status::Rejected then begin
+            MNoEditable := false;
+            ClosingDateEditable := false;
+            ClosureTypeEditable := false;
         end;
 
-        if Status=Status::Approved then begin
-        MNoEditable:=false;
-        ClosingDateEditable:=true;
-        ClosureTypeEditable:=false;
+        if Status = Status::Approved then begin
+            MNoEditable := false;
+            ClosingDateEditable := true;
+            ClosureTypeEditable := false;
         end;
     end;
 }

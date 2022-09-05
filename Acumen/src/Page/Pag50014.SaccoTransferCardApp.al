@@ -160,7 +160,7 @@ Page 50014 "Sacco Transfer Card(App)"
                     trigger OnAction()
                     var
                         Text001: label 'This Batch is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         TestField("Transaction Description");
                         if (("Schedule Total" > "Header Amount") and (Refund)) then
@@ -187,7 +187,7 @@ Page 50014 "Sacco Transfer Card(App)"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckSaccoTransferApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnCancelSaccoTransferApprovalRequest(Rec);
@@ -579,7 +579,7 @@ Page 50014 "Sacco Transfer Card(App)"
         SourceLoanNoEditable: Boolean;
         RemarkEditable: Boolean;
         TransactionDateEditable: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         ObjSaccoTransfers: Record "Sacco Transfers";
         OpenApprovalEntriesExist: Boolean;
         EnabledApprovalWorkflowExist: Boolean;
@@ -599,7 +599,7 @@ Page 50014 "Sacco Transfer Card(App)"
         ObjVendors: Record Vendor;
         AvailableBal: Decimal;
         ObjAccTypes: Record "Account Types-Saving Products";
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
         VarMemberNoEditable: Boolean;
         ObjLoans: Record "Loans Register";
 

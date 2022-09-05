@@ -13,7 +13,7 @@ Table 51516387 "Receipt Allocation"
         field(2; "Member No"; Code[20])
         {
             NotBlank = true;
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
         }
         field(3; "Transaction Type"; Option)
         {
@@ -157,7 +157,7 @@ Table 51516387 "Receipt Allocation"
         }
         field(51516155; "Mpesa Account No"; Code[20])
         {
-            TableRelation = if ("Mpesa Account Type" = filter(Member)) "Member Register"."No."
+            TableRelation = if ("Mpesa Account Type" = filter(Member)) Customer."No."
             else
             if ("Mpesa Account Type" = filter(Vendor)) Vendor."No."
             else
@@ -229,10 +229,10 @@ Table 51516387 "Receipt Allocation"
 
     var
         Loans: Record "Loans Register";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         PTEN: Text;
         DataSheet: Record "Data Sheet Main";
-        Customer: Record "Member Register";
+        Customer: Record Customer;
         LoansR: Record "Loans Register";
         GenSetup: Record "Sacco General Set-Up";
         ReceiptAll: Record "Receipt Allocation";

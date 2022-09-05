@@ -486,7 +486,7 @@ Report 51516452 "Loan Appraisal MICRO Nafa"
         AppraisalSalDet: Record "Loan Appraisal Salary Details";
         TotalSalCat: Decimal;
         SNo: Integer;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Cshares: Decimal;
         LoanType: Record "Loan Products Setup";
         DEpMultiplier: Decimal;

@@ -20,7 +20,7 @@ Table 51516940 "Member Agent/Next Of Kin Chang"
         }
         field(2; "Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -48,7 +48,7 @@ Table 51516940 "Member Agent/Next Of Kin Chang"
         }
         field(5; "Account No"; Code[30])
         {
-            TableRelation = if ("Account Type" = filter(BOSA)) "Member Register"."No."
+            TableRelation = if ("Account Type" = filter(BOSA)) Customer."No."
             else
             if ("Account Type" = filter(FOSA)) Vendor."No." where("BOSA Account No" = field("Member No"));
         }
@@ -107,7 +107,7 @@ Table 51516940 "Member Agent/Next Of Kin Chang"
         SalesSetup: Record "Sacco No. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         ObjAccount: Record Vendor;
-        ObjCust: Record "Member Register";
+        ObjCust: Record Customer;
         ObjLoans: Record "Loans Register";
         ObjSurestep: Codeunit "SURESTEP Factory.";
         VarAmountInArrears: Decimal;

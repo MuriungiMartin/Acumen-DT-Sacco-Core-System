@@ -14,7 +14,7 @@ Report 51516895 "Share Capital Balances Report."
 
     dataset
     {
-        dataitem("Member Register"; "Member Register")
+        dataitem(Customer; Customer)
         {
             PrintOnlyIfDetail = false;
             RequestFilterFields = "No.", Status, "Employer Code", "Personal No", "Shares Retained";
@@ -52,31 +52,31 @@ Report 51516895 "Share Capital Balances Report."
             column(UserId; UserId)
             {
             }
-            column(PersonalNo_MembersRegister; "Member Register"."Personal No")
+            column(PersonalNo_MembersRegister; Customer."Personal No")
             {
             }
-            column(IDNo_MembersRegister; "Member Register"."ID No.")
+            column(IDNo_MembersRegister; Customer."ID No.")
             {
             }
-            column(MobilePhoneNo_MembersRegister; "Member Register"."Mobile Phone No")
+            column(MobilePhoneNo_MembersRegister; Customer."Mobile Phone No")
             {
             }
-            column(No_MembersRegister; "Member Register"."No.")
+            column(No_MembersRegister; Customer."No.")
             {
             }
-            column(Name_MembersRegister; "Member Register".Name)
+            column(Name_MembersRegister; Customer.Name)
             {
             }
-            column(Status_MembersRegister; "Member Register".Status)
+            column(Status_MembersRegister; Customer.Status)
             {
             }
-            column(SharesRetained_MembersRegister; "Member Register"."Shares Retained")
+            column(SharesRetained_MembersRegister; Customer."Shares Retained")
             {
             }
-            column(GlobalDimension2Code_MembersRegister; "Member Register"."Global Dimension 2 Code")
+            column(GlobalDimension2Code_MembersRegister; Customer."Global Dimension 2 Code")
             {
             }
-            column(EmployerCode_MembersRegister; "Member Register"."Employer Code")
+            column(EmployerCode_MembersRegister; Customer."Employer Code")
             {
             }
             column(EntryNo; EntryNo)
@@ -155,7 +155,7 @@ Report 51516895 "Share Capital Balances Report."
         ApprovalSetup: Record "Table Permission Buffer";
         LocationFilter: Code[20];
         TotalApproved: Decimal;
-        cust: Record "Member Register";
+        cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
         LAppl: Record "Loans Register";
@@ -183,8 +183,8 @@ Report 51516895 "Share Capital Balances Report."
         Date________________________Caption_Control1102755005Lbl: label 'Date..............';
         GenSetUp: Record "Sacco General Set-Up";
         LoanApp: Record "Loans Register";
-        CustRec: Record "Member Register";
-        CustRecord: Record "Member Register";
+        CustRec: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanShareRatio: Decimal;

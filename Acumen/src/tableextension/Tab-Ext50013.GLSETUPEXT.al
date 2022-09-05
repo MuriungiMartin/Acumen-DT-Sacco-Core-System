@@ -6,7 +6,6 @@ tableextension 50013 "GLSETUPEXT" extends "General Ledger Setup"
 
         field(50021; "Journal Approval Nos"; Code[10])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "No. Series";
         }
         field(50146; "Bank Balances"; Decimal)
@@ -30,151 +29,109 @@ tableextension 50013 "GLSETUPEXT" extends "General Ledger Setup"
         }
         field(54241; "GjnlBatch Approval No"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "No. Series".Code;
         }
         field(54242; "LCY Code Decimals"; Code[10])
         {
-            DataClassification = ToBeClassified;
         }
         field(54250; "Base No. Series"; Option)
         {
-            DataClassification = ToBeClassified;
             OptionCaption = ' ,Responsibility Center,Shortcut Dimension 1,Shortcut Dimension 2,Shortcut Dimension 3,Shortcut Dimension 4';
             OptionMembers = " ","Responsibility Center","Shortcut Dimension 1","Shortcut Dimension 2","Shortcut Dimension 3","Shortcut Dimension 4","Shortcut Dimension 5","Shortcut Dimension 6","Shortcut Dimension 7","Shortcut Dimension 8";
         }
         field(54251; "Cash Purchases Nos"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "No. Series";
         }
         field(54252; "Payroll Posting Group"; Code[20])
         {
-            DataClassification = ToBeClassified;
         }
         field(54253; "Interbank Transfer Nos"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "No. Series";
         }
         field(54254; "Bulk SMS Nos"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "No. Series";
         }
         field(54255; "Agency Application Nos"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "No. Series";
         }
         field(54256; "CloudPESA Comm Acc"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "G/L Account";
         }
         field(54257; "Agent Charges Account"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "G/L Account";
         }
         field(54258; "Mobile Charge"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = Charges;
         }
         field(54259; "CloudPESA Charge"; Decimal)
         {
-            DataClassification = ToBeClassified;
         }
-        field(54260; "MPESA Settl Acc"; Code[20])
+        field(54260; "MPESA Settl Acc"; Code[30])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "Bank Account";
         }
-        field(54261; "PayBill Settl Acc"; Code[20])
+        field(54261; "PayBill Settl Acc"; Code[30])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "Bank Account";
         }
         field(54265; "File Movement Nos"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "No. Series";
         }
         field(54266; "family account bank"; Code[20])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "Bank Account";
         }
         field(54267; "equity bank acc"; Code[50])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "Bank Account";
         }
         field(54268; "coop bank acc"; Code[50])
         {
-            DataClassification = ToBeClassified;
             TableRelation = "Bank Account";
         }
-        field(54269; "Suspense fb"; Code[50])
+        field(54269; AirTimeSettlAcc; Code[30])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(54270; "Sacco Charge Account"; Code[30])
         {
             DataClassification = ToBeClassified;
             TableRelation = "G/L Account";
         }
-        field(54270; "suspense coop bank"; Code[50])
+        field(54271; "Mobile Loanrepayment fee"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "G/L Account";
+            TableRelation = Charges.Code;
         }
-        field(54271; "suspense equity"; Code[50])
+        field(54272; "Mobile Balance Enquiry fee"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "G/L Account";
+            TableRelation = Charges.Code;
         }
-        field(54272; "Suspense Paybill"; Code[50])
+        field(54273; "Mobile FOSA-BOSA transfer fee"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "G/L Account";
+            TableRelation = Charges.Code;
         }
-        field(54273; "Safaricom Paybill"; Code[10])
+        field(54274; "Mobile FOSA transfer fee"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "G/L Account";
+            TableRelation = Charges.Code;
         }
-        field(54274; "Transaction Document No"; Code[20])
+        field(54275; "Mobile Ministatement fee"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "No. Series".Code;
+            TableRelation = Charges.Code;
         }
-        field(54275; "Non Earning Cash BenchMark"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(54276; "Earning Bank Cash BenchMark"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(54277; "Regulator Miinimum Ratio"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(54278; "New Member Suspense"; Code[20])
-        {
-            DataClassification = ToBeClassified;
-            TableRelation = "G/L Account";
-        }
-        field(54279; "CloudPESA Comm Account"; Code[20])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(54280; "Paybill Acc"; Code[20])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(54281; "MPESA Recon Acc"; Code[20])
-        {
-            DataClassification = ToBeClassified;
-        }
+
     }
 
     var

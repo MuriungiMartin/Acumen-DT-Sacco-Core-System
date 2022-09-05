@@ -19,7 +19,7 @@ Codeunit 51516027 "IPRS Details"
         Loans: Integer;
         LoansRegister: Record "Loans Register";
         LoanProductsSetup: Record "Loan Products Setup";
-        Members: Record "Member Register";
+        Members: Record Customer;
         dateExpression: Text[20];
         DetailedVendorLedgerEntry: Record "Detailed Vendor Ledg. Entry";
         dashboardDataFilter: Date;
@@ -125,14 +125,14 @@ Codeunit 51516027 "IPRS Details"
 
                     if MembApp."Application Category" = MembApp."application category"::"New Application" then begin
 
-                        if MembApp."Identification Document" = MembApp."identification document"::"0" then begin
-                            Idtype := 'NATIONAL_ID';
-                            IDDoc := MembApp."ID No.";
-                        end;
-                        if MembApp."Identification Document" = MembApp."identification document"::"1" then begin
-                            Idtype := 'PASSPORT';
-                            IDDoc := MembApp."Passport No.";
-                        end;
+                        // if MembApp."Identification Document" = MembApp."identification document"::"0" then begin
+                        //     Idtype := 'NATIONAL_ID';
+                        //     IDDoc := MembApp."ID No.";
+                        // end;
+                        // if MembApp."Identification Document" = MembApp."identification document"::"1" then begin
+                        //     Idtype := 'PASSPORT';
+                        //     IDDoc := MembApp."Passport No.";
+                        // end;
 
                         Result := Idtype + ':::' + 'ID' + ':::' + Format(IDDoc);
                     end;

@@ -9,7 +9,7 @@ Page 51516366 "Member List"
     InsertAllowed = true;
     ModifyAllowed = true;
     PageType = List;
-    SourceTable = "Member Register";
+    SourceTable = Customer;
     SourceTableView = sorting("No.")
                       order(ascending)
                       where("Customer Type" = const(Member));
@@ -441,7 +441,7 @@ Page 51516366 "Member List"
     end;
 
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         GeneralSetup: Record "Sacco General Set-Up";
         Gnljnline: Record "Gen. Journal Line";
         TotalRecovered: Decimal;
@@ -466,13 +466,13 @@ Page 51516366 "Member List"
         UserSetup: Record "User Setup";
         MemberLiability: Decimal;
         SFactory: Codeunit "SURESTEP Factory.";
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
         FILESPATH: label 'C:\CheckOff Reports\';
 
 
     procedure GetSelectionFilter(): Code[80]
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         FirstCust: Code[30];
         LastCust: Code[30];
         SelectionFilter: Code[250];
@@ -519,7 +519,7 @@ Page 51516366 "Member List"
     end;
 
 
-    procedure SetSelection(var Cust: Record "Member Register")
+    procedure SetSelection(var Cust: Record Customer)
     begin
         //CurrPage.SETSELECTIONFILTER(Cust);
     end;

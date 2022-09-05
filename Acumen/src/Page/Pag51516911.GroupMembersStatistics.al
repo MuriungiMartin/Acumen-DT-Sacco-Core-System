@@ -2,7 +2,7 @@
 Page 51516911 "Group Members Statistics"
 {
     PageType = ListPart;
-    SourceTable = "Member Register";
+    SourceTable = Customer;
 
     layout
     {
@@ -10,39 +10,39 @@ Page 51516911 "Group Members Statistics"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Personal No";"Personal No")
+                field("Personal No"; "Personal No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Shares";"Current Shares")
+                field("Current Shares"; "Current Shares")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Balance";"Outstanding Balance")
+                field("Outstanding Balance"; "Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Interest";"Outstanding Interest")
+                field("Outstanding Interest"; "Outstanding Interest")
                 {
                     ApplicationArea = Basic;
                 }

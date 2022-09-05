@@ -10,32 +10,32 @@ Page 51516307 "HR Leave Planner Card"
         {
             group(General)
             {
-                field("Application Code";"Application Code")
+                field("Application Code"; "Application Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee No";"Employee No")
+                field("Employee No"; "Employee No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Names;Names)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Job Tittle";"Job Tittle")
+                field(Names; Names)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field("Job Tittle"; "Job Tittle")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1000000002;"Hr Leave Planner Lines")
+            part(Control1000000002; "Hr Leave Planner Lines")
             {
-                SubPageLink = "Application Code"=field("Application Code");
+                SubPageLink = "Application Code" = field("Application Code");
             }
         }
     }
@@ -60,8 +60,8 @@ Page 51516307 "HR Leave Planner Card"
                 trigger OnAction()
                 begin
 
-                    DocumentType:=Documenttype::LeavePlanner;
-                    ApprovalEntries.Setfilters(Database::"HR Leave Planner Header",DocumentType,"Application Code");
+                    DocumentType := Documenttype::LeavePlanner;
+                    ApprovalEntries.Setfilters(Database::"HR Leave Planner Header", DocumentType, "Application Code");
                     ApprovalEntries.Run;
                 end;
             }
@@ -78,10 +78,10 @@ Page 51516307 "HR Leave Planner Card"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         //IF ApprovalsMgmt.CheckSalesApprovalsWorkflowEnabled(Rec) THEN
-                          //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                        //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -93,7 +93,7 @@ Page 51516307 "HR Leave Planner Card"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         //ApprovalsMgmt.OnCancelSalesApprovalRequest(Rec);
                     end;

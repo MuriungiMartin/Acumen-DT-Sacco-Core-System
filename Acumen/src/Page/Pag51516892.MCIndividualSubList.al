@@ -5,8 +5,8 @@ Page 51516892 "MC Individual Sub-List"
     CardPageID = "MC Individual Page";
     Editable = false;
     PageType = List;
-    SourceTable = "Member Register";
-    SourceTableView = where("Group Account"=filter(false));
+    SourceTable = Customer;
+    SourceTableView = where("Group Account" = filter(false));
 
     layout
     {
@@ -14,79 +14,79 @@ Page 51516892 "MC Individual Sub-List"
         {
             repeater(Control1)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Old Account No.";"Old Account No.")
+                field("Old Account No."; "Old Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Posting Group";"Customer Posting Group")
+                field("Customer Posting Group"; "Customer Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date of Birth";"Date of Birth")
+                field("Date of Birth"; "Date of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Group Shares";"Group Shares")
+                field("Group Shares"; "Group Shares")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Shares";"Current Shares")
+                field("Current Shares"; "Current Shares")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Balance";"Outstanding Balance")
+                field("Outstanding Balance"; "Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shares Retained";"Shares Retained")
+                field("Shares Retained"; "Shares Retained")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Savings";"Current Savings")
+                field("Current Savings"; "Current Savings")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Gross Dividend Amount Payable";"Gross Dividend Amount Payable")
+                field("Gross Dividend Amount Payable"; "Gross Dividend Amount Payable")
                 {
                     ApplicationArea = Basic;
                 }
-                field("BRID No";"BRID No")
+                field("BRID No"; "BRID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Benevolent Fund";"Benevolent Fund")
+                field("Benevolent Fund"; "Benevolent Fund")
                 {
                     ApplicationArea = Basic;
                 }
@@ -108,7 +108,7 @@ Page 51516892 "MC Individual Sub-List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Customer Ledger Entries";
-                    RunPageLink = "Customer No."=field("No.");
+                    RunPageLink = "Customer No." = field("No.");
                     RunPageView = sorting("Customer No.");
                 }
                 action(Dimensions)
@@ -118,7 +118,7 @@ Page 51516892 "MC Individual Sub-List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Bank Account")
                 {
@@ -127,7 +127,7 @@ Page 51516892 "MC Individual Sub-List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Customer Bank Account Card";
-                    RunPageLink = "Customer No."=field("No.");
+                    RunPageLink = "Customer No." = field("No.");
                 }
                 action(Contacts)
                 {
@@ -159,9 +159,9 @@ Page 51516892 "MC Individual Sub-List"
                     begin
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(39004290,true,false,Cust);
+                            Report.Run(39004290, true, false, Cust);
                     end;
                 }
                 action("Loans Guaranteed")
@@ -176,9 +176,9 @@ Page 51516892 "MC Individual Sub-List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(39004450,true,false,Cust);
+                            Report.Run(39004450, true, false, Cust);
                     end;
                 }
                 action("Member Card")
@@ -192,9 +192,9 @@ Page 51516892 "MC Individual Sub-List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."ID No.","ID No.");
+                        Cust.SetRange(Cust."ID No.", "ID No.");
                         if Cust.Find('-') then
-                        Report.Run(39004267,true,false,Cust);
+                            Report.Run(39004267, true, false, Cust);
                     end;
                 }
                 separator(Action1102755016)
@@ -209,9 +209,9 @@ Page 51516892 "MC Individual Sub-List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(39004268,true,false,Cust);
+                            Report.Run(39004268, true, false, Cust);
                     end;
                 }
                 separator(Action1102755014)
@@ -227,7 +227,7 @@ Page 51516892 "MC Individual Sub-List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Member Sections List";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Members Statistics")
                 {
@@ -236,7 +236,7 @@ Page 51516892 "MC Individual Sub-List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "HR Job Applications List";
-                    RunPageLink = "No. Series"=field("No.");
+                    RunPageLink = "No. Series" = field("No.");
                 }
                 separator(Action1102755008)
                 {
@@ -255,9 +255,9 @@ Page 51516892 "MC Individual Sub-List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(39004260,true,false,Cust);
+                            Report.Run(39004260, true, false, Cust);
                     end;
                 }
                 separator(Action1102755004)
@@ -275,9 +275,9 @@ Page 51516892 "MC Individual Sub-List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(39004268,true,false,Cust);
+                            Report.Run(39004268, true, false, Cust);
                     end;
                 }
                 action("Close Account")
@@ -938,219 +938,219 @@ Page 51516892 "MC Individual Sub-List"
                     trigger OnAction()
                     begin
                         if ("Current Shares" * -1) > 0 then
-                        Error('Please recover the loans from the members shares before recovering from gurantors.');
+                            Error('Please recover the loans from the members shares before recovering from gurantors.');
 
                         if Confirm('Are you absolutely sure you want to recover the loans from the guarantors as loans?') = false then
-                        exit;
+                            exit;
 
-                        RoundingDiff:=0;
+                        RoundingDiff := 0;
 
                         //delete journal line
                         Gnljnline.Reset;
-                        Gnljnline.SetRange("Journal Template Name",'GENERAL');
-                        Gnljnline.SetRange("Journal Batch Name",'LOANS');
+                        Gnljnline.SetRange("Journal Template Name", 'GENERAL');
+                        Gnljnline.SetRange("Journal Batch Name", 'LOANS');
                         Gnljnline.DeleteAll;
                         //end of deletion
 
-                        TotalRecovered:=0;
+                        TotalRecovered := 0;
 
-                        DActivity:="Global Dimension 1 Code";
-                        DBranch:="Global Dimension 2 Code";
+                        DActivity := "Global Dimension 1 Code";
+                        DBranch := "Global Dimension 2 Code";
 
-                        CalcFields("Outstanding Balance","FOSA Outstanding Balance","Accrued Interest","Insurance Fund","Current Shares");
+                        CalcFields("Outstanding Balance", "FOSA Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
 
 
                         if "Closing Deposit Balance" = 0 then
-                        "Closing Deposit Balance":="Current Shares"*-1;
+                            "Closing Deposit Balance" := "Current Shares" * -1;
                         if "Closing Loan Balance" = 0 then
-                        "Closing Loan Balance":="Outstanding Balance"+"FOSA Outstanding Balance";
+                            "Closing Loan Balance" := "Outstanding Balance" + "FOSA Outstanding Balance";
                         if "Closing Insurance Balance" = 0 then
-                        "Closing Insurance Balance":="Insurance Fund"*-1;
-                        "Withdrawal Posted":=true;
+                            "Closing Insurance Balance" := "Insurance Fund" * -1;
+                        "Withdrawal Posted" := true;
                         Modify;
 
 
-                        CalcFields("Outstanding Balance","Accrued Interest","Current Shares");
+                        CalcFields("Outstanding Balance", "Accrued Interest", "Current Shares");
 
 
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Client Code","No.");
-                        LoansR.SetRange(LoansR.Source,LoansR.Source::" ");
+                        LoansR.SetRange(LoansR."Client Code", "No.");
+                        LoansR.SetRange(LoansR.Source, LoansR.Source::" ");
                         if LoansR.Find('-') then begin
-                        repeat
+                            repeat
 
-                        LoansR.CalcFields(LoansR."Outstanding Balance",LoansR."Oustanding Interest",LoansR."No. Of Guarantors");
+                                LoansR.CalcFields(LoansR."Outstanding Balance", LoansR."Oustanding Interest", LoansR."No. Of Guarantors");
 
-                        //No Shares recovery
-                        if LoansR."Recovered Balance" = 0 then begin
-                        LoansR."Recovered Balance":=LoansR."Outstanding Balance";
+                                //No Shares recovery
+                                if LoansR."Recovered Balance" = 0 then begin
+                                    LoansR."Recovered Balance" := LoansR."Outstanding Balance";
+                                end;
+                                LoansR."Recovered From Guarantor" := true;
+                                LoansR."Guarantor Amount" := LoansR."Outstanding Balance";
+                                LoansR.Modify;
+
+                                if ((LoansR."Outstanding Balance" + LoansR."Oustanding Interest") > 0) and (LoansR."No. Of Guarantors" > 0) then begin
+
+                                    LoanAllocation := ROUND((LoansR."Outstanding Balance") / LoansR."No. Of Guarantors", 0.01) +
+                                                    ROUND((LoansR."Oustanding Interest") / LoansR."No. Of Guarantors", 0.01);
+
+
+                                    LGurantors.Reset;
+                                    LGurantors.SetRange(LGurantors."Loan No", LoansR."Loan  No.");
+                                    LGurantors.SetRange(LGurantors.Substituted, false);
+                                    if LGurantors.Find('-') then begin
+                                        repeat
+
+
+                                            Loans.Reset;
+                                            Loans.SetRange(Loans."Client Code", LGurantors."Member No");
+                                            Loans.SetRange(Loans."Loan Product Type", 'DFTL');
+                                            Loans.SetRange(Loans.Posted, false);
+                                            if Loans.Find('-') then
+                                                Loans.DeleteAll;
+
+
+                                            Loans.Init;
+                                            Loans."Loan  No." := '';
+                                            Loans.Source := Loans.Source::" ";
+                                            Loans."Client Code" := LGurantors."Member No";
+                                            Loans."Loan Product Type" := 'DFTL';
+                                            Loans.Validate(Loans."Client Code");
+                                            Loans."Application Date" := Today;
+                                            Loans.Validate(Loans."Loan Product Type");
+                                            if (LoansR."Approved Amount" > 0) and (LoansR.Installments > 0) then
+                                                Loans.Installments := ROUND((LoansR."Outstanding Balance")
+                                                                          / (LoansR."Approved Amount" / LoansR.Installments), 1, '>');
+                                            //IF LoansR.Repayment > 0 THEN
+                                            //Loans.Installments:=ROUND((LoansR."Outstanding Balance")
+                                            //                          /(LoansR.Repayment-((LoansR."Outstanding Balance"*LoansR.Interest)/1200)),1,'>');
+                                            Loans."Requested Amount" := LoanAllocation;
+                                            Loans."Approved Amount" := LoanAllocation;
+                                            Loans.Validate(Loans."Approved Amount");
+                                            Loans."Loan Status" := Loans."loan status"::Approved;
+                                            Loans."Issued Date" := Today;
+                                            Loans."Loan Disbursement Date" := Today;
+                                            Loans."Repayment Start Date" := Today;
+                                            Loans."Batch No." := "Batch No.";
+                                            Loans."BOSA No" := LGurantors."Member No";
+                                            Loans."Recovered Loan" := LoansR."Loan  No.";
+                                            Loans.Insert(true);
+
+                                            Loans.Reset;
+                                            Loans.SetRange(Loans."Client Code", LGurantors."Member No");
+                                            Loans.SetRange(Loans."Loan Product Type", 'DFTL');
+                                            Loans.SetRange(Loans.Posted, false);
+                                            if Loans.Find('-') then begin
+
+                                                LineN := LineN + 10000;
+
+                                                Gnljnline.Init;
+                                                Gnljnline."Journal Template Name" := 'GENERAL';
+                                                Gnljnline."Journal Batch Name" := 'LOANS';
+                                                Gnljnline."Line No." := LineN;
+                                                Gnljnline."Document No." := 'GL-' + LoansR."Client Code";
+                                                Gnljnline."Posting Date" := Today;
+                                                Gnljnline."External Document No." := LoansR."Loan  No.";
+                                                Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
+                                                Gnljnline."Account No." := LGurantors."Member No";
+                                                Gnljnline.Validate(Gnljnline."Account No.");
+                                                Gnljnline.Description := 'Principle Amount';
+                                                Gnljnline.Amount := LoanAllocation;
+                                                Gnljnline.Validate(Gnljnline.Amount);
+                                                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Share Capital";
+                                                Gnljnline."Loan No" := Loans."Loan  No.";
+                                                Gnljnline."Shortcut Dimension 1 Code" := DActivity;
+                                                Gnljnline."Shortcut Dimension 2 Code" := DBranch;
+                                                Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
+                                                Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
+                                                if Gnljnline.Amount <> 0 then
+                                                    Gnljnline.Insert;
+
+
+                                                Loans.Posted := true;
+                                                Loans.Modify;
+
+
+                                                //Off Set BOSA Loans
+
+                                                //Principle
+                                                LineN := LineN + 10000;
+
+                                                Gnljnline.Init;
+                                                Gnljnline."Journal Template Name" := 'GENERAL';
+                                                Gnljnline."Journal Batch Name" := 'LOANS';
+                                                Gnljnline."Line No." := LineN;
+                                                Gnljnline."Document No." := 'GL-' + LoansR."Client Code";
+                                                Gnljnline."Posting Date" := Today;
+                                                Gnljnline."External Document No." := Loans."Loan  No.";
+                                                Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
+                                                Gnljnline."Account No." := LoansR."Client Code";
+                                                Gnljnline.Validate(Gnljnline."Account No.");
+                                                Gnljnline.Description := 'Cleared by Guarantor loan: ' + Loans."Loan  No.";
+                                                Gnljnline.Amount := -ROUND(LoansR."Outstanding Balance" / LoansR."No. Of Guarantors", 0.01);
+                                                Gnljnline.Validate(Gnljnline.Amount);
+                                                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Interest Paid";
+                                                Gnljnline."Loan No" := LoansR."Loan  No.";
+                                                Gnljnline."Shortcut Dimension 1 Code" := DActivity;
+                                                Gnljnline."Shortcut Dimension 2 Code" := DBranch;
+                                                Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
+                                                Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
+                                                if Gnljnline.Amount <> 0 then
+                                                    Gnljnline.Insert;
+
+
+
+                                                //Interest
+                                                LineN := LineN + 10000;
+
+                                                Gnljnline.Init;
+                                                Gnljnline."Journal Template Name" := 'GENERAL';
+                                                Gnljnline."Journal Batch Name" := 'LOANS';
+                                                Gnljnline."Line No." := LineN;
+                                                Gnljnline."Document No." := 'GL-' + LoansR."Client Code";
+                                                Gnljnline."Posting Date" := Today;
+                                                Gnljnline."External Document No." := Loans."Loan  No.";
+                                                Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
+                                                Gnljnline."Account No." := LoansR."Client Code";
+                                                Gnljnline.Validate(Gnljnline."Account No.");
+                                                Gnljnline.Description := 'Cleared by Guarantor loan: ' + Loans."Loan  No.";
+                                                Gnljnline.Amount := -ROUND(LoansR."Oustanding Interest" / LoansR."No. Of Guarantors", 0.01);
+                                                Gnljnline.Validate(Gnljnline.Amount);
+                                                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Insurance Contribution";
+                                                Gnljnline."Loan No" := LoansR."Loan  No.";
+                                                Gnljnline."Shortcut Dimension 1 Code" := DActivity;
+                                                Gnljnline."Shortcut Dimension 2 Code" := DBranch;
+                                                Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
+                                                Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
+                                                if Gnljnline.Amount <> 0 then
+                                                    Gnljnline.Insert;
+
+
+
+                                                LoansR.Advice := true;
+                                                LoansR.Modify;
+
+                                            end;
+
+                                        until LGurantors.Next = 0;
+                                    end;
+                                end;
+
+                            until LoansR.Next = 0;
                         end;
-                        LoansR."Recovered From Guarantor":=true;
-                        LoansR."Guarantor Amount":=LoansR."Outstanding Balance";
-                        LoansR.Modify;
-
-                        if ((LoansR."Outstanding Balance" + LoansR."Oustanding Interest") > 0) and (LoansR."No. Of Guarantors" > 0) then begin
-
-                        LoanAllocation:=ROUND((LoansR."Outstanding Balance")/LoansR."No. Of Guarantors",0.01)+
-                                        ROUND((LoansR."Oustanding Interest")/LoansR."No. Of Guarantors",0.01);
 
 
-                        LGurantors.Reset;
-                        LGurantors.SetRange(LGurantors."Loan No",LoansR."Loan  No.");
-                        LGurantors.SetRange(LGurantors.Substituted,false);
-                        if LGurantors.Find('-') then begin
-                        repeat
-
-
-                        Loans.Reset;
-                        Loans.SetRange(Loans."Client Code",LGurantors."Member No");
-                        Loans.SetRange(Loans."Loan Product Type",'DFTL');
-                        Loans.SetRange(Loans.Posted,false);
-                        if Loans.Find('-') then
-                        Loans.DeleteAll;
-
-
-                        Loans.Init;
-                        Loans."Loan  No.":='';
-                        Loans.Source:=Loans.Source::" ";
-                        Loans."Client Code":=LGurantors."Member No";
-                        Loans."Loan Product Type":='DFTL';
-                        Loans.Validate(Loans."Client Code");
-                        Loans."Application Date":=Today;
-                        Loans.Validate(Loans."Loan Product Type");
-                        if (LoansR."Approved Amount" > 0) and (LoansR.Installments > 0) then
-                        Loans.Installments:=ROUND((LoansR."Outstanding Balance")
-                                                  /(LoansR."Approved Amount"/LoansR.Installments),1,'>');
-                        //IF LoansR.Repayment > 0 THEN
-                        //Loans.Installments:=ROUND((LoansR."Outstanding Balance")
-                        //                          /(LoansR.Repayment-((LoansR."Outstanding Balance"*LoansR.Interest)/1200)),1,'>');
-                        Loans."Requested Amount":=LoanAllocation;
-                        Loans."Approved Amount":=LoanAllocation;
-                        Loans.Validate(Loans."Approved Amount");
-                        Loans."Loan Status":=Loans."loan status"::Approved;
-                        Loans."Issued Date":=Today;
-                        Loans."Loan Disbursement Date":=Today;
-                        Loans."Repayment Start Date":=Today;
-                        Loans."Batch No.":="Batch No.";
-                        Loans."BOSA No":=LGurantors."Member No";
-                        Loans."Recovered Loan":=LoansR."Loan  No.";
-                        Loans.Insert(true);
-
-                        Loans.Reset;
-                        Loans.SetRange(Loans."Client Code",LGurantors."Member No");
-                        Loans.SetRange(Loans."Loan Product Type",'DFTL');
-                        Loans.SetRange(Loans.Posted,false);
-                        if Loans.Find('-') then begin
-
-                        LineN:=LineN+10000;
-
-                        Gnljnline.Init;
-                        Gnljnline."Journal Template Name":='GENERAL';
-                        Gnljnline."Journal Batch Name":='LOANS';
-                        Gnljnline."Line No.":=LineN;
-                        Gnljnline."Document No.":='GL-'+LoansR."Client Code";
-                        Gnljnline."Posting Date":=Today;
-                        Gnljnline."External Document No.":=LoansR."Loan  No.";
-                        Gnljnline."Account Type":=Gnljnline."bal. account type"::Customer;
-                        Gnljnline."Account No.":=LGurantors."Member No";
-                        Gnljnline.Validate(Gnljnline."Account No.");
-                        Gnljnline.Description:='Principle Amount';
-                        Gnljnline.Amount:=LoanAllocation;
-                        Gnljnline.Validate(Gnljnline.Amount);
-                        Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Share Capital";
-                        Gnljnline."Loan No":=Loans."Loan  No.";
-                        Gnljnline."Shortcut Dimension 1 Code":=DActivity;
-                        Gnljnline."Shortcut Dimension 2 Code":=DBranch;
-                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
-                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
-                        if Gnljnline.Amount<>0 then
-                        Gnljnline.Insert;
-
-
-                        Loans.Posted:=true;
-                        Loans.Modify;
-
-
-                        //Off Set BOSA Loans
-
-                        //Principle
-                        LineN:=LineN+10000;
-
-                        Gnljnline.Init;
-                        Gnljnline."Journal Template Name":='GENERAL';
-                        Gnljnline."Journal Batch Name":='LOANS';
-                        Gnljnline."Line No.":=LineN;
-                        Gnljnline."Document No.":='GL-'+LoansR."Client Code";
-                        Gnljnline."Posting Date":=Today;
-                        Gnljnline."External Document No.":=Loans."Loan  No.";
-                        Gnljnline."Account Type":=Gnljnline."bal. account type"::Customer;
-                        Gnljnline."Account No.":=LoansR."Client Code";
-                        Gnljnline.Validate(Gnljnline."Account No.");
-                        Gnljnline.Description:='Cleared by Guarantor loan: ' + Loans."Loan  No.";
-                        Gnljnline.Amount:=-ROUND(LoansR."Outstanding Balance"/LoansR."No. Of Guarantors",0.01);
-                        Gnljnline.Validate(Gnljnline.Amount);
-                        Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Interest Paid";
-                        Gnljnline."Loan No":=LoansR."Loan  No.";
-                        Gnljnline."Shortcut Dimension 1 Code":=DActivity;
-                        Gnljnline."Shortcut Dimension 2 Code":=DBranch;
-                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
-                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
-                        if Gnljnline.Amount<>0 then
-                        Gnljnline.Insert;
-
-
-
-                        //Interest
-                        LineN:=LineN+10000;
-
-                        Gnljnline.Init;
-                        Gnljnline."Journal Template Name":='GENERAL';
-                        Gnljnline."Journal Batch Name":='LOANS';
-                        Gnljnline."Line No.":=LineN;
-                        Gnljnline."Document No.":='GL-'+LoansR."Client Code";
-                        Gnljnline."Posting Date":=Today;
-                        Gnljnline."External Document No.":=Loans."Loan  No.";
-                        Gnljnline."Account Type":=Gnljnline."bal. account type"::Customer;
-                        Gnljnline."Account No.":=LoansR."Client Code";
-                        Gnljnline.Validate(Gnljnline."Account No.");
-                        Gnljnline.Description:='Cleared by Guarantor loan: ' + Loans."Loan  No.";
-                        Gnljnline.Amount:=-ROUND(LoansR."Oustanding Interest"/LoansR."No. Of Guarantors",0.01);
-                        Gnljnline.Validate(Gnljnline.Amount);
-                        Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Insurance Contribution";
-                        Gnljnline."Loan No":=LoansR."Loan  No.";
-                        Gnljnline."Shortcut Dimension 1 Code":=DActivity;
-                        Gnljnline."Shortcut Dimension 2 Code":=DBranch;
-                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
-                        Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
-                        if Gnljnline.Amount<>0 then
-                        Gnljnline.Insert;
-
-
-
-                        LoansR.Advice:=true;
-                        LoansR.Modify;
-
-                        end;
-
-                        until LGurantors.Next = 0;
-                        end;
-                        end;
-
-                        until LoansR.Next = 0;
-                        end;
-
-
-                        "Defaulted Loans Recovered":=true;
+                        "Defaulted Loans Recovered" := true;
                         Modify;
 
 
                         //Post New
                         Gnljnline.Reset;
-                        Gnljnline.SetRange("Journal Template Name",'GENERAL');
-                        Gnljnline.SetRange("Journal Batch Name",'LOANS');
+                        Gnljnline.SetRange("Journal Template Name", 'GENERAL');
+                        Gnljnline.SetRange("Journal Batch Name", 'LOANS');
                         if Gnljnline.Find('-') then begin
-                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch",Gnljnline);
+                            Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", Gnljnline);
                         end;
 
 
@@ -1163,7 +1163,7 @@ Page 51516892 "MC Individual Sub-List"
     }
 
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         GeneralSetup: Record "Sacco General Set-Up";
         Gnljnline: Record "Gen. Journal Line";
         TotalRecovered: Decimal;
@@ -1189,7 +1189,7 @@ Page 51516892 "MC Individual Sub-List"
 
     procedure GetSelectionFilter(): Code[80]
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         FirstCust: Code[30];
         LastCust: Code[30];
         SelectionFilter: Code[250];
@@ -1236,7 +1236,7 @@ Page 51516892 "MC Individual Sub-List"
     end;
 
 
-    procedure SetSelection(var Cust: Record "Member Register")
+    procedure SetSelection(var Cust: Record Customer)
     begin
         //CurrPage.SETSELECTIONFILTER(Cust);
     end;

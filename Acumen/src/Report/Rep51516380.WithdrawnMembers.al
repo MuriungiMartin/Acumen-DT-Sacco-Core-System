@@ -14,7 +14,7 @@ Report 51516380 "Withdrawn Members"
 
     dataset
     {
-        dataitem("Member Register"; "Member Register")
+        dataitem(Customer; Customer)
         {
             DataItemTableView = sorting("No.") where(Status = filter(Resigned | Withdrawal));
             PrintOnlyIfDetail = false;
@@ -46,22 +46,22 @@ Report 51516380 "Withdrawn Members"
             column(UserId; UserId)
             {
             }
-            column(No; "Member Register"."No.")
+            column(No; Customer."No.")
             {
             }
-            column(Name; "Member Register".Name)
+            column(Name; Customer.Name)
             {
             }
-            column(Employer_Name; "Member Register"."Employer Name")
+            column(Employer_Name; Customer."Employer Name")
             {
             }
-            column(Withdrawal_Date; "Member Register"."Withdrawal Date")
+            column(Withdrawal_Date; Customer."Withdrawal Date")
             {
             }
-            column(Status; "Member Register".Status)
+            column(Status; Customer.Status)
             {
             }
-            column(Reason_for_Withdrawal; "Member Register"."Resons for Status Change")
+            column(Reason_for_Withdrawal; Customer."Resons for Status Change")
             {
             }
             trigger OnAfterGetRecord();
@@ -144,7 +144,7 @@ Report 51516380 "Withdrawn Members"
         ApprovalSetup: Record "Table Permission Buffer";
         LocationFilter: Code[20];
         TotalApproved: Decimal;
-        cust: Record "Member Register";
+        cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
         LAppl: Record "Loans Register";
@@ -172,8 +172,8 @@ Report 51516380 "Withdrawn Members"
         Date________________________Caption_Control1102755005Lbl: label 'Date........................';
         GenSetUp: Record "Sacco General Set-Up";
         LoanApp: Record "Loans Register";
-        CustRec: Record "Member Register";
-        CustRecord: Record "Member Register";
+        CustRec: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanShareRatio: Decimal;

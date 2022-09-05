@@ -8,7 +8,7 @@ Page 51516537 "Group/Corporate List"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = Vendor;
-    SourceTableView = where("Account Category"=filter(Corporate|Group));
+    SourceTableView = where("Account Category" = filter(Corporate | Group));
     UsageCategory = Lists;
 
     layout
@@ -17,47 +17,47 @@ Page 51516537 "Group/Corporate List"
         {
             repeater(Control1102755000)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Name of the Group/Corporate";"Name of the Group/Corporate")
+                field("Name of the Group/Corporate"; "Name of the Group/Corporate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date of Registration";"Date of Registration")
+                field("Date of Registration"; "Date of Registration")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Members";"No of Members")
+                field("No of Members"; "No of Members")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Group/Corporate Trade";"Group/Corporate Trade")
+                field("Group/Corporate Trade"; "Group/Corporate Trade")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Certificate No";"Certificate No")
+                field("Certificate No"; "Certificate No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Search Name";"Search Name")
+                field("Search Name"; "Search Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Category")
+                field("Account Type"; "Account Category")
                 {
                     ApplicationArea = Basic;
                 }
@@ -65,9 +65,9 @@ Page 51516537 "Group/Corporate List"
         }
         area(factboxes)
         {
-            part(Control2;"FOSA Statistics FactBox")
+            part(Control2; "FOSA Statistics FactBox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -87,7 +87,7 @@ Page 51516537 "Group/Corporate List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Membership App Signatories";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
             }
         }
@@ -95,7 +95,7 @@ Page 51516537 "Group/Corporate List"
 
     var
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Accounts: Record Vendor;
         AcctNo: Code[20];
         NextOfKinApp: Record "Member App Nominee";

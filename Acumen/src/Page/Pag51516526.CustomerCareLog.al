@@ -10,12 +10,12 @@ Page 51516526 "Customer Care Log"
         {
             group(General)
             {
-                field(No;No)
+                field(No; No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Calling As";"Calling As")
+                field("Calling As"; "Calling As")
                 {
                     ApplicationArea = Basic;
 
@@ -23,149 +23,149 @@ Page 51516526 "Customer Care Log"
                     begin
 
 
-                        if "Calling As"="calling as"::"As Member" then
-                        Page.Run(39004305,Rec);
+                        if "Calling As" = "calling as"::"As Member" then
+                            Page.Run(39004305, Rec);
                     end;
                 }
-                field("Member No";"Member No")
+                field("Member No"; "Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; "Member Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Contact Mode";"Contact Mode")
+                field("Contact Mode"; "Contact Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Calling For";"Calling For")
+                field("Calling For"; "Calling For")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Balance";"Loan Balance")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Current Deposits";"Current Deposits")
+                field("Loan Balance"; "Loan Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Description;Description)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Status;Status)
+                field("Current Deposits"; "Current Deposits")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID No";"ID No")
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No";"Phone No")
+                field(Status; Status)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("ID No"; "ID No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Phone No"; "Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No';
                 }
-                field("Passport No";"Passport No")
+                field("Passport No"; "Passport No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Email;Email)
+                field(Email; Email)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Query Code";"Query Code")
+                field("Query Code"; "Query Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Share Capital";"Share Capital")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Source;Source)
+                field("Share Capital"; "Share Capital")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("No. Series";"No. Series")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Application User";"Application User")
+                field(Source; Source)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date";"Application Date")
+                field("No. Series"; "No. Series")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Application User"; "Application User")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Time";"Application Time")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Receive User";"Receive User")
+                field("Application Time"; "Application Time")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Receive date";"Receive date")
+                field("Receive User"; "Receive User")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Receive Time";"Receive Time")
+                field("Receive date"; "Receive date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Resolved User";"Resolved User")
+                field("Receive Time"; "Receive Time")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Resolved Date";"Resolved Date")
+                field("Resolved User"; "Resolved User")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Resolved Time";"Resolved Time")
+                field("Resolved Date"; "Resolved Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Received From";"Received From")
+                field("Resolved Time"; "Resolved Time")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Caller Reffered To";"Caller Reffered To")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Sent";"Date Sent")
+                field("Received From"; "Received From")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Sent";"Time Sent")
+                field("Caller Reffered To"; "Caller Reffered To")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Date Sent"; "Date Sent")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Sent By";"Sent By")
+                field("Time Sent"; "Time Sent")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Sent By"; "Sent By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -184,7 +184,7 @@ Page 51516526 "Customer Care Log"
                 Promoted = true;
                 PromotedCategory = New;
                 RunObject = Page "Member Account Card";
-                RunPageLink = "No."=field("Member No");
+                RunPageLink = "No." = field("Member No");
             }
             action("Send To")
             {
@@ -194,11 +194,11 @@ Page 51516526 "Customer Care Log"
 
                 trigger OnAction()
                 begin
-                     TestField("Caller Reffered To");
-                     "Date Sent":=WorkDate;
-                     "Time Sent":=Time;
-                     "Sent By":=UserId;
-                     Modify;
+                    TestField("Caller Reffered To");
+                    "Date Sent" := WorkDate;
+                    "Time Sent" := Time;
+                    "Sent By" := UserId;
+                    Modify;
                 end;
             }
             action(Receive)
@@ -209,10 +209,10 @@ Page 51516526 "Customer Care Log"
 
                 trigger OnAction()
                 begin
-                     "Receive User":=UserId;
-                     "Receive date":=WorkDate;
-                     "Receive Time":=Time;
-                     Modify;
+                    "Receive User" := UserId;
+                    "Receive date" := WorkDate;
+                    "Receive Time" := Time;
+                    Modify;
                 end;
             }
             action(Resolved)
@@ -223,24 +223,24 @@ Page 51516526 "Customer Care Log"
 
                 trigger OnAction()
                 begin
-                    
-                    if Status= Status ::Resolved then begin
-                    Error('Customer query has already been %1',Status);
+
+                    if Status = Status::Resolved then begin
+                        Error('Customer query has already been %1', Status);
                     end;
-                    
-                    
-                    
+
+
+
                     //TO ENABLE RESOLUTION OF CUSTOMER QUERIES LOGGED INTO THE SYSTEM
-                    CustCare.SetRange(CustCare.No,No);
+                    CustCare.SetRange(CustCare.No, No);
                     if CustCare.Find('-') then begin
-                    CustCare.Status:=CustCare.Status::Resolved;
-                    CustCare."Resolved User":=UserId;
-                    CustCare."Resolved Date":= WorkDate;
-                    CustCare."Resolved Time":= Time;
-                    CustCare.Modify;
+                        CustCare.Status := CustCare.Status::Resolved;
+                        CustCare."Resolved User" := UserId;
+                        CustCare."Resolved Date" := WorkDate;
+                        CustCare."Resolved Time" := Time;
+                        CustCare.Modify;
                     end;
-                    
-                    CurrPage.Editable:=false;
+
+                    CurrPage.Editable := false;
                     /*
                     CQuery.RESET;
                     CQuery.SETRANGE(CQuery.No,No);
@@ -257,18 +257,18 @@ Page 51516526 "Customer Care Log"
 
                 trigger OnAction()
                 begin
-                     TestField("Caller Reffered To");
-                     "Date Sent":=WorkDate;
-                     "Time Sent":=Time;
-                     "Sent By":=UserId;
-                     Modify;
+                    TestField("Caller Reffered To");
+                    "Date Sent" := WorkDate;
+                    "Time Sent" := Time;
+                    "Sent By" := UserId;
+                    Modify;
                 end;
             }
         }
     }
 
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         PvApp: Record "Responsibility Center BR";
         CustCare: Record "Customer Care Logs";
         CQuery: Record "Customer Care Logs";

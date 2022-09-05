@@ -3,7 +3,7 @@ Page 51516963 "Cell Group Members Subpage"
 {
     Editable = false;
     PageType = ListPart;
-    SourceTable = "Member Register";
+    SourceTable = Customer;
 
     layout
     {
@@ -11,43 +11,43 @@ Page 51516963 "Cell Group Members Subpage"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current Shares";"Current Shares")
+                field("Current Shares"; "Current Shares")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Balance";"Outstanding Balance")
+                field("Outstanding Balance"; "Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member House Group";"Member House Group")
+                field("Member House Group"; "Member House Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member House Group Name";"Member House Group Name")
+                field("Member House Group Name"; "Member House Group Name")
                 {
                     ApplicationArea = Basic;
                 }

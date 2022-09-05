@@ -62,7 +62,7 @@ Codeunit 51516120 "PORTALIntegration"
     end;
 
     var
-        objMember: Record "Member Register";
+        objMember: Record Customer;
         Vendor: Record Vendor;
         VendorLedgEntry: Record "Cust. Ledger Entry";
         FILESPATH: label 'D:\Kentours Revised\KENTOURS\Kentours\Kentours\Downloads\';
@@ -102,7 +102,7 @@ Codeunit 51516120 "PORTALIntegration"
         Questinnaires: Record "ATM Card Receipt Lines";
         LastFieldNo: Integer;
         FooterPrinted: Boolean;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         StartDate: Date;
         DateFilter: Text[100];
         FromDate: Date;
@@ -111,11 +111,11 @@ Codeunit 51516120 "PORTALIntegration"
         ToDateS: Text[100];
         DivTotal: Decimal;
         CDeposits: Decimal;
-        CustDiv: Record "Member Register";
+        CustDiv: Record Customer;
         DivProg: Record "Dividends Progression";
         CDiv: Decimal;
         BDate: Date;
-        CustR: Record "Member Register";
+        CustR: Record Customer;
         CapDiv: Decimal;
         DivCapTotal: Decimal;
         RunningPeriod: Code[10];

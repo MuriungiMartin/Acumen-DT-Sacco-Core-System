@@ -7,9 +7,9 @@ Page 51516101 "Task Order Card"
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Category6_caption,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     RefreshOnActivate = true;
     SourceTable = "Purchase Header";
-    SourceTableView = where("Document Type"=const(Quote),
-                            DocApprovalType=const(Requisition),
-                            PR=filter(true));
+    SourceTableView = where("Document Type" = const(Quote),
+                            DocApprovalType = const(Requisition),
+                            PR = filter(true));
 
     layout
     {
@@ -19,7 +19,7 @@ Page 51516101 "Task Order Card"
             {
                 Caption = 'General';
                 Editable = statuseditable;
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -28,15 +28,15 @@ Page 51516101 "Task Order Card"
                     trigger OnAssistEdit()
                     begin
                         if AssistEdit(xRec) then
-                          CurrPage.Update;
+                            CurrPage.Update;
                     end;
                 }
-                field("Received from (CLient)";"Received from (CLient)")
+                field("Received from (CLient)"; "Received from (CLient)")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Buy-from Vendor No.";"Buy-from Vendor No.")
+                field("Buy-from Vendor No."; "Buy-from Vendor No.")
                 {
                     ApplicationArea = Basic;
                     DrillDownPageID = "Vendor List";
@@ -46,103 +46,102 @@ Page 51516101 "Task Order Card"
 
                     trigger OnValidate()
                     begin
-                        if Vendor.Get("Buy-from Vendor No.") then
-                          begin
+                        if Vendor.Get("Buy-from Vendor No.") then begin
 
-                            end;
+                        end;
                     end;
                 }
-                field("Requested Receipt Date";"Requested Receipt Date")
+                field("Requested Receipt Date"; "Requested Receipt Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Shortcut Dimension 1 Code";"Shortcut Dimension 1 Code")
+                field("Shortcut Dimension 1 Code"; "Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Shortcut Dimension 2 Code";"Shortcut Dimension 2 Code")
+                field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Description";"Posting Description")
+                field("Posting Description"; "Posting Description")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("No. of Archived Versions";"No. of Archived Versions")
+                field("No. of Archived Versions"; "No. of Archived Versions")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Order Date";"Order Date")
+                field("Order Date"; "Order Date")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; "Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsible Officer";"Responsible Officer")
+                field("Responsible Officer"; "Responsible Officer")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Procurement Type Code";"Procurement Type Code")
+                field("Procurement Type Code"; "Procurement Type Code")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field("Assigned User ID";"Assigned User ID")
+                field("Assigned User ID"; "Assigned User ID")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Additional;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; "Document Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                     OptionCaption = 'Open,Released,Pending Approval';
                 }
-                field(Narration;Narration)
+                field(Narration; Narration)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Completed;Completed)
+                field(Completed; Completed)
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
             }
-            part(PurchLines;"Purchase Quote Subform")
+            part(PurchLines; "Purchase Quote Subform")
             {
                 Editable = statuseditable;
-                SubPageLink = "Document No."=field("No.");
+                SubPageLink = "Document No." = field("No.");
             }
             group("Foreign Trade")
             {
                 Caption = 'Foreign Trade';
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; "Currency Code")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -150,10 +149,10 @@ Page 51516101 "Task Order Card"
                     trigger OnAssistEdit()
                     begin
                         Clear(ChangeExchangeRate);
-                        ChangeExchangeRate.SetParameter("Currency Code","Currency Factor",WorkDate);
+                        ChangeExchangeRate.SetParameter("Currency Code", "Currency Factor", WorkDate);
                         if ChangeExchangeRate.RunModal = Action::OK then begin
-                          Validate("Currency Factor",ChangeExchangeRate.GetParameter);
-                          CurrPage.Update;
+                            Validate("Currency Factor", ChangeExchangeRate.GetParameter);
+                            CurrPage.Update;
                         end;
                         Clear(ChangeExchangeRate);
                     end;
@@ -163,23 +162,23 @@ Page 51516101 "Task Order Card"
                         CurrencyCodeOnAfterValidate;
                     end;
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; "Transaction Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transaction Specification";"Transaction Specification")
+                field("Transaction Specification"; "Transaction Specification")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transport Method";"Transport Method")
+                field("Transport Method"; "Transport Method")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Entry Point";"Entry Point")
+                field("Entry Point"; "Entry Point")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Area";Area)
+                field("Area"; Area)
                 {
                     ApplicationArea = Basic;
                 }
@@ -187,45 +186,45 @@ Page 51516101 "Task Order Card"
         }
         area(factboxes)
         {
-            part(Control24;"Vendor Details FactBox")
+            part(Control24; "Vendor Details FactBox")
             {
-                SubPageLink = "No."=field("Buy-from Vendor No.");
+                SubPageLink = "No." = field("Buy-from Vendor No.");
                 Visible = false;
             }
-            part(Control23;"Vendor Statistics FactBox")
+            part(Control23; "Vendor Statistics FactBox")
             {
-                SubPageLink = "No."=field("Buy-from Vendor No.");
+                SubPageLink = "No." = field("Buy-from Vendor No.");
                 Visible = true;
             }
-            part(Control22;"Vendor Hist. Buy-from FactBox")
+            part(Control22; "Vendor Hist. Buy-from FactBox")
             {
-                SubPageLink = "No."=field("Buy-from Vendor No.");
+                SubPageLink = "No." = field("Buy-from Vendor No.");
                 Visible = true;
             }
-            part(Control21;"Vendor Hist. Pay-to FactBox")
+            part(Control21; "Vendor Hist. Pay-to FactBox")
             {
-                SubPageLink = "No."=field("Pay-to Vendor No.");
+                SubPageLink = "No." = field("Pay-to Vendor No.");
                 Visible = false;
             }
-            part(Control20;"Approval FactBox")
+            part(Control20; "Approval FactBox")
             {
-                SubPageLink = "Table ID"=const(38),
-                              "Document Type"=field("Document Type"),
-                              "Document No."=field("No.");
+                SubPageLink = "Table ID" = const(38),
+                              "Document Type" = field("Document Type"),
+                              "Document No." = field("No.");
                 Visible = false;
             }
-            part(Control18;"Purchase Line FactBox")
+            part(Control18; "Purchase Line FactBox")
             {
                 Provider = PurchLines;
-                SubPageLink = "Document Type"=field("Document Type"),
-                              "No."=field("No."),
-                              "Line No."=field("Line No.");
+                SubPageLink = "Document Type" = field("Document Type"),
+                              "No." = field("No."),
+                              "Line No." = field("Line No.");
             }
-            systempart(Control17;Links)
+            systempart(Control17; Links)
             {
                 Visible = true;
             }
-            systempart(Control5;Notes)
+            systempart(Control5; Notes)
             {
                 Visible = true;
             }
@@ -253,7 +252,7 @@ Page 51516101 "Task Order Card"
                     begin
                         CalcInvDiscForHeader;
                         Commit;
-                        Page.RunModal(Page::"Purchase Statistics",Rec);
+                        Page.RunModal(Page::"Purchase Statistics", Rec);
                     end;
                 }
                 action(Vendor)
@@ -262,7 +261,7 @@ Page 51516101 "Task Order Card"
                     Caption = 'Vendor';
                     Image = Vendor;
                     RunObject = Page "Vendor Card";
-                    RunPageLink = "No."=field("Buy-from Vendor No.");
+                    RunPageLink = "No." = field("Buy-from Vendor No.");
                     ShortCutKey = 'Shift+F7';
                 }
                 action("Co&mments")
@@ -271,9 +270,9 @@ Page 51516101 "Task Order Card"
                     Caption = 'Co&mments';
                     Image = ViewComments;
                     RunObject = Page "Purch. Comment Sheet";
-                    RunPageLink = "Document Type"=field("Document Type"),
-                                  "No."=field("No."),
-                                  "Document Line No."=const(0);
+                    RunPageLink = "Document Type" = field("Document Type"),
+                                  "No." = field("No."),
+                                  "Document Line No." = const(0);
                 }
                 action(Dimensions)
                 {
@@ -301,7 +300,7 @@ Page 51516101 "Task Order Card"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        ApprovalEntries.Setfilters(Database::"Purchase Header","Document Type","No.");
+                        ApprovalEntries.Setfilters(Database::"Purchase Header", "Document Type", "No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -322,11 +321,11 @@ Page 51516101 "Task Order Card"
                 begin
 
                     if LinesCommitted then
-                       //ERROR('All Lines should be committed');
-                      Reset;
-                      SetRange("No.","No.");
-                      Report.Run(51516100,true,true,Rec);
-                      Reset;
+                        //ERROR('All Lines should be committed');
+                        Reset;
+                    SetRange("No.", "No.");
+                    Report.Run(51516100, true, true, Rec);
+                    Reset;
                     //DocPrint.PrintPurchHeader(Rec);
                 end;
             }
@@ -450,11 +449,11 @@ Page 51516101 "Task Order Card"
                     trigger OnAction()
                     begin
                         //IF LinesCommitted THEN
-                         //  ERROR('All Lines should be committed');
+                        //  ERROR('All Lines should be committed');
 
-                        TestField(Status,Status::Open);
+                        TestField(Status, Status::Open);
                         if ApprovalMgt.CheckPurchaseRequisitionApprovalsWorkflowEnabled(Rec) then
-                          ApprovalMgt.OnSendPurchaseRequisitionForApproval(Rec);
+                            ApprovalMgt.OnSendPurchaseRequisitionForApproval(Rec);
                     end;
                 }
                 action("Cancel Approval Re&quest")
@@ -468,9 +467,9 @@ Page 51516101 "Task Order Card"
 
                     trigger OnAction()
                     begin
-                        TestField(Status,Status::"Pending Approval");
+                        TestField(Status, Status::"Pending Approval");
                         if ApprovalMgt.CheckPurchaseRequisitionApprovalsWorkflowEnabled(Rec) then
-                           ApprovalMgt.OnCancelPurchaseRequisitionApprovalRequest(Rec);
+                            ApprovalMgt.OnCancelPurchaseRequisitionApprovalRequest(Rec);
                     end;
                 }
                 separator(Action10)
@@ -489,20 +488,20 @@ Page 51516101 "Task Order Card"
 
                         BCSetup.Get;
                         if not BCSetup.Mandatory then
-                           exit;
+                            exit;
 
-                        if Status=Status::Released then
-                          Error('This document has already been released. This functionality is available for open documents only');
+                        if Status = Status::Released then
+                            Error('This document has already been released. This functionality is available for open documents only');
                         if SomeLinesCommitted then begin
-                           if not Confirm( 'Some or All the Lines Are already Committed do you want to continue',true, "Document Type") then
+                            if not Confirm('Some or All the Lines Are already Committed do you want to continue', true, "Document Type") then
                                 Error('Budget Availability Check and Commitment Aborted');
-                          DeleteCommitment.Reset;
-                          DeleteCommitment.SetRange(DeleteCommitment."Document Type",DeleteCommitment."document type"::Requisition);
-                          DeleteCommitment.SetRange(DeleteCommitment."Document No.","No.");
-                          DeleteCommitment.DeleteAll;
+                            DeleteCommitment.Reset;
+                            DeleteCommitment.SetRange(DeleteCommitment."Document Type", DeleteCommitment."document type"::Requisition);
+                            DeleteCommitment.SetRange(DeleteCommitment."Document No.", "No.");
+                            DeleteCommitment.DeleteAll;
                         end;
-                           Commitment.CheckPurchase(Rec);
-                           Message('Budget Availability Checking Complete');
+                        Commitment.CheckPurchase(Rec);
+                        Message('Budget Availability Checking Complete');
                     end;
                 }
                 action("Cancel Budget Commitment")
@@ -516,25 +515,25 @@ Page 51516101 "Task Order Card"
                     trigger OnAction()
                     begin
 
-                           if not Confirm( 'Are you sure you want to Cancel All Commitments Done for this document',true, "Document Type") then
-                                Error('Budget Availability Check and Commitment Aborted');
+                        if not Confirm('Are you sure you want to Cancel All Commitments Done for this document', true, "Document Type") then
+                            Error('Budget Availability Check and Commitment Aborted');
 
-                          DeleteCommitment.Reset;
-                          DeleteCommitment.SetRange(DeleteCommitment."Document Type",DeleteCommitment."document type"::Requisition);
-                          DeleteCommitment.SetRange(DeleteCommitment."Document No.","No.");
-                          DeleteCommitment.DeleteAll;
-                          //Tag all the Purchase Line entries as Uncommitted
-                          PurchLine.Reset;
-                          PurchLine.SetRange(PurchLine."Document Type","Document Type");
-                          PurchLine.SetRange(PurchLine."Document No.","No.");
-                          if PurchLine.Find('-') then begin
-                             repeat
-                                PurchLine.Committed:=false;
+                        DeleteCommitment.Reset;
+                        DeleteCommitment.SetRange(DeleteCommitment."Document Type", DeleteCommitment."document type"::Requisition);
+                        DeleteCommitment.SetRange(DeleteCommitment."Document No.", "No.");
+                        DeleteCommitment.DeleteAll;
+                        //Tag all the Purchase Line entries as Uncommitted
+                        PurchLine.Reset;
+                        PurchLine.SetRange(PurchLine."Document Type", "Document Type");
+                        PurchLine.SetRange(PurchLine."Document No.", "No.");
+                        if PurchLine.Find('-') then begin
+                            repeat
+                                PurchLine.Committed := false;
                                 PurchLine.Modify;
-                             until PurchLine.Next=0;
-                          end;
+                            until PurchLine.Next = 0;
+                        end;
 
-                        Message('Commitments Cancelled Successfully for Doc. No %1',"No.");
+                        Message('Commitments Cancelled Successfully for Doc. No %1', "No.");
                     end;
                 }
             }
@@ -556,7 +555,7 @@ Page 51516101 "Task Order Card"
                         SalesHeader: Record "Sales Header";
                     begin
                         //IF ApprovalMgt.PrePostApprovalCheck(SalesHeader,Rec) THEN
-                          //CODEUNIT.RUN(CODEUNIT::"Purch.-Quote to Order (Yes/No)",Rec);
+                        //CODEUNIT.RUN(CODEUNIT::"Purch.-Quote to Order (Yes/No)",Rec);
                     end;
                 }
             }
@@ -565,7 +564,7 @@ Page 51516101 "Task Order Card"
 
     trigger OnAfterGetCurrRecord()
     begin
-           UpdateControls;
+        UpdateControls;
         /*PurchHeader.RESET;
         PurchHeader.SETRANGE("User ID",USERID);
         PurchHeader.SETRANGE(PurchHeader.Status,PurchHeader.Status::Open);
@@ -586,12 +585,12 @@ Page 51516101 "Task Order Card"
     begin
         CurrPage.SaveRecord;
         exit(ConfirmDeletion);
-         Error ('Not Allowed!');
+        Error('Not Allowed!');
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        DocApprovalType:=Docapprovaltype::Requisition;
+        DocApprovalType := Docapprovaltype::Requisition;
         /*
          SHeader.RESET;
          SHeader.SETRANGE("User ID",USERID);
@@ -606,16 +605,16 @@ Page 51516101 "Task Order Card"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         UpdateControls;
-        "Assigned User ID":=UserId;
-        "User ID":=UserId;
+        "Assigned User ID" := UserId;
+        "User ID" := UserId;
 
-        PR:=true;
+        PR := true;
 
-        "Shortcut Dimension 1 Code":='BOSA';
-        "Shortcut Dimension 2 Code":='NAIROBI';
+        "Shortcut Dimension 1 Code" := 'BOSA';
+        "Shortcut Dimension 2 Code" := 'NAIROBI';
 
         PrchSetUp.Get();
-        "Buy-from Vendor No.":=PrchSetUp."Requisition Default Vendor";
+        "Buy-from Vendor No." := PrchSetUp."Requisition Default Vendor";
         Validate("Buy-from Vendor No.");
     end;
 
@@ -628,11 +627,11 @@ Page 51516101 "Task Order Card"
     begin
 
         if UserMgt.GetPurchasesFilter <> '' then begin
-          FilterGroup(2);
-          SetRange("Responsibility Center",UserMgt.GetPurchasesFilter);
-          FilterGroup(0);
+            FilterGroup(2);
+            SetRange("Responsibility Center", UserMgt.GetPurchasesFilter);
+            FilterGroup(0);
         end;
-        "Doc Type":="doc type"::PurchReq;
+        "Doc Type" := "doc type"::PurchReq;
     end;
 
     var
@@ -649,7 +648,7 @@ Page 51516101 "Task Order Card"
         Vendor: Record Vendor;
         PurchHeader: Record "Purchase Header";
         SHeader: Record "Purchase Header";
-        ApprovalMgt: Codeunit "Approvals Mgmt.";
+        ApprovalMgt: Codeunit WorkflowIntegration;
         PrchSetUp: Record "Purchases & Payables Setup";
 
     local procedure ApproveCalcInvDisc()
@@ -660,8 +659,8 @@ Page 51516101 "Task Order Card"
     local procedure BuyfromVendorNoOnAfterValidate()
     begin
         if GetFilter("Buy-from Vendor No.") = xRec."Buy-from Vendor No." then
-          if "Buy-from Vendor No." <> xRec."Buy-from Vendor No." then
-            SetRange("Buy-from Vendor No.");
+            if "Buy-from Vendor No." <> xRec."Buy-from Vendor No." then
+                SetRange("Buy-from Vendor No.");
         CurrPage.Update;
     end;
 
@@ -700,25 +699,25 @@ Page 51516101 "Task Order Card"
     var
         PurchLines: Record "Purchase Line";
     begin
-         if BCSetup.Get() then  begin
+        if BCSetup.Get() then begin
             if not BCSetup.Mandatory then begin
-               Exists:=false;
-               exit;
+                Exists := false;
+                exit;
             end;
-         end else begin
-               Exists:=false;
-               exit;
-         end;
+        end else begin
+            Exists := false;
+            exit;
+        end;
         if BCSetup.Get then begin
-         Exists:=false;
-         PurchLines.Reset;
-         PurchLines.SetRange(PurchLines."Document Type","Document Type");
-         PurchLines.SetRange(PurchLines."Document No.","No.");
-         PurchLines.SetRange(PurchLines.Committed,false);
-          if PurchLines.Find('-') then
-             Exists:=true;
+            Exists := false;
+            PurchLines.Reset;
+            PurchLines.SetRange(PurchLines."Document Type", "Document Type");
+            PurchLines.SetRange(PurchLines."Document No.", "No.");
+            PurchLines.SetRange(PurchLines.Committed, false);
+            if PurchLines.Find('-') then
+                Exists := true;
         end else
-            Exists:=false;
+            Exists := false;
     end;
 
 
@@ -727,30 +726,30 @@ Page 51516101 "Task Order Card"
         PurchLines: Record "Purchase Line";
     begin
         if BCSetup.Get then begin
-         Exists:=false;
-         PurchLines.Reset;
-         PurchLines.SetRange(PurchLines."Document Type","Document Type");
-         PurchLines.SetRange(PurchLines."Document No.","No.");
-         PurchLines.SetRange(PurchLines.Committed,true);
-          if PurchLines.Find('-') then
-             Exists:=true;
+            Exists := false;
+            PurchLines.Reset;
+            PurchLines.SetRange(PurchLines."Document Type", "Document Type");
+            PurchLines.SetRange(PurchLines."Document No.", "No.");
+            PurchLines.SetRange(PurchLines.Committed, true);
+            if PurchLines.Find('-') then
+                Exists := true;
         end else
-            Exists:=false;
+            Exists := false;
     end;
 
 
     procedure UpdateControls()
     begin
-        if Status=Status::Open then
-          StatusEditable:=true
+        if Status = Status::Open then
+            StatusEditable := true
         else
-          StatusEditable:=false;
+            StatusEditable := false;
     end;
 
 
     procedure CurrPageUpdate()
     begin
-        xRec:=Rec;
+        xRec := Rec;
         UpdateControls;
         CurrPage.Update;
     end;

@@ -20,8 +20,8 @@ Codeunit 51516007 "SURESTEP Factory."
         ObjBanks: Record "Bank Account";
         ObjLoanProductSetup: Record "Loan Products Setup";
         ObjProductCharges: Record "Loan Product Charges";
-        ObjMembers: Record "Member Register";
-        ObjMembers2: Record "Member Register";
+        ObjMembers: Record Customer;
+        ObjMembers2: Record Customer;
         ObjGenSetUp: Record "Sacco General Set-Up";
         ObjCompInfo: Record "Company Information";
         BAND1: Decimal;
@@ -307,7 +307,7 @@ Codeunit 51516007 "SURESTEP Factory."
 
     procedure FnGetMemberBranch(MemberNo: Code[100]) MemberBranch: Code[100]
     var
-        ObjMemberLocal: Record "Member Register";
+        ObjMemberLocal: Record Customer;
     begin
         ObjMemberLocal.Reset;
         ObjMemberLocal.SetRange(ObjMemberLocal."No.", MemberNo);
@@ -319,7 +319,7 @@ Codeunit 51516007 "SURESTEP Factory."
 
     local procedure FnReturnRetirementDate(MemberNo: Code[50]): Date
     var
-        ObjMembers: Record "Member Register";
+        ObjMembers: Record Customer;
     begin
         ObjGenSetUp.Get();
         ObjMembers.Reset;
@@ -354,7 +354,7 @@ Codeunit 51516007 "SURESTEP Factory."
 
     procedure FnGetFosaAccount(MemberNo: Code[50]) FosaAccount: Code[50]
     var
-        ObjMembers: Record "Member Register";
+        ObjMembers: Record Customer;
     begin
         ObjMembers.Reset;
         ObjMembers.SetRange(ObjMembers."No.", MemberNo);
@@ -459,7 +459,7 @@ Codeunit 51516007 "SURESTEP Factory."
         loanTypes: Record "Loan Products Setup";
         ObjLoanX: Record "Loans Register";
         LoansRec: Record "Loans Register";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
     begin
         loanTypes.Reset;
         loanTypes.SetRange(loanTypes.Code, 'BLOAN');
@@ -1657,7 +1657,7 @@ Codeunit 51516007 "SURESTEP Factory."
 
     procedure FnCalculateDividendProrated(MemberNo: Code[10]; StartDate: Date; EndDate: Date)
     var
-        ObjCust: Record "Member Register";
+        ObjCust: Record Customer;
         ObjDivProg: Record "Dividends Progression";
         FromBate: Date;
         "To Date": Date;

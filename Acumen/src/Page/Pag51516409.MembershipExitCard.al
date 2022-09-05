@@ -334,7 +334,7 @@ Page 51516409 "Membership Exit Card"
                     trigger OnAction()
                     var
                         text001: label 'This batch is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         //TESTFIELD("FOSA Account No.");
                         if Status <> Status::Open then
@@ -371,7 +371,7 @@ Page 51516409 "Membership Exit Card"
                     trigger OnAction()
                     var
                         text001: label 'This batch is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckMWithdrawalApprovalsWorkflowEnabled(Rec) then
                             ApprovalMgt.OnCancelMWithdrawalApprovalRequest(Rec);
@@ -471,7 +471,7 @@ Page 51516409 "Membership Exit Card"
     var
         Closure: Integer;
         Text001: label 'Not Approved';
-        cust: Record "Member Register";
+        cust: Record Customer;
         UBFRefund: Decimal;
         Generalsetup: Record "Sacco General Set-Up";
         Totalavailable: Decimal;
@@ -512,7 +512,7 @@ Page 51516409 "Membership Exit Card"
         Doc_Type: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"," ","Purchase Requisition",RFQ,"Store Requisition","Payment Voucher",MembershipApplication,LoanApplication,LoanDisbursement,ProductApplication,StandingOrder,MembershipWithdrawal,ATMCard,GuarantorRecovery,ChangeRequest,TreasuryTransactions,FundsTransfer,SaccoTransfers,ChequeDiscounting,ImprestRequisition,ImprestSurrender,LeaveApplication,BulkWithdrawal,PackageLodging,PackageRetrieval;
         PTEN: Text;
         DataSheet: Record "Data Sheet Main";
-        Customer: Record "Member Register";
+        Customer: Record Customer;
         GenSetUp: Record "Sacco General Set-Up";
         compinfo: Record "Company Information";
         SMSMessage: Record "SMS Messages";
@@ -534,12 +534,12 @@ Page 51516409 "Membership Exit Card"
         ExciseGL: Code[20];
         RunningBal: Decimal;
         EnabledApprovalWorkflowsExist: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         CanCancelApprovalForRecord: Boolean;
         EventFilter: Text;
         OpenApprovalEntriesExist: Boolean;
         MWithdrawalGraduatedCharges: Record "MWithdrawal Graduated Charges";
-        MemberRegister: Record "Member Register";
+        MemberRegister: Record Customer;
 
 
     procedure UpdateControl()

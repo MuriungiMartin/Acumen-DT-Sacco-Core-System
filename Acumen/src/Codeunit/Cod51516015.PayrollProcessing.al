@@ -147,7 +147,7 @@ Codeunit 51516015 "Payroll Processing"
         prEmployerDeductions: Record "Payroll Employer Deductions.";
         JournalPostingType: Option " ","G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Staff,"None",Member;
         JournalAcc: Code[20];
-        Customer: Record "Member Register";
+        Customer: Record Customer;
         JournalPostAs: Option " ",Debit,Credit;
         IsCashBenefit: Decimal;
         Teltax: Decimal;
@@ -1447,8 +1447,8 @@ Codeunit 51516015 "Payroll Processing"
         CalcAddCurr: Boolean;
         AccSchedMgt: Codeunit AccSchedManagement;
     begin
-        Results :=
-        AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
+        // Results :=
+        //  AccSchedMgt.EvaluateExpression(true, strFormula, AccSchedLine, ColumnLayout, CalcAddCurr);
     end;
 
 

@@ -20,7 +20,7 @@ Table 51516927 "House Group Change Request"
         }
         field(2; "Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -155,7 +155,7 @@ Table 51516927 "House Group Change Request"
         SalesSetup: Record "Sacco No. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         ObjAccount: Record Vendor;
-        ObjCust: Record "Member Register";
+        ObjCust: Record Customer;
         ObjLoans: Record "Loans Register";
         ObjSurestep: Codeunit "SURESTEP Factory.";
         VarAmountInArrears: Decimal;

@@ -9,9 +9,9 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Loans Register";
-    SourceTableView = where(Source=const(MICRO),
-                            Posted=const(false),
-                            "Loan Status"=const(Appraisal));
+    SourceTableView = where(Source = const(MICRO),
+                            Posted = const(false),
+                            "Loan Status" = const(Appraisal));
     UsageCategory = Lists;
 
     layout
@@ -20,7 +20,7 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
         {
             repeater(Control1000000000)
             {
-                field(Overdue;Overdue)
+                field(Overdue; Overdue)
                 {
                     ApplicationArea = Basic;
                     Caption = 'OverDue';
@@ -28,73 +28,73 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
                     OptionCaption = 'Yes';
                     ToolTip = 'OverDue Entry';
                 }
-                field("Loan  No.";"Loan  No.")
+                field("Loan  No."; "Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Old Account No.";"Old Account No.")
+                field("Old Account No."; "Old Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Group Code";"Group Code")
+                field("Group Code"; "Group Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Product Type";"Loan Product Type")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Advice Type";"Advice Type")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Expected Date of Completion";"Expected Date of Completion")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Application Date";"Application Date")
+                field("Loan Product Type"; "Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Client Code";"Client Code")
+                field("Advice Type"; "Advice Type")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Expected Date of Completion"; "Expected Date of Completion")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("BOSA No";"BOSA No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Issued Date";"Issued Date")
+                field("Client Code"; "Client Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Client Name";"Client Name")
+                field("BOSA No"; "BOSA No")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Issued Date"; "Issued Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Posted;Posted)
+                field("Client Name"; "Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No";"Account No")
+                field(Posted; Posted)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks;Remarks)
+                field(Remarks; Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Approval Status";"Approval Status")
+                field("Approval Status"; "Approval Status")
                 {
                     ApplicationArea = Basic;
                 }
@@ -150,7 +150,7 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
     begin
         Overdue := Overdue::" ";
         if FormatField(Rec) then
-          Overdue := Overdue::Yes;
+            Overdue := Overdue::Yes;
     end;
 
     var
@@ -198,7 +198,7 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
         ScheduleCode: Code[20];
         PreviewShedule: Record "HR Leave Family Employees";
         PeriodInterval: Code[10];
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -207,9 +207,9 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
         GenBatch: Record "Gen. Journal Batch";
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sales & Receivables Setup";
         PCharges: Record "HR Interview Evalution Rating";
@@ -240,7 +240,7 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
         BOSAInt: Decimal;
         TopUpComm: Decimal;
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -269,20 +269,20 @@ Page 51516856 "Loans List-MICRO(Appraisal)"
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None",JV,"Member Closure","Account Opening",Batches,"Payment Voucher","Petty Cash",Requisition,Loan,Imprest,ImprestSurrender,Interbank;
 
 
-    procedure GetVariables(var LoanNo: Code[20];var LoanProductType: Code[20])
+    procedure GetVariables(var LoanNo: Code[20]; var LoanProductType: Code[20])
     begin
-        LoanNo:="Loan  No.";
-        LoanProductType:="Loan Product Type";
+        LoanNo := "Loan  No.";
+        LoanProductType := "Loan Product Type";
     end;
 
 
     procedure FormatField(Rec: Record "Loans Register") OK: Boolean
     begin
-        if "Outstanding Balance">0 then begin
-          if (Rec."Expected Date of Completion" < Today) then
-            exit(true)
-          else
-            exit(false);
+        if "Outstanding Balance" > 0 then begin
+            if (Rec."Expected Date of Completion" < Today) then
+                exit(true)
+            else
+                exit(false);
         end;
     end;
 

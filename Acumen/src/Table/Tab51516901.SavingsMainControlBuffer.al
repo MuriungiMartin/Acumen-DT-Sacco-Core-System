@@ -4,29 +4,29 @@ Table 51516901 "Savings Main Control Buffer"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
         }
-        field(2;"Transaction Description";Code[60])
+        field(2; "Transaction Description"; Code[60])
         {
         }
-        field(6;"Date Filter";Date)
+        field(6; "Date Filter"; Date)
         {
             FieldClass = FlowFilter;
         }
-        field(7;"Debit Amount";Decimal)
+        field(7; "Debit Amount"; Decimal)
         {
-            CalcFormula = sum("Detailed Vendor Ledg. Entry"."Debit Amount" where (Field51516001=field("Transaction Type"),
-                                                                                  "Posting Date"=field("Date Filter")));
-            FieldClass = FlowField;
+            // CalcFormula = sum("Detailed Vendor Ledg. Entry"."Debit Amount" where (=field("Transaction Type"),
+            //                                                                       "Posting Date"=field("Date Filter")));
+            // FieldClass = FlowField;
         }
-        field(8;"Credit Amount";Decimal)
+        field(8; "Credit Amount"; Decimal)
         {
-            CalcFormula = sum("Detailed Vendor Ledg. Entry"."Credit Amount" where (Field51516001=field("Transaction Type"),
-                                                                                   "Posting Date"=field("Date Filter")));
-            FieldClass = FlowField;
+            // CalcFormula = sum("Detailed Vendor Ledg. Entry"."Credit Amount" where (Field51516001=field("Transaction Type"),
+            //                                                                        "Posting Date"=field("Date Filter")));
+            // FieldClass = FlowField;
         }
-        field(9;"Transaction Type";Option)
+        field(9; "Transaction Type"; Option)
         {
             OptionCaption = ' ,CashWithdrawal,CashDeposit,ChequeDeposit,CashWithdrawalCommission,ChequeDepositComission,InternalTransfers,BOSALoanPayment,BOSAPayout,LoansIssued,ATMTransactions,ATMCharges,StandingOrders,ExciseDuty,StampDuty,POSTransactions,POSTransactionCharges,MobileTransactions,MobileTransactionCharges,BankersCheques,BankersChequeCommission,SalaryProcessing,SalaryProcessingFee,SMS,ChequeWithdrawal,ChequeWithdrawalCommission';
             OptionMembers = " ",CashWithdrawal,CashDeposit,ChequeDeposit,CashWithdrawalCommission,ChequeDepositComission,InternalTransfers,BOSALoanPayment,BOSAPayout,LoansIssued,ATMTransactions,ATMCharges,StandingOrders,ExciseDuty,StampDuty,POSTransactions,POSTransactionCharges,MobileTransactions,MobileTransactionCharges,BankersCheques,BankersChequeCommission,SalaryProcessing,SalaryProcessingFee,SMS,ChequeWithdrawal,ChequeWithdrawalCommission;
@@ -35,7 +35,7 @@ Table 51516901 "Savings Main Control Buffer"
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

@@ -5,8 +5,8 @@ Page 51516376 "Member List-Editable"
     CardPageID = "Member Account Card - Editable";
     Editable = false;
     PageType = List;
-    SourceTable = "Member Register";
-    SourceTableView = where("Customer Type"=filter(Member|MicroFinance));
+    SourceTable = Customer;
+    SourceTableView = where("Customer Type" = filter(Member | MicroFinance));
 
     layout
     {
@@ -14,27 +14,27 @@ Page 51516376 "Member List-Editable"
         {
             repeater(Control1)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Personal No";"Personal No")
+                field("Personal No"; "Personal No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category";"Account Category")
+                field("Account Category"; "Account Category")
                 {
                     ApplicationArea = Basic;
                 }
@@ -56,7 +56,7 @@ Page 51516376 "Member List-Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Member Ledger Entries";
-                    RunPageLink = "Customer No."=field("No.");
+                    RunPageLink = "Customer No." = field("No.");
                     RunPageView = sorting("Customer No.");
                 }
                 action(Dimensions)
@@ -66,7 +66,7 @@ Page 51516376 "Member List-Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Bank Account")
                 {
@@ -75,7 +75,7 @@ Page 51516376 "Member List-Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Customer Bank Account Card";
-                    RunPageLink = "Customer No."=field("No.");
+                    RunPageLink = "Customer No." = field("No.");
                 }
                 action(Contacts)
                 {
@@ -107,9 +107,9 @@ Page 51516376 "Member List-Editable"
                     begin
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516155,true,false,Cust);
+                            Report.Run(51516155, true, false, Cust);
                     end;
                 }
                 action("Loans Guarantors")
@@ -124,9 +124,9 @@ Page 51516376 "Member List-Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516156,true,false,Cust);
+                            Report.Run(51516156, true, false, Cust);
                     end;
                 }
             }
@@ -140,7 +140,7 @@ Page 51516376 "Member List-Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Members Nominee Details List";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 action("Members Statistics")
                 {
@@ -149,7 +149,7 @@ Page 51516376 "Member List-Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Members Statistics";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Members Guaranteed")
                 {
@@ -157,13 +157,13 @@ Page 51516376 "Member List-Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "HR Employee Kin";
-                    RunPageLink = "Middle Name"=field(Name);
+                    RunPageLink = "Middle Name" = field(Name);
                     RunPageMode = View;
 
                     trigger OnAction()
                     begin
                         LGurantors.Reset;
-                        LGurantors.SetRange(LGurantors."Loan No","No.");
+                        LGurantors.SetRange(LGurantors."Loan No", "No.");
                         if LGurantors.Find('-') then
 ;
                 }
@@ -184,9 +184,9 @@ Page 51516376 "Member List-Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516363,true,false,Cust);
+                            Report.Run(51516363, true, false, Cust);
                     end;
                 }
                 action("Account Closure Slip")
@@ -201,9 +201,9 @@ Page 51516376 "Member List-Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516390,true,false,Cust);
+                            Report.Run(51516390, true, false, Cust);
                     end;
                 }
             }
@@ -213,14 +213,14 @@ Page 51516376 "Member List-Editable"
     trigger OnOpenPage()
     begin
         StatusPermissions.Reset;
-        StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-        StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::Edit);
+        StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+        StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::Edit);
         if StatusPermissions.Find('-') = false then
-        Error('You do not have permissions to edit member information.');
+            Error('You do not have permissions to edit member information.');
     end;
 
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         GeneralSetup: Record "Sacco General Set-Up";
         Gnljnline: Record "Gen. Journal Line";
         TotalRecovered: Decimal;
@@ -249,7 +249,7 @@ Page 51516376 "Member List-Editable"
 
     procedure GetSelectionFilter(): Code[80]
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         FirstCust: Code[30];
         LastCust: Code[30];
         SelectionFilter: Code[250];
@@ -296,7 +296,7 @@ Page 51516376 "Member List-Editable"
     end;
 
 
-    procedure SetSelection(var Cust: Record "Member Register")
+    procedure SetSelection(var Cust: Record Customer)
     begin
         //CurrPage.SETSELECTIONFILTER(Cust);
     end;

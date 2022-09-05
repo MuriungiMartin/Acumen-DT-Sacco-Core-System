@@ -10,105 +10,105 @@ Page 51516985 "CRM Training Card"
         {
             group(General)
             {
-                field("Code";Code)
+                field("Code"; Code)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Start Date";"Start Date")
+                field("Start Date"; "Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("End Date";"End Date")
+                field("End Date"; "End Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Duration Units";"Duration Units")
+                field("Duration Units"; "Duration Units")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Duration;Duration)
+                field(Duration; Duration)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cost Of Training";"Cost Of Training")
+                field("Cost Of Training"; "Cost Of Training")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Location;Location)
+                field(Location; Location)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Re-Assessment Date";"Re-Assessment Date")
+                field("Re-Assessment Date"; "Re-Assessment Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Need Source";"Need Source")
+                field("Need Source"; "Need Source")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Provider;Provider)
+                field(Provider; Provider)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Provider Name";"Provider Name")
+                field("Provider Name"; "Provider Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Closed;Closed)
+                field(Closed; Closed)
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approval Status';
                     Editable = false;
                     Importance = Additional;
                 }
-                field("Training Status";"Training Status")
+                field("Training Status"; "Training Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Additional;
                 }
-                field("Created By";"Created By")
+                field("Created By"; "Created By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Additional;
                 }
-                field("Created On";"Created On")
+                field("Created On"; "Created On")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Additional;
                 }
             }
-            part(Control19;"CRM Trainees")
+            part(Control19; "CRM Trainees")
             {
-                SubPageLink = "Training Code"=field(Code);
+                SubPageLink = "Training Code" = field(Code);
             }
         }
     }
@@ -137,9 +137,8 @@ Page 51516985 "CRM Training Card"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Are you sure you want to close this training?',false)=true then
-                      begin
-                      "Training Status":="training status"::Closed;
+                    if Confirm('Are you sure you want to close this training?', false) = true then begin
+                        "Training Status" := "training status"::Closed;
                     end;
                 end;
             }
@@ -156,11 +155,11 @@ Page 51516985 "CRM Training Card"
                 trigger OnAction()
                 var
                     Text001: label 'This request is already pending approval';
-                    ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    ApprovalsMgmt: Codeunit WorkflowIntegration;
                 begin
 
                     if ApprovalsMgmt.CheckCRMTrainingApprovalsWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnSendCRMTrainingForApproval(Rec);
+                        ApprovalsMgmt.OnSendCRMTrainingForApproval(Rec);
                 end;
             }
             action("Cancel Approval Request")
@@ -175,12 +174,12 @@ Page 51516985 "CRM Training Card"
 
                 trigger OnAction()
                 var
-                    Approvalmgt: Codeunit "Approvals Mgmt.";
+                    Approvalmgt: Codeunit WorkflowIntegration;
                 begin
-                    if Confirm('Are you sure you want to cancel this approval request',false)=true then
-                     ApprovalsMgmt.OnCancelCRMTrainingApprovalRequest(Rec);
-                      Status:=Status::Open;
-                      Modify;
+                    if Confirm('Are you sure you want to cancel this approval request', false) = true then
+                        ApprovalsMgmt.OnCancelCRMTrainingApprovalRequest(Rec);
+                    Status := Status::Open;
+                    Modify;
                 end;
             }
             action(Approval)
@@ -197,8 +196,8 @@ Page 51516985 "CRM Training Card"
                     ApprovalEntries: Page "Approval Entries";
                     DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"," ","Purchase Requisition",RFQ,"Store Requisition","Payment Voucher",MembershipApplication,LoanApplication,LoanDisbursement,ProductApplication,StandingOrder,MembershipWithdrawal,ATMCard,GuarantorRecovery,ChangeRequest,TreasuryTransactions,FundsTransfer,SaccoTransfers,ChequeDiscounting,ImprestRequisition,ImprestSurrender,LeaveApplication,BulkWithdrawal,PackageLodging,PackageRetrieval,HouseChange,CRMTraining;
                 begin
-                    DocumentType:=Documenttype::HouseChange;
-                    ApprovalEntries.Setfilters(Database::"House Group Change Request",DocumentType,Code);
+                    DocumentType := Documenttype::HouseChange;
+                    ApprovalEntries.Setfilters(Database::"House Group Change Request", DocumentType, Code);
                     ApprovalEntries.Run;
                 end;
             }
@@ -209,7 +208,7 @@ Page 51516985 "CRM Training Card"
                 Promoted = true;
                 PromotedCategory = Process;
                 RunObject = Page "CRM Training Suppliers";
-                RunPageLink = "CRM Training No"=field(Code);
+                RunPageLink = "CRM Training No" = field(Code);
             }
         }
     }
@@ -218,7 +217,7 @@ Page 51516985 "CRM Training Card"
         EnableActivateTraining: Boolean;
         OpenApprovalEntriesExist: Boolean;
         CanCancelApprovalForRecord: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         EnabledApprovalWorkflowsExist: Boolean;
 }
 

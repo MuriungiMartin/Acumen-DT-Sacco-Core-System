@@ -848,7 +848,7 @@ Page 51516830 "Group Application Card"
 
     var
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Accounts: Record Vendor;
         AcctNo: Code[20];
         NextOfKinApp: Record "Members Nominee";
@@ -919,7 +919,7 @@ Page 51516830 "Group Application Card"
         text003: label 'No of Signatories cannot be less/More than %1';
         GetAccountType: Record "Account Types-Saving Products";
         Text004: label 'You MUST specify the next of kin Benevolent';
-        CustMember: Record "Member Register";
+        CustMember: Record Customer;
         "BenvNo.": Code[10];
         BankAEditable: Boolean;
         MemEditable: Boolean;
@@ -927,7 +927,7 @@ Page 51516830 "Group Application Card"
         BankNEditable: Boolean;
         InserFEditable: Boolean;
         FosAEditable: Boolean;
-        Memb: Record "Member Register";
+        Memb: Record Customer;
         BosaAccNoVisible: Boolean;
         FosaAccNoVisible: Boolean;
         MemCatVisible: Boolean;
@@ -942,7 +942,7 @@ Page 51516830 "Group Application Card"
         DeptVisible: Boolean;
         SecVisible: Boolean;
         OccpVisible: Boolean;
-        MembCust: Record "Member Register";
+        MembCust: Record Customer;
         GroupAccEditable: Boolean;
         AccTypeEditable: Boolean;
         AccountSignatoriesApp: Record "Member Account Signatories";
@@ -953,7 +953,7 @@ Page 51516830 "Group Application Card"
         Text005: label 'There are still some incomplete Applications. Please utilise them first';
         Dimen: Record "Dimension Value";
         NoSeriesMgt: Codeunit NoSeriesManagement;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         AccoutTypes: Record "Account Types-Saving Products";
         Saccosetup: Record "Sacco General Set-Up";
         BCode: Code[20];

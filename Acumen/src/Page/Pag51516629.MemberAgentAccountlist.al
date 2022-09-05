@@ -12,11 +12,11 @@ Page 51516629 "Member Agent Account list"
         {
             repeater(Control1102760000)
             {
-                field(Names;Names)
+                field(Names; Names)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
 
@@ -32,45 +32,45 @@ Page 51516629 "Member Agent Account list"
 
                     end;
                 }
-                field("Staff/Payroll";"Staff/Payroll")
+                field("Staff/Payroll"; "Staff/Payroll")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff/Payroll No';
                 }
-                field("Date Of Birth";"Date Of Birth")
+                field("Date Of Birth"; "Date Of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allowed Balance Enquiry";"Allowed Balance Enquiry")
+                field("Allowed Balance Enquiry"; "Allowed Balance Enquiry")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allowed  Correspondence";"Allowed  Correspondence")
+                field("Allowed  Correspondence"; "Allowed  Correspondence")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allowed FOSA Withdrawals";"Allowed FOSA Withdrawals")
+                field("Allowed FOSA Withdrawals"; "Allowed FOSA Withdrawals")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allowed Loan Processing";"Allowed Loan Processing")
+                field("Allowed Loan Processing"; "Allowed Loan Processing")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expiry Date";"Expiry Date")
+                field("Expiry Date"; "Expiry Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA No.";"BOSA No.")
+                field("BOSA No."; "BOSA No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Email Address";"Email Address")
+                field("Email Address"; "Email Address")
                 {
                     ApplicationArea = Basic;
                 }
@@ -91,8 +91,8 @@ Page 51516629 "Member Agent Account list"
                     Caption = 'Card';
                     Image = EditLines;
                     RunObject = Page "HR Employment History";
-                    RunPageLink = "No."=field("Account No"),
-                                  "First Name"=field(Names);
+                    RunPageLink = "No." = field("Account No"),
+                                  "First Name" = field(Names);
                 }
             }
         }
@@ -101,18 +101,18 @@ Page 51516629 "Member Agent Account list"
     trigger OnOpenPage()
     begin
         MemberApp.Reset;
-        MemberApp.SetRange(MemberApp."No.","Account No");
+        MemberApp.SetRange(MemberApp."No.", "Account No");
         if MemberApp.Find('-') then begin
-         if MemberApp.Status=MemberApp.Status::Approved then begin
-          CurrPage.Editable:=false;
-         end else
-          CurrPage.Editable:=true;
+            if MemberApp.Status = MemberApp.Status::Approved then begin
+                CurrPage.Editable := false;
+            end else
+                CurrPage.Editable := true;
         end;
     end;
 
     var
         MemberApp: Record "Membership Applications";
         ReltnShipTypeEditable: Boolean;
-        CUST: Record "Member Register";
+        CUST: Record Customer;
 }
 

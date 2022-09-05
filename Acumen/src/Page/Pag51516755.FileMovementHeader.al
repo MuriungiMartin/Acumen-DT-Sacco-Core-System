@@ -11,81 +11,81 @@ Page 51516755 "File Movement Header"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Requested";"Date Requested")
+                field("Date Requested"; "Date Requested")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested By";"Requested By")
+                field("Requested By"; "Requested By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Retrieved";"Date Retrieved")
+                field("Date Retrieved"; "Date Retrieved")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsiblity Center";"Responsiblity Center")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field("Duration Requested";"Duration Requested")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Expected Return Date";"Expected Return Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Returned";"Date Returned")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Retrieved By";"Retrieved By")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Returned By";"Returned By")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Responsiblity Center"; "Responsiblity Center")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Duration Requested"; "Duration Requested")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Expected Return Date"; "Expected Return Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Date Returned"; "Date Returned")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Retrieved By"; "Retrieved By")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Returned By"; "Returned By")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field(Status;Status)
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Issuing File Location";"Issuing File Location")
+                field("Issuing File Location"; "Issuing File Location")
                 {
                     ApplicationArea = Basic;
                 }
-                field("File Movement Status";"File Movement Status")
+                field("File Movement Status"; "File Movement Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Current File Location";"Current File Location")
+                field("Current File Location"; "Current File Location")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1000000023;"File Movement Line")
+            part(Control1000000023; "File Movement Line")
             {
-                SubPageLink = "Document No."=field("No.");
+                SubPageLink = "Document No." = field("No.");
             }
         }
     }
@@ -105,8 +105,8 @@ Page 51516755 "File Movement Header"
 
                 trigger OnAction()
                 begin
-                    DocumentType:=Documenttype::"File Movement";
-                    ApprovalEntries.Setfilters(Database::"File Movement Header",DocumentType,"No.");
+                    DocumentType := Documenttype::"File Movement";
+                    ApprovalEntries.Setfilters(Database::"File Movement Header", DocumentType, "No.");
                     ApprovalEntries.Run;
                 end;
             }
@@ -122,8 +122,8 @@ Page 51516755 "File Movement Header"
                 trigger OnAction()
                 begin
                     //OnSend Approval
-                     //IF ApprovalsMgmt.CHECKFI(Rec) THEN
-                     // ApprovalsMgmt.OnSendFileMovementDocForApproval(Rec);
+                    //IF ApprovalsMgmt.CHECKFI(Rec) THEN
+                    // ApprovalsMgmt.OnSendFileMovementDocForApproval(Rec);
                 end;
             }
             action("Cancel Approval Request")
@@ -152,7 +152,7 @@ Page 51516755 "File Movement Header"
 
                 trigger OnAction()
                 begin
-                    "Retrieved By":=UserId;
+                    "Retrieved By" := UserId;
                 end;
             }
             action("Receive File")
@@ -165,7 +165,7 @@ Page 51516755 "File Movement Header"
 
                 trigger OnAction()
                 begin
-                    "Returned By":=UserId
+                    "Returned By" := UserId
                 end;
             }
             action("Transfer File")
@@ -178,7 +178,7 @@ Page 51516755 "File Movement Header"
 
                 trigger OnAction()
                 begin
-                    "Current File Location":='REGISRTY';
+                    "Current File Location" := 'REGISRTY';
                 end;
             }
         }
@@ -187,19 +187,19 @@ Page 51516755 "File Movement Header"
     trigger OnInit()
     begin
         if Status = Status::Approved then
-          CurrPage.Editable:=false;
+            CurrPage.Editable := false;
     end;
 
     trigger OnOpenPage()
     begin
         if Status = Status::Approved then
-          CurrPage.Editable:=false;
-        "Issuing File Location":='REGISRTY';
+            CurrPage.Editable := false;
+        "Issuing File Location" := 'REGISRTY';
     end;
 
     var
         DocumentType: Option " ",Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None",JV,"Member Withdrawal","Membership Reg","Loan Batches","Payment Voucher","Petty Cash",Loan,Interbank,Checkoff,"Savings Product Opening","Standing Order",ChangeRequest,Custodial,"File Movement";
         ApprovalEntries: Page "Approval Entries";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
 }
 

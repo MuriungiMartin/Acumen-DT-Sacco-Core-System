@@ -6,39 +6,39 @@ Table 51516506 "Member's Parishes"
 
     fields
     {
-        field(1;"Code";Code[20])
+        field(1; "Code"; Code[20])
         {
         }
-        field(2;Description;Text[50])
+        field(2; Description; Text[50])
         {
         }
-        field(3;"Share Class";Option)
+        field(3; "Share Class"; Option)
         {
             OptionCaption = ' ,Class A,Class B';
             OptionMembers = " ","Class A","Class B";
         }
-        field(4;"No of Members";Integer)
+        field(4; "No of Members"; Integer)
         {
-            CalcFormula = count("Member Register" where ("Members Parish"=field(Code)));
+            CalcFormula = count(Customer where("Members Parish" = field(Code)));
             FieldClass = FlowField;
         }
-        field(5;"Male Members";Integer)
+        field(5; "Male Members"; Integer)
         {
-            CalcFormula = count("Member Register" where ("Members Parish"=field(Code),
-                                                         Gender=filter(" ")));
+            CalcFormula = count(Customer where("Members Parish" = field(Code),
+                                                         Gender = filter(" ")));
             FieldClass = FlowField;
         }
-        field(6;"Female Members";Integer)
+        field(6; "Female Members"; Integer)
         {
-            CalcFormula = count("Member Register" where ("Members Parish"=field(Code),
-                                                         Gender=filter(Male)));
+            CalcFormula = count(Customer where("Members Parish" = field(Code),
+                                                         Gender = filter(Male)));
             FieldClass = FlowField;
         }
     }
 
     keys
     {
-        key(Key1;"Code")
+        key(Key1; "Code")
         {
             Clustered = true;
         }

@@ -6,7 +6,7 @@ Page 51516538 "Group/Corporate Card"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = Vendor;
-    SourceTableView = where("Account Category"=filter(Corporate|Group));
+    SourceTableView = where("Account Category" = filter(Corporate | Group));
 
     layout
     {
@@ -15,76 +15,76 @@ Page 51516538 "Group/Corporate Card"
             group("General Info")
             {
                 Caption = 'General Info';
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'No.';
                     Editable = false;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category";"Account Category")
+                field("Account Category"; "Account Category")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        Joint2DetailsVisible:=false;
+                        Joint2DetailsVisible := false;
 
-                        if "Account Category"="account category"::Joint then begin
-                        Joint2DetailsVisible:=true;
+                        if "Account Category" = "account category"::Joint then begin
+                            Joint2DetailsVisible := true;
                         end;
                     end;
                 }
-                field("Name of the Group/Corporate";"Name of the Group/Corporate")
+                field("Name of the Group/Corporate"; "Name of the Group/Corporate")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Address)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Address';
                     Editable = AddressEditable;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Town;Town)
+                field(Town; Town)
                 {
                     ApplicationArea = Basic;
                     Editable = TownEditable;
                 }
-                field("Country/Region Code";"Country/Region Code")
+                field("Country/Region Code"; "Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     Editable = CountryEditable;
                 }
-                field("Date of Registration";"Date of Registration")
+                field("Date of Registration"; "Date of Registration")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Members";"No of Members")
+                field("No of Members"; "No of Members")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Group/Corporate Trade";"Group/Corporate Trade")
+                field("Group/Corporate Trade"; "Group/Corporate Trade")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Certificate No";"Certificate No")
+                field("Certificate No"; "Certificate No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                     Editable = MobileEditable;
                     ShowMandatory = true;
                 }
-                field("Self Recruited";"Self Recruited")
+                field("Self Recruited"; "Self Recruited")
                 {
                     ApplicationArea = Basic;
 
@@ -93,51 +93,51 @@ Page 51516538 "Group/Corporate Card"
                         //  SelfRecruitedControl();
                     end;
                 }
-                field("Recruited By";"Recruited By")
+                field("Recruited By"; "Recruited By")
                 {
                     ApplicationArea = Basic;
                     Editable = RecruitedByEditable;
                 }
-                field("Recruiter Name";"Recruiter Name")
+                field("Recruiter Name"; "Recruiter Name")
                 {
                     ApplicationArea = Basic;
                     Editable = RecruiterNameEditable;
                 }
-                field("Relationship With Recruiter";"Relationship With Recruiter")
+                field("Relationship With Recruiter"; "Relationship With Recruiter")
                 {
                     ApplicationArea = Basic;
                     Editable = RecruiterRelationShipEditable;
                 }
-                field("Registration Date";"Registration Date")
+                field("Registration Date"; "Registration Date")
                 {
                     ApplicationArea = Basic;
                     Editable = RegistrationDateEditable;
                 }
-                field("Vendor Posting Group";"Vendor Posting Group")
+                field("Vendor Posting Group"; "Vendor Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Monthly Contribution";"Monthly Contribution")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field(Picture;Picture)
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Monthly Contribution"; "Monthly Contribution")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+                field(Picture; Picture)
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -145,19 +145,19 @@ Page 51516538 "Group/Corporate Card"
             }
             group("Referee Details")
             {
-                field("Referee Member No";"Referee Member No")
+                field("Referee Member No"; "Referee Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Referee Name";"Referee Name")
+                field("Referee Name"; "Referee Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Referee ID No";"Referee ID No")
+                field("Referee ID No"; "Referee ID No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Referee Mobile Phone No";"Referee Mobile Phone No")
+                field("Referee Mobile Phone No"; "Referee Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
@@ -165,68 +165,68 @@ Page 51516538 "Group/Corporate Card"
             group("Communication/Location Info")
             {
                 Caption = 'Communication/Location Info';
-                field("Office Telephone No.";"Office Telephone No.")
+                field("Office Telephone No."; "Office Telephone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Extension No.";"Extension No.")
+                field("Extension No."; "Extension No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Office Extension';
                 }
-                field("Email Indemnified";"Email Indemnified")
+                field("Email Indemnified"; "Email Indemnified")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Send E-Statements";"Send E-Statements")
+                field("Send E-Statements"; "Send E-Statements")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail (Personal)";"E-Mail (Personal)")
+                field("E-Mail (Personal)"; "E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
                     Editable = EmailEdiatble;
                 }
-                field("Home Address";"Home Address")
+                field("Home Address"; "Home Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Home Postal Code";"Home Postal Code")
+                field("Home Postal Code"; "Home Postal Code")
                 {
                     ApplicationArea = Basic;
                     Editable = HomeAddressPostalCodeEditable;
                 }
-                field("Home Town";"Home Town")
+                field("Home Town"; "Home Town")
                 {
                     ApplicationArea = Basic;
                 }
-                field(County;County)
+                field(County; County)
                 {
                     ApplicationArea = Basic;
                 }
-                field(District;District)
+                field(District; District)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Location;Location)
+                field(Location; Location)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sub-Location";"Sub-Location")
+                field("Sub-Location"; "Sub-Location")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Contact Person";"Contact Person")
+                field("Contact Person"; "Contact Person")
                 {
                     ApplicationArea = Basic;
                     Editable = ContactPEditable;
                 }
-                field("Contact Person Phone";"Contact Person Phone")
+                field("Contact Person Phone"; "Contact Person Phone")
                 {
                     ApplicationArea = Basic;
                     Editable = ContactPPhoneEditable;
                 }
-                field("ContactPerson Relation";"ContactPerson Relation")
+                field("ContactPerson Relation"; "ContactPerson Relation")
                 {
                     ApplicationArea = Basic;
                     Editable = ContactPRelationEditable;
@@ -235,9 +235,9 @@ Page 51516538 "Group/Corporate Card"
         }
         area(factboxes)
         {
-            part(Control9;"FOSA Statistics FactBox")
+            part(Control9; "FOSA Statistics FactBox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -255,7 +255,7 @@ Page 51516538 "Group/Corporate Card"
                     Caption = 'Ledger E&ntries';
                     Image = VendorLedger;
                     RunObject = Page "Vendor Ledger Entries";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.");
                     ShortCutKey = 'Ctrl+F7';
                 }
@@ -265,8 +265,8 @@ Page 51516538 "Group/Corporate Card"
                     Caption = 'Co&mments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
-                    RunPageLink = "Table Name"=const(Vendor),
-                                  "No."=field("No.");
+                    RunPageLink = "Table Name" = const(Vendor),
+                                  "No." = field("No.");
                 }
                 action(Dimensions)
                 {
@@ -274,8 +274,8 @@ Page 51516538 "Group/Corporate Card"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "Table ID"=const(23),
-                                  "No."=field("No.");
+                    RunPageLink = "Table ID" = const(23),
+                                  "No." = field("No.");
                     ShortCutKey = 'Shift+Ctrl+D';
                 }
                 separator(Action1000000069)
@@ -291,96 +291,96 @@ Page 51516538 "Group/Corporate Card"
                     begin
 
                         if AccountTypes.Get("Account Type") then begin
-                        if AccountTypes."Fixed Deposit" = true then begin
-                        if "Call Deposit" = false then begin
-                        TestField("Fixed Duration");
-                        TestField("FD Maturity Date");
-                        if "FD Maturity Date" > Today then
-                        Error('Fixed deposit has not matured.');
+                            if AccountTypes."Fixed Deposit" = true then begin
+                                if "Call Deposit" = false then begin
+                                    TestField("Fixed Duration");
+                                    TestField("FD Maturity Date");
+                                    if "FD Maturity Date" > Today then
+                                        Error('Fixed deposit has not matured.');
 
-                        end;
+                                end;
 
-                        if "Don't Transfer to Savings" = false then
-                        TestField("Savings Account No.");
+                                if "Don't Transfer to Savings" = false then
+                                    TestField("Savings Account No.");
 
-                        CalcFields("Last Interest Date");
+                                CalcFields("Last Interest Date");
 
-                        if "Call Deposit" = true then begin
-                        if "Last Interest Date" < Today then
-                        Error('Fixed deposit interest not UPDATED. Please update interest.');
-                        end else begin
-                        if "Last Interest Date" < "FD Maturity Date" then
-                        Error('Fixed deposit interest not UPDATED. Please update interest.');
-                        end;
-
-
-
-
-                        if Confirm('Are you sure you want to renew this Fixed deposit. Interest will be transfered accordingly?') = false then
-                        exit;
-
-
-                        CalcFields("Untranfered Interest");
-
-                        if "Call Deposit" = false then begin
-                        "Date Renewed":="FD Maturity Date";
-                        end else
-                        "Date Renewed":=Today;
-                        Validate("Date Renewed");
-                        Modify;
-
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
-
-
-
-                        LineNo:=LineNo+10000;
-
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-RN';
-                        GenJournalLine."External Document No.":="No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        if "Don't Transfer to Savings" = false then
-                        GenJournalLine."Account No.":="Savings Account No."
-                        else
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='Interest Earned';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:=-"Untranfered Interest";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"G/L Account";
-                        GenJournalLine."Bal. Account No.":=AccountTypes."Interest Payable Account";
-                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-
-                        InterestBuffer.Reset;
-                        InterestBuffer.SetRange(InterestBuffer."Account No","No.");
-                        if InterestBuffer.Find('-') then
-                        InterestBuffer.ModifyAll(InterestBuffer.Transferred,true);
-
-
-                        //Post
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then begin
-                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post",GenJournalLine);
-                        end;
+                                if "Call Deposit" = true then begin
+                                    if "Last Interest Date" < Today then
+                                        Error('Fixed deposit interest not UPDATED. Please update interest.');
+                                end else begin
+                                    if "Last Interest Date" < "FD Maturity Date" then
+                                        Error('Fixed deposit interest not UPDATED. Please update interest.');
+                                end;
 
 
 
 
-                        Message('Fixed deposit renewed successfully');
-                        end;
+                                if Confirm('Are you sure you want to renew this Fixed deposit. Interest will be transfered accordingly?') = false then
+                                    exit;
+
+
+                                CalcFields("Untranfered Interest");
+
+                                if "Call Deposit" = false then begin
+                                    "Date Renewed" := "FD Maturity Date";
+                                end else
+                                    "Date Renewed" := Today;
+                                Validate("Date Renewed");
+                                Modify;
+
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then
+                                    GenJournalLine.DeleteAll;
+
+
+
+                                LineNo := LineNo + 10000;
+
+                                GenJournalLine.Init;
+                                GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                GenJournalLine."Line No." := LineNo;
+                                GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                GenJournalLine."Document No." := "No." + '-RN';
+                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                if "Don't Transfer to Savings" = false then
+                                    GenJournalLine."Account No." := "Savings Account No."
+                                else
+                                    GenJournalLine."Account No." := "No.";
+                                GenJournalLine.Validate(GenJournalLine."Account No.");
+                                GenJournalLine."Posting Date" := Today;
+                                GenJournalLine.Description := 'Interest Earned';
+                                GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                GenJournalLine.Amount := -"Untranfered Interest";
+                                GenJournalLine.Validate(GenJournalLine.Amount);
+                                GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
+                                GenJournalLine."Bal. Account No." := AccountTypes."Interest Payable Account";
+                                GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                                if GenJournalLine.Amount <> 0 then
+                                    GenJournalLine.Insert;
+
+                                InterestBuffer.Reset;
+                                InterestBuffer.SetRange(InterestBuffer."Account No", "No.");
+                                if InterestBuffer.Find('-') then
+                                    InterestBuffer.ModifyAll(InterestBuffer.Transferred, true);
+
+
+                                //Post
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then begin
+                                    Codeunit.Run(Codeunit::"Gen. Jnl.-Post", GenJournalLine);
+                                end;
+
+
+
+
+                                Message('Fixed deposit renewed successfully');
+                            end;
                         end;
                     end;
                 }
@@ -398,7 +398,7 @@ Page 51516538 "Group/Corporate Card"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = New;
                     RunObject = Page "Member Account Card";
-                    RunPageLink = "No."=field("BOSA Account No");
+                    RunPageLink = "No." = field("BOSA Account No");
                 }
                 action("<Action11027600800>")
                 {
@@ -427,9 +427,9 @@ Page 51516538 "Group/Corporate Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","BOSA Account No");
+                        Cust.SetRange(Cust."No.", "BOSA Account No");
                         if Cust.Find('-') then
-                        Report.Run(51516360,true,true,Cust);
+                            Report.Run(51516360, true, true, Cust);
                     end;
                 }
                 action("FOSA Loans")
@@ -437,8 +437,8 @@ Page 51516538 "Group/Corporate Card"
                     ApplicationArea = Basic;
                     Promoted = true;
                     RunObject = Page "Loans Sub-Page List";
-                    RunPageLink = "Account No"=field("No."),
-                                  Source=filter(BOSA);
+                    RunPageLink = "Account No" = field("No."),
+                                  Source = filter(BOSA);
                 }
                 action("Close Account")
                 {
@@ -448,41 +448,41 @@ Page 51516538 "Group/Corporate Card"
 
                     trigger OnAction()
                     begin
-                         if Confirm('Are you sure you want to Close this Account?',false)=true then begin
-                         if "Balance (LCY)"-("Uncleared Cheques"+"ATM Transactions"+"EFT Transactions"+MinBalance+UnclearedLoan)<0 then
-                         Error('This Member does not enough Savings to recover Withdrawal Fee')
-                        else
-                            LineN:=LineN+10000;
+                        if Confirm('Are you sure you want to Close this Account?', false) = true then begin
+                            if "Balance (LCY)" - ("Uncleared Cheques" + "ATM Transactions" + "EFT Transactions" + MinBalance + UnclearedLoan) < 0 then
+                                Error('This Member does not enough Savings to recover Withdrawal Fee')
+                            else
+                                LineN := LineN + 10000;
                             Gnljnline.Init;
-                            Gnljnline."Journal Template Name":='GENERAL';
-                            Gnljnline."Journal Batch Name":='ACC CLOSED';
-                            Gnljnline."Line No.":=LineN;
-                            Gnljnline."Account Type":=Gnljnline."account type"::Vendor;
-                            Gnljnline."Account No.":="No.";
+                            Gnljnline."Journal Template Name" := 'GENERAL';
+                            Gnljnline."Journal Batch Name" := 'ACC CLOSED';
+                            Gnljnline."Line No." := LineN;
+                            Gnljnline."Account Type" := Gnljnline."account type"::Vendor;
+                            Gnljnline."Account No." := "No.";
                             Gnljnline.Validate(Gnljnline."Account No.");
-                            Gnljnline."Document No.":='LR-'+"No.";
-                            Gnljnline."Posting Date":=Today;
-                            Gnljnline.Amount:=500;
-                            Gnljnline.Description:='Account Closure Fee';
+                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Posting Date" := Today;
+                            Gnljnline.Amount := 500;
+                            Gnljnline.Description := 'Account Closure Fee';
                             Gnljnline.Validate(Gnljnline.Amount);
-                            if Gnljnline.Amount<>0 then
-                            Gnljnline.Insert;
+                            if Gnljnline.Amount <> 0 then
+                                Gnljnline.Insert;
 
-                            LineN:=LineN+10000;
+                            LineN := LineN + 10000;
                             Gnljnline.Init;
-                            Gnljnline."Journal Template Name":='GENERAL';
-                            Gnljnline."Journal Batch Name":='ACC CLOSED';
-                            Gnljnline."Line No.":=LineN;
-                            Gnljnline."Account Type":=Gnljnline."bal. account type"::"G/L Account";
-                            Gnljnline."Bal. Account No.":='105113';
+                            Gnljnline."Journal Template Name" := 'GENERAL';
+                            Gnljnline."Journal Batch Name" := 'ACC CLOSED';
+                            Gnljnline."Line No." := LineN;
+                            Gnljnline."Account Type" := Gnljnline."bal. account type"::"G/L Account";
+                            Gnljnline."Bal. Account No." := '105113';
                             Gnljnline.Validate(Gnljnline."Bal. Account No.");
-                            Gnljnline."Document No.":='LR-'+"No.";
-                            Gnljnline."Posting Date":=Today;
-                            Gnljnline.Amount:=-500;
-                            Gnljnline.Description:='Account Closure Fee';
+                            Gnljnline."Document No." := 'LR-' + "No.";
+                            Gnljnline."Posting Date" := Today;
+                            Gnljnline.Amount := -500;
+                            Gnljnline.Description := 'Account Closure Fee';
                             Gnljnline.Validate(Gnljnline.Amount);
-                            if Gnljnline.Amount<>0 then
-                            Gnljnline.Insert;
+                            if Gnljnline.Amount <> 0 then
+                                Gnljnline.Insert;
 
 
                         end;
@@ -500,16 +500,16 @@ Page 51516538 "Group/Corporate Card"
                     trigger OnAction()
                     begin
                         if "Account Type" <> 'FIXED' then
-                        Error('Only applicable for Fixed Deposit accounts.');
-                        
+                            Error('Only applicable for Fixed Deposit accounts.');
+
                         CalcFields("Last Interest Date");
-                        
+
                         if "Last Interest Date" >= Today then
-                        Error('Interest Up to date.');
-                        
+                            Error('Interest Up to date.');
+
                         //IF CONFIRM('Are you sure you want to update the Fixed deposit interest.?') = FALSE THEN
                         //EXIT;
-                        
+
                         /*
                         Vend.RESET;
                         Vend.SETRANGE(Vend."No.","No.");
@@ -527,7 +527,7 @@ Page 51516538 "Group/Corporate Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "FOSA Account Signatories Card";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
             }
             group(ActionGroup1000000058)
@@ -540,7 +540,7 @@ Page 51516538 "Group/Corporate Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "FOSA Account  NOK Details";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 separator(Action1000000056)
                 {
@@ -551,71 +551,70 @@ Page 51516538 "Group/Corporate Card"
 
                     trigger OnAction()
                     begin
-                        
+
                         //Transfer Balance if Fixed Deposit
-                        
+
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code,"Account Type");
-                        if AccountTypes.Find('-') then  begin
-                        //IF AccountTypes."Fixed Deposit" <> TRUE THEN BEGIN
-                        if Vend.Get("Savings Account No.") then begin
-                        if Confirm('Are you sure you want to effect the transfer from the savings account',false) = false then
-                        exit else
-                        
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
-                        
-                        Vend.Reset;
-                        if Vend.Find('-') then
-                        Vend.CalcFields(Vend."Balance (LCY)");
-                        //IF (Vend."Balance (LCY)" - 500) < "Fixed Deposit Amount" THEN
-                        //ERROR('Savings account does not have enough money to facilate the requested trasfer.');
-                        //MESSAGE('Katabaka ene!');
-                        LineNo:=LineNo+10000;
-                        
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-OP';
-                        GenJournalLine."External Document No.":="No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="Savings Account No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='FD Balance Tranfers';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        //GenJournalLine.Amount:="Fixed Deposit Amount";
-                        GenJournalLine.Amount:="Amount to Transfer";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                         //MESSAGE('The FDR amount is %1 ',"Fixed Deposit Amount");
-                        LineNo:=LineNo+10000;
-                        
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-OP';
-                        GenJournalLine."External Document No.":="No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='FD Balance Tranfers';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        //GenJournalLine.Amount:=-"Fixed Deposit Amount";
-                        GenJournalLine.Amount:=-"Amount to Transfer";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        //END;
-                        end;
+                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        if AccountTypes.Find('-') then begin
+                            //IF AccountTypes."Fixed Deposit" <> TRUE THEN BEGIN
+                            if Vend.Get("Savings Account No.") then begin
+                                if Confirm('Are you sure you want to effect the transfer from the savings account', false) = false then
+                                    exit else
+                                    GenJournalLine.Reset;
+                                GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then
+                                    GenJournalLine.DeleteAll;
+
+                                Vend.Reset;
+                                if Vend.Find('-') then
+                                    Vend.CalcFields(Vend."Balance (LCY)");
+                                //IF (Vend."Balance (LCY)" - 500) < "Fixed Deposit Amount" THEN
+                                //ERROR('Savings account does not have enough money to facilate the requested trasfer.');
+                                //MESSAGE('Katabaka ene!');
+                                LineNo := LineNo + 10000;
+
+                                GenJournalLine.Init;
+                                GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                GenJournalLine."Line No." := LineNo;
+                                GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                GenJournalLine."Document No." := "No." + '-OP';
+                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                GenJournalLine."Account No." := "Savings Account No.";
+                                GenJournalLine.Validate(GenJournalLine."Account No.");
+                                GenJournalLine."Posting Date" := Today;
+                                GenJournalLine.Description := 'FD Balance Tranfers';
+                                GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                //GenJournalLine.Amount:="Fixed Deposit Amount";
+                                GenJournalLine.Amount := "Amount to Transfer";
+                                GenJournalLine.Validate(GenJournalLine.Amount);
+                                if GenJournalLine.Amount <> 0 then
+                                    GenJournalLine.Insert;
+                                //MESSAGE('The FDR amount is %1 ',"Fixed Deposit Amount");
+                                LineNo := LineNo + 10000;
+
+                                GenJournalLine.Init;
+                                GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                GenJournalLine."Line No." := LineNo;
+                                GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                GenJournalLine."Document No." := "No." + '-OP';
+                                GenJournalLine."External Document No." := "No.";
+                                GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                GenJournalLine."Account No." := "No.";
+                                GenJournalLine.Validate(GenJournalLine."Account No.");
+                                GenJournalLine."Posting Date" := Today;
+                                GenJournalLine.Description := 'FD Balance Tranfers';
+                                GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                //GenJournalLine.Amount:=-"Fixed Deposit Amount";
+                                GenJournalLine.Amount := -"Amount to Transfer";
+                                GenJournalLine.Validate(GenJournalLine.Amount);
+                                if GenJournalLine.Amount <> 0 then
+                                    GenJournalLine.Insert;
+
+                                //END;
+                            end;
                         end;
                         /*
                         GenJournalLine.RESET;
@@ -627,8 +626,8 @@ Page 51516538 "Group/Corporate Card"
                         UNTIL GenJournalLine.NEXT = 0;
                         END;
                         */
-                        
-                        
+
+
                         /*//Post New
                         
                         GenJournalLine.RESET;
@@ -640,7 +639,7 @@ Page 51516538 "Group/Corporate Card"
                         
                         //Post New
                         */
-                        
+
                         /*
                         GenJournalLine.RESET;
                         GenJournalLine.SETRANGE("Journal Template Name",'PURCHASES');
@@ -662,78 +661,78 @@ Page 51516538 "Group/Corporate Card"
                         //Transfer Balance if Fixed Deposit
 
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code,"Account Type");
-                        if AccountTypes.Find('-') then  begin
-                        if AccountTypes."Fixed Deposit" = true then begin
-                        if Vend.Get("No.") then begin
-                        if Confirm('Are you sure you want to effect the transfer from the Fixed Deposit account',false) = false then
-                        exit;
+                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        if AccountTypes.Find('-') then begin
+                            if AccountTypes."Fixed Deposit" = true then begin
+                                if Vend.Get("No.") then begin
+                                    if Confirm('Are you sure you want to effect the transfer from the Fixed Deposit account', false) = false then
+                                        exit;
+
+                                    GenJournalLine.Reset;
+                                    GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                                    GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'FTRANS');
+                                    if GenJournalLine.Find('-') then
+                                        GenJournalLine.DeleteAll;
+
+                                    Vend.CalcFields(Vend."Balance (LCY)");
+                                    if (Vend."Balance (LCY)") < "Transfer Amount to Savings" then
+                                        Error('Fixed Deposit account does not have enough money to facilate the requested trasfer.');
+
+                                    LineNo := LineNo + 10000;
+
+                                    GenJournalLine.Init;
+                                    GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                    GenJournalLine."Document No." := "No." + '-OP';
+                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                    GenJournalLine."Account No." := "No.";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine."Posting Date" := Today;
+                                    GenJournalLine.Description := 'FD Balance Tranfers';
+                                    GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                    GenJournalLine.Amount := "Transfer Amount to Savings";
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+                                    LineNo := LineNo + 10000;
+
+                                    GenJournalLine.Init;
+                                    GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                    GenJournalLine."Document No." := "No." + '-OP';
+                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                    GenJournalLine."Account No." := "Savings Account No.";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine."Posting Date" := Today;
+                                    GenJournalLine.Description := 'FD Balance Tranfers';
+                                    GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                    GenJournalLine.Amount := -"Transfer Amount to Savings";
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+                                end;
+                            end;
+                        end;
 
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
-
-                        Vend.CalcFields(Vend."Balance (LCY)");
-                        if (Vend."Balance (LCY)") < "Transfer Amount to Savings" then
-                        Error('Fixed Deposit account does not have enough money to facilate the requested trasfer.');
-
-                        LineNo:=LineNo+10000;
-
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-OP';
-                        GenJournalLine."External Document No.":="No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='FD Balance Tranfers';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:="Transfer Amount to Savings";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-
-                        LineNo:=LineNo+10000;
-
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-OP';
-                        GenJournalLine."External Document No.":="No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="Savings Account No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='FD Balance Tranfers';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:=-"Transfer Amount to Savings";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-
-                        end;
-                        end;
-                        end;
-
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         if GenJournalLine.Find('-') then begin
-                        repeat
-                        //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
-                        until GenJournalLine.Next = 0;
+                            repeat
+                            //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                            until GenJournalLine.Next = 0;
                         end;
 
 
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         GenJournalLine.DeleteAll;
 
                         Message('Amount transfered successfully.');
@@ -747,20 +746,20 @@ Page 51516538 "Group/Corporate Card"
                     begin
 
                         if AccountTypes.Get("Account Type") then begin
-                        if AccountTypes."Fixed Deposit" = true then begin
-                        if Confirm('Are you sure you want to renew the fixed deposit.',false) = false then
-                        exit;
+                            if AccountTypes."Fixed Deposit" = true then begin
+                                if Confirm('Are you sure you want to renew the fixed deposit.', false) = false then
+                                    exit;
 
-                        TestField("FD Maturity Date");
-                        if FDType.Get("Fixed Deposit Type") then begin
-                        "FD Maturity Date":=CalcDate(FDType.Duration,"FD Maturity Date");
-                        "Date Renewed":=Today;
-                        "FDR Deposit Status Type":="fdr deposit status type"::New;
-                        Modify;
+                                TestField("FD Maturity Date");
+                                if FDType.Get("Fixed Deposit Type") then begin
+                                    "FD Maturity Date" := CalcDate(FDType.Duration, "FD Maturity Date");
+                                    "Date Renewed" := Today;
+                                    "FDR Deposit Status Type" := "fdr deposit status type"::New;
+                                    Modify;
 
-                        Message('Fixed deposit renewed successfully');
-                        end;
-                        end;
+                                    Message('Fixed deposit renewed successfully');
+                                end;
+                            end;
                         end;
                     end;
                 }
@@ -770,107 +769,107 @@ Page 51516538 "Group/Corporate Card"
 
                     trigger OnAction()
                     begin
-                        
+
                         //Transfer Balance if Fixed Deposit
-                        
+
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code,"Account Type");
-                        if AccountTypes.Find('-') then  begin
-                        if AccountTypes."Fixed Deposit" = true then begin
-                        if Vend.Get("No.") then begin
-                        if Confirm('Are you sure you want to Terminate this Fixed Deposit Contract?',false) = false then
-                        exit;
-                        
+                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        if AccountTypes.Find('-') then begin
+                            if AccountTypes."Fixed Deposit" = true then begin
+                                if Vend.Get("No.") then begin
+                                    if Confirm('Are you sure you want to Terminate this Fixed Deposit Contract?', false) = false then
+                                        exit;
+
+                                    GenJournalLine.Reset;
+                                    GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                                    GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'FTRANS');
+                                    if GenJournalLine.Find('-') then
+                                        GenJournalLine.DeleteAll;
+
+                                    Vend.CalcFields(Vend."Balance (LCY)");
+                                    if (Vend."Balance (LCY)") < "Transfer Amount to Savings" then
+                                        Error('Fixed Deposit account does not have enough money to facilate the requested trasfer.');
+
+                                    LineNo := LineNo + 10000;
+
+                                    GenJournalLine.Init;
+                                    GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                    GenJournalLine."Document No." := "No." + '-OP';
+                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                    GenJournalLine."Account No." := "No.";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine."Posting Date" := Today;
+                                    GenJournalLine.Description := 'FD Termination Tranfer';
+                                    GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                    GenJournalLine.Amount := "Balance (LCY)";
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+                                    LineNo := LineNo + 10000;
+
+                                    GenJournalLine.Init;
+                                    GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                    GenJournalLine."Document No." := "No." + '-OP';
+                                    GenJournalLine."External Document No." := "No.";
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                    GenJournalLine."Account No." := "Savings Account No.";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine."Posting Date" := Today;
+                                    GenJournalLine.Description := 'FD Termination Tranfer';
+                                    GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                    GenJournalLine.Amount := -"Balance (LCY)";
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+                                end;
+                            end;
+                        end;
+
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
-                        
-                        Vend.CalcFields(Vend."Balance (LCY)");
-                        if (Vend."Balance (LCY)") < "Transfer Amount to Savings" then
-                        Error('Fixed Deposit account does not have enough money to facilate the requested trasfer.');
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-OP';
-                        GenJournalLine."External Document No.":="No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='FD Termination Tranfer';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:="Balance (LCY)";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-OP';
-                        GenJournalLine."External Document No.":="No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="Savings Account No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='FD Termination Tranfer';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:=-"Balance (LCY)";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        end;
-                        end;
-                        end;
-                        
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         if GenJournalLine.Find('-') then begin
-                        repeat
-                        //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
-                        until GenJournalLine.Next = 0;
+                            repeat
+                            //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                            until GenJournalLine.Next = 0;
                         end;
-                        
-                        
+
+
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         GenJournalLine.DeleteAll;
-                        
+
                         Message('Amount transfered successfully back to the savings Account.');
-                        "FDR Deposit Status Type":="fdr deposit status type"::Renewed;
-                        
-                         /*
-                        //Renew Fixed deposit - OnAction()
-                        
-                        IF AccountTypes.GET("Account Type") THEN BEGIN
-                        IF AccountTypes."Fixed Deposit" = TRUE THEN BEGIN
-                        IF CONFIRM('Are you sure you want to renew the fixed deposit.',FALSE) = FALSE THEN
-                        EXIT;
-                        
-                        TESTFIELD("FD Maturity Date");
-                        IF FDType.GET("Fixed Deposit Type") THEN BEGIN
-                        "FD Maturity Date":=CALCDATE(FDType.Duration,"FD Maturity Date");
-                        "Date Renewed":=TODAY;
-                        "FDR Deposit Status Type":="FDR Deposit Status Type"::Renewed;
-                        MODIFY;
-                        
-                        MESSAGE('Fixed deposit renewed successfully');
-                        END;
-                        END;
-                        END;
-                          */
+                        "FDR Deposit Status Type" := "fdr deposit status type"::Renewed;
+
+                        /*
+                       //Renew Fixed deposit - OnAction()
+
+                       IF AccountTypes.GET("Account Type") THEN BEGIN
+                       IF AccountTypes."Fixed Deposit" = TRUE THEN BEGIN
+                       IF CONFIRM('Are you sure you want to renew the fixed deposit.',FALSE) = FALSE THEN
+                       EXIT;
+
+                       TESTFIELD("FD Maturity Date");
+                       IF FDType.GET("Fixed Deposit Type") THEN BEGIN
+                       "FD Maturity Date":=CALCDATE(FDType.Duration,"FD Maturity Date");
+                       "Date Renewed":=TODAY;
+                       "FDR Deposit Status Type":="FDR Deposit Status Type"::Renewed;
+                       MODIFY;
+
+                       MESSAGE('Fixed deposit renewed successfully');
+                       END;
+                       END;
+                       END;
+                         */
 
                     end;
                 }
@@ -886,9 +885,9 @@ Page 51516538 "Group/Corporate Card"
                     begin
 
                         Vend.Reset;
-                        Vend.SetRange(Vend."No.","No.");
+                        Vend.SetRange(Vend."No.", "No.");
                         if Vend.Find('-') then
-                        Report.Run(51516476,true,false,Vend)
+                            Report.Run(51516476, true, false, Vend)
                     end;
                 }
                 action("Page Vendor Statistics")
@@ -899,9 +898,9 @@ Page 51516538 "Group/Corporate Card"
                     Promoted = true;
                     PromotedCategory = "Report";
                     RunObject = Page "Vendor Statistics";
-                    RunPageLink = "No."=field("No."),
-                                  "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                                  "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                    RunPageLink = "No." = field("No."),
+                                  "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                                  "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                     ShortCutKey = 'F7';
                 }
                 action("Charge Fosa Statement")
@@ -914,63 +913,63 @@ Page 51516538 "Group/Corporate Card"
                     trigger OnAction()
                     begin
 
-                        if Confirm('Are you sure you want to charge statement fee? This will recover statement fee.',false) = false then
-                        exit;
+                        if Confirm('Are you sure you want to charge statement fee? This will recover statement fee.', false) = false then
+                            exit;
 
-                        CalcFields("Balance (LCY)","ATM Transactions");
-                        if ("Balance (LCY)"-"ATM Transactions")<=0 then
-                        Error('This Account does not have sufficient funds');
+                        CalcFields("Balance (LCY)", "ATM Transactions");
+                        if ("Balance (LCY)" - "ATM Transactions") <= 0 then
+                            Error('This Account does not have sufficient funds');
 
 
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code,"Account Type");
-                        if AccountTypes.Find('-') then  begin
+                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        if AccountTypes.Find('-') then begin
 
-                        //Closure charges
-                        Charges.Reset;
-                        Charges.SetRange(Charges.Code,AccountTypes."Statement Charge");
-                        if Charges.Find('-') then begin
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
+                            //Closure charges
+                            Charges.Reset;
+                            Charges.SetRange(Charges.Code, AccountTypes."Statement Charge");
+                            if Charges.Find('-') then begin
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then
+                                    GenJournalLine.DeleteAll;
 
-                        LineNo:=LineNo+10000;
+                                LineNo := LineNo + 10000;
 
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-STM';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:=Charges.Description;
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:=Charges."Charge Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"G/L Account";
-                        GenJournalLine."Bal. Account No.":=Charges."GL Account";
-                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-
-
-                        //Post New
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then begin
-                        //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
-                        end;
-
-                        //Post New
+                                GenJournalLine.Init;
+                                GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                GenJournalLine."Document No." := "No." + '-STM';
+                                GenJournalLine."Line No." := LineNo;
+                                GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                GenJournalLine."Account No." := "No.";
+                                GenJournalLine.Validate(GenJournalLine."Account No.");
+                                GenJournalLine."Posting Date" := Today;
+                                GenJournalLine.Description := Charges.Description;
+                                GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                GenJournalLine.Amount := Charges."Charge Amount";
+                                GenJournalLine.Validate(GenJournalLine.Amount);
+                                GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
+                                GenJournalLine."Bal. Account No." := Charges."GL Account";
+                                GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                                if GenJournalLine.Amount <> 0 then
+                                    GenJournalLine.Insert;
 
 
-                        end;
-                        //Closure charges
+                                //Post New
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then begin
+                                    //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                                end;
+
+                                //Post New
+
+
+                            end;
+                            //Closure charges
 
                         end;
                     end;
@@ -988,74 +987,74 @@ Page 51516538 "Group/Corporate Card"
                     trigger OnAction()
                     begin
 
-                        if "Account Type"='SPECIAL' then
-                        Error('You cannot recover Class B Shares from this account');
+                        if "Account Type" = 'SPECIAL' then
+                            Error('You cannot recover Class B Shares from this account');
 
-                        if "Shares Recovered"=true then
-                        Error('Class B shares already recovered');
+                        if "Shares Recovered" = true then
+                            Error('Class B shares already recovered');
 
-                        if Confirm('Are you sure you want to recover Class B shares? This will recover Class B shares.',false) = false then
-                        exit;
+                        if Confirm('Are you sure you want to recover Class B shares? This will recover Class B shares.', false) = false then
+                            exit;
 
 
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code,"Account Type");
-                        if AccountTypes.Find('-') then  begin
+                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        if AccountTypes.Find('-') then begin
 
-                        // charges
-                        Charges.Reset;
-                        Charges.SetRange(Charges.Code,AccountTypes."FOSA Shares");
-                        if Charges.Find('-') then begin
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
+                            // charges
+                            Charges.Reset;
+                            Charges.SetRange(Charges.Code, AccountTypes."FOSA Shares");
+                            if Charges.Find('-') then begin
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then
+                                    GenJournalLine.DeleteAll;
 
-                        CalcFields("Balance (LCY)","ATM Transactions");
-                        if ("Balance (LCY)"-"ATM Transactions") <= Charges."Charge Amount" then
-                        Error('This Account does not have sufficient funds');
+                                CalcFields("Balance (LCY)", "ATM Transactions");
+                                if ("Balance (LCY)" - "ATM Transactions") <= Charges."Charge Amount" then
+                                    Error('This Account does not have sufficient funds');
 
-                        LineNo:=LineNo+10000;
+                                LineNo := LineNo + 10000;
 
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-FSH';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:=Charges.Description;
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:=Charges."Charge Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"G/L Account";
-                        GenJournalLine."Bal. Account No.":=Charges."GL Account";
-                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
+                                GenJournalLine.Init;
+                                GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                GenJournalLine."Document No." := "No." + '-FSH';
+                                GenJournalLine."Line No." := LineNo;
+                                GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                GenJournalLine."Account No." := "No.";
+                                GenJournalLine.Validate(GenJournalLine."Account No.");
+                                GenJournalLine."Posting Date" := Today;
+                                GenJournalLine.Description := Charges.Description;
+                                GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                GenJournalLine.Amount := Charges."Charge Amount";
+                                GenJournalLine.Validate(GenJournalLine.Amount);
+                                GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
+                                GenJournalLine."Bal. Account No." := Charges."GL Account";
+                                GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                                if GenJournalLine.Amount <> 0 then
+                                    GenJournalLine.Insert;
 
 
-                        //Post New
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then begin
-                        //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                                //Post New
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then begin
+                                    //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                                end;
+
+                                //Post New
+
+
+                            end;
+                            //Closure charges
+
                         end;
 
-                        //Post New
-
-
-                        end;
-                        //Closure charges
-
-                        end;
-
-                        "Shares Recovered":=true;
-                        "ClassB Shares":= -Charges."Charge Amount";
+                        "Shares Recovered" := true;
+                        "ClassB Shares" := -Charges."Charge Amount";
                         Modify;
                     end;
                 }
@@ -1071,75 +1070,75 @@ Page 51516538 "Group/Corporate Card"
                     trigger OnAction()
                     begin
 
-                        if Confirm('Are you sure you want to post the ATM Charges fee?')=false then
-                        exit;
+                        if Confirm('Are you sure you want to post the ATM Charges fee?') = false then
+                            exit;
 
 
-                        CalcFields("Balance (LCY)","ATM Transactions");
-                        if ("Balance (LCY)"-"ATM Transactions")<=0 then
-                        Error('This Account does not have sufficient funds');
+                        CalcFields("Balance (LCY)", "ATM Transactions");
+                        if ("Balance (LCY)" - "ATM Transactions") <= 0 then
+                            Error('This Account does not have sufficient funds');
 
 
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         GenJournalLine.DeleteAll;
 
                         GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Line No.":=GenJournalLine."Line No."+1000;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine."Document No.":="Card No.";
-                        GenJournalLine.Description:='Sacco Link Card Charges: '+ "Card No.";
-                        GenJournalLine.Amount:=550;
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
+                        GenJournalLine."Journal Template Name" := 'PURCHASES';
+                        GenJournalLine."Journal Batch Name" := 'FTRANS';
+                        GenJournalLine."Line No." := GenJournalLine."Line No." + 1000;
+                        GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                        GenJournalLine."Account No." := "No.";
+                        GenJournalLine."Posting Date" := Today;
+                        GenJournalLine."Document No." := "Card No.";
+                        GenJournalLine.Description := 'Sacco Link Card Charges: ' + "Card No.";
+                        GenJournalLine.Amount := 550;
+                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        if GenJournalLine.Amount <>0 then
-                        GenJournalLine.Insert;
+                        if GenJournalLine.Amount <> 0 then
+                            GenJournalLine.Insert;
 
 
                         GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Line No.":=GenJournalLine."Line No."+1000;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::"Bank Account";
-                        GenJournalLine."Account No.":='BNK000001';
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine."Document No.":="Card No.";
-                        GenJournalLine.Description:='Sacco Link Card Charges: No.'+ "Card No.";
-                        GenJournalLine.Amount:=-500;
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
+                        GenJournalLine."Journal Template Name" := 'PURCHASES';
+                        GenJournalLine."Journal Batch Name" := 'FTRANS';
+                        GenJournalLine."Line No." := GenJournalLine."Line No." + 1000;
+                        GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
+                        GenJournalLine."Account No." := 'BNK000001';
+                        GenJournalLine."Posting Date" := Today;
+                        GenJournalLine."Document No." := "Card No.";
+                        GenJournalLine.Description := 'Sacco Link Card Charges: No.' + "Card No.";
+                        GenJournalLine.Amount := -500;
+                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        if GenJournalLine.Amount <>0 then
-                        GenJournalLine.Insert;
+                        if GenJournalLine.Amount <> 0 then
+                            GenJournalLine.Insert;
 
                         //Comms to Commissions account
                         GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Line No.":=GenJournalLine."Line No."+1000;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::"G/L Account";
-                        GenJournalLine."Account No.":='4-11-000310';
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine."Document No.":="Card No.";
-                        GenJournalLine.Description:='Sacco Link Card Charges' + 'No.'+ "Card No.";
-                        GenJournalLine.Amount:=-50;
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
+                        GenJournalLine."Journal Template Name" := 'PURCHASES';
+                        GenJournalLine."Journal Batch Name" := 'FTRANS';
+                        GenJournalLine."Line No." := GenJournalLine."Line No." + 1000;
+                        GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                        GenJournalLine."Account No." := '4-11-000310';
+                        GenJournalLine."Posting Date" := Today;
+                        GenJournalLine."Document No." := "Card No.";
+                        GenJournalLine.Description := 'Sacco Link Card Charges' + 'No.' + "Card No.";
+                        GenJournalLine.Amount := -50;
+                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        if GenJournalLine.Amount <>0 then
-                        GenJournalLine.Insert;
+                        if GenJournalLine.Amount <> 0 then
+                            GenJournalLine.Insert;
 
 
 
                         //Post New
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         if GenJournalLine.Find('-') then begin
-                        //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                            //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
                         end;
                         //Post New
                     end;
@@ -1155,75 +1154,75 @@ Page 51516538 "Group/Corporate Card"
 
                     trigger OnAction()
                     begin
-                        if Confirm('Are you sure you want to post the ATM Charges fee?')=false then
-                        exit;
+                        if Confirm('Are you sure you want to post the ATM Charges fee?') = false then
+                            exit;
 
 
-                        CalcFields("Balance (LCY)","ATM Transactions");
-                        if ("Balance (LCY)"-"ATM Transactions")<=0 then
-                        Error('This Account does not have sufficient funds');
+                        CalcFields("Balance (LCY)", "ATM Transactions");
+                        if ("Balance (LCY)" - "ATM Transactions") <= 0 then
+                            Error('This Account does not have sufficient funds');
 
 
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         GenJournalLine.DeleteAll;
 
                         GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Line No.":=GenJournalLine."Line No."+1000;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine."Document No.":="Card No.";
-                        GenJournalLine.Description:='Sacco Link Card Charges: '+ "Card No.";
-                        GenJournalLine.Amount:=600;
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
+                        GenJournalLine."Journal Template Name" := 'PURCHASES';
+                        GenJournalLine."Journal Batch Name" := 'FTRANS';
+                        GenJournalLine."Line No." := GenJournalLine."Line No." + 1000;
+                        GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                        GenJournalLine."Account No." := "No.";
+                        GenJournalLine."Posting Date" := Today;
+                        GenJournalLine."Document No." := "Card No.";
+                        GenJournalLine.Description := 'Sacco Link Card Charges: ' + "Card No.";
+                        GenJournalLine.Amount := 600;
+                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        if GenJournalLine.Amount <>0 then
-                        GenJournalLine.Insert;
+                        if GenJournalLine.Amount <> 0 then
+                            GenJournalLine.Insert;
 
 
                         GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Line No.":=GenJournalLine."Line No."+1000;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::"Bank Account";
-                        GenJournalLine."Account No.":='BNK000001';
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine."Document No.":="Card No.";
-                        GenJournalLine.Description:='Sacco Link Card Charges: No.'+ "Card No.";
-                        GenJournalLine.Amount:=-500;
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
+                        GenJournalLine."Journal Template Name" := 'PURCHASES';
+                        GenJournalLine."Journal Batch Name" := 'FTRANS';
+                        GenJournalLine."Line No." := GenJournalLine."Line No." + 1000;
+                        GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
+                        GenJournalLine."Account No." := 'BNK000001';
+                        GenJournalLine."Posting Date" := Today;
+                        GenJournalLine."Document No." := "Card No.";
+                        GenJournalLine.Description := 'Sacco Link Card Charges: No.' + "Card No.";
+                        GenJournalLine.Amount := -500;
+                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        if GenJournalLine.Amount <>0 then
-                        GenJournalLine.Insert;
+                        if GenJournalLine.Amount <> 0 then
+                            GenJournalLine.Insert;
 
                         //Comms to Commissions account
                         GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Line No.":=GenJournalLine."Line No."+1000;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::"G/L Account";
-                        GenJournalLine."Account No.":='4-11-000310';
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine."Document No.":="Card No.";
-                        GenJournalLine.Description:='Sacco Link Card Charges' + 'No.'+ "Card No.";
-                        GenJournalLine.Amount:=-100;
-                        GenJournalLine."Shortcut Dimension 1 Code":='FOSA';
+                        GenJournalLine."Journal Template Name" := 'PURCHASES';
+                        GenJournalLine."Journal Batch Name" := 'FTRANS';
+                        GenJournalLine."Line No." := GenJournalLine."Line No." + 1000;
+                        GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                        GenJournalLine."Account No." := '4-11-000310';
+                        GenJournalLine."Posting Date" := Today;
+                        GenJournalLine."Document No." := "Card No.";
+                        GenJournalLine.Description := 'Sacco Link Card Charges' + 'No.' + "Card No.";
+                        GenJournalLine.Amount := -100;
+                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
                         GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        if GenJournalLine.Amount <>0 then
-                        GenJournalLine.Insert;
+                        if GenJournalLine.Amount <> 0 then
+                            GenJournalLine.Insert;
 
 
 
                         //Post New
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                        GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
                         if GenJournalLine.Find('-') then begin
-                        //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                            //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
                         end;
                         //Post New
                     end;
@@ -1239,63 +1238,63 @@ Page 51516538 "Group/Corporate Card"
                     trigger OnAction()
                     begin
 
-                        if Confirm('Are you sure you want to charge Pass book fee? This will recover passbook fee.',false) = false then
-                        exit;
+                        if Confirm('Are you sure you want to charge Pass book fee? This will recover passbook fee.', false) = false then
+                            exit;
 
-                        CalcFields("Balance (LCY)","ATM Transactions");
-                        if ("Balance (LCY)"-"ATM Transactions")<=0 then
-                        Error('This Account does not have sufficient funds');
+                        CalcFields("Balance (LCY)", "ATM Transactions");
+                        if ("Balance (LCY)" - "ATM Transactions") <= 0 then
+                            Error('This Account does not have sufficient funds');
 
 
                         AccountTypes.Reset;
-                        AccountTypes.SetRange(AccountTypes.Code,"Account Type");
-                        if AccountTypes.Find('-') then  begin
+                        AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                        if AccountTypes.Find('-') then begin
 
-                        //Closure charges
-                        Charges.Reset;
-                        Charges.SetRange(Charges.Code,AccountTypes."Statement Charge");
-                        if Charges.Find('-') then begin
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
+                            //Closure charges
+                            Charges.Reset;
+                            Charges.SetRange(Charges.Code, AccountTypes."Statement Charge");
+                            if Charges.Find('-') then begin
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then
+                                    GenJournalLine.DeleteAll;
 
-                        LineNo:=LineNo+10000;
+                                LineNo := LineNo + 10000;
 
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Journal Batch Name":='FTRANS';
-                        GenJournalLine."Document No.":="No."+'-STM';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:=Charges.Description;
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount:=Charges."Charge Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"G/L Account";
-                        GenJournalLine."Bal. Account No.":=Charges."GL Account";
-                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-
-
-                        //Post New
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'FTRANS');
-                        if GenJournalLine.Find('-') then begin
-                        //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
-                        end;
-
-                        //Post New
+                                GenJournalLine.Init;
+                                GenJournalLine."Journal Template Name" := 'PURCHASES';
+                                GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                GenJournalLine."Document No." := "No." + '-STM';
+                                GenJournalLine."Line No." := LineNo;
+                                GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                GenJournalLine."Account No." := "No.";
+                                GenJournalLine.Validate(GenJournalLine."Account No.");
+                                GenJournalLine."Posting Date" := Today;
+                                GenJournalLine.Description := Charges.Description;
+                                GenJournalLine.Validate(GenJournalLine."Currency Code");
+                                GenJournalLine.Amount := Charges."Charge Amount";
+                                GenJournalLine.Validate(GenJournalLine.Amount);
+                                GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
+                                GenJournalLine."Bal. Account No." := Charges."GL Account";
+                                GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                                if GenJournalLine.Amount <> 0 then
+                                    GenJournalLine.Insert;
 
 
-                        end;
-                        //Closure charges
+                                //Post New
+                                GenJournalLine.Reset;
+                                GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                                GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
+                                if GenJournalLine.Find('-') then begin
+                                    //CODEUNIT.RUN(CODEUNIT::Codeunit,GenJournalLine);
+                                end;
+
+                                //Post New
+
+
+                            end;
+                            //Closure charges
 
                         end;
                     end;
@@ -1304,7 +1303,7 @@ Page 51516538 "Group/Corporate Card"
                 {
                     ApplicationArea = Basic;
                     RunObject = Page "Products Signatories";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
             }
         }
@@ -1312,14 +1311,14 @@ Page 51516538 "Group/Corporate Card"
 
     trigger OnAfterGetRecord()
     begin
-        "Self Recruited":=true;
-        EmployedEditable:=false;
-        ContractingEditable:=false;
-        OthersEditable:=false;
-        if "Account Category"<>"account category"::Joint then begin
-        Joint2DetailsVisible:=false;
+        "Self Recruited" := true;
+        EmployedEditable := false;
+        ContractingEditable := false;
+        OthersEditable := false;
+        if "Account Category" <> "account category"::Joint then begin
+            Joint2DetailsVisible := false;
         end else
-        Joint2DetailsVisible:=true;
+            Joint2DetailsVisible := true;
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
@@ -1329,7 +1328,7 @@ Page 51516538 "Group/Corporate Card"
 
     trigger OnOpenPage()
     begin
-        
+
         /*IF UserMgt.GetSalesFilter <> '' THEN BEGIN
           FILTERGROUP(2);
           SETRANGE("Responsibility Centre",UserMgt.GetSalesFilter);
@@ -1341,7 +1340,7 @@ Page 51516538 "Group/Corporate Card"
 
     var
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Accounts: Record Vendor;
         AcctNo: Code[20];
         NextOfKinApp: Record "Member App Nominee";

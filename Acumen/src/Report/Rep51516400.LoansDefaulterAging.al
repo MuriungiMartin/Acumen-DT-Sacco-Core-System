@@ -438,7 +438,7 @@ Report 51516400 "Loans Defaulter Aging"
         NoLoans: Integer;
         PhoneNo: Text[30];
         PaidAmount: Decimal;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         "StaffNo.": Text[30];
         Deposits: Decimal;
         GrandTotal: Decimal;

@@ -18,7 +18,7 @@ Table 51516496 "Customer Care Logs"
         }
         field(2; "Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -144,16 +144,18 @@ Table 51516496 "Customer Care Logs"
 
             trigger OnLookup()
             var
-                UserMgt: Codeunit "User Management";
+                UserMgt: Codeunit UserManagementCUExt;
+                User: Record User;
             begin
-                UserMgt.LookupUserID("Caller Reffered To");
+                UserMgt.LookupUser("Caller Reffered To");
             end;
 
             trigger OnValidate()
             var
-                UserMgt: Codeunit "User Management";
+                UserMgt: Codeunit UserManagementCUExt;
+                User: Record User;
             begin
-                UserMgt.ValidateUserID("Caller Reffered To");
+                UserMgt.ValidateUserName(User, User, "Caller Reffered To");
             end;
         }
         field(29; "Received From"; Code[20])
@@ -211,7 +213,7 @@ Table 51516496 "Customer Care Logs"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Loans: Record "Loans Register";
         GenSetUp: Record "Sacco General Set-Up";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         PVApp: Record "Cust. Ledger Entry";
         UserMgt: Codeunit "User Setup Management";
         PRD: Record Customer;

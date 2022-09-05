@@ -4,7 +4,7 @@ Page 51516019 "Mobile Payment Card"
     DeleteAllowed = false;
     PageType = Card;
     SourceTable = "Payment Header.";
-    SourceTableView = where("Payment Type"=const(Mobile));
+    SourceTableView = where("Payment Type" = const(Mobile));
 
     layout
     {
@@ -12,115 +12,115 @@ Page 51516019 "Mobile Payment Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; "Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Mode";"Payment Mode")
+                field("Payment Mode"; "Payment Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; "Currency Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account";"Bank Account")
+                field("Bank Account"; "Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Name";"Bank Account Name")
+                field("Bank Account Name"; "Bank Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account Balance";"Bank Account Balance")
+                field("Bank Account Balance"; "Bank Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Type";"Cheque Type")
+                field("Cheque Type"; "Cheque Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque No";"Cheque No")
+                field("Cheque No"; "Cheque No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Payee;Payee)
+                field(Payee; Payee)
                 {
                     ApplicationArea = Basic;
                 }
-                field("On Behalf Of";"On Behalf Of")
+                field("On Behalf Of"; "On Behalf Of")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Payment Description";"Payment Description")
+                field("Payment Description"; "Payment Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; "Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Amount";"VAT Amount")
+                field("VAT Amount"; "VAT Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("VAT Amount(LCY)";"VAT Amount(LCY)")
+                field("VAT Amount(LCY)"; "VAT Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("WithHolding Tax Amount";"WithHolding Tax Amount")
+                field("WithHolding Tax Amount"; "WithHolding Tax Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("WithHolding Tax Amount(LCY)";"WithHolding Tax Amount(LCY)")
+                field("WithHolding Tax Amount(LCY)"; "WithHolding Tax Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount";"Net Amount")
+                field("Net Amount"; "Net Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Net Amount(LCY)";"Net Amount(LCY)")
+                field("Net Amount(LCY)"; "Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control35;"Mobile Payment Line")
+            part(Control35; "Mobile Payment Line")
             {
-                SubPageLink = Cashier=field("No.");
+                SubPageLink = Cashier = field("No.");
             }
         }
     }
@@ -139,16 +139,17 @@ Page 51516019 "Mobile Payment Card"
 
                 trigger OnAction()
                 begin
-                      CheckRequiredItems;
-                      TestField(Status,Status::Approved);
-                      if FundsUser.Get(UserId) then begin
+                    CheckRequiredItems;
+                    TestField(Status, Status::Approved);
+                    if FundsUser.Get(UserId) then begin
                         FundsUser.TestField(FundsUser."Payment Journal Template");
                         FundsUser.TestField(FundsUser."Payment Journal Batch");
-                        JTemplate:=FundsUser."Payment Journal Template";JBatch:=FundsUser."Payment Journal Batch";
-                        FundsManager.PostPayment(Rec,JTemplate,JBatch);
-                      end else begin
+                        JTemplate := FundsUser."Payment Journal Template";
+                        JBatch := FundsUser."Payment Journal Batch";
+                        FundsManager.PostPayment(Rec, JTemplate, JBatch);
+                    end else begin
                         Error('User Account Not Setup, Contact the System Administrator');
-                      end
+                    end
                 end;
             }
             action("Post and Print")
@@ -161,16 +162,17 @@ Page 51516019 "Mobile Payment Card"
 
                 trigger OnAction()
                 begin
-                      CheckRequiredItems;
-                      TestField(Status,Status::Approved);
-                      if FundsUser.Get(UserId) then begin
+                    CheckRequiredItems;
+                    TestField(Status, Status::Approved);
+                    if FundsUser.Get(UserId) then begin
                         FundsUser.TestField(FundsUser."Payment Journal Template");
                         FundsUser.TestField(FundsUser."Payment Journal Batch");
-                        JTemplate:=FundsUser."Payment Journal Template";JBatch:=FundsUser."Payment Journal Batch";
-                        FundsManager.PostPayment(Rec,JTemplate,JBatch);
-                      end else begin
+                        JTemplate := FundsUser."Payment Journal Template";
+                        JBatch := FundsUser."Payment Journal Batch";
+                        FundsManager.PostPayment(Rec, JTemplate, JBatch);
+                    end else begin
                         Error('User Account Not Setup, Contact the System Administrator');
-                      end
+                    end
                 end;
             }
             action("Send Approval Request")
@@ -183,12 +185,12 @@ Page 51516019 "Mobile Payment Card"
 
                 trigger OnAction()
                 begin
-                     TestField(Status,Status::New);
+                    TestField(Status, Status::New);
 
-                     DocType:=Doctype::"Payment Voucher";
-                     Clear(TableID);
-                     TableID:=Database::"Payment Header.";
-                     //IF ApprovalMgt.SendApproval(TableID,Rec."No.",DocType,Status) THEN;
+                    DocType := Doctype::"Payment Voucher";
+                    Clear(TableID);
+                    TableID := Database::"Payment Header.";
+                    //IF ApprovalMgt.SendApproval(TableID,Rec."No.",DocType,Status) THEN;
                 end;
             }
             action("Cancel Approval Request")
@@ -209,11 +211,11 @@ Page 51516019 "Mobile Payment Card"
 
                 trigger OnAction()
                 begin
-                      PHeader.Reset;
-                      PHeader.SetRange(PHeader."No.","No.");
-                      if PHeader.FindFirst then begin
-                        Report.RunModal(Report::"Mobile Money Voucher",true,false,PHeader);
-                      end;
+                    PHeader.Reset;
+                    PHeader.SetRange(PHeader."No.", "No.");
+                    if PHeader.FindFirst then begin
+                        Report.RunModal(Report::"Mobile Money Voucher", true, false, PHeader);
+                    end;
                 end;
             }
         }
@@ -221,7 +223,7 @@ Page 51516019 "Mobile Payment Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-          "Payment Type":="payment type"::Mobile;
+        "Payment Type" := "payment type"::Mobile;
     end;
 
     var
@@ -231,17 +233,17 @@ Page 51516019 "Mobile Payment Card"
         JBatch: Code[20];
         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,TransportRequest,Maintenance,Fuel,ImporterExporter,"Import Permit","Export Permit",TR,"Safari Notice","Student Applications","Water Research","Consultancy Requests","Consultancy Proposals","Meals Bookings","General Journal","Student Admissions","Staff Claim",KitchenStoreRequisition,"Leave Application","Staff Advance","Staff Advance Accounting";
         TableID: Integer;
-        ApprovalMgt: Codeunit "Approvals Mgmt.";
+        ApprovalMgt: Codeunit WorkflowIntegration;
         PHeader: Record "Payment Header.";
 
     local procedure CheckRequiredItems()
     begin
-         TestField("Posting Date");
-         TestField(Payee);
-         TestField("Bank Account");
-         TestField("Payment Description");
-         TestField("Global Dimension 1 Code");
-         TestField("Global Dimension 2 Code");
+        TestField("Posting Date");
+        TestField(Payee);
+        TestField("Bank Account");
+        TestField("Payment Description");
+        TestField("Global Dimension 1 Code");
+        TestField("Global Dimension 2 Code");
     end;
 }
 

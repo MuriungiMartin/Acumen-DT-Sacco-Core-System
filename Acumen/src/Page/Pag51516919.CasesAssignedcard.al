@@ -5,7 +5,7 @@ Page 51516919 "Cases Assigned card"
     Editable = true;
     PageType = Card;
     SourceTable = "Cases Management";
-    SourceTableView = where(Status=filter(Escalated));
+    SourceTableView = where(Status = filter(Escalated));
 
     layout
     {
@@ -13,28 +13,28 @@ Page 51516919 "Cases Assigned card"
         {
             group(General)
             {
-                field("Case Number";"Case Number")
+                field("Case Number"; "Case Number")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date of Complaint";"Date of Complaint")
+                field("Date of Complaint"; "Date of Complaint")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Type of cases";"Type of cases")
+                field("Type of cases"; "Type of cases")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recommended Action";"Recommended Action")
+                field("Recommended Action"; "Recommended Action")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Case Description";"Case Description")
+                field("Case Description"; "Case Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Action Taken";"Action Taken")
+                field("Action Taken"; "Action Taken")
                 {
                     ApplicationArea = Basic;
                 }
@@ -42,36 +42,36 @@ Page 51516919 "Cases Assigned card"
             group("Member Information")
             {
                 Editable = false;
-                field("Member No";"Member No")
+                field("Member No"; "Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member Name";"Member Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Loan Balance";"Loan Balance")
+                field("Member Name"; "Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Share Capital";"Share Capital")
+                field("Loan Balance"; "Loan Balance")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Current Deposits";"Current Deposits")
+                field("Share Capital"; "Share Capital")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID No";"ID No")
+                field("Current Deposits"; "Current Deposits")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Gender;Gender)
+                field("ID No"; "ID No")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -81,7 +81,7 @@ Page 51516919 "Cases Assigned card"
             {
                 Caption = 'Employment Info';
                 Editable = false;
-                field(Control39;"Employment Info")
+                field(Control39; "Employment Info")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -89,72 +89,72 @@ Page 51516919 "Cases Assigned card"
 
                     trigger OnValidate()
                     begin
-                        if "Employment Info"="employment info"::Employed then begin
-                          EmployerCodeEditable:=true;
-                          DepartmentEditable:=true;
-                          TermsofEmploymentEditable:=true;
-                          ContractingEditable:=false;
-                          EmployedEditable:=false;
-                          OccupationEditable:=false;
-                          PositionHeldEditable:=true;
-                          EmploymentDateEditable:=true;
-                          EmployerAddressEditable:=true;
-                          NatureofBussEditable:=false;
-                          IndustryEditable:=false;
-                          BusinessNameEditable:=false;
-                          PhysicalBussLocationEditable:=false;
-                          YearOfCommenceEditable:=false;
-                        
-                        
-                        
-                          end else
-                          if "Employment Info"="employment info"::Contracting then begin
-                          ContractingEditable:=true;
-                          EmployerCodeEditable:=false;
-                          DepartmentEditable:=false;
-                          TermsofEmploymentEditable:=false;
-                          OccupationEditable:=false;
-                          PositionHeldEditable:=false;
-                          EmploymentDateEditable:=false;
-                          EmployerAddressEditable:=false;
-                          NatureofBussEditable:=false;
-                          IndustryEditable:=false;
-                          BusinessNameEditable:=false;
-                          PhysicalBussLocationEditable:=false;
-                          YearOfCommenceEditable:=false;
-                          end else
-                          if "Employment Info"="employment info"::Others then begin
-                          OthersEditable:=true;
-                          ContractingEditable:=false;
-                          EmployerCodeEditable:=false;
-                          DepartmentEditable:=false;
-                          TermsofEmploymentEditable:=false;
-                          OccupationEditable:=false;
-                          PositionHeldEditable:=false;
-                          EmploymentDateEditable:=false;
-                          EmployerAddressEditable:=false
-                          end else
-                          if "Employment Info"="employment info"::"Self-Employed" then begin
-                          OccupationEditable:=true;
-                          EmployerCodeEditable:=false;
-                          DepartmentEditable:=false;
-                          TermsofEmploymentEditable:=false;
-                          ContractingEditable:=false;
-                          EmployedEditable:=false;
-                          NatureofBussEditable:=true;
-                          IndustryEditable:=true;
-                          BusinessNameEditable:=true;
-                          PhysicalBussLocationEditable:=true;
-                          YearOfCommenceEditable:=true;
-                          PositionHeldEditable:=false;
-                          EmploymentDateEditable:=false;
-                          EmployerAddressEditable:=false
-                        
-                        end;
-                        
-                        
-                        
-                        
+                        if "Employment Info" = "employment info"::Employed then begin
+                            EmployerCodeEditable := true;
+                            DepartmentEditable := true;
+                            TermsofEmploymentEditable := true;
+                            ContractingEditable := false;
+                            EmployedEditable := false;
+                            OccupationEditable := false;
+                            PositionHeldEditable := true;
+                            EmploymentDateEditable := true;
+                            EmployerAddressEditable := true;
+                            NatureofBussEditable := false;
+                            IndustryEditable := false;
+                            BusinessNameEditable := false;
+                            PhysicalBussLocationEditable := false;
+                            YearOfCommenceEditable := false;
+
+
+
+                        end else
+                            if "Employment Info" = "employment info"::Contracting then begin
+                                ContractingEditable := true;
+                                EmployerCodeEditable := false;
+                                DepartmentEditable := false;
+                                TermsofEmploymentEditable := false;
+                                OccupationEditable := false;
+                                PositionHeldEditable := false;
+                                EmploymentDateEditable := false;
+                                EmployerAddressEditable := false;
+                                NatureofBussEditable := false;
+                                IndustryEditable := false;
+                                BusinessNameEditable := false;
+                                PhysicalBussLocationEditable := false;
+                                YearOfCommenceEditable := false;
+                            end else
+                                if "Employment Info" = "employment info"::Others then begin
+                                    OthersEditable := true;
+                                    ContractingEditable := false;
+                                    EmployerCodeEditable := false;
+                                    DepartmentEditable := false;
+                                    TermsofEmploymentEditable := false;
+                                    OccupationEditable := false;
+                                    PositionHeldEditable := false;
+                                    EmploymentDateEditable := false;
+                                    EmployerAddressEditable := false
+                                end else
+                                    if "Employment Info" = "employment info"::"Self-Employed" then begin
+                                        OccupationEditable := true;
+                                        EmployerCodeEditable := false;
+                                        DepartmentEditable := false;
+                                        TermsofEmploymentEditable := false;
+                                        ContractingEditable := false;
+                                        EmployedEditable := false;
+                                        NatureofBussEditable := true;
+                                        IndustryEditable := true;
+                                        BusinessNameEditable := true;
+                                        PhysicalBussLocationEditable := true;
+                                        YearOfCommenceEditable := true;
+                                        PositionHeldEditable := false;
+                                        EmploymentDateEditable := false;
+                                        EmployerAddressEditable := false
+
+                                    end;
+
+
+
+
                         /*IF "Identification Document"="Identification Document"::"Nation ID Card" THEN BEGIN
                           PassportEditable:=FALSE;
                           IDNoEditable:=TRUE
@@ -170,80 +170,80 @@ Page 51516919 "Cases Assigned card"
 
                     end;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     ShowMandatory = true;
                 }
-                field("Employer Name";"Employer Name")
+                field("Employer Name"; "Employer Name")
                 {
                     ApplicationArea = Basic;
                     Editable = EmployedEditable;
                 }
-                field("Employer Address";"Employer Address")
+                field("Employer Address"; "Employer Address")
                 {
                     ApplicationArea = Basic;
                     Editable = EmployerAddressEditable;
                 }
-                field(Department;Department)
+                field(Department; Department)
                 {
                     ApplicationArea = Basic;
                     Caption = 'WorkStation / Depot';
                     Editable = DepartmentEditable;
                 }
-                field("Terms of Employment";"Terms of Employment")
+                field("Terms of Employment"; "Terms of Employment")
                 {
                     ApplicationArea = Basic;
                     Editable = TermsofEmploymentEditable;
                     ShowMandatory = true;
                 }
-                field("Date of Employment";"Date of Employment")
+                field("Date of Employment"; "Date of Employment")
                 {
                     ApplicationArea = Basic;
                     Editable = EmploymentDateEditable;
                 }
-                field("Position Held";"Position Held")
+                field("Position Held"; "Position Held")
                 {
                     ApplicationArea = Basic;
                     Editable = PositionHeldEditable;
                 }
-                field("Expected Monthly Income";"Expected Monthly Income")
+                field("Expected Monthly Income"; "Expected Monthly Income")
                 {
                     ApplicationArea = Basic;
                     Editable = MonthlyIncomeEditable;
                 }
-                field("Nature Of Business";"Nature Of Business")
+                field("Nature Of Business"; "Nature Of Business")
                 {
                     ApplicationArea = Basic;
                     Editable = NatureofBussEditable;
                 }
-                field(Industry;Industry)
+                field(Industry; Industry)
                 {
                     ApplicationArea = Basic;
                     Editable = IndustryEditable;
                 }
-                field("Business Name";"Business Name")
+                field("Business Name"; "Business Name")
                 {
                     ApplicationArea = Basic;
                     Editable = BusinessNameEditable;
                 }
-                field("Physical Business Location";"Physical Business Location")
+                field("Physical Business Location"; "Physical Business Location")
                 {
                     ApplicationArea = Basic;
                     Editable = PhysicalBussLocationEditable;
                 }
-                field("Year of Commence";"Year of Commence")
+                field("Year of Commence"; "Year of Commence")
                 {
                     ApplicationArea = Basic;
                     Editable = YearOfCommenceEditable;
                 }
-                field(Occupation;Occupation)
+                field(Occupation; Occupation)
                 {
                     ApplicationArea = Basic;
                     Editable = OccupationEditable;
                 }
-                field("Others Details";"Others Details")
+                field("Others Details"; "Others Details")
                 {
                     ApplicationArea = Basic;
                     Editable = OthersEditable;
@@ -253,21 +253,21 @@ Page 51516919 "Cases Assigned card"
             {
                 Caption = 'Referee Details';
                 Editable = false;
-                field("Referee Member No";"Referee Member No")
+                field("Referee Member No"; "Referee Member No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Referee Name";"Referee Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Referee ID No";"Referee ID No")
+                field("Referee Name"; "Referee Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Referee Mobile Phone No";"Referee Mobile Phone No")
+                field("Referee ID No"; "Referee ID No")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Referee Mobile Phone No"; "Referee Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -275,82 +275,82 @@ Page 51516919 "Cases Assigned card"
             }
             group("Case Information")
             {
-                field("Captured By";"Captured By")
+                field("Captured By"; "Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured On";"Captured On")
+                field("Captured On"; "Captured On")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date of Escalation";"Date of Escalation")
+                field("Date of Escalation"; "Date of Escalation")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time of Escalation";"Time of Escalation")
+                field("Time of Escalation"; "Time of Escalation")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Resolved";"Date Resolved")
+                field("Date Resolved"; "Date Resolved")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Resolved";"Time Resolved")
+                field("Time Resolved"; "Time Resolved")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Resolved User";"Resolved User")
+                field("Resolved User"; "Resolved User")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Resolved By';
                 }
-                field("Caller Reffered To";"Caller Reffered To")
+                field("Caller Reffered To"; "Caller Reffered To")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Case Escalated to:';
                     Editable = false;
                 }
-                field("Case Received  Date";"Case Received  Date")
+                field("Case Received  Date"; "Case Received  Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Timelines;SLA)
+                field(Timelines; SLA)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date To Settle Case";"Date To Settle Case")
+                field("Date To Settle Case"; "Date To Settle Case")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Expected Date of Resolution';
                     Editable = false;
                 }
-                field(Recomendations;Recomendations)
+                field(Recomendations; Recomendations)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Support Documents";"Support Documents")
+                field("Support Documents"; "Support Documents")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Resource Assigned";"Resource Assigned")
+                field("Resource Assigned"; "Resource Assigned")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan No";"Loan No")
+                field("Loan No"; "Loan No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -359,19 +359,19 @@ Page 51516919 "Cases Assigned card"
         }
         area(factboxes)
         {
-            part(Control3;"Member Statistics FactBox")
+            part(Control3; "Member Statistics FactBox")
             {
                 Caption = 'BOSA Statistics FactBox';
-                SubPageLink = "No."=field("Member No");
+                SubPageLink = "No." = field("Member No");
             }
-            part(Control2;"FOSA Statistics FactBox")
+            part(Control2; "FOSA Statistics FactBox")
             {
-                SubPageLink = "No."=field("FOSA Account.");
+                SubPageLink = "No." = field("FOSA Account.");
             }
-            part(Control1;"Loans Sub-Page List")
+            part(Control1; "Loans Sub-Page List")
             {
                 Caption = 'Loans Details';
-                SubPageLink = "Client Code"=field("Member No");
+                SubPageLink = "Client Code" = field("Member No");
             }
         }
     }
@@ -389,17 +389,15 @@ Page 51516919 "Cases Assigned card"
 
                 trigger OnAction()
                 begin
-                    if Status=Status::Resolved then
-                      begin
+                    if Status = Status::Resolved then begin
                         Error('Case already resolved');
-                        end;
+                    end;
 
-                    if Confirm('Are you sure you want to mark this case as resolved?',false)=true then
-                      begin
-                        Status:=Status::Resolved;
-                        "Date Resolved":=Today;
-                        "Time Resolved":=Time;
-                        end;
+                    if Confirm('Are you sure you want to mark this case as resolved?', false) = true then begin
+                        Status := Status::Resolved;
+                        "Date Resolved" := Today;
+                        "Time Resolved" := Time;
+                    end;
                 end;
             }
             action("Additional Case Details")
@@ -409,7 +407,7 @@ Page 51516919 "Cases Assigned card"
                 Promoted = true;
                 PromotedCategory = Process;
                 RunObject = Page "Case Details";
-                RunPageLink = "Case No"=field("Case Number");
+                RunPageLink = "Case No" = field("Case Number");
             }
             action("Members Statistics")
             {
@@ -420,19 +418,19 @@ Page 51516919 "Cases Assigned card"
                 PromotedCategory = Process;
                 PromotedOnly = true;
                 RunObject = Page "Members Statistics";
-                RunPageLink = "No."=field("Member No");
+                RunPageLink = "No." = field("Member No");
             }
         }
     }
 
     trigger OnInit()
     begin
-        SetRange("Resource Assigned",UserId);
+        SetRange("Resource Assigned", UserId);
     end;
 
     trigger OnOpenPage()
     begin
-        SetRange("Resource Assigned",UserId);
+        SetRange("Resource Assigned", UserId);
     end;
 
     var
@@ -465,105 +463,105 @@ Page 51516919 "Cases Assigned card"
     var
         iEntryNo: Integer;
         SMSMessages: Record "SMS Messages";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
     begin
 
-         //SMS MESSAGE
-              SMSMessages.Reset;
-              if SMSMessages.Find('+') then begin
-              iEntryNo:=SMSMessages."Entry No";
-              iEntryNo:=iEntryNo+1;
-              end
-              else begin
-              iEntryNo:=1;
-              end;
+        //SMS MESSAGE
+        SMSMessages.Reset;
+        if SMSMessages.Find('+') then begin
+            iEntryNo := SMSMessages."Entry No";
+            iEntryNo := iEntryNo + 1;
+        end
+        else begin
+            iEntryNo := 1;
+        end;
 
-              SMSMessages.Reset;
-              SMSMessages.Init;
-              SMSMessages."Entry No":=iEntryNo;
-              SMSMessages."Account No":="Member No.";
-              SMSMessages."Date Entered":=Today;
-              SMSMessages."Time Entered":=Time;
-              SMSMessages.Source:='Cases';
-              SMSMessages."Entered By":=UserId;
-              SMSMessages."Sent To Server":=SMSMessages."sent to server"::No;
-              //SMSMessages."Sent To Server":=SMSMessages."Sent To Server::No;
-              SMSMessages."SMS Message":='Your case/complain has been received and assigned to.'+"Resource #2"+
-                                        ' kindly contact the resource for follow ups';
-              Cust.Reset;
-              if Cust.Get("Member No.") then
-              SMSMessages."Telephone No" := Cust."Phone No.";
-              SMSMessages.Insert;
+        SMSMessages.Reset;
+        SMSMessages.Init;
+        SMSMessages."Entry No" := iEntryNo;
+        SMSMessages."Account No" := "Member No.";
+        SMSMessages."Date Entered" := Today;
+        SMSMessages."Time Entered" := Time;
+        SMSMessages.Source := 'Cases';
+        SMSMessages."Entered By" := UserId;
+        SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
+        //SMSMessages."Sent To Server":=SMSMessages."Sent To Server::No;
+        SMSMessages."SMS Message" := 'Your case/complain has been received and assigned to.' + "Resource #2" +
+                                  ' kindly contact the resource for follow ups';
+        Cust.Reset;
+        if Cust.Get("Member No.") then
+            SMSMessages."Telephone No" := Cust."Phone No.";
+        SMSMessages.Insert;
     end;
 
     local procedure smsResolved()
     var
         iEntryNo: Integer;
         SMSMessages: Record "SMS Messages";
-        cust: Record "Member Register";
+        cust: Record Customer;
     begin
 
-         //SMS MESSAGE
-              SMSMessages.Reset;
-              if SMSMessages.Find('+') then begin
-              iEntryNo:=SMSMessages."Entry No";
-              iEntryNo:=iEntryNo+1;
-              end
-              else begin
-              iEntryNo:=1;
-              end;
+        //SMS MESSAGE
+        SMSMessages.Reset;
+        if SMSMessages.Find('+') then begin
+            iEntryNo := SMSMessages."Entry No";
+            iEntryNo := iEntryNo + 1;
+        end
+        else begin
+            iEntryNo := 1;
+        end;
 
-              SMSMessages.Reset;
-              SMSMessages.Init;
-              SMSMessages."Entry No":=iEntryNo;
-              SMSMessages."Account No":="Member No.";
-              SMSMessages."Date Entered":=Today;
-              SMSMessages."Time Entered":=Time;
-              SMSMessages.Source:='Cases';
-              SMSMessages."Entered By":=UserId;
-              SMSMessages."Sent To Server":=SMSMessages."sent to server"::No;
-              //SMSMessages."Sent To Server":=SMSMessages."Sent To Server::No;
-              SMSMessages."SMS Message":='Your case/complain has been resolved by.'+"Resolved User"+
-                                        ' Thank you for your being our priority customer';
-              cust.Reset;
-              if cust.Get("Member No.") then
-              SMSMessages."Telephone No" := cust."Phone No.";
-              SMSMessages.Insert;
+        SMSMessages.Reset;
+        SMSMessages.Init;
+        SMSMessages."Entry No" := iEntryNo;
+        SMSMessages."Account No" := "Member No.";
+        SMSMessages."Date Entered" := Today;
+        SMSMessages."Time Entered" := Time;
+        SMSMessages.Source := 'Cases';
+        SMSMessages."Entered By" := UserId;
+        SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
+        //SMSMessages."Sent To Server":=SMSMessages."Sent To Server::No;
+        SMSMessages."SMS Message" := 'Your case/complain has been resolved by.' + "Resolved User" +
+                                  ' Thank you for your being our priority customer';
+        cust.Reset;
+        if cust.Get("Member No.") then
+            SMSMessages."Telephone No" := cust."Phone No.";
+        SMSMessages.Insert;
     end;
 
     local procedure Sendtouser()
     var
         SMSMessage: Record "SMS Messages";
         iEntryNo: Integer;
-        Usersetup: Record User;
+        Usersetup: Record "User Setup";
         phoneNo: Code[20];
         userAuthorizer: Text;
     begin
         Usersetup.Reset;
-        Usersetup.SetRange(Usersetup."User Name","Resource Assigned");
-        if Usersetup.Find('-')then begin
-        phoneNo:=Usersetup."Phone No";
+        Usersetup.SetRange(Usersetup."User ID", "Resource Assigned");
+        if Usersetup.Find('-') then begin
+            //phoneNo := Usersetup."Phone No";
         end;
-            if SMSMessage.Find('+') then begin
-              iEntryNo:=SMSMessage."Entry No";
-              iEntryNo:=iEntryNo+1;
-              end
-              else begin
-              iEntryNo:=1;
-              end;
+        if SMSMessage.Find('+') then begin
+            iEntryNo := SMSMessage."Entry No";
+            iEntryNo := iEntryNo + 1;
+        end
+        else begin
+            iEntryNo := 1;
+        end;
 
-              SMSMessage.Reset;
-              SMSMessage.Init;
-              SMSMessage."Entry No":=iEntryNo;
-              SMSMessage."Account No":=userAuthorizer;
-              SMSMessage."Date Entered":=Today;
-              SMSMessage."Time Entered":=Time;
-              SMSMessage.Source:= 'CASES';
-              SMSMessage."Entered By":=UserId;
-              SMSMessage."Sent To Server":=SMSMessage."sent to server"::No;
-              SMSMessage."SMS Message":='Your have been assigned a cases of '+ "Member No."+'of '+"Case Description"+'on'+Format(Today)+'at'+Format(Time)+'kindly give it priority' ;
-              SMSMessage."Telephone No":=phoneNo;
-              SMSMessage.Insert;
+        SMSMessage.Reset;
+        SMSMessage.Init;
+        SMSMessage."Entry No" := iEntryNo;
+        SMSMessage."Account No" := userAuthorizer;
+        SMSMessage."Date Entered" := Today;
+        SMSMessage."Time Entered" := Time;
+        SMSMessage.Source := 'CASES';
+        SMSMessage."Entered By" := UserId;
+        SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
+        SMSMessage."SMS Message" := 'Your have been assigned a cases of ' + "Member No." + 'of ' + "Case Description" + 'on' + Format(Today) + 'at' + Format(Time) + 'kindly give it priority';
+        SMSMessage."Telephone No" := phoneNo;
+        SMSMessage.Insert;
     end;
 
     local procedure SendEmailuser()
@@ -571,20 +569,23 @@ Page 51516919 "Cases Assigned card"
         Usersetup: Record User;
         phoneNo: Code[20];
         UserEmail: Text;
+        Recipient: list of [text];
     begin
         Usersetup.Reset;
-        Usersetup.SetRange(Usersetup."User Name","Resource Assigned");
-        if Usersetup.Find('-')then begin
-        UserEmail:=Usersetup."Contact Email";
+        Usersetup.SetRange(Usersetup."User Name", "Resource Assigned");
+        if Usersetup.Find('-') then begin
+            UserEmail := Usersetup."Contact Email";
         end;
-        GenSetUp.Get;GenSetUp.Get;
+        GenSetUp.Get;
+        GenSetUp.Get;
+        Recipient.Add(UserEmail);
         if GenSetUp."Send Email Notifications" = true then begin
-        notifymail.CreateMessage(UserId,GenSetUp."Sender Address",UserEmail,'Case Reported','Dear '+Usersetup."User Name"+' Your have been assigned a cases of '+' Member: '+ "Member No."+' ' +"Case Description"+' on '
-        +Format(Today)+'kindly give it priority',false);
+            notifymail.CreateMessage(UserId, GenSetUp."Sender Address", Recipient, 'Case Reported', 'Dear ' + Usersetup."User Name" + ' Your have been assigned a cases of ' + ' Member: ' + "Member No." + ' ' + "Case Description" + ' on '
+            + Format(Today) + 'kindly give it priority', false);
 
 
 
-        notifymail.Send;
+            notifymail.Send;
 
 
 
@@ -594,20 +595,22 @@ Page 51516919 "Cases Assigned card"
     local procedure Emailcustomer()
     var
         CustomerEmailtext: Text;
-        memb: Record "Member Register";
+        memb: Record Customer;
+        Recipient: list of [text];
     begin
-        if memb.Get("Member No.")then begin
-          CustomerEmailtext:=memb."E-Mail (Personal)";
-          end else
-          CustomerEmailtext:=memb."E-Mail";
+        if memb.Get("Member No.") then begin
+            CustomerEmailtext := memb."E-Mail (Personal)";
+        end else
+            CustomerEmailtext := memb."E-Mail";
         GenSetUp.Get();
+        Recipient.Add(CustomerEmailtext);
         if GenSetUp."Send Email Notifications" = true then begin
-         //notifymail.CreateMessage('Cases Reported',GenSetUp."Sender Address",UserEmail,'Your have been assigned a cases of '+ "Member No"+'of '+"Case Description"+'on'+FORMAT(TODAY)+'at'+FORMAT(TIME)+'kindly give it priority',FALSE);
-        notifymail.CreateMessage(UserId,GenSetUp."Sender Address", CustomerEmailtext,'Case Reported','Dear '+memb.Name+' Your case/complain has been fully resolved by '+' User: '+ UserId+' ' +"Case Description"+' on '
-        +Format(Today)+'thank you  for being our customer',false);
+            //notifymail.CreateMessage('Cases Reported',GenSetUp."Sender Address",UserEmail,'Your have been assigned a cases of '+ "Member No"+'of '+"Case Description"+'on'+FORMAT(TODAY)+'at'+FORMAT(TIME)+'kindly give it priority',FALSE);
+            notifymail.CreateMessage(UserId, GenSetUp."Sender Address", Recipient, 'Case Reported', 'Dear ' + memb.Name + ' Your case/complain has been fully resolved by ' + ' User: ' + UserId + ' ' + "Case Description" + ' on '
+            + Format(Today) + 'thank you  for being our customer', false);
 
 
-        notifymail.Send;
+            notifymail.Send;
 
 
 

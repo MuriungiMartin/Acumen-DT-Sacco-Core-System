@@ -78,7 +78,7 @@ Table 51516003 "Receipt Line"
             else
             if ("Account Type" = const("Fixed Asset")) "Fixed Asset"."No."
             else
-            if ("Account Type" = const(Member)) "Member Register"."No.";
+            if ("Account Type" = const(Member)) Customer."No.";
 
             trigger OnValidate()
             begin
@@ -391,6 +391,6 @@ Table 51516003 "Receipt Line"
         FundsTransTypes: Record "Receipts and Payment Types";
         "G/LAcc": Record "G/L Account";
         GLEntry: Record "Bank Account Ledger Entry";
-        MEMB: Record "Member Register";
+        MEMB: Record Customer;
 }
 

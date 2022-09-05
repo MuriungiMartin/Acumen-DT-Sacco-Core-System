@@ -513,7 +513,7 @@ Page 51516417 "Paybill Processing Header"
     DeleteAllowed = false;
     PageType = Card;
     SourceTable = "Paybill Processing Header";
-    SourceTableView = where(Posted=const(false));
+    SourceTableView = where(Posted = const(false));
 
     layout
     {
@@ -521,76 +521,76 @@ Page 51516417 "Paybill Processing Header"
         {
             group(General)
             {
-                field(No;No)
+                field(No; No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Entered By";"Entered By")
+                field("Entered By"; "Entered By")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Date Entered";"Date Entered")
+                field("Date Entered"; "Date Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Posting date";"Posting date")
+                field("Posting date"; "Posting date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Loan CutOff Date";"Loan CutOff Date")
+                field("Loan CutOff Date"; "Loan CutOff Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks;Remarks)
+                field(Remarks; Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Count";"Total Count")
+                field("Total Count"; "Total Count")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By";"Posted By")
+                field("Posted By"; "Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No";"Document No")
+                field("Document No"; "Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Scheduled Amount";"Scheduled Amount")
+                field("Scheduled Amount"; "Scheduled Amount")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part("Bosa receipt lines";"Paybill Processing Line")
+            part("Bosa receipt lines"; "Paybill Processing Line")
             {
                 Caption = 'Paybill Transactions Details';
-                SubPageLink = "Receipt Header No"=field(No);
+                SubPageLink = "Receipt Header No" = field(No);
             }
         }
     }
@@ -617,9 +617,9 @@ Page 51516417 "Paybill Processing Header"
                 begin
                     //
                     ReceiptLine.Reset;
-                    ReceiptLine.SetRange(ReceiptLine."Receipt Header No",No);
+                    ReceiptLine.SetRange(ReceiptLine."Receipt Header No", No);
                     if ReceiptLine.Find('-') then
-                    Report.Run(51516521,true,false,ReceiptLine);
+                        Report.Run(51516521, true, false, ReceiptLine);
                 end;
             }
             group(ActionGroup1102755019)
@@ -632,182 +632,188 @@ Page 51516417 "Paybill Processing Header"
 
                 trigger OnAction()
                 begin
-                    
+
                     Genstup.Get();
-                    if Posted=true then
-                    Error('This Paybill Batch has already been posted');
+                    if Posted = true then
+                        Error('This Paybill Batch has already been posted');
                     if "Account No" = '' then
-                    Error('You must specify the Account No.');
+                        Error('You must specify the Account No.');
                     if "Document No" = '' then
-                    Error('You must specify the Document No.');
+                        Error('You must specify the Document No.');
                     if "Posting date" = 0D then
-                    Error('You must specify the Posting date.');
-                    Datefilter:='..'+Format("Loan CutOff Date");
-                    
-                    
-                    
-                    PDate:="Posting date";
-                    DocNo:="Document No";
+                        Error('You must specify the Posting date.');
+                    Datefilter := '..' + Format("Loan CutOff Date");
+
+
+
+                    PDate := "Posting date";
+                    DocNo := "Document No";
                     GenBatches.Reset;
-                    GenBatches.SetRange(GenBatches."Journal Template Name",'GENERAL');
-                    GenBatches.SetRange(GenBatches.Name,No);
+                    GenBatches.SetRange(GenBatches."Journal Template Name", 'GENERAL');
+                    GenBatches.SetRange(GenBatches.Name, No);
                     if GenBatches.Find('-') = false then begin
-                    GenBatches.Init;
-                    GenBatches."Journal Template Name":='GENERAL';
-                    GenBatches.Name:=No;
-                    GenBatches.Description:='PAYBILL PROCESS';
-                    GenBatches.Validate(GenBatches."Journal Template Name");
-                    GenBatches.Validate(GenBatches.Name);
-                    GenBatches.Insert;
+                        GenBatches.Init;
+                        GenBatches."Journal Template Name" := 'GENERAL';
+                        GenBatches.Name := No;
+                        GenBatches.Description := 'PAYBILL PROCESS';
+                        GenBatches.Validate(GenBatches."Journal Template Name");
+                        GenBatches.Validate(GenBatches.Name);
+                        GenBatches.Insert;
                     end;
-                    
-                    
-                    
+
+
+
                     //Delete journal
                     Gnljnline.Reset;
-                    Gnljnline.SetRange("Journal Template Name",'GENERAL');
-                    Gnljnline.SetRange("Journal Batch Name",No);
+                    Gnljnline.SetRange("Journal Template Name", 'GENERAL');
+                    Gnljnline.SetRange("Journal Batch Name", No);
                     Gnljnline.DeleteAll;
                     //End of deletion
-                    
-                    
-                    
-                    RunBal:=0;
-                     CalcFields("Scheduled Amount");
-                    
+
+
+
+                    RunBal := 0;
+                    CalcFields("Scheduled Amount");
+
                     Genstup.Get();
                     // MWMBER NOT FOUND
                     RcptBufLines.Reset;
-                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No",No);
-                    RcptBufLines.SetRange(RcptBufLines.Posted,false);
+                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No", No);
+                    RcptBufLines.SetRange(RcptBufLines.Posted, false);
                     if RcptBufLines.Find('-') then begin
-                    repeat
-                    //Credit Members Account
-                    LineN:=LineN+10000;
-                    Gnljnline.Init;
-                    Gnljnline."Journal Template Name":='GENERAL';
-                    Gnljnline."Journal Batch Name":=No;
-                    Gnljnline."Line No.":=LineN;
-                    Gnljnline."Account Type":=RcptBufLines."Account Type";
-                    Gnljnline."Account No.":=RcptBufLines."Member No";
-                    Gnljnline.Validate(Gnljnline."Account No.");
-                    Gnljnline."Document No.":=RcptBufLines."Transaction No";
-                    Gnljnline."Posting Date":="Posting date";
-                    Gnljnline.Description:=RcptBufLines.Description;
-                    Gnljnline.Amount:=RcptBufLines.Amount*-1;
-                    if (RcptBufLines."Transaction Prefix"='NORMAL')  then begin
-                    Gnljnline."Transaction Type":=Gnljnline."transaction type"::Loan
-                    end else
-                    if (RcptBufLines."Transaction Prefix"='FOSA')  then begin
-                    Gnljnline."Transaction Type":=Gnljnline."transaction type"::"41"
-                    end else
-                    if (RcptBufLines."Transaction Prefix"='UNALLOCATED') then begin
-                    Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Loan Insurance Paid";
+                        repeat
+                            //Credit Members Account
+                            LineN := LineN + 10000;
+                            Gnljnline.Init;
+                            Gnljnline."Journal Template Name" := 'GENERAL';
+                            Gnljnline."Journal Batch Name" := No;
+                            Gnljnline."Line No." := LineN;
+                            Gnljnline."Account Type" := RcptBufLines."Account Type";
+                            Gnljnline."Account No." := RcptBufLines."Member No";
+                            Gnljnline.Validate(Gnljnline."Account No.");
+                            Gnljnline."Document No." := RcptBufLines."Transaction No";
+                            Gnljnline."Posting Date" := "Posting date";
+                            Gnljnline.Description := RcptBufLines.Description;
+                            Gnljnline.Amount := RcptBufLines.Amount * -1;
+                            if (RcptBufLines."Transaction Prefix" = 'NORMAL') then begin
+                                Gnljnline."Transaction Type" := Gnljnline."transaction type"::Loan
+                            end else
+                                if (RcptBufLines."Transaction Prefix" = 'FOSA') then begin
+                                    Gnljnline."Transaction Type" := Gnljnline."transaction type"::"41"
+                                end else
+                                    if (RcptBufLines."Transaction Prefix" = 'UNALLOCATED') then begin
+                                        Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Loan Insurance Paid";
+                                    end;
+                            Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
+                            Gnljnline."Shortcut Dimension 2 Code" := 'KIAMBU';
+                            Gnljnline.Validate(Gnljnline.Amount);
+                            Gnljnline."Bal. Account Type" := Gnljnline."bal. account type"::"Bank Account";
+                            Gnljnline."Bal. Account No." := "Account No";
+                            if Gnljnline.Amount <> 0 then
+                                Gnljnline.Insert;
+
+
+                            if (RcptBufLines.Amount >= 50) and (RcptBufLines.Amount < 999) then
+                                ChargeAmount := 0
+                            else
+                                if (RcptBufLines.Amount >= 1000) and (RcptBufLines.Amount < 2499) then
+                                    ChargeAmount := 11
+                                else
+                                    if (RcptBufLines.Amount >= 2500) and (RcptBufLines.Amount < 4999) then
+                                        ChargeAmount := 22
+                                    else
+                                        if (RcptBufLines.Amount >= 50000) and (RcptBufLines.Amount < 9999) then
+                                            ChargeAmount := 50
+                                        else
+                                            if (RcptBufLines.Amount >= 10000) and (RcptBufLines.Amount < 34999) then
+                                                ChargeAmount := 77
+                                            else
+                                                if (RcptBufLines.Amount >= 35000) and (RcptBufLines.Amount < 49999) then
+                                                    ChargeAmount := 153
+                                                else
+                                                    if RcptBufLines.Amount > 35000 then
+                                                        ChargeAmount := 165;
+
+
+
+
+
+                            Genstup.Get();
+                            //Debit Charges
+                            LineN := LineN + 10000;
+                            Gnljnline.Init;
+                            Gnljnline."Journal Template Name" := 'GENERAL';
+                            Gnljnline."Journal Batch Name" := No;
+                            Gnljnline."Line No." := LineN;
+                            Gnljnline."Account Type" := RcptBufLines."Account Type";
+                            Gnljnline."Account No." := RcptBufLines."Member No";
+                            Gnljnline.Validate(Gnljnline."Account No.");
+                            Gnljnline."Document No." := RcptBufLines."Transaction No";
+                            Gnljnline."Posting Date" := "Posting date";
+                            Gnljnline.Description := RcptBufLines.Description + ' ' + 'Charge';
+                            Gnljnline.Amount := ChargeAmount;
+                            if (RcptBufLines."Transaction Prefix" = 'NORMAL') then begin
+                                Gnljnline."Transaction Type" := Gnljnline."transaction type"::Loan
+                            end else
+                                if (RcptBufLines."Transaction Prefix" = 'FOSA') then begin
+                                    Gnljnline."Transaction Type" := Gnljnline."transaction type"::"41"
+                                end else
+                                    if (RcptBufLines."Transaction Prefix" = 'UNALLOCATED') then begin
+                                        Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Loan Insurance Paid";
+                                    end;
+                            Gnljnline."Bal. Account Type" := Gnljnline."bal. account type"::"G/L Account";
+                            Gnljnline."Bal. Account No." := Genstup."Paybill Tarrifs";
+                            Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
+                            Gnljnline."Shortcut Dimension 2 Code" := 'KIAMBU';
+                            Gnljnline.Validate(Gnljnline.Amount);
+                            if Gnljnline.Amount <> 0 then
+                                Gnljnline.Insert;
+
+
+                        /*
+                        //++++++++++++++++++Balance With Bank Entry+++++++++++++++++++++++//
+                         LineN:=LineN+100;
+                         Gnljnline.INIT;
+                         Gnljnline."Journal Template Name":='GENERAL';
+                         Gnljnline."Journal Batch Name":=No;
+                         Gnljnline."Line No.":=LineN;
+                         Gnljnline."Account Type":=Gnljnline."Account Type"::"Bank Account";
+                         Gnljnline."Account No.":="Account No";
+                         Gnljnline.VALIDATE(Gnljnline."Account No.");
+                         Gnljnline."Document No.":="Document No";
+                         Gnljnline."Posting Date":="Posting date";
+                         Gnljnline.Description:=Remarks;
+                         //Gnljnline.Amount:=Amount;
+                         Gnljnline.Amount:=RcptBufLines.Amount;
+                         Gnljnline.VALIDATE(Gnljnline.Amount);
+                         Gnljnline."Shortcut Dimension 1 Code":='BOSA';
+                         IF Gnljnline.Amount<>0 THEN
+                         Gnljnline.INSERT;*/
+                        until RcptBufLines.Next = 0;
                     end;
-                    Gnljnline."Shortcut Dimension 1 Code":='BOSA';
-                    Gnljnline."Shortcut Dimension 2 Code":='KIAMBU';
-                    Gnljnline.Validate(Gnljnline.Amount);
-                    Gnljnline."Bal. Account Type":=Gnljnline."bal. account type"::"Bank Account";
-                    Gnljnline."Bal. Account No.":="Account No";
-                    if Gnljnline.Amount<>0 then
-                    Gnljnline.Insert;
-                    
-                    
-                    if (RcptBufLines.Amount>=50)  and (RcptBufLines.Amount<999) then
-                    ChargeAmount:=0
-                    else if  (RcptBufLines.Amount>=1000) and (RcptBufLines.Amount<2499) then
-                    ChargeAmount:=11
-                    else if (RcptBufLines.Amount>=2500) and (RcptBufLines.Amount<4999) then
-                    ChargeAmount:=22
-                    else if (RcptBufLines.Amount>=50000) and (RcptBufLines.Amount<9999) then
-                    ChargeAmount:=50
-                    else if (RcptBufLines.Amount>=10000) and (RcptBufLines.Amount<34999) then
-                    ChargeAmount:=77
-                    else if (RcptBufLines.Amount>=35000) and (RcptBufLines.Amount<49999)then
-                    ChargeAmount:=153
-                    else if RcptBufLines.Amount>35000 then
-                    ChargeAmount:=165;
-                    
-                    
-                    
-                    
-                    
-                    Genstup.Get();
-                    //Debit Charges
-                    LineN:=LineN+10000;
-                    Gnljnline.Init;
-                    Gnljnline."Journal Template Name":='GENERAL';
-                    Gnljnline."Journal Batch Name":=No;
-                    Gnljnline."Line No.":=LineN;
-                    Gnljnline."Account Type":=RcptBufLines."Account Type";
-                    Gnljnline."Account No.":=RcptBufLines."Member No";
-                    Gnljnline.Validate(Gnljnline."Account No.");
-                    Gnljnline."Document No.":=RcptBufLines."Transaction No";
-                    Gnljnline."Posting Date":="Posting date";
-                    Gnljnline.Description:=RcptBufLines.Description+' '+'Charge';
-                    Gnljnline.Amount:=ChargeAmount;
-                    if (RcptBufLines."Transaction Prefix"='NORMAL')  then begin
-                    Gnljnline."Transaction Type":=Gnljnline."transaction type"::Loan
-                    end else
-                    if (RcptBufLines."Transaction Prefix"='FOSA')  then begin
-                    Gnljnline."Transaction Type":=Gnljnline."transaction type"::"41"
-                    end else
-                    if (RcptBufLines."Transaction Prefix"='UNALLOCATED') then begin
-                    Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Loan Insurance Paid";
-                    end;
-                    Gnljnline."Bal. Account Type":=Gnljnline."bal. account type"::"G/L Account";
-                    Gnljnline."Bal. Account No.":=Genstup."Paybill Tarrifs";
-                    Gnljnline."Shortcut Dimension 1 Code":='BOSA';
-                    Gnljnline."Shortcut Dimension 2 Code":='KIAMBU';
-                    Gnljnline.Validate(Gnljnline.Amount);
-                    if Gnljnline.Amount<>0 then
-                    Gnljnline.Insert;
-                    
-                    
-                    /*
-                    //++++++++++++++++++Balance With Bank Entry+++++++++++++++++++++++//
-                     LineN:=LineN+100;
-                     Gnljnline.INIT;
-                     Gnljnline."Journal Template Name":='GENERAL';
-                     Gnljnline."Journal Batch Name":=No;
-                     Gnljnline."Line No.":=LineN;
-                     Gnljnline."Account Type":=Gnljnline."Account Type"::"Bank Account";
-                     Gnljnline."Account No.":="Account No";
-                     Gnljnline.VALIDATE(Gnljnline."Account No.");
-                     Gnljnline."Document No.":="Document No";
-                     Gnljnline."Posting Date":="Posting date";
-                     Gnljnline.Description:=Remarks;
-                     //Gnljnline.Amount:=Amount;
-                     Gnljnline.Amount:=RcptBufLines.Amount;
-                     Gnljnline.VALIDATE(Gnljnline.Amount);
-                     Gnljnline."Shortcut Dimension 1 Code":='BOSA';
-                     IF Gnljnline.Amount<>0 THEN
-                     Gnljnline.INSERT;*/
-                    until RcptBufLines.Next=0;
-                    end;
-                    
-                    
+
+
                     //
                     //CALCFIELDS("Scheduled Amount");
-                    
-                    
-                    
+
+
+
                     //Post New
                     Gnljnline.Reset;
-                    Gnljnline.SetRange("Journal Template Name",'GENERAL');
-                    Gnljnline.SetRange("Journal Batch Name",No);
+                    Gnljnline.SetRange("Journal Template Name", 'GENERAL');
+                    Gnljnline.SetRange("Journal Batch Name", No);
                     if Gnljnline.Find('-') then begin
-                    Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco",Gnljnline);
+                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", Gnljnline);
                     end;
-                    Posted:=true;
-                    "Posted By":=No;
+                    Posted := true;
+                    "Posted By" := No;
                     Modify;
-                    
+
                     Message('Paybill Successfully Generated');
-                    
-                    Posted:=true;
+
+                    Posted := true;
                     Modify;
-                    
+
 
                 end;
             }
@@ -816,8 +822,8 @@ Page 51516417 "Paybill Processing Header"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-           "Posting date":=Today;
-           "Date Entered":=Today;
+        "Posting date" := Today;
+        "Date Entered" := Today;
     end;
 
     var
@@ -834,7 +840,7 @@ Page 51516417 "Paybill Processing Header"
         DActivityBOSA: Code[20];
         DBranchBOSA: Code[20];
         ReptProcHeader: Record "Paybill Processing Header";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         MembPostGroup: Record "Customer Posting Group";
         Loantable: Record "Loans Register";
         LRepayment: Decimal;
@@ -852,7 +858,7 @@ Page 51516417 "Paybill Processing Header"
         DIFF: Decimal;
         DIFFPAID: Decimal;
         Genstup: Record "Sacco General Set-Up";
-        Memb: Record "Member Register";
+        Memb: Record Customer;
         INSURANCE: Decimal;
         GenBatches: Record "Gen. Journal Batch";
         Datefilter: Text[50];

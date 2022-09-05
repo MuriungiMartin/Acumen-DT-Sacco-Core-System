@@ -14,7 +14,7 @@ Table 51516394 "Movement Tracker"
         }
         field(3;Stage;Integer)
         {
-            TableRelation = "HR Training Applications"."Course Title" where ("Application No"=field("Approval Type"));
+          //  TableRelation = "HR Training Applications"."Course Title" where ("Application No"=field("Approval Type"));
         }
         field(4;Remarks;Text[50])
         {

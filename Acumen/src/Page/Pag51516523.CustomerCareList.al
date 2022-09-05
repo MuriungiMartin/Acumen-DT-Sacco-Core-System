@@ -5,7 +5,7 @@ Page 51516523 "Customer Care List"
     CardPageID = "Customer Care Card";
     Editable = false;
     PageType = List;
-    SourceTable = "Member Register";
+    SourceTable = Customer;
     UsageCategory = Lists;
 
     layout
@@ -14,44 +14,44 @@ Page 51516523 "Customer Care List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Personal No";"Personal No")
+                field("Personal No"; "Personal No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Payroll No.';
                 }
-                field("FOSA Account No.";"FOSA Account No.")
+                field("FOSA Account No."; "FOSA Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                 }

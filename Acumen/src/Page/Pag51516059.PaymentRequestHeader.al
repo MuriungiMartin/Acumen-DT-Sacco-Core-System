@@ -38,7 +38,7 @@ Page 51516059 "Payment Request Header"
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Category6_caption,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     RefreshOnActivate = true;
     SourceTable = "Payment Header.";
-    SourceTableView = where("Payment Type"=const(Express));
+    SourceTableView = where("Payment Type" = const(Express));
 
     layout
     {
@@ -46,81 +46,81 @@ Page 51516059 "Payment Request Header"
         {
             group(Control1)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Date;Date)
+                field(Date; Date)
                 {
                     ApplicationArea = Basic;
                     Editable = DateEditable;
                     Importance = Promoted;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = GlobalDimension1CodeEditable;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = ShortcutDimension2CodeEditable;
                 }
-                field("Shortcut Dimension 3 Code";"Shortcut Dimension 3 Code")
+                field("Shortcut Dimension 3 Code"; "Shortcut Dimension 3 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = ShortcutDimension3CodeEditable;
                     Visible = false;
                 }
-                field("Shortcut Dimension 4 Code";"Shortcut Dimension 4 Code")
+                field("Shortcut Dimension 4 Code"; "Shortcut Dimension 4 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = ShortcutDimension4CodeEditable;
                     Visible = false;
                 }
-                field("Payment Mode";"Payment Mode")
+                field("Payment Mode"; "Payment Mode")
                 {
                     ApplicationArea = Basic;
                     Editable = PaymodeEditable;
                 }
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; "Currency Code")
                 {
                     ApplicationArea = Basic;
                     Editable = "Currency CodeEditable";
                     Visible = false;
                 }
-                field("Bank Account";"Bank Account")
+                field("Bank Account"; "Bank Account")
                 {
                     ApplicationArea = Basic;
                     Editable = bankeditabl;
                     Visible = false;
                 }
-                field("Bank Account Name";"Bank Account Name")
+                field("Bank Account Name"; "Bank Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Payee;Payee)
+                field(Payee; Payee)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Payment to';
                     Editable = PayeeEditable;
                     Importance = Promoted;
                 }
-                field("On Behalf Of";"On Behalf Of")
+                field("On Behalf Of"; "On Behalf Of")
                 {
                     ApplicationArea = Basic;
                     Editable = OnBehalfEditable;
                     Visible = false;
                 }
-                field("Payment Description";"Payment Description")
+                field("Payment Description"; "Payment Description")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Cheque Type";"Cheque Type")
+                field("Cheque Type"; "Cheque Type")
                 {
                     ApplicationArea = Basic;
                     Editable = "Cheque TypeEditable";
@@ -128,51 +128,51 @@ Page 51516059 "Payment Request Header"
 
                     trigger OnValidate()
                     begin
-                          if "Cheque Type"="cheque type"::"Computer Cheque" then
-                              "Cheque No.Editable" :=false
-                          else
-                              "Cheque No.Editable" :=true;
+                        if "Cheque Type" = "cheque type"::"Computer Cheque" then
+                            "Cheque No.Editable" := false
+                        else
+                            "Cheque No.Editable" := true;
                     end;
                 }
-                field("Currency Factor";"Currency Factor")
+                field("Currency Factor"; "Currency Factor")
                 {
                     ApplicationArea = Basic;
                     Editable = "Invoice Currency CodeEditable";
                     Visible = false;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("VAT Amount";"VAT Amount")
+                field("VAT Amount"; "VAT Amount")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("WithHolding Tax Amount";"WithHolding Tax Amount")
+                field("WithHolding Tax Amount"; "WithHolding Tax Amount")
                 {
                     ApplicationArea = Basic;
                     Importance = Additional;
                 }
-                field("Amount(LCY)";"Amount(LCY)")
+                field("Amount(LCY)"; "Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Net Amount LCY';
                     Editable = false;
                 }
-                field("Cheque No";"Cheque No")
+                field("Cheque No"; "Cheque No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Cheque/EFT No.';
@@ -184,36 +184,33 @@ Page 51516059 "Payment Request Header"
                         //check if the cheque has been inserted
                         TestField("Bank Account");
                         PVHead.Reset;
-                        PVHead.SetRange(PVHead."Bank Account","Bank Account");
-                        PVHead.SetRange(PVHead."Payment Mode",PVHead."payment mode"::Cheque);
-                        if PVHead.FindFirst then
-                          begin
+                        PVHead.SetRange(PVHead."Bank Account", "Bank Account");
+                        PVHead.SetRange(PVHead."Payment Mode", PVHead."payment mode"::Cheque);
+                        if PVHead.FindFirst then begin
                             repeat
-                              if PVHead."Cheque No"="Cheque No" then
-                                begin
-                                  if PVHead."No."<>"No." then
-                                    begin
-                                      Error('The Cheque Number has already been utilised');
+                                if PVHead."Cheque No" = "Cheque No" then begin
+                                    if PVHead."No." <> "No." then begin
+                                        Error('The Cheque Number has already been utilised');
                                     end;
                                 end;
-                            until PVHead.Next=0;
-                          end;
+                            until PVHead.Next = 0;
+                        end;
                     end;
                 }
-                field("Payment Release Date";"Payment Release Date")
+                field("Payment Release Date"; "Payment Release Date")
                 {
                     ApplicationArea = Basic;
                     Editable = "Payment Release DateEditable";
                     Visible = false;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(PVLines;"Payment Request Lines")
+            part(PVLines; "Payment Request Lines")
             {
-                SubPageLink = "Received From"=field("No.");
+                SubPageLink = "Received From" = field("No.");
             }
         }
     }
@@ -245,10 +242,10 @@ Page 51516059 "Payment Request Header"
                     var
                         Approvalentries: Page "Approval Entries";
                     begin
-                        if "Payment Type"="payment type"::Normal then
-                          DocumentType:=Documenttype::"Payment Voucher"
+                        if "Payment Type" = "payment type"::Normal then
+                            DocumentType := Documenttype::"Payment Voucher"
                         else
-                          DocumentType:=Documenttype::"Express Pv";
+                            DocumentType := Documenttype::"Express Pv";
                         //Approvalentries.Setfilters(DATABASE::"Payments Header",DocumentType,"No.");
                         //Approvalentries.RUN;
                     end;
@@ -263,13 +260,13 @@ Page 51516059 "Payment Request Header"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if not LinesExists then
-                           Error('There are no Lines created for this Document');
+                            Error('There are no Lines created for this Document');
                         //Ensure No Items That should be committed that are not
                         if LinesCommitmentStatus then
-                          Error('There are some lines that have not been committed');
+                            Error('There are some lines that have not been committed');
 
                         //Release the PV for Approval
                         //IF ApprovalMgt.SendPVApprovalRequest(Rec) THEN;
@@ -285,9 +282,9 @@ Page 51516059 "Payment Request Header"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                          //IF ApprovalMgt.CancelPVApprovalRequest(Rec,TRUE,TRUE) THEN;
+                        //IF ApprovalMgt.CancelPVApprovalRequest(Rec,TRUE,TRUE) THEN;
                     end;
                 }
                 separator(Action9)
@@ -309,39 +306,39 @@ Page 51516059 "Payment Request Header"
                     begin
                         TestField("Payment Mode");
                         PaymentsHeader.Init;
-                          PaymentsHeader.TransferFields(Rec);
-                          PaymentsHeader."No.":='';
-                          if "Payment Mode"="payment mode"::Cash then
-                            PaymentsHeader."Payment Type":=PaymentsHeader."payment type"::"Petty Cash"
-                          else
-                            PaymentsHeader."Payment Type":=PaymentsHeader."payment type"::Normal;
-                          PaymentsHeader."No.":="No.";
+                        PaymentsHeader.TransferFields(Rec);
+                        PaymentsHeader."No." := '';
+                        if "Payment Mode" = "payment mode"::Cash then
+                            PaymentsHeader."Payment Type" := PaymentsHeader."payment type"::"Petty Cash"
+                        else
+                            PaymentsHeader."Payment Type" := PaymentsHeader."payment type"::Normal;
+                        PaymentsHeader."No." := "No.";
                         PaymentsHeader.Insert(true);
 
-                        PaymentsHeader."Global Dimension 1 Code":="Global Dimension 1 Code";
-                        PaymentsHeader."Global Dimension 2 Code":="Global Dimension 2 Code";
+                        PaymentsHeader."Global Dimension 1 Code" := "Global Dimension 1 Code";
+                        PaymentsHeader."Global Dimension 2 Code" := "Global Dimension 2 Code";
                         PaymentsHeader.Modify;
 
 
-                        RecLines.SetRange(RecLines."Received From","No.");
+                        RecLines.SetRange(RecLines."Received From", "No.");
                         if RecLines.FindSet then
-                        repeat
-                          PaymentsLine.Init;
-                          PaymentsLine.TransferFields(RecLines);
-                          PaymentsLine."Received From":=PaymentsHeader."No.";
-                          PaymentsLine.Insert;
-                        until RecLines.Next=0;
+                            repeat
+                                PaymentsLine.Init;
+                                PaymentsLine.TransferFields(RecLines);
+                                PaymentsLine."Received From" := PaymentsHeader."No.";
+                                PaymentsLine.Insert;
+                            until RecLines.Next = 0;
 
-                        Status:=Status::Posted;
-                        Posted:=true;
-                        "Date Posted":=Today;
-                        "Time Posted":=Time;
+                        Status := Status::Posted;
+                        Posted := true;
+                        "Date Posted" := Today;
+                        "Time Posted" := Time;
                         Modify;
 
-                        if "Payment Mode"="payment mode"::Cash then
-                          Page.Run(55902,PaymentsHeader)
+                        if "Payment Mode" = "payment mode"::Cash then
+                            Page.Run(55902, PaymentsHeader)
                         else
-                          Page.Run(55905,PaymentsHeader);
+                            Page.Run(55905, PaymentsHeader);
                     end;
                 }
                 action("Cancel Payment Document")
@@ -356,10 +353,10 @@ Page 51516059 "Payment Request Header"
                     var
                         PaymentHeader: Record "Payment Header.";
                     begin
-                        TestField(Status,Status::Approved);
+                        TestField(Status, Status::Approved);
                         PaymentHeader.Reset;
-                        PaymentHeader.SetRange(PaymentHeader."No.","No.");
-                        PaymentHeader.SetRange(Status,Status::Approved);
+                        PaymentHeader.SetRange(PaymentHeader."No.", "No.");
+                        PaymentHeader.SetRange(Status, Status::Approved);
                         /*IF PaymentHeader.FINDFIRST THEN BEGIN
                           IF CONFIRM('Are you sure you want to cancel document %1, and reopen the payment request %2 ?',FALSE,PaymentHeader."No.","No.") THEN
                           BEGIN
@@ -428,7 +425,7 @@ Page 51516059 "Payment Request Header"
                           DocumentType:=DocumentType::"Payment Voucher"
                         ELSE
                         */
-                          DocumentType:=Documenttype::Requisition;
+                        DocumentType := Documenttype::Requisition;
                         //Approvalentries.Setfilters(DATABASE::"Payments Header",DocumentType,"No.");
                         //Approvalentries.RUN;
 
@@ -445,13 +442,13 @@ Page 51516059 "Payment Request Header"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if not LinesExists then
-                           Error('There are no Lines created for this Document');
+                            Error('There are no Lines created for this Document');
                         //Ensure No Items That should be committed that are not
                         if LinesCommitmentStatus then
-                          Error('There are some lines that have not been committed');
+                            Error('There are some lines that have not been committed');
 
                         //Release the PV for Approval
                         //IF ApprovalMgt.SendPVApprovalRequest(Rec) THEN;
@@ -474,9 +471,9 @@ Page 51516059 "Payment Request Header"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                          //IF ApprovalMgt.CancelPVApprovalRequest(Rec,TRUE,TRUE) THEN;
+                        //IF ApprovalMgt.CancelPVApprovalRequest(Rec,TRUE,TRUE) THEN;
                     end;
                 }
                 separator(Action1102755009)
@@ -498,23 +495,23 @@ Page 51516059 "Payment Request Header"
                     begin
                         BCSetup.Get;
                         if not BCSetup.Mandatory then
-                           exit;
+                            exit;
 
-                            if not AllFieldsEntered then
-                             Error('Some of the Key Fields on the Lines:[ACCOUNT NO.,AMOUNT] Have not been Entered please RECHECK your entries');
-                          //First Check whether other lines are already committed.
-                          Commitments.Reset;
-                          Commitments.SetRange(Commitments."Document Type",Commitments."document type"::"Payment Voucher");
-                          Commitments.SetRange(Commitments."Document No.","No.");
-                          if Commitments.Find('-') then begin
-                            if Confirm('Lines in this Document appear to be committed do you want to re-commit?',false)=false then begin exit end;
-                          Commitments.Reset;
-                          Commitments.SetRange(Commitments."Document Type",Commitments."document type"::"Payment Voucher");
-                          Commitments.SetRange(Commitments."Document No.","No.");
-                          Commitments.DeleteAll;
-                         end;
+                        if not AllFieldsEntered then
+                            Error('Some of the Key Fields on the Lines:[ACCOUNT NO.,AMOUNT] Have not been Entered please RECHECK your entries');
+                        //First Check whether other lines are already committed.
+                        Commitments.Reset;
+                        Commitments.SetRange(Commitments."Document Type", Commitments."document type"::"Payment Voucher");
+                        Commitments.SetRange(Commitments."Document No.", "No.");
+                        if Commitments.Find('-') then begin
+                            if Confirm('Lines in this Document appear to be committed do you want to re-commit?', false) = false then begin exit end;
+                            Commitments.Reset;
+                            Commitments.SetRange(Commitments."Document Type", Commitments."document type"::"Payment Voucher");
+                            Commitments.SetRange(Commitments."Document No.", "No.");
+                            Commitments.DeleteAll;
+                        end;
 
-                            CheckBudgetAvail.CheckPayments(Rec);
+                        CheckBudgetAvail.CheckPayments(Rec);
                     end;
                 }
                 action("Cancel Budget Commitment")
@@ -529,21 +526,21 @@ Page 51516059 "Payment Request Header"
 
                     trigger OnAction()
                     begin
-                          if Confirm('Do you Wish to Cancel the Commitment entries for this document',false)=false then begin exit end;
+                        if Confirm('Do you Wish to Cancel the Commitment entries for this document', false) = false then begin exit end;
 
-                          Commitments.Reset;
-                          Commitments.SetRange(Commitments."Document Type",Commitments."document type"::"Payment Voucher");
-                          Commitments.SetRange(Commitments."Document No.","No.");
-                          Commitments.DeleteAll;
+                        Commitments.Reset;
+                        Commitments.SetRange(Commitments."Document Type", Commitments."document type"::"Payment Voucher");
+                        Commitments.SetRange(Commitments."Document No.", "No.");
+                        Commitments.DeleteAll;
 
-                          PayLine.Reset;
-                          PayLine.SetRange(PayLine."Received From","No.");
-                          if PayLine.Find('-') then begin
+                        PayLine.Reset;
+                        PayLine.SetRange(PayLine."Received From", "No.");
+                        if PayLine.Find('-') then begin
                             repeat
-                              PayLine."Cashier Bank Account":=false;
-                              PayLine.Modify;
-                            until PayLine.Next=0;
-                          end;
+                                PayLine."Cashier Bank Account" := false;
+                                PayLine.Modify;
+                            until PayLine.Next = 0;
+                        end;
                     end;
                 }
                 separator(Action1102755033)
@@ -561,16 +558,16 @@ Page 51516059 "Payment Request Header"
 
                     trigger OnAction()
                     begin
-                         if Status<>Status::Approved then
+                        if Status <> Status::Approved then
                             Error('You can only print a Payment Voucher after it is fully Approved');
 
 
 
                         //IF Status=Status::Pending THEN
-                           //ERROR('You cannot Print until the document is released for approval');
+                        //ERROR('You cannot Print until the document is released for approval');
                         Reset;
-                        SetFilter("No.","No.");
-                        Report.Run(55903,true,true,Rec);
+                        SetFilter("No.", "No.");
+                        Report.Run(55903, true, true, Rec);
                         Reset;
 
                         CurrPage.Update;
@@ -587,11 +584,11 @@ Page 51516059 "Payment Request Header"
                     var
                         FilterbyPayline: Record "Payment Line.";
                     begin
-                        if Status=Status::"Pending Approval" then
-                           Error('You cannot Print until the document is released for approval');
+                        if Status = Status::"Pending Approval" then
+                            Error('You cannot Print until the document is released for approval');
                         FilterbyPayline.Reset;
-                        FilterbyPayline.SetFilter(FilterbyPayline."Received From","No.");
-                        Report.Run(56007,true,true,FilterbyPayline);
+                        FilterbyPayline.SetFilter(FilterbyPayline."Received From", "No.");
+                        Report.Run(56007, true, true, FilterbyPayline);
                         Reset;
                     end;
                 }
@@ -621,15 +618,15 @@ Page 51516059 "Payment Request Header"
                         Text000: label 'Are you sure you want to cancel this Document?';
                         Text001: label 'You have selected not to Cancel the Document';
                     begin
-                        if Status=Status::Posted then Error('Please reverse this document first');//TESTFIELD(Status,Status::Approved);
-                        if Confirm(Text000,true) then  begin
-                        //Post Reversal Entries for Commitments
-                        Doc_Type:=Doc_type::"Payment Voucher";
-                        CheckBudgetAvail.ReverseEntries(Doc_Type,"No.");
-                        //Status:=Status::Cancelled;
-                        Modify;
+                        if Status = Status::Posted then Error('Please reverse this document first');//TESTFIELD(Status,Status::Approved);
+                        if Confirm(Text000, true) then begin
+                            //Post Reversal Entries for Commitments
+                            Doc_Type := Doc_type::"Payment Voucher";
+                            CheckBudgetAvail.ReverseEntries(Doc_Type, "No.");
+                            //Status:=Status::Cancelled;
+                            Modify;
                         end else
-                          Error(Text001);
+                            Error(Text001);
                     end;
                 }
             }
@@ -684,21 +681,21 @@ Page 51516059 "Payment Request Header"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        "Payment Type":="payment type"::Express;
+        "Payment Type" := "payment type"::Express;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-         "Responsibility Center" := UserMgt.GetPurchasesFilter();
-         //Add dimensions if set by default here
-         "Global Dimension 1 Code":=UserMgt.GetSetDimensions(UserId,1);
-         Validate("Global Dimension 1 Code");
-         "Global Dimension 2 Code":=UserMgt.GetSetDimensions(UserId,2);
-         Validate("Global Dimension 2 Code");
-         "Shortcut Dimension 3 Code":=UserMgt.GetSetDimensions(UserId,3);
-         Validate("Shortcut Dimension 3 Code");
-         "Shortcut Dimension 4 Code":=UserMgt.GetSetDimensions(UserId,4);
-         Validate("Shortcut Dimension 4 Code");
+        "Responsibility Center" := UserMgt.GetPurchasesFilter();
+        //Add dimensions if set by default here
+        "Global Dimension 1 Code" := UserMgt.GetSetDimensions(UserId, 1);
+        Validate("Global Dimension 1 Code");
+        "Global Dimension 2 Code" := UserMgt.GetSetDimensions(UserId, 2);
+        Validate("Global Dimension 2 Code");
+        "Shortcut Dimension 3 Code" := UserMgt.GetSetDimensions(UserId, 3);
+        Validate("Shortcut Dimension 3 Code");
+        "Shortcut Dimension 4 Code" := UserMgt.GetSetDimensions(UserId, 4);
+        Validate("Shortcut Dimension 4 Code");
 
         //OnAfterGetCurrRecord;
         UpdateControls;
@@ -718,7 +715,7 @@ Page 51516059 "Payment Request Header"
           FILTERGROUP(0);
         END;
         */
-        
+
         //UpdatePageControls;
 
     end;
@@ -797,47 +794,44 @@ Page 51516059 "Payment Request Header"
     procedure PostPaymentVoucher(Rec: Record "Payment Header.")
     begin
 
-         // DELETE ANY LINE ITEM THAT MAY BE PRESENT
-         GenJnlLine.Reset;
-         GenJnlLine.SetRange(GenJnlLine."Journal Template Name",JTemplate);
-         GenJnlLine.SetRange(GenJnlLine."Journal Batch Name",JBatch);
-         if GenJnlLine.Find('+') then
-           begin
-             LineNo:=GenJnlLine."Line No."+1000;
-           end
-         else
-           begin
-             LineNo:=1000;
-           end;
-         GenJnlLine.DeleteAll;
-         GenJnlLine.Reset;
+        // DELETE ANY LINE ITEM THAT MAY BE PRESENT
+        GenJnlLine.Reset;
+        GenJnlLine.SetRange(GenJnlLine."Journal Template Name", JTemplate);
+        GenJnlLine.SetRange(GenJnlLine."Journal Batch Name", JBatch);
+        if GenJnlLine.Find('+') then begin
+            LineNo := GenJnlLine."Line No." + 1000;
+        end
+        else begin
+            LineNo := 1000;
+        end;
+        GenJnlLine.DeleteAll;
+        GenJnlLine.Reset;
 
         Payments.Reset;
-        Payments.SetRange(Payments."No.","No.");
+        Payments.SetRange(Payments."No.", "No.");
         if Payments.Find('-') then begin
-          PayLine.Reset;
-          PayLine.SetRange(PayLine."Received From",Payments."No.");
-          if PayLine.Find('-') then
-            begin
-              repeat
-                PostHeader(Payments);
-              until PayLine.Next=0;
+            PayLine.Reset;
+            PayLine.SetRange(PayLine."Received From", Payments."No.");
+            if PayLine.Find('-') then begin
+                repeat
+                    PostHeader(Payments);
+                until PayLine.Next = 0;
             end;
 
-        Post:=false;
-        Post:=JournlPosted.PostedSuccessfully();
-        if Post then  begin
-            Posted:=true;
-            Status:=Payments.Status::Posted;
-            "Posted By":=UserId;
-            "Date Posted":=Today;
-            "Time Posted":=Time;
-            Modify;
+            Post := false;
+            Post := JournlPosted.PostedSuccessfully();
+            if Post then begin
+                Posted := true;
+                Status := Payments.Status::Posted;
+                "Posted By" := UserId;
+                "Date Posted" := Today;
+                "Time Posted" := Time;
+                Modify;
 
-          //Post Reversal Entries for Commitments
-          Doc_Type:=Doc_type::"Payment Voucher";
-          CheckBudgetAvail.ReverseEntries(Doc_Type,"No.");
-          end;
+                //Post Reversal Entries for Commitments
+                Doc_Type := Doc_type::"Payment Voucher";
+                CheckBudgetAvail.ReverseEntries(Doc_Type, "No.");
+            end;
         end;
     end;
 
@@ -845,99 +839,92 @@ Page 51516059 "Payment Request Header"
     procedure PostHeader(var Payment: Record "Payment Header.")
     begin
 
-        if (Payments."Payment Mode"=Payments."payment mode"::Cheque) and ("Cheque Type"="cheque type"::" ") then
-           Error('Cheque type has to be specified');
+        if (Payments."Payment Mode" = Payments."payment mode"::Cheque) and ("Cheque Type" = "cheque type"::" ") then
+            Error('Cheque type has to be specified');
 
-        if Payments."Payment Mode"=Payments."payment mode"::Cheque then begin
-            if (Payments."Cheque No"='') and ("Cheque Type"="cheque type"::"Manual Cheque") then
-              begin
+        if Payments."Payment Mode" = Payments."payment mode"::Cheque then begin
+            if (Payments."Cheque No" = '') and ("Cheque Type" = "cheque type"::"Manual Cheque") then begin
                 Error('Please ensure that the cheque number is inserted');
-              end;
+            end;
         end;
 
-        if Payments."Payment Mode"=Payments."payment mode"::EFT then
-          begin
-            if Payments."Cheque No"='' then
-              begin
-                Error ('Please ensure that the EFT number is inserted');
-              end;
-          end;
-
-        if Payments."Payment Mode"=Payments."payment mode"::"Letter of Credit" then
-          begin
-            if Payments."Cheque No"='' then
-              begin
-                Error('Please ensure that the Letter of Credit ref no. is entered.');
-              end;
-          end;
-        GenJnlLine.Reset;
-        GenJnlLine.SetRange(GenJnlLine."Journal Template Name",JTemplate);
-        GenJnlLine.SetRange(GenJnlLine."Journal Batch Name",JBatch);
-
-          if GenJnlLine.Find('+') then
-            begin
-              LineNo:=GenJnlLine."Line No."+1000;
-            end
-          else
-            begin
-              LineNo:=1000;
+        if Payments."Payment Mode" = Payments."payment mode"::EFT then begin
+            if Payments."Cheque No" = '' then begin
+                Error('Please ensure that the EFT number is inserted');
             end;
+        end;
+
+        if Payments."Payment Mode" = Payments."payment mode"::"Letter of Credit" then begin
+            if Payments."Cheque No" = '' then begin
+                Error('Please ensure that the Letter of Credit ref no. is entered.');
+            end;
+        end;
+        GenJnlLine.Reset;
+        GenJnlLine.SetRange(GenJnlLine."Journal Template Name", JTemplate);
+        GenJnlLine.SetRange(GenJnlLine."Journal Batch Name", JBatch);
+
+        if GenJnlLine.Find('+') then begin
+            LineNo := GenJnlLine."Line No." + 1000;
+        end
+        else begin
+            LineNo := 1000;
+        end;
 
 
-        LineNo:=LineNo+1000;
+        LineNo := LineNo + 1000;
         GenJnlLine.Init;
-        GenJnlLine."Journal Template Name":=JTemplate;
+        GenJnlLine."Journal Template Name" := JTemplate;
         GenJnlLine.Validate(GenJnlLine."Journal Template Name");
-        GenJnlLine."Journal Batch Name":=JBatch;
+        GenJnlLine."Journal Batch Name" := JBatch;
         GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
-        GenJnlLine."Line No.":=LineNo;
-        GenJnlLine."Source Code":='PAYMENTJNL';
-        GenJnlLine."Posting Date":=Payment."Payment Release Date";
+        GenJnlLine."Line No." := LineNo;
+        GenJnlLine."Source Code" := 'PAYMENTJNL';
+        GenJnlLine."Posting Date" := Payment."Payment Release Date";
         if CustomerPayLinesExist then
-         GenJnlLine."Document Type":=GenJnlLine."document type"::" "
+            GenJnlLine."Document Type" := GenJnlLine."document type"::" "
         else
-          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
-        GenJnlLine."Document No.":=Payments."No.";
-        GenJnlLine."External Document No.":=Payments."Cheque No";
+            GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+        GenJnlLine."Document No." := Payments."No.";
+        GenJnlLine."External Document No." := Payments."Cheque No";
 
-        GenJnlLine."Account Type":=GenJnlLine."account type"::"Bank Account";
-        GenJnlLine."Account No.":=Payments."Bank Account";
+        GenJnlLine."Account Type" := GenJnlLine."account type"::"Bank Account";
+        GenJnlLine."Account No." := Payments."Bank Account";
         GenJnlLine.Validate(GenJnlLine."Account No.");
 
-        GenJnlLine."Currency Code":=Payments."Currency Code";
+        GenJnlLine."Currency Code" := Payments."Currency Code";
         GenJnlLine.Validate(GenJnlLine."Currency Code");
-          //CurrFactor
-          GenJnlLine."Currency Factor":=Payments."Currency Factor";
-          GenJnlLine.Validate("Currency Factor");
+        //CurrFactor
+        GenJnlLine."Currency Factor" := Payments."Currency Factor";
+        GenJnlLine.Validate("Currency Factor");
 
-        Payments.CalcFields(Payments."Net Amount",Payments."VAT Amount");
-        GenJnlLine.Amount:=-(Payments."Net Amount" );
+        Payments.CalcFields(Payments."Net Amount", Payments."VAT Amount");
+        GenJnlLine.Amount := -(Payments."Net Amount");
         GenJnlLine.Validate(GenJnlLine.Amount);
-        GenJnlLine."Bal. Account Type":=GenJnlLine."bal. account type"::"G/L Account";
-        GenJnlLine."Bal. Account No.":='';
+        GenJnlLine."Bal. Account Type" := GenJnlLine."bal. account type"::"G/L Account";
+        GenJnlLine."Bal. Account No." := '';
 
         GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
-        GenJnlLine."Shortcut Dimension 1 Code":=PayLine."PV Type";
+        GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
         GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
-        GenJnlLine."Shortcut Dimension 2 Code":=PayLine."Apply to";
+        GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
         GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-        GenJnlLine.ValidateShortcutDimCode(3,PayLine."Apply to ID");
-        GenJnlLine.ValidateShortcutDimCode(4,PayLine."No of Units");
+        GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
+        GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
 
-        GenJnlLine.Description:=CopyStr("Payment Description",1,50);//COPYSTR('Pay To:' + Payments.Payee,1,50);
+        GenJnlLine.Description := CopyStr("Payment Description", 1, 50);//COPYSTR('Pay To:' + Payments.Payee,1,50);
         GenJnlLine.Validate(GenJnlLine.Description);
 
-        if "Payment Mode"<>"payment mode"::Cheque then  begin
-        GenJnlLine."Bank Payment Type":=GenJnlLine."bank payment type"::" "
+        if "Payment Mode" <> "payment mode"::Cheque then begin
+            GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::" "
         end else begin
-        if "Cheque Type"="cheque type"::"Computer Cheque" then
-         GenJnlLine."Bank Payment Type":=GenJnlLine."bank payment type"::"Computer Check"
-        else
-           GenJnlLine."Bank Payment Type":=GenJnlLine."bank payment type"::" "
+            if "Cheque Type" = "cheque type"::"Computer Cheque" then
+                GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::"Computer Check"
+            else
+                GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::" "
 
         end;
-        if GenJnlLine.Amount<>0 then
-        GenJnlLine.Insert;
+        if GenJnlLine.Amount <> 0 then
+            GenJnlLine.Insert;
 
         //Post Other Payment Journal Entries
         PostPV(Payments);
@@ -999,38 +986,38 @@ Page 51516059 "Payment Request Header"
     var
         BCSetup: Record "Budgetary Control Setup";
     begin
-         if BCSetup.Get() then  begin
-            if not BCSetup.Mandatory then  begin
-               Exists:=false;
-               exit;
+        if BCSetup.Get() then begin
+            if not BCSetup.Mandatory then begin
+                Exists := false;
+                exit;
             end;
-         end else begin
-               Exists:=false;
-               exit;
-         end;
-         Exists:=false;
-         PayLine.Reset;
-         PayLine.SetRange(PayLine."Received From","No.");
-         PayLine.SetRange(PayLine."Cashier Bank Account",false);
-         //PayLine.SETRANGE(PayLine."Budgetary Control A/C",TRUE);
-          if PayLine.Find('-') then
-             Exists:=true;
+        end else begin
+            Exists := false;
+            exit;
+        end;
+        Exists := false;
+        PayLine.Reset;
+        PayLine.SetRange(PayLine."Received From", "No.");
+        PayLine.SetRange(PayLine."Cashier Bank Account", false);
+        //PayLine.SETRANGE(PayLine."Budgetary Control A/C",TRUE);
+        if PayLine.Find('-') then
+            Exists := true;
     end;
 
 
     procedure CheckPVRequiredItems(Rec: Record "Payment Header.")
     begin
-        if Posted then  begin
+        if Posted then begin
             Error('The Document has already been posted');
         end;
-        
-        TestField(Status,Status::Approved);
+
+        TestField(Status, Status::Approved);
         TestField("Bank Account");
         TestField("Payment Mode");
         TestField("Payment Release Date");
         //Confirm whether Bank Has the Cash
-        if "Payment Mode"="payment mode"::Cash then
-         CheckBudgetAvail.CheckFundsAvailability(Rec);
+        if "Payment Mode" = "payment mode"::Cash then
+            CheckBudgetAvail.CheckFundsAvailability(Rec);
         /*
          //Confirm Payment Release Date is today);
         IF "Payment Mode"="Payment Mode"::Cash THEN
@@ -1038,36 +1025,35 @@ Page 51516059 "Payment Request Header"
         */
         /*Check if the user has selected all the relevant fields*/
         Temp.Get(UserId);
-        
-        JTemplate:=Temp."Payment Journal Template";JBatch:=Temp."Payment Journal Batch";
-        
-        if JTemplate='' then
-          begin
+
+        JTemplate := Temp."Payment Journal Template";
+        JBatch := Temp."Payment Journal Batch";
+
+        if JTemplate = '' then begin
             Error('Ensure the PV Template is set up in Cash Office Setup');
-          end;
-        if JBatch='' then
-          begin
+        end;
+        if JBatch = '' then begin
             Error('Ensure the PV Batch is set up in the Cash Office Setup')
-          end;
-        
-        if ("Payment Mode"="payment mode"::Cheque) and ("Cheque Type"="cheque type"::"Computer Cheque") then begin
-           if not Confirm(Text002,false) then
-              Error('You have selected to Abort PV Posting');
+        end;
+
+        if ("Payment Mode" = "payment mode"::Cheque) and ("Cheque Type" = "cheque type"::"Computer Cheque") then begin
+            if not Confirm(Text002, false) then
+                Error('You have selected to Abort PV Posting');
         end;
         //Check whether there is any printed cheques and lines not posted
         CheckLedger.Reset;
-        CheckLedger.SetRange(CheckLedger."Document No.","No.");
-        CheckLedger.SetRange(CheckLedger."Entry Status",CheckLedger."entry status"::Printed);
+        CheckLedger.SetRange(CheckLedger."Document No.", "No.");
+        CheckLedger.SetRange(CheckLedger."Entry Status", CheckLedger."entry status"::Printed);
         if CheckLedger.Find('-') then begin
-        //Ask whether to void the printed cheque
-        GenJnlLine.Reset;
-        GenJnlLine.SetRange(GenJnlLine."Journal Template Name",JTemplate);
-        GenJnlLine.SetRange(GenJnlLine."Journal Batch Name",JBatch);
-        GenJnlLine.FindFirst;
-        if Confirm(Text000,false,CheckLedger."Check No.") then
-          CheckManagement.VoidCheck(GenJnlLine)
-          else
-           Error(Text001,"No.",CheckLedger."Check No.");
+            //Ask whether to void the printed cheque
+            GenJnlLine.Reset;
+            GenJnlLine.SetRange(GenJnlLine."Journal Template Name", JTemplate);
+            GenJnlLine.SetRange(GenJnlLine."Journal Batch Name", JBatch);
+            GenJnlLine.FindFirst;
+            if Confirm(Text000, false, CheckLedger."Check No.") then
+                CheckManagement.VoidCheck(GenJnlLine)
+            else
+                Error(Text001, "No.", CheckLedger."Check No.");
         end;
 
     end;
@@ -1077,310 +1063,304 @@ Page 51516059 "Payment Request Header"
     begin
 
         PayLine.Reset;
-        PayLine.SetRange(PayLine."Received From",Payments."No.");
+        PayLine.SetRange(PayLine."Received From", Payments."No.");
         if PayLine.Find('-') then begin
 
-        repeat
-            strText:=GetAppliedEntries(PayLine."On Behalf Of");
-            Payment.TestField(Payment.Payee);
-            PayLine.TestField(PayLine.Remarks);
-           // PayLine.TESTFIELD(PayLine."Global Dimension 1 Code");
+            repeat
+                strText := GetAppliedEntries(PayLine."On Behalf Of");
+                Payment.TestField(Payment.Payee);
+                PayLine.TestField(PayLine.Remarks);
+                // PayLine.TESTFIELD(PayLine."Global Dimension 1 Code");
 
-            //BANK
-            if PayLine."Budget Center Name"=PayLine."budget center name"::"1" then begin
-              CashierLinks.Reset;
-              CashierLinks.SetRange(CashierLinks.UserID,UserId);
+                //BANK
+                if PayLine."Budget Center Name" = PayLine."budget center name"::"1" then begin
+                    CashierLinks.Reset;
+                    CashierLinks.SetRange(CashierLinks.UserID, UserId);
+                end;
+
+                //CHEQUE
+                LineNo := LineNo + 1000;
+                GenJnlLine.Init;
+                GenJnlLine."Journal Template Name" := JTemplate;
+                GenJnlLine.Validate(GenJnlLine."Journal Template Name");
+                GenJnlLine."Journal Batch Name" := JBatch;
+                GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
+                GenJnlLine."Source Code" := 'PAYMENTJNL';
+                GenJnlLine."Line No." := LineNo;
+                GenJnlLine."Posting Date" := Payment."Payment Release Date";
+                GenJnlLine."Document No." := PayLine."Received From";
+                if PayLine.Posted = PayLine.Posted::"1" then
+                    GenJnlLine."Document Type" := GenJnlLine."document type"::" "
+                else
+                    GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                GenJnlLine."Account Type" := PayLine.Posted;
+                GenJnlLine."Account No." := PayLine."Date Posted";
+                GenJnlLine.Validate(GenJnlLine."Account No.");
+                GenJnlLine."External Document No." := Payments."Cheque No";
+                GenJnlLine.Description := CopyStr(PayLine."Posted By" + ':' + Payment.Payee, 1, 50);
+                GenJnlLine."Currency Code" := Payments."Currency Code";
+                GenJnlLine.Validate("Currency Code");
+                GenJnlLine."Currency Factor" := Payments."Currency Factor";
+                GenJnlLine.Validate("Currency Factor");
+                if PayLine."VAT Code" = '' then begin
+                    GenJnlLine.Amount := PayLine."PO/INV No";
+                end
+                else begin
+                    GenJnlLine.Amount := PayLine."PO/INV No";
+                end;
+                GenJnlLine.Validate(GenJnlLine.Amount);
+                GenJnlLine."VAT Prod. Posting Group" := PayLine."Bank Type";
+                GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
+                //GenJnlLine.VALIDATE(GenJnlLine."Bal. Account No.");
+                GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
+                GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
+                GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
+                GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
+                GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
+                GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
+                GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
+                GenJnlLine."Applies-to Doc. No." := PayLine."Total Expenditure";
+                GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
+                GenJnlLine."Applies-to ID" := PayLine."Total Commitments";
+
+                if GenJnlLine.Amount <> 0 then GenJnlLine.Insert;
+
+                //Post VAT to GL[VAT GL]
+                TarriffCodes.Reset;
+                TarriffCodes.SetRange(TarriffCodes."Tax Code", PayLine."VAT Code");
+                if TarriffCodes.Find('-') then begin
+                    TarriffCodes.TestField(TarriffCodes."Account No");
+                    LineNo := LineNo + 1000;
+                    GenJnlLine.Init;
+                    GenJnlLine."Journal Template Name" := JTemplate;
+                    GenJnlLine.Validate(GenJnlLine."Journal Template Name");
+                    GenJnlLine."Journal Batch Name" := JBatch;
+                    GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
+                    GenJnlLine."Source Code" := 'PAYMENTJNL';
+                    GenJnlLine."Line No." := LineNo;
+                    GenJnlLine."Posting Date" := Payment."Payment Release Date";
+                    GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                    GenJnlLine."Document No." := PayLine."Received From";
+                    GenJnlLine."External Document No." := Payments."Cheque No";
+                    GenJnlLine."Account Type" := GenJnlLine."account type"::"G/L Account";
+                    GenJnlLine."Account No." := TarriffCodes."Account No";
+                    GenJnlLine.Validate(GenJnlLine."Account No.");
+                    GenJnlLine."Currency Code" := Payments."Currency Code";
+                    GenJnlLine.Validate(GenJnlLine."Currency Code");
+                    //CurrFactor
+                    GenJnlLine."Currency Factor" := Payments."Currency Factor";
+                    GenJnlLine.Validate("Currency Factor");
+
+                    GenJnlLine."Gen. Posting Type" := GenJnlLine."gen. posting type"::" ";
+                    GenJnlLine.Validate(GenJnlLine."Gen. Posting Type");
+                    GenJnlLine."Gen. Bus. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."Gen. Bus. Posting Group");
+                    GenJnlLine."Gen. Prod. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."Gen. Prod. Posting Group");
+                    GenJnlLine."VAT Bus. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."VAT Bus. Posting Group");
+                    GenJnlLine."VAT Prod. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
+                    GenJnlLine.Amount := -PayLine."Withholding Tax Code";
+                    GenJnlLine.Validate(GenJnlLine.Amount);
+                    GenJnlLine."Bal. Account Type" := GenJnlLine."bal. account type"::"G/L Account";
+                    GenJnlLine."Bal. Account No." := '';
+                    GenJnlLine.Description := CopyStr('VAT:' + Format(PayLine.Posted) + '::' + Format(PayLine."Time Posted"), 1, 50);
+                    GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
+                    GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
+                    GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
+                    GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
+                    GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
+                    GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
+                    GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
+
+                    if GenJnlLine.Amount <> 0 then GenJnlLine.Insert;
+                end;
+
+                //POST W/TAX to Respective W/TAX GL Account
+                TarriffCodes.Reset;
+                TarriffCodes.SetRange(TarriffCodes."Tax Code", PayLine."Withholding Tax Amount");
+                if TarriffCodes.Find('-') then begin
+                    TarriffCodes.TestField(TarriffCodes."Account No");
+                    LineNo := LineNo + 1000;
+                    GenJnlLine.Init;
+                    GenJnlLine."Journal Template Name" := JTemplate;
+                    GenJnlLine.Validate(GenJnlLine."Journal Template Name");
+                    GenJnlLine."Journal Batch Name" := JBatch;
+                    GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
+                    GenJnlLine."Source Code" := 'PAYMENTJNL';
+                    GenJnlLine."Line No." := LineNo;
+                    GenJnlLine."Posting Date" := Payment."Payment Release Date";
+                    GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                    GenJnlLine."Document No." := PayLine."Received From";
+                    GenJnlLine."External Document No." := Payments."Cheque No";
+                    GenJnlLine."Account Type" := GenJnlLine."account type"::"G/L Account";
+                    GenJnlLine."Account No." := TarriffCodes."Account No";
+                    GenJnlLine.Validate(GenJnlLine."Account No.");
+                    GenJnlLine."Currency Code" := Payments."Currency Code";
+                    GenJnlLine.Validate(GenJnlLine."Currency Code");
+                    //CurrFactor
+                    GenJnlLine."Currency Factor" := Payments."Currency Factor";
+                    GenJnlLine.Validate("Currency Factor");
+
+                    GenJnlLine."Gen. Posting Type" := GenJnlLine."gen. posting type"::" ";
+                    GenJnlLine.Validate(GenJnlLine."Gen. Posting Type");
+                    GenJnlLine."Gen. Bus. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."Gen. Bus. Posting Group");
+                    GenJnlLine."Gen. Prod. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."Gen. Prod. Posting Group");
+                    GenJnlLine."VAT Bus. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."VAT Bus. Posting Group");
+                    GenJnlLine."VAT Prod. Posting Group" := '';
+                    GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
+                    GenJnlLine.Amount := -PayLine."Net Amount";
+                    GenJnlLine.Validate(GenJnlLine.Amount);
+                    GenJnlLine."Bal. Account Type" := GenJnlLine."bal. account type"::"G/L Account";
+                    GenJnlLine."Bal. Account No." := '';
+                    GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
+                    GenJnlLine.Description := CopyStr('W/Tax:' + Format(PayLine."Time Posted") + '::' + strText, 1, 50);
+                    GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
+                    GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
+                    GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
+                    GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
+                    GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
+                    GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
+
+                    if GenJnlLine.Amount <> 0 then
+                        GenJnlLine.Insert;
+                end;
+
+                //Post VAT Balancing Entry Goes to Vendor
+                LineNo := LineNo + 1000;
+                GenJnlLine.Init;
+                GenJnlLine."Journal Template Name" := JTemplate;
+                GenJnlLine.Validate(GenJnlLine."Journal Template Name");
+                GenJnlLine."Journal Batch Name" := JBatch;
+                GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
+                GenJnlLine."Source Code" := 'PAYMENTJNL';
+                GenJnlLine."Line No." := LineNo;
+                GenJnlLine."Posting Date" := Payment."Payment Release Date";
+                GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                GenJnlLine."Document No." := PayLine."Received From";
+                GenJnlLine."External Document No." := Payments."Cheque No";
+                GenJnlLine."Account Type" := PayLine.Posted;
+                GenJnlLine."Account No." := PayLine."Date Posted";
+                GenJnlLine.Validate(GenJnlLine."Account No.");
+                GenJnlLine."Currency Code" := Payments."Currency Code";
+                GenJnlLine.Validate(GenJnlLine."Currency Code");
+                //CurrFactor
+                GenJnlLine."Currency Factor" := Payments."Currency Factor";
+                GenJnlLine.Validate("Currency Factor");
+
+                if PayLine."VAT Code" = '' then begin
+                    GenJnlLine.Amount := 0;
+                end
+                else begin
+                    GenJnlLine.Amount := PayLine."Withholding Tax Code";
+                end;
+                GenJnlLine.Validate(GenJnlLine.Amount);
+                GenJnlLine."Bal. Account Type" := GenJnlLine."bal. account type"::"G/L Account";
+                GenJnlLine."Bal. Account No." := '';
+                GenJnlLine.Description := CopyStr('VAT:' + Format(PayLine.Posted) + '::' + Format(PayLine."Time Posted"), 1, 50);
+                GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
+                GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
+                GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
+                GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
+                GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
+                GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
+                GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
+                GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
+                GenJnlLine."Applies-to Doc. No." := PayLine."Total Expenditure";
+                GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
+                GenJnlLine."Applies-to ID" := PayLine."Total Commitments";
+                if GenJnlLine.Amount <> 0 then
+                    GenJnlLine.Insert;
+
+                //Post W/TAX Balancing Entry Goes to Vendor
+                LineNo := LineNo + 1000;
+                GenJnlLine.Init;
+                GenJnlLine."Journal Template Name" := JTemplate;
+                GenJnlLine.Validate(GenJnlLine."Journal Template Name");
+                GenJnlLine."Journal Batch Name" := JBatch;
+                GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
+                GenJnlLine."Source Code" := 'PAYMENTJNL';
+                GenJnlLine."Line No." := LineNo;
+                GenJnlLine."Posting Date" := Payment."Payment Release Date";
+                GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                GenJnlLine."Document No." := PayLine."Received From";
+                GenJnlLine."External Document No." := Payments."Cheque No";
+                GenJnlLine."Account Type" := PayLine.Posted;
+                GenJnlLine."Account No." := PayLine."Date Posted";
+                GenJnlLine.Validate(GenJnlLine."Account No.");
+                GenJnlLine."Currency Code" := Payments."Currency Code";
+                GenJnlLine.Validate(GenJnlLine."Currency Code");
+                //CurrFactor
+                GenJnlLine."Currency Factor" := Payments."Currency Factor";
+                GenJnlLine.Validate("Currency Factor");
+
+                GenJnlLine."Gen. Posting Type" := GenJnlLine."gen. posting type"::" ";
+                GenJnlLine.Validate(GenJnlLine."Gen. Posting Type");
+                GenJnlLine."Gen. Bus. Posting Group" := '';
+                GenJnlLine.Validate(GenJnlLine."Gen. Bus. Posting Group");
+                GenJnlLine."Gen. Prod. Posting Group" := '';
+                GenJnlLine.Validate(GenJnlLine."Gen. Prod. Posting Group");
+                GenJnlLine."VAT Bus. Posting Group" := '';
+                GenJnlLine.Validate(GenJnlLine."VAT Bus. Posting Group");
+                GenJnlLine."VAT Prod. Posting Group" := '';
+                GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
+                GenJnlLine.Amount := PayLine."Net Amount";
+                GenJnlLine.Validate(GenJnlLine.Amount);
+                GenJnlLine."Bal. Account Type" := GenJnlLine."bal. account type"::"G/L Account";
+                GenJnlLine."Bal. Account No." := '';
+                GenJnlLine.Description := CopyStr('W/Tax:' + strText, 1, 50);
+                GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
+                GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
+                GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
+                GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
+                GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
+                GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
+                GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
+                GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
+                GenJnlLine."Applies-to Doc. No." := PayLine."Total Expenditure";
+                GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
+                GenJnlLine."Applies-to ID" := PayLine."Total Commitments";
+                if GenJnlLine.Amount <> 0 then
+                    GenJnlLine.Insert;
+
+
+            until PayLine.Next = 0;
+
+            Commit;
+            //Post the Journal Lines
+            GenJnlLine.Reset;
+            GenJnlLine.SetRange(GenJnlLine."Journal Template Name", JTemplate);
+            GenJnlLine.SetRange(GenJnlLine."Journal Batch Name", JBatch);
+            //Adjust Gen Jnl Exchange Rate Rounding Balances
+            AdjustGenJnl.Run(GenJnlLine);
+            //End Adjust Gen Jnl Exchange Rate Rounding Balances
+
+
+            //Before posting if paymode is cheque print the cheque
+            if ("Payment Mode" = "payment mode"::Cheque) and ("Cheque Type" = "cheque type"::"Computer Cheque") then begin
+                DocPrint.PrintCheck(GenJnlLine);
+                Codeunit.Run(Codeunit::"Adjust Gen. Journal Balance", GenJnlLine);
+                //Confirm Cheque printed //Not necessary.
             end;
 
-            //CHEQUE
-            LineNo:=LineNo+1000;
-            GenJnlLine.Init;
-            GenJnlLine."Journal Template Name":=JTemplate;
-            GenJnlLine.Validate(GenJnlLine."Journal Template Name");
-            GenJnlLine."Journal Batch Name":=JBatch;
-            GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
-            GenJnlLine."Source Code":='PAYMENTJNL';
-            GenJnlLine."Line No.":=LineNo;
-            GenJnlLine."Posting Date":=Payment."Payment Release Date";
-            GenJnlLine."Document No.":=PayLine."Received From";
-            if PayLine.Posted=PayLine.Posted::"1" then
-            GenJnlLine."Document Type":=GenJnlLine."document type"::" "
-            else
-              GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
-            GenJnlLine."Account Type":=PayLine.Posted;
-            GenJnlLine."Account No.":=PayLine."Date Posted";
-            GenJnlLine.Validate(GenJnlLine."Account No.");
-            GenJnlLine."External Document No.":=Payments."Cheque No";
-            GenJnlLine.Description:=CopyStr(PayLine."Posted By" + ':' + Payment.Payee,1,50);
-            GenJnlLine."Currency Code":=Payments."Currency Code";
-            GenJnlLine.Validate("Currency Code");
-            GenJnlLine."Currency Factor":=Payments."Currency Factor";
-            GenJnlLine.Validate("Currency Factor");
-            if PayLine."VAT Code"='' then
-              begin
-                GenJnlLine.Amount:=PayLine."PO/INV No" ;
-              end
-            else
-              begin
-                GenJnlLine.Amount:=PayLine."PO/INV No";
-              end;
-            GenJnlLine.Validate(GenJnlLine.Amount);
-            GenJnlLine."VAT Prod. Posting Group":=PayLine."Bank Type";
-            GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
-            //GenJnlLine.VALIDATE(GenJnlLine."Bal. Account No.");
-            GenJnlLine."Shortcut Dimension 1 Code":=PayLine."PV Type";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
-            GenJnlLine."Shortcut Dimension 2 Code":=PayLine."Apply to";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-            GenJnlLine.ValidateShortcutDimCode(3,PayLine."Apply to ID");
-            GenJnlLine.ValidateShortcutDimCode(4,PayLine."No of Units");
-            GenJnlLine."Applies-to Doc. Type":=GenJnlLine."applies-to doc. type"::Invoice;
-            GenJnlLine."Applies-to Doc. No.":=PayLine."Total Expenditure";
-            GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
-            GenJnlLine."Applies-to ID":=PayLine."Total Commitments";
-
-            if GenJnlLine.Amount<>0 then GenJnlLine.Insert;
-
-            //Post VAT to GL[VAT GL]
-            TarriffCodes.Reset;
-            TarriffCodes.SetRange(TarriffCodes."Tax Code",PayLine."VAT Code");
-            if TarriffCodes.Find('-') then begin
-            TarriffCodes.TestField(TarriffCodes."Account No");
-            LineNo:=LineNo+1000;
-            GenJnlLine.Init;
-            GenJnlLine."Journal Template Name":=JTemplate;
-            GenJnlLine.Validate(GenJnlLine."Journal Template Name");
-            GenJnlLine."Journal Batch Name":=JBatch;
-            GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
-            GenJnlLine."Source Code":='PAYMENTJNL';
-            GenJnlLine."Line No.":=LineNo;
-            GenJnlLine."Posting Date":=Payment."Payment Release Date";
-            GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
-            GenJnlLine."Document No.":=PayLine."Received From";
-            GenJnlLine."External Document No.":=Payments."Cheque No";
-            GenJnlLine."Account Type":=GenJnlLine."account type"::"G/L Account";
-            GenJnlLine."Account No.":=TarriffCodes."Account No";
-            GenJnlLine.Validate(GenJnlLine."Account No.");
-            GenJnlLine."Currency Code":=Payments."Currency Code";
-            GenJnlLine.Validate(GenJnlLine."Currency Code");
-            //CurrFactor
-            GenJnlLine."Currency Factor":=Payments."Currency Factor";
-            GenJnlLine.Validate("Currency Factor");
-
-            GenJnlLine."Gen. Posting Type":=GenJnlLine."gen. posting type"::" ";
-            GenJnlLine.Validate(GenJnlLine."Gen. Posting Type");
-            GenJnlLine."Gen. Bus. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."Gen. Bus. Posting Group");
-            GenJnlLine."Gen. Prod. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."Gen. Prod. Posting Group");
-            GenJnlLine."VAT Bus. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."VAT Bus. Posting Group");
-            GenJnlLine."VAT Prod. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
-            GenJnlLine.Amount:=-PayLine."Withholding Tax Code";
-            GenJnlLine.Validate(GenJnlLine.Amount);
-            GenJnlLine."Bal. Account Type":=GenJnlLine."bal. account type"::"G/L Account";
-            GenJnlLine."Bal. Account No.":='';
-            GenJnlLine.Description:=CopyStr('VAT:' + Format(PayLine.Posted) + '::' + Format(PayLine."Time Posted"),1,50);
-            GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
-            GenJnlLine."Shortcut Dimension 1 Code":=PayLine."PV Type";
-            GenJnlLine."Shortcut Dimension 2 Code":=PayLine."Apply to";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
-            GenJnlLine.ValidateShortcutDimCode(3,PayLine."Apply to ID");
-            GenJnlLine.ValidateShortcutDimCode(4,PayLine."No of Units");
-
-            if GenJnlLine.Amount<>0 then GenJnlLine.Insert;
+            Codeunit.Run(Codeunit::"Gen. Jnl.-Post Line", GenJnlLine);
+            Post := false;
+            Post := JournlPosted.PostedSuccessfully();
+            if Post then begin
+                if PayLine.FindFirst then begin
+                    repeat
+                        PayLine."Imprest Request No" := Today;
+                        PayLine."Batched Imprest Tot" := Time;
+                        PayLine."Shortcut Dimension 2 Code" := UserId;
+                        PayLine."Petty Cash" := PayLine."petty cash"::"4";
+                        PayLine.Modify;
+                    until PayLine.Next = 0;
+                end;
             end;
-
-            //POST W/TAX to Respective W/TAX GL Account
-            TarriffCodes.Reset;
-            TarriffCodes.SetRange(TarriffCodes."Tax Code",PayLine."Withholding Tax Amount");
-            if TarriffCodes.Find('-') then begin
-            TarriffCodes.TestField(TarriffCodes."Account No");
-            LineNo:=LineNo+1000;
-            GenJnlLine.Init;
-            GenJnlLine."Journal Template Name":=JTemplate;
-            GenJnlLine.Validate(GenJnlLine."Journal Template Name");
-            GenJnlLine."Journal Batch Name":=JBatch;
-            GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
-            GenJnlLine."Source Code":='PAYMENTJNL';
-            GenJnlLine."Line No.":=LineNo;
-            GenJnlLine."Posting Date":=Payment."Payment Release Date";
-            GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
-            GenJnlLine."Document No.":=PayLine."Received From";
-            GenJnlLine."External Document No.":=Payments."Cheque No";
-            GenJnlLine."Account Type":=GenJnlLine."account type"::"G/L Account";
-            GenJnlLine."Account No.":=TarriffCodes."Account No";
-            GenJnlLine.Validate(GenJnlLine."Account No.");
-            GenJnlLine."Currency Code":=Payments."Currency Code";
-            GenJnlLine.Validate(GenJnlLine."Currency Code");
-            //CurrFactor
-            GenJnlLine."Currency Factor":=Payments."Currency Factor";
-            GenJnlLine.Validate("Currency Factor");
-
-            GenJnlLine."Gen. Posting Type":=GenJnlLine."gen. posting type"::" ";
-            GenJnlLine.Validate(GenJnlLine."Gen. Posting Type");
-            GenJnlLine."Gen. Bus. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."Gen. Bus. Posting Group");
-            GenJnlLine."Gen. Prod. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."Gen. Prod. Posting Group");
-            GenJnlLine."VAT Bus. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."VAT Bus. Posting Group");
-            GenJnlLine."VAT Prod. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
-            GenJnlLine.Amount:=-PayLine."Net Amount";
-            GenJnlLine.Validate(GenJnlLine.Amount);
-            GenJnlLine."Bal. Account Type":=GenJnlLine."bal. account type"::"G/L Account";
-            GenJnlLine."Bal. Account No.":='';
-            GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
-            GenJnlLine.Description:=CopyStr('W/Tax:' + Format(PayLine."Time Posted") +'::' + strText,1,50);
-            GenJnlLine."Shortcut Dimension 1 Code":=PayLine."PV Type";
-            GenJnlLine."Shortcut Dimension 2 Code":=PayLine."Apply to";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
-            GenJnlLine.ValidateShortcutDimCode(3,PayLine."Apply to ID");
-            GenJnlLine.ValidateShortcutDimCode(4,PayLine."No of Units");
-
-            if GenJnlLine.Amount<>0 then
-            GenJnlLine.Insert;
-            end;
-
-            //Post VAT Balancing Entry Goes to Vendor
-            LineNo:=LineNo+1000;
-            GenJnlLine.Init;
-            GenJnlLine."Journal Template Name":=JTemplate;
-            GenJnlLine.Validate(GenJnlLine."Journal Template Name");
-            GenJnlLine."Journal Batch Name":=JBatch;
-            GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
-            GenJnlLine."Source Code":='PAYMENTJNL';
-            GenJnlLine."Line No.":=LineNo;
-            GenJnlLine."Posting Date":=Payment."Payment Release Date";
-            GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
-            GenJnlLine."Document No.":=PayLine."Received From";
-            GenJnlLine."External Document No.":=Payments."Cheque No";
-            GenJnlLine."Account Type":=PayLine.Posted;
-            GenJnlLine."Account No.":=PayLine."Date Posted";
-            GenJnlLine.Validate(GenJnlLine."Account No.");
-            GenJnlLine."Currency Code":=Payments."Currency Code";
-            GenJnlLine.Validate(GenJnlLine."Currency Code");
-            //CurrFactor
-            GenJnlLine."Currency Factor":=Payments."Currency Factor";
-            GenJnlLine.Validate("Currency Factor");
-
-            if PayLine."VAT Code"='' then
-              begin
-                GenJnlLine.Amount:=0;
-              end
-            else
-              begin
-                GenJnlLine.Amount:=PayLine."Withholding Tax Code";
-              end;
-            GenJnlLine.Validate(GenJnlLine.Amount);
-            GenJnlLine."Bal. Account Type":=GenJnlLine."bal. account type"::"G/L Account";
-            GenJnlLine."Bal. Account No.":='';
-            GenJnlLine.Description:=CopyStr('VAT:' + Format(PayLine.Posted) + '::' + Format(PayLine."Time Posted"),1,50) ;
-            GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
-            GenJnlLine."Shortcut Dimension 1 Code":=PayLine."PV Type";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
-            GenJnlLine."Shortcut Dimension 2 Code":=PayLine."Apply to";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-            GenJnlLine.ValidateShortcutDimCode(3,PayLine."Apply to ID");
-            GenJnlLine.ValidateShortcutDimCode(4,PayLine."No of Units");
-            GenJnlLine."Applies-to Doc. Type":=GenJnlLine."applies-to doc. type"::Invoice;
-            GenJnlLine."Applies-to Doc. No.":=PayLine."Total Expenditure";
-            GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
-            GenJnlLine."Applies-to ID":=PayLine."Total Commitments";
-            if GenJnlLine.Amount<>0 then
-            GenJnlLine.Insert;
-
-            //Post W/TAX Balancing Entry Goes to Vendor
-            LineNo:=LineNo+1000;
-            GenJnlLine.Init;
-            GenJnlLine."Journal Template Name":=JTemplate;
-            GenJnlLine.Validate(GenJnlLine."Journal Template Name");
-            GenJnlLine."Journal Batch Name":=JBatch;
-            GenJnlLine.Validate(GenJnlLine."Journal Batch Name");
-            GenJnlLine."Source Code":='PAYMENTJNL';
-            GenJnlLine."Line No.":=LineNo;
-            GenJnlLine."Posting Date":=Payment."Payment Release Date";
-            GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
-            GenJnlLine."Document No.":=PayLine."Received From";
-            GenJnlLine."External Document No.":=Payments."Cheque No";
-            GenJnlLine."Account Type":=PayLine.Posted;
-            GenJnlLine."Account No.":=PayLine."Date Posted";
-            GenJnlLine.Validate(GenJnlLine."Account No.");
-            GenJnlLine."Currency Code":=Payments."Currency Code";
-            GenJnlLine.Validate(GenJnlLine."Currency Code");
-            //CurrFactor
-            GenJnlLine."Currency Factor":=Payments."Currency Factor";
-            GenJnlLine.Validate("Currency Factor");
-
-            GenJnlLine."Gen. Posting Type":=GenJnlLine."gen. posting type"::" ";
-            GenJnlLine.Validate(GenJnlLine."Gen. Posting Type");
-            GenJnlLine."Gen. Bus. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."Gen. Bus. Posting Group");
-            GenJnlLine."Gen. Prod. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."Gen. Prod. Posting Group");
-            GenJnlLine."VAT Bus. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."VAT Bus. Posting Group");
-            GenJnlLine."VAT Prod. Posting Group":='';
-            GenJnlLine.Validate(GenJnlLine."VAT Prod. Posting Group");
-            GenJnlLine.Amount:=PayLine."Net Amount";
-            GenJnlLine.Validate(GenJnlLine.Amount);
-            GenJnlLine."Bal. Account Type":=GenJnlLine."bal. account type"::"G/L Account";
-            GenJnlLine."Bal. Account No.":='';
-            GenJnlLine.Description:=CopyStr('W/Tax:' + strText ,1,50);
-            GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
-            GenJnlLine."Shortcut Dimension 1 Code":=PayLine."PV Type";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
-            GenJnlLine."Shortcut Dimension 2 Code":=PayLine."Apply to";
-            GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-            GenJnlLine.ValidateShortcutDimCode(3,PayLine."Apply to ID");
-            GenJnlLine.ValidateShortcutDimCode(4,PayLine."No of Units");
-            GenJnlLine."Applies-to Doc. Type":=GenJnlLine."applies-to doc. type"::Invoice;
-            GenJnlLine."Applies-to Doc. No.":=PayLine."Total Expenditure";
-            GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
-            GenJnlLine."Applies-to ID":=PayLine."Total Commitments";
-            if GenJnlLine.Amount<>0 then
-            GenJnlLine.Insert;
-
-
-        until PayLine.Next=0;
-
-        Commit;
-        //Post the Journal Lines
-        GenJnlLine.Reset;
-        GenJnlLine.SetRange(GenJnlLine."Journal Template Name",JTemplate);
-        GenJnlLine.SetRange(GenJnlLine."Journal Batch Name",JBatch);
-        //Adjust Gen Jnl Exchange Rate Rounding Balances
-           AdjustGenJnl.Run(GenJnlLine);
-        //End Adjust Gen Jnl Exchange Rate Rounding Balances
-
-
-        //Before posting if paymode is cheque print the cheque
-        if ("Payment Mode"="payment mode"::Cheque) and ("Cheque Type"="cheque type"::"Computer Cheque") then begin
-        DocPrint.PrintCheck(GenJnlLine);
-        Codeunit.Run(Codeunit::"Adjust Gen. Journal Balance",GenJnlLine);
-        //Confirm Cheque printed //Not necessary.
-        end;
-
-        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Line",GenJnlLine);
-        Post:=false;
-        Post:=JournlPosted.PostedSuccessfully();
-        if Post then
-          begin
-            if PayLine.FindFirst then
-              begin
-                repeat
-                  PayLine."Imprest Request No":=Today;
-                  PayLine."Batched Imprest Tot":=Time;
-                  PayLine."Shortcut Dimension 2 Code":=UserId;
-                  PayLine."Petty Cash":=PayLine."petty cash"::"4";
-                  PayLine.Modify;
-               until PayLine.Next=0;
-             end;
-          end;
 
         end;
     end;
@@ -1388,64 +1368,64 @@ Page 51516059 "Payment Request Header"
 
     procedure UpdatePageControls()
     begin
-           if Status<>Status::Approved then begin
-             "Payment Release DateEditable" :=false;
-             //CurrForm."Bank Account".EDITABLE:=FALSE;
-             //CurrForm."Payment Mode".EDITABLE:=FALSE;
-             //CurrForm."Currency Code".EDITABLE:=TRUE;
-             "Cheque No.Editable" :=false;
-             "Cheque TypeEditable" :=false;
-             "Invoice Currency CodeEditable" :=true;
-           end else begin
-             "Payment Release DateEditable" :=true;
-             //CurrForm."Bank Account".EDITABLE:=TRUE;
-             //CurrForm."Payment Mode".EDITABLE:=TRUE;
-             if "Payment Mode"="payment mode"::Cheque then
-               "Cheque TypeEditable" :=true;
-             //CurrForm."Currency Code".EDITABLE:=FALSE;
-             if "Cheque Type"<>"cheque type"::"Computer Cheque" then
-                 "Cheque No.Editable" :=true;
-             "Invoice Currency CodeEditable" :=false;
-            PaymodeEditable:=true;
-            BankEditabl:=true;
-            OnBehalfEditable:=true;
-            RespEditabl:=true;
+        if Status <> Status::Approved then begin
+            "Payment Release DateEditable" := false;
+            //CurrForm."Bank Account".EDITABLE:=FALSE;
+            //CurrForm."Payment Mode".EDITABLE:=FALSE;
+            //CurrForm."Currency Code".EDITABLE:=TRUE;
+            "Cheque No.Editable" := false;
+            "Cheque TypeEditable" := false;
+            "Invoice Currency CodeEditable" := true;
+        end else begin
+            "Payment Release DateEditable" := true;
+            //CurrForm."Bank Account".EDITABLE:=TRUE;
+            //CurrForm."Payment Mode".EDITABLE:=TRUE;
+            if "Payment Mode" = "payment mode"::Cheque then
+                "Cheque TypeEditable" := true;
+            //CurrForm."Currency Code".EDITABLE:=FALSE;
+            if "Cheque Type" <> "cheque type"::"Computer Cheque" then
+                "Cheque No.Editable" := true;
+            "Invoice Currency CodeEditable" := false;
+            PaymodeEditable := true;
+            BankEditabl := true;
+            OnBehalfEditable := true;
+            RespEditabl := true;
 
-           end;
-           if Status=Status::"Pending Approval" then begin
-             "Currency CodeEditable" :=true;
-             GlobalDimension1CodeEditable :=true;
-             "Payment NarrationEditable" :=true;
-             ShortcutDimension2CodeEditable :=true;
-             PayeeEditable :=true;
-             ShortcutDimension3CodeEditable :=true;
-             ShortcutDimension4CodeEditable :=true;
-             DateEditable :=true;
-            PaymodeEditable:=true;
-            BankEditabl:=true;
-            OnBehalfEditable:=true;
-            RespEditabl:=true;
+        end;
+        if Status = Status::"Pending Approval" then begin
+            "Currency CodeEditable" := true;
+            GlobalDimension1CodeEditable := true;
+            "Payment NarrationEditable" := true;
+            ShortcutDimension2CodeEditable := true;
+            PayeeEditable := true;
+            ShortcutDimension3CodeEditable := true;
+            ShortcutDimension4CodeEditable := true;
+            DateEditable := true;
+            PaymodeEditable := true;
+            BankEditabl := true;
+            OnBehalfEditable := true;
+            RespEditabl := true;
 
-             PVLinesEditable :=true;
-           end else begin
-             "Currency CodeEditable" :=false;
-             GlobalDimension1CodeEditable :=false;
-             "Payment NarrationEditable" :=false;
-             ShortcutDimension2CodeEditable :=false;
-             PayeeEditable :=true;
-             ShortcutDimension3CodeEditable :=false;
-             ShortcutDimension4CodeEditable :=false;
-             DateEditable :=false;
-             PVLinesEditable :=false;
-           end;
+            PVLinesEditable := true;
+        end else begin
+            "Currency CodeEditable" := false;
+            GlobalDimension1CodeEditable := false;
+            "Payment NarrationEditable" := false;
+            ShortcutDimension2CodeEditable := false;
+            PayeeEditable := true;
+            ShortcutDimension3CodeEditable := false;
+            ShortcutDimension4CodeEditable := false;
+            DateEditable := false;
+            PVLinesEditable := false;
+        end;
 
-           if Status=Status::Posted then begin
-            PaymodeEditable:=false;
-            BankEditabl:=false;
-            OnBehalfEditable:=false;
-            RespEditabl:=false;
-            PVLinesEditable :=false;
-           end;
+        if Status = Status::Posted then begin
+            PaymodeEditable := false;
+            BankEditabl := false;
+            OnBehalfEditable := false;
+            RespEditabl := false;
+            PVLinesEditable := false;
+        end;
     end;
 
 
@@ -1453,13 +1433,13 @@ Page 51516059 "Payment Request Header"
     var
         PayLines: Record "Payment Line.";
     begin
-         HasLines:=false;
-         PayLines.Reset;
-         PayLines.SetRange(PayLines."Received From","No.");
-          if PayLines.Find('-') then begin
-             HasLines:=true;
-             exit(HasLines);
-          end;
+        HasLines := false;
+        PayLines.Reset;
+        PayLines.SetRange(PayLines."Received From", "No.");
+        if PayLines.Find('-') then begin
+            HasLines := true;
+            exit(HasLines);
+        end;
     end;
 
 
@@ -1467,16 +1447,16 @@ Page 51516059 "Payment Request Header"
     var
         PayLines: Record "Payment Line.";
     begin
-        AllKeyFieldsEntered:=true;
-         PayLines.Reset;
-         PayLines.SetRange(PayLines."Received From","No.");
-          if PayLines.Find('-') then begin
+        AllKeyFieldsEntered := true;
+        PayLines.Reset;
+        PayLines.SetRange(PayLines."Received From", "No.");
+        if PayLines.Find('-') then begin
             repeat
-             if (PayLines."Date Posted"='') or (PayLines.Remarks<=0) then
-             AllKeyFieldsEntered:=false;
-            until PayLines.Next=0;
-             exit(AllKeyFieldsEntered);
-          end;
+                if (PayLines."Date Posted" = '') or (PayLines.Remarks <= 0) then
+                    AllKeyFieldsEntered := false;
+            until PayLines.Next = 0;
+            exit(AllKeyFieldsEntered);
+        end;
     end;
 
 
@@ -1485,8 +1465,8 @@ Page 51516059 "Payment Request Header"
         PayLine: Record "Payment Line.";
     begin
         PayLine.Reset;
-        PayLine.SetRange(PayLine."Received From","No.");
-        PayLine.SetRange(PayLine.Posted,PayLine.Posted::"1");
+        PayLine.SetRange(PayLine."Received From", "No.");
+        PayLine.SetRange(PayLine.Posted, PayLine.Posted::"1");
         exit(PayLine.FindFirst);
     end;
 
@@ -1496,24 +1476,24 @@ Page 51516059 "Payment Request Header"
         UpdatePageControls();
         CurrPage.Update;
         //Set the filters here
-        SetRange(Posted,false);
-        SetRange("Payment Type","payment type"::Normal);
-        SetFilter(Status,'<>Cancelled');
+        SetRange(Posted, false);
+        SetRange("Payment Type", "payment type"::Normal);
+        SetFilter(Status, '<>Cancelled');
     end;
 
 
     procedure UpdateControls()
     begin
-        if Status=Status::"Pending Approval" then
-        StatusEditable:=true
+        if Status = Status::"Pending Approval" then
+            StatusEditable := true
         else
-        StatusEditable:=false;
+            StatusEditable := false;
     end;
 
 
     procedure CurrPageUpdate()
     begin
-        xRec:=Rec;
+        xRec := Rec;
         UpdateControls;
         UpdatePageControls();
         CurrPage.Update;

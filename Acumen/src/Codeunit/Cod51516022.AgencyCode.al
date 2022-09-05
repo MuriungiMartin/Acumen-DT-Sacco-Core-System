@@ -33,7 +33,7 @@ Codeunit 51516022 "AgencyCode"
         miniBalance: Decimal;
         Loans: Integer;
         LoanProductsSetup: Record "Loan Products Setup";
-        Members: Record "Member Register";
+        Members: Record Customer;
         dateExpression: Text[20];
         DetailedVendorLedgerEntry: Record "Detailed Vendor Ledg. Entry";
         dashboardDataFilter: Date;
@@ -231,7 +231,7 @@ Codeunit 51516022 "AgencyCode"
             VendorLedgEntry.SetCurrentkey(VendorLedgEntry."Entry No.");
             VendorLedgEntry.Ascending(false);
             VendorLedgEntry.SetRange(VendorLedgEntry."Vendor No.", account);
-            VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, VendorLedgEntry.Reversed::"0");
+            VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, false);
             if VendorLedgEntry.Find('-') then begin
                 Statement := '';
                 repeat

@@ -200,7 +200,7 @@ Page 51516860 "Fixed Deposit Placement Card"
                 trigger OnAction()
                 var
                     Text001: label 'This request is already pending approval';
-                    ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    ApprovalsMgmt: Codeunit WorkflowIntegration;
                 begin
 
                     if ApprovalsMgmt.CheckFixedDepositApprovalsWorkflowEnabled(Rec) then
@@ -219,7 +219,7 @@ Page 51516860 "Fixed Deposit Placement Card"
 
                 trigger OnAction()
                 var
-                    Approvalmgt: Codeunit "Approvals Mgmt.";
+                    Approvalmgt: Codeunit WorkflowIntegration;
                 begin
                     if Confirm('Are you sure you want to cancel this approval request', false) = true then
                         ApprovalsMgmt.OnCancelFixedDepositApprovalRequest(Rec);
@@ -610,7 +610,7 @@ Page 51516860 "Fixed Deposit Placement Card"
         EnablePlaceFixedDeposit: Boolean;
         OpenApprovalEntriesExist: Boolean;
         CanCancelApprovalForRecord: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         EnabledApprovalWorkflowsExist: Boolean;
         ObjVendors: Record Vendor;
         VarMemberNoEditable: Boolean;

@@ -587,7 +587,7 @@ Page 51516535 "Group/Corporate Applic List"
                     trigger OnAction()
                     var
                         Text001: label 'This request is already pending approval';
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
                         if "ID No." <> '' then begin
                             Cust.Reset;
@@ -638,7 +638,7 @@ Page 51516535 "Group/Corporate Applic List"
 
                     trigger OnAction()
                     var
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
                         if Confirm('Are you sure you want to cancel this approval request', false) = true then
                             //ApprovalsMgmt.OnCancelMembershipApplicationApprovalRequest(Rec);
@@ -689,7 +689,7 @@ Page 51516535 "Group/Corporate Applic List"
 
     var
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Accounts: Record Vendor;
         AcctNo: Code[20];
         NextOfKinApp: Record "Member App Nominee";
@@ -822,7 +822,7 @@ Page 51516535 "Group/Corporate Applic List"
         CanCancelApprovalForRecord: Boolean;
         EnabledApprovalWorkflowsExist: Boolean;
         EnableCreateMember: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         GenJournalLine: Record "Gen. Journal Line";
         LineNo: Integer;
         SFactory: Codeunit "SURESTEP Factory.";

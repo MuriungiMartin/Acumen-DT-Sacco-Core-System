@@ -1,4 +1,4 @@
-tableextension 50194 FasetupExt extends "FA Setup"
+tableextension 50194 "FasetupExt" extends "FA Setup"
 {
     fields
     {

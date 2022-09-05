@@ -629,7 +629,7 @@ Page 51516360 "Membership Application List"
                     trigger OnAction()
                     var
                         Text001: label 'This request is already pending approval';
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
                         GenSetUp.Get();
 
@@ -691,7 +691,7 @@ Page 51516360 "Membership Application List"
 
                     trigger OnAction()
                     var
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
                         if Confirm('Are you sure you want to cancel this approval request', false) = true then
                             ApprovalsMgmt.OnCancelMembershipApplicationApprovalRequest(Rec);
@@ -738,7 +738,7 @@ Page 51516360 "Membership Application List"
 
     var
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Accounts: Record Vendor;
         AcctNo: Code[20];
         NextOfKinApp: Record "Member App Nominee";
@@ -769,7 +769,7 @@ Page 51516360 "Membership Application List"
         Doc_Type: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,TransportRequest,Maintenance,Fuel,ImporterExporter,"Import Permit","Export Permit",TR,"Safari Notice","Student Applications","Water Research","Consultancy Requests","Consultancy Proposals","Meals Bookings","General Journal","Student Admissions","Staff Claim",KitchenStoreRequisition,"Leave Application","Account Opening";
         NOkApp: Record "Member App Nominee";
         ProductsApp: Record "Membership Reg. Products Appli";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         SFactory: Codeunit "SURESTEP Factory.";
         WelcomeMessage: label '<p style="font-family:Verdana,Arial;font-size:10pt">Dear<b> %1,</b></p><p style="font-family:Verdana,Arial;font-size:9pt">Welcome to Chuna Sacco</p><p style="font-family:Verdana,Arial;font-size:9pt">This is to confirm that your membership Application has been received and Undergoing Approval</p><p style="font-family:Verdana,Arial;font-size:9pt"> </b></p><br>Regards<p>%3</p><p><b>CHUNA SACCO LTD</b></p>';
         RegistrationMessage: label '<p style="font-family:Verdana,Arial;font-size:10pt">Dear<b> %1,</b></p><p style="font-family:Verdana,Arial;font-size:9pt">Welcome to  Chuna Sacco</p><p style="font-family:Verdana,Arial;font-size:9pt">This is to confirm that your membership registration has been successfully processed</p><p style="font-family:Verdana,Arial;font-size:9pt">Your membership number is <b>%2</b></p><br>Regards<p>%3</p><p><b>CHUNA SACCO LTD</b></p>';

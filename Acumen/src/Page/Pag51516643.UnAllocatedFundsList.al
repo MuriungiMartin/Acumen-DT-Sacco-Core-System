@@ -3,8 +3,8 @@ Page 51516643 "Un Allocated Funds List"
 {
     ApplicationArea = Basic;
     PageType = List;
-    SourceTable = "Member Register";
-    SourceTableView = where("Un-allocated Funds"=filter(>0));
+    SourceTable = Customer;
+    SourceTableView = where("Un-allocated Funds" = filter(> 0));
     UsageCategory = Lists;
 
     layout
@@ -13,19 +13,19 @@ Page 51516643 "Un Allocated Funds List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("FOSA Contribution";"FOSA Contribution")
+                field("FOSA Contribution"; "FOSA Contribution")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Un-allocated Funds";"Un-allocated Funds")
+                field("Un-allocated Funds"; "Un-allocated Funds")
                 {
                     ApplicationArea = Basic;
                 }
@@ -33,10 +33,10 @@ Page 51516643 "Un Allocated Funds List"
         }
         area(factboxes)
         {
-            part(Control7;"Member Statistics FactBox")
+            part(Control7; "Member Statistics FactBox")
             {
                 Caption = 'Member Statistics FactBox';
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
                 Visible = true;
             }
         }

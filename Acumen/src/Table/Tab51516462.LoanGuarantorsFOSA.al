@@ -12,7 +12,7 @@ Table 51516462 "Loan GuarantorsFOSA"
         field(2; "Account No."; Code[20])
         {
             NotBlank = true;
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -204,8 +204,8 @@ Table 51516462 "Loan GuarantorsFOSA"
         LoansG: Integer;
         LoanGuarantors: Record "Loan GuarantorsFOSA";
         Loans: Record "Loans Register";
-        Members: Record "Member Register";
+        Members: Record Customer;
         vend: Record "Vendor Ledger Entry";
-        CustN: Record "Member Register";
+        CustN: Record Customer;
 }
 

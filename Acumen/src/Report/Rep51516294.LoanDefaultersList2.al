@@ -356,7 +356,7 @@ Report 51516294 "Loan Defaulters List2"
         LoanApp: Record "Loans Register";
         PendingApp: Decimal;
         ApprovedApp: Decimal;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         ShowSec: Boolean;
         TLAppB: Decimal;
         TChequeB: Decimal;

@@ -134,7 +134,7 @@ Page 51516931 "M_Agent Signature-Appl"
         DeleteExportEnabled := Signature.Count <> 0;
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;

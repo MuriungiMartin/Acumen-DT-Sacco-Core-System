@@ -10,82 +10,82 @@ Page 51516983 "House Change Request Change"
         {
             group(General)
             {
-                field("Document No";"Document No")
+                field("Document No"; "Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No";"Member No")
+                field("Member No"; "Member No")
                 {
                     ApplicationArea = Basic;
                     Editable = MemberNoEditable;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; "Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("House Group";"House Group")
+                field("House Group"; "House Group")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("House Group Name";"House Group Name")
+                field("House Group Name"; "House Group Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Change Type";"Change Type")
+                field("Change Type"; "Change Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Cell";"Destination Cell")
+                field("Destination Cell"; "Destination Cell")
                 {
                     ApplicationArea = Basic;
                     Editable = DestinationHouseEditable;
                 }
-                field("Destination Cell Group";"Destination Cell Group")
+                field("Destination Cell Group"; "Destination Cell Group")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("House Group Status";"House Group Status")
+                field("House Group Status"; "House Group Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reason For Changing Groups";"Reason For Changing Groups")
+                field("Reason For Changing Groups"; "Reason For Changing Groups")
                 {
                     ApplicationArea = Basic;
                     Editable = ReasonforChangeEditable;
                 }
-                field("Date Group Changed";"Date Group Changed")
+                field("Date Group Changed"; "Date Group Changed")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Changed By";"Changed By")
+                field("Changed By"; "Changed By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Deposits on Date of Change";"Deposits on Date of Change")
+                field("Deposits on Date of Change"; "Deposits on Date of Change")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Deposits On the Date of Change';
                     Editable = false;
                 }
-                field("Outs. Loans on Date of Change";"Outs. Loans on Date of Change")
+                field("Outs. Loans on Date of Change"; "Outs. Loans on Date of Change")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Outstanding Loans On the Date of Change';
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Change Effected";"Change Effected")
+                field("Change Effected"; "Change Effected")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -110,15 +110,15 @@ Page 51516983 "House Change Request Change"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Are you sure you want to effect this change?',false)=true then begin
-                      if ObjCust.Get("Member No") then begin
-                        ObjCust."Member House Group":="Destination Cell";
-                        ObjCust."Member House Group Name":="Destination Cell Group";
-                        ObjCust."House Group Status":=ObjCust."house group status"::Active;
-                        "Date Group Changed":=Today;
-                        "Changed By":=UserId;
-                        "Change Effected":=true;
-                        ObjCust.Modify;
+                    if Confirm('Are you sure you want to effect this change?', false) = true then begin
+                        if ObjCust.Get("Member No") then begin
+                            ObjCust."Member House Group" := "Destination Cell";
+                            ObjCust."Member House Group Name" := "Destination Cell Group";
+                            ObjCust."House Group Status" := ObjCust."house group status"::Active;
+                            "Date Group Changed" := Today;
+                            "Changed By" := UserId;
+                            "Change Effected" := true;
+                            ObjCust.Modify;
                         end;
                     end;
                 end;
@@ -136,25 +136,23 @@ Page 51516983 "House Change Request Change"
                 trigger OnAction()
                 var
                     Text001: label 'This request is already pending approval';
-                    ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    ApprovalsMgmt: Codeunit WorkflowIntegration;
                 begin
                     ObjHouseGroups.Reset;
-                    ObjHouseGroups.SetRange(ObjHouseGroups."Group Leader","Member No");
-                    if ObjHouseGroups.Find('-')=true then
-                      begin
+                    ObjHouseGroups.SetRange(ObjHouseGroups."Group Leader", "Member No");
+                    if ObjHouseGroups.Find('-') = true then begin
                         FnGroupLeaderExitNotification();
-                        end;
+                    end;
 
                     ObjHouseGroups.Reset;
-                    ObjHouseGroups.SetRange(ObjHouseGroups."Assistant group Leader","Member No");
-                    if ObjHouseGroups.Find('-')=true then
-                      begin
+                    ObjHouseGroups.SetRange(ObjHouseGroups."Assistant group Leader", "Member No");
+                    if ObjHouseGroups.Find('-') = true then begin
                         FnGroupLeaderExitNotification();
-                        end;
+                    end;
 
 
                     if ApprovalsMgmt.CheckHouseChangeApprovalsWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnSendHouseChangeForApproval(Rec);
+                        ApprovalsMgmt.OnSendHouseChangeForApproval(Rec);
                 end;
             }
             action("Cancel Approval Request")
@@ -169,12 +167,12 @@ Page 51516983 "House Change Request Change"
 
                 trigger OnAction()
                 var
-                    Approvalmgt: Codeunit "Approvals Mgmt.";
+                    Approvalmgt: Codeunit WorkflowIntegration;
                 begin
-                    if Confirm('Are you sure you want to cancel this approval request',false)=true then
-                     ApprovalsMgmt.OnCancelHouseChangeApprovalRequest(Rec);
-                      Status:=Status::Open;
-                      Modify;
+                    if Confirm('Are you sure you want to cancel this approval request', false) = true then
+                        ApprovalsMgmt.OnCancelHouseChangeApprovalRequest(Rec);
+                    Status := Status::Open;
+                    Modify;
                 end;
             }
             action(Approval)
@@ -190,8 +188,8 @@ Page 51516983 "House Change Request Change"
                 var
                     ApprovalEntries: Page "Approval Entries";
                 begin
-                    DocumentType:=Documenttype::HouseChange;
-                    ApprovalEntries.Setfilters(Database::"House Group Change Request",DocumentType,"Document No");
+                    DocumentType := Documenttype::HouseChange;
+                    ApprovalEntries.Setfilters(Database::"House Group Change Request", DocumentType, "Document No");
                     ApprovalEntries.Run;
                 end;
             }
@@ -208,9 +206,9 @@ Page 51516983 "House Change Request Change"
                 trigger OnAction()
                 begin
                     ObjCust.Reset;
-                    ObjCust.SetRange(ObjCust."No.","Member No");
+                    ObjCust.SetRange(ObjCust."No.", "Member No");
                     if ObjCust.Find('-') then
-                    Report.Run(51516503,true,false,ObjCust);
+                        Report.Run(51516503, true, false, ObjCust);
                 end;
             }
             action("Member is  Guaranteed")
@@ -226,9 +224,9 @@ Page 51516983 "House Change Request Change"
                 trigger OnAction()
                 begin
                     ObjCust.Reset;
-                    ObjCust.SetRange(ObjCust."No.","Member No");
+                    ObjCust.SetRange(ObjCust."No.", "Member No");
                     if ObjCust.Find('-') then
-                    Report.Run(51516504,true,false,ObjCust);
+                        Report.Run(51516504, true, false, ObjCust);
                 end;
             }
         }
@@ -236,74 +234,68 @@ Page 51516983 "House Change Request Change"
 
     trigger OnAfterGetCurrRecord()
     begin
-        MemberNoEditable:=false;
-        DestinationHouseEditable:=false;
-        ReasonforChangeEditable:=false;
+        MemberNoEditable := false;
+        DestinationHouseEditable := false;
+        ReasonforChangeEditable := false;
 
-        if Status=Status::Open then
-          begin
-          MemberNoEditable:=true;
-          DestinationHouseEditable:=true;
-          ReasonforChangeEditable:=true
-          end else
-            if Status=Status::"Pending Approval" then
-              begin
-              MemberNoEditable:=false;
-              DestinationHouseEditable:=false;
-              ReasonforChangeEditable:=false
-              end else
-              if Status=Status::Approved then
-                begin
-                  MemberNoEditable:=false;
-                  DestinationHouseEditable:=false;
-                  ReasonforChangeEditable:=false;
-                  end;
+        if Status = Status::Open then begin
+            MemberNoEditable := true;
+            DestinationHouseEditable := true;
+            ReasonforChangeEditable := true
+        end else
+            if Status = Status::"Pending Approval" then begin
+                MemberNoEditable := false;
+                DestinationHouseEditable := false;
+                ReasonforChangeEditable := false
+            end else
+                if Status = Status::Approved then begin
+                    MemberNoEditable := false;
+                    DestinationHouseEditable := false;
+                    ReasonforChangeEditable := false;
+                end;
 
-        EnableCreateMember:=false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
-        EnabledApprovalWorkflowsExist :=true;
+        EnableCreateMember := false;
+        OpenApprovalEntriesExist := Approvmgmt.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approvmgmt.CanCancelApprovalForRecord(RecordId);
+        EnabledApprovalWorkflowsExist := true;
 
-        if ((Rec.Status=Status::Approved) ) then
-            EnableCreateMember:=true;
+        if ((Rec.Status = Status::Approved)) then
+            EnableCreateMember := true;
     end;
 
     trigger OnAfterGetRecord()
     begin
 
-        EnableCreateMember:=false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
-        EnabledApprovalWorkflowsExist :=true;
+        EnableCreateMember := false;
+        OpenApprovalEntriesExist := Approvmgmt.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approvmgmt.CanCancelApprovalForRecord(RecordId);
+        EnabledApprovalWorkflowsExist := true;
 
-        if ((Rec.Status=Status::Approved) ) then
-            EnableCreateMember:=true;
+        if ((Rec.Status = Status::Approved)) then
+            EnableCreateMember := true;
     end;
 
     trigger OnOpenPage()
     begin
-        MemberNoEditable:=false;
-        DestinationHouseEditable:=false;
-        ReasonforChangeEditable:=false;
+        MemberNoEditable := false;
+        DestinationHouseEditable := false;
+        ReasonforChangeEditable := false;
 
-        if Status=Status::Open then
-          begin
-          MemberNoEditable:=true;
-          DestinationHouseEditable:=true;
-          ReasonforChangeEditable:=true
-          end else
-            if Status=Status::"Pending Approval" then
-              begin
-              MemberNoEditable:=false;
-              DestinationHouseEditable:=false;
-              ReasonforChangeEditable:=false
-              end else
-              if Status=Status::Approved then
-                begin
-                  MemberNoEditable:=false;
-                  DestinationHouseEditable:=false;
-                  ReasonforChangeEditable:=false;
-                  end;
+        if Status = Status::Open then begin
+            MemberNoEditable := true;
+            DestinationHouseEditable := true;
+            ReasonforChangeEditable := true
+        end else
+            if Status = Status::"Pending Approval" then begin
+                MemberNoEditable := false;
+                DestinationHouseEditable := false;
+                ReasonforChangeEditable := false
+            end else
+                if Status = Status::Approved then begin
+                    MemberNoEditable := false;
+                    DestinationHouseEditable := false;
+                    ReasonforChangeEditable := false;
+                end;
     end;
 
     var
@@ -311,9 +303,10 @@ Page 51516983 "House Change Request Change"
         EnableCreateMember: Boolean;
         OpenApprovalEntriesExist: Boolean;
         CanCancelApprovalForRecord: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         EnabledApprovalWorkflowsExist: Boolean;
-        ObjCust: Record "Member Register";
+        Approvmgmt: Codeunit "Approvals Mgmt.";
+        ObjCust: Record Customer;
         MemberNoEditable: Boolean;
         DestinationHouseEditable: Boolean;
         ReasonforChangeEditable: Boolean;
@@ -330,31 +323,30 @@ Page 51516983 "House Change Request Change"
         ObjUser: Record User;
         ObjHouseGroups: Record "Member House Groups";
         VarGroupOfficer: Code[50];
+        Recipient: List of [Text];
     begin
         SMTPSetup.Get();
 
-        if ObjHouseGroups.Get("House Group") then
-          begin
-            VarGroupOfficer:=ObjHouseGroups."Credit Officer";
-            end;
+        if ObjHouseGroups.Get("House Group") then begin
+            VarGroupOfficer := ObjHouseGroups."Credit Officer";
+        end;
 
-          ObjUser.Reset;
-          ObjUser.SetRange(ObjUser."User Name",VarGroupOfficer);
-            if ObjUser.FindSet then
-              begin
-                if ObjUser."Contact Email"='' then
-                  begin
-                    Error ('Email Address Missing for User' +'-'+ VarGroupOfficer);
-                  end;
-                if ObjUser."Contact Email"<>'' then
-                  SMTPMail.CreateMessage(SMTPSetup."Email Sender Name",SMTPSetup."Email Sender Address",ObjUser."Contact Email",'Group Leader Group Exit Notification','',true);
-                  SMTPMail.AppendBody(StrSubstNo(ExitMessage,VarGroupOfficer,"Member Name","House Group Name","Document No",UserId));
-                  SMTPMail.AppendBody(SMTPSetup."Email Sender Name");
-                  SMTPMail.AppendBody('<br><br>');
-                  SMTPMail.AddAttachment(FileName,Attachment);
-                  SMTPMail.Send;
-                  Message('Email Sent');
-              end;
+        ObjUser.Reset;
+        ObjUser.SetRange(ObjUser."User Name", VarGroupOfficer);
+        if ObjUser.FindSet then begin
+            if ObjUser."Contact Email" = '' then begin
+                Error('Email Address Missing for User' + '-' + VarGroupOfficer);
+            end;
+            if ObjUser."Contact Email" <> '' then
+                Recipient.Add(ObjUser."Contact Email");
+            SMTPMail.CreateMessage(SMTPSetup."Email Sender Name", SMTPSetup."Email Sender Address", Recipient, 'Group Leader Group Exit Notification', '', true);
+            SMTPMail.AppendBody(StrSubstNo(ExitMessage, VarGroupOfficer, "Member Name", "House Group Name", "Document No", UserId));
+            SMTPMail.AppendBody(SMTPSetup."Email Sender Name");
+            SMTPMail.AppendBody('<br><br>');
+            SMTPMail.AddAttachment(FileName, Attachment);
+            SMTPMail.Send;
+            Message('Email Sent');
+        end;
     end;
 }
 

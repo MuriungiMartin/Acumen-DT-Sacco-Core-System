@@ -281,7 +281,7 @@ Page 51516341 "Pension Processing Header"
         "Cheque No.": Code[20];
         DActivityBOSA: Code[20];
         DBranchBOSA: Code[20];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         PensionBuffer: Record "Pension Processing Lines";
         PensHeader: Record "Pension Processing Headerr";
         Sto: Record "Standing Orders";

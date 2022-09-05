@@ -319,6 +319,10 @@ Table 51516458 "EFT Details"
         field(44;"Not Available";Boolean)
         {
         }
+        field(45;Status;Option)
+        {
+            OptionMembers =Open,"Pending Approval",Approved,Rejected;
+        }
     }
 
     keys

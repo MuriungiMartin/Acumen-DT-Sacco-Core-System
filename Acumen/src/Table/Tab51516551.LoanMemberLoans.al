@@ -221,7 +221,7 @@ Table 51516551 "Loan Member Loans"
         Loans: Record "Loans Register";
         Loantypes: Record "Loan Products Setup";
         Interest: Decimal;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoansTop: Record "Loans Register";
         GenSetUp: Record "Sacco General Set-Up";
         LoansG: Record "Loans Guarantee Details";

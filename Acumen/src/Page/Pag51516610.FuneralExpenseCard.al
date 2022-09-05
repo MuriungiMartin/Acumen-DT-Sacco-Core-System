@@ -7,95 +7,95 @@ Page 51516610 "Funeral Expense Card"
     {
         area(content)
         {
-            field("No.";"No.")
+            field("No."; "No.")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Member No.";"Member No.")
+            field("Member No."; "Member No.")
             {
                 ApplicationArea = Basic;
             }
-            field("Member Name";"Member Name")
-            {
-                ApplicationArea = Basic;
-                Editable = false;
-            }
-            field("Member ID No";"Member ID No")
+            field("Member Name"; "Member Name")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Member Status";"Member Status")
+            field("Member ID No"; "Member ID No")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Death Date";"Death Date")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Date Reported";"Date Reported")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reported By";"Reported By")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reporter ID No.";"Reporter ID No.")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reporter Mobile No";"Reporter Mobile No")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reporter Address";"Reporter Address")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Relationship With Deceased";"Relationship With Deceased")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Received Burial Permit";"Received Burial Permit")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Mode Of Disbursement";"Mode Of Disbursement")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Paying Bank";"Paying Bank")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Received Letter From Chief";"Received Letter From Chief")
-            {
-                ApplicationArea = Basic;
-            }
-            field(Posted;Posted)
+            field("Member Status"; "Member Status")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Date Posted";"Date Posted")
+            field("Death Date"; "Death Date")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Date Reported"; "Date Reported")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reported By"; "Reported By")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reporter ID No."; "Reporter ID No.")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reporter Mobile No"; "Reporter Mobile No")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reporter Address"; "Reporter Address")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Relationship With Deceased"; "Relationship With Deceased")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Received Burial Permit"; "Received Burial Permit")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Mode Of Disbursement"; "Mode Of Disbursement")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Paying Bank"; "Paying Bank")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Received Letter From Chief"; "Received Letter From Chief")
+            {
+                ApplicationArea = Basic;
+            }
+            field(Posted; Posted)
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Time Posted";"Time Posted")
+            field("Date Posted"; "Date Posted")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Posted By";"Posted By")
+            field("Time Posted"; "Time Posted")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field(Status;Status)
+            field("Posted By"; "Posted By")
+            {
+                ApplicationArea = Basic;
+                Editable = false;
+            }
+            field(Status; Status)
             {
                 ApplicationArea = Basic;
                 Editable = false;
@@ -119,8 +119,8 @@ Page 51516610 "Funeral Expense Card"
                 var
                     ApprovalEntries: Page "Approval Entries";
                 begin
-                    DocumentType:=Documenttype::"Member Closure";
-                    ApprovalEntries.Setfilters(Database::"HR Leave Register",DocumentType,"No.");
+                    DocumentType := Documenttype::"Member Closure";
+                    ApprovalEntries.Setfilters(Database::"HR Leave Register", DocumentType, "No.");
                     ApprovalEntries.Run;
                 end;
             }
@@ -135,14 +135,14 @@ Page 51516610 "Funeral Expense Card"
                 trigger OnAction()
                 var
                     text001: label 'This batch is already pending approval';
-                    ApprovalMgt: Codeunit "Approvals Mgmt.";
+                    ApprovalMgt: Codeunit WorkflowIntegration;
                 begin
-                    if Status<>Status::Open then
-                    Error(text001);
+                    if Status <> Status::Open then
+                        Error(text001);
 
                     //End allocate batch number
-                    Doc_Type:=Doc_type::"Member Closure";
-                    Table_id:=Database::"Membership Exit";
+                    Doc_Type := Doc_type::"Member Closure";
+                    Table_id := Database::"Membership Exit";
                     //IF ApprovalMgt.SendApproval(Table_id,"No.",Doc_Type,Status)THEN;
                 end;
             }
@@ -157,13 +157,13 @@ Page 51516610 "Funeral Expense Card"
                 trigger OnAction()
                 var
                     text001: label 'This batch is already pending approval';
-                    ApprovalMgt: Codeunit "Approvals Mgmt.";
+                    ApprovalMgt: Codeunit WorkflowIntegration;
                 begin
-                       if Status<>Status::Open then
-                          Error(text001);
+                    if Status <> Status::Open then
+                        Error(text001);
 
-                      //End allocate batch number
-                       //ApprovalMgt.CancelClosureApprovalRequest(Rec);
+                    //End allocate batch number
+                    //ApprovalMgt.CancelClosureApprovalRequest(Rec);
                 end;
             }
             action(Post)
@@ -180,66 +180,66 @@ Page 51516610 "Funeral Expense Card"
 
                     //Delete journal line
                     Gnljnline.Reset;
-                    Gnljnline.SetRange("Journal Template Name",'GENERAL');
-                    Gnljnline.SetRange("Journal Batch Name",'FRIDER');
+                    Gnljnline.SetRange("Journal Template Name", 'GENERAL');
+                    Gnljnline.SetRange("Journal Batch Name", 'FRIDER');
                     Gnljnline.DeleteAll;
                     //End of deletion
 
 
-                    DActivity:=Cust."Global Dimension 1 Code";
-                    DBranch:=Cust."Global Dimension 2 Code";
-                    Cust.CalcFields(Cust."Outstanding Balance","Accrued Interest","Current Shares");
+                    DActivity := Cust."Global Dimension 1 Code";
+                    DBranch := Cust."Global Dimension 2 Code";
+                    Cust.CalcFields(Cust."Outstanding Balance", "Accrued Interest", "Current Shares");
 
-                    Cust.CalcFields(Cust."Outstanding Balance",Cust."Outstanding Interest","FOSA Outstanding Balance","Accrued Interest","Insurance Fund","Current Shares");
+                    Cust.CalcFields(Cust."Outstanding Balance", Cust."Outstanding Interest", "FOSA Outstanding Balance", "Accrued Interest", "Insurance Fund", "Current Shares");
 
                     Generalsetup.Get();
 
-                    LineNo:=LineNo+10000;
+                    LineNo := LineNo + 10000;
                     GenJournalLine.Init;
-                    GenJournalLine."Journal Template Name":='GENERAL';
-                    GenJournalLine."Journal Batch Name":='FRIDER';
-                    GenJournalLine."Line No.":=LineNo;
-                    GenJournalLine."Document No.":="No.";
-                    GenJournalLine."Posting Date":=Today;
-                    GenJournalLine."External Document No.":="No.";
-                    GenJournalLine."Account Type":=GenJournalLine."account type"::Employee;
-                    GenJournalLine."Account No.":="Member No.";
+                    GenJournalLine."Journal Template Name" := 'GENERAL';
+                    GenJournalLine."Journal Batch Name" := 'FRIDER';
+                    GenJournalLine."Line No." := LineNo;
+                    GenJournalLine."Document No." := "No.";
+                    GenJournalLine."Posting Date" := Today;
+                    GenJournalLine."External Document No." := "No.";
+                    GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
+                    GenJournalLine."Account No." := "Member No.";
                     GenJournalLine.Validate(GenJournalLine."Account No.");
-                    GenJournalLine.Description:='Funeral Rider';
-                    GenJournalLine.Amount:=Generalsetup."Funeral Expense Amount";
+                    GenJournalLine.Description := 'Funeral Rider';
+                    GenJournalLine.Amount := Generalsetup."Funeral Expense Amount";
                     GenJournalLine.Validate(GenJournalLine.Amount);
-                    GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"48";
-                    GenJournalLine."Bal. Account No." :="Paying Bank";
-                    GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"Bank Account";
-                    GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                    GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
+                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"48";
+                    GenJournalLine."Bal. Account No." := "Paying Bank";
+                    GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"Bank Account";
+                    GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
                     GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
                     GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                    if GenJournalLine.Amount<>0 then
-                    GenJournalLine.Insert;
+                    if GenJournalLine.Amount <> 0 then
+                        GenJournalLine.Insert;
 
                     //Post New
                     GenJournalLine.Reset;
-                    GenJournalLine.SetRange("Journal Template Name",'GENERAL');
-                    GenJournalLine.SetRange("Journal Batch Name",'FRIDER');
+                    GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
+                    GenJournalLine.SetRange("Journal Batch Name", 'FRIDER');
                     if GenJournalLine.Find('-') then begin
-                    Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch",GenJournalLine);
+                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJournalLine);
                     end;
 
 
-                    Posted:=true;
-                    "Posted By":=UserId;
-                    "Time Posted":=Time;
+                    Posted := true;
+                    "Posted By" := UserId;
+                    "Time Posted" := Time;
                     Modify;
                     Message('Funeral Rider posted successfully.');
 
                     //CHANGE ACCOUNT STATUS
                     Cust.Reset;
-                    Cust.SetRange(Cust."No.","Member No.");
+                    Cust.SetRange(Cust."No.", "Member No.");
                     if Cust.Find('-') then begin
-                    Cust.Status:=Cust.Status::Deceased;
-                    Cust.Blocked:=Cust.Blocked::All;
-                    Cust.Modify;
+                        Cust.Status := Cust.Status::Deceased;
+                        Cust.Blocked := Cust.Blocked::All;
+                        Cust.Modify;
                     end;
                 end;
             }
@@ -257,6 +257,6 @@ Page 51516610 "Funeral Expense Card"
         Table_id: Integer;
         Doc_No: Code[20];
         Doc_Type: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,TransportRequest,Maintenance,Fuel,ImporterExporter,"Import Permit","Export Permit",TR,"Safari Notice","Student Applications","Water Research","Consultancy Requests","Consultancy Proposals","Meals Bookings","General Journal","Student Admissions","Staff Claim",KitchenStoreRequisition,"Leave Application","Account Opening","Member Closure",Loan,"Loan Batch";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
 }
 

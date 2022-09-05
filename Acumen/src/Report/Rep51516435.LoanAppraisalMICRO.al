@@ -500,7 +500,7 @@ Report 51516435 "Loan Appraisal MICRO"
         LoanG: Record "Loans Guarantee Details";
         TLoans: Decimal;
         TShares: Decimal;
-        CustRecord: Record "Member Register";
+        CustRecord: Record Customer;
         GrossProfit: Decimal;
         MicroProftAnalysis: Record "Micro Profitability Analysis";
         TotalPurchase: Decimal;
@@ -527,7 +527,7 @@ Report 51516435 "Loan Appraisal MICRO"
         AppraisalSalDet: Record "Loan Appraisal Salary Details";
         TotalSalCat: Decimal;
         SNo: Integer;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Cshares: Decimal;
         LoanType: Record "Loan Products Setup";
         DEpMultiplier: Decimal;

@@ -751,7 +751,7 @@ Page 51516361 "Membership Application Card"
                     trigger OnAction()
                     var
                         Text001: label 'This request is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
 
                         FnCheckfieldrestriction();
@@ -817,7 +817,7 @@ Page 51516361 "Membership Application Card"
 
                     trigger OnAction()
                     var
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
                         if Confirm('Are you sure you want to cancel this approval request', false) = true then
                             ApprovalsMgmt.OnCancelMembershipApplicationApprovalRequest(Rec);
@@ -1541,7 +1541,7 @@ Page 51516361 "Membership Application Card"
 
     var
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Accounts: Record Vendor;
         AcctNo: Code[20];
         NextOfKinApp: Record "Member App Nominee";
@@ -1702,7 +1702,7 @@ Page 51516361 "Membership Application Card"
         RegistrationMessage: label '<p style="font-family:Verdana,Arial;font-size:10pt">Dear<b> %1,</b></p><p style="font-family:Verdana,Arial;font-size:9pt">Welcome to Chuna Sacco</p><p style="font-family:Verdana,Arial;font-size:9pt">This is to confirm that your membership registration has been successfully processed</p><p style="font-family:Verdana,Arial;font-size:9pt">Your membership number is <b>%2</b></p><br>Regards<p>%3</p><p><b>CHUNA SACCO LTD</b></p>';
         OpenApprovalEntriesExist: Boolean;
         EnabledApprovalWorkflowsExist: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         CanCancelApprovalForRecord: Boolean;
         EventFilter: Text;
         EnableCreateMember: Boolean;

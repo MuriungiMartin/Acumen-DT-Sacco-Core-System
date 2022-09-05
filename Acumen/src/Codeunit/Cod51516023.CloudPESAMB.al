@@ -59,7 +59,7 @@ Codeunit 51516023 "CloudPESAMB"
         Loans: Integer;
         LoansRegister: Record "Loans Register";
         LoanProductsSetup: Record "Loan Products Setup";
-        Members: Record "Member Register";
+        Members: Record Customer;
         dateExpression: Text[20];
         DetailedVendorLedgerEntry: Record "Detailed Vendor Ledg. Entry";
         dashboardDataFilter: Date;
@@ -135,8 +135,8 @@ Codeunit 51516023 "CloudPESAMB"
         //Vendor.SETFILTER(Vendor."Account Type",'%1|%2','100','200');
         if Vendor.Find('-') then begin
             Vendor.CalcFields(Vendor."Balance (LCY)", Vendor."ATM Transactions");
-            Bal := Format(Vendor."Balance (LCY)" - (Vendor.SaccolinkPendingPostingAmount + (Vendor."Uncleared Cheques" - Vendor."Cheque Discounted Amount") + Vendor."ATM Transactions" + Vendor."EFT Transactions" + Vendor."Mobile Transactions") + Vendor."Cheque Discounted"
-        W;
+            Bal := Format(Vendor."Balance (LCY)" - (Vendor.SaccolinkPendingPostingAmount + (Vendor."Uncleared Cheques" - Vendor."Cheque Discounted Amount") + Vendor."ATM Transactions" + Vendor."EFT Transactions" + Vendor."Mobile Transactions") + Vendor."Cheque Discounted");
+            //  W;
             ///"Balance (LCY)"-(("Uncleared Cheques"-"Cheque Discounted Amount")+"ATM Transactions"+"EFT Transactions"+MinBalance+"Mobile Transactions")+"Cheque Discounted"
         end;
     end;
@@ -146,7 +146,7 @@ Codeunit 51516023 "CloudPESAMB"
     var
         vendorTable: Record Vendor;
         vendorTableOther: Record Vendor;
-        memberTable: Record "Member Register";
+        memberTable: Record Customer;
         chargesTable: Record Charges;
         loanRegisterTable: Record "Loans Register";
         exciseDutyAmount: Decimal;
@@ -484,7 +484,7 @@ Codeunit 51516023 "CloudPESAMB"
                     vendorLedgerEntries.SetFilter(vendorLedgerEntries.Description, '<>%1', '*Charges*');
                     vendorLedgerEntries.SetRange(vendorLedgerEntries."Vendor No.", vendorTable."No.");
                     //VendorLedgEntry.SETFILTER(VendorLedgEntry.Description,'<>*Excise duty*');
-                    vendorLedgerEntries.SetRange(vendorLedgerEntries.Reversed, vendorLedgerEntries.Reversed::"0");
+                    vendorLedgerEntries.SetRange(vendorLedgerEntries.Reversed, false);
                     if vendorLedgerEntries.FindSet then begin
                         response := '';
                         minimunCount := 0;
@@ -1088,7 +1088,7 @@ Codeunit 51516023 "CloudPESAMB"
             VendorLedgEntry.SetFilter(VendorLedgEntry.Description, '<>%1', '*Charges*');
             VendorLedgEntry.SetRange(VendorLedgEntry."Vendor No.", Vendor."No.");
             //VendorLedgEntry.SETFILTER(VendorLedgEntry.Description,'<>*Excise duty*');
-            VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, VendorLedgEntry.Reversed::"0");
+            VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, false);
             if VendorLedgEntry.FindSet then begin
                 MiniStmt := '';
                 repeat
@@ -1136,7 +1136,7 @@ Codeunit 51516023 "CloudPESAMB"
                     VendorLedgEntry.Ascending(false);
                     //VendorLedgEntry.SETFILTER(VendorLedgEntry.Description,'<>%1','*Charges*');
                     VendorLedgEntry.SetRange(VendorLedgEntry."Vendor No.", Account);
-                    VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, VendorLedgEntry.Reversed::"0");
+                    VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, false);
                     VendorLedgEntry.SetFilter(VendorLedgEntry."Date Filter", Format(DateFrom) + '..' + Format(DateTo));
                     Mrowcount := VendorLedgEntry.Count;
                     if VendorLedgEntry.FindSet then begin
@@ -1309,7 +1309,7 @@ Codeunit 51516023 "CloudPESAMB"
                         VendorLedgEntry.Ascending(false);
                         //VendorLedgEntry.SETFILTER(VendorLedgEntry.Description,'<>%1','*Charges*');
                         VendorLedgEntry.SetRange(VendorLedgEntry."Vendor No.", Vendor."No.");
-                        VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, VendorLedgEntry.Reversed::"0");
+                        VendorLedgEntry.SetRange(VendorLedgEntry.Reversed, false);
                         Mrowcount := VendorLedgEntry.Count;
                         if VendorLedgEntry.FindSet then begin
                             Status := '';
@@ -5585,7 +5585,7 @@ Codeunit 51516023 "CloudPESAMB"
         docNo: Code[50];
         NotificationDate: Date;
         EloanAmt: Decimal;
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
         varMemberNo: Code[50];
         daysToExpectedCompletion: Integer;
         rollOverInterestAmount: Decimal;
@@ -5888,7 +5888,7 @@ Codeunit 51516023 "CloudPESAMB"
         docNo: Code[50];
         NotificationDate: Date;
         EloanAmt: Decimal;
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
         varMemberNo: Code[50];
         daysToExpectedCompletion: Integer;
         rollOverInterestAmount: Decimal;
@@ -6438,7 +6438,7 @@ Codeunit 51516023 "CloudPESAMB"
         loanNotificationDate: Date;
         amtsecondnotice: Decimal;
         amtcompare: Decimal;
-        memb: Record "Member Register";
+        memb: Record Customer;
         Loanbal: Decimal;
         repayamt: Decimal;
         amtloan: Decimal;

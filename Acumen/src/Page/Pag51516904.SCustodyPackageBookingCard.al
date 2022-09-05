@@ -292,7 +292,7 @@ Page 51516904 "SCustody Package Booking Card"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         //Check Item and Agent Attachment
                         ObjAgents.Reset;
@@ -325,7 +325,7 @@ Page 51516904 "SCustody Package Booking Card"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckPackageLodgeApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnCancelPackageLodgeApprovalRequest(Rec);
@@ -544,7 +544,7 @@ Page 51516904 "SCustody Package Booking Card"
         FileSerialNoEditable: Boolean;
         AddAgentEditable: Boolean;
         AddItemsEditable: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         ObjVendors: Record Vendor;
         ObjAccTypes: Record "Account Types-Saving Products";
         AvailableBal: Decimal;

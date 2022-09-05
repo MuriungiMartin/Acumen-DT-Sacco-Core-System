@@ -18,7 +18,7 @@ Table 51516549 "Funeral Expense Payment"
         }
         field(2; "Member No."; Code[20])
         {
-            TableRelation = "Member Register";
+            TableRelation = Customer;
 
             trigger OnValidate()
             begin
@@ -37,7 +37,7 @@ Table 51516549 "Funeral Expense Payment"
 
                 if Cust.Get("Member No.") then begin
                     "Member Name" := Cust.Name;
-                    Cust.CalcFields(Cust."Current Savings", Cust."Risk Fund", Cust.Picture, Cust.Signature);
+                    Cust.CalcFields(Cust."Current Savings", Cust."Risk Fund", Cust.Piccture, Cust.Signature);
                     "Member No." := Cust."No.";
                     //Picture:=Cust.Picture;
                     //Signature:=Cust.Signature;
@@ -163,7 +163,7 @@ Table 51516549 "Funeral Expense Payment"
     var
         SalesSetup: Record "Sacco No. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Loans: Record "Loans Register";
         MemLed: Record "Cust. Ledger Entry";
         IntTotal: Decimal;

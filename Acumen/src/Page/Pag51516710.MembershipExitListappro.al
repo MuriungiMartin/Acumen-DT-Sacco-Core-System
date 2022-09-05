@@ -10,8 +10,8 @@ Page 51516710 "Membership Exit List appro"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption';
     SourceTable = "Membership Exit";
-    SourceTableView = where("Ready to Exit"=filter(true),
-                            "clear Exit"=filter(false));
+    SourceTableView = where("Ready to Exit" = filter(true),
+                            "clear Exit" = filter(false));
     UsageCategory = Lists;
 
     layout
@@ -20,41 +20,41 @@ Page 51516710 "Membership Exit List appro"
         {
             repeater(Control1102755000)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No.";"Member No.")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Member Name";"Member Name")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Closing Date";"Closing Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Total Loan";"Total Loan")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Total Interest";"Total Interest")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Member Deposits";"Member Deposits")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("User ID";"User ID")
+                field("Member No."; "Member No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field("Member Name"; "Member Name")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Closing Date"; "Closing Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Total Loan"; "Total Loan")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Total Interest"; "Total Interest")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Member Deposits"; "Member Deposits")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("User ID"; "User ID")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -83,8 +83,8 @@ Page 51516710 "Membership Exit List appro"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        DocumentType:=Documenttype::"Member Closure";
-                        ApprovalEntries.Setfilters(Database::"HR Leave Register",DocumentType,"No.");
+                        DocumentType := Documenttype::"Member Closure";
+                        ApprovalEntries.Setfilters(Database::"HR Leave Register", DocumentType, "No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -100,29 +100,30 @@ Page 51516710 "Membership Exit List appro"
                         ApprovalEntries: Page "Approval Entries";
                     begin
                         if Confirm('Are you absolutely sure you want to exit Member') = false then
-                        exit;
+                            exit;
 
-                        if ("Closure Type"="closure type"::"Withdrawal - Death" ) or ("Closure Type"="closure type"::"Withdrawal - Death(Defaulter)") then begin
-                        Cust.Reset;
-                        Cust.SetRange(Cust."No.","Member No.");
-                        if Cust.Find('-') then begin
-                        Cust.Status:=Cust.Status::Deceased;
-                        Cust.Blocked:=Cust.Blocked::All;
-                        Cust.Modify;
-                        end;
+                        if ("Closure Type" = "closure type"::"Withdrawal - Death") or ("Closure Type" = "closure type"::"Withdrawal - Death(Defaulter)") then begin
+                            Cust.Reset;
+                            Cust.SetRange(Cust."No.", "Member No.");
+                            if Cust.Find('-') then begin
+                                Cust.Status := Cust.Status::Deceased;
+                                Cust.Blocked := Cust.Blocked::All;
+                                Cust.Modify;
+                            end;
                         end else
-                        Cust.Reset;
-                        Cust.SetRange(Cust."No.","Member No.");
+                            Cust.Reset;
+                        Cust.SetRange(Cust."No.", "Member No.");
                         if Cust.Find('-') then begin
-                        Cust.Status:=Cust.Status::Withdrawal;
-                        Cust."Closing Date":=Today;
-                        Cust.Blocked:=Cust.Blocked::All;
-                        Cust.Modify;
+                            Cust.Status := Cust.Status::Withdrawal;
+                            Cust."Closing Date" := Today;
+                            Cust.Blocked := Cust.Blocked::All;
+                            Cust.Modify;
                         end;
-                        Posted:=true;
-                        "clear Exit":=true;
+                        Posted := true;
+                        "clear Exit" := true;
                         Modify;
-                        Message ('Closure posted successfully.');;
+                        Message('Closure posted successfully.');
+                        ;
                     end;
                 }
             }
@@ -131,12 +132,12 @@ Page 51516710 "Membership Exit List appro"
 
     trigger OnAfterGetRecord()
     begin
-        SetRange("User ID",UserId);
+        SetRange("User ID", UserId);
     end;
 
     var
         Closure: Integer;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         UBFRefund: Decimal;
         Generalsetup: Record "Sacco General Set-Up";
         Totalavailable: Decimal;

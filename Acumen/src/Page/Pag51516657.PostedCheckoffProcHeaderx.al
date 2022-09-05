@@ -514,7 +514,7 @@ Page 51516657 "Posted Checkoff Proc. Headerx"
         DActivityBOSA: Code[20];
         DBranchBOSA: Code[20];
         ReptProcHeader: Record "Checkoff Header-Distributed";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         MembPostGroup: Record "Customer Posting Group";
         Loantable: Record "Loans Register";
         LRepayment: Decimal;
@@ -532,7 +532,7 @@ Page 51516657 "Posted Checkoff Proc. Headerx"
         DIFF: Decimal;
         DIFFPAID: Decimal;
         genstup: Record "Sacco General Set-Up";
-        Memb: Record "Member Register";
+        Memb: Record Customer;
         INSURANCE: Decimal;
         GenBatches: Record "Gen. Journal Batch";
         Datefilter: Text[50];

@@ -20,12 +20,12 @@ Codeunit 51516011 "WorkflowHandler"
         exit(UpperCase('RunWorkflowOnSendSTOforApproval'));
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnSendSTOforApproval', '', false, false)]
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnSendSTOforApproval', '', false, false)]
 
     procedure RunWorkflowOnSendSTOforApproval(var STO: Record "Standing Orders")
     begin
-        WorkflowManagement.HandleEvent(RunWorkflowOnSendSTOforApprovalCode,STO);
-        STO.Status:=STO.Status::Pending;
+        WorkflowManagement.HandleEvent(RunWorkflowOnSendSTOforApprovalCode, STO);
+        STO.Status := STO.Status::Pending;
         STO.Modify(true);
     end;
 
@@ -34,12 +34,12 @@ Codeunit 51516011 "WorkflowHandler"
     procedure RunWorkflowOnApproveApprovalRequestforSTO(var ApprovalEntry: Record "Approval Entry")
     begin
         STO.Reset;
-        STO.SetRange("No.",ApprovalEntry."Document No.");
+        STO.SetRange("No.", ApprovalEntry."Document No.");
         if STO.FindFirst then begin
-          STO.Status:=STO.Status::Approved;
-          STO.Modify(true);
-          end;
-          WorkflowManagement.HandleEventOnKnownWorkflowInstance(RunWorkflowOnApproveApprovalRequestforSTOCode,ApprovalEntry,ApprovalEntry."Workflow Step Instance ID");
+            STO.Status := STO.Status::Approved;
+            STO.Modify(true);
+        end;
+        WorkflowManagement.HandleEventOnKnownWorkflowInstance(RunWorkflowOnApproveApprovalRequestforSTOCode, ApprovalEntry, ApprovalEntry."Workflow Step Instance ID");
     end;
 
 
@@ -51,29 +51,29 @@ Codeunit 51516011 "WorkflowHandler"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Event Handling", 'OnAddWorkflowEventsToLibrary', '', false, false)]
     local procedure AddworkfloEventsToLibrary()
     begin
-        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnSendSTOforApprovalCode,Database::"Standing Orders",'Send sto for approval',0,false);
-        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnApproveApprovalRequestforSTOCode,Database::"Approval Entry",'Approve Approval request for STO',0,false);
-        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnRejectApprovalRequestforSTOCode,Database::"Approval Entry",'Reject Approval request for STO',0,false);
-        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnDelegateApprovalRequestforSTOCode,Database::"Approval Entry",'Delegate Approval request for STO',0,false);
+        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnSendSTOforApprovalCode, Database::"Standing Orders", 'Send sto for approval', 0, false);
+        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnApproveApprovalRequestforSTOCode, Database::"Approval Entry", 'Approve Approval request for STO', 0, false);
+        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnRejectApprovalRequestforSTOCode, Database::"Approval Entry", 'Reject Approval request for STO', 0, false);
+        WorkflowEventHandling.AddEventToLibrary(RunWorkflowOnDelegateApprovalRequestforSTOCode, Database::"Approval Entry", 'Delegate Approval request for STO', 0, false);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Event Handling", 'OnAddWorkflowTableRelationsToLibrary', '', false, false)]
     local procedure AddworkflowTablerelationstoLibrary()
     begin
-        Workflowsetup.InsertTableRelation(Database::"Standing Orders",0,Database::"Approval Entry",22);
+        Workflowsetup.InsertTableRelation(Database::"Standing Orders", 0, Database::"Approval Entry", 22);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnRejectApprovalRequest', '', false, false)]
 
     procedure RunWorkflowOnRejectApprovalRequestforSTO(var ApprovalEntry: Record "Approval Entry")
     begin
-        WorkflowManagement.HandleEventOnKnownWorkflowInstance(RunWorkflowOnRejectApprovalRequestforSTOCode,ApprovalEntry,ApprovalEntry."Workflow Step Instance ID");
+        WorkflowManagement.HandleEventOnKnownWorkflowInstance(RunWorkflowOnRejectApprovalRequestforSTOCode, ApprovalEntry, ApprovalEntry."Workflow Step Instance ID");
         STO.Reset;
-        STO.SetRange("No.",ApprovalEntry."Document No.");
+        STO.SetRange("No.", ApprovalEntry."Document No.");
         if STO.FindFirst then begin
-          STO.Status:=STO.Status::Rejected;
-          STO.Modify(true);
-          end;
+            STO.Status := STO.Status::Rejected;
+            STO.Modify(true);
+        end;
     end;
 
 
@@ -86,13 +86,13 @@ Codeunit 51516011 "WorkflowHandler"
 
     procedure RunWorkflowOnDelegateApprovalRequestforSTO(var ApprovalEntry: Record "Approval Entry")
     begin
-        WorkflowManagement.HandleEventOnKnownWorkflowInstance(RunWorkflowOnDelegateApprovalRequestforSTOCode,ApprovalEntry,ApprovalEntry."Workflow Step Instance ID");
+        WorkflowManagement.HandleEventOnKnownWorkflowInstance(RunWorkflowOnDelegateApprovalRequestforSTOCode, ApprovalEntry, ApprovalEntry."Workflow Step Instance ID");
         STO.Reset;
-        STO.SetRange("No.",ApprovalEntry."Document No.");
+        STO.SetRange("No.", ApprovalEntry."Document No.");
         if STO.FindFirst then begin
-          STO.Status:=STO.Status::Open;
-          STO.Modify(true);
-          end;
+            STO.Status := STO.Status::Open;
+            STO.Modify(true);
+        end;
     end;
 
 
@@ -104,9 +104,9 @@ Codeunit 51516011 "WorkflowHandler"
     [EventSubscriber(Objecttype::Page, 51516449, 'OnAfterActionEvent', 'Send Approval Request', false, false)]
     local procedure SendApprovalRequestSTO(var Rec: Record "Standing Orders")
     begin
-        if WEevents.ISSTOWorkflowEnabled(Rec) then begin
-        WEevents.OnSendSTOforApproval(Rec);
-        end;
+        //if WEevents.ISSTOWorkflowEnabled(Rec) then begin
+        // WEevents.OnSendSTOforApproval(Rec);
+        //  end;
     end;
 }
 

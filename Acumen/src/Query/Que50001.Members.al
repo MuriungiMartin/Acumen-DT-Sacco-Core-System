@@ -4,91 +4,91 @@ Query 50001 "Members"
 
     elements
     {
-        dataitem(Member_Register;"Member Register")
+        dataitem(Member_Register; Customer)
         {
-            DataItemTableFilter = "ID No."=filter(<>'');
-            column(No;"No.")
+            DataItemTableFilter = "ID No." = filter(<> '');
+            column(No; "No.")
             {
             }
-            column(Name;Name)
+            column(Name; Name)
             {
             }
-            column(Address;Address)
+            column(Address; Address)
             {
             }
-            column(Phone_No;"Phone No.")
+            column(Phone_No; "Phone No.")
             {
             }
-            column(Personal_No;"Personal No")
+            column(Personal_No; "Personal No")
             {
             }
-            column(Account_Category;"Account Category")
+            column(Account_Category; "Account Category")
             {
             }
-            column(E_Mail_Personal;"E-Mail (Personal)")
+            column(E_Mail_Personal; "E-Mail (Personal)")
             {
             }
-            column(ID_No;"ID No.")
+            column(ID_No; "ID No.")
             {
             }
-            column(Bank_Account_No;"Bank Account No.")
+            column(Bank_Account_No; "Bank Account No.")
             {
             }
-            column(E_Mail;"E-Mail")
+            column(E_Mail; "E-Mail")
             {
             }
-            column(Total_Loans_Outstanding;"Total Loans Outstanding")
+            column(Total_Loans_Outstanding; "Total Loans Outstanding")
             {
             }
-            column(Shares_Retained;"Shares Retained")
+            column(Shares_Retained; "Shares Retained")
             {
             }
-            column(Current_Shares;"Current Shares")
+            column(Current_Shares; "Current Shares")
             {
             }
-            column(Un_allocated_Funds;"Un-allocated Funds")
+            column(Un_allocated_Funds; "Un-allocated Funds")
             {
             }
-            column(FOSA_Account_No;"FOSA Account No.")
+            column(FOSA_Account_No; "FOSA Account No.")
             {
             }
-            column(Total_Repayments;"Total Repayments")
+            column(Total_Repayments; "Total Repayments")
             {
             }
-            column(Dividend_Amount;"Dividend Amount")
+            column(Dividend_Amount; "Dividend Amount")
             {
             }
-            column(Outstanding_Balance;"Outstanding Balance")
+            column(Outstanding_Balance; "Outstanding Balance")
             {
             }
-            column(Outstanding_Interest;"Outstanding Interest")
+            column(Outstanding_Interest; "Outstanding Interest")
             {
             }
-            column(FOSA_Account_Bal;"FOSA  Account Bal")
+            column(FOSA_Account_Bal; "FOSA  Account Bal")
             {
             }
-            column(BOSA_Account_No;"BOSA Account No.")
+            column(BOSA_Account_No; "BOSA Account No.")
             {
             }
-            column(Monthly_Contribution;"Monthly Contribution")
+            column(Monthly_Contribution; "Monthly Contribution")
             {
             }
-            column(Current_Loan;"Current Loan")
+            column(Current_Loan; "Current Loan")
             {
             }
-            column(Current_Savings;"Current Savings")
+            column(Current_Savings; "Current Savings")
             {
             }
-            column(Accrued_Interest;"Accrued Interest")
+            column(Accrued_Interest; "Accrued Interest")
             {
             }
-            column(Password;Password)
+            column(Password; Password)
             {
             }
-            column(Password_Reset_Date;"Password Reset Date")
+            column(Password_Reset_Date; "Password Reset Date")
             {
             }
-            column(Mobile_Phone_No;"Mobile Phone No")
+            column(Mobile_Phone_No; "Mobile Phone No")
             {
             }
         }

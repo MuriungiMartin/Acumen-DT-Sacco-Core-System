@@ -66,7 +66,7 @@ Table 51516527 "Loans PayOff Details"
         }
         field(3; "Member No"; Code[20])
         {
-            TableRelation = if (Source = filter(BOSA)) "Member Register";
+            TableRelation = if (Source = filter(BOSA)) Customer;
         }
         field(4; "Loan Type"; Code[20])
         {
@@ -255,7 +255,7 @@ Table 51516527 "Loans PayOff Details"
         Loans: Record "Loans Register";
         Loantypes: Record "Loan Products Setup";
         Interest: Decimal;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoansTop: Record "Loans Register";
         GenSetUp: Record "Sacco General Set-Up";
 }

@@ -158,79 +158,79 @@ Page 51516561 "Loans Approved Card"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No.";"Loan  No.")
+                field("Loan  No."; "Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No";"Staff No")
+                field("Staff No"; "Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Client Code";"Client Code")
+                field("Client Code"; "Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member';
                     Editable = MNoEditable;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                 }
-                field("Client Name";"Client Name")
+                field("Client Name"; "Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO";"ID NO")
+                field("ID NO"; "ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member Deposits";"Member Deposits")
+                field("Member Deposits"; "Member Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                         TestField(Posted,false);
+                        TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type";"Loan Product Type")
+                field("Loan Product Type"; "Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = LProdTypeEditable;
                 }
-                field(Installments;Installments)
+                field(Installments; Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = InstallmentEditable;
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted,false);
+                        TestField(Posted, false);
                     end;
                 }
-                field(Interest;Interest)
+                field(Interest; Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Product Currency Code";"Product Currency Code")
+                field("Product Currency Code"; "Product Currency Code")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Enabled = true;
                 }
-                field("Requested Amount";"Requested Amount")
+                field("Requested Amount"; "Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -238,15 +238,15 @@ Page 51516561 "Loans Approved Card"
 
                     trigger OnValidate()
                     begin
-                         TestField(Posted,false);
+                        TestField(Posted, false);
                     end;
                 }
-                field("Recommended Amount";"Recommended Amount")
+                field("Recommended Amount"; "Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approved Amount";"Approved Amount")
+                field("Approved Amount"; "Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -254,37 +254,37 @@ Page 51516561 "Loans Approved Card"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted,false);
+                        TestField(Posted, false);
                     end;
                 }
-                field("Loan Purpose";"Loan Purpose")
+                field("Loan Purpose"; "Loan Purpose")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field(Remarks;Remarks)
+                field(Remarks; Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = true;
                 }
-                field("Repayment Method";"Repayment Method")
+                field("Repayment Method"; "Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment;Repayment)
+                field(Repayment; Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = RepaymentEditable;
                 }
-                field("Approved Repayment";"Approved Repayment")
+                field("Approved Repayment"; "Approved Repayment")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Loan Status";"Loan Status")
+                field("Loan Status"; "Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -292,7 +292,7 @@ Page 51516561 "Loans Approved Card"
                     trigger OnValidate()
                     begin
                         UpdateControl();
-                        
+
                         /*IF LoanType.GET('DISCOUNT') THEN BEGIN
                         IF (("Approved Amount")-("Special Loan Amount"+"Other Commitments Clearance"+SpecialComm))
                              < 0 THEN
@@ -427,37 +427,37 @@ Page 51516561 "Loans Approved Card"
 
                     end;
                 }
-                field("Batch No.";"Batch No.")
+                field("Batch No."; "Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = BatchNoEditable;
                 }
-                field("Captured By";"Captured By")
+                field("Captured By"; "Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Top Up Amount";"Top Up Amount")
+                field("Top Up Amount"; "Top Up Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Bridged Amount';
                 }
-                field("Repayment Frequency";"Repayment Frequency")
+                field("Repayment Frequency"; "Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                 }
-                field("Mode of Disbursement";"Mode of Disbursement")
+                field("Mode of Disbursement"; "Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = ModeofDisburesmentEdit;
                 }
-                field("Loan Disbursement Date";"Loan Disbursement Date")
+                field("Loan Disbursement Date"; "Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Cheque No.";"Cheque No.")
+                field("Cheque No."; "Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Visible = true;
@@ -465,44 +465,44 @@ Page 51516561 "Loans Approved Card"
                     trigger OnValidate()
                     begin
                         if StrLen("Cheque No.") > 6 then
-                          Error('Document No. cannot contain More than 6 Characters.');
+                            Error('Document No. cannot contain More than 6 Characters.');
                     end;
                 }
-                field("Repayment Start Date";"Repayment Start Date")
+                field("Repayment Start Date"; "Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion";"Expected Date of Completion")
+                field("Expected Date of Completion"; "Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("External EFT";"External EFT")
+                field("External EFT"; "External EFT")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approval Status";"Approval Status")
+                field("Approval Status"; "Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("partially Bridged";"partially Bridged")
+                field("partially Bridged"; "partially Bridged")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Total TopUp Commission";"Total TopUp Commission")
+                field("Total TopUp Commission"; "Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection  Remark";"Rejection  Remark")
+                field("Rejection  Remark"; "Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                     Editable = RejectionRemarkEditable;
@@ -515,34 +515,34 @@ Page 51516561 "Loans Approved Card"
             group(Earnings)
             {
                 Caption = 'Earnings';
-                field("Basic Pay H";"Basic Pay H")
+                field("Basic Pay H"; "Basic Pay H")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Basic Pay';
                 }
-                field("House AllowanceH";"House AllowanceH")
+                field("House AllowanceH"; "House AllowanceH")
                 {
                     ApplicationArea = Basic;
                     Caption = 'House Allowance';
                 }
-                field("Medical AllowanceH";"Medical AllowanceH")
+                field("Medical AllowanceH"; "Medical AllowanceH")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Medical Allowance';
                 }
-                field("Transport/Bus Fare";"Transport/Bus Fare")
+                field("Transport/Bus Fare"; "Transport/Bus Fare")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Other Income";"Other Income")
+                field("Other Income"; "Other Income")
                 {
                     ApplicationArea = Basic;
                 }
-                field(GrossPay;GrossPay)
+                field(GrossPay; GrossPay)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Nettakehome;Nettakehome)
+                field(Nettakehome; Nettakehome)
                 {
                     ApplicationArea = Basic;
                 }
@@ -550,15 +550,15 @@ Page 51516561 "Loans Approved Card"
             group("Non-Taxable Deductions")
             {
                 Caption = 'Non-Taxable Deductions';
-                field("Pension Scheme";"Pension Scheme")
+                field("Pension Scheme"; "Pension Scheme")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Other Non-Taxable";"Other Non-Taxable")
+                field("Other Non-Taxable"; "Other Non-Taxable")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Other Tax Relief";"Other Tax Relief")
+                field("Other Tax Relief"; "Other Tax Relief")
                 {
                     ApplicationArea = Basic;
                 }
@@ -566,76 +566,76 @@ Page 51516561 "Loans Approved Card"
             group(Deductions)
             {
                 Caption = 'Deductions';
-                field("Monthly Contribution";"Monthly Contribution")
+                field("Monthly Contribution"; "Monthly Contribution")
                 {
                     ApplicationArea = Basic;
                 }
-                field(NHIF;NHIF)
+                field(NHIF; NHIF)
                 {
                     ApplicationArea = Basic;
                 }
-                field(NSSF;NSSF)
+                field(NSSF; NSSF)
                 {
                     ApplicationArea = Basic;
                 }
-                field(PAYE;PAYE)
+                field(PAYE; PAYE)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Risk MGT";"Risk MGT")
+                field("Risk MGT"; "Risk MGT")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical Insurance";"Medical Insurance")
+                field("Medical Insurance"; "Medical Insurance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Life Insurance";"Life Insurance")
+                field("Life Insurance"; "Life Insurance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Other Liabilities";"Other Liabilities")
+                field("Other Liabilities"; "Other Liabilities")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sacco Deductions";"Sacco Deductions")
+                field("Sacco Deductions"; "Sacco Deductions")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Other Loans Repayments";"Other Loans Repayments")
+                field("Other Loans Repayments"; "Other Loans Repayments")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Bank Loan Repayments';
                 }
-                field(TotalDeductions;TotalDeductions)
+                field(TotalDeductions; TotalDeductions)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Total Deductions';
                 }
-                field(UtilizableAmount;"Utilizable Amount")
+                field(UtilizableAmount; "Utilizable Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bridge Amount Release";"Bridge Amount Release")
+                field("Bridge Amount Release"; "Bridge Amount Release")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Cleared Loan Repayment';
                 }
-                field(NetUtilizable;NetUtilizable)
+                field(NetUtilizable; NetUtilizable)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Net Utilizable Amount';
                 }
             }
-            part(Control1000000004;"Loans Guarantee Details")
+            part(Control1000000004; "Loans Guarantee Details")
             {
                 Caption = 'Guarantors  Detail';
-                SubPageLink = "Loan No"=field("Loan  No.");
+                SubPageLink = "Loan No" = field("Loan  No.");
             }
-            part(Control1000000005;"Loan Collateral Security")
+            part(Control1000000005; "Loan Collateral Security")
             {
                 Caption = 'Other Securities';
-                SubPageLink = "Loan No"=field("Loan  No.");
+                SubPageLink = "Loan No" = field("Loan  No.");
             }
         }
     }
@@ -660,9 +660,9 @@ Page 51516561 "Loans Approved Card"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.","Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then begin
-                        Report.Run(51516384,true,false,LoanApp);
+                            Report.Run(51516384, true, false, LoanApp);
                         end;
                     end;
                 }
@@ -675,8 +675,8 @@ Page 51516561 "Loans Approved Card"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","Client Code");
-                        Report.Run(51516223,true,false,Cust);
+                        Cust.SetRange(Cust."No.", "Client Code");
+                        Report.Run(51516223, true, false, Cust);
                     end;
                 }
                 separator(Action1102760046)
@@ -696,168 +696,177 @@ Page 51516561 "Loans Approved Card"
                         //IF Posted=TRUE THEN
                         //ERROR('Loan has been posted, Can only preview schedule');
 
-                        if "Repayment Frequency"="repayment frequency"::Daily then
-                        Evaluate(InPeriod,'1D')
-                        else if "Repayment Frequency"="repayment frequency"::Weekly then
-                        Evaluate(InPeriod,'1W')
-                        else if "Repayment Frequency"="repayment frequency"::Monthly then
-                        Evaluate(InPeriod,'1M')
-                        else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                        Evaluate(InPeriod,'1Q');
+                        if "Repayment Frequency" = "repayment frequency"::Daily then
+                            Evaluate(InPeriod, '1D')
+                        else
+                            if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                Evaluate(InPeriod, '1W')
+                            else
+                                if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                    Evaluate(InPeriod, '1M')
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                        Evaluate(InPeriod, '1Q');
 
 
-                        QCounter:=0;
-                        QCounter:=3;
+                        QCounter := 0;
+                        QCounter := 3;
                         //EVALUATE(InPeriod,'1D');
-                        GrPrinciple:="Grace Period - Principle (M)";
-                        GrInterest:="Grace Period - Interest (M)";
-                        InitialGraceInt:="Grace Period - Interest (M)";
+                        GrPrinciple := "Grace Period - Principle (M)";
+                        GrInterest := "Grace Period - Interest (M)";
+                        InitialGraceInt := "Grace Period - Interest (M)";
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Loan  No.","Loan  No.");
+                        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
                         if LoansR.Find('-') then begin
 
-                        TestField("Loan Disbursement Date");
-                        TestField("Repayment Start Date");
+                            TestField("Loan Disbursement Date");
+                            TestField("Repayment Start Date");
 
-                        RSchedule.Reset;
-                        RSchedule.SetRange(RSchedule."Loan No.","Loan  No.");
-                        RSchedule.DeleteAll;
+                            RSchedule.Reset;
+                            RSchedule.SetRange(RSchedule."Loan No.", "Loan  No.");
+                            RSchedule.DeleteAll;
 
-                        LoanAmount:=LoansR."Approved Amount";
-                        InterestRate:=LoansR.Interest;
-                        RepayPeriod:=LoansR.Installments;
-                        InitialInstal:=LoansR.Installments+"Grace Period - Principle (M)";
-                        LBalance:=LoansR."Approved Amount";
-                        LNBalance:=LoansR."Outstanding Balance";
-                        RunDate:="Repayment Start Date";
+                            LoanAmount := LoansR."Approved Amount";
+                            InterestRate := LoansR.Interest;
+                            RepayPeriod := LoansR.Installments;
+                            InitialInstal := LoansR.Installments + "Grace Period - Principle (M)";
+                            LBalance := LoansR."Approved Amount";
+                            LNBalance := LoansR."Outstanding Balance";
+                            RunDate := "Repayment Start Date";
 
-                        InstalNo:=0;
-                        Evaluate(RepayInterval,'1W');
+                            InstalNo := 0;
+                            Evaluate(RepayInterval, '1W');
 
-                        //Repayment Frequency
-                        if "Repayment Frequency"="repayment frequency"::Daily then
-                        RunDate:=CalcDate('-1D',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Weekly then
-                        RunDate:=CalcDate('-1W',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Monthly then
-                        RunDate:=CalcDate('-1M',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                        RunDate:=CalcDate('-1Q',RunDate);
-                        //Repayment Frequency
-
-
-                        repeat
-                        InstalNo:=InstalNo+1;
-
-
-                        //*************Repayment Frequency***********************//
-                        if "Repayment Frequency"="repayment frequency"::Daily then
-                        RunDate:=CalcDate('1D',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Weekly then
-                        RunDate:=CalcDate('1W',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Monthly then
-                        RunDate:=CalcDate('1M',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                        RunDate:=CalcDate('1Q',RunDate);
+                            //Repayment Frequency
+                            if "Repayment Frequency" = "repayment frequency"::Daily then
+                                RunDate := CalcDate('-1D', RunDate)
+                            else
+                                if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                    RunDate := CalcDate('-1W', RunDate)
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                        RunDate := CalcDate('-1M', RunDate)
+                                    else
+                                        if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                            RunDate := CalcDate('-1Q', RunDate);
+                            //Repayment Frequency
 
 
+                            repeat
+                                InstalNo := InstalNo + 1;
 
 
-
-
-                        //*******************If Amortised****************************//
-                        if "Repayment Method"="repayment method"::Amortised then begin
-                        TestField(Installments);
-                        TestField(Interest);
-                        TestField(Installments);
-                        //TotalMRepay:=ROUND((InterestRate/12/100) / (1 - POWER((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount,1,'>');
-                        TotalMRepay:=(InterestRate/12/100) / (1 - Power((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount;
-                        LInterest:=ROUND(LBalance / 100 / 12 * InterestRate);
-
-                        LPrincipal:=TotalMRepay-LInterest;
-                        end;
+                                //*************Repayment Frequency***********************//
+                                if "Repayment Frequency" = "repayment frequency"::Daily then
+                                    RunDate := CalcDate('1D', RunDate)
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                        RunDate := CalcDate('1W', RunDate)
+                                    else
+                                        if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                            RunDate := CalcDate('1M', RunDate)
+                                        else
+                                            if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                                RunDate := CalcDate('1Q', RunDate);
 
 
 
-                        if "Repayment Method"="repayment method"::"Straight Line" then begin
-                        TestField(Installments);
-                        LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                        if ("Loan Product Type" = 'INST') or ("Loan Product Type" = 'MAZAO') then begin
-                        LInterest:=0;
-                        end else begin
-                        LInterest:=ROUND((InterestRate/100)*LoanAmount,1,'>');
-                        end;
-
-                        Repayment:=LPrincipal+LInterest;
-                        "Loan Principle Repayment":=LPrincipal;
-                        "Loan Interest Repayment":=LInterest;
-                        end;
 
 
-                        if "Repayment Method"="repayment method"::"Reducing Balance" then begin
-                        TestField(Interest);
-                        TestField(Installments);
-                        LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                        LInterest:=ROUND((InterestRate/12/100)*LBalance,1,'>');
-                        end;
 
-                        if "Repayment Method"="repayment method"::Constants then begin
-                        TestField(Repayment);
-                        if LBalance < Repayment then
-                        LPrincipal:=LBalance
-                        else
-                        LPrincipal:=Repayment;
-                        LInterest:=Interest;
-                        end;
+                                //*******************If Amortised****************************//
+                                if "Repayment Method" = "repayment method"::Amortised then begin
+                                    TestField(Installments);
+                                    TestField(Interest);
+                                    TestField(Installments);
+                                    //TotalMRepay:=ROUND((InterestRate/12/100) / (1 - POWER((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount,1,'>');
+                                    TotalMRepay := (InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -RepayPeriod)) * LoanAmount;
+                                    LInterest := ROUND(LBalance / 100 / 12 * InterestRate);
+
+                                    LPrincipal := TotalMRepay - LInterest;
+                                end;
 
 
-                        //Grace Period
-                        if GrPrinciple > 0 then begin
-                        LPrincipal:=0
-                        end else begin
-                        if "Instalment Period" <> InPeriod then
-                        LBalance:=LBalance-LPrincipal;
 
-                        end;
+                                if "Repayment Method" = "repayment method"::"Straight Line" then begin
+                                    TestField(Installments);
+                                    LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
+                                    if ("Loan Product Type" = 'INST') or ("Loan Product Type" = 'MAZAO') then begin
+                                        LInterest := 0;
+                                    end else begin
+                                        LInterest := ROUND((InterestRate / 100) * LoanAmount, 1, '>');
+                                    end;
 
-                        if GrInterest > 0 then
-                        LInterest:=0;
-
-                        GrPrinciple:=GrPrinciple-1;
-                        GrInterest:=GrInterest-1;
-
-                        //Grace Period
-                        RSchedule.Init;
-                        RSchedule."Repayment Code":=RepayCode;
-                        RSchedule."Loan No.":="Loan  No.";
-                        RSchedule."Loan Amount":=LoanAmount;
-                        RSchedule."Instalment No":=InstalNo;
-                        RSchedule."Repayment Date":=RunDate;
-                        RSchedule."Member No.":="Client Code";
-                        RSchedule."Loan Category":="Loan Product Type";
-                        RSchedule."Monthly Repayment":=LInterest + LPrincipal;
-                        RSchedule."Monthly Interest":=LInterest;
-                        RSchedule."Principal Repayment":=LPrincipal;
-                        RSchedule.Insert;
-                        WhichDay:=Date2dwy(RSchedule."Repayment Date",1);
+                                    Repayment := LPrincipal + LInterest;
+                                    "Loan Principle Repayment" := LPrincipal;
+                                    "Loan Interest Repayment" := LInterest;
+                                end;
 
 
-                        until LBalance < 1
+                                if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
+                                    TestField(Interest);
+                                    TestField(Installments);
+                                    LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
+                                    LInterest := ROUND((InterestRate / 12 / 100) * LBalance, 1, '>');
+                                end;
+
+                                if "Repayment Method" = "repayment method"::Constants then begin
+                                    TestField(Repayment);
+                                    if LBalance < Repayment then
+                                        LPrincipal := LBalance
+                                    else
+                                        LPrincipal := Repayment;
+                                    LInterest := Interest;
+                                end;
+
+
+                                //Grace Period
+                                if GrPrinciple > 0 then begin
+                                    LPrincipal := 0
+                                end else begin
+                                    if "Instalment Period" <> InPeriod then
+                                        LBalance := LBalance - LPrincipal;
+
+                                end;
+
+                                if GrInterest > 0 then
+                                    LInterest := 0;
+
+                                GrPrinciple := GrPrinciple - 1;
+                                GrInterest := GrInterest - 1;
+
+                                //Grace Period
+                                RSchedule.Init;
+                                RSchedule."Repayment Code" := RepayCode;
+                                RSchedule."Loan No." := "Loan  No.";
+                                RSchedule."Loan Amount" := LoanAmount;
+                                RSchedule."Instalment No" := InstalNo;
+                                RSchedule."Repayment Date" := RunDate;
+                                RSchedule."Member No." := "Client Code";
+                                RSchedule."Loan Category" := "Loan Product Type";
+                                RSchedule."Monthly Repayment" := LInterest + LPrincipal;
+                                RSchedule."Monthly Interest" := LInterest;
+                                RSchedule."Principal Repayment" := LPrincipal;
+                                RSchedule.Insert;
+                                WhichDay := Date2dwy(RSchedule."Repayment Date", 1);
+
+
+                            until LBalance < 1
 
                         end;
 
                         Commit;
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.","Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then
-                        if LoanApp."Loan Product Type" <> 'INST' then begin
-                        Report.Run(51516231,true,false,LoanApp);
-                        end else begin
-                        Report.Run(51516231,true,false,LoanApp);
+                            if LoanApp."Loan Product Type" <> 'INST' then begin
+                                Report.Run(51516231, true, false, LoanApp);
+                            end else begin
+                                Report.Run(51516231, true, false, LoanApp);
 
-                        end;
+                            end;
                     end;
                 }
                 separator(Action1102755012)
@@ -871,7 +880,7 @@ Page 51516561 "Loans Approved Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Loan Offset Detail List";
-                    RunPageLink = "Loan No."=field("Loan  No."),"Client Code"=field("Client Code");
+                    RunPageLink = "Loan No." = field("Loan  No."), "Client Code" = field("Client Code");
                 }
                 separator(Action1102760039)
                 {
@@ -891,91 +900,91 @@ Page 51516561 "Loans Approved Card"
                         // FOSA posting
 
                         if "Mode of Disbursement" = "mode of disbursement"::"Bank Transfer" then begin
-                        LoanApps.Reset;
-                        LoanApps.SetRange(LoanApps."Batch No.","Batch No.");
-                        LoanApps.SetRange(LoanApps."System Created",false);
-                        LoanApps.SetFilter(LoanApps."Loan Status",'<>Rejected');
-                        if LoanApps.Find('-') then begin
-                        repeat
-                        LoanApp."Issued Date":=Today;
-                        //MESSAGE('');
-                        LoanApps.Posted:=true;
-                        LoanApps.Modify;
+                            LoanApps.Reset;
+                            LoanApps.SetRange(LoanApps."Batch No.", "Batch No.");
+                            LoanApps.SetRange(LoanApps."System Created", false);
+                            LoanApps.SetFilter(LoanApps."Loan Status", '<>Rejected');
+                            if LoanApps.Find('-') then begin
+                                repeat
+                                    LoanApp."Issued Date" := Today;
+                                    //MESSAGE('');
+                                    LoanApps.Posted := true;
+                                    LoanApps.Modify;
 
 
-                        LoanApps.CalcFields(LoanApps."Top Up Amount",LoanApps."Topup iNTEREST");
-                        TCharges:=0;
-                        TopUpComm:=0;
-                        TotalTopupComm:=0;
-
-
-
-
-
-
-
-                        GenJournalLine.Init;
-                        LineNo:=LineNo+10000;
-                        GenJournalLine."Journal Template Name":='PAYMENTS';
-                        GenJournalLine."Journal Batch Name":='LOANS';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Document No.":="Loan  No.";
-                        GenJournalLine."Posting Date":="Loan Disbursement Date";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Member;
-                        GenJournalLine."Account No.":=LoanApps."Client Code";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine.Description:='loans Topup';
-                        GenJournalLine.Amount:=LoanApp."Approved Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Shortcut Dimension 1 Code":='BOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='NAIROBI';
-                        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::Loan;
-                        GenJournalLine."Loan No":=LoanApps."Loan  No.";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
+                                    LoanApps.CalcFields(LoanApps."Top Up Amount", LoanApps."Topup iNTEREST");
+                                    TCharges := 0;
+                                    TopUpComm := 0;
+                                    TotalTopupComm := 0;
 
 
 
 
 
-                        GenJournalLine.Init;
-                        LineNo:=LineNo+10000;
-                        GenJournalLine."Journal Template Name":='PAYMENTS';
-                        GenJournalLine."Journal Batch Name":='LOANS';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Document No.":="Loan  No.";
-                        GenJournalLine."Posting Date":="Loan Disbursement Date";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":=LoanApps."Account No";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine.Description:='loan Topup';
-                        GenJournalLine.Amount:=LoanApp."Approved Amount";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Shortcut Dimension 1 Code":='BOSA';
-                        GenJournalLine."Shortcut Dimension 2 Code":='NAIROBI';
-                        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::Loan;
-                        GenJournalLine."Loan No":=LoanApps."Loan  No.";
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
 
-                        until LoanApps.Next=0;
-                        end;
+
+                                    GenJournalLine.Init;
+                                    LineNo := LineNo + 10000;
+                                    GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                    GenJournalLine."Journal Batch Name" := 'LOANS';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Document No." := "Loan  No.";
+                                    GenJournalLine."Posting Date" := "Loan Disbursement Date";
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Member;
+                                    GenJournalLine."Account No." := LoanApps."Client Code";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine.Description := 'loans Topup';
+                                    GenJournalLine.Amount := LoanApp."Approved Amount";
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+                                    GenJournalLine."Shortcut Dimension 2 Code" := 'NAIROBI';
+                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Loan;
+                                    GenJournalLine."Loan No" := LoanApps."Loan  No.";
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+
+
+
+
+                                    GenJournalLine.Init;
+                                    LineNo := LineNo + 10000;
+                                    GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                    GenJournalLine."Journal Batch Name" := 'LOANS';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Document No." := "Loan  No.";
+                                    GenJournalLine."Posting Date" := "Loan Disbursement Date";
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                    GenJournalLine."Account No." := LoanApps."Account No";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine.Description := 'loan Topup';
+                                    GenJournalLine.Amount := LoanApp."Approved Amount";
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+                                    GenJournalLine."Shortcut Dimension 2 Code" := 'NAIROBI';
+                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Loan;
+                                    GenJournalLine."Loan No" := LoanApps."Loan  No.";
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+                                until LoanApps.Next = 0;
+                            end;
                         end;
 
 
 
                         //Post
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PAYMENTS');
-                        GenJournalLine.SetRange("Journal Batch Name",'LOANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PAYMENTS');
+                        GenJournalLine.SetRange("Journal Batch Name", 'LOANS');
                         if GenJournalLine.Find('-') then begin
-                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco",GenJournalLine);
+                            Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
                         end;
-                        Posted:=true;
+                        Posted := true;
                         Modify;
                         //Post New
 
@@ -1010,9 +1019,9 @@ Page 51516561 "Loans Approved Card"
                               ApprovalEntries.RUN;
                         END;
                         */
-                        
-                        DocumentType:=Documenttype::Loan;
-                        ApprovalEntries.Setfilters(Database::"Control-Information",DocumentType,"Loan  No.");
+
+                        DocumentType := Documenttype::Loan;
+                        ApprovalEntries.Setfilters(Database::"Control-Information", DocumentType, "Loan  No.");
                         ApprovalEntries.Run;
 
                     end;
@@ -1028,49 +1037,49 @@ Page 51516561 "Loans Approved Card"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                         /*
-                        SalDetails.RESET;
-                        SalDetails.SETRANGE(SalDetails."Loan No","Loan  No.");
-                        IF SalDetails.FIND('-')=FALSE THEN BEGIN
-                        ERROR('Please Insert Loan Applicant Salary Information');
-                        END;
-                           */
+                        /*
+                       SalDetails.RESET;
+                       SalDetails.SETRANGE(SalDetails."Loan No","Loan  No.");
+                       IF SalDetails.FIND('-')=FALSE THEN BEGIN
+                       ERROR('Please Insert Loan Applicant Salary Information');
+                       END;
+                          */
                         if "Loan Product Type" <> 'SDV' then begin
-                        LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No","Loan  No.");
-                        if LGuarantors.Find('-')=false then begin
-                        Error('Please Insert Loan Applicant Guarantor Information');
-                        end;
+                            LGuarantors.Reset;
+                            LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                            if LGuarantors.Find('-') = false then begin
+                                Error('Please Insert Loan Applicant Guarantor Information');
+                            end;
                         end;
                         //TESTFIELD("Approved Amount");
                         TestField("Loan Product Type");
                         TestField("Mode of Disbursement");
-                        
-                              /*
-                        IF "Mode of Disbursement"="Mode of Disbursement"::Cheque THEN
-                        ERROR('Mode of disbursment cannot be cheque, all loans are disbursed through FOSA')
-                        
-                        ELSE IF  ("Mode of Disbursement"="Mode of Disbursement"::"Bank Transfer") AND
-                         ("Account No"='') THEN
-                         ERROR('Member has no FOSA Savings Account linked to loan thus no means of disbursing the loan,')
-                        
-                        ELSE IF  (Source=Source::BOSA) AND ("Mode of Disbursement"="Mode of Disbursement"::"FOSA Loans")  THEN
-                         ERROR('This is not a FOSA loan thus select correct mode of disbursement')
-                        
-                        ELSE IF ("Mode of Disbursement"="Mode of Disbursement"::" ")THEN
-                        ERROR('Kindly specify mode of disbursement');
-                                  */
-                        
-                        
+
+                        /*
+                  IF "Mode of Disbursement"="Mode of Disbursement"::Cheque THEN
+                  ERROR('Mode of disbursment cannot be cheque, all loans are disbursed through FOSA')
+
+                  ELSE IF  ("Mode of Disbursement"="Mode of Disbursement"::"Bank Transfer") AND
+                   ("Account No"='') THEN
+                   ERROR('Member has no FOSA Savings Account linked to loan thus no means of disbursing the loan,')
+
+                  ELSE IF  (Source=Source::BOSA) AND ("Mode of Disbursement"="Mode of Disbursement"::"FOSA Loans")  THEN
+                   ERROR('This is not a FOSA loan thus select correct mode of disbursement')
+
+                  ELSE IF ("Mode of Disbursement"="Mode of Disbursement"::" ")THEN
+                  ERROR('Kindly specify mode of disbursement');
+                            */
+
+
                         /*
                         RSchedule.RESET;
                         RSchedule.SETRANGE(RSchedule."Loan No.","Loan  No.");
                         IF NOT RSchedule.FIND('-') THEN
                         ERROR('Loan Schedule must be generated and confirmed before loan is attached to batch');
                           */
-                        
+
                         /*
                         LBatches.RESET;
                         LBatches.SETRANGE(LBatches."Loan  No.","Loan  No.");
@@ -1082,17 +1091,17 @@ Page 51516561 "Loans Approved Card"
                         //End allocate batch number
                         //ApprovalMgt.SendLoanApprRequest(LBatches);
                         //ApprovalMgt.SendLoanApprRequest(Rec);
-                          /* LGuarantors.RESET;
-                           LGuarantors.SETRANGE(LGuarantors."Loan No","Loan  No.");
-                           IF LGuarantors.FINDFIRST THEN BEGIN
-                           REPEAT
-                           IF Cust.GET(LGuarantors."Member No") THEN
-                           IF  Cust."Mobile Phone No"<>'' THEN
-                           Sms.SendSms('Guarantors' ,Cust."Mobile Phone No",'You have guaranteed '+ "Client Name" + ' ' + "Loan Product Type" +' of KES. '+FORMAT("Approved Amount")+
-                           '. Call 0720000000 if in dispute. Ekeza Sacco.',Cust."No.");
-                           UNTIL LGuarantors.NEXT =0;
-                           END
-                            */
+                        /* LGuarantors.RESET;
+                         LGuarantors.SETRANGE(LGuarantors."Loan No","Loan  No.");
+                         IF LGuarantors.FINDFIRST THEN BEGIN
+                         REPEAT
+                         IF Cust.GET(LGuarantors."Member No") THEN
+                         IF  Cust."Mobile Phone No"<>'' THEN
+                         Sms.SendSms('Guarantors' ,Cust."Mobile Phone No",'You have guaranteed '+ "Client Name" + ' ' + "Loan Product Type" +' of KES. '+FORMAT("Approved Amount")+
+                         '. Call 0720000000 if in dispute. Ekeza Sacco.',Cust."No.");
+                         UNTIL LGuarantors.NEXT =0;
+                         END
+                          */
 
                     end;
                 }
@@ -1106,9 +1115,9 @@ Page 51516561 "Loans Approved Card"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                         //ApprovalMgt.SendLoanApprRequest(Rec);
+                        //ApprovalMgt.SendLoanApprRequest(Rec);
                     end;
                 }
             }
@@ -1127,7 +1136,7 @@ Page 51516561 "Loans Approved Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source:=Source::" ";
+        Source := Source::" ";
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
@@ -1139,7 +1148,7 @@ Page 51516561 "Loans Approved Card"
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted,true);
+        SetRange(Posted, true);
         /*IF "Loan Status"="Loan Status"::Approved THEN
         CurrPage.EDITABLE:=FALSE;*/
 
@@ -1165,7 +1174,7 @@ Page 51516561 "Loans Approved Card"
         ScheduleCode: Code[20];
         PreviewShedule: Record "Loan Repayment Schedule";
         PeriodInterval: Code[10];
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -1175,10 +1184,10 @@ Page 51516561 "Loans Approved Card"
         LineNo: Integer;
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sales & Receivables Setup";
         PCharges: Record "Loan Product Charges";
@@ -1214,7 +1223,7 @@ Page 51516561 "Loans Approved Card"
         DActivity: Code[20];
         DBranch: Code[20];
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -1229,7 +1238,7 @@ Page 51516561 "Loans Approved Card"
         DiscountingAmount: Decimal;
         StatusPermissions: Record "Status Change Permision";
         BridgedLoans: Record "Loan Special Clearance";
-        SMSMessage: Record "Member Register";
+        SMSMessage: Record Customer;
         InstallNo2: Integer;
         currency: Record "Currency Exchange Rate";
         CURRENCYFACTOR: Decimal;
@@ -1270,72 +1279,72 @@ Page 51516561 "Loans Approved Card"
     procedure UpdateControl()
     begin
 
-        if "Loan Status"="loan status"::Application then begin
-        MNoEditable:=true;
-        ApplcDateEditable:=false;
-        LoanStatusEditable:=false;
-        LProdTypeEditable:=true;
-        InstallmentEditable:=true;
-        AppliedAmountEditable:=true;
-        ApprovedAmountEditable:=true;
-        RepayMethodEditable:=true;
-        RepaymentEditable:=true;
-        BatchNoEditable:=false;
-        RepayFrequencyEditable:=true;
-        ModeofDisburesmentEdit:=true;
-        DisbursementDateEditable:=false;
+        if "Loan Status" = "loan status"::Application then begin
+            MNoEditable := true;
+            ApplcDateEditable := false;
+            LoanStatusEditable := false;
+            LProdTypeEditable := true;
+            InstallmentEditable := true;
+            AppliedAmountEditable := true;
+            ApprovedAmountEditable := true;
+            RepayMethodEditable := true;
+            RepaymentEditable := true;
+            BatchNoEditable := false;
+            RepayFrequencyEditable := true;
+            ModeofDisburesmentEdit := true;
+            DisbursementDateEditable := false;
         end;
 
-        if "Loan Status"="loan status"::Appraisal then begin
-        MNoEditable:=false;
-        ApplcDateEditable:=false;
-        LoanStatusEditable:=false;
-        LProdTypeEditable:=false;
-        InstallmentEditable:=false;
-        AppliedAmountEditable:=false;
-        ApprovedAmountEditable:=true;
-        RepayMethodEditable:=true;
-        RepaymentEditable:=true;
-        BatchNoEditable:=false;
-        RepayFrequencyEditable:=false;
-        ModeofDisburesmentEdit:=true;
-        DisbursementDateEditable:=false;
+        if "Loan Status" = "loan status"::Appraisal then begin
+            MNoEditable := false;
+            ApplcDateEditable := false;
+            LoanStatusEditable := false;
+            LProdTypeEditable := false;
+            InstallmentEditable := false;
+            AppliedAmountEditable := false;
+            ApprovedAmountEditable := true;
+            RepayMethodEditable := true;
+            RepaymentEditable := true;
+            BatchNoEditable := false;
+            RepayFrequencyEditable := false;
+            ModeofDisburesmentEdit := true;
+            DisbursementDateEditable := false;
         end;
 
-        if "Loan Status"="loan status"::Rejected then begin
-        MNoEditable:=false;
-        AccountNoEditable:=false;
-        ApplcDateEditable:=false;
-        LoanStatusEditable:=false;
-        LProdTypeEditable:=false;
-        InstallmentEditable:=false;
-        AppliedAmountEditable:=false;
-        ApprovedAmountEditable:=false;
-        RepayMethodEditable:=false;
-        RepaymentEditable:=false;
-        BatchNoEditable:=false;
-        RepayFrequencyEditable:=false;
-        ModeofDisburesmentEdit:=false;
-        DisbursementDateEditable:=false;
-        RejectionRemarkEditable:=false
+        if "Loan Status" = "loan status"::Rejected then begin
+            MNoEditable := false;
+            AccountNoEditable := false;
+            ApplcDateEditable := false;
+            LoanStatusEditable := false;
+            LProdTypeEditable := false;
+            InstallmentEditable := false;
+            AppliedAmountEditable := false;
+            ApprovedAmountEditable := false;
+            RepayMethodEditable := false;
+            RepaymentEditable := false;
+            BatchNoEditable := false;
+            RepayFrequencyEditable := false;
+            ModeofDisburesmentEdit := false;
+            DisbursementDateEditable := false;
+            RejectionRemarkEditable := false
         end;
 
-        if "Approval Status"="approval status"::Approved then begin
-        MNoEditable:=false;
-        AccountNoEditable:=false;
-        LoanStatusEditable:=false;
-        ApplcDateEditable:=false;
-        LProdTypeEditable:=false;
-        InstallmentEditable:=false;
-        AppliedAmountEditable:=false;
-        ApprovedAmountEditable:=false;
-        RepayMethodEditable:=false;
-        RepaymentEditable:=false;
-        BatchNoEditable:=true;
-        RepayFrequencyEditable:=false;
-        ModeofDisburesmentEdit:=true;
-        DisbursementDateEditable:=true;
-        RejectionRemarkEditable:=false;
+        if "Approval Status" = "approval status"::Approved then begin
+            MNoEditable := false;
+            AccountNoEditable := false;
+            LoanStatusEditable := false;
+            ApplcDateEditable := false;
+            LProdTypeEditable := false;
+            InstallmentEditable := false;
+            AppliedAmountEditable := false;
+            ApprovedAmountEditable := false;
+            RepayMethodEditable := false;
+            RepaymentEditable := false;
+            BatchNoEditable := true;
+            RepayFrequencyEditable := false;
+            ModeofDisburesmentEdit := true;
+            DisbursementDateEditable := true;
+            RejectionRemarkEditable := false;
         end;
     end;
 

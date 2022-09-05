@@ -689,11 +689,15 @@ Table 51516398 "Sacco General Set-Up"
         {
             DataClassification = ToBeClassified;
         }
+        field(199;PrimaryKey;Integer)
+        {
+
+        }
     }
 
     keys
     {
-        key(Key1;Rec)
+        key(Key1;PrimaryKey)
         {
             Clustered = true;
         }

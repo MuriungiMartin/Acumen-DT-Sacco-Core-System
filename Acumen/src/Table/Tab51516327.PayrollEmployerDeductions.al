@@ -4,60 +4,60 @@ Table 51516327 "Payroll Employer Deductions."
 
     fields
     {
-        field(10;"Employee Code";Code[20])
+        field(10; "Employee Code"; Code[20])
         {
         }
-        field(11;"Transaction Code";Code[20])
+        field(11; "Transaction Code"; Code[20])
         {
         }
-        field(12;Amount;Decimal)
+        field(12; Amount; Decimal)
         {
         }
-        field(13;"Period Month";Integer)
+        field(13; "Period Month"; Integer)
         {
         }
-        field(14;"Period Year";Integer)
+        field(14; "Period Year"; Integer)
         {
         }
-        field(15;"Payroll Period";Date)
+        field(15; "Payroll Period"; Date)
         {
-            TableRelation = "HR Job Qualifications".Field10;
+            TableRelation = "prPayroll Periods";
         }
-        field(16;"Payroll Code";Code[20])
-        {
-        }
-        field(17;"Amount(LCY)";Decimal)
+        field(16; "Payroll Code"; Code[20])
         {
         }
-        field(18;Group;Integer)
+        field(17; "Amount(LCY)"; Decimal)
         {
         }
-        field(19;SubGroup;Integer)
+        field(18; Group; Integer)
         {
         }
-        field(20;"Transaction Type";Code[20])
+        field(19; SubGroup; Integer)
         {
         }
-        field(21;Description;Text[50])
+        field(20; "Transaction Type"; Code[20])
         {
         }
-        field(22;Balance;Decimal)
+        field(21; Description; Text[50])
         {
         }
-        field(23;"Balance(LCY)";Decimal)
+        field(22; Balance; Decimal)
         {
         }
-        field(24;"Membership No";Code[20])
+        field(23; "Balance(LCY)"; Decimal)
         {
         }
-        field(25;"Reference No";Code[20])
+        field(24; "Membership No"; Code[20])
+        {
+        }
+        field(25; "Reference No"; Code[20])
         {
         }
     }
 
     keys
     {
-        key(Key1;"Employee Code","Transaction Code","Period Month","Period Year")
+        key(Key1; "Employee Code", "Transaction Code", "Period Month", "Period Year")
         {
             Clustered = true;
         }

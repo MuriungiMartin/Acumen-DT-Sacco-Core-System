@@ -5,13 +5,13 @@ Codeunit 51516121 "Recover Dividend Loans"
     trigger OnRun()
     begin
         //Delete journal
-        PostingDate:=20171102D;
+        PostingDate := 20171102D;
         Gnljnline.Reset;
-        Gnljnline.SetRange("Journal Template Name",'GENERAL');
-        Gnljnline.SetRange("Journal Batch Name",'SHARELOANS');
+        Gnljnline.SetRange("Journal Template Name", 'GENERAL');
+        Gnljnline.SetRange("Journal Batch Name", 'SHARELOANS');
         if Gnljnline.Find('-') then
-        Gnljnline.DeleteAll;
-        LineNo:=10;
+            Gnljnline.DeleteAll;
+        LineNo := 10;
         FnRunOutstandingLoanBalance();
         Message('DONE');
     end;
@@ -20,7 +20,7 @@ Codeunit 51516121 "Recover Dividend Loans"
         LineNo: Integer;
         Gnljnline: Record "Gen. Journal Line";
         PostingDate: Date;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
 
     local procedure FnRunOutstandingLoanBalance()
     var
@@ -29,79 +29,77 @@ Codeunit 51516121 "Recover Dividend Loans"
         varLRepayment: Decimal;
         LoanApp: Record "Loans Register";
     begin
-        varTotalRepay:=0;
-        varMultipleLoan:=0;
+        varTotalRepay := 0;
+        varMultipleLoan := 0;
         LoanApp.Reset;
-        LoanApp.SetCurrentkey(Source,"Issued Date","Loan Product Type","Client Code","Staff No","Employer Code");
+        LoanApp.SetCurrentkey(Source, "Issued Date", "Loan Product Type", "Client Code", "Staff No", "Employer Code");
         //LoanApp.SETRANGE(LoanApp."Client Code",MemberNo);
-        LoanApp.SetFilter(LoanApp."Issued Date",'..%1',PostingDate);
-        LoanApp.SetFilter(LoanApp."Loan Product Type",'%1|%2','FL354','FL364');
+        LoanApp.SetFilter(LoanApp."Issued Date", '..%1', PostingDate);
+        LoanApp.SetFilter(LoanApp."Loan Product Type", '%1|%2', 'FL354', 'FL364');
 
 
         if LoanApp.Find('-') then begin
-          repeat
+            repeat
                 LoanApp.CalcFields(LoanApp."Outstanding Balance");
-                if (LoanApp."Outstanding Balance" > 0) and (LoanApp."Issued Date" <PostingDate) then
-                  begin
-                    varLRepayment:=0;
-                    varLRepayment:=LoanApp."Outstanding Balance";
-                    if varLRepayment >0 then
-                      begin
-                          LineNo:=LineNo+10;
-                          Gnljnline.Init;
-                          Gnljnline."Journal Template Name":='GENERAL';
-                          Gnljnline."Journal Batch Name":='SHARELOANS';
-                          Gnljnline."Document No.":='DIVIDENDLoans';
+                if (LoanApp."Outstanding Balance" > 0) and (LoanApp."Issued Date" < PostingDate) then begin
+                    varLRepayment := 0;
+                    varLRepayment := LoanApp."Outstanding Balance";
+                    if varLRepayment > 0 then begin
+                        LineNo := LineNo + 10;
+                        Gnljnline.Init;
+                        Gnljnline."Journal Template Name" := 'GENERAL';
+                        Gnljnline."Journal Batch Name" := 'SHARELOANS';
+                        Gnljnline."Document No." := 'DIVIDENDLoans';
 
-                          Gnljnline."Line No.":=LineNo;
+                        Gnljnline."Line No." := LineNo;
 
-                          Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                          Gnljnline."Account No.":=LoanApp."BOSA No";
-                          Gnljnline.Validate(Gnljnline."Account No.");
+                        Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                        Gnljnline."Account No." := LoanApp."BOSA No";
+                        Gnljnline.Validate(Gnljnline."Account No.");
 
-                          Gnljnline."Posting Date":=PostingDate;
-                          Gnljnline.Description:=LoanApp."Loan Product Type"+'-Loan Repayment-from dividend';
-                          Gnljnline.Amount:=varLRepayment*-1;
+                        Gnljnline."Posting Date" := PostingDate;
+                        Gnljnline.Description := LoanApp."Loan Product Type" + '-Loan Repayment-from dividend';
+                        Gnljnline.Amount := varLRepayment * -1;
 
                         Gnljnline.Validate(Gnljnline.Amount);
-                        Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Interest Paid";
-                        Gnljnline."Loan No":=LoanApp."Loan  No.";
-                        Gnljnline."Shortcut Dimension 1 Code":='BOSA';
-                        Gnljnline."Shortcut Dimension 2 Code":=FnGetMemberBranch(LoanApp."Client Code");
+                        Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Interest Paid";
+                        Gnljnline."Loan No" := LoanApp."Loan  No.";
+                        Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
+                        Gnljnline."Shortcut Dimension 2 Code" := FnGetMemberBranch(LoanApp."Client Code");
                         Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
                         Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
-                        if Gnljnline.Amount<>0 then
-                        Gnljnline.Insert;
+                        if Gnljnline.Amount <> 0 then
+                            Gnljnline.Insert;
 
-                        LineNo:=LineNo+1;
-                          Gnljnline.Init;
-                          Gnljnline."Journal Template Name":='GENERAL';
-                          Gnljnline."Journal Batch Name":='SHARELOANS';
-                          Gnljnline."Document No.":='DIVIDENDLoans';
-                          Gnljnline."Line No.":=LineNo;
+                        LineNo := LineNo + 1;
+                        Gnljnline.Init;
+                        Gnljnline."Journal Template Name" := 'GENERAL';
+                        Gnljnline."Journal Batch Name" := 'SHARELOANS';
+                        Gnljnline."Document No." := 'DIVIDENDLoans';
+                        Gnljnline."Line No." := LineNo;
 
-                          Gnljnline."Account Type":=Gnljnline."account type"::Vendor;
-                         // MESSAGE(LoanApp."Account No");
-                          //ERROR(FnGetFosaAccountNo(LoanApp."BOSA No"));
-                          Gnljnline."Account No.":=FnGetFosaAccountNo(LoanApp."BOSA No");
-                          Gnljnline.Validate(Gnljnline."Account No.");
+                        Gnljnline."Account Type" := Gnljnline."account type"::Vendor;
+                        // MESSAGE(LoanApp."Account No");
+                        //ERROR(FnGetFosaAccountNo(LoanApp."BOSA No"));
+                        Gnljnline."Account No." := FnGetFosaAccountNo(LoanApp."BOSA No");
+                        Gnljnline.Validate(Gnljnline."Account No.");
 
-                          Gnljnline."Posting Date":=PostingDate;
-                          Gnljnline.Description:=LoanApp."Loan Product Type"+'-Loan Repayment-from dividend';
-                          Gnljnline.Amount:=varLRepayment;
+                        Gnljnline."Posting Date" := PostingDate;
+                        Gnljnline.Description := LoanApp."Loan Product Type" + '-Loan Repayment-from dividend';
+                        Gnljnline.Amount := varLRepayment;
                         Gnljnline.Validate(Gnljnline.Amount);
-                        Gnljnline."Shortcut Dimension 1 Code":='FOSA';
-                        Gnljnline."Shortcut Dimension 2 Code":=FnGetMemberBranch(LoanApp."Client Code");
+                        Gnljnline."Shortcut Dimension 1 Code" := 'FOSA';
+                        Gnljnline."Shortcut Dimension 2 Code" := FnGetMemberBranch(LoanApp."Client Code");
                         Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
                         Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
-                        if Gnljnline.Amount<>0 then
-                        Gnljnline.Insert;
+                        if Gnljnline.Amount <> 0 then
+                            Gnljnline.Insert;
 
 
 
-                      end;
-                 end;
-        until LoanApp.Next = 0;
+                    end;
+                end;
+            until LoanApp.Next = 0;
         end;
     end;
 
@@ -110,10 +108,10 @@ Codeunit 51516121 "Recover Dividend Loans"
         MemberBranch: Code[100];
     begin
         Cust.Reset;
-        Cust.SetRange(Cust."No.",MemberNo);
+        Cust.SetRange(Cust."No.", MemberNo);
         if Cust.Find('-') then begin
-          MemberBranch:=Cust."Global Dimension 2 Code";
-          end;
+            MemberBranch := Cust."Global Dimension 2 Code";
+        end;
         exit(MemberBranch);
     end;
 
@@ -122,12 +120,12 @@ Codeunit 51516121 "Recover Dividend Loans"
         ObjVendor: Record Vendor;
     begin
         Cust.Reset;
-        Cust.SetRange(Cust."No.",MNO);
+        Cust.SetRange(Cust."No.", MNO);
         //Cust.SETFILTER(ObjVendor."Account Type",'ORDINARY');
         if Cust.Find('-') then begin
-          FosaAcc:=Cust."FOSA Account No.";
-          end;
-          exit(FosaAcc);
+            FosaAcc := Cust."FOSA Account No.";
+        end;
+        exit(FosaAcc);
     end;
 }
 

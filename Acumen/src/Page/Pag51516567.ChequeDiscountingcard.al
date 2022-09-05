@@ -253,7 +253,7 @@ Page 51516567 "Cheque Discounting card"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
 
                         if ApprovalsMgmt.CheckChequeDiscountingApprovalsWorkflowEnabled(Rec) then
@@ -273,7 +273,7 @@ Page 51516567 "Cheque Discounting card"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckChequeDiscountingApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnCancelChequeDiscountingApprovalRequest(Rec);
@@ -332,7 +332,7 @@ Page 51516567 "Cheque Discounting card"
 
     var
         Accounts: Record Vendor;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"," ","Purchase Requisition",RFQ,"Store Requisition","Payment Voucher",MembershipApplication,LoanApplication,LoanDisbursement,ProductApplication,StandingOrder,MembershipWithdrawal,ATMCard,GuarantorRecovery,ChangeRequest,TreasuryTransactions,FundsTransfer,SaccoTransfers,ChequeDiscounting;
         MemberNoEditable: Boolean;
         SavingsProductEditable: Boolean;

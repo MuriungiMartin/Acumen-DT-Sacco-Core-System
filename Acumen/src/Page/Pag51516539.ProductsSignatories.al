@@ -11,59 +11,59 @@ Page 51516539 "Products Signatories"
         {
             repeater(Control1102760000)
             {
-                field(Names;Names)
+                field(Names; Names)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
                         CUST.Reset;
-                        CUST.SetRange(CUST."ID No.","ID No.");
-                        if CUST.Find('-')  then begin
-                        "BOSA No.":=CUST."No.";
-                        Modify;
+                        CUST.SetRange(CUST."ID No.", "ID No.");
+                        if CUST.Find('-') then begin
+                            "BOSA No." := CUST."No.";
+                            Modify;
                         end;
                     end;
                 }
-                field("Staff/Payroll";"Staff/Payroll")
+                field("Staff/Payroll"; "Staff/Payroll")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff/Payroll No';
                 }
-                field("Date Of Birth";"Date Of Birth")
+                field("Date Of Birth"; "Date Of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Control1102760009;Signatory)
+                field(Control1102760009; Signatory)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must Sign";"Must Sign")
+                field("Must Sign"; "Must Sign")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Must be Present";"Must be Present")
+                field("Must be Present"; "Must be Present")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expiry Date";"Expiry Date")
+                field("Expiry Date"; "Expiry Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA No.";"BOSA No.")
+                field("BOSA No."; "BOSA No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Email Address";"Email Address")
+                field("Email Address"; "Email Address")
                 {
                     ApplicationArea = Basic;
                 }
@@ -91,18 +91,18 @@ Page 51516539 "Products Signatories"
     trigger OnOpenPage()
     begin
         MemberApp.Reset;
-        MemberApp.SetRange(MemberApp."No.","Account No");
+        MemberApp.SetRange(MemberApp."No.", "Account No");
         if MemberApp.Find('-') then begin
-         if MemberApp.Status=MemberApp.Status::Approved then begin
-          CurrPage.Editable:=false;
-         end else
-          CurrPage.Editable:=true;
+            if MemberApp.Status = MemberApp.Status::Approved then begin
+                CurrPage.Editable := false;
+            end else
+                CurrPage.Editable := true;
         end;
     end;
 
     var
         MemberApp: Record "Membership Applications";
         ReltnShipTypeEditable: Boolean;
-        CUST: Record "Member Register";
+        CUST: Record Customer;
 }
 

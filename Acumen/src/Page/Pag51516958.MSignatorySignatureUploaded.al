@@ -189,7 +189,7 @@ Page 51516958 "M_Signatory Signature-Uploaded"
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
     begin
     end;
 }

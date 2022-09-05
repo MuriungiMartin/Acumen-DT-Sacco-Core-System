@@ -170,7 +170,7 @@ Page 51516007 "Cash Payment Header"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         TestField("Global Dimension 1 Code");
                         TestField("Global Dimension 2 Code");
@@ -204,7 +204,7 @@ Page 51516007 "Cash Payment Header"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckPettyCashApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnCancelPettyCashApprovalRequest(Rec);
@@ -495,7 +495,7 @@ Page 51516007 "Cash Payment Header"
         GenLedgerSetup: Record "Cash Office Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         TellerTill: Record "Bank Account";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         SureFactory: Codeunit "SURESTEP Factory.";
         Usersetup: Record "User Setup";
         EnabledApprovalWorkflowsExist: Boolean;

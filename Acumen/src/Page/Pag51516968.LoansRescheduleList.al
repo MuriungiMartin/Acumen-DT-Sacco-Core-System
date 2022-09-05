@@ -10,8 +10,8 @@ Page 51516968 "Loans Reschedule List"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Loans Register";
-    SourceTableView = where(Posted=const(true),
-                            Source=const(BOSA));
+    SourceTableView = where(Posted = const(true),
+                            Source = const(BOSA));
     UsageCategory = Lists;
 
     layout
@@ -20,77 +20,77 @@ Page 51516968 "Loans Reschedule List"
         {
             repeater(Control1000000008)
             {
-                field("Loan  No.";"Loan  No.")
+                field("Loan  No."; "Loan  No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Product Type";"Loan Product Type")
+                field("Loan Product Type"; "Loan Product Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Code";"Client Code")
+                field("Client Code"; "Client Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Name";"Client Name")
+                field("Client Name"; "Client Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID NO";"ID NO")
+                field("ID NO"; "ID NO")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff No";"Staff No")
+                field("Staff No"; "Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Payroll No';
                 }
-                field("Loan Status";"Loan Status")
+                field("Loan Status"; "Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Requested Amount";"Requested Amount")
+                field("Requested Amount"; "Requested Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Amount";"Approved Amount")
+                field("Approved Amount"; "Approved Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Installments;Installments)
+                field(Installments; Installments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Disbursement Date";"Loan Disbursement Date")
+                field("Loan Disbursement Date"; "Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Reversed;Reversed)
+                field(Reversed; Reversed)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Captured By";"Captured By")
+                field("Captured By"; "Captured By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Rescheduled By";"Loan Rescheduled By")
+                field("Loan Rescheduled By"; "Loan Rescheduled By")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Rescheduled;Rescheduled)
+                field(Rescheduled; Rescheduled)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan to Reschedule";"Loan to Reschedule")
+                field("Loan to Reschedule"; "Loan to Reschedule")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Rescheduled Date";"Loan Rescheduled Date")
+                field("Loan Rescheduled Date"; "Loan Rescheduled Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Reschedule";"Loan Reschedule")
+                field("Loan Reschedule"; "Loan Reschedule")
                 {
                     ApplicationArea = Basic;
                 }
@@ -119,9 +119,9 @@ Page 51516968 "Loans Reschedule List"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.","Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then begin
-                        Report.Run(51516384,true,false,LoanApp);
+                            Report.Run(51516384, true, false, LoanApp);
                         end;
                     end;
                 }
@@ -134,7 +134,7 @@ Page 51516968 "Loans Reschedule List"
                     PromotedCategory = "Report";
                     PromotedOnly = true;
                     RunObject = Page "Member Ledger Entries";
-                    RunPageLink = "Loan No"=field("Loan  No.");
+                    RunPageLink = "Loan No" = field("Loan  No.");
                     RunPageView = sorting("Customer No.");
                 }
                 action("Loan Statement")
@@ -148,11 +148,11 @@ Page 51516968 "Loans Reschedule List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","Client Code");
-                        Cust.SetFilter("Loan No. Filter","Loan  No.");
-                        Cust.SetFilter("Loan Product Filter","Loan Product Type");
+                        Cust.SetRange(Cust."No.", "Client Code");
+                        Cust.SetFilter("Loan No. Filter", "Loan  No.");
+                        Cust.SetFilter("Loan Product Filter", "Loan Product Type");
                         if Cust.Find('-') then
-                        Report.Run(51516531,true,false,Cust);
+                            Report.Run(51516531, true, false, Cust);
                     end;
                 }
                 action("Guarantors' Report")
@@ -166,11 +166,11 @@ Page 51516968 "Loans Reschedule List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","Client Code");
-                        Cust.SetFilter("Loan No. Filter","Loan  No.");
-                        Cust.SetFilter("Loan Product Filter","Loan Product Type");
+                        Cust.SetRange(Cust."No.", "Client Code");
+                        Cust.SetFilter("Loan No. Filter", "Loan  No.");
+                        Cust.SetFilter("Loan Product Filter", "Loan Product Type");
                         if Cust.Find('-') then
-                        Report.Run(51516504,true,false,Cust);
+                            Report.Run(51516504, true, false, Cust);
                     end;
                 }
                 action("Member Statement")
@@ -183,8 +183,8 @@ Page 51516968 "Loans Reschedule List"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","Client Code");
-                        Report.Run(51516886,true,false,Cust);
+                        Cust.SetRange(Cust."No.", "Client Code");
+                        Report.Run(51516886, true, false, Cust);
                     end;
                 }
                 action("View Schedule")
@@ -200,9 +200,9 @@ Page 51516968 "Loans Reschedule List"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.","Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then
-                        Report.Run(51516477,true,false,LoanApp);
+                            Report.Run(51516477, true, false, LoanApp);
                     end;
                 }
                 action("Loans to Offset")
@@ -214,8 +214,8 @@ Page 51516968 "Loans Reschedule List"
                     PromotedCategory = Process;
                     PromotedOnly = true;
                     RunObject = Page "Loan Offset Detail List-P";
-                    RunPageLink = "Loan No."=field("Loan  No."),
-                                  "Client Code"=field("Client Code");
+                    RunPageLink = "Loan No." = field("Loan  No."),
+                                  "Client Code" = field("Client Code");
                 }
             }
         }
@@ -225,7 +225,7 @@ Page 51516968 "Loans Reschedule List"
     begin
         Overdue := Overdue::" ";
         if FormatField(Rec) then
-          Overdue := Overdue::Yes;
+            Overdue := Overdue::Yes;
     end;
 
     var
@@ -247,7 +247,7 @@ Page 51516968 "Loans Reschedule List"
         ScheduleCode: Code[20];
         PreviewShedule: Record "Loan Repayment Schedule";
         PeriodInterval: Code[10];
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -257,10 +257,10 @@ Page 51516968 "Loans Reschedule List"
         LineNo: Integer;
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sales & Receivables Setup";
         PCharges: Record "Loan Product Charges";
@@ -296,7 +296,7 @@ Page 51516968 "Loans Reschedule List"
         DActivity: Code[20];
         DBranch: Code[20];
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -311,7 +311,7 @@ Page 51516968 "Loans Reschedule List"
         DiscountingAmount: Decimal;
         StatusPermissions: Record "Status Change Permision";
         BridgedLoans: Record "Loan Special Clearance";
-        SMSMessage: Record "Member Register";
+        SMSMessage: Record Customer;
         InstallNo2: Integer;
         currency: Record "Currency Exchange Rate";
         CURRENCYFACTOR: Decimal;
@@ -349,20 +349,20 @@ Page 51516968 "Loans Reschedule List"
         Overdue: Option Yes," ";
 
 
-    procedure GetVariables(var LoanNo: Code[20];var LoanProductType: Code[20])
+    procedure GetVariables(var LoanNo: Code[20]; var LoanProductType: Code[20])
     begin
-        LoanNo:="Loan  No.";
-        LoanProductType:="Loan Product Type";
+        LoanNo := "Loan  No.";
+        LoanProductType := "Loan Product Type";
     end;
 
 
     procedure FormatField(Rec: Record "Loans Register") OK: Boolean
     begin
-        if "Outstanding Balance">0 then begin
-          if (Rec."Expected Date of Completion" < Today) then
-            exit(true)
-          else
-            exit(false);
+        if "Outstanding Balance" > 0 then begin
+            if (Rec."Expected Date of Completion" < Today) then
+                exit(true)
+            else
+                exit(false);
         end;
     end;
 

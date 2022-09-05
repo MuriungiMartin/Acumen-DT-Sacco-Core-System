@@ -4,7 +4,7 @@ Page 51516387 "Loans Guarantee Details"
     PageType = ListPart;
     RefreshOnActivate = false;
     SourceTable = "Loans Guarantee Details";
-    SourceTableView = where(Substituted=filter(false));
+    SourceTableView = where(Substituted = filter(false));
 
     layout
     {
@@ -12,49 +12,49 @@ Page 51516387 "Loans Guarantee Details"
         {
             repeater(Control1102760000)
             {
-                field("Loan No";"Loan No")
+                field("Loan No"; "Loan No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Member No";"Member No")
+                field("Member No"; "Member No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account No.';
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Balance";"Loan Balance")
+                field("Loan Balance"; "Loan Balance")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field(Shares;Shares)
+                field(Shares; Shares)
                 {
                     ApplicationArea = Basic;
                     Visible = true;
                 }
-                field("Amont Guaranteed";"Amont Guaranteed")
+                field("Amont Guaranteed"; "Amont Guaranteed")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Free Shares";"Free Shares")
+                field("Free Shares"; "Free Shares")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Self Guarantee";"Self Guarantee")
+                field("Self Guarantee"; "Self Guarantee")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Substituted;Substituted)
+                field(Substituted; Substituted)
                 {
                     ApplicationArea = Basic;
 
@@ -77,55 +77,55 @@ Page 51516387 "Loans Guarantee Details"
 
                     end;
                 }
-                field(Date;Date)
+                field(Date; Date)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Employer Name";"Employer Name")
+                field("Employer Name"; "Employer Name")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Substituted Guarantor";"Substituted Guarantor")
+                field("Substituted Guarantor"; "Substituted Guarantor")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Share capital";"Share capital")
+                field("Share capital"; "Share capital")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Substitute Name';
                     Editable = false;
                 }
-                field("TotalLoan Guaranteed";"TotalLoan Guaranteed")
+                field("TotalLoan Guaranteed"; "TotalLoan Guaranteed")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Substitute Shares';
                 }
-                field("Loanees  No";"Loanees  No")
+                field("Loanees  No"; "Loanees  No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loanees  Name";"Loanees  Name")
+                field("Loanees  Name"; "Loanees  Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No Of Loans Guaranteed";"No Of Loans Guaranteed")
+                field("No Of Loans Guaranteed"; "No Of Loans Guaranteed")
                 {
                     ApplicationArea = Basic;
                 }
-                field(CStatus;CStatus)
+                field(CStatus; CStatus)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Status';
                     Editable = false;
                 }
-                field("Outstanding Balance";"Outstanding Balance")
+                field("Outstanding Balance"; "Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
@@ -153,7 +153,7 @@ Page 51516387 "Loans Guarantee Details"
     end;
 
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         EmployeeCode: Code[20];
         CStatus: Option Active,"Non-Active",Blocked,Dormant,"Re-instated",Deceased,Withdrawal,Retired,Termination,Resigned,"Ex-Company",Casuals,"Family Member","New (Pending Confirmation)","Defaulter Recovery";
         LoanApps: Record "Loans Register";

@@ -338,7 +338,7 @@ Page 51516404 "Checkoff Processing H(Block)"
         DActivityBOSA: Code[20];
         DBranchBOSA: Code[20];
         ReptProcHeader: Record "Checkoff Header-Distributed";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         MembPostGroup: Record "Customer Posting Group";
         Loantable: Record "Loans Register";
         LRepayment: Decimal;
@@ -356,7 +356,7 @@ Page 51516404 "Checkoff Processing H(Block)"
         DIFF: Decimal;
         DIFFPAID: Decimal;
         genstup: Record "Sacco General Set-Up";
-        Memb: Record "Member Register";
+        Memb: Record Customer;
         INSURANCE: Decimal;
         GenBatches: Record "Gen. Journal Batch";
         Datefilter: Text[50];
@@ -650,7 +650,7 @@ Page 51516404 "Checkoff Processing H(Block)"
         varLRepayment: Decimal;
         PRpayment: Decimal;
         ReceiptLine: Record "Checkoff Processing Lin(Block)";
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
     begin
         if RunningBalance > 0 then begin
             ObjMember.Reset;
@@ -744,7 +744,7 @@ Page 51516404 "Checkoff Processing H(Block)"
         varLRepayment: Decimal;
         PRpayment: Decimal;
         ReceiptLine: Record "Checkoff Processing Lin(Block)";
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
     begin
         if RunningBalance > 0 then begin
             ObjMember.Reset;
@@ -778,7 +778,7 @@ Page 51516404 "Checkoff Processing H(Block)"
         varLRepayment: Decimal;
         PRpayment: Decimal;
         ReceiptLine: Record "Checkoff Processing Lin(Block)";
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
     begin
         if RunningBalance > 0 then begin
             ObjMember.Reset;
@@ -816,7 +816,7 @@ Page 51516404 "Checkoff Processing H(Block)"
         varLRepayment: Decimal;
         PRpayment: Decimal;
         ReceiptLine: Record "Checkoff Processing Lin(Block)";
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
     begin
         if RunningBalance > 0 then begin
             ObjMember.Reset;

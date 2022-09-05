@@ -18,7 +18,7 @@ Table 51516926 "Default Notices Register"
         }
         field(2; "Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -121,6 +121,10 @@ Table 51516926 "Default Notices Register"
         field(23; "Loan Issued"; Decimal)
         {
         }
+        field(24; Status; Option)
+        {
+            OptionMembers = Open,"Pending Approval",Approved,Rejected;
+        }
     }
 
     keys
@@ -153,7 +157,7 @@ Table 51516926 "Default Notices Register"
         SalesSetup: Record "Sacco No. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         ObjAccount: Record Vendor;
-        ObjCust: Record "Member Register";
+        ObjCust: Record Customer;
         ObjLoans: Record "Loans Register";
         ObjSurestep: Codeunit "SURESTEP Factory.";
         VarAmountInArrears: Decimal;

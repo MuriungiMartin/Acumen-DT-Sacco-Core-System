@@ -20,47 +20,47 @@ Page 51516185 "HR Employee Requisitions List"
             repeater(Control1102755000)
             {
                 Editable = false;
-                field("Requisition No.";"Requisition No.")
+                field("Requisition No."; "Requisition No.")
                 {
                     ApplicationArea = Basic;
                     StyleExpr = true;
                 }
-                field("Requisition Date";"Requisition Date")
+                field("Requisition Date"; "Requisition Date")
                 {
                     ApplicationArea = Basic;
                     StyleExpr = true;
                 }
-                field("Job Description";"Job Description")
+                field("Job Description"; "Job Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Requestor;Requestor)
+                field(Requestor; Requestor)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Reason For Request";"Reason For Request")
+                field("Reason For Request"; "Reason For Request")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Required Positions";"Required Positions")
+                field("Required Positions"; "Required Positions")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Type of Contract Required";"Type of Contract Required")
+                field("Type of Contract Required"; "Type of Contract Required")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Contract';
                     Editable = false;
                 }
-                field("Closing Date";"Closing Date")
+                field("Closing Date"; "Closing Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Closed;Closed)
+                field(Closed; Closed)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -71,11 +71,11 @@ Page 51516185 "HR Employee Requisitions List"
         }
         area(factboxes)
         {
-            part(Control1102755006;"HR Employee Req. Factbox")
+            part(Control1102755006; "HR Employee Req. Factbox")
             {
-                SubPageLink = "Job ID"=field("Job ID");
+                SubPageLink = "Job ID" = field("Job ID");
             }
-            systempart(Control1102755008;Outlook)
+            systempart(Control1102755008; Outlook)
             {
             }
         }
@@ -96,7 +96,7 @@ Page 51516185 "HR Employee Requisitions List"
                     Promoted = true;
                     PromotedCategory = Category4;
                     RunObject = Page "HR Job Requirement Lines";
-                    RunPageLink = "Job Id"=field("Job ID");
+                    RunPageLink = "Job Id" = field("Job ID");
                 }
                 action(Responsibilities)
                 {
@@ -106,7 +106,7 @@ Page 51516185 "HR Employee Requisitions List"
                     Promoted = true;
                     PromotedCategory = Category4;
                     RunObject = Page "HR Job Responsiblities Lines";
-                    RunPageLink = "Job ID"=field("Job ID");
+                    RunPageLink = "Job ID" = field("Job ID");
                 }
             }
             group("Fu&nctions")
@@ -131,25 +131,24 @@ Page 51516185 "HR Employee Requisitions List"
                         SMTP.Send();
                         UNTIL HREmp.NEXT=0;
                         */
-                        TestField("Requisition Type","requisition type"::Internal);
-                        HREmp.SetRange(HREmp.Status,HREmp.Status::Active);
+                        TestField("Requisition Type", "requisition type"::Internal);
+                        HREmp.SetRange(HREmp.Status, HREmp.Status::Active);
                         if HREmp.Find('-') then
-                        
-                        //GET E-MAIL PARAMETERS FOR JOB APPLICATIONS
-                        HREmailParameters.Reset;
-                        HREmailParameters.SetRange(HREmailParameters."Associate With",HREmailParameters."associate with"::"Vacancy Advertisements");
-                        if HREmailParameters.Find('-') then
-                        begin
-                             repeat
-                             HREmp.TestField(HREmp."Company E-Mail");
-                             SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",HREmp."Company E-Mail",
-                             HREmailParameters.Subject,'Dear'+' '+ HREmp."First Name" +' '+
-                             HREmailParameters.Body+' '+ "Job Description" +' '+ HREmailParameters."Body 2"+' '+ Format("Closing Date")+'. '+
-                             HREmailParameters."Body 3",true);
-                             SMTP.Send();
-                             until HREmp.Next=0;
-                        
-                        Message('All Employees have been notified about this vacancy');
+
+                            //GET E-MAIL PARAMETERS FOR JOB APPLICATIONS
+                            HREmailParameters.Reset;
+                        HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Vacancy Advertisements");
+                        if HREmailParameters.Find('-') then begin
+                            repeat
+                                HREmp.TestField(HREmp."Company E-Mail");
+                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+                                HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+                                HREmailParameters.Body + ' ' + "Job Description" + ' ' + HREmailParameters."Body 2" + ' ' + Format("Closing Date") + '. ' +
+                                HREmailParameters."Body 3", true);
+                                SMTP.Send();
+                            until HREmp.Next = 0;
+
+                            Message('All Employees have been notified about this vacancy');
                         end;
 
                     end;
@@ -164,19 +163,17 @@ Page 51516185 "HR Employee Requisitions List"
 
                     trigger OnAction()
                     begin
-                        if Closed then
-                        begin
-                          if not Confirm('Are you sure you want to Re-Open this Document',false) then exit;
-                          Closed:=false;
-                          Modify;
-                          Message('Employee Requisition %1 has been Re-Opened',"Requisition No.");
+                        if Closed then begin
+                            if not Confirm('Are you sure you want to Re-Open this Document', false) then exit;
+                            Closed := false;
+                            Modify;
+                            Message('Employee Requisition %1 has been Re-Opened', "Requisition No.");
 
-                        end else
-                        begin
-                          if not Confirm('Are you sure you want to close this Document',false) then exit;
-                          Closed:=true;
-                          Modify;
-                          Message('Employee Requisition %1 has been marked as Closed',"Requisition No.");
+                        end else begin
+                            if not Confirm('Are you sure you want to close this Document', false) then exit;
+                            Closed := true;
+                            Modify;
+                            Message('Employee Requisition %1 has been marked as Closed', "Requisition No.");
                         end;
                     end;
                 }
@@ -191,9 +188,9 @@ Page 51516185 "HR Employee Requisitions List"
                     trigger OnAction()
                     begin
                         HREmpReq.Reset;
-                        HREmpReq.SetRange(HREmpReq."Requisition No.","Requisition No.");
+                        HREmpReq.SetRange(HREmpReq."Requisition No.", "Requisition No.");
                         if HREmpReq.Find('-') then
-                        Report.Run(53918,true,true,HREmpReq);
+                            Report.Run(53918, true, true, HREmpReq);
                     end;
                 }
                 action("Re-Open")
@@ -207,8 +204,8 @@ Page 51516185 "HR Employee Requisitions List"
 
                     trigger OnAction()
                     begin
-                                  Status:=Status::New;
-                                  Modify;
+                        Status := Status::New;
+                        Modify;
                     end;
                 }
             }
@@ -227,7 +224,7 @@ Page 51516185 "HR Employee Requisitions List"
                     trigger OnAction()
                     begin
                         //IF ApprovalsMgmt.CheckSalesApprovalsWorkflowEnabled(Rec) THEN
-                         // ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                        // ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -255,7 +252,7 @@ Page 51516185 "HR Employee Requisitions List"
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,Receipt,"Staff Claim","Staff Advance",AdvanceSurrender,"Bank Slip",Grant,"Grant Surrender","Employee Requisition";
         ApprovalEntries: Page "Approval Entries";
         HREmpReq: Record "HR Employee Requisitions";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
         ShowWorkflowStatus: Boolean;
@@ -268,8 +265,8 @@ Page 51516185 "HR Employee Requisitions List"
         TestField("Type of Contract Required");
         TestField("Requisition Type");
         TestField("Required Positions");
-        if "Reason For Request"="reason for request"::Other then
-        TestField("Reason for Request(Other)");
+        if "Reason For Request" = "reason for request"::Other then
+            TestField("Reason for Request(Other)");
     end;
 }
 

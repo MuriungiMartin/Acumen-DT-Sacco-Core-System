@@ -113,8 +113,8 @@ tableextension 50000 "VendorExtension" extends Vendor
         field(68016; Status; Option)
         {
             DataClassification = ToBeClassified;
-            OptionCaption = 'Active,Closed,Dormant,Frozen,Deceased';
-            OptionMembers = Active,Closed,Dormant,Frozen,Deceased;
+            OptionCaption = 'Active,Frozen,Closed,Archived,New,Dormant,Deceased,Retired';
+            OptionMembers = Active,Frozen,Closed,Archived,New,Dormant,Deceased,Retired;
 
             trigger OnValidate()
             begin
@@ -137,7 +137,7 @@ tableextension 50000 "VendorExtension" extends Vendor
                     AccountTypes.TESTFIELD(AccountTypes."Posting Group");
                     "Vendor Posting Group" := AccountTypes."Posting Group";
                     "Call Deposit" := FALSE;
-                    "Account Type Name" := AccountTypes.Description;
+                    // := AccountTypes.Description;
                 END;
             end;
         }
@@ -182,7 +182,7 @@ tableextension 50000 "VendorExtension" extends Vendor
             CalcFormula = Sum(Transactions.Amount WHERE("Account No" = FIELD("No."),
                                                              Posted = CONST(true),
                                                              "Cheque Processed" = CONST(false),
-                                                             "Type _Transactions" = CONST("Cheque Deposit")));
+                                                             Type = CONST('Cheque Deposit')));
         }
         field(68027; "Expected Maturity Date"; Date)
         {
@@ -499,7 +499,7 @@ tableextension 50000 "VendorExtension" extends Vendor
         field(68063; "EFT Transactions"; Decimal)
         {
             //TODO
-            CalcFormula = Sum("EFT/RTGS Details".Amount WHERE("Account No" = FIELD("No."),
+            CalcFormula = Sum("EFT Details".Amount WHERE("Account No" = FIELD("No."),
                                                                "Not Available" = CONST(true),
                                                                Transferred = CONST(false)));
             FieldClass = FlowField;
@@ -744,7 +744,7 @@ tableextension 50000 "VendorExtension" extends Vendor
         }
         field(69026; "Group Loan Balance"; Decimal)
         {
-            CalcFormula = - Sum("Cust. Ledger Entry".Amount WHERE("Transaction Type" = FILTER("Junior Savings" | "FOSA Shares"), "Group Code" = FIELD("Group Code")));
+            CalcFormula = - Sum("Cust. Ledger Entry"."Transaction Amount" WHERE("Transaction Type" = FILTER(Children | "FOSA Shares"), "Group Code" = FIELD("Group Code")));
             FieldClass = FlowField;
         }
         field(69027; CodeDelete; Code[20])
@@ -848,19 +848,19 @@ tableextension 50000 "VendorExtension" extends Vendor
         }
         field(69050; "Outstanding Loans"; Decimal)
         {
-            CalcFormula = Sum("Cust. Ledger Entry".Amount WHERE("FOSA Account No." = FIELD("No."),
+            CalcFormula = Sum("Cust. Ledger Entry"."Transaction Amount" WHERE("FOSA Account No." = FIELD("No."),
                                                                   "Transaction Type" = FILTER("Share Capital" | "Interest Paid" | "FOSA Shares"),
                                                                   "Posting Date" = FIELD("Date Filter")));
             FieldClass = FlowField;
         }
         field(69051; "Outstanding Interest"; Decimal)
         {
-            CalcFormula = Sum("Cust. Ledger Entry".Amount WHERE("FOSA Account No." = FIELD("No."),
+            CalcFormula = Sum("Cust. Ledger Entry"."Transaction Amount" WHERE("FOSA Account No." = FIELD("No."),
                                                                   "Transaction Type" = FILTER("Deposit Contribution" | "Insurance Contribution"),
                                                                   "Posting Date" = FIELD("Date Filter")));
             FieldClass = FlowField;
         }
-        field(69052; "Cheque Book Account No"; Code[15])
+        field(69052; "Cheque Acc. No"; Code[15])
         {
             DataClassification = ToBeClassified;
         }
@@ -1387,7 +1387,7 @@ tableextension 50000 "VendorExtension" extends Vendor
             CalcFormula = Sum(Transactions."Cheque Discounted Amount" WHERE("Account No" = FIELD("No."),
                                                                              Posted = CONST(true),
                                                                              "Cheque Processed" = CONST(false),
-                                                                             "Type _Transactions" = CONST("Cheque Deposit")));
+                                                                             Type = CONST('Cheque Deposit')));
             FieldClass = FlowField;
         }
         field(69183; "Mobile Transactions"; Decimal)
@@ -1600,214 +1600,27 @@ tableextension 50000 "VendorExtension" extends Vendor
         {
             DataClassification = ToBeClassified;
         }
-        field(69227; "Excess Repayment Rule"; Option)
+        field(69227; "Outstanding Discounted Amount"; Decimal)
         {
-            DataClassification = ToBeClassified;
-            OptionCaption = ' ,Exempt From Excess Rule,Biggest Loan,Smallest Loan,Oldest Loan,Newest Loan';
-            OptionMembers = " ","Exempt From Excess Rule","Biggest Loan","Smallest Loan","Oldest Loan","Newest Loan";
-        }
-        field(69228; "Insurance Company"; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69229; "Over Draft Limit Amount"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-            Editable = false;
-        }
-        field(69230; "Over Draft Limit Expiry Date"; Date)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69231; Auctioneer; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69232; "Account Type Name"; Text[50])
-        {
-            CalcFormula = Lookup("Account Types-Saving Products".Description WHERE(Code = FIELD("Account Type")));
-            Editable = false;
             FieldClass = FlowField;
+            CalcFormula = Sum("Discounting Ledger Entry".Amount WHERE("Fosa Account" = FIELD("No.")));
         }
-        field(69233; "Balance For Reporting"; Decimal)
-        {
-            CalcFormula = Sum("Detailed Vendor Ledg. Entry".Amount WHERE("Vendor No." = FIELD("No."),
-                                                                          "Initial Entry Global Dim. 1" = FIELD("Global Dimension 1 Filter"),
-                                                                          "Initial Entry Global Dim. 2" = FIELD("Global Dimension 2 Filter"),
-                                                                          "Currency Code" = FIELD("Currency Filter"),
-                                                                          "Posting Date" = FIELD("Date Filter")));
-            FieldClass = FlowField;
-        }
-        field(69234; "Frozen Amount"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-            Editable = false;
-        }
-        field(69235; "Operating Mode"; Option)
-        {
-            DataClassification = ToBeClassified;
-            OptionCaption = 'Self,Jointly';
-            OptionMembers = Self,Jointly;
-        }
-        field(69236; "Account Creation Date"; Date)
+        field(69228; CanApplyELoan; Boolean)
         {
             DataClassification = ToBeClassified;
         }
-        field(69237; "Modified By"; Code[18])
+        field(69229; "Member class"; option)
         {
-            DataClassification = ToBeClassified;
+            OptionMembers = ,"Class A","Class B";
         }
-        field(69238; "Modified On"; Date)
+        field(69230; SaccolinkPendingPostingAmount; decimal)
         {
-            DataClassification = ToBeClassified;
+            FieldClass = flowfield;
+            CalcFormula = Sum(ATMTransCompleted.Amount WHERE(PostingDebitAccount = FIELD("ATM No."), Status = CONST(Pending)));
         }
-        field(69239; "Supervised On"; Date)
+        field(69235;Piccture;MediaSet)
         {
-            DataClassification = ToBeClassified;
-        }
-        field(69240; "Supervised By"; Code[15])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69241; "Account Closed On"; Date)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69242; "Account Closed By"; Code[20])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69243; "Balance Historical"; Decimal)
-        {
-            CalcFormula = Sum("Member Historical Ledger Entry".Amount WHERE("Account No." = FIELD("No."),
-                                                                             "Posting Date" = FIELD("Date Filter")));
-            FieldClass = FlowField;
-        }
-        field(69244; "Transaction Alerts"; Option)
-        {
-            DataClassification = ToBeClassified;
-            OptionCaption = ' ,All Debit Transactions,All Credit Transactions,All Transactions';
-            OptionMembers = " ","All Debit Transactions","All Credit Transactions","All Transactions";
-        }
-        field(69245; Dormancy; Boolean)
-        {
-            CalcFormula = Exist("Detailed Vendor Ledg. Entry" WHERE("Posting Date" = FIELD("Date Filter"),
-                                                                     "Vendor No." = FIELD("No.")));
-            FieldClass = FlowField;
-        }
-        field(69246; "Account Balance"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69247; "KRA Pin"; Code[15])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69248; "Exempt BOSA Penalty"; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69249; "Exemption Expiry Date"; Date)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69250; "Send To Family Bank"; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69251; "Overdraft Sweeping Source"; Option)
-        {
-            DataClassification = ToBeClassified;
-            OptionCaption = 'All FOSA Accounts,Specific FOSA Account';
-            OptionMembers = "All FOSA Accounts","Specific FOSA Account";
-        }
-        field(69252; "Specific OD Sweeping Account"; Code[15])
-        {
-            DataClassification = ToBeClassified;
-            TableRelation = Vendor."No." WHERE("BOSA Account No" = FIELD("BOSA Account No"));
-        }
-        field(69253; "Minimum Balance"; Decimal)
-        {
-            CalcFormula = Sum("Account Types-Saving Products"."Minimum Balance" WHERE(Code = FIELD("Account Type")));
-            FieldClass = FlowField;
-        }
-        field(69254; "Deposits Contributed Ver1"; Decimal)
-        {
-            CalcFormula = Sum("Detailed Vendor Ledg. Entry".Amount WHERE("Vendor No." = FIELD("No."),
-                                                                          "Posting Date" = FIELD("Date Filter")));
-            Editable = false;
-            FieldClass = FlowField;
-        }
-        field(69255; "OD Under Debt Collection"; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69256; "OD Debt Collector"; Code[15])
-        {
-            DataClassification = ToBeClassified;
-            TableRelation = Vendor."No." WHERE("Debt Collector" = FILTER(true));
-
-            trigger OnValidate()
-            var
-                Vend: Record Vendor;
-            begin
-                Vend.RESET;
-                Vend.CALCFIELDS(Vend.Balance);
-                Vend.SETRANGE(Vend."No.", "OD Debt Collector");
-                IF Vend.FIND('-') THEN BEGIN
-                    "OD Debt Collector Interest %" := Vend."Debt Collector %";
-                    "OD Under Debt Collection" := TRUE;
-                    "Debt Collector Name" := Vend.Name;
-                    "Debt Collection date Assigned" := WORKDATE;
-                    "OD Bal As At Debt Collection" := Vend.Balance;
-                END;
-            end;
-        }
-        field(69257; "OD Debt Collector Interest %"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69258; "Debt Collection date Assigned"; Date)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69259; "Debt Collector Name"; Code[30])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69260; "OD Bal As At Debt Collection"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69261; "Dormant Date"; Date)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69262; "Account Dormancy Period"; Boolean)
-        {
-            CalcFormula = Exist("Account Types-Saving Products" WHERE(Code = FIELD("Account Type"),
-                                                                       "Dormancy Period (-M)" = FILTER(<> '')));
-            FieldClass = FlowField;
-        }
-        field(69263; "Last Transaction Date_H"; Date)
-        {
-            AutoFormatType = 1;
-            CalcFormula = Max("Member Historical Ledger Entry"."Posting Date" WHERE("Account No." = FIELD("No.")));
-            Caption = 'Last Transaction Date';
-            Editable = false;
-            FieldClass = FlowField;
-        }
-        field(69264; "Last Transaction Date VerII"; Date)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69265; "Silver Account No"; Code[15])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(69266; piccture; MediaSet)
-        {
-            DataClassification = ToBeClassified;
+            
         }
 
 

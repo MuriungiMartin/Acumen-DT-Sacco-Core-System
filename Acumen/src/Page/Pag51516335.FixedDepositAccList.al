@@ -9,8 +9,8 @@ Page 51516335 "Fixed Deposit Acc. List"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = Vendor;
-    SourceTableView = where("Debtor Type"=const("FOSA Account"),
-                            "Account Type"=const('FIXED'));
+    SourceTableView = where("Debtor Type" = const("FOSA Account"),
+                            "Account Type" = const('FIXED'));
     UsageCategory = Lists;
 
     layout
@@ -19,70 +19,70 @@ Page 51516335 "Fixed Deposit Acc. List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA Account No";"BOSA Account No")
+                field("BOSA Account No"; "BOSA Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Personal No.";"Personal No.")
+                field("Personal No."; "Personal No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Earned";"Interest Earned")
+                field("Interest Earned"; "Interest Earned")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest Earned';
                 }
-                field("Fixed Deposit Status";"Fixed Deposit Status")
+                field("Fixed Deposit Status"; "Fixed Deposit Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FD Maturity Date";"FD Maturity Date")
+                field("FD Maturity Date"; "FD Maturity Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Fixed Duration";"Expected Interest On Term Dep")
+                field("Fixed Duration"; "Expected Interest On Term Dep")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Expected Interest';
                 }
-                field("Date Renewed";"Date Renewed")
+                field("Date Renewed"; "Date Renewed")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FD Duration";"FD Duration")
+                field("FD Duration"; "FD Duration")
                 {
                     ApplicationArea = Basic;
                     Caption = 'FD Duration';
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Balance;Balance)
+                field(Balance; Balance)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest rate";"Interest rate")
+                field("Interest rate"; "Interest rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Savings Account No.";"Savings Account No.")
+                field("Savings Account No."; "Savings Account No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Current Account No.';
@@ -91,9 +91,9 @@ Page 51516335 "Fixed Deposit Acc. List"
         }
         area(factboxes)
         {
-            part(Control1000000001;"FOSA Statistics FactBox")
+            part(Control1000000001; "FOSA Statistics FactBox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -111,7 +111,7 @@ Page 51516335 "Fixed Deposit Acc. List"
                     Caption = 'Ledger E&ntries';
                     Image = VendorLedger;
                     RunObject = Page "Vendor Ledger Entries";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.");
                     ShortCutKey = 'Ctrl+F7';
                 }
@@ -121,8 +121,8 @@ Page 51516335 "Fixed Deposit Acc. List"
                     Caption = 'Co&mments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
-                    RunPageLink = "Table Name"=const(Vendor),
-                                  "No."=field("No.");
+                    RunPageLink = "Table Name" = const(Vendor),
+                                  "No." = field("No.");
                 }
                 action(Dimensions)
                 {
@@ -130,8 +130,8 @@ Page 51516335 "Fixed Deposit Acc. List"
                     Caption = 'Dimensions';
                     Image = Dimensions;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "Table ID"=const(23),
-                                  "No."=field("No.");
+                    RunPageLink = "Table ID" = const(23),
+                                  "No." = field("No.");
                     ShortCutKey = 'Shift+Ctrl+D';
                 }
                 separator(Action1102755228)
@@ -151,7 +151,7 @@ Page 51516335 "Fixed Deposit Acc. List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Member Account Card";
-                    RunPageLink = "No."=field("BOSA Account No");
+                    RunPageLink = "No." = field("BOSA Account No");
                 }
                 action("<Action11027600800>")
                 {
@@ -185,7 +185,7 @@ Page 51516335 "Fixed Deposit Acc. List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "FOSA Account  NOK Details";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 separator(Action1102755217)
                 {
@@ -202,9 +202,9 @@ Page 51516335 "Fixed Deposit Acc. List"
                     begin
 
                         Vend.Reset;
-                        Vend.SetRange(Vend."No.","No.");
+                        Vend.SetRange(Vend."No.", "No.");
                         if Vend.Find('-') then
-                        Report.Run(51516476,true,false,Vend)
+                            Report.Run(51516476, true, false, Vend)
                     end;
                 }
                 action("Page Vendor Statistics")
@@ -215,9 +215,9 @@ Page 51516335 "Fixed Deposit Acc. List"
                     Promoted = true;
                     PromotedCategory = "Report";
                     RunObject = Page "Vendor Statistics";
-                    RunPageLink = "No."=field("No."),
-                                  "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                                  "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                    RunPageLink = "No." = field("No."),
+                                  "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                                  "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                     ShortCutKey = 'F7';
                 }
             }
@@ -225,7 +225,7 @@ Page 51516335 "Fixed Deposit Acc. List"
     }
 
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Vend: Record Vendor;
 }
 

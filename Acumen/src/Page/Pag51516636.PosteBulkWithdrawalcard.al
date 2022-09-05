@@ -5,7 +5,7 @@ Page 51516636 "Poste Bulk Withdrawal card"
     Editable = false;
     PageType = Card;
     SourceTable = "Bulk Withdrawal Application";
-    SourceTableView = where("Noticed Updated"=filter(true));
+    SourceTableView = where("Noticed Updated" = filter(true));
 
     layout
     {
@@ -13,72 +13,72 @@ Page 51516636 "Poste Bulk Withdrawal card"
         {
             group(General)
             {
-                field("Transaction No";"Transaction No")
+                field("Transaction No"; "Transaction No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No";"Member No")
+                field("Member No"; "Member No")
                 {
                     ApplicationArea = Basic;
                     Editable = MemberNoEditable;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; "Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                 }
-                field("Amount to Withdraw";"Amount to Withdraw")
+                field("Amount to Withdraw"; "Amount to Withdraw")
                 {
                     ApplicationArea = Basic;
                     Editable = AmounttoWithdrawEditable;
                 }
-                field("Date for Withdrawal";"Date for Withdrawal")
+                field("Date for Withdrawal"; "Date for Withdrawal")
                 {
                     ApplicationArea = Basic;
                     Editable = WithdrawalDateEditable;
                 }
-                field("Fee on Withdrawal";"Fee on Withdrawal")
+                field("Fee on Withdrawal"; "Fee on Withdrawal")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Reason for Bulk Withdrawal";"Reason for Bulk Withdrawal")
+                field("Reason for Bulk Withdrawal"; "Reason for Bulk Withdrawal")
                 {
                     ApplicationArea = Basic;
                     Editable = ReasonEditable;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Created By";"Created By")
+                field("Created By"; "Created By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Created";"Date Created")
+                field("Date Created"; "Date Created")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Noticed Updated";"Noticed Updated")
+                field("Noticed Updated"; "Noticed Updated")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Notice Updated By";"Notice Updated By")
+                field("Notice Updated By"; "Notice Updated By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Notified";"Date Notified")
+                field("Date Notified"; "Date Notified")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -87,21 +87,21 @@ Page 51516636 "Poste Bulk Withdrawal card"
         }
         area(factboxes)
         {
-            part(Control1000000029;"FOSA Statistics FactBox")
+            part(Control1000000029; "FOSA Statistics FactBox")
             {
-                SubPageLink = "No."=field("Account No");
+                SubPageLink = "No." = field("Account No");
             }
-            part(Control1000000028;"Member Statistics FactBox")
+            part(Control1000000028; "Member Statistics FactBox")
             {
-                SubPageLink = "No."=field("Member No");
+                SubPageLink = "No." = field("Member No");
             }
-            part(Control1000000027;"Vendor Picture-Uploaded")
+            part(Control1000000027; "Vendor Picture-Uploaded")
             {
-                SubPageLink = "No."=field("Account No");
+                SubPageLink = "No." = field("Account No");
             }
-            part(Control1000000026;"Vendor Signature-Uploaded")
+            part(Control1000000026; "Vendor Signature-Uploaded")
             {
-                SubPageLink = "No."=field("Account No");
+                SubPageLink = "No." = field("Account No");
             }
         }
     }
@@ -120,27 +120,27 @@ Page 51516636 "Poste Bulk Withdrawal card"
 
                 trigger OnAction()
                 begin
-                    if Status<>Status::Approved then begin
-                      Error('This document has to be approved');
-                      end;
+                    if Status <> Status::Approved then begin
+                        Error('This document has to be approved');
+                    end;
 
-                    if "Noticed Updated"=true then begin
-                      Error('This Application has already been updated');
-                      end;
+                    if "Noticed Updated" = true then begin
+                        Error('This Application has already been updated');
+                    end;
 
 
-                    if Confirm('Are you sure you want to updated the Bulk Withdrawal Details',false) =true then begin
-                      if Accounts.Get("Account No") then begin
-                        Accounts."Bulk Withdrawal Appl Done":=true;
-                        Accounts."Bulk Withdrawal App Done By":=UserId;
-                        Accounts."Bulk Withdrawal Appl Amount":="Amount to Withdraw";
-                        Accounts."Bulk Withdrawal Fee":="Fee on Withdrawal";
-                        Accounts."Bulk Withdrawal App Date For W":="Date for Withdrawal";
-                        Accounts.Modify;
+                    if Confirm('Are you sure you want to updated the Bulk Withdrawal Details', false) = true then begin
+                        if Accounts.Get("Account No") then begin
+                            Accounts."Bulk Withdrawal Appl Done" := true;
+                            Accounts."Bulk Withdrawal App Done By" := UserId;
+                            Accounts."Bulk Withdrawal Appl Amount" := "Amount to Withdraw";
+                            Accounts."Bulk Withdrawal Fee" := "Fee on Withdrawal";
+                            Accounts."Bulk Withdrawal App Date For W" := "Date for Withdrawal";
+                            Accounts.Modify;
 
-                        "Noticed Updated":=true;
-                        "Notice Updated By":=UserId;
-                        "Date Notified":=Today;
+                            "Noticed Updated" := true;
+                            "Notice Updated By" := UserId;
+                            "Date Notified" := Today;
                         end;
                     end;
                     Message('Bulk Details Updated Succesfully');
@@ -162,8 +162,8 @@ Page 51516636 "Poste Bulk Withdrawal card"
                         ApprovalEntries: Page "Approval Entries";
                     begin
 
-                        DocumentType:=Documenttype::BulkWithdrawal;
-                        ApprovalEntries.Setfilters(Database::"Bulk Withdrawal Application",DocumentType,"Transaction No");
+                        DocumentType := Documenttype::BulkWithdrawal;
+                        ApprovalEntries.Setfilters(Database::"Bulk Withdrawal Application", DocumentType, "Transaction No");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -179,11 +179,11 @@ Page 51516636 "Poste Bulk Withdrawal card"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
 
                         if ApprovalsMgmt.CheckBulkWithdrawalApprovalsWorkflowEnabled(Rec) then
-                          ApprovalsMgmt.OnSendBulkWithdrawalForApproval(Rec)
+                            ApprovalsMgmt.OnSendBulkWithdrawalForApproval(Rec)
                     end;
                 }
                 action("Cancel Approval Request")
@@ -197,10 +197,10 @@ Page 51516636 "Poste Bulk Withdrawal card"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                         if ApprovalsMgmt.CheckBulkWithdrawalApprovalsWorkflowEnabled(Rec) then
-                           ApprovalsMgmt.OnCancelBulkWithdrawalApprovalRequest(Rec);
+                        if ApprovalsMgmt.CheckBulkWithdrawalApprovalsWorkflowEnabled(Rec) then
+                            ApprovalsMgmt.OnCancelBulkWithdrawalApprovalRequest(Rec);
 
                     end;
                 }
@@ -212,17 +212,17 @@ Page 51516636 "Poste Bulk Withdrawal card"
     begin
         FnAddRecordRestriction();
 
-        EnablePosting:=false;
+        EnablePosting := false;
         OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
         CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
-        EnabledApprovalWorkflowsExist :=true;
-        if Rec.Status=Status::Approved then begin
-          OpenApprovalEntriesExist:=false;
-          CanCancelApprovalForRecord:=false;
-          EnabledApprovalWorkflowsExist:=false;
-          end;
-          if (Rec.Status=Status::Approved)  then
-            EnablePosting:=true;
+        EnabledApprovalWorkflowsExist := true;
+        if Rec.Status = Status::Approved then begin
+            OpenApprovalEntriesExist := false;
+            CanCancelApprovalForRecord := false;
+            EnabledApprovalWorkflowsExist := false;
+        end;
+        if (Rec.Status = Status::Approved) then
+            EnablePosting := true;
     end;
 
     trigger OnAfterGetRecord()
@@ -237,7 +237,7 @@ Page 51516636 "Poste Bulk Withdrawal card"
 
     var
         Accounts: Record Vendor;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"," ","Purchase Requisition",RFQ,"Store Requisition","Payment Voucher",MembershipApplication,LoanApplication,LoanDisbursement,ProductApplication,StandingOrder,MembershipWithdrawal,ATMCard,GuarantorRecovery,ChangeRequest,TreasuryTransactions,FundsTransfer,SaccoTransfers,ChequeDiscounting,ImprestRequisition,ImprestSurrender,LeaveApplication,BulkWithdrawal;
         MemberNoEditable: Boolean;
         SavingsProductEditable: Boolean;
@@ -254,30 +254,30 @@ Page 51516636 "Poste Bulk Withdrawal card"
 
     local procedure FnAddRecordRestriction()
     begin
-        if Status=Status::Open then begin
-          MemberNoEditable:=true;
-          SavingsProductEditable:=true;
-          AccountNoEditable:=true;
-          AmounttoWithdrawEditable:=true;
-          WithdrawalDateEditable:=true;
-          ReasonEditable:=true
+        if Status = Status::Open then begin
+            MemberNoEditable := true;
+            SavingsProductEditable := true;
+            AccountNoEditable := true;
+            AmounttoWithdrawEditable := true;
+            WithdrawalDateEditable := true;
+            ReasonEditable := true
         end else
-        if Status=Status::"Pending Approval" then begin
-          MemberNoEditable:=false;
-          SavingsProductEditable:=false;
-          AccountNoEditable:=false;
-          AmounttoWithdrawEditable:=false;
-          WithdrawalDateEditable:=false;
-          ReasonEditable:=false
-          end else
-        if Status=Status::Approved then begin
-          MemberNoEditable:=false;
-          SavingsProductEditable:=false;
-          AccountNoEditable:=false;
-          AmounttoWithdrawEditable:=false;
-          WithdrawalDateEditable:=false;
-          ReasonEditable:=false
-          end;
+            if Status = Status::"Pending Approval" then begin
+                MemberNoEditable := false;
+                SavingsProductEditable := false;
+                AccountNoEditable := false;
+                AmounttoWithdrawEditable := false;
+                WithdrawalDateEditable := false;
+                ReasonEditable := false
+            end else
+                if Status = Status::Approved then begin
+                    MemberNoEditable := false;
+                    SavingsProductEditable := false;
+                    AccountNoEditable := false;
+                    AmounttoWithdrawEditable := false;
+                    WithdrawalDateEditable := false;
+                    ReasonEditable := false
+                end;
 
     end;
 }

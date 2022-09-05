@@ -192,7 +192,7 @@ Page 51516639 "Data Sheet Header"
 
     var
         ObjDataSheet: Record "Data Sheet Lines";
-        ObjMembers: Record "Member Register";
+        ObjMembers: Record Customer;
         SFactory: Codeunit "SURESTEP Factory.";
         Window: Dialog;
         TotalCount: Integer;

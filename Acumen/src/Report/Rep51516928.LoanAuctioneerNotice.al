@@ -237,7 +237,7 @@ Report 51516928 "Loan Auctioneer Notice"
         LBalance: Decimal;
         PersonalNo: Code[50];
         GAddress: Text[250];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         TotalRec: Decimal;
         NoGuarantors: Integer;
         AmountT: Decimal;
@@ -254,7 +254,7 @@ Report 51516928 "Loan Auctioneer Notice"
         SendSMS: Boolean;
         SMSMessage: Record "SMS Messages";
         iEntryNo: Integer;
-        Cust1: Record "Member Register";
+        Cust1: Record Customer;
         CompanyInformation: Record "Company Information";
         ObjCollateral: Record "Loan Collateral Details";
         ObjGuarantor: Record "Loans Guarantee Details";

@@ -362,7 +362,7 @@ Page 51516458 "Loan Application FOSA(New)"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if "Approved Amount" = 0 then Error('Kindly upraise your loan application before sending approval request');
 
@@ -388,7 +388,7 @@ Page 51516458 "Loan Application FOSA(New)"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         //ApprovalMgt.SendLoanApprRequest(Rec);
                     end;
@@ -488,7 +488,7 @@ Page 51516458 "Loan Application FOSA(New)"
         ScheduleCode: Code[20];
         PreviewShedule: Record "Loan Repayment Schedule";
         PeriodInterval: Code[10];
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -497,9 +497,9 @@ Page 51516458 "Loan Application FOSA(New)"
         GenBatch: Record "Gen. Journal Batch";
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sales & Receivables Setup";
         PCharges: Record "Loan Product Charges";
@@ -530,7 +530,7 @@ Page 51516458 "Loan Application FOSA(New)"
         BOSAInt: Decimal;
         TopUpComm: Decimal;
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -541,7 +541,7 @@ Page 51516458 "Loan Application FOSA(New)"
         FOSAName: Text[150];
         IDNo: Code[50];
         MovementTracker: Record "File Movement Tracker";
-        SMSMessage: Record "Member Register";
+        SMSMessage: Record Customer;
         InstallNo2: Integer;
         currency: Record "Currency Exchange Rate";
         CURRENCYFACTOR: Decimal;
@@ -563,7 +563,7 @@ Page 51516458 "Loan Application FOSA(New)"
         EnableCreateMember: Boolean;
         EditableAction: Boolean;
         SFactory: Codeunit "SURESTEP Factory.";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
 
 
     procedure GetVariables(var LoanNo: Code[20]; var LoanProductType: Code[20])

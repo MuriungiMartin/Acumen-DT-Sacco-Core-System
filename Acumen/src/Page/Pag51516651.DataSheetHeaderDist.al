@@ -210,7 +210,7 @@ Page 51516651 "Data Sheet Header-Dist"
 
     var
         ObjDataSheet: Record "Data Sheet Lines-Dist";
-        ObjMembers: Record "Member Register";
+        ObjMembers: Record Customer;
         SFactory: Codeunit "SURESTEP Factory.";
         Window: Dialog;
         TotalCount: Integer;

@@ -204,7 +204,7 @@ Report 50029 "Daily Cashier Report."
         Debit: Decimal;
         Credit: Decimal;
         MemberLedger: Record "Cust. Ledger Entry";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Paymenthd: Record "Payment Header.";
         Modeofpayment: Option Cash;
         Modeofpayment1: Code[20];

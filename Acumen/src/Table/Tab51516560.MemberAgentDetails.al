@@ -6,123 +6,123 @@ Table 51516560 "Member Agent Details"
 
     fields
     {
-        field(1;"Account No";Code[20])
+        field(1; "Account No"; Code[20])
         {
             NotBlank = true;
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
         }
-        field(2;Names;Text[50])
+        field(2; Names; Text[50])
         {
             NotBlank = true;
         }
-        field(3;"Date Of Birth";Date)
+        field(3; "Date Of Birth"; Date)
         {
         }
-        field(4;"Staff/Payroll";Code[20])
+        field(4; "Staff/Payroll"; Code[20])
         {
         }
-        field(5;"ID No.";Code[50])
+        field(5; "ID No."; Code[50])
         {
         }
-        field(6;"Must Sign";Boolean)
+        field(6; "Must Sign"; Boolean)
         {
         }
-        field(8;"Must be Present";Boolean)
+        field(8; "Must be Present"; Boolean)
         {
         }
-        field(9;Picture;MediaSet)
+        field(9; Picture; MediaSet)
         {
             Caption = 'Picture';
         }
-        field(10;Signature;MediaSet)
+        field(10; Signature; MediaSet)
         {
             Caption = 'Signature';
         }
-        field(11;"Expiry Date";Date)
+        field(11; "Expiry Date"; Date)
         {
         }
-        field(12;"BOSA No.";Code[30])
+        field(12; "BOSA No."; Code[30])
         {
-            TableRelation = "Member Register";
+            TableRelation = Customer;
 
             trigger OnValidate()
             begin
                 CUST.Reset;
-                CUST.SetRange(CUST."No.","BOSA No.");
+                CUST.SetRange(CUST."No.", "BOSA No.");
                 if CUST.Find('-') then begin
-                //CUST.CALCFIELDS(CUST.Picture,CUST.Signature);
-                Names:=CUST.Name;
-                "Mobile No.":=CUST."Mobile Phone No";
-                "Date Of Birth":=CUST."Date of Birth";
-                "Staff/Payroll":=CUST."Personal No";
-                "ID No.":=CUST."ID No.";
-                //Picture:=CUST.Picture;
-                //Signature:=CUST.Signature;
+                    //CUST.CALCFIELDS(CUST.Picture,CUST.Signature);
+                    Names := CUST.Name;
+                    "Mobile No." := CUST."Mobile Phone No";
+                    "Date Of Birth" := CUST."Date of Birth";
+                    "Staff/Payroll" := CUST."Personal No";
+                    "ID No." := CUST."ID No.";
+                    //Picture:=CUST.Picture;
+                    //Signature:=CUST.Signature;
                 end;
             end;
         }
-        field(13;"Email Address";Text[50])
+        field(13; "Email Address"; Text[50])
         {
         }
-        field(14;Designation;Code[20])
+        field(14; Designation; Code[20])
         {
         }
-        field(15;"Mobile No.";Code[20])
+        field(15; "Mobile No."; Code[20])
         {
         }
-        field(16;"Any to sign";Boolean)
+        field(16; "Any to sign"; Boolean)
         {
         }
-        field(17;"Both to Sign";Boolean)
+        field(17; "Both to Sign"; Boolean)
         {
         }
-        field(18;"All to sign";Boolean)
+        field(18; "All to sign"; Boolean)
         {
         }
-        field(19;"Withdrawal Limit";Decimal)
+        field(19; "Withdrawal Limit"; Decimal)
         {
         }
-        field(20;"Operation Instruction";Code[100])
+        field(20; "Operation Instruction"; Code[100])
         {
         }
-        field(21;"Entry No";Integer)
+        field(21; "Entry No"; Integer)
         {
         }
-        field(22;"Source No.";Code[20])
+        field(22; "Source No."; Code[20])
         {
         }
-        field(23;"Agent Serial No";Code[20])
+        field(23; "Agent Serial No"; Code[20])
         {
 
             trigger OnValidate()
             begin
                 if "Agent Serial No" <> xRec."Agent Serial No" then begin
-                  SalesSetup.Get;
-                  NoSeriesmgt.TestManual(SalesSetup."Agent Serial Nos");
-                  "No. Series" := '';
+                    SalesSetup.Get;
+                    NoSeriesmgt.TestManual(SalesSetup."Agent Serial Nos");
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(24;"No. Series";Code[20])
+        field(24; "No. Series"; Code[20])
         {
         }
-        field(25;"Allowed Balance Enquiry";Boolean)
+        field(25; "Allowed Balance Enquiry"; Boolean)
         {
         }
-        field(26;"Allowed  Correspondence";Boolean)
+        field(26; "Allowed  Correspondence"; Boolean)
         {
         }
-        field(27;"Allowed FOSA Withdrawals";Boolean)
+        field(27; "Allowed FOSA Withdrawals"; Boolean)
         {
         }
-        field(28;"Allowed Loan Processing";Boolean)
+        field(28; "Allowed Loan Processing"; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Account No","BOSA No.","Entry No",Names,"Agent Serial No")
+        key(Key1; "Account No", "BOSA No.", "Entry No", Names, "Agent Serial No")
         {
             Clustered = true;
         }
@@ -130,7 +130,7 @@ Table 51516560 "Member Agent Details"
 
     fieldgroups
     {
-        fieldgroup(DropDown;"Account No",Names,"ID No.","Mobile No.","Allowed Balance Enquiry","Allowed  Correspondence","Allowed FOSA Withdrawals","Allowed Loan Processing","Withdrawal Limit")
+        fieldgroup(DropDown; "Account No", Names, "ID No.", "Mobile No.", "Allowed Balance Enquiry", "Allowed  Correspondence", "Allowed FOSA Withdrawals", "Allowed Loan Processing", "Withdrawal Limit")
         {
         }
     }
@@ -138,14 +138,14 @@ Table 51516560 "Member Agent Details"
     trigger OnInsert()
     begin
         if "Agent Serial No" = '' then begin
-          SalesSetup.Get;
-          SalesSetup.TestField(SalesSetup."Agent Serial Nos");
-          NoSeriesmgt.InitSeries(SalesSetup."Agent Serial Nos",xRec."No. Series",0D,"Agent Serial No","No. Series");
+            SalesSetup.Get;
+            SalesSetup.TestField(SalesSetup."Agent Serial Nos");
+            NoSeriesmgt.InitSeries(SalesSetup."Agent Serial Nos", xRec."No. Series", 0D, "Agent Serial No", "No. Series");
         end;
     end;
 
     var
-        CUST: Record "Member Register";
+        CUST: Record Customer;
         NoSeriesmgt: Codeunit NoSeriesManagement;
         SalesSetup: Record "Sacco No. Series";
 }

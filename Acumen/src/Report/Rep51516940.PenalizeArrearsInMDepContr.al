@@ -5,7 +5,7 @@ Report 51516940 "Penalize Arrears In MDep Contr"
 
     dataset
     {
-        dataitem("Member Register"; "Member Register")
+        dataitem(Customer; Customer)
         {
             RequestFilterFields = "No.";
             column(ReportForNavId_1; 1)
@@ -59,7 +59,7 @@ Report 51516940 "Penalize Arrears In MDep Contr"
                         //------------------------------------1. CREDIT MEMBER DEPOSITS A/C---------------------------------------------------------------------------------------------
                         LineNo := LineNo + 10000;
                         SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                        GenJournalLine."account type"::Member, "Member Register"."No.", Today, VarMonthlyContributionDefecit * -1, 'BOSA', '',
+                        GenJournalLine."account type"::Member, Customer."No.", Today, VarMonthlyContributionDefecit * -1, 'BOSA', '',
                         'Auto-Monthly Deposit Contribution', '');
                         //--------------------------------(Credit Member Deposit Account)---------------------------------------------
 
@@ -67,7 +67,7 @@ Report 51516940 "Penalize Arrears In MDep Contr"
                         LineNo := LineNo + 10000;
                         SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Share Capital",
                         GenJournalLine."account type"::Vendor, VarFOSAAccountDebited, Today, VarMonthlyContributionDefecit, 'FOSA', '',
-                        'Auto-Monthly Deposit Contribution- ' + "Member Register"."No.", '');
+                        'Auto-Monthly Deposit Contribution- ' + Customer."No.", '');
                         //----------------------------------(Debit Member Fosa Account)------------------------------------------------
 
                     end;
@@ -81,7 +81,7 @@ Report 51516940 "Penalize Arrears In MDep Contr"
                         //------------------------------------1. DEBIT Deposit  A/C Penalty---------------------------------------------------------------------------------------------
                         LineNo := LineNo + 10000;
                         SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                        GenJournalLine."account type"::Member, "Member Register"."No.", Today, 'Failed Monthly Contr. Penalty_' + "Member Register"."No.", GenJournalLine."bal. account type"::"G/L Account",
+                        GenJournalLine."account type"::Member, Customer."No.", Today, 'Failed Monthly Contr. Penalty_' + Customer."No.", GenJournalLine."bal. account type"::"G/L Account",
                         ObjGensetup."Penalty Monthly Contr. Account", ObjGensetup."Penalty Monthly Contribution", 'BOSA', '');
                         //--------------------------------(Debit Deposit Account Penalty)-------------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ Report 51516940 "Penalize Arrears In MDep Contr"
                         //------------------------------------1. DEBIT Deposit  A/C Tax on Penalty---------------------------------------------------------------------------------------------
                         LineNo := LineNo + 10000;
                         SFactory.FnCreateGnlJournalLineBalanced(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                        GenJournalLine."account type"::Member, "Member Register"."No.", Today, 'Failed Monthly Contr. Tax_' + "Member Register"."No.", GenJournalLine."bal. account type"::"G/L Account",
+                        GenJournalLine."account type"::Member, Customer."No.", Today, 'Failed Monthly Contr. Tax_' + Customer."No.", GenJournalLine."bal. account type"::"G/L Account",
                         ObjGensetup."Excise Duty Account", ObjGensetup."Penalty Monthly Contribution" * (ObjGensetup."Excise Duty(%)" / 100), 'BOSA', '');
                         //--------------------------------(Debit Deposit Account Tax On Penalty)-------------------------------------------------------------------------------
 

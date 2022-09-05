@@ -10,95 +10,95 @@ Page 51516847 "Funeral Expenses."
             group(General)
             {
             }
-            field("No.";"No.")
+            field("No."; "No.")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Member No.";"Member No.")
+            field("Member No."; "Member No.")
             {
                 ApplicationArea = Basic;
             }
-            field("Member Name";"Member Name")
-            {
-                ApplicationArea = Basic;
-                Editable = false;
-            }
-            field("Member ID No";"Member ID No")
+            field("Member Name"; "Member Name")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Member Status";"Member Status")
+            field("Member ID No"; "Member ID No")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Death Date";"Death Date")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Date Reported";"Date Reported")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reported By";"Reported By")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reporter ID No.";"Reporter ID No.")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reporter Mobile No";"Reporter Mobile No")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Reporter Address";"Reporter Address")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Relationship With Deceased";"Relationship With Deceased")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Received Burial Permit";"Received Burial Permit")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Mode Of Disbursement";"Mode Of Disbursement")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Paying Bank";"Paying Bank")
-            {
-                ApplicationArea = Basic;
-            }
-            field("Received Letter From Chief";"Received Letter From Chief")
-            {
-                ApplicationArea = Basic;
-            }
-            field(Posted;Posted)
+            field("Member Status"; "Member Status")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Date Posted";"Date Posted")
+            field("Death Date"; "Death Date")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Date Reported"; "Date Reported")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reported By"; "Reported By")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reporter ID No."; "Reporter ID No.")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reporter Mobile No"; "Reporter Mobile No")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Reporter Address"; "Reporter Address")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Relationship With Deceased"; "Relationship With Deceased")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Received Burial Permit"; "Received Burial Permit")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Mode Of Disbursement"; "Mode Of Disbursement")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Paying Bank"; "Paying Bank")
+            {
+                ApplicationArea = Basic;
+            }
+            field("Received Letter From Chief"; "Received Letter From Chief")
+            {
+                ApplicationArea = Basic;
+            }
+            field(Posted; Posted)
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Time Posted";"Time Posted")
+            field("Date Posted"; "Date Posted")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field("Posted By";"Posted By")
+            field("Time Posted"; "Time Posted")
             {
                 ApplicationArea = Basic;
                 Editable = false;
             }
-            field(Status;Status)
+            field("Posted By"; "Posted By")
+            {
+                ApplicationArea = Basic;
+                Editable = false;
+            }
+            field(Status; Status)
             {
                 ApplicationArea = Basic;
                 Editable = false;
@@ -176,7 +176,7 @@ Page 51516847 "Funeral Expenses."
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         /*CheckRequiredFields();
                         TESTFIELD(Status,Status::"0");
@@ -195,7 +195,7 @@ Page 51516847 "Funeral Expenses."
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                     end;
                 }
@@ -207,26 +207,26 @@ Page 51516847 "Funeral Expenses."
         LoanUserSetup: Record "Salary Step/Notch Transactions";
         LoanManager: Codeunit "POST ATM Transactions";
         Txt000: label 'User ID:%1 has not been setup for posting, Contact System Administrator';
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
 
     local procedure CheckRequiredFields()
     begin
-          /*TESTFIELD("PI Code");
-          TESTFIELD("PI Name");
-          TESTFIELD("Colabotative Institution");
-          TESTFIELD("PI Address");
-          TESTFIELD("Amount to Disburse");
-          TESTFIELD("Requested Amount");
-          TESTFIELD("PI Telephone");
-          TESTFIELD("Posting Date");
-          TESTFIELD("Loan Disbursment Date");
-          TESTFIELD("Repayment Start Date");
-          TESTFIELD("Paying Bank");
-          TESTFIELD("Paying Bank Name");
-          TESTFIELD(Description);
-          IF "Amount to Disburse">"Balance Outstanding" THEN
-            ERROR('The Amount to Disburse:'+FORMAT("Amount to Disburse")+' cannot be more than the Loan Outstanding Balance:'+FORMAT("Balance Outstanding"));
-            */
+        /*TESTFIELD("PI Code");
+        TESTFIELD("PI Name");
+        TESTFIELD("Colabotative Institution");
+        TESTFIELD("PI Address");
+        TESTFIELD("Amount to Disburse");
+        TESTFIELD("Requested Amount");
+        TESTFIELD("PI Telephone");
+        TESTFIELD("Posting Date");
+        TESTFIELD("Loan Disbursment Date");
+        TESTFIELD("Repayment Start Date");
+        TESTFIELD("Paying Bank");
+        TESTFIELD("Paying Bank Name");
+        TESTFIELD(Description);
+        IF "Amount to Disburse">"Balance Outstanding" THEN
+          ERROR('The Amount to Disburse:'+FORMAT("Amount to Disburse")+' cannot be more than the Loan Outstanding Balance:'+FORMAT("Balance Outstanding"));
+          */
 
     end;
 }

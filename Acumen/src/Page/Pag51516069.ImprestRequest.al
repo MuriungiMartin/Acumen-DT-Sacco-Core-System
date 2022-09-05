@@ -230,7 +230,7 @@ Page 51516069 "Imprest Request"
                     trigger OnAction()
                     var
                         Text001: label 'This Batch is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
 
                         if ApprovalsMgmt.CheckImprestRequisitionApprovalsWorkflowEnabled(Rec) then
@@ -246,7 +246,7 @@ Page 51516069 "Imprest Request"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         //IF ApprovalMgt.CancelBatchAppr(Rec,TRUE,TRUE) THEN;
                     end;

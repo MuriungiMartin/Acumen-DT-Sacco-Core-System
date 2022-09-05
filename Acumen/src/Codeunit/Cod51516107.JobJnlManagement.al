@@ -197,7 +197,7 @@ Codeunit 51516107 "Job-JnlManagement"
 
     procedure GetNames(var JobJnlLine: Record "Job-Journal Line";var JobDescription: Text[50];var AccName: Text[50])
     var
-        Job: Record Jobss;
+      //  Job: Record Jobss;
         Res: Record Resource;
         Item: Record Item;
         GLAcc: Record "G/L Account";
@@ -206,8 +206,8 @@ Codeunit 51516107 "Job-JnlManagement"
            (JobJnlLine."Job No." <> LastJobJnlLine."Job No.")
         then begin
           JobDescription := '';
-          if Job.Get(JobJnlLine."Job No.") then
-            JobDescription := Job.Description;
+          // if Job.Get(JobJnlLine."Job No.") then
+          //   JobDescription := Job.Description;
         end;
 
         if (JobJnlLine.Type <> LastJobJnlLine.Type) or

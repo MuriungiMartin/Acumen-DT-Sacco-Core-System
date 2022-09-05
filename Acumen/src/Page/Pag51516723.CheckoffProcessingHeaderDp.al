@@ -516,7 +516,7 @@ Page 51516723 "Checkoff Processing Header-D p"
     ModifyAllowed = false;
     PageType = Card;
     SourceTable = "Checkoff Header-Distributed";
-    SourceTableView = where(Posted=const(true));
+    SourceTableView = where(Posted = const(true));
 
     layout
     {
@@ -524,86 +524,86 @@ Page 51516723 "Checkoff Processing Header-D p"
         {
             group(General)
             {
-                field(No;No)
+                field(No; No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Entered By";"Entered By")
+                field("Entered By"; "Entered By")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Date Entered";"Date Entered")
+                field("Date Entered"; "Date Entered")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Posting date";"Posting date")
+                field("Posting date"; "Posting date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Loan CutOff Date";"Loan CutOff Date")
+                field("Loan CutOff Date"; "Loan CutOff Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Remarks;Remarks)
+                field(Remarks; Remarks)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Count";"Total Count")
+                field("Total Count"; "Total Count")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By";"Posted By")
+                field("Posted By"; "Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Name";"Employer Name")
+                field("Employer Name"; "Employer Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Document No";"Document No")
+                field("Document No"; "Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Scheduled Amount";"Scheduled Amount")
+                field("Scheduled Amount"; "Scheduled Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approval Status";"Approval Status")
+                field("Approval Status"; "Approval Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Amount";"Interest Amount")
+                field("Interest Amount"; "Interest Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
             }
-            part("Checkoff Lines-Distributed";"Checkoff Processing Lines-D")
+            part("Checkoff Lines-Distributed"; "Checkoff Processing Lines-D")
             {
                 Caption = 'Checkoff Lines-Distributed';
-                SubPageLink = "Receipt Header No"=field(No);
+                SubPageLink = "Receipt Header No" = field(No);
             }
         }
     }
@@ -651,7 +651,7 @@ Page 51516723 "Checkoff Processing Header-D p"
                 var
                     ObjGenBatch: Record "Gen. Journal Batch";
                 begin
-                    JBatchs:='CHECKOFF';
+                    JBatchs := 'CHECKOFF';
 
                     FnClearBatch();
                     FnPostPrinciple();
@@ -703,11 +703,11 @@ Page 51516723 "Checkoff Processing Header-D p"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Are you sure you want to mark this Checkoff as Posted.Once Marked as posted it will go to posted. ?',false)=true then begin
-                     Posted:=true;
-                    "Posted By":=UserId;
-                    "Posting date":=Today;
-                    Modify;
+                    if Confirm('Are you sure you want to mark this Checkoff as Posted.Once Marked as posted it will go to posted. ?', false) = true then begin
+                        Posted := true;
+                        "Posted By" := UserId;
+                        "Posting date" := Today;
+                        Modify;
                     end;
                 end;
             }
@@ -716,8 +716,8 @@ Page 51516723 "Checkoff Processing Header-D p"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-           "Posting date":=Today;
-           "Date Entered":=Today;
+        "Posting date" := Today;
+        "Date Entered" := Today;
     end;
 
     var
@@ -734,7 +734,7 @@ Page 51516723 "Checkoff Processing Header-D p"
         DActivityBOSA: Code[20];
         DBranchBOSA: Code[20];
         ReptProcHeader: Record "Checkoff Header-Distributed";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         MembPostGroup: Record "Customer Posting Group";
         Loantable: Record "Loans Register";
         LRepayment: Decimal;
@@ -752,233 +752,227 @@ Page 51516723 "Checkoff Processing Header-D p"
         DIFF: Decimal;
         DIFFPAID: Decimal;
         genstup: Record "Sacco General Set-Up";
-        Memb: Record "Member Register";
+        Memb: Record Customer;
         INSURANCE: Decimal;
         GenBatches: Record "Gen. Journal Batch";
         Datefilter: Text[50];
         ReceiptLine: Record "Checkoff Lines-Distributed";
         JBatchs: Code[10];
-        ApprovalsMgt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgt: Codeunit WorkflowIntegration;
 
     local procedure FnPostPrinciple()
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-            ObjCheckOffLines.Reset;
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type",'LOAN REPAYMENT');
-             /// ObjCheckOffLines.SETRANGE(ObjCheckOffLines."Special Code",'380');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type", 'LOAN REPAYMENT');
+        /// ObjCheckOffLines.SETRANGE(ObjCheckOffLines."Special Code",'380');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                Gnljnline."Account No.":=ObjCheckOffLines."Member No.";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                Gnljnline."Account No." := ObjCheckOffLines."Member No.";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Trans Type";
-                Gnljnline.Amount:=ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Trans Type";
+                Gnljnline.Amount := ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Loan No":=ObjCheckOffLines."Loan No.";
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Loan Repayment";
+                Gnljnline."Loan No" := ObjCheckOffLines."Loan No.";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Loan Repayment";
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":=Format('%1',ObjCheckOffLines.Source);
+                Gnljnline."Shortcut Dimension 1 Code" := Format('%1', ObjCheckOffLines.Source);
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 
     local procedure FnPostInterestPaid()
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-         ObjCheckOffLines.Reset;
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-             ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type",'INTEREST PAID');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type", 'INTEREST PAID');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                Gnljnline."Account No.":=ObjCheckOffLines."Member No.";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                Gnljnline."Account No." := ObjCheckOffLines."Member No.";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Trans Type";
-                Gnljnline.Amount:=ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Trans Type";
+                Gnljnline.Amount := ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Loan No":=ObjCheckOffLines."Loan No.";
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Interest Paid";
+                Gnljnline."Loan No" := ObjCheckOffLines."Loan No.";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Interest Paid";
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":='BOSA';
+                Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 
     local procedure FnPostShareCapital()
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-         ObjCheckOffLines.Reset;
-          ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type",'SHARES');
-           // ObjCheckOffLines.SETRANGE(ObjCheckOffLines."Special Code",'229');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type", 'SHARES');
+        // ObjCheckOffLines.SETRANGE(ObjCheckOffLines."Special Code",'229');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                Gnljnline."Account No.":=ObjCheckOffLines."Member No.";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                Gnljnline."Account No." := ObjCheckOffLines."Member No.";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Special Code";
-                Gnljnline.Amount:=-ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Special Code";
+                Gnljnline.Amount := -ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Share Capital";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Share Capital";
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":='BOSA';
+                Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 
     local procedure FnPostNormalShare()
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-         ObjCheckOffLines.Reset;
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-             ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type",'DEPOSIT CONTRIBUTION');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type", 'DEPOSIT CONTRIBUTION');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                Gnljnline."Account No.":=ObjCheckOffLines."Member No.";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                Gnljnline."Account No." := ObjCheckOffLines."Member No.";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Special Code";
-                Gnljnline.Amount:=ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Special Code";
+                Gnljnline.Amount := ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Deposit Contribution";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Deposit Contribution";
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":='BOSA';
+                Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 
     local procedure FnPostFOSA()
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-         ObjCheckOffLines.Reset;
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-             ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type",'FOSA');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type", 'FOSA');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Vendor;
-                Gnljnline."Account No.":=ObjCheckOffLines."FOSA Account";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Vendor;
+                Gnljnline."Account No." := ObjCheckOffLines."FOSA Account";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Special Code";
-                Gnljnline.Amount:=-ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Special Code";
+                Gnljnline.Amount := -ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":='FOSA';
+                Gnljnline."Shortcut Dimension 1 Code" := 'FOSA';
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 
     local procedure FnPostBENEVOLENT()
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-         ObjCheckOffLines.Reset;
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-             ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type",'BENEVOLENT');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type", 'BENEVOLENT');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                Gnljnline."Account No.":=ObjCheckOffLines."Member No.";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                Gnljnline."Account No." := ObjCheckOffLines."Member No.";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Special Code";
-                Gnljnline.Amount:=-ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Special Code";
+                Gnljnline.Amount := -ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Benevolent Fund";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Benevolent Fund";
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":='BOSA';
+                Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 
     local procedure FnPostBalancing()
     begin
-            LineN:=LineN+10000;
-            Gnljnline.Init;
-            Gnljnline."Journal Template Name":='GENERAL';
-            Gnljnline."Journal Batch Name":=JBatchs;
-            Gnljnline."Line No.":=LineN;
-            Gnljnline."Account Type":=Gnljnline."account type"::"G/L Account";
-            Gnljnline."Account No.":="Account No";
-            Gnljnline.Validate(Gnljnline."Account No.");
-            Gnljnline."Document No.":="Document No";
-            Gnljnline."Posting Date":="Posting date";
-            Gnljnline.Description:=No+'-'+"Document No";
-            Gnljnline.Amount:=Amount;
-            Gnljnline.Validate(Gnljnline.Amount);
-            Gnljnline."Shortcut Dimension 1 Code":='BOSA';
-            //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-            if Gnljnline.Amount<>0 then
+        LineN := LineN + 10000;
+        Gnljnline.Init;
+        Gnljnline."Journal Template Name" := 'GENERAL';
+        Gnljnline."Journal Batch Name" := JBatchs;
+        Gnljnline."Line No." := LineN;
+        Gnljnline."Account Type" := Gnljnline."account type"::"G/L Account";
+        Gnljnline."Account No." := "Account No";
+        Gnljnline.Validate(Gnljnline."Account No.");
+        Gnljnline."Document No." := "Document No";
+        Gnljnline."Posting Date" := "Posting date";
+        Gnljnline.Description := No + '-' + "Document No";
+        Gnljnline.Amount := Amount;
+        Gnljnline.Validate(Gnljnline.Amount);
+        Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
+        //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
+        if Gnljnline.Amount <> 0 then
             Gnljnline.Insert;
     end;
 
@@ -987,21 +981,21 @@ Page 51516723 "Checkoff Processing Header-D p"
         ObjGenBatch: Record "Gen. Journal Batch";
     begin
         ObjGenBatch.Reset;
-        ObjGenBatch.SetRange(ObjGenBatch."Journal Template Name",'GENERAL');
-        ObjGenBatch.SetRange(ObjGenBatch.Name,JBatchs);
+        ObjGenBatch.SetRange(ObjGenBatch."Journal Template Name", 'GENERAL');
+        ObjGenBatch.SetRange(ObjGenBatch.Name, JBatchs);
         if ObjGenBatch.Find('-') = false then begin
-        ObjGenBatch.Init;
-        ObjGenBatch."Journal Template Name":='GENERAL';
-        ObjGenBatch.Name:=JBatchs;
-        ObjGenBatch.Description:='CHECKOFF PROCESSING';
-        ObjGenBatch.Validate(ObjGenBatch."Journal Template Name");
-        ObjGenBatch.Validate(ObjGenBatch.Name);
-        ObjGenBatch.Insert;
+            ObjGenBatch.Init;
+            ObjGenBatch."Journal Template Name" := 'GENERAL';
+            ObjGenBatch.Name := JBatchs;
+            ObjGenBatch.Description := 'CHECKOFF PROCESSING';
+            ObjGenBatch.Validate(ObjGenBatch."Journal Template Name");
+            ObjGenBatch.Validate(ObjGenBatch.Name);
+            ObjGenBatch.Insert;
         end;
 
         Gnljnline.Reset;
-        Gnljnline.SetRange("Journal Template Name",'GENERAL');
-        Gnljnline.SetRange("Journal Batch Name",JBatchs);
+        Gnljnline.SetRange("Journal Template Name", 'GENERAL');
+        Gnljnline.SetRange("Journal Batch Name", JBatchs);
         Gnljnline.DeleteAll;
     end;
 
@@ -1017,67 +1011,65 @@ Page 51516723 "Checkoff Processing Header-D p"
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-         ObjCheckOffLines.Reset;
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-            // ObjCheckOffLines.SETRANGE(ObjCheckOffLines."Trans Type",'RESERVE');
-              ObjCheckOffLines.SetRange(ObjCheckOffLines."Special Code",'337');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        // ObjCheckOffLines.SETRANGE(ObjCheckOffLines."Trans Type",'RESERVE');
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Special Code", '337');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                Gnljnline."Account No.":=ObjCheckOffLines."Member No.";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                Gnljnline."Account No." := ObjCheckOffLines."Member No.";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Special Code";
-                Gnljnline.Amount:=-ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Special Code";
+                Gnljnline.Amount := -ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Capital Reserve";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Capital Reserve";
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":='BOSA';
+                Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 
     local procedure FnPostUnallocated()
     var
         ObjCheckOffLines: Record "Checkoff Lines-Distributed";
     begin
-         ObjCheckOffLines.Reset;
-            ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No",No);
-             ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type",'UNALLOCATED');
-            if ObjCheckOffLines.FindSet then
-              begin
-              repeat
-                LineN:=LineN+10000;
+        ObjCheckOffLines.Reset;
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Receipt Header No", No);
+        ObjCheckOffLines.SetRange(ObjCheckOffLines."Trans Type", 'UNALLOCATED');
+        if ObjCheckOffLines.FindSet then begin
+            repeat
+                LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name":='GENERAL';
-                Gnljnline."Journal Batch Name":=JBatchs;
-                Gnljnline."Line No.":=LineN;
-                Gnljnline."Account Type":=Gnljnline."account type"::Member;
-                Gnljnline."Account No.":=ObjCheckOffLines."Member No.";
+                Gnljnline."Journal Template Name" := 'GENERAL';
+                Gnljnline."Journal Batch Name" := JBatchs;
+                Gnljnline."Line No." := LineN;
+                Gnljnline."Account Type" := Gnljnline."account type"::Member;
+                Gnljnline."Account No." := ObjCheckOffLines."Member No.";
                 Gnljnline.Validate(Gnljnline."Account No.");
-                Gnljnline."Document No.":="Document No";
-                Gnljnline."Posting Date":="Posting date";
-                Gnljnline.Description:=ObjCheckOffLines."Special Code";
-                Gnljnline.Amount:=-ObjCheckOffLines.Amount;
+                Gnljnline."Document No." := "Document No";
+                Gnljnline."Posting Date" := "Posting date";
+                Gnljnline.Description := ObjCheckOffLines."Special Code";
+                Gnljnline.Amount := -ObjCheckOffLines.Amount;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Transaction Type":=Gnljnline."transaction type"::"Unallocated Funds";
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Unallocated Funds";
                 Gnljnline.Validate(Gnljnline."Transaction Type");
-                Gnljnline."Shortcut Dimension 1 Code":='BOSA';
+                Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 //Gnljnline."Shortcut Dimension 1 Code":='BOSA';Branch
-                if Gnljnline.Amount<>0 then
-                Gnljnline.Insert;
-              until ObjCheckOffLines.Next=0;
-              end;
+                if Gnljnline.Amount <> 0 then
+                    Gnljnline.Insert;
+            until ObjCheckOffLines.Next = 0;
+        end;
     end;
 }
 

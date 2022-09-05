@@ -223,7 +223,7 @@ Report 51516492 "Process Loan Monthly Interest"
         PDate: Date;
         LoanType: Record "Loan Products Setup";
         PostDate: Date;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LineNo: Integer;
         DocNo: Code[20];
         GenJournalLine: Record "Gen. Journal Line";
@@ -247,7 +247,7 @@ Report 51516492 "Process Loan Monthly Interest"
 
     local procedure FnStaffnumber(MemberNumber: Code[100]): Code[100]
     var
-        ObjMembers: Record "Member Register";
+        ObjMembers: Record Customer;
     begin
         ObjMembers.Reset;
         ObjMembers.SetRange("No.", MemberNumber);

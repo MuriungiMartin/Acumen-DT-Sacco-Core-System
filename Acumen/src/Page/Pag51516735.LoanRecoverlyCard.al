@@ -395,7 +395,7 @@ Page 51516735 "Loan Recoverly Card"
         TransType: Option " ","Registration Fee","Share Capital","Interest Paid","Loan Repayment","Deposit Contribution","Insurance Contribution","Benevolent Fund",Loan,"Unallocated Funds",Dividend,"FOSA Account","Loan Insurance Charged","Loan Insurance Paid","Recovery Account","FOSA Shares","Additional Shares";
         AccountType: Option "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Employee,Member,Investor;
         BalAccountType: Option "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Employee;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         ObjVendors: Record Vendor;
         ObjAccTypes: Record "Account Types-Saving Products";
         AvailableBal: Decimal;
@@ -405,7 +405,7 @@ Page 51516735 "Loan Recoverly Card"
         compinfo: Record "Company Information";
         SMSMessage: Record "SMS Messages";
         iEntryNo: Integer;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApps: Record "Loans Register";
         LoanGuar: Record "Loans Guarantee Details";
         SFactory: Codeunit "SURESTEP Factory.";

@@ -152,7 +152,7 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Loans Register";
-    SourceTableView = where(Posted=const(true));
+    SourceTableView = where(Posted = const(true));
 
     layout
     {
@@ -161,58 +161,58 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
             group(General)
             {
                 Caption = 'General';
-                field("Loan  No.";"Loan  No.")
+                field("Loan  No."; "Loan  No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Staff No";"Staff No")
+                field("Staff No"; "Staff No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Staff No';
                     Editable = false;
                 }
-                field("Client Code";"Client Code")
+                field("Client Code"; "Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member';
                     Editable = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                 }
-                field("Client Name";"Client Name")
+                field("Client Name"; "Client Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID NO";"ID NO")
+                field("ID NO"; "ID NO")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member Deposits";"Member Deposits")
+                field("Member Deposits"; "Member Deposits")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = ApplcDateEditable;
 
                     trigger OnValidate()
                     begin
-                         TestField(Posted,false);
+                        TestField(Posted, false);
                     end;
                 }
-                field("Loan Product Type";"Loan Product Type")
+                field("Loan Product Type"; "Loan Product Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Installments;Installments)
+                field(Installments; Installments)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -221,192 +221,201 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     begin
                         //TESTFIELD(Posted,FALSE);
                         StatusPermissions.Reset;
-                        StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-                        StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Loan Reschedule");
+                        StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+                        StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Loan Reschedule");
                         if StatusPermissions.Find('-') = false then
-                        Error('You do not have permissions to Reschedule Loans');
+                            Error('You do not have permissions to Reschedule Loans');
 
 
                         //Reschedule
                         //IF Posted=TRUE THEN
                         //ERROR('Loan has been posted, Can only preview schedule');
 
-                        if "Repayment Frequency"="repayment frequency"::Daily then
-                        Evaluate(InPeriod,'1D')
-                        else if "Repayment Frequency"="repayment frequency"::Weekly then
-                        Evaluate(InPeriod,'1W')
-                        else if "Repayment Frequency"="repayment frequency"::Monthly then
-                        Evaluate(InPeriod,'1M')
-                        else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                        Evaluate(InPeriod,'1Q');
+                        if "Repayment Frequency" = "repayment frequency"::Daily then
+                            Evaluate(InPeriod, '1D')
+                        else
+                            if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                Evaluate(InPeriod, '1W')
+                            else
+                                if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                    Evaluate(InPeriod, '1M')
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                        Evaluate(InPeriod, '1Q');
 
 
-                        QCounter:=0;
-                        QCounter:=3;
+                        QCounter := 0;
+                        QCounter := 3;
                         //EVALUATE(InPeriod,'1D');
-                        GrPrinciple:="Grace Period - Principle (M)";
-                        GrInterest:="Grace Period - Interest (M)";
-                        InitialGraceInt:="Grace Period - Interest (M)";
+                        GrPrinciple := "Grace Period - Principle (M)";
+                        GrInterest := "Grace Period - Interest (M)";
+                        InitialGraceInt := "Grace Period - Interest (M)";
 
                         LoansR.Reset;
-                        LoansR.SetRange(LoansR."Loan  No.","Loan  No.");
+                        LoansR.SetRange(LoansR."Loan  No.", "Loan  No.");
                         if LoansR.Find('-') then begin
 
-                        TestField("Loan Disbursement Date");
-                        TestField("Repayment Start Date");
+                            TestField("Loan Disbursement Date");
+                            TestField("Repayment Start Date");
 
-                        RSchedule.Reset;
-                        RSchedule.SetRange(RSchedule."Loan No.","Loan  No.");
-                        RSchedule.DeleteAll;
+                            RSchedule.Reset;
+                            RSchedule.SetRange(RSchedule."Loan No.", "Loan  No.");
+                            RSchedule.DeleteAll;
 
-                        LoanAmount:=LoansR."Approved Amount";
-                        InterestRate:=LoansR.Interest;
-                        RepayPeriod:=LoansR.Installments;
-                        InitialInstal:=LoansR.Installments+"Grace Period - Principle (M)";
-                        LBalance:=LoansR."Approved Amount";
-                        LNBalance:=LoansR."Outstanding Balance";
-                        RunDate:="Repayment Start Date";
+                            LoanAmount := LoansR."Approved Amount";
+                            InterestRate := LoansR.Interest;
+                            RepayPeriod := LoansR.Installments;
+                            InitialInstal := LoansR.Installments + "Grace Period - Principle (M)";
+                            LBalance := LoansR."Approved Amount";
+                            LNBalance := LoansR."Outstanding Balance";
+                            RunDate := "Repayment Start Date";
 
-                        InstalNo:=0;
-                        Evaluate(RepayInterval,'1W');
+                            InstalNo := 0;
+                            Evaluate(RepayInterval, '1W');
 
-                        //Repayment Frequency
-                        if "Repayment Frequency"="repayment frequency"::Daily then
-                        RunDate:=CalcDate('-1D',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Weekly then
-                        RunDate:=CalcDate('-1W',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Monthly then
-                        RunDate:=CalcDate('-1M',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                        RunDate:=CalcDate('-1Q',RunDate);
-                        //Repayment Frequency
-
-
-                        repeat
-                        InstalNo:=InstalNo+1;
-
-
-                        //*************Repayment Frequency***********************//
-                        if "Repayment Frequency"="repayment frequency"::Daily then
-                        RunDate:=CalcDate('1D',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Weekly then
-                        RunDate:=CalcDate('1W',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Monthly then
-                        RunDate:=CalcDate('1M',RunDate)
-                        else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                        RunDate:=CalcDate('1Q',RunDate);
+                            //Repayment Frequency
+                            if "Repayment Frequency" = "repayment frequency"::Daily then
+                                RunDate := CalcDate('-1D', RunDate)
+                            else
+                                if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                    RunDate := CalcDate('-1W', RunDate)
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                        RunDate := CalcDate('-1M', RunDate)
+                                    else
+                                        if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                            RunDate := CalcDate('-1Q', RunDate);
+                            //Repayment Frequency
 
 
+                            repeat
+                                InstalNo := InstalNo + 1;
 
 
-
-
-                        //*******************If Amortised****************************//
-                        if "Repayment Method"="repayment method"::Amortised then begin
-                        TestField(Installments);
-                        TestField(Interest);
-                        TestField(Installments);
-                        //TotalMRepay:=ROUND((InterestRate/12/100) / (1 - POWER((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount,1,'>');
-                        TotalMRepay:=(InterestRate/12/100) / (1 - Power((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount;
-                        LInterest:=ROUND(LBalance / 100 / 12 * InterestRate);
-
-                        LPrincipal:=TotalMRepay-LInterest;
-                        end;
+                                //*************Repayment Frequency***********************//
+                                if "Repayment Frequency" = "repayment frequency"::Daily then
+                                    RunDate := CalcDate('1D', RunDate)
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                        RunDate := CalcDate('1W', RunDate)
+                                    else
+                                        if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                            RunDate := CalcDate('1M', RunDate)
+                                        else
+                                            if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                                RunDate := CalcDate('1Q', RunDate);
 
 
 
-                        if "Repayment Method"="repayment method"::"Straight Line" then begin
-                        TestField(Installments);
-                        LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                        if ("Loan Product Type" = 'INST') or ("Loan Product Type" = 'MAZAO') then begin
-                        LInterest:=0;
-                        end else begin
-                        LInterest:=ROUND((InterestRate/100)*LoanAmount,1,'>');
-                        end;
-
-                        Repayment:=LPrincipal+LInterest;
-                        "Loan Principle Repayment":=LPrincipal;
-                        "Loan Interest Repayment":=LInterest;
-                        end;
 
 
-                        if "Repayment Method"="repayment method"::"Reducing Balance" then begin
-                        TestField(Interest);
-                        TestField(Installments);
-                        LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                        LInterest:=ROUND((InterestRate/12/100)*LBalance,1,'>');
-                        end;
 
-                        if "Repayment Method"="repayment method"::Constants then begin
-                        TestField(Repayment);
-                        if LBalance < Repayment then
-                        LPrincipal:=LBalance
-                        else
-                        LPrincipal:=Repayment;
-                        LInterest:=Interest;
-                        end;
+                                //*******************If Amortised****************************//
+                                if "Repayment Method" = "repayment method"::Amortised then begin
+                                    TestField(Installments);
+                                    TestField(Interest);
+                                    TestField(Installments);
+                                    //TotalMRepay:=ROUND((InterestRate/12/100) / (1 - POWER((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount,1,'>');
+                                    TotalMRepay := (InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -RepayPeriod)) * LoanAmount;
+                                    LInterest := ROUND(LBalance / 100 / 12 * InterestRate);
+
+                                    LPrincipal := TotalMRepay - LInterest;
+                                end;
 
 
-                        //Grace Period
-                        if GrPrinciple > 0 then begin
-                        LPrincipal:=0
-                        end else begin
-                        if "Instalment Period" <> InPeriod then
-                        LBalance:=LBalance-LPrincipal;
 
-                        end;
+                                if "Repayment Method" = "repayment method"::"Straight Line" then begin
+                                    TestField(Installments);
+                                    LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
+                                    if ("Loan Product Type" = 'INST') or ("Loan Product Type" = 'MAZAO') then begin
+                                        LInterest := 0;
+                                    end else begin
+                                        LInterest := ROUND((InterestRate / 100) * LoanAmount, 1, '>');
+                                    end;
 
-                        if GrInterest > 0 then
-                        LInterest:=0;
-
-                        GrPrinciple:=GrPrinciple-1;
-                        GrInterest:=GrInterest-1;
-
-                        //Grace Period
-                        RSchedule.Init;
-                        RSchedule."Repayment Code":=RepayCode;
-                        RSchedule."Loan No.":="Loan  No.";
-                        RSchedule."Loan Amount":=LoanAmount;
-                        RSchedule."Instalment No":=InstalNo;
-                        RSchedule."Repayment Date":=RunDate;
-                        RSchedule."Member No.":="Client Code";
-                        RSchedule."Loan Category":="Loan Product Type";
-                        RSchedule."Monthly Repayment":=LInterest + LPrincipal;
-                        RSchedule."Monthly Interest":=LInterest;
-                        RSchedule."Principal Repayment":=LPrincipal;
-                        RSchedule.Insert;
-                        WhichDay:=Date2dwy(RSchedule."Repayment Date",1);
+                                    Repayment := LPrincipal + LInterest;
+                                    "Loan Principle Repayment" := LPrincipal;
+                                    "Loan Interest Repayment" := LInterest;
+                                end;
 
 
-                        until LBalance < 1
+                                if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
+                                    TestField(Interest);
+                                    TestField(Installments);
+                                    LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
+                                    LInterest := ROUND((InterestRate / 12 / 100) * LBalance, 1, '>');
+                                end;
+
+                                if "Repayment Method" = "repayment method"::Constants then begin
+                                    TestField(Repayment);
+                                    if LBalance < Repayment then
+                                        LPrincipal := LBalance
+                                    else
+                                        LPrincipal := Repayment;
+                                    LInterest := Interest;
+                                end;
+
+
+                                //Grace Period
+                                if GrPrinciple > 0 then begin
+                                    LPrincipal := 0
+                                end else begin
+                                    if "Instalment Period" <> InPeriod then
+                                        LBalance := LBalance - LPrincipal;
+
+                                end;
+
+                                if GrInterest > 0 then
+                                    LInterest := 0;
+
+                                GrPrinciple := GrPrinciple - 1;
+                                GrInterest := GrInterest - 1;
+
+                                //Grace Period
+                                RSchedule.Init;
+                                RSchedule."Repayment Code" := RepayCode;
+                                RSchedule."Loan No." := "Loan  No.";
+                                RSchedule."Loan Amount" := LoanAmount;
+                                RSchedule."Instalment No" := InstalNo;
+                                RSchedule."Repayment Date" := RunDate;
+                                RSchedule."Member No." := "Client Code";
+                                RSchedule."Loan Category" := "Loan Product Type";
+                                RSchedule."Monthly Repayment" := LInterest + LPrincipal;
+                                RSchedule."Monthly Interest" := LInterest;
+                                RSchedule."Principal Repayment" := LPrincipal;
+                                RSchedule.Insert;
+                                WhichDay := Date2dwy(RSchedule."Repayment Date", 1);
+
+
+                            until LBalance < 1
 
                         end;
 
                         Commit;
 
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.","Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then
-                        if LoanApp."Loan Product Type" <> 'INST' then begin
-                        Report.Run(51516231,true,false,LoanApp);
-                        end else begin
-                        Report.Run(51516231,true,false,LoanApp);
+                            if LoanApp."Loan Product Type" <> 'INST' then begin
+                                Report.Run(51516231, true, false, LoanApp);
+                            end else begin
+                                Report.Run(51516231, true, false, LoanApp);
 
-                        end;
+                            end;
                     end;
                 }
-                field(Interest;Interest)
+                field(Interest; Interest)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Product Currency Code";"Product Currency Code")
+                field("Product Currency Code"; "Product Currency Code")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Enabled = true;
                 }
-                field("Requested Amount";"Requested Amount")
+                field("Requested Amount"; "Requested Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Amount Applied';
@@ -414,15 +423,15 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
 
                     trigger OnValidate()
                     begin
-                         TestField(Posted,false);
+                        TestField(Posted, false);
                     end;
                 }
-                field("Recommended Amount";"Recommended Amount")
+                field("Recommended Amount"; "Recommended Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Approved Amount";"Approved Amount")
+                field("Approved Amount"; "Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Amount';
@@ -430,47 +439,47 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
 
                     trigger OnValidate()
                     begin
-                        TestField(Posted,false);
+                        TestField(Posted, false);
                     end;
                 }
-                field("Loan Purpose";"Loan Purpose")
+                field("Loan Purpose"; "Loan Purpose")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field(Remarks;Remarks)
+                field(Remarks; Remarks)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = true;
                 }
-                field("Member House Group";"Member House Group")
+                field("Member House Group"; "Member House Group")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member House Group Name";"Member House Group Name")
+                field("Member House Group Name"; "Member House Group Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Repayment Method";"Repayment Method")
+                field("Repayment Method"; "Repayment Method")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Repayment;Repayment)
+                field(Repayment; Repayment)
                 {
                     ApplicationArea = Basic;
                     Editable = RepaymentEditable;
                 }
-                field("Approved Repayment";"Approved Repayment")
+                field("Approved Repayment"; "Approved Repayment")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Loan Status";"Loan Status")
+                field("Loan Status"; "Loan Status")
                 {
                     ApplicationArea = Basic;
                     Editable = LoanStatusEditable;
@@ -478,7 +487,7 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnValidate()
                     begin
                         UpdateControl();
-                        
+
                         /*IF LoanType.GET('DISCOUNT') THEN BEGIN
                         IF (("Approved Amount")-("Special Loan Amount"+"Other Commitments Clearance"+SpecialComm))
                              < 0 THEN
@@ -613,37 +622,37 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
 
                     end;
                 }
-                field("Batch No.";"Batch No.")
+                field("Batch No."; "Batch No.")
                 {
                     ApplicationArea = Basic;
                     Editable = BatchNoEditable;
                 }
-                field("Captured By";"Captured By")
+                field("Captured By"; "Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Top Up Amount";"Top Up Amount")
+                field("Top Up Amount"; "Top Up Amount")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Bridged Amount';
                 }
-                field("Repayment Frequency";"Repayment Frequency")
+                field("Repayment Frequency"; "Repayment Frequency")
                 {
                     ApplicationArea = Basic;
                     Editable = RepayFrequencyEditable;
                 }
-                field("Mode of Disbursement";"Mode of Disbursement")
+                field("Mode of Disbursement"; "Mode of Disbursement")
                 {
                     ApplicationArea = Basic;
                     Editable = ModeofDisburesmentEdit;
                 }
-                field("Loan Disbursement Date";"Loan Disbursement Date")
+                field("Loan Disbursement Date"; "Loan Disbursement Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Cheque No.";"Cheque No.")
+                field("Cheque No."; "Cheque No.")
                 {
                     ApplicationArea = Basic;
                     Visible = true;
@@ -651,86 +660,86 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnValidate()
                     begin
                         if StrLen("Cheque No.") > 6 then
-                          Error('Document No. cannot contain More than 6 Characters.');
+                            Error('Document No. cannot contain More than 6 Characters.');
                     end;
                 }
-                field("Repayment Start Date";"Repayment Start Date")
+                field("Repayment Start Date"; "Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Date of Completion";"Expected Date of Completion")
+                field("Expected Date of Completion"; "Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("External EFT";"External EFT")
+                field("External EFT"; "External EFT")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Approval Status";"Approval Status")
+                field("Approval Status"; "Approval Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("partially Bridged";"partially Bridged")
+                field("partially Bridged"; "partially Bridged")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field("Total TopUp Commission";"Total TopUp Commission")
+                field("Total TopUp Commission"; "Total TopUp Commission")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection  Remark";"Rejection  Remark")
+                field("Rejection  Remark"; "Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                     Editable = RejectionRemarkEditable;
                 }
-                field("Recovery Mode";"Recovery Mode")
+                field("Recovery Mode"; "Recovery Mode")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
             }
-            part(Control1000000002;"Loan Appraisal Salary Details")
+            part(Control1000000002; "Loan Appraisal Salary Details")
             {
                 Caption = 'Salary Details';
-                SubPageLink = "Loan No"=field("Loan  No."),
-                              "Client Code"=field("Client Code");
+                SubPageLink = "Loan No" = field("Loan  No."),
+                              "Client Code" = field("Client Code");
             }
-            part(Control1000000004;"Loans Guarantee Details")
+            part(Control1000000004; "Loans Guarantee Details")
             {
                 Caption = 'Guarantors  Detail';
-                SubPageLink = "Loan No"=field("Loan  No.");
+                SubPageLink = "Loan No" = field("Loan  No.");
             }
-            part(Control1000000005;"Loan Collateral Security")
+            part(Control1000000005; "Loan Collateral Security")
             {
                 Caption = 'Other Securities';
-                SubPageLink = "Loan No"=field("Loan  No.");
+                SubPageLink = "Loan No" = field("Loan  No.");
             }
             group("Debt Collection Details")
             {
                 Caption = 'Debt Collection Details';
-                field("Loan Under Debt Collection";"Loan Under Debt Collection")
+                field("Loan Under Debt Collection"; "Loan Under Debt Collection")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Debt Collector";"Loan Debt Collector")
+                field("Loan Debt Collector"; "Loan Debt Collector")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Debt Collector Interest %";"Loan Debt Collector Interest %")
+                field("Loan Debt Collector Interest %"; "Loan Debt Collector Interest %")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Debt Collection date Assigned";"Debt Collection date Assigned")
+                field("Debt Collection date Assigned"; "Debt Collection date Assigned")
                 {
                     ApplicationArea = Basic;
                 }
@@ -759,9 +768,9 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.","Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then begin
-                        Report.Run(51516352,true,false,LoanApp);
+                            Report.Run(51516352, true, false, LoanApp);
                         end;
                     end;
                 }
@@ -775,8 +784,8 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","Client Code");
-                        Report.Run(51516223,true,false,Cust);
+                        Cust.SetRange(Cust."No.", "Client Code");
+                        Report.Run(51516223, true, false, Cust);
                     end;
                 }
                 separator(Action1102760046)
@@ -793,11 +802,11 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","Client Code");
-                        Cust.SetFilter("Loan No. Filter","Loan  No.");
-                        Cust.SetFilter("Loan Product Filter","Loan Product Type");
+                        Cust.SetRange(Cust."No.", "Client Code");
+                        Cust.SetFilter("Loan No. Filter", "Loan  No.");
+                        Cust.SetFilter("Loan Product Filter", "Loan Product Type");
                         if Cust.Find('-') then
-                        Report.Run(51516531,true,false,Cust);
+                            Report.Run(51516531, true, false, Cust);
                     end;
                 }
                 action("View Schedule")
@@ -813,9 +822,9 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnAction()
                     begin
                         LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Loan  No.","Loan  No.");
+                        LoanApp.SetRange(LoanApp."Loan  No.", "Loan  No.");
                         if LoanApp.Find('-') then
-                        Report.Run(51516477,true,false,LoanApp);
+                            Report.Run(51516477, true, false, LoanApp);
                     end;
                 }
                 separator(Action1102755012)
@@ -829,8 +838,8 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Loan Offset Detail List-P";
-                    RunPageLink = "Loan No."=field("Loan  No."),
-                                  "Client Code"=field("Client Code");
+                    RunPageLink = "Loan No." = field("Loan  No."),
+                                  "Client Code" = field("Client Code");
                 }
                 separator(Action1102760039)
                 {
@@ -846,17 +855,17 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnAction()
                     begin
                         if Posted = true then
-                        Error('Loan already posted.');
-                        
-                        
-                        "Loan Disbursement Date":=Today;
+                            Error('Loan already posted.');
+
+
+                        "Loan Disbursement Date" := Today;
                         TestField("Loan Disbursement Date");
-                        "Posting Date":="Loan Disbursement Date";
-                        
-                        
-                        if Confirm('Are you sure you want to post this loan?',true) = false then
-                        exit;
-                        
+                        "Posting Date" := "Loan Disbursement Date";
+
+
+                        if Confirm('Are you sure you want to post this loan?', true) = false then
+                            exit;
+
                         /*//PRORATED DAYS
                         EndMonth:=CALCDATE('-1D',CALCDATE('1M',DMY2DATE(1,DATE2DMY("Posting Date",2),DATE2DMY("Posting Date",3))));
                         RemainingDays:=(EndMonth-"Posting Date")+1;
@@ -864,622 +873,620 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                         //PRORATED DAYS
                         
                         */
-                        if "Mode of Disbursement"="mode of disbursement"::"Bank Transfer" then begin
-                        
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PAYMENTS');
-                        GenJournalLine.SetRange("Journal Batch Name",'LOANS');
-                        GenJournalLine.DeleteAll;
-                        
-                        
-                        GenSetUp.Get();
-                        
-                        DActivity:='BOSA';
-                        DBranch:='';//PKKS'NAIROBI';
-                        LoanApps.Reset;
-                        LoanApps.SetRange(LoanApps."Loan  No.","Loan  No.");
-                        LoanApps.SetRange(LoanApps."System Created",false);
-                        LoanApps.SetFilter(LoanApps."Loan Status",'<>Rejected');
-                        if LoanApps.Find('-') then begin
-                        repeat
-                        LoanApps.CalcFields(LoanApps."Special Loan Amount");
-                        DActivity:='';
-                        DBranch:='';
-                        if Vend.Get(LoanApps."Client Code") then begin
-                        DActivity:=Vend."Global Dimension 1 Code";
-                        DBranch:=Vend."Global Dimension 2 Code";
-                        end;
-                        
-                        LoanDisbAmount:=LoanApps."Approved Amount";
-                        
-                        if (LoanApps."Special Loan Amount" > 0) and (LoanApps."Bridging Loan Posted" = false) then
-                        Error('Bridging Loans must be posted before the loans are disbursed. ' + LoanApps."Loan  No.");
-                        
-                        TCharges:=0;
-                        TopUpComm:=0;
-                        TotalTopupComm:=0;
-                        
-                        
-                        if LoanApps."Loan Status"<>LoanApps."loan status"::Approved then
-                        Error('Loan status must be Approved for you to post Loan. - ' + LoanApps."Loan  No.");
-                        
-                        if LoanApps.Posted = true then
-                        Error('Loan has already been posted. - ' + LoanApps."Loan  No.");
-                        
-                        
-                        LoanApps.CalcFields(LoanApps."Top Up Amount");
-                        
-                        
-                        RunningDate:="Posting Date";
-                        
-                        
-                        //Generate and post Approved Loan Amount
-                        if not GenBatch.Get('PAYMENTS','LOANS') then
-                        begin
-                        GenBatch.Init;
-                        GenBatch."Journal Template Name":='PAYMENTS';
-                        GenBatch.Name:='LOANS';
-                        GenBatch.Insert;
-                        end;
-                        
-                        PCharges.Reset;
-                        PCharges.SetRange(PCharges."Product Code",LoanApps."Loan Product Type");
-                        if PCharges.Find('-') then begin
-                        repeat
-                            PCharges.TestField(PCharges."G/L Account");
-                        
-                            LineNo:=LineNo+10000;
-                        
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::"G/L Account";
-                            GenJournalLine."Account No.":=PCharges."G/L Account";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine.Description:=PCharges.Description;
-                            if PCharges."Use Perc" = true then begin
-                            GenJournalLine.Amount:=(LoanDisbAmount * PCharges.Percentage/100) * -1;
-                            end  else begin
-                            GenJournalLine.Amount:=PCharges.Amount * -1;
-                        
-                           end;
-                        
-                        
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            //Don't top up charges on principle
-                            GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::Vendor;
-                            GenJournalLine."Bal. Account No.":=LoanApps."Account No";
-                            //Don't top up charges on principle
-                            GenJournalLine."Loan No":=LoanApps."Loan  No.";
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                            TCharges:=TCharges+(GenJournalLine.Amount*-1);
-                        
-                        
-                        until PCharges.Next = 0;
-                        end;
-                        
-                        
-                        
-                        
-                        //Don't top up charges on principle
-                        TCharges:=0;
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PAYMENTS';
-                        GenJournalLine."Journal Batch Name":='LOANS';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Employee;
-                        GenJournalLine."Account No.":="Client Code";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No.":="Loan  No.";
-                        GenJournalLine."External Document No.":="ID NO";
-                        GenJournalLine."Posting Date":="Posting Date";
-                        GenJournalLine.Description:='Principal Amount';
-                        GenJournalLine.Amount:=LoanDisbAmount+ TCharges;
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Share Capital";
-                        GenJournalLine."Loan No":=LoanApps."Loan  No.";
-                        GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                        GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        
-                        
-                        
-                        if LoanType.Get(LoanApps."Loan Product Type") then begin
-                        if LoanApps."Top Up Amount" > 0 then begin
-                        LoanTopUp.Reset;
-                        LoanTopUp.SetRange(LoanTopUp."Loan No.",LoanApps."Loan  No.");
-                        if LoanTopUp.Find('-') then begin
-                        repeat
-                            //Principle
-                            LineNo:=LineNo+10000;
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::Employee;
-                            GenJournalLine."Account No.":=LoanApps."Client Code";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine.Description:='Off Set By - ' +LoanApps."Loan  No.";
-                            GenJournalLine.Amount:=LoanTopUp."Principle Top Up" * -1;
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Interest Paid";
-                            GenJournalLine."Loan No":=LoanTopUp."Loan Top Up";
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
-                            //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                            //Principle
-                            LineNo:=LineNo+10000;
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                            GenJournalLine."Account No.":=LoanApps."Account No";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine.Description:='Off Set By - ' +LoanApps."Loan  No.";
-                            GenJournalLine.Amount:=LoanTopUp."Principle Top Up" ;
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Interest Paid";
-                            GenJournalLine."Loan No":=LoanTopUp."Loan Top Up";
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
-                            //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                        
-                            //Interest (Reversed if top up)
-                            if LoanType.Get(LoanApps."Loan Product Type") then begin
-                            LineNo:=LineNo+10000;
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::Employee;
-                            GenJournalLine."Account No.":=LoanApps."Client Code";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine.Description:='Interest paid ' + LoanApps."Loan  No.";
-                            GenJournalLine.Amount:=-LoanTopUp."Interest Top Up";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                            GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Insurance Contribution";
-                            GenJournalLine."Loan No":=LoanTopUp."Loan Top Up";
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                        
+                        if "Mode of Disbursement" = "mode of disbursement"::"Bank Transfer" then begin
+
+                            GenJournalLine.Reset;
+                            GenJournalLine.SetRange("Journal Template Name", 'PAYMENTS');
+                            GenJournalLine.SetRange("Journal Batch Name", 'LOANS');
+                            GenJournalLine.DeleteAll;
+
+
+                            GenSetUp.Get();
+
+                            DActivity := 'BOSA';
+                            DBranch := '';//PKKS'NAIROBI';
+                            LoanApps.Reset;
+                            LoanApps.SetRange(LoanApps."Loan  No.", "Loan  No.");
+                            LoanApps.SetRange(LoanApps."System Created", false);
+                            LoanApps.SetFilter(LoanApps."Loan Status", '<>Rejected');
+                            if LoanApps.Find('-') then begin
+                                repeat
+                                    LoanApps.CalcFields(LoanApps."Special Loan Amount");
+                                    DActivity := '';
+                                    DBranch := '';
+                                    if Vend.Get(LoanApps."Client Code") then begin
+                                        DActivity := Vend."Global Dimension 1 Code";
+                                        DBranch := Vend."Global Dimension 2 Code";
+                                    end;
+
+                                    LoanDisbAmount := LoanApps."Approved Amount";
+
+                                    if (LoanApps."Special Loan Amount" > 0) and (LoanApps."Bridging Loan Posted" = false) then
+                                        Error('Bridging Loans must be posted before the loans are disbursed. ' + LoanApps."Loan  No.");
+
+                                    TCharges := 0;
+                                    TopUpComm := 0;
+                                    TotalTopupComm := 0;
+
+
+                                    if LoanApps."Loan Status" <> LoanApps."loan status"::Approved then
+                                        Error('Loan status must be Approved for you to post Loan. - ' + LoanApps."Loan  No.");
+
+                                    if LoanApps.Posted = true then
+                                        Error('Loan has already been posted. - ' + LoanApps."Loan  No.");
+
+
+                                    LoanApps.CalcFields(LoanApps."Top Up Amount");
+
+
+                                    RunningDate := "Posting Date";
+
+
+                                    //Generate and post Approved Loan Amount
+                                    if not GenBatch.Get('PAYMENTS', 'LOANS') then begin
+                                        GenBatch.Init;
+                                        GenBatch."Journal Template Name" := 'PAYMENTS';
+                                        GenBatch.Name := 'LOANS';
+                                        GenBatch.Insert;
+                                    end;
+
+                                    PCharges.Reset;
+                                    PCharges.SetRange(PCharges."Product Code", LoanApps."Loan Product Type");
+                                    if PCharges.Find('-') then begin
+                                        repeat
+                                            PCharges.TestField(PCharges."G/L Account");
+
+                                            LineNo := LineNo + 10000;
+
+                                            GenJournalLine.Init;
+                                            GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                            GenJournalLine."Journal Batch Name" := 'LOANS';
+                                            GenJournalLine."Line No." := LineNo;
+                                            GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                                            GenJournalLine."Account No." := PCharges."G/L Account";
+                                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                                            GenJournalLine."Document No." := "Loan  No.";
+                                            GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                            GenJournalLine."Posting Date" := "Posting Date";
+                                            GenJournalLine.Description := PCharges.Description;
+                                            if PCharges."Use Perc" = true then begin
+                                                GenJournalLine.Amount := (LoanDisbAmount * PCharges.Percentage / 100) * -1;
+                                            end else begin
+                                                GenJournalLine.Amount := PCharges.Amount * -1;
+
+                                            end;
+
+
+                                            GenJournalLine.Validate(GenJournalLine.Amount);
+                                            //Don't top up charges on principle
+                                            GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::Vendor;
+                                            GenJournalLine."Bal. Account No." := LoanApps."Account No";
+                                            //Don't top up charges on principle
+                                            GenJournalLine."Loan No" := LoanApps."Loan  No.";
+                                            GenJournalLine.Validate(GenJournalLine.Amount);
+                                            GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                            GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                            if GenJournalLine.Amount <> 0 then
+                                                GenJournalLine.Insert;
+
+                                            TCharges := TCharges + (GenJournalLine.Amount * -1);
+
+
+                                        until PCharges.Next = 0;
+                                    end;
+
+
+
+
+                                    //Don't top up charges on principle
+                                    TCharges := 0;
+
+                                    LineNo := LineNo + 10000;
+
+                                    GenJournalLine.Init;
+                                    GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                    GenJournalLine."Journal Batch Name" := 'LOANS';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
+                                    GenJournalLine."Account No." := "Client Code";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine."Document No." := "Loan  No.";
+                                    GenJournalLine."External Document No." := "ID NO";
+                                    GenJournalLine."Posting Date" := "Posting Date";
+                                    GenJournalLine.Description := 'Principal Amount';
+                                    GenJournalLine.Amount := LoanDisbAmount + TCharges;
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Share Capital";
+                                    GenJournalLine."Loan No" := LoanApps."Loan  No.";
+                                    GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+
+
+
+                                    if LoanType.Get(LoanApps."Loan Product Type") then begin
+                                        if LoanApps."Top Up Amount" > 0 then begin
+                                            LoanTopUp.Reset;
+                                            LoanTopUp.SetRange(LoanTopUp."Loan No.", LoanApps."Loan  No.");
+                                            if LoanTopUp.Find('-') then begin
+                                                repeat
+                                                    //Principle
+                                                    LineNo := LineNo + 10000;
+                                                    GenJournalLine.Init;
+                                                    GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                    GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                    GenJournalLine."Line No." := LineNo;
+                                                    GenJournalLine."Document No." := "Loan  No.";
+                                                    GenJournalLine."Posting Date" := "Posting Date";
+                                                    GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
+                                                    GenJournalLine."Account No." := LoanApps."Client Code";
+                                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                    GenJournalLine.Description := 'Off Set By - ' + LoanApps."Loan  No.";
+                                                    GenJournalLine.Amount := LoanTopUp."Principle Top Up" * -1;
+                                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Interest Paid";
+                                                    GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
+                                                    GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                                    //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
+                                                    //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
+                                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                    if GenJournalLine.Amount <> 0 then
+                                                        GenJournalLine.Insert;
+                                                    //Principle
+                                                    LineNo := LineNo + 10000;
+                                                    GenJournalLine.Init;
+                                                    GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                    GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                    GenJournalLine."Line No." := LineNo;
+                                                    GenJournalLine."Document No." := "Loan  No.";
+                                                    GenJournalLine."Posting Date" := "Posting Date";
+                                                    GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                                    GenJournalLine."Account No." := LoanApps."Account No";
+                                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                    GenJournalLine.Description := 'Off Set By - ' + LoanApps."Loan  No.";
+                                                    GenJournalLine.Amount := LoanTopUp."Principle Top Up";
+                                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Interest Paid";
+                                                    GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
+                                                    GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                                    //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
+                                                    //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
+                                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                    if GenJournalLine.Amount <> 0 then
+                                                        GenJournalLine.Insert;
+
+
+                                                    //Interest (Reversed if top up)
+                                                    if LoanType.Get(LoanApps."Loan Product Type") then begin
+                                                        LineNo := LineNo + 10000;
+                                                        GenJournalLine.Init;
+                                                        GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                        GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                        GenJournalLine."Line No." := LineNo;
+                                                        GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
+                                                        GenJournalLine."Account No." := LoanApps."Client Code";
+                                                        GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                        GenJournalLine."Document No." := "Loan  No.";
+                                                        GenJournalLine."Posting Date" := "Posting Date";
+                                                        GenJournalLine.Description := 'Interest paid ' + LoanApps."Loan  No.";
+                                                        GenJournalLine.Amount := -LoanTopUp."Interest Top Up";
+                                                        GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                        GenJournalLine.Validate(GenJournalLine.Amount);
+                                                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                                                        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Contribution";
+                                                        GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
+                                                        GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                        GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                        if GenJournalLine.Amount <> 0 then
+                                                            GenJournalLine.Insert;
+
+
+                                                    end;
+                                                    if LoanType.Get(LoanApps."Loan Product Type") then begin
+                                                        LineNo := LineNo + 10000;
+                                                        GenJournalLine.Init;
+                                                        GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                        GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                        GenJournalLine."Line No." := LineNo;
+                                                        GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                        GenJournalLine."Document No." := "Loan  No.";
+                                                        GenJournalLine."Posting Date" := "Posting Date";
+                                                        GenJournalLine.Description := 'Interest paid ' + LoanApps."Loan  No.";
+                                                        GenJournalLine.Amount := LoanTopUp."Interest Top Up";
+                                                        GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                        GenJournalLine.Validate(GenJournalLine.Amount);
+                                                        GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                                        GenJournalLine."Account No." := LoanApps."Account No";
+                                                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                                                        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Contribution";
+                                                        GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
+                                                        GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                        GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                        if GenJournalLine.Amount <> 0 then
+                                                            GenJournalLine.Insert;
+
+
+                                                    end;
+
+                                                    //Commision
+                                                    if LoanType.Get(LoanApps."Loan Product Type") then begin
+                                                        if LoanType."Top Up Commision" > 0 then begin
+                                                            LineNo := LineNo + 10000;
+                                                            GenJournalLine.Init;
+                                                            GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                            GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                            GenJournalLine."Line No." := LineNo;
+                                                            GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                                                            GenJournalLine."Account No." := LoanApps."Account No";
+
+                                                            GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"G/L Account";
+                                                            GenJournalLine."Bal. Account No." := LoanType."Top Up Commision Account";
+                                                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                            GenJournalLine."Document No." := "Loan  No.";
+                                                            GenJournalLine."Posting Date" := "Posting Date";
+                                                            GenJournalLine.Description := 'Commision on Loan Top Up';
+                                                            TopUpComm := (LoanTopUp."Principle Top Up") * (LoanType."Top Up Commision" / 100);
+                                                            TotalTopupComm := TotalTopupComm + TopUpComm;
+                                                            GenJournalLine.Amount := TopUpComm * -1;
+                                                            GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                            GenJournalLine.Validate(GenJournalLine.Amount);
+                                                            GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                            GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+
+                                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                            if GenJournalLine.Amount <> 0 then
+                                                                GenJournalLine.Insert;
+
+                                                        end;
+                                                    end;
+                                                until LoanTopUp.Next = 0;
+                                            end;
+                                        end;
+                                    end;
+
+                                    BatchTopUpAmount := BatchTopUpAmount + LoanApps."Top Up Amount";
+                                    BatchTopUpComm := BatchTopUpComm + TotalTopupComm;
+                                until LoanApps.Next = 0;
                             end;
-                            if LoanType.Get(LoanApps."Loan Product Type") then begin
-                            LineNo:=LineNo+10000;
+
+                            LineNo := LineNo + 10000;
                             GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                            GenJournalLine."Journal Batch Name" := 'LOANS';
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                            GenJournalLine."Account No." := LoanApps."Account No";
+                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Document No." := "Loan  No.";
+                            GenJournalLine."External Document No." := "ID NO";
+                            GenJournalLine."Posting Date" := "Posting Date";
+                            GenJournalLine.Description := 'Principal Amount';
+                            GenJournalLine.Amount := (LoanApps."Approved Amount") * -1;
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                            GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert;
+                        end;
+
+
+
+                        if "Mode of Disbursement" = "mode of disbursement"::Cheque then begin
+
+                            GenJournalLine.Reset;
+                            GenJournalLine.SetRange("Journal Template Name", 'PAYMENTS');
+                            GenJournalLine.SetRange("Journal Batch Name", 'LOANS');
+                            GenJournalLine.DeleteAll;
+
+
+                            GenSetUp.Get();
+
+                            DActivity := 'BOSA';
+                            DBranch := '';//PKKS'NAIROBI';
+                            LoanApps.Reset;
+                            LoanApps.SetRange(LoanApps."Loan  No.", "Loan  No.");
+                            LoanApps.SetRange(LoanApps."System Created", false);
+                            LoanApps.SetFilter(LoanApps."Loan Status", '<>Rejected');
+                            if LoanApps.Find('-') then begin
+                                repeat
+                                    LoanApps.CalcFields(LoanApps."Special Loan Amount");
+
+
+
+                                    DActivity := '';
+                                    DBranch := '';
+                                    if Vend.Get(LoanApps."Client Code") then begin
+                                        DActivity := Vend."Global Dimension 1 Code";
+                                        DBranch := Vend."Global Dimension 2 Code";
+                                    end;
+
+
+
+                                    LoanDisbAmount := LoanApps."Approved Amount";
+
+                                    if (LoanApps."Special Loan Amount" > 0) and (LoanApps."Bridging Loan Posted" = false) then
+                                        Error('Bridging Loans must be posted before the loans are disbursed. ' + LoanApps."Loan  No.");
+
+                                    TCharges := 0;
+                                    TopUpComm := 0;
+                                    TotalTopupComm := 0;
+
+
+                                    if LoanApps."Loan Status" <> LoanApps."loan status"::Approved then
+                                        Error('Loan status must be Approved for you to post Loan. - ' + LoanApps."Loan  No.");
+
+                                    if LoanApps.Posted = true then
+                                        Error('Loan has already been posted. - ' + LoanApps."Loan  No.");
+
+
+                                    LoanApps.CalcFields(LoanApps."Top Up Amount");
+
+
+                                    RunningDate := "Posting Date";
+
+
+                                    //Generate and post Approved Loan Amount
+                                    if not GenBatch.Get('PAYMENTS', 'LOANS') then begin
+                                        GenBatch.Init;
+                                        GenBatch."Journal Template Name" := 'PAYMENTS';
+                                        GenBatch.Name := 'LOANS';
+                                        GenBatch.Insert;
+                                    end;
+
+                                    PCharges.Reset;
+                                    PCharges.SetRange(PCharges."Product Code", LoanApps."Loan Product Type");
+                                    if PCharges.Find('-') then begin
+                                        repeat
+                                            PCharges.TestField(PCharges."G/L Account");
+
+                                            LineNo := LineNo + 10000;
+
+                                            GenJournalLine.Init;
+                                            GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                            GenJournalLine."Journal Batch Name" := 'LOANS';
+                                            GenJournalLine."Line No." := LineNo;
+                                            GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                                            GenJournalLine."Account No." := PCharges."G/L Account";
+                                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                                            GenJournalLine."Document No." := "Loan  No.";
+                                            GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                            GenJournalLine."Posting Date" := "Posting Date";
+                                            GenJournalLine.Description := PCharges.Description;
+                                            if PCharges."Use Perc" = true then begin
+                                                GenJournalLine.Amount := (LoanDisbAmount * PCharges.Percentage / 100) * -1;
+                                            end else begin
+                                                GenJournalLine.Amount := PCharges.Amount * -1;
+
+                                            end;
+
+
+                                            GenJournalLine.Validate(GenJournalLine.Amount);
+                                            //Don't top up charges on principle
+                                            //Don't top up charges on principle
+                                            GenJournalLine."Loan No" := LoanApps."Loan  No.";
+                                            GenJournalLine.Validate(GenJournalLine.Amount);
+                                            GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                            GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                            if GenJournalLine.Amount <> 0 then
+                                                GenJournalLine.Insert;
+
+                                            TCharges := TCharges + (GenJournalLine.Amount * -1);
+
+
+                                        until PCharges.Next = 0;
+                                    end;
+
+
+
+
+                                    //Don't top up charges on principle
+                                    TCharges := 0;
+
+                                    LineNo := LineNo + 10000;
+
+                                    GenJournalLine.Init;
+                                    GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                    GenJournalLine."Journal Batch Name" := 'LOANS';
+                                    GenJournalLine."Line No." := LineNo;
+                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
+                                    GenJournalLine."Account No." := "Client Code";
+                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                    GenJournalLine."Document No." := "Loan  No.";
+                                    GenJournalLine."External Document No." := "ID NO";
+                                    GenJournalLine."Posting Date" := "Posting Date";
+                                    GenJournalLine.Description := 'Principal Amount';
+                                    GenJournalLine.Amount := LoanDisbAmount + TCharges;
+                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Share Capital";
+                                    GenJournalLine."Loan No" := LoanApps."Loan  No.";
+                                    GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                    if GenJournalLine.Amount <> 0 then
+                                        GenJournalLine.Insert;
+
+
+
+
+                                    if LoanType.Get(LoanApps."Loan Product Type") then begin
+                                        if LoanApps."Top Up Amount" > 0 then begin
+                                            LoanTopUp.Reset;
+                                            LoanTopUp.SetRange(LoanTopUp."Loan No.", LoanApps."Loan  No.");
+                                            if LoanTopUp.Find('-') then begin
+                                                repeat
+                                                    //Principle
+                                                    LineNo := LineNo + 10000;
+                                                    GenJournalLine.Init;
+                                                    GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                    GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                    GenJournalLine."Line No." := LineNo;
+                                                    GenJournalLine."Document No." := "Loan  No.";
+                                                    GenJournalLine."Posting Date" := "Posting Date";
+                                                    GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                    GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
+                                                    GenJournalLine."Account No." := LoanApps."Client Code";
+                                                    GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                    GenJournalLine.Description := 'Off Set By - ' + LoanApps."Loan  No.";
+                                                    GenJournalLine.Amount := LoanTopUp."Principle Top Up" * -1;
+                                                    GenJournalLine.Validate(GenJournalLine.Amount);
+                                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Interest Paid";
+                                                    GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
+                                                    GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                    GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                                    // GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
+                                                    //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
+                                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                    GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                    if GenJournalLine.Amount <> 0 then
+                                                        GenJournalLine.Insert;
+
+
+                                                    //Interest (Reversed if top up)
+                                                    if LoanType.Get(LoanApps."Loan Product Type") then begin
+                                                        LineNo := LineNo + 10000;
+                                                        GenJournalLine.Init;
+                                                        GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                        GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                        GenJournalLine."Line No." := LineNo;
+                                                        GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
+                                                        GenJournalLine."Account No." := LoanApps."Client Code";
+                                                        GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                        GenJournalLine."Document No." := "Loan  No.";
+                                                        GenJournalLine."Posting Date" := "Posting Date";
+                                                        GenJournalLine.Description := 'Interestpaid ' + LoanApps."Loan  No.";
+                                                        GenJournalLine.Amount := -LoanTopUp."Interest Top Up";
+                                                        GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                        GenJournalLine.Validate(GenJournalLine.Amount);
+                                                        //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
+                                                        //GenJournalLine."Bal. Account No.":=LoanType."Receivable Interest Account";
+                                                        GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
+                                                        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Insurance Contribution";
+                                                        GenJournalLine."Loan No" := LoanTopUp."Loan Top Up";
+                                                        GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                        GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                        if GenJournalLine.Amount <> 0 then
+                                                            GenJournalLine.Insert;
+
+
+                                                    end;
+
+                                                    //Commision
+                                                    if LoanType.Get(LoanApps."Loan Product Type") then begin
+                                                        if LoanType."Top Up Commision" > 0 then begin
+                                                            LineNo := LineNo + 10000;
+                                                            GenJournalLine.Init;
+                                                            GenJournalLine."Journal Template Name" := 'PAYMENTS';
+                                                            GenJournalLine."Journal Batch Name" := 'LOANS';
+                                                            GenJournalLine."Line No." := LineNo;
+                                                            GenJournalLine."Account Type" := GenJournalLine."account type"::"G/L Account";
+                                                            GenJournalLine."Account No." := LoanType."Top Up Commision Account";
+                                                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                                                            GenJournalLine."Document No." := "Loan  No.";
+                                                            GenJournalLine."Posting Date" := "Posting Date";
+                                                            GenJournalLine.Description := 'Commision on Loan Top Up';
+                                                            TopUpComm := (LoanTopUp."Principle Top Up") * (LoanType."Top Up Commision" / 100);
+                                                            TotalTopupComm := TotalTopupComm + TopUpComm;
+                                                            GenJournalLine.Amount := TopUpComm * -1;
+                                                            GenJournalLine."External Document No." := LoanApps."Loan  No.";
+                                                            GenJournalLine.Validate(GenJournalLine.Amount);
+                                                            GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+                                                            GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+                                                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
+                                                            //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
+
+                                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
+                                                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
+                                                            if GenJournalLine.Amount <> 0 then
+                                                                GenJournalLine.Insert;
+
+                                                        end;
+                                                    end;
+                                                until LoanTopUp.Next = 0;
+                                            end;
+                                        end;
+                                    end;
+
+                                    BatchTopUpAmount := BatchTopUpAmount + LoanApps."Top Up Amount";
+                                    BatchTopUpComm := BatchTopUpComm + TotalTopupComm;
+                                until LoanApps.Next = 0;
+                            end;
+
+                            LineNo := LineNo + 10000;
+                            /*Disbursement.RESET;
+                            Disbursement.SETRANGE(Disbursement."Loan Number","Loan  No.");
+                            Disbursement.SETRANGE(Disbursement."Disbursement Date","Loan Disbursement Date");
+                            IF Disbursement.FIND('-') THEN BEGIN
+                            REPEAT
+                            Disbursement.Posted:=TRUE;
+                            Disbursement.MODIFY;
+                            GenJournalLine.INIT;
                             GenJournalLine."Journal Template Name":='PAYMENTS';
                             GenJournalLine."Journal Batch Name":='LOANS';
                             GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Account Type":=Disbursement."Disbursement Account Type";
+                            GenJournalLine."Account No.":=Disbursement."Disbursement Account No.";
+                            GenJournalLine.VALIDATE(GenJournalLine."Account No.");
                             GenJournalLine."Document No.":="Loan  No.";
+                            GenJournalLine."External Document No.":="ID NO";
                             GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine.Description:='Interest paid ' + LoanApps."Loan  No.";
-                            GenJournalLine.Amount:=LoanTopUp."Interest Top Up";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                            GenJournalLine."Account No.":=LoanApps."Account No";
-                            GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                            GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Insurance Contribution";
-                            GenJournalLine."Loan No":=LoanTopUp."Loan Top Up";
+                            GenJournalLine.Description:='Principal Amount';
+                            GenJournalLine.Amount:=((LoanApps."Approved Amount")-(BatchTopUpAmount+BatchTopUpComm+TCharges))*-1;
+                            GenJournalLine.VALIDATE(GenJournalLine.Amount);
                             GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
                             GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                        
-                            end;
-                        
-                            //Commision
-                            if LoanType.Get(LoanApps."Loan Product Type") then begin
-                            if LoanType."Top Up Commision" > 0 then begin
-                            LineNo:=LineNo+10000;
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                            GenJournalLine."Account No.":=LoanApps."Account No";
-                        
-                            GenJournalLine."Bal. Account Type":=GenJournalLine."bal. account type"::"G/L Account";
-                            GenJournalLine."Bal. Account No.":=LoanType."Top Up Commision Account";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine.Description:='Commision on Loan Top Up';
-                            TopUpComm:=(LoanTopUp."Principle Top Up") * (LoanType."Top Up Commision"/100);
-                            TotalTopupComm:=TotalTopupComm+TopUpComm;
-                            GenJournalLine.Amount:=TopUpComm*-1;
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                        
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                            end;
-                            end;
-                        until LoanTopUp.Next = 0;
+                            GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
+                            GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
+                            IF GenJournalLine.Amount<>0 THEN
+                            GenJournalLine.INSERT;
+                            UNTIL Disbursement.NEXT=0;
+                            END;*/
                         end;
-                        end;
-                        end;
-                        
-                        BatchTopUpAmount:=BatchTopUpAmount+LoanApps."Top Up Amount";
-                        BatchTopUpComm:=BatchTopUpComm+TotalTopupComm;
-                        until LoanApps.Next = 0;
-                        end;
-                        
-                        LineNo:=LineNo+10000;
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PAYMENTS';
-                        GenJournalLine."Journal Batch Name":='LOANS';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":=LoanApps."Account No";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No.":="Loan  No.";
-                        GenJournalLine."External Document No.":="ID NO";
-                        GenJournalLine."Posting Date":="Posting Date";
-                        GenJournalLine.Description:='Principal Amount';
-                        GenJournalLine.Amount:=(LoanApps."Approved Amount")*-1;
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                        GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        end;
-                        
-                        
-                        
-                        if "Mode of Disbursement"="mode of disbursement"::Cheque then begin
-                        
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PAYMENTS');
-                        GenJournalLine.SetRange("Journal Batch Name",'LOANS');
-                        GenJournalLine.DeleteAll;
-                        
-                        
-                        GenSetUp.Get();
-                        
-                        DActivity:='BOSA';
-                        DBranch:='';//PKKS'NAIROBI';
-                        LoanApps.Reset;
-                        LoanApps.SetRange(LoanApps."Loan  No.","Loan  No.");
-                        LoanApps.SetRange(LoanApps."System Created",false);
-                        LoanApps.SetFilter(LoanApps."Loan Status",'<>Rejected');
-                        if LoanApps.Find('-') then begin
-                        repeat
-                        LoanApps.CalcFields(LoanApps."Special Loan Amount");
-                        
-                        
-                        
-                        DActivity:='';
-                        DBranch:='';
-                        if Vend.Get(LoanApps."Client Code") then begin
-                        DActivity:=Vend."Global Dimension 1 Code";
-                        DBranch:=Vend."Global Dimension 2 Code";
-                        end;
-                        
-                        
-                        
-                        LoanDisbAmount:=LoanApps."Approved Amount";
-                        
-                        if (LoanApps."Special Loan Amount" > 0) and (LoanApps."Bridging Loan Posted" = false) then
-                        Error('Bridging Loans must be posted before the loans are disbursed. ' + LoanApps."Loan  No.");
-                        
-                        TCharges:=0;
-                        TopUpComm:=0;
-                        TotalTopupComm:=0;
-                        
-                        
-                        if LoanApps."Loan Status"<>LoanApps."loan status"::Approved then
-                        Error('Loan status must be Approved for you to post Loan. - ' + LoanApps."Loan  No.");
-                        
-                        if LoanApps.Posted = true then
-                        Error('Loan has already been posted. - ' + LoanApps."Loan  No.");
-                        
-                        
-                        LoanApps.CalcFields(LoanApps."Top Up Amount");
-                        
-                        
-                        RunningDate:="Posting Date";
-                        
-                        
-                        //Generate and post Approved Loan Amount
-                        if not GenBatch.Get('PAYMENTS','LOANS') then
-                        begin
-                        GenBatch.Init;
-                        GenBatch."Journal Template Name":='PAYMENTS';
-                        GenBatch.Name:='LOANS';
-                        GenBatch.Insert;
-                        end;
-                        
-                        PCharges.Reset;
-                        PCharges.SetRange(PCharges."Product Code",LoanApps."Loan Product Type");
-                        if PCharges.Find('-') then begin
-                        repeat
-                            PCharges.TestField(PCharges."G/L Account");
-                        
-                            LineNo:=LineNo+10000;
-                        
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::"G/L Account";
-                            GenJournalLine."Account No.":=PCharges."G/L Account";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine.Description:=PCharges.Description;
-                            if PCharges."Use Perc" = true then begin
-                            GenJournalLine.Amount:=(LoanDisbAmount * PCharges.Percentage/100) * -1;
-                            end  else begin
-                            GenJournalLine.Amount:=PCharges.Amount * -1;
-                        
-                           end;
-                        
-                        
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            //Don't top up charges on principle
-                            //Don't top up charges on principle
-                            GenJournalLine."Loan No":=LoanApps."Loan  No.";
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                            TCharges:=TCharges+(GenJournalLine.Amount*-1);
-                        
-                        
-                        until PCharges.Next = 0;
-                        end;
-                        
-                        
-                        
-                        
-                        //Don't top up charges on principle
-                        TCharges:=0;
-                        
-                        LineNo:=LineNo+10000;
-                        
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PAYMENTS';
-                        GenJournalLine."Journal Batch Name":='LOANS';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Employee;
-                        GenJournalLine."Account No.":="Client Code";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Document No.":="Loan  No.";
-                        GenJournalLine."External Document No.":="ID NO";
-                        GenJournalLine."Posting Date":="Posting Date";
-                        GenJournalLine.Description:='Principal Amount';
-                        GenJournalLine.Amount:=LoanDisbAmount+ TCharges;
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Share Capital";
-                        GenJournalLine."Loan No":=LoanApps."Loan  No.";
-                        GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                        GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                        GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                        
-                        
-                        
-                        
-                        if LoanType.Get(LoanApps."Loan Product Type") then begin
-                        if LoanApps."Top Up Amount" > 0 then begin
-                        LoanTopUp.Reset;
-                        LoanTopUp.SetRange(LoanTopUp."Loan No.",LoanApps."Loan  No.");
-                        if LoanTopUp.Find('-') then begin
-                        repeat
-                            //Principle
-                            LineNo:=LineNo+10000;
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::Employee;
-                            GenJournalLine."Account No.":=LoanApps."Client Code";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine.Description:='Off Set By - ' +LoanApps."Loan  No.";
-                            GenJournalLine.Amount:=LoanTopUp."Principle Top Up" * -1;
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Interest Paid";
-                            GenJournalLine."Loan No":=LoanTopUp."Loan Top Up";
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                           // GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
-                            //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                        
-                            //Interest (Reversed if top up)
-                            if LoanType.Get(LoanApps."Loan Product Type") then begin
-                            LineNo:=LineNo+10000;
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::Employee;
-                            GenJournalLine."Account No.":=LoanApps."Client Code";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine.Description:='Interestpaid ' + LoanApps."Loan  No.";
-                            GenJournalLine.Amount:=-LoanTopUp."Interest Top Up";
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::"G/L Account";
-                            //GenJournalLine."Bal. Account No.":=LoanType."Receivable Interest Account";
-                            GenJournalLine.Validate(GenJournalLine."Bal. Account No.");
-                            GenJournalLine."Transaction Type":=GenJournalLine."transaction type"::"Insurance Contribution";
-                            GenJournalLine."Loan No":=LoanTopUp."Loan Top Up";
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                        
-                            end;
-                        
-                            //Commision
-                            if LoanType.Get(LoanApps."Loan Product Type") then begin
-                            if LoanType."Top Up Commision" > 0 then begin
-                            LineNo:=LineNo+10000;
-                            GenJournalLine.Init;
-                            GenJournalLine."Journal Template Name":='PAYMENTS';
-                            GenJournalLine."Journal Batch Name":='LOANS';
-                            GenJournalLine."Line No.":=LineNo;
-                            GenJournalLine."Account Type":=GenJournalLine."account type"::"G/L Account";
-                            GenJournalLine."Account No.":=LoanType."Top Up Commision Account";
-                            GenJournalLine.Validate(GenJournalLine."Account No.");
-                            GenJournalLine."Document No.":="Loan  No.";
-                            GenJournalLine."Posting Date":="Posting Date";
-                            GenJournalLine.Description:='Commision on Loan Top Up';
-                            TopUpComm:=(LoanTopUp."Principle Top Up") * (LoanType."Top Up Commision"/100);
-                            TotalTopupComm:=TotalTopupComm+TopUpComm;
-                            GenJournalLine.Amount:=TopUpComm*-1;
-                            GenJournalLine."External Document No.":=LoanApps."Loan  No.";
-                            GenJournalLine.Validate(GenJournalLine.Amount);
-                            GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                            GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                            //GenJournalLine."Bal. Account Type":=GenJournalLine."Bal. Account Type"::Vendor;
-                            //GenJournalLine."Bal. Account No.":=LoanApps."Account No";
-                        
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 1 Code");
-                            GenJournalLine.Validate(GenJournalLine."Shortcut Dimension 2 Code");
-                            if GenJournalLine.Amount<>0 then
-                            GenJournalLine.Insert;
-                        
-                            end;
-                            end;
-                        until LoanTopUp.Next = 0;
-                        end;
-                        end;
-                        end;
-                        
-                        BatchTopUpAmount:=BatchTopUpAmount+LoanApps."Top Up Amount";
-                        BatchTopUpComm:=BatchTopUpComm+TotalTopupComm;
-                        until LoanApps.Next = 0;
-                        end;
-                        
-                        LineNo:=LineNo+10000;
-                        /*Disbursement.RESET;
-                        Disbursement.SETRANGE(Disbursement."Loan Number","Loan  No.");
-                        Disbursement.SETRANGE(Disbursement."Disbursement Date","Loan Disbursement Date");
-                        IF Disbursement.FIND('-') THEN BEGIN
-                        REPEAT
-                        Disbursement.Posted:=TRUE;
-                        Disbursement.MODIFY;
-                        GenJournalLine.INIT;
-                        GenJournalLine."Journal Template Name":='PAYMENTS';
-                        GenJournalLine."Journal Batch Name":='LOANS';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Account Type":=Disbursement."Disbursement Account Type";
-                        GenJournalLine."Account No.":=Disbursement."Disbursement Account No.";
-                        GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                        GenJournalLine."Document No.":="Loan  No.";
-                        GenJournalLine."External Document No.":="ID NO";
-                        GenJournalLine."Posting Date":="Posting Date";
-                        GenJournalLine.Description:='Principal Amount';
-                        GenJournalLine.Amount:=((LoanApps."Approved Amount")-(BatchTopUpAmount+BatchTopUpComm+TCharges))*-1;
-                        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                        GenJournalLine."Shortcut Dimension 1 Code":=DActivity;
-                        GenJournalLine."Shortcut Dimension 2 Code":=DBranch;
-                        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
-                        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
-                        IF GenJournalLine.Amount<>0 THEN
-                        GenJournalLine.INSERT;
-                        UNTIL Disbursement.NEXT=0;
-                        END;*/
-                        end;
-                        
-                        
-                        
+
+
+
                         //Post New
                         GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PAYMENTS');
-                        GenJournalLine.SetRange("Journal Batch Name",'LOANS');
+                        GenJournalLine.SetRange("Journal Template Name", 'PAYMENTS');
+                        GenJournalLine.SetRange("Journal Batch Name", 'LOANS');
                         if GenJournalLine.Find('-') then begin
-                        Codeunit.Run(Codeunit::Codeunit50013,GenJournalLine);
+                            Codeunit.Run(Codeunit::Codeunit50013, GenJournalLine);
                         end;
-                        
+
                         //Post New
-                        
-                        Posted:=true;
+
+                        Posted := true;
                         Modify;
-                        
-                        
-                        
+
+
+
                         Message('Loan posted successfully.');
-                        
+
                         //Post
-                        
+
                         LoanAppPermisions();
                         //CurrForm.EDITABLE:=TRUE;
                         //end;
@@ -1512,9 +1519,9 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                               ApprovalEntries.RUN;
                         END;
                         */
-                        
-                        DocumentType:=Documenttype::Loan;
-                        ApprovalEntries.Setfilters(Database::"Control-Information",DocumentType,"Loan  No.");
+
+                        DocumentType := Documenttype::Loan;
+                        ApprovalEntries.Setfilters(Database::"Control-Information", DocumentType, "Loan  No.");
                         ApprovalEntries.Run;
 
                     end;
@@ -1531,49 +1538,49 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                         /*
-                        SalDetails.RESET;
-                        SalDetails.SETRANGE(SalDetails."Loan No","Loan  No.");
-                        IF SalDetails.FIND('-')=FALSE THEN BEGIN
-                        ERROR('Please Insert Loan Applicant Salary Information');
-                        END;
-                           */
+                        /*
+                       SalDetails.RESET;
+                       SalDetails.SETRANGE(SalDetails."Loan No","Loan  No.");
+                       IF SalDetails.FIND('-')=FALSE THEN BEGIN
+                       ERROR('Please Insert Loan Applicant Salary Information');
+                       END;
+                          */
                         if "Loan Product Type" <> 'SDV' then begin
-                        LGuarantors.Reset;
-                        LGuarantors.SetRange(LGuarantors."Loan No","Loan  No.");
-                        if LGuarantors.Find('-')=false then begin
-                        Error('Please Insert Loan Applicant Guarantor Information');
-                        end;
+                            LGuarantors.Reset;
+                            LGuarantors.SetRange(LGuarantors."Loan No", "Loan  No.");
+                            if LGuarantors.Find('-') = false then begin
+                                Error('Please Insert Loan Applicant Guarantor Information');
+                            end;
                         end;
                         //TESTFIELD("Approved Amount");
                         TestField("Loan Product Type");
                         TestField("Mode of Disbursement");
-                        
-                              /*
-                        IF "Mode of Disbursement"="Mode of Disbursement"::Cheque THEN
-                        ERROR('Mode of disbursment cannot be cheque, all loans are disbursed through FOSA')
-                        
-                        ELSE IF  ("Mode of Disbursement"="Mode of Disbursement"::"Bank Transfer") AND
-                         ("Account No"='') THEN
-                         ERROR('Member has no FOSA Savings Account linked to loan thus no means of disbursing the loan,')
-                        
-                        ELSE IF  (Source=Source::BOSA) AND ("Mode of Disbursement"="Mode of Disbursement"::"FOSA Loans")  THEN
-                         ERROR('This is not a FOSA loan thus select correct mode of disbursement')
-                        
-                        ELSE IF ("Mode of Disbursement"="Mode of Disbursement"::" ")THEN
-                        ERROR('Kindly specify mode of disbursement');
-                                  */
-                        
-                        
+
+                        /*
+                  IF "Mode of Disbursement"="Mode of Disbursement"::Cheque THEN
+                  ERROR('Mode of disbursment cannot be cheque, all loans are disbursed through FOSA')
+
+                  ELSE IF  ("Mode of Disbursement"="Mode of Disbursement"::"Bank Transfer") AND
+                   ("Account No"='') THEN
+                   ERROR('Member has no FOSA Savings Account linked to loan thus no means of disbursing the loan,')
+
+                  ELSE IF  (Source=Source::BOSA) AND ("Mode of Disbursement"="Mode of Disbursement"::"FOSA Loans")  THEN
+                   ERROR('This is not a FOSA loan thus select correct mode of disbursement')
+
+                  ELSE IF ("Mode of Disbursement"="Mode of Disbursement"::" ")THEN
+                  ERROR('Kindly specify mode of disbursement');
+                            */
+
+
                         /*
                         RSchedule.RESET;
                         RSchedule.SETRANGE(RSchedule."Loan No.","Loan  No.");
                         IF NOT RSchedule.FIND('-') THEN
                         ERROR('Loan Schedule must be generated and confirmed before loan is attached to batch');
                           */
-                        
+
                         /*
                         LBatches.RESET;
                         LBatches.SETRANGE(LBatches."Loan  No.","Loan  No.");
@@ -1585,17 +1592,17 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
                         //End allocate batch number
                         //ApprovalMgt.SendLoanApprRequest(LBatches);
                         //ApprovalMgt.SendLoanApprRequest(Rec);
-                          /* LGuarantors.RESET;
-                           LGuarantors.SETRANGE(LGuarantors."Loan No","Loan  No.");
-                           IF LGuarantors.FINDFIRST THEN BEGIN
-                           REPEAT
-                           IF Cust.GET(LGuarantors."Member No") THEN
-                           IF  Cust."Mobile Phone No"<>'' THEN
-                           Sms.SendSms('Guarantors' ,Cust."Mobile Phone No",'You have guaranteed '+ "Client Name" + ' ' + "Loan Product Type" +' of KES. '+FORMAT("Approved Amount")+
-                           '. Call 0720000000 if in dispute. Ekeza Sacco.',Cust."No.");
-                           UNTIL LGuarantors.NEXT =0;
-                           END
-                            */
+                        /* LGuarantors.RESET;
+                         LGuarantors.SETRANGE(LGuarantors."Loan No","Loan  No.");
+                         IF LGuarantors.FINDFIRST THEN BEGIN
+                         REPEAT
+                         IF Cust.GET(LGuarantors."Member No") THEN
+                         IF  Cust."Mobile Phone No"<>'' THEN
+                         Sms.SendSms('Guarantors' ,Cust."Mobile Phone No",'You have guaranteed '+ "Client Name" + ' ' + "Loan Product Type" +' of KES. '+FORMAT("Approved Amount")+
+                         '. Call 0720000000 if in dispute. Ekeza Sacco.',Cust."No.");
+                         UNTIL LGuarantors.NEXT =0;
+                         END
+                          */
 
                     end;
                 }
@@ -1610,9 +1617,9 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                         //ApprovalMgt.SendLoanApprRequest(Rec);
+                        //ApprovalMgt.SendLoanApprRequest(Rec);
                     end;
                 }
             }
@@ -1631,7 +1638,7 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Source:=Source::" ";
+        Source := Source::" ";
     end;
 
     trigger OnNextRecord(Steps: Integer): Integer
@@ -1643,7 +1650,7 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
 
     trigger OnOpenPage()
     begin
-        SetRange(Posted,true);
+        SetRange(Posted, true);
         /*IF "Loan Status"="Loan Status"::Approved THEN
         CurrPage.EDITABLE:=FALSE;*/
 
@@ -1669,7 +1676,7 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
         ScheduleCode: Code[20];
         PreviewShedule: Record "Loan Repayment Schedule";
         PeriodInterval: Code[10];
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -1679,10 +1686,10 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
         LineNo: Integer;
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sales & Receivables Setup";
         PCharges: Record "Loan Product Charges";
@@ -1718,7 +1725,7 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
         DActivity: Code[20];
         DBranch: Code[20];
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -1733,7 +1740,7 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
         DiscountingAmount: Decimal;
         StatusPermissions: Record "Status Change Permision";
         BridgedLoans: Record "Loan Special Clearance";
-        SMSMessage: Record "Member Register";
+        SMSMessage: Record Customer;
         InstallNo2: Integer;
         currency: Record "Currency Exchange Rate";
         CURRENCYFACTOR: Decimal;
@@ -1774,72 +1781,72 @@ Page 51516394 "Loans Appl FOSA Card(Approv)"
     procedure UpdateControl()
     begin
 
-        if "Loan Status"="loan status"::Application then begin
-        MNoEditable:=true;
-        ApplcDateEditable:=false;
-        LoanStatusEditable:=false;
-        LProdTypeEditable:=true;
-        InstallmentEditable:=true;
-        AppliedAmountEditable:=true;
-        ApprovedAmountEditable:=true;
-        RepayMethodEditable:=true;
-        RepaymentEditable:=true;
-        BatchNoEditable:=false;
-        RepayFrequencyEditable:=true;
-        ModeofDisburesmentEdit:=true;
-        DisbursementDateEditable:=false;
+        if "Loan Status" = "loan status"::Application then begin
+            MNoEditable := true;
+            ApplcDateEditable := false;
+            LoanStatusEditable := false;
+            LProdTypeEditable := true;
+            InstallmentEditable := true;
+            AppliedAmountEditable := true;
+            ApprovedAmountEditable := true;
+            RepayMethodEditable := true;
+            RepaymentEditable := true;
+            BatchNoEditable := false;
+            RepayFrequencyEditable := true;
+            ModeofDisburesmentEdit := true;
+            DisbursementDateEditable := false;
         end;
 
-        if "Loan Status"="loan status"::Appraisal then begin
-        MNoEditable:=false;
-        ApplcDateEditable:=false;
-        LoanStatusEditable:=false;
-        LProdTypeEditable:=false;
-        InstallmentEditable:=false;
-        AppliedAmountEditable:=false;
-        ApprovedAmountEditable:=true;
-        RepayMethodEditable:=true;
-        RepaymentEditable:=true;
-        BatchNoEditable:=false;
-        RepayFrequencyEditable:=false;
-        ModeofDisburesmentEdit:=true;
-        DisbursementDateEditable:=false;
+        if "Loan Status" = "loan status"::Appraisal then begin
+            MNoEditable := false;
+            ApplcDateEditable := false;
+            LoanStatusEditable := false;
+            LProdTypeEditable := false;
+            InstallmentEditable := false;
+            AppliedAmountEditable := false;
+            ApprovedAmountEditable := true;
+            RepayMethodEditable := true;
+            RepaymentEditable := true;
+            BatchNoEditable := false;
+            RepayFrequencyEditable := false;
+            ModeofDisburesmentEdit := true;
+            DisbursementDateEditable := false;
         end;
 
-        if "Loan Status"="loan status"::Rejected then begin
-        MNoEditable:=false;
-        AccountNoEditable:=false;
-        ApplcDateEditable:=false;
-        LoanStatusEditable:=false;
-        LProdTypeEditable:=false;
-        InstallmentEditable:=false;
-        AppliedAmountEditable:=false;
-        ApprovedAmountEditable:=false;
-        RepayMethodEditable:=false;
-        RepaymentEditable:=false;
-        BatchNoEditable:=false;
-        RepayFrequencyEditable:=false;
-        ModeofDisburesmentEdit:=false;
-        DisbursementDateEditable:=false;
-        RejectionRemarkEditable:=false
+        if "Loan Status" = "loan status"::Rejected then begin
+            MNoEditable := false;
+            AccountNoEditable := false;
+            ApplcDateEditable := false;
+            LoanStatusEditable := false;
+            LProdTypeEditable := false;
+            InstallmentEditable := false;
+            AppliedAmountEditable := false;
+            ApprovedAmountEditable := false;
+            RepayMethodEditable := false;
+            RepaymentEditable := false;
+            BatchNoEditable := false;
+            RepayFrequencyEditable := false;
+            ModeofDisburesmentEdit := false;
+            DisbursementDateEditable := false;
+            RejectionRemarkEditable := false
         end;
 
-        if "Approval Status"="approval status"::Approved then begin
-        MNoEditable:=false;
-        AccountNoEditable:=false;
-        LoanStatusEditable:=false;
-        ApplcDateEditable:=false;
-        LProdTypeEditable:=false;
-        InstallmentEditable:=false;
-        AppliedAmountEditable:=false;
-        ApprovedAmountEditable:=false;
-        RepayMethodEditable:=false;
-        RepaymentEditable:=false;
-        BatchNoEditable:=true;
-        RepayFrequencyEditable:=false;
-        ModeofDisburesmentEdit:=true;
-        DisbursementDateEditable:=true;
-        RejectionRemarkEditable:=false;
+        if "Approval Status" = "approval status"::Approved then begin
+            MNoEditable := false;
+            AccountNoEditable := false;
+            LoanStatusEditable := false;
+            ApplcDateEditable := false;
+            LProdTypeEditable := false;
+            InstallmentEditable := false;
+            AppliedAmountEditable := false;
+            ApprovedAmountEditable := false;
+            RepayMethodEditable := false;
+            RepaymentEditable := false;
+            BatchNoEditable := true;
+            RepayFrequencyEditable := false;
+            ModeofDisburesmentEdit := true;
+            DisbursementDateEditable := true;
+            RejectionRemarkEditable := false;
         end;
     end;
 

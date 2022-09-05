@@ -4,52 +4,56 @@ Table 51516514 "Cheque Receipts-Family"
 
     fields
     {
-        field(1;"No.";Code[20])
+        field(1; "No."; Code[20])
         {
 
             trigger OnValidate()
             begin
                 if "No." <> xRec."No." then begin
-                  SalesSetup.Get;
-                  NoSeriesmgt.TestManual(SalesSetup."Cheque Receipts Nos");
-                  "No. Series" := '';
+                    SalesSetup.Get;
+                    NoSeriesmgt.TestManual(SalesSetup."Cheque Receipts Nos");
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(2;"Transaction Date";Date)
+        field(2; "Transaction Date"; Date)
         {
         }
-        field(3;"Refference Document";Code[20])
+        field(3; "Refference Document"; Code[20])
         {
         }
-        field(4;"Transaction Time";Time)
+        field(4; "Transaction Time"; Time)
         {
         }
-        field(5;"Created By";Code[20])
+        field(5; "Created By"; Code[20])
         {
         }
-        field(6;"Posted By";Code[20])
+        field(6; "Posted By"; Code[20])
         {
         }
-        field(7;Posted;Boolean)
+        field(7; Posted; Boolean)
         {
         }
-        field(8;"No. Series";Code[20])
+        field(8; "No. Series"; Code[20])
         {
         }
-        field(9;"Unpaid By";Code[20])
+        field(9; "Unpaid By"; Code[20])
         {
             Editable = false;
         }
-        field(10;Unpaid;Boolean)
+        field(10; Unpaid; Boolean)
         {
             Editable = false;
+        }
+        field(11; Status; Option)
+        {
+            OptionMembers = Open,"Pending Approval",Approved,Rejected;
         }
     }
 
     keys
     {
-        key(Key1;"No.")
+        key(Key1; "No.")
         {
             Clustered = true;
         }
@@ -63,13 +67,13 @@ Table 51516514 "Cheque Receipts-Family"
     begin
 
         if "No." = '' then begin
-          SalesSetup.Get;
-          SalesSetup.TestField(SalesSetup."Cheque Receipts Nos");
-          NoSeriesmgt.InitSeries(SalesSetup."Cheque Receipts Nos",xRec."No. Series",0D,"No.","No. Series");
+            SalesSetup.Get;
+            SalesSetup.TestField(SalesSetup."Cheque Receipts Nos");
+            NoSeriesmgt.InitSeries(SalesSetup."Cheque Receipts Nos", xRec."No. Series", 0D, "No.", "No. Series");
         end;
 
-        "Transaction Time":=Time;
-        "Transaction Date":=Today;
+        "Transaction Time" := Time;
+        "Transaction Date" := Today;
     end;
 
     var

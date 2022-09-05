@@ -12,7 +12,7 @@ Page 51516938 "Custody Agent Signature"
     {
         area(content)
         {
-            field(Signature;Signature)
+            field(Signature; Signature)
             {
                 ApplicationArea = Basic;
             }
@@ -75,11 +75,11 @@ Page 51516938 "Custody Agent Signature"
                     NameValueBuffer.DeleteAll;
                     ExportPath := TemporaryPath + "Agent ID" + Format(Signature.MediaId);
                     Signature.ExportFile(ExportPath);
-                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer,TemporaryPath);
-                    TempNameValueBuffer.SetFilter(Name,StrSubstNo('%1*',ExportPath));
+                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer, TemporaryPath);
+                    TempNameValueBuffer.SetFilter(Name, StrSubstNo('%1*', ExportPath));
                     TempNameValueBuffer.FindFirst;
-                    ToFile := StrSubstNo('%1 %2.jpg',"Agent ID",ConvertStr("Agent ID",'"/\','___'));
-                    Download(TempNameValueBuffer.Name,DownloadImageTxt,'','',ToFile);
+                    ToFile := StrSubstNo('%1 %2.jpg', "Agent ID", ConvertStr("Agent ID", '"/\', '___'));
+                    Download(TempNameValueBuffer.Name, DownloadImageTxt, '', '', ToFile);
                     if FileManagement.DeleteServerFile(TempNameValueBuffer.Name) then;
                 end;
             }
@@ -109,7 +109,7 @@ Page 51516938 "Custody Agent Signature"
     begin
         CameraAvailable := CameraProvider.IsAvailable;
         if CameraAvailable then
-          CameraProvider := CameraProvider.Create;
+            CameraProvider := CameraProvider.Create;
     end;
 
     var
@@ -133,7 +133,7 @@ Page 51516938 "Custody Agent Signature"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         CameraOptions := CameraOptions.CameraOptions;
         CameraOptions.Quality := 50;
@@ -151,18 +151,18 @@ Page 51516938 "Custody Agent Signature"
         //TESTFIELD(Description);
 
         if Signature.Count > 0 then
-          if not Confirm(OverrideImageQst) then
-            Error('');
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(Signature);
-        Signature.ImportFile(FileName,ClientFileName);
+        Signature.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
@@ -188,13 +188,13 @@ Page 51516938 "Custody Agent Signature"
         TestField("Agent ID");
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(Signature);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     begin
     end;
 }

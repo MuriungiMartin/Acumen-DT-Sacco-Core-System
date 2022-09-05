@@ -193,7 +193,7 @@ Report 51516511 "INterest DueMonthly E_Loan"
         PDate: Date;
         LoanType: Record "Loan Products Setup";
         PostDate: Date;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LineNo: Integer;
         DocNo: Code[20];
         GenJournalLine: Record "Gen. Journal Line";

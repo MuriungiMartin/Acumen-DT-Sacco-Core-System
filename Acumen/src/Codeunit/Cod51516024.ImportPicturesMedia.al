@@ -9,22 +9,22 @@ Codeunit 51516024 "Import Pictures Media"
         ClientFileName: Text;
     begin
         ObjMember.Reset;
-        ObjMember.SetRange("No.",)
-        
-        if ObjMember.Picture.Count > 0 then
-          /*IF NOT CONFIRM(OverrideImageQst) THEN
-            ERROR('');*/
-        
+        // ObjMember.SetRange("No.")
+
+        if ObjMember.Piccture.Count > 0 then
+            /*IF NOT CONFIRM(OverrideImageQst) THEN
+              ERROR('');*/
+
         ClientFileName := 'C:\Users\User\Pictures\Camera Roll\test.jpg';
-        FileName := FileManagement.UploadFile('',ClientFileName);//SelectPictureTxt
+        FileName := FileManagement.UploadFile('', ClientFileName);//SelectPictureTxt
         if FileName = '' then
-          Error('');
-        
-        Clear(ObjMember.Picture);
-        ObjMember.Picture.ImportFile(FileName,ClientFileName);
+            Error('');
+
+        Clear(ObjMember.Piccture);
+        ObjMember.Piccture.ImportFile(FileName, ClientFileName);
         if not ObjMember.Insert(true) then
-          ObjMember.Modify(true);
-        
+            ObjMember.Modify(true);
+
         if FileManagement.DeleteServerFile(FileName) then;
 
     end;
@@ -33,6 +33,6 @@ Codeunit 51516024 "Import Pictures Media"
         CameraAvailable: Boolean;
         DeleteExportEnabled: Boolean;
         HideActions: Boolean;
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
 }
 

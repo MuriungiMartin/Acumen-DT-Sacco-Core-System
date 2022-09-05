@@ -121,7 +121,7 @@ Report 51516925 "Loan Demand Notice"
             column(VarPenaltyPercentage; VarPenaltyPercentage)
             {
             }
-            dataitem(Customer; "Member Register")
+            dataitem(Customer; Customer)
             {
                 DataItemLink = "No." = field("Client Code");
                 RequestFilterFields = "No.";
@@ -489,7 +489,7 @@ Report 51516925 "Loan Demand Notice"
         LBalance: Decimal;
         PersonalNo: Code[50];
         GAddress: Text[250];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         TotalRec: Decimal;
         NoGuarantors: Integer;
         AmountT: Decimal;
@@ -506,7 +506,7 @@ Report 51516925 "Loan Demand Notice"
         SendSMS: Boolean;
         SMSMessage: Record "SMS Messages";
         iEntryNo: Integer;
-        Cust1: Record "Member Register";
+        Cust1: Record Customer;
         CompanyInformation: Record "Company Information";
         ObjCollateral: Record "Loan Collateral Details";
         ObjGuarantor: Record "Loans Guarantee Details";

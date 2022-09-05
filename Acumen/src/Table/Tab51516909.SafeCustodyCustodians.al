@@ -6,20 +6,21 @@ Table 51516909 "Safe Custody Custodians"
 
     fields
     {
-        field(1;"User ID";Code[100])
+        field(1; "User ID"; Code[100])
         {
             TableRelation = User."User Name";
 
             trigger OnLookup()
             var
-                UserManagement: Codeunit "User Management";
+                UserManagement: Codeunit UserManagementCUExt;
             begin
-                UserManagement.LookupUserID("User ID");
+                UserManagement.LookupUser("User ID");
             end;
 
             trigger OnValidate()
             var
-                UserManagement: Codeunit "User Management";
+                UserManagement: Codeunit UserManagementCUExt;
+                User: record User;
             begin
                 /*ObjUser.RESET;
                 ObjUser.SETRANGE(ObjUser."User Security ID","User ID");
@@ -27,17 +28,17 @@ Table 51516909 "Safe Custody Custodians"
                   "User Name":=ObjUser."User Name";
                   END;
                 */
-                
-                UserManagement.ValidateUserID("User ID");
+
+                UserManagement.ValidateUserName(User, User, "User ID");
 
             end;
         }
-        field(3;"Permision Type";Option)
+        field(3; "Permision Type"; Option)
         {
             OptionCaption = 'Custodian';
             OptionMembers = Custodian;
         }
-        field(4;"Custodian Of";Option)
+        field(4; "Custodian Of"; Option)
         {
             OptionCaption = ' ,Treasury,Safe Custody';
             OptionMembers = " ",Treasury,"Safe Custody";
@@ -46,7 +47,7 @@ Table 51516909 "Safe Custody Custodians"
 
     keys
     {
-        key(Key1;"User ID","Permision Type","Custodian Of")
+        key(Key1; "User ID", "Permision Type", "Custodian Of")
         {
             Clustered = true;
         }

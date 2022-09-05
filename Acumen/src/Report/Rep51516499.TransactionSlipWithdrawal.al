@@ -738,7 +738,7 @@ Report 51516499 "Transaction Slip Withdrawal"
         STODeductedAmount: Decimal;
         NoticeAmount: Decimal;
         AccountNotices: Record "Account Notices";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         AccountHolders: Record Vendor;
         ChargesOnFD: Decimal;
         TotalGuaranted: Decimal;

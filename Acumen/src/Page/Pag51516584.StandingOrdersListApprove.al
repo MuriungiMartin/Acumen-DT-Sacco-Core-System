@@ -7,7 +7,7 @@ Page 51516584 "Standing Orders - List Approve"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Standing Orders";
-    SourceTableView = where(Status=filter(Approved));
+    SourceTableView = where(Status = filter(Approved));
     UsageCategory = Lists;
 
     layout
@@ -16,76 +16,76 @@ Page 51516584 "Standing Orders - List Approve"
         {
             repeater(Control1102760000)
             {
-                field(Active;"Is Active")
+                field(Active; "Is Active")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Source Account No.";"Source Account No.")
+                field("Source Account No."; "Source Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Staff/Payroll No.";"Staff/Payroll No.")
+                field("Staff/Payroll No."; "Staff/Payroll No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; "Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("None Salary";"None Salary")
+                field("None Salary"; "None Salary")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Next Run Date";"Next Run Date")
+                field("Next Run Date"; "Next Run Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Reset";"Date Reset")
+                field("Date Reset"; "Date Reset")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Effective/Start Date";"Effective/Start Date")
+                field("Effective/Start Date"; "Effective/Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Allocated Amount";"Allocated Amount")
+                field("Allocated Amount"; "Allocated Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Account Type";"Destination Account Type")
+                field("Destination Account Type"; "Destination Account Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Account No.";"Destination Account No.")
+                field("Destination Account No."; "Destination Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Account Name";"Destination Account Name")
+                field("Destination Account Name"; "Destination Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Standing Order Description";"Standing Order Description")
+                field("Standing Order Description"; "Standing Order Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA Account No.";"BOSA Account No.")
+                field("BOSA Account No."; "BOSA Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Old STO No.";"Old STO No.")
+                field("Old STO No."; "Old STO No.")
                 {
                     ApplicationArea = Basic;
                 }
@@ -109,22 +109,22 @@ Page 51516584 "Standing Orders - List Approve"
                 begin
                     if Confirm('Are you sure you want to reset the standing order?') = true then begin
 
-                    Effected:=false;
-                    Balance:=0;
-                    Unsuccessfull:=false;
-                    "Auto Process":=false;
-                    "Date Reset":=Today;
-                    Modify;
+                        Effected := false;
+                        Balance := 0;
+                        Unsuccessfull := false;
+                        "Auto Process" := false;
+                        "Date Reset" := Today;
+                        Modify;
 
-                    RAllocations.Reset;
-                    RAllocations.SetRange(RAllocations."Document No","No.");
-                    if RAllocations.Find('-') then begin
-                    repeat
-                    RAllocations."Amount Balance":=0;
-                    RAllocations."Interest Balance":=0;
-                    RAllocations.Modify;
-                    until RAllocations.Next = 0;
-                    end;
+                        RAllocations.Reset;
+                        RAllocations.SetRange(RAllocations."Document No", "No.");
+                        if RAllocations.Find('-') then begin
+                            repeat
+                                RAllocations."Amount Balance" := 0;
+                                RAllocations."Interest Balance" := 0;
+                                RAllocations.Modify;
+                            until RAllocations.Next = 0;
+                        end;
 
                     end;
                 end;
@@ -143,16 +143,16 @@ Page 51516584 "Standing Orders - List Approve"
                 begin
                     TestField("Source Account No.");
                     if "Destination Account Type" <> "destination account type"::BOSA then
-                    TestField("Destination Account No.");
+                        TestField("Destination Account No.");
                     TestField("Effective/Start Date");
                     TestField(Frequency);
                     TestField("Next Run Date");
 
                     StatusPermissions.Reset;
-                    StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-                    StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Standing Order");
+                    StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+                    StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Standing Order");
                     if StatusPermissions.Find('-') = false then
-                    Error('You do not have permissions to change the standing order status.');
+                        Error('You do not have permissions to change the standing order status.');
                 end;
             }
             action(Reject)
@@ -167,10 +167,10 @@ Page 51516584 "Standing Orders - List Approve"
                 trigger OnAction()
                 begin
                     StatusPermissions.Reset;
-                    StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-                    StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Standing Order");
+                    StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+                    StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Standing Order");
                     if StatusPermissions.Find('-') = false then
-                    Error('You do not have permissions to change the standing status.');
+                        Error('You do not have permissions to change the standing status.');
                 end;
             }
             action(Stop)
@@ -186,12 +186,12 @@ Page 51516584 "Standing Orders - List Approve"
                 trigger OnAction()
                 begin
                     StatusPermissions.Reset;
-                    StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-                    StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Standing Order");
+                    StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+                    StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Standing Order");
                     if StatusPermissions.Find('-') = false then
-                    Error('You do not have permissions to stop the standing order.');
+                        Error('You do not have permissions to stop the standing order.');
 
-                    if Confirm('Are you sure you want to stop the standing order?',false) = true then begin
+                    if Confirm('Are you sure you want to stop the standing order?', false) = true then begin
                     end;
                 end;
             }
@@ -210,8 +210,8 @@ Page 51516584 "Standing Orders - List Approve"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        DocumentType:=Documenttype::STO;
-                        ApprovalEntries.Setfilters(Database::"HR Commitee Members",DocumentType,"No.");
+                        DocumentType := Documenttype::STO;
+                        ApprovalEntries.Setfilters(Database::"HR Commitee Members", DocumentType, "No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -227,24 +227,24 @@ Page 51516584 "Standing Orders - List Approve"
                     trigger OnAction()
                     var
                         Text001: label 'This request is already pending approval';
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
                         TestField("Source Account No.");
                         if "Destination Account Type" <> "destination account type"::BOSA then
-                        TestField("Destination Account No.");
+                            TestField("Destination Account No.");
 
                         TestField("Effective/Start Date");
                         TestField(Frequency);
                         TestField("Next Run Date");
 
                         if "Destination Account Type" = "destination account type"::BOSA then begin
-                        CalcFields("Allocated Amount");
-                        if Amount<>"Allocated Amount" then
-                        Error('Allocated amount must be equal to amount');
+                            CalcFields("Allocated Amount");
+                            if Amount <> "Allocated Amount" then
+                                Error('Allocated amount must be equal to amount');
                         end;
 
-                        if Status<>Status::Open then
-                        Error(Text001);
+                        if Status <> Status::Open then
+                            Error(Text001);
 
 
 
@@ -262,11 +262,11 @@ Page 51516584 "Standing Orders - List Approve"
 
                     trigger OnAction()
                     var
-                        Approvalmgt: Codeunit "Approvals Mgmt.";
+                        Approvalmgt: Codeunit WorkflowIntegration;
                     begin
 
                         //IF Approvalmgt.CancelFOSASTOApprovalRequest(Rec,TRUE,TRUE) THEN;
-                        Status:=Status::Open;
+                        Status := Status::Open;
                         Modify;
                     end;
                 }
@@ -288,16 +288,16 @@ Page 51516584 "Standing Orders - List Approve"
                 begin
                     TestField("Source Account No.");
                     if "Destination Account Type" <> "destination account type"::BOSA then
-                    TestField("Destination Account No.");
+                        TestField("Destination Account No.");
                     TestField("Effective/Start Date");
                     TestField(Frequency);
                     TestField("Next Run Date");
 
                     StatusPermissions.Reset;
-                    StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-                    StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Standing Order");
+                    StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+                    StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Standing Order");
                     if StatusPermissions.Find('-') = false then
-                    Error('You do not have permissions to change the standing order status.');
+                        Error('You do not have permissions to change the standing order status.');
                 end;
             }
             action(Stop_STO)
@@ -312,12 +312,12 @@ Page 51516584 "Standing Orders - List Approve"
                 trigger OnAction()
                 begin
                     StatusPermissions.Reset;
-                    StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-                    StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::"Standing Order");
+                    StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+                    StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::"Standing Order");
                     if StatusPermissions.Find('-') = false then
-                    Error('You do not have permissions to stop the standing order.');
+                        Error('You do not have permissions to stop the standing order.');
 
-                    if Confirm('Are you sure you want to stop the standing order?',false) = true then begin
+                    if Confirm('Are you sure you want to stop the standing order?', false) = true then begin
                     end;
                 end;
             }

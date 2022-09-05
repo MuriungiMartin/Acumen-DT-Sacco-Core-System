@@ -4,7 +4,7 @@ Page 51516038 "FD Transfer Term Amount Card"
     DeleteAllowed = false;
     PageType = Card;
     SourceTable = "FD Processing";
-    SourceTableView = where(Posted=const(false));
+    SourceTableView = where(Posted = const(false));
 
     layout
     {
@@ -13,40 +13,40 @@ Page 51516038 "FD Transfer Term Amount Card"
             group(General)
             {
                 Editable = Editable;
-                field("Document No.";"Document No.")
+                field("Document No."; "Document No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Document No.';
                 }
-                field("Savings Account No.";"Savings Account No.")
+                field("Savings Account No."; "Savings Account No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Current Account No';
                 }
-                field("BOSA Account No";"BOSA Account No")
+                field("BOSA Account No"; "BOSA Account No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member No';
                     Visible = false;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member Name';
                 }
-                field("Personal No.";"Personal No.")
+                field("Personal No."; "Personal No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -56,50 +56,50 @@ Page 51516038 "FD Transfer Term Amount Card"
                         if "Application Date" <> Today then Error('Application day must be equql to today!');
                     end;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("FDR Deposit Status Type";"FDR Deposit Status Type")
+                field("FDR Deposit Status Type"; "FDR Deposit Status Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Posted";"Date Posted")
+                field("Date Posted"; "Date Posted")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Current Account Balance";"Current Account Balance")
+                field("Current Account Balance"; "Current Account Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Destination Account";"Destination Account")
+                field("Destination Account"; "Destination Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Call Deposit";"Call Deposit")
+                field("Call Deposit"; "Call Deposit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                 }
@@ -109,60 +109,60 @@ Page 51516038 "FD Transfer Term Amount Card"
                 Caption = 'Term Deposit Details';
                 Editable = Editable;
                 Visible = true;
-                field("Fixed Deposit Status";"Fixed Deposit Status")
+                field("Fixed Deposit Status"; "Fixed Deposit Status")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Fixed Deposit Start Date";"Fixed Deposit Start Date")
+                field("Fixed Deposit Start Date"; "Fixed Deposit Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Fixed Deposit Type";"Fixed Deposit Type")
+                field("Fixed Deposit Type"; "Fixed Deposit Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Fixed Duration";"Fixed Duration")
+                field("Fixed Duration"; "Fixed Duration")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Earned";"Interest Earned")
+                field("Interest Earned"; "Interest Earned")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Untranfered Interest";"Untranfered Interest")
+                field("Untranfered Interest"; "Untranfered Interest")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FD Maturity Date";"FD Maturity Date")
+                field("FD Maturity Date"; "FD Maturity Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Maturity Date";"Expected Maturity Date")
+                field("Expected Maturity Date"; "Expected Maturity Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Amount to Transfer";"Amount to Transfer")
+                field("Amount to Transfer"; "Amount to Transfer")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest rate";"Interest rate")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Last Interest Earned Date";"Last Interest Earned Date")
+                field("Interest rate"; "Interest rate")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Interest On Term Dep";"Expected Interest On Term Dep")
+                field("Last Interest Earned Date"; "Last Interest Earned Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("On Term Deposit Maturity";"On Term Deposit Maturity")
+                field("Expected Interest On Term Dep"; "Expected Interest On Term Dep")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("On Term Deposit Maturity"; "On Term Deposit Maturity")
                 {
                     ApplicationArea = Basic;
                 }
@@ -171,31 +171,31 @@ Page 51516038 "FD Transfer Term Amount Card"
             {
                 Caption = 'Previous Term Deposits';
                 Editable = Editable;
-                field("Prevous Fixed Deposit Type";"Prevous Fixed Deposit Type")
+                field("Prevous Fixed Deposit Type"; "Prevous Fixed Deposit Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Prevous FD Start Date";"Prevous FD Start Date")
+                field("Prevous FD Start Date"; "Prevous FD Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Prevous Fixed Duration";"Prevous Fixed Duration")
+                field("Prevous Fixed Duration"; "Prevous Fixed Duration")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Prevous Expected Int On FD";"Prevous Expected Int On FD")
+                field("Prevous Expected Int On FD"; "Prevous Expected Int On FD")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Prevous FD Maturity Date";"Prevous FD Maturity Date")
+                field("Prevous FD Maturity Date"; "Prevous FD Maturity Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Prevous FD Deposit Status Type";"Prevous FD Deposit Status Type")
+                field("Prevous FD Deposit Status Type"; "Prevous FD Deposit Status Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Prevous Interest Rate FD";"Prevous Interest Rate FD")
+                field("Prevous Interest Rate FD"; "Prevous Interest Rate FD")
                 {
                     ApplicationArea = Basic;
                 }
@@ -236,7 +236,7 @@ Page 51516038 "FD Transfer Term Amount Card"
                 trigger OnAction()
                 var
                     Text001: label 'This request is already pending approval';
-                    ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    ApprovalsMgmt: Codeunit WorkflowIntegration;
                 begin
                     TestField("Global Dimension 1 Code");
                     TestField("Global Dimension 2 Code");
@@ -259,10 +259,10 @@ Page 51516038 "FD Transfer Term Amount Card"
 
                 trigger OnAction()
                 var
-                    Approvalmgt: Codeunit "Approvals Mgmt.";
+                    Approvalmgt: Codeunit WorkflowIntegration;
                 begin
-                    if Status<>Status::"Pending Approval" then
-                      Error(Text0001)
+                    if Status <> Status::"Pending Approval" then
+                        Error(Text0001)
                     /*ELSE
                     IF ApprovalsMgmt.CheckFixedDepositApprovalWorkflowEnabled(Rec) THEN
                       ApprovalsMgmt.OnCancelFixedDepositForApproval(Rec);
@@ -281,107 +281,106 @@ Page 51516038 "FD Transfer Term Amount Card"
 
                 trigger OnAction()
                 begin
-                    
+
                     //Transfer Balance if Fixed Deposit
-                    TestField(Status,Status::Approved);
-                    
+                    TestField(Status, Status::Approved);
+
                     AccountTypes.Reset;
-                    AccountTypes.SetRange(AccountTypes.Code,"Account Type");
-                    if AccountTypes.Find('-') then  begin
-                      //IF AccountTypes."Fixed Deposit" <> TRUE THEN BEGIN
-                      if Vend.Get("Savings Account No.") then begin
-                        if Confirm('Are you sure you want to effect the transfer from the Current account',false) = false then
-                        exit else
-                    
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange(GenJournalLine."Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange(GenJournalLine."Journal Batch Name",'TERM');
-                        if GenJournalLine.Find('-') then
-                        GenJournalLine.DeleteAll;
-                    
-                        // Vend.RESET;
-                        // IF Vend.FIND('-') THEN
-                        // Vend.CALCFIELDS(Vend.Balance);
-                        // IF Vend.Balance<"Amount to Transfer" THEN
-                        //   ERROR('You do not have sufficient funds to effect the transfer');
-                        //IF (Vend."Balance (LCY)" - 500) < "Fixed Deposit Amount" THEN
-                        //ERROR('Savings account does not have enough money to facilate the requested trasfer.');
-                        //MESSAGE('Katabaka ene!');
-                    
-                        Vend.CalcFields(Vend.Balance);
-                        if Vend.Balance<"Amount to Transfer" then
-                         Error('You do not have sufficient funds in your currentr account to effect the transfer');
-                    
-                    
-                        LineNo:=LineNo+10000;
-                    
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='TERM';
-                        GenJournalLine."Document No.":="Document No.";
-                        GenJournalLine."External Document No.":="Document No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="Savings Account No.";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='Term Balance Tranfers';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        //GenJournalLine.Amount:="Fixed Deposit Amount";
-                        GenJournalLine.Amount:="Amount to Transfer";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                         //MESSAGE('The FDR amount is %1 ',"Fixed Deposit Amount");
-                        LineNo:=LineNo+10000;
-                    
-                        GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name":='PURCHASES';
-                        GenJournalLine."Line No.":=LineNo;
-                        GenJournalLine."Journal Batch Name":='TERM';
-                        GenJournalLine."Document No.":="Document No.";
-                        GenJournalLine."External Document No.":="Document No.";
-                        GenJournalLine."Account Type":=GenJournalLine."account type"::Vendor;
-                        GenJournalLine."Account No.":="Destination Account";
-                        GenJournalLine.Validate(GenJournalLine."Account No.");
-                        GenJournalLine."Posting Date":=Today;
-                        GenJournalLine.Description:='Term Balance Tranfers';
-                        GenJournalLine.Validate(GenJournalLine."Currency Code");
-                        //GenJournalLine.Amount:=-"Fixed Deposit Amount";
-                        GenJournalLine.Amount:=-"Amount to Transfer";
-                        GenJournalLine.Validate(GenJournalLine.Amount);
-                        if GenJournalLine.Amount<>0 then
-                        GenJournalLine.Insert;
-                    
-                        //END;
-                    
-                    
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name",'PURCHASES');
-                        GenJournalLine.SetRange("Journal Batch Name",'TERM');
-                        if GenJournalLine.Find('-') then begin
-                        repeat
-                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco",GenJournalLine);
-                        until GenJournalLine.Next = 0;
+                    AccountTypes.SetRange(AccountTypes.Code, "Account Type");
+                    if AccountTypes.Find('-') then begin
+                        //IF AccountTypes."Fixed Deposit" <> TRUE THEN BEGIN
+                        if Vend.Get("Savings Account No.") then begin
+                            if Confirm('Are you sure you want to effect the transfer from the Current account', false) = false then
+                                exit else
+                                GenJournalLine.Reset;
+                            GenJournalLine.SetRange(GenJournalLine."Journal Template Name", 'PURCHASES');
+                            GenJournalLine.SetRange(GenJournalLine."Journal Batch Name", 'TERM');
+                            if GenJournalLine.Find('-') then
+                                GenJournalLine.DeleteAll;
+
+                            // Vend.RESET;
+                            // IF Vend.FIND('-') THEN
+                            // Vend.CALCFIELDS(Vend.Balance);
+                            // IF Vend.Balance<"Amount to Transfer" THEN
+                            //   ERROR('You do not have sufficient funds to effect the transfer');
+                            //IF (Vend."Balance (LCY)" - 500) < "Fixed Deposit Amount" THEN
+                            //ERROR('Savings account does not have enough money to facilate the requested trasfer.');
+                            //MESSAGE('Katabaka ene!');
+
+                            Vend.CalcFields(Vend.Balance);
+                            if Vend.Balance < "Amount to Transfer" then
+                                Error('You do not have sufficient funds in your currentr account to effect the transfer');
+
+
+                            LineNo := LineNo + 10000;
+
+                            GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'PURCHASES';
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine."Journal Batch Name" := 'TERM';
+                            GenJournalLine."Document No." := "Document No.";
+                            GenJournalLine."External Document No." := "Document No.";
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                            GenJournalLine."Account No." := "Savings Account No.";
+                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Posting Date" := Today;
+                            GenJournalLine.Description := 'Term Balance Tranfers';
+                            GenJournalLine.Validate(GenJournalLine."Currency Code");
+                            //GenJournalLine.Amount:="Fixed Deposit Amount";
+                            GenJournalLine.Amount := "Amount to Transfer";
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert;
+                            //MESSAGE('The FDR amount is %1 ',"Fixed Deposit Amount");
+                            LineNo := LineNo + 10000;
+
+                            GenJournalLine.Init;
+                            GenJournalLine."Journal Template Name" := 'PURCHASES';
+                            GenJournalLine."Line No." := LineNo;
+                            GenJournalLine."Journal Batch Name" := 'TERM';
+                            GenJournalLine."Document No." := "Document No.";
+                            GenJournalLine."External Document No." := "Document No.";
+                            GenJournalLine."Account Type" := GenJournalLine."account type"::Vendor;
+                            GenJournalLine."Account No." := "Destination Account";
+                            GenJournalLine.Validate(GenJournalLine."Account No.");
+                            GenJournalLine."Posting Date" := Today;
+                            GenJournalLine.Description := 'Term Balance Tranfers';
+                            GenJournalLine.Validate(GenJournalLine."Currency Code");
+                            //GenJournalLine.Amount:=-"Fixed Deposit Amount";
+                            GenJournalLine.Amount := -"Amount to Transfer";
+                            GenJournalLine.Validate(GenJournalLine.Amount);
+                            if GenJournalLine.Amount <> 0 then
+                                GenJournalLine.Insert;
+
+                            //END;
+
+
+                            GenJournalLine.Reset;
+                            GenJournalLine.SetRange("Journal Template Name", 'PURCHASES');
+                            GenJournalLine.SetRange("Journal Batch Name", 'TERM');
+                            if GenJournalLine.Find('-') then begin
+                                repeat
+                                    Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
+                                until GenJournalLine.Next = 0;
+                            end;
+                            Posted := true;
+                            "Date Posted" := Today;
+                            "FDR Deposit Status Type" := "fdr deposit status type"::Running;
+                            "Fixed Deposit Status" := "fixed deposit status"::Active;
+                            "Fixed Deposit Start Date" := Today;
+                            Validate("Fixed Deposit Start Date");
+                            Modify;
                         end;
-                        Posted:=true;
-                        "Date Posted":=Today;
-                        "FDR Deposit Status Type":="fdr deposit status type"::Running;
-                        "Fixed Deposit Status":="fixed deposit status"::Active;
-                        "Fixed Deposit Start Date":=Today;
-                        Validate("Fixed Deposit Start Date");
-                        Modify;
-                      end;
                     end;
-                    
+
                     //Kimondiu -Print Certificate after transfer
                     ObjFDProcessing.Reset;
                     //ObjFDProcessing.SETRANGE(ObjFDProcessing."Document No.","Document No.");
                     if ObjFDProcessing.Find('-') then
-                     Report.Run(51516711,false,false,ObjFDProcessing);
-                    
-                    
-                    
+                        Report.Run(51516711, false, false, ObjFDProcessing);
+
+
+
                     /*//Post New
                     
                     GenJournalLine.RESET;
@@ -393,7 +392,7 @@ Page 51516038 "FD Transfer Term Amount Card"
                     
                     //Post New
                     */
-                    
+
                     /*
                     GenJournalLine.RESET;
                     GenJournalLine.SETRANGE("Journal Template Name",'PURCHASES');
@@ -416,17 +415,17 @@ Page 51516038 "FD Transfer Term Amount Card"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         FDRec.Reset;
-        FDRec.SetRange(FDRec."User ID",UserId);
-        FDRec.SetRange(FDRec.Status,FDRec.Status::New);
+        FDRec.SetRange(FDRec."User ID", UserId);
+        FDRec.SetRange(FDRec.Status, FDRec.Status::New);
         if FDRec.Count > 0 then Error('Cannot create a new FD card while an unutilized one exists.');
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Application Date":=Today;
-        "User ID":=UserId;
-        "Global Dimension 1 Code":='FOSA';
-        "Account Type":='FIXED';
+        "Application Date" := Today;
+        "User ID" := UserId;
+        "Global Dimension 1 Code" := 'FOSA';
+        "Account Type" := 'FIXED';
 
         fnUpdateControls();
     end;
@@ -446,7 +445,7 @@ Page 51516038 "FD Transfer Term Amount Card"
         InterestBuffer: Record "Interest Buffer";
         FDType: Record "Fixed Deposit Type";
         Vend: Record Vendor;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LineNo: Integer;
         UsersID: Record User;
         DActivity: Code[20];
@@ -476,17 +475,17 @@ Page 51516038 "FD Transfer Term Amount Card"
         ObjFDProcessing: Record "Loan Repay Schedule-Calc";
         ObjGroup: Boolean;
         undisplay: Integer;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         Text0001: label 'Status must be pending Approval';
         Editable: Boolean;
         FDRec: Record "FD Processing";
 
     local procedure fnUpdateControls()
     begin
-        if (Status=Status::Approved) or (Status=Status::"Pending Approval") then
-          Editable:=false
+        if (Status = Status::Approved) or (Status = Status::"Pending Approval") then
+            Editable := false
         else
-          Editable:=true;
+            Editable := true;
     end;
 }
 

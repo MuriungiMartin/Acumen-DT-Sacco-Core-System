@@ -13,84 +13,84 @@ Page 51516173 "HR Jobs Card"
             {
                 Caption = 'General';
                 Editable = Edit;
-                field("Job ID";"Job ID")
+                field("Job ID"; "Job ID")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Job Description";"Job Description")
+                field("Job Description"; "Job Description")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Position Reporting to";"Position Reporting to")
+                field("Position Reporting to"; "Position Reporting to")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Grade;Grade)
+                field(Grade; Grade)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Main Objective";"Main Objective")
+                field("Main Objective"; "Main Objective")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Supervisor/Manager";"Supervisor/Manager")
+                field("Supervisor/Manager"; "Supervisor/Manager")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Supervisor Name";"Supervisor Name")
+                field("Supervisor Name"; "Supervisor Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Posts";"No of Posts")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Promoted;
-                }
-                field("Occupied Positions";"Occupied Positions")
+                field("No of Posts"; "No of Posts")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Vacant Positions";"Vacant Positions")
+                field("Occupied Positions"; "Occupied Positions")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Vacant Positions"; "Vacant Positions")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Promoted;
+                }
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee Requisitions";"Employee Requisitions")
+                field("Employee Requisitions"; "Employee Requisitions")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Key Position";"Key Position")
+                field("Key Position"; "Key Position")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Created";"Date Created")
+                field("Date Created"; "Date Created")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Is Supervisor";"Is Supervisor")
+                field("Is Supervisor"; "Is Supervisor")
                 {
                     ApplicationArea = Basic;
                 }
-                field("G/L Account";"G/L Account")
+                field("G/L Account"; "G/L Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -102,11 +102,11 @@ Page 51516173 "HR Jobs Card"
         }
         area(factboxes)
         {
-            part(Control1102755004;"HR Jobs Factbox")
+            part(Control1102755004; "HR Jobs Factbox")
             {
-                SubPageLink = "Job ID"=field("Job ID");
+                SubPageLink = "Job ID" = field("Job ID");
             }
-            systempart(Control1102755006;Outlook)
+            systempart(Control1102755006; Outlook)
             {
             }
         }
@@ -126,7 +126,7 @@ Page 51516173 "HR Jobs Card"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Employee Requisition Card";
-                    RunPageLink = "Job ID"=field("Job ID");
+                    RunPageLink = "Job ID" = field("Job ID");
                 }
                 action("Job Qualifications")
                 {
@@ -136,7 +136,7 @@ Page 51516173 "HR Jobs Card"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Job Requirement Lines";
-                    RunPageLink = "Job Id"=field("Job ID");
+                    RunPageLink = "Job Id" = field("Job ID");
                 }
                 action(Responsibilities)
                 {
@@ -146,7 +146,7 @@ Page 51516173 "HR Jobs Card"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Job Responsiblities Lines";
-                    RunPageLink = "Job ID"=field("Job ID");
+                    RunPageLink = "Job ID" = field("Job ID");
                 }
                 action(Occupants)
                 {
@@ -156,7 +156,7 @@ Page 51516173 "HR Jobs Card"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Job Occupants";
-                    RunPageLink = "Job ID"=field("Job ID");
+                    RunPageLink = "Job ID" = field("Job ID");
                 }
             }
             group(Functions)
@@ -180,11 +180,11 @@ Page 51516173 "HR Jobs Card"
                         TestField("Job ID");
                         TestField("Job Description");
 
-                        if Status<>Status::New then
-                          Error('Stats must be New.');
+                        if Status <> Status::New then
+                            Error('Stats must be New.');
 
                         if ApprovalsMgmt.CheckNewJobApprovalWorkflowEnabled(Rec) then
-                          ApprovalsMgmt.OnSendNewJobForApproval(Rec);
+                            ApprovalsMgmt.OnSendNewJobForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -197,14 +197,14 @@ Page 51516173 "HR Jobs Card"
 
                     trigger OnAction()
                     begin
-                        if Status<>Status::"Pending Approval" then
-                          Error('Stats must be pending approval');
+                        if Status <> Status::"Pending Approval" then
+                            Error('Stats must be pending approval');
 
-                        if Confirm('Are you sure you want to cancel the approval request ?',true)=false then
-                          exit;
+                        if Confirm('Are you sure you want to cancel the approval request ?', true) = false then
+                            exit;
 
                         if ApprovalsMgmt.CheckNewJobApprovalWorkflowEnabled(Rec) then
-                          ApprovalsMgmt.OnCancelNewJobApprovalRequest(Rec);
+                            ApprovalsMgmt.OnCancelNewJobApprovalRequest(Rec);
                     end;
                 }
             }
@@ -230,7 +230,7 @@ Page 51516173 "HR Jobs Card"
 
     var
         HREmployees: Record "HR Employees";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
         ShowWorkflowStatus: Boolean;
@@ -238,13 +238,12 @@ Page 51516173 "HR Jobs Card"
 
     local procedure UpdateControls()
     begin
-        if Status = Status::New then
-        begin
-            Edit:=true;
-        end else if (Status=Status::"Pending Approval") or (Status=Status::Rejected) or (Status=Status::Approved) then
-        begin
-            Edit:=false;
-        end;
+        if Status = Status::New then begin
+            Edit := true;
+        end else
+            if (Status = Status::"Pending Approval") or (Status = Status::Rejected) or (Status = Status::Approved) then begin
+                Edit := false;
+            end;
     end;
 
 
@@ -255,9 +254,9 @@ Page 51516173 "HR Jobs Card"
         objRecord_Link: RecordRef;
     begin
         objRecord_Link.GetTable(job);
-        TableCaption:= objRecord_Link.RecordId;
+        TableCaption := objRecord_Link.RecordId;
         objRecordLnk.Reset;
-        objRecordLnk.SetRange(objRecordLnk."Record ID",TableCaption);
+        objRecordLnk.SetRange(objRecordLnk."Record ID", TableCaption);
         if objRecordLnk.Find('-') then exit(true) else exit(false);
     end;
 }

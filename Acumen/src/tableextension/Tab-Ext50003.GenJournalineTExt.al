@@ -183,7 +183,7 @@ tableextension 50003 "GenJournalineTExt" extends "Gen. Journal Line"
         DimMgt: Codeunit DimensionManagement;
         PaymentToleranceMgt: Codeunit "Payment Tolerance Management";
         DeferralUtilities: Codeunit "Deferral Utilities";
-        // ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        // ApprovalsMgmt: Codeunit WorkflowIntegration;
         Window: Dialog;
         DeferralDocType: Option Purchase,Sales,"G/L";
         CurrencyCode: Code[10];

@@ -158,8 +158,8 @@ Table 51516417 "Data Sheet Main"
         }
         field(9; "Remark/LoanNO"; Text[30])
         {
-            TableRelation = test.No where(Field68093 = field("ID NO."));
-            ValidateTableRelation = false;
+            // TableRelation = test.No where(Field68093 = field("ID NO."));
+            // ValidateTableRelation = false;
         }
         field(10; "Sort Code"; Code[2])
         {
@@ -385,7 +385,7 @@ Table 51516417 "Data Sheet Main"
     var
         Month: Integer;
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         PTEN: Code[20];
         Date2: Date;
 }

@@ -4,37 +4,37 @@ Table 51516903 "M_Withdrawal Share Cap Sell"
 
     fields
     {
-        field(1;"Document No";Code[20])
+        field(1; "Document No"; Code[20])
         {
         }
-        field(2;"Selling Member No";Code[20])
+        field(2; "Selling Member No"; Code[20])
         {
         }
-        field(3;"Selling Member Name";Code[100])
+        field(3; "Selling Member Name"; Code[100])
         {
         }
-        field(4;"Buyer Member No";Code[30])
+        field(4; "Buyer Member No"; Code[30])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
                 if ObjCust.Get("Buyer Member No") then begin
-                  "Buyer Name":=ObjCust.Name;
-                  end;
+                    "Buyer Name" := ObjCust.Name;
+                end;
             end;
         }
-        field(5;"Buyer Name";Code[100])
+        field(5; "Buyer Name"; Code[100])
         {
         }
-        field(6;Amount;Decimal)
+        field(6; Amount; Decimal)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Document No","Selling Member No","Selling Member Name","Buyer Member No")
+        key(Key1; "Document No", "Selling Member No", "Selling Member Name", "Buyer Member No")
         {
             Clustered = true;
         }
@@ -45,6 +45,6 @@ Table 51516903 "M_Withdrawal Share Cap Sell"
     }
 
     var
-        ObjCust: Record "Member Register";
+        ObjCust: Record Customer;
 }
 

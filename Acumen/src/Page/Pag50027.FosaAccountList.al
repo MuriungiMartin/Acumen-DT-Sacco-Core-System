@@ -9,7 +9,7 @@ Page 50027 "Fosa Account List"
     PromotedActionCategories = 'New,Process,Report,New Document,Vendor';
     RefreshOnActivate = true;
     SourceTable = Vendor;
-    SourceTableView = where("Creditor Type"=const("FOSA Account"));
+    SourceTableView = where("Creditor Type" = const("FOSA Account"));
     UsageCategory = Lists;
 
     layout
@@ -18,162 +18,162 @@ Page 50027 "Fosa Account List"
         {
             repeater(Control1)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the number of the vendor. The field is either filled automatically from a defined number series, or you enter the number manually because you have enabled manual number entry in the number-series setup.';
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the vendor''s name. You can enter a maximum of 30 characters, both numbers and letters.';
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Advanced;
                     ToolTip = 'Specifies the code for the responsibility center that will administer this vendor by default.';
                 }
-                field("Location Code";"Location Code")
+                field("Location Code"; "Location Code")
                 {
                     ApplicationArea = Location;
                     ToolTip = 'Specifies the warehouse location where items from the vendor must be received by default.';
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the postal code.';
                     Visible = false;
                 }
-                field("Country/Region Code";"Country/Region Code")
+                field("Country/Region Code"; "Country/Region Code")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the country/region of the address.';
                     Visible = false;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the vendor''s telephone number.';
                 }
-                field("Fax No.";"Fax No.")
+                field("Fax No."; "Fax No.")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the vendor''s fax number.';
                     Visible = false;
                 }
-                field("IC Partner Code";"IC Partner Code")
+                field("IC Partner Code"; "IC Partner Code")
                 {
                     ApplicationArea = Intercompany;
                     ToolTip = 'Specifies the vendor''s intercompany partner code.';
                     Visible = false;
                 }
-                field(Contact;Contact)
+                field(Contact; Contact)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the person you regularly contact when you do business with this vendor.';
                 }
-                field("Purchaser Code";"Purchaser Code")
+                field("Purchaser Code"; "Purchaser Code")
                 {
                     ApplicationArea = Suite;
                     ToolTip = 'Specifies which purchaser is assigned to the vendor.';
                     Visible = false;
                 }
-                field("Vendor Posting Group";"Vendor Posting Group")
+                field("Vendor Posting Group"; "Vendor Posting Group")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the vendor''s market type to link business transactions made for the vendor with the appropriate account in the general ledger.';
                     Visible = false;
                 }
-                field("Gen. Bus. Posting Group";"Gen. Bus. Posting Group")
+                field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the vendor''s trade type to link transactions made for this vendor with the appropriate general ledger account according to the general posting setup.';
                     Visible = false;
                 }
-                field("VAT Bus. Posting Group";"VAT Bus. Posting Group")
+                field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the vendor''s VAT specification to link transactions made for this vendor with the appropriate general ledger account according to the VAT posting setup.';
                     Visible = false;
                 }
-                field("Payment Terms Code";"Payment Terms Code")
+                field("Payment Terms Code"; "Payment Terms Code")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies a code that indicates the payment terms that the vendor usually requires.';
                     Visible = false;
                 }
-                field("Fin. Charge Terms Code";"Fin. Charge Terms Code")
+                field("Fin. Charge Terms Code"; "Fin. Charge Terms Code")
                 {
                     ApplicationArea = Advanced;
                     ToolTip = 'Specifies how the vendor calculates finance charges.';
                     Visible = false;
                 }
-                field("Currency Code";"Currency Code")
+                field("Currency Code"; "Currency Code")
                 {
                     ApplicationArea = Suite;
                     ToolTip = 'Specifies the currency code that is inserted by default when you create purchase documents or journal lines for the vendor.';
                     Visible = false;
                 }
-                field("Language Code";"Language Code")
+                field("Language Code"; "Language Code")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the language on printouts for this vendor.';
                     Visible = false;
                 }
-                field("Search Name";"Search Name")
+                field("Search Name"; "Search Name")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies a search name.';
                 }
-                field(Blocked;Blocked)
+                field(Blocked; Blocked)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies which transactions with the vendor that cannot be posted.';
                     Visible = false;
                 }
-                field("Last Date Modified";"Last Date Modified")
+                field("Last Date Modified"; "Last Date Modified")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies when the vendor card was last modified.';
                     Visible = false;
                 }
-                field("Application Method";"Application Method")
+                field("Application Method"; "Application Method")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies how to apply payments to entries for this vendor.';
                     Visible = false;
                 }
-                field("Location Code2";"Location Code")
+                field("Location Code2"; "Location Code")
                 {
                     ApplicationArea = Location;
                     ToolTip = 'Specifies the warehouse location where items from the vendor must be received by default.';
                     Visible = false;
                 }
-                field("Shipment Method Code";"Shipment Method Code")
+                field("Shipment Method Code"; "Shipment Method Code")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the delivery conditions of the related shipment, such as free on board (FOB).';
                     Visible = false;
                 }
-                field("Creditor Type";"Creditor Type")
+                field("Creditor Type"; "Creditor Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Lead Time Calculation";"Lead Time Calculation")
+                field("Lead Time Calculation"; "Lead Time Calculation")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies a date formula for the amount of time it takes to replenish the item.';
                     Visible = false;
                 }
-                field("Base Calendar Code";"Base Calendar Code")
+                field("Base Calendar Code"; "Base Calendar Code")
                 {
                     ApplicationArea = Advanced;
                     ToolTip = 'Specifies the code for the vendor''s customizable calendar.';
                     Visible = false;
                 }
-                field("Balance (LCY)";"Balance (LCY)")
+                field("Balance (LCY)"; "Balance (LCY)")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the total value of your completed purchases from the vendor in the current fiscal year. It is calculated from amounts excluding VAT on all completed purchase invoices and credit memos.';
 
                     trigger OnDrillDown()
@@ -181,9 +181,9 @@ Page 50027 "Fosa Account List"
                         OpenVendorLedgerEntries(false);
                     end;
                 }
-                field("Balance Due (LCY)";"Balance Due (LCY)")
+                field("Balance Due (LCY)"; "Balance Due (LCY)")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the total value of your unpaid purchases from the vendor in the current fiscal year. It is calculated from amounts excluding VAT on all open purchase invoices and credit memos.';
 
                     trigger OnDrillDown()
@@ -195,69 +195,69 @@ Page 50027 "Fosa Account List"
         }
         area(factboxes)
         {
-            part("Power BI Report FactBox";"Power BI Report FactBox")
+            part("Power BI Report FactBox"; "Power BI Report FactBox")
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Power BI Reports';
                 Visible = PowerBIVisible;
             }
-            part(Control14;"Social Listening FactBox")
+            part(Control14; "Social Listening FactBox")
             {
                 ApplicationArea = All;
-                SubPageLink = "Source Type"=const(Vendor),
-                              "Source No."=field("No.");
+                SubPageLink = "Source Type" = const(Vendor),
+                              "Source No." = field("No.");
                 Visible = SocialListeningVisible;
             }
-            part(Control15;"Social Listening Setup FactBox")
+            part(Control15; "Social Listening Setup FactBox")
             {
                 ApplicationArea = All;
-                SubPageLink = "Source Type"=const(Vendor),
-                              "Source No."=field("No.");
+                SubPageLink = "Source Type" = const(Vendor),
+                              "Source No." = field("No.");
                 UpdatePropagation = Both;
                 Visible = SocialListeningSetupVisible;
             }
-            part(VendorDetailsFactBox;"Vendor Details FactBox")
+            part(VendorDetailsFactBox; "Vendor Details FactBox")
             {
                 ApplicationArea = Advanced;
-                SubPageLink = "No."=field("No."),
-                              "Currency Filter"=field("Currency Filter"),
-                              "Date Filter"=field("Date Filter"),
-                              "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                              "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                SubPageLink = "No." = field("No."),
+                              "Currency Filter" = field("Currency Filter"),
+                              "Date Filter" = field("Date Filter"),
+                              "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                              "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                 Visible = false;
             }
-            part(VendorStatisticsFactBox;"Vendor Statistics FactBox")
+            part(VendorStatisticsFactBox; "Vendor Statistics FactBox")
             {
                 ApplicationArea = Advanced;
-                SubPageLink = "No."=field("No."),
-                              "Currency Filter"=field("Currency Filter"),
-                              "Date Filter"=field("Date Filter"),
-                              "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                              "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                SubPageLink = "No." = field("No."),
+                              "Currency Filter" = field("Currency Filter"),
+                              "Date Filter" = field("Date Filter"),
+                              "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                              "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
             }
-            part(VendorHistBuyFromFactBox;"Vendor Hist. Buy-from FactBox")
+            part(VendorHistBuyFromFactBox; "Vendor Hist. Buy-from FactBox")
             {
-                ApplicationArea = Basic,Suite;
-                SubPageLink = "No."=field("No."),
-                              "Currency Filter"=field("Currency Filter"),
-                              "Date Filter"=field("Date Filter"),
-                              "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                              "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                ApplicationArea = Basic, Suite;
+                SubPageLink = "No." = field("No."),
+                              "Currency Filter" = field("Currency Filter"),
+                              "Date Filter" = field("Date Filter"),
+                              "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                              "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
             }
-            part(VendorHistPayToFactBox;"Vendor Hist. Pay-to FactBox")
+            part(VendorHistPayToFactBox; "Vendor Hist. Pay-to FactBox")
             {
                 ApplicationArea = All;
-                SubPageLink = "No."=field("No."),
-                              "Currency Filter"=field("Currency Filter"),
-                              "Date Filter"=field("Date Filter"),
-                              "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                              "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                SubPageLink = "No." = field("No."),
+                              "Currency Filter" = field("Currency Filter"),
+                              "Date Filter" = field("Date Filter"),
+                              "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                              "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                 Visible = false;
             }
-            systempart(Control1900383207;Links)
+            systempart(Control1900383207; Links)
             {
             }
-            systempart(Control1905767507;Notes)
+            systempart(Control1905767507; Notes)
             {
             }
         }
@@ -281,14 +281,14 @@ Page 50027 "Fosa Account List"
                         Caption = 'Dimensions-Single';
                         Image = Dimensions;
                         RunObject = Page "Default Dimensions";
-                        RunPageLink = "Table ID"=const(23),
-                                      "No."=field("No.");
+                        RunPageLink = "Table ID" = const(23),
+                                      "No." = field("No.");
                         ShortCutKey = 'Shift+Ctrl+D';
                         ToolTip = 'View or edit the single set of dimensions that are set up for the selected record.';
                     }
                     action(DimensionsMultiple)
                     {
-                        AccessByPermission = TableData Dimension=R;
+                        AccessByPermission = TableData Dimension = R;
                         ApplicationArea = Suite;
                         Caption = 'Dimensions-&Multiple';
                         Image = DimensionSets;
@@ -311,12 +311,12 @@ Page 50027 "Fosa Account List"
                     Caption = 'Bank Accounts';
                     Image = BankAccount;
                     RunObject = Page "Vendor Bank Account List";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     ToolTip = 'Open the list of the vendor''s bank accounts';
                 }
                 action("C&ontact")
                 {
-                    AccessByPermission = TableData Contact=R;
+                    AccessByPermission = TableData Contact = R;
                     ApplicationArea = Advanced;
                     Caption = 'C&ontact';
                     Image = ContactPerson;
@@ -332,11 +332,11 @@ Page 50027 "Fosa Account List"
                 }
                 action(OrderAddresses)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Order &Addresses';
                     Image = Addresses;
                     RunObject = Page "Order Address List";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     ToolTip = 'View or edit alternate addresses for the vendor.';
                 }
                 action("Co&mments")
@@ -345,27 +345,27 @@ Page 50027 "Fosa Account List"
                     Caption = 'Co&mments';
                     Image = ViewComments;
                     RunObject = Page "Comment Sheet";
-                    RunPageLink = "Table Name"=const(Vendor),
-                                  "No."=field("No.");
+                    RunPageLink = "Table Name" = const(Vendor),
+                                  "No." = field("No.");
                     ToolTip = 'View or add comments for the record.';
                 }
                 action("Cross Re&ferences")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Cross Re&ferences';
                     Image = Change;
                     Promoted = true;
                     PromotedCategory = Category5;
                     PromotedOnly = true;
                     RunObject = Page "Cross References";
-                    RunPageLink = "Cross-Reference Type"=const(Vendor),
-                                  "Cross-Reference Type No."=field("No.");
-                    RunPageView = sorting("Cross-Reference Type","Cross-Reference Type No.");
+                    RunPageLink = "Cross-Reference Type" = const(Vendor),
+                                  "Cross-Reference Type No." = field("No.");
+                    RunPageView = sorting("Cross-Reference Type", "Cross-Reference Type No.");
                     ToolTip = 'Set up a customer''s or vendor''s own identification of the selected item. Cross-references to the customer''s item number means that the item number is automatically shown on sales documents instead of the number that you use.';
                 }
                 action(ApprovalEntries)
                 {
-                    AccessByPermission = TableData "Approval Entry"=R;
+                    AccessByPermission = TableData "Approval Entry" = R;
                     ApplicationArea = Suite;
                     Caption = 'Approvals';
                     Image = Approvals;
@@ -390,7 +390,7 @@ Page 50027 "Fosa Account List"
                     Caption = 'Items';
                     Image = Item;
                     RunObject = Page "Vendor Item Catalog";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.");
                     ToolTip = 'Open the list of items that you trade in.';
                 }
@@ -400,7 +400,7 @@ Page 50027 "Fosa Account List"
                     Caption = 'Invoice &Discounts';
                     Image = CalculateInvoiceDiscount;
                     RunObject = Page "Vend. Invoice Discounts";
-                    RunPageLink = Code=field("Invoice Disc. Code");
+                    RunPageLink = Code = field("Invoice Disc. Code");
                     ToolTip = 'Set up different discounts that are applied to invoices for the customer. An invoice discount is automatically granted to the customer when the total on a sales invoice exceeds a certain amount.';
                 }
                 action(Prices)
@@ -409,7 +409,7 @@ Page 50027 "Fosa Account List"
                     Caption = 'Prices';
                     Image = Price;
                     RunObject = Page "Purchase Prices";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.");
                     ToolTip = 'View or set up different prices for items that you buy from the vendor. An item price is automatically granted on invoice lines when the specified criteria are met, such as vendor, quantity, or ending date.';
                 }
@@ -419,7 +419,7 @@ Page 50027 "Fosa Account List"
                     Caption = 'Line Discounts';
                     Image = LineDiscount;
                     RunObject = Page "Purchase Line Discounts";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.");
                     ToolTip = 'View or set up different discounts for items that you buy from the vendor. An item discount is automatically granted on invoice lines when the specified criteria are met, such as vendor, quantity, or ending date.';
                 }
@@ -429,7 +429,7 @@ Page 50027 "Fosa Account List"
                     Caption = 'Prepa&yment Percentages';
                     Image = PrepaymentPercentages;
                     RunObject = Page "Purchase Prepmt. Percentages";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.");
                     ToolTip = 'View or edit the percentages of the price that can be paid as a prepayment. ';
                 }
@@ -439,7 +439,7 @@ Page 50027 "Fosa Account List"
                     Caption = 'S&td. Vend. Purchase Codes';
                     Image = CodesList;
                     RunObject = Page "Standard Vendor Purchase Codes";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     ToolTip = 'View or edit recurring purchase lines for the vendor.';
                 }
                 action("Mapping Text to Account")
@@ -448,7 +448,7 @@ Page 50027 "Fosa Account List"
                     Caption = 'Mapping Text to Account';
                     Image = MapAccounts;
                     RunObject = Page "Text-to-Account Mapping Wksh.";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     ToolTip = 'Page mapping text to account';
                 }
             }
@@ -462,8 +462,8 @@ Page 50027 "Fosa Account List"
                     Caption = 'Quotes';
                     Image = Quote;
                     RunObject = Page "Purchase Quotes";
-                    RunPageLink = "Buy-from Vendor No."=field("No.");
-                    RunPageView = sorting("Document Type","Buy-from Vendor No.");
+                    RunPageLink = "Buy-from Vendor No." = field("No.");
+                    RunPageView = sorting("Document Type", "Buy-from Vendor No.");
                     ToolTip = 'View a list of ongoing sales quotes.';
                 }
                 action(Orders)
@@ -472,8 +472,8 @@ Page 50027 "Fosa Account List"
                     Caption = 'Orders';
                     Image = Document;
                     RunObject = Page "Purchase Order List";
-                    RunPageLink = "Buy-from Vendor No."=field("No.");
-                    RunPageView = sorting("Document Type","Buy-from Vendor No.");
+                    RunPageLink = "Buy-from Vendor No." = field("No.");
+                    RunPageView = sorting("Document Type", "Buy-from Vendor No.");
                     ToolTip = 'View a list of ongoing purchase orders for the vendor.';
                 }
                 action("Return Orders")
@@ -482,8 +482,8 @@ Page 50027 "Fosa Account List"
                     Caption = 'Return Orders';
                     Image = ReturnOrder;
                     RunObject = Page "Purchase Return Order List";
-                    RunPageLink = "Buy-from Vendor No."=field("No.");
-                    RunPageView = sorting("Document Type","Buy-from Vendor No.");
+                    RunPageLink = "Buy-from Vendor No." = field("No.");
+                    RunPageView = sorting("Document Type", "Buy-from Vendor No.");
                     ToolTip = 'Open the list of ongoing return orders.';
                 }
                 action("Blanket Orders")
@@ -492,8 +492,8 @@ Page 50027 "Fosa Account List"
                     Caption = 'Blanket Orders';
                     Image = BlanketOrder;
                     RunObject = Page "Blanket Purchase Orders";
-                    RunPageLink = "Buy-from Vendor No."=field("No.");
-                    RunPageView = sorting("Document Type","Buy-from Vendor No.");
+                    RunPageLink = "Buy-from Vendor No." = field("No.");
+                    RunPageView = sorting("Document Type", "Buy-from Vendor No.");
                     ToolTip = 'Open the list of ongoing blanket orders.';
                 }
             }
@@ -509,7 +509,7 @@ Page 50027 "Fosa Account List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Vendor Ledger Entries";
-                    RunPageLink = "Vendor No."=field("No.");
+                    RunPageLink = "Vendor No." = field("No.");
                     RunPageView = sorting("Vendor No.")
                                   order(descending);
                     ShortCutKey = 'Ctrl+F7';
@@ -523,10 +523,10 @@ Page 50027 "Fosa Account List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Vendor Statistics";
-                    RunPageLink = "No."=field("No."),
-                                  "Date Filter"=field("Date Filter"),
-                                  "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                                  "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                    RunPageLink = "No." = field("No."),
+                                  "Date Filter" = field("Date Filter"),
+                                  "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                                  "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                     ShortCutKey = 'F7';
                     ToolTip = 'View statistical information, such as the value of posted entries, for the record.';
                 }
@@ -536,9 +536,9 @@ Page 50027 "Fosa Account List"
                     Caption = 'Purchases';
                     Image = Purchase;
                     RunObject = Page "Vendor Purchases";
-                    RunPageLink = "No."=field("No."),
-                                  "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                                  "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                    RunPageLink = "No." = field("No."),
+                                  "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                                  "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                     ToolTip = 'Shows a summary of vendor ledger entries. You select the time interval in the View by field. The Period column on the left contains a series of dates that are determined by the time interval you have selected.';
                 }
                 action("Entry Statistics")
@@ -547,10 +547,10 @@ Page 50027 "Fosa Account List"
                     Caption = 'Entry Statistics';
                     Image = EntryStatistics;
                     RunObject = Page "Vendor Entry Statistics";
-                    RunPageLink = "No."=field("No."),
-                                  "Date Filter"=field("Date Filter"),
-                                  "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                                  "Global Dimension 2 Filter"=field("Global Dimension 2 Filter");
+                    RunPageLink = "No." = field("No."),
+                                  "Date Filter" = field("Date Filter"),
+                                  "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                                  "Global Dimension 2 Filter" = field("Global Dimension 2 Filter");
                     ToolTip = 'View entry statistics for the record.';
                 }
                 action("Statistics by C&urrencies")
@@ -559,10 +559,10 @@ Page 50027 "Fosa Account List"
                     Caption = 'Statistics by C&urrencies';
                     Image = Currencies;
                     RunObject = Page "Vend. Stats. by Curr. Lines";
-                    RunPageLink = "Vendor Filter"=field("No."),
-                                  "Global Dimension 1 Filter"=field("Global Dimension 1 Filter"),
-                                  "Global Dimension 2 Filter"=field("Global Dimension 2 Filter"),
-                                  "Date Filter"=field("Date Filter");
+                    RunPageLink = "Vendor Filter" = field("No."),
+                                  "Global Dimension 1 Filter" = field("Global Dimension 1 Filter"),
+                                  "Global Dimension 2 Filter" = field("Global Dimension 2 Filter"),
+                                  "Date Filter" = field("Date Filter");
                     ToolTip = 'View statistics for vendors that use multiple currencies.';
                 }
                 action("Item &Tracking Entries")
@@ -576,7 +576,7 @@ Page 50027 "Fosa Account List"
                     var
                         ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";
                     begin
-                        ItemTrackingDocMgt.ShowItemTrackingForMasterData(2,"No.",'','','','','');
+                        ItemTrackingDocMgt.ShowItemTrackingForMasterData(2, "No.", '', '', '', '', '');
                     end;
                 }
             }
@@ -589,7 +589,7 @@ Page 50027 "Fosa Account List"
                 Caption = 'Blanket Purchase Order';
                 Image = BlanketOrder;
                 RunObject = Page "Blanket Purchase Order";
-                RunPageLink = "Buy-from Vendor No."=field("No.");
+                RunPageLink = "Buy-from Vendor No." = field("No.");
                 RunPageMode = Create;
                 ToolTip = 'Create a new blanket purchase order for the vendor.';
             }
@@ -599,20 +599,20 @@ Page 50027 "Fosa Account List"
                 Caption = 'Purchase Quote';
                 Image = Quote;
                 RunObject = Page "Purchase Quote";
-                RunPageLink = "Buy-from Vendor No."=field("No.");
+                RunPageLink = "Buy-from Vendor No." = field("No.");
                 RunPageMode = Create;
                 ToolTip = 'Create a new purchase quote for the vendor.';
             }
             action(NewPurchaseInvoice)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Purchase Invoice';
                 Image = NewPurchaseInvoice;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedOnly = true;
                 RunObject = Page "Purchase Invoice";
-                RunPageLink = "Buy-from Vendor No."=field("No.");
+                RunPageLink = "Buy-from Vendor No." = field("No.");
                 RunPageMode = Create;
                 ToolTip = 'Create a new purchase invoice for items or services.';
             }
@@ -625,20 +625,20 @@ Page 50027 "Fosa Account List"
                 PromotedCategory = Category4;
                 PromotedOnly = true;
                 RunObject = Page "Purchase Order";
-                RunPageLink = "Buy-from Vendor No."=field("No.");
+                RunPageLink = "Buy-from Vendor No." = field("No.");
                 RunPageMode = Create;
                 ToolTip = 'Create a new purchase order.';
             }
             action(NewPurchaseCrMemo)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Purchase Credit Memo';
                 Image = CreditMemo;
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedOnly = true;
                 RunObject = Page "Purchase Credit Memo";
-                RunPageLink = "Buy-from Vendor No."=field("No.");
+                RunPageLink = "Buy-from Vendor No." = field("No.");
                 RunPageMode = Create;
                 ToolTip = 'Create a new purchase credit memo to revert a posted purchase invoice.';
             }
@@ -648,7 +648,7 @@ Page 50027 "Fosa Account List"
                 Caption = 'Purchase Return Order';
                 Image = ReturnOrder;
                 RunObject = Page "Purchase Return Order";
-                RunPageLink = "Buy-from Vendor No."=field("No.");
+                RunPageLink = "Buy-from Vendor No." = field("No.");
                 RunPageMode = Create;
                 ToolTip = 'Create a new purchase return order for the vendor.';
             }
@@ -669,10 +669,10 @@ Page 50027 "Fosa Account List"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Rec) then
-                          ApprovalsMgmt.OnSendVendorForApproval(Rec);
+                            ApprovalsMgmt.OnSendVendorForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -685,7 +685,7 @@ Page 50027 "Fosa Account List"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         ApprovalsMgmt.OnCancelVendorApprovalRequest(Rec);
                         WorkflowWebhookManagement.FindAndCancel(RecordId);
@@ -714,7 +714,7 @@ Page 50027 "Fosa Account List"
             }
             action(ApplyTemplate)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Apply Template';
                 Ellipsis = true;
                 Image = ApplyTemplate;
@@ -737,7 +737,7 @@ Page 50027 "Fosa Account List"
                 Caption = 'Display';
                 action(ReportFactBoxVisibility)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Show/Hide Power BI Reports';
                     Image = "Report";
                     ToolTip = 'Select if the Power BI FactBox is visible or not.';
@@ -745,9 +745,9 @@ Page 50027 "Fosa Account List"
                     trigger OnAction()
                     begin
                         if PowerBIVisible then
-                          PowerBIVisible := false
+                            PowerBIVisible := false
                         else
-                          PowerBIVisible := true;
+                            PowerBIVisible := true;
                         // save visibility value into the table
                         CurrPage."Power BI Report FactBox".Page.SetFactBoxVisibility(PowerBIVisible);
                     end;
@@ -758,7 +758,7 @@ Page 50027 "Fosa Account List"
                 Caption = 'OCR';
                 action(Resync)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Resync all Vendors';
                     Image = CopyFromChartOfAccounts;
                     Promoted = true;
@@ -768,7 +768,7 @@ Page 50027 "Fosa Account List"
 
                     trigger OnAction()
                     begin
-                        ReadSoftOCRMasterDataSync.SyncMasterData(true,false);
+                        ReadSoftOCRMasterDataSync.SyncMasterData(true, false);
                     end;
                 }
             }
@@ -847,7 +847,7 @@ Page 50027 "Fosa Account List"
                 Image = Purchase;
                 action("Vendor - Purchase List")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Vendor - Purchase List';
                     Image = "Report";
                     RunObject = Report "Vendor - Purchase List";
@@ -855,7 +855,7 @@ Page 50027 "Fosa Account List"
                 }
                 action("Vendor/Item Purchases")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Vendor/Item Purchases';
                     Image = "Report";
                     RunObject = Report "Vendor/Item Purchases";
@@ -863,7 +863,7 @@ Page 50027 "Fosa Account List"
                 }
                 action("Purchase Statistics")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Purchase Statistics';
                     Image = "Report";
                     RunObject = Report "Purchase Statistics";
@@ -892,7 +892,7 @@ Page 50027 "Fosa Account List"
                 }
                 action("Aged Accounts Payable")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Aged Accounts Payable';
                     Image = "Report";
                     RunObject = Report "Aged Accounts Payable";
@@ -916,7 +916,7 @@ Page 50027 "Fosa Account List"
                 }
                 action("Vendor - Detail Trial Balance")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Vendor - Detail Trial Balance';
                     Image = "Report";
                     RunObject = Report "Vendor - Detail Trial Balance";
@@ -933,10 +933,10 @@ Page 50027 "Fosa Account List"
 
         CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
 
-        WorkflowWebhookManagement.GetCanRequestAndCanCancel(RecordId,CanRequestApprovalForFlow,CanCancelApprovalForFlow);
+        WorkflowWebhookManagement.GetCanRequestAndCanCancel(RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
 
         // Contextual Power BI FactBox: send data to filter the report in the FactBox
-        CurrPage."Power BI Report FactBox".Page.SetCurrentListSelection("No.",false);
+        CurrPage."Power BI Report FactBox".Page.SetCurrentListSelection("No.", false);
     end;
 
     trigger OnInit()
@@ -949,7 +949,7 @@ Page 50027 "Fosa Account List"
         // Contextual Power BI FactBox: filtering available reports, setting context, loading Power BI related user settings
         CurrPage."Power BI Report FactBox".Page.SetNameFilter(CurrPage.Caption);
         CurrPage."Power BI Report FactBox".Page.SetContext(CurrPage.ObjectId(false));
-        PowerBIVisible := SetPowerBIUserConfig.SetUserConfig(PowerBIUserConfiguration,CurrPage.ObjectId(false));
+        PowerBIVisible := SetPowerBIUserConfig.SetUserConfig(PowerBIUserConfiguration, CurrPage.ObjectId(false));
 
         ResyncVisible := ReadSoftOCRMasterDataSync.IsSyncEnabled;
     end;
@@ -957,7 +957,7 @@ Page 50027 "Fosa Account List"
     var
         PowerBIUserConfiguration: Record "Power BI User Configuration";
         SetPowerBIUserConfig: Codeunit "Set Power BI User Config";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         ReadSoftOCRMasterDataSync: Codeunit "ReadSoft OCR Master Data Sync";
         WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
         [InDataSet]
@@ -989,7 +989,7 @@ Page 50027 "Fosa Account List"
     var
         SocialListeningMgt: Codeunit "Social Listening Management";
     begin
-        SocialListeningMgt.GetVendFactboxVisibility(Rec,SocialListeningSetupVisible,SocialListeningVisible);
+        SocialListeningMgt.GetVendFactboxVisibility(Rec, SocialListeningSetupVisible, SocialListeningVisible);
     end;
 
     local procedure SetVendorNoVisibilityOnFactBoxes()

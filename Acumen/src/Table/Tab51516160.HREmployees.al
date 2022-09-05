@@ -1015,28 +1015,28 @@ Table 51516160 "HR Employees"
         }
         field(306; "Prev. Basic Pay"; Decimal)
         {
-            CalcFormula = sum("prPeriod Transactions".Amount where("Employee Code" = field("No."),
+            CalcFormula = sum("prPeriod Transactions.".Amount where("Employee Code" = field("No."),
                                                                     "Transaction Code" = const('BPAY'),
                                                                     "Payroll Period" = field("Previous Month Filter")));
             FieldClass = FlowField;
         }
         field(307; "Curr. Basic Pay"; Decimal)
         {
-            CalcFormula = sum("prPeriod Transactions".Amount where("Employee Code" = field("No."),
+            CalcFormula = sum("prPeriod Transactions.".Amount where("Employee Code" = field("No."),
                                                                     "Transaction Code" = const('BPAY'),
                                                                     "Payroll Period" = field("Current Month Filter")));
             FieldClass = FlowField;
         }
         field(308; "Prev. Gross Pay"; Decimal)
         {
-            CalcFormula = sum("prPeriod Transactions".Amount where("Employee Code" = field("No."),
+            CalcFormula = sum("prPeriod Transactions.".Amount where("Employee Code" = field("No."),
                                                                     "Transaction Code" = const('GPAY'),
                                                                     "Payroll Period" = field("Previous Month Filter")));
             FieldClass = FlowField;
         }
         field(309; "Curr. Gross Pay"; Decimal)
         {
-            CalcFormula = sum("prPeriod Transactions".Amount where("Employee Code" = field("No."),
+            CalcFormula = sum("prPeriod Transactions.".Amount where("Employee Code" = field("No."),
                                                                     "Transaction Code" = const('GPAY'),
                                                                     "Payroll Period" = field("Current Month Filter")));
             FieldClass = FlowField;
@@ -1047,7 +1047,7 @@ Table 51516160 "HR Employees"
         }
         field(311; "Basic Pay"; Decimal)
         {
-            CalcFormula = sum("prPeriod Transactions".Amount where("Employee Code" = field("No."),
+            CalcFormula = sum("prPeriod Transactions.".Amount where("Employee Code" = field("No."),
                                                                     "Transaction Code" = const('BPAY'),
                                                                     "Payroll Period" = field("Current Month Filter")));
             Editable = false;
@@ -1055,14 +1055,14 @@ Table 51516160 "HR Employees"
         }
         field(312; "Net Pay"; Decimal)
         {
-            CalcFormula = sum("prPeriod Transactions".Amount where("Employee Code" = field("No."),
+            CalcFormula = sum("prPeriod Transactions.".Amount where("Employee Code" = field("No."),
                                                                     "Transaction Code" = const('NPAY'),
                                                                     "Payroll Period" = field("Current Month Filter")));
             FieldClass = FlowField;
         }
         field(313; "Transaction Amount"; Decimal)
         {
-            CalcFormula = sum("prPeriod Transactions".Amount where("Employee Code" = field("No."),
+            CalcFormula = sum("prPeriod Transactions.".Amount where("Employee Code" = field("No."),
                                                                     "Transaction Code" = field("Transaction Code Filter"),
                                                                     "Payroll Period" = field("Current Month Filter")));
             FieldClass = FlowField;
@@ -1213,7 +1213,7 @@ Table 51516160 "HR Employees"
         }
         field(50002; "Bosa Member account"; Code[20])
         {
-            TableRelation = "Member Register";
+            TableRelation = Customer;
         }
         field(50003; "Sacco Paying Bank Code"; Code[20])
         {

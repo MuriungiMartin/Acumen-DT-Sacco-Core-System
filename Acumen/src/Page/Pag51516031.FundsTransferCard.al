@@ -10,96 +10,96 @@ Page 51516031 "Funds Transfer Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pay Mode";"Pay Mode")
+                field("Pay Mode"; "Pay Mode")
                 {
                     ApplicationArea = Basic;
                     OptionCaption = ',Cash,Cheque,standing Order';
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; "Document Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = true;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Account";"Paying Bank Account")
+                field("Paying Bank Account"; "Paying Bank Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Paying Bank Name";"Paying Bank Name")
+                field("Paying Bank Name"; "Paying Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Balance";"Bank Balance")
+                field("Bank Balance"; "Bank Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account No.";"Bank Account No.")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Currency Code";"Currency Code")
+                field("Bank Account No."; "Bank Account No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Amount to Transfer";"Amount to Transfer")
+                field("Currency Code"; "Currency Code")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Amount to Transfer"; "Amount to Transfer")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount to Transfer(LCY)";"Amount to Transfer(LCY)")
+                field("Amount to Transfer(LCY)"; "Amount to Transfer(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Line Amount";"Total Line Amount")
+                field("Total Line Amount"; "Total Line Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Line Amount(LCY)";"Total Line Amount(LCY)")
+                field("Total Line Amount(LCY)"; "Total Line Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque/Doc. No";"Cheque/Doc. No")
+                field("Cheque/Doc. No"; "Cheque/Doc. No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Created By";"Created By")
+                field("Created By"; "Created By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Created";"Date Created")
+                field("Date Created"; "Date Created")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Created";"Time Created")
+                field("Time Created"; "Time Created")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control24;"Funds Transfer Lines")
+            part(Control24; "Funds Transfer Lines")
             {
-                SubPageLink = "Document No"=field("No.");
+                SubPageLink = "Document No" = field("No.");
             }
         }
     }
@@ -119,25 +119,26 @@ Page 51516031 "Funds Transfer Card"
 
                 trigger OnAction()
                 begin
-                    TestField(Posted,false);
-                      CheckRequiredItems;
-                      CalcFields("Total Line Amount");
-                      TestField("Amount to Transfer","Total Line Amount");
-                    
-                    
-                    
-                    
+                    TestField(Posted, false);
+                    CheckRequiredItems;
+                    CalcFields("Total Line Amount");
+                    TestField("Amount to Transfer", "Total Line Amount");
+
+
+
+
                     //IF Status<>Status::Approved THEN ERROR('Document must be approved before Posting');
-                      if FundsUser.Get(UserId) then begin
+                    if FundsUser.Get(UserId) then begin
                         FundsUser.TestField(FundsUser."FundsTransfer Template Name");
                         FundsUser.TestField(FundsUser."FundsTransfer Batch Name");
-                        JTemplate:=FundsUser."FundsTransfer Template Name";JBatch:=FundsUser."FundsTransfer Batch Name";
+                        JTemplate := FundsUser."FundsTransfer Template Name";
+                        JBatch := FundsUser."FundsTransfer Batch Name";
                         //Post Transfer
-                        FundsManager.PostFundsTransfer(Rec,JTemplate,JBatch);
-                      end else begin
+                        FundsManager.PostFundsTransfer(Rec, JTemplate, JBatch);
+                    end else begin
                         Error('User Account Not Setup, Contact the System Administrator');
-                      end;
-                    
+                    end;
+
                     /*
                     //Print Here
                     FHeader.RESET;
@@ -159,17 +160,17 @@ Page 51516031 "Funds Transfer Card"
 
                 trigger OnAction()
                 begin
-                      /*FHeader.RESET;
-                      FHeader.SETRANGE(FHeader."No.","No.");
-                      IF FHeader.FINDFIRST THEN BEGIN
-                        REPORT.RUNMODAL(REPORT::"Funds Transfer Voucher",TRUE,FALSE,FHeader);
-                      END;
-                      */
-                    
+                    /*FHeader.RESET;
+                    FHeader.SETRANGE(FHeader."No.","No.");
+                    IF FHeader.FINDFIRST THEN BEGIN
+                      REPORT.RUNMODAL(REPORT::"Funds Transfer Voucher",TRUE,FALSE,FHeader);
+                    END;
+                    */
+
                     FHeader.Reset;
-                    FHeader.SetRange(FHeader."No.","No.");
+                    FHeader.SetRange(FHeader."No.", "No.");
                     if FHeader.FindFirst then
-                       Report.Run(51516011,true,true,FHeader);
+                        Report.Run(51516011, true, true, FHeader);
 
                 end;
             }
@@ -185,8 +186,8 @@ Page 51516031 "Funds Transfer Card"
                 var
                     ApprovalEntries: Page "Approval Entries";
                 begin
-                    DocumentType:=Documenttype::FundsTransfer;
-                    ApprovalEntries.Setfilters(Database::"Funds Transfer Header",DocumentType,"No.");
+                    DocumentType := Documenttype::FundsTransfer;
+                    ApprovalEntries.Setfilters(Database::"Funds Transfer Header", DocumentType, "No.");
                     ApprovalEntries.Run;
                 end;
             }
@@ -205,7 +206,7 @@ Page 51516031 "Funds Transfer Card"
                     Text001: label 'This request is already pending approval';
                 begin
                     if ApprovalsMgmt.CheckFundsTransferApprovalsWorkflowEnabled(Rec) then
-                     ApprovalsMgmt.OnSendFundsTransferForApproval(Rec);
+                        ApprovalsMgmt.OnSendFundsTransferForApproval(Rec);
                     Message('Approval request sent');
                 end;
             }
@@ -221,10 +222,10 @@ Page 51516031 "Funds Transfer Card"
 
                 trigger OnAction()
                 var
-                    Approvalmgt: Codeunit "Approvals Mgmt.";
+                    Approvalmgt: Codeunit WorkflowIntegration;
                 begin
-                    if Confirm('Are you sure you want to cancel this approval request',false)=true then begin
-                     ApprovalsMgmt.OnCancelFundsTransferApprovalRequest(Rec);
+                    if Confirm('Are you sure you want to cancel this approval request', false) = true then begin
+                        ApprovalsMgmt.OnCancelFundsTransferApprovalRequest(Rec);
                     end;
                 end;
             }
@@ -233,8 +234,8 @@ Page 51516031 "Funds Transfer Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-          //"Pay Mode":="Pay Mode"::Cash;
-          "Transfer Type":="transfer type"::InterBank;
+        //"Pay Mode":="Pay Mode"::Cash;
+        "Transfer Type" := "transfer type"::InterBank;
     end;
 
     var
@@ -245,30 +246,30 @@ Page 51516031 "Funds Transfer Card"
         FHeader: Record "Funds Transfer Header";
         FLine: Record "Funds Transfer Line";
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"," ","Purchase Requisition",RFQ,"Store Requisition","Payment Voucher",MembershipApplication,LoanApplication,LoanDisbursement,ProductApplication,StandingOrder,MembershipWithdrawal,ATMCard,GuarantorRecovery,FundsTransfer;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
 
     local procedure CheckRequiredItems()
     begin
-          TestField("Posting Date");
-          TestField("Paying Bank Account");
-          TestField("Amount to Transfer");
-          TestField("Global Dimension 2 Code");
-          if "Pay Mode"="pay mode"::Cheque then
-          TestField("Cheque/Doc. No");
-          if "Pay Mode"="pay mode"::"Standing Order" then
-          "Cheque/Doc. No":='';
-          TestField(Description);
-            //TESTFIELD("Cheque/Doc. No");
-          //TESTFIELD("Transfer To");
+        TestField("Posting Date");
+        TestField("Paying Bank Account");
+        TestField("Amount to Transfer");
+        TestField("Global Dimension 2 Code");
+        if "Pay Mode" = "pay mode"::Cheque then
+            TestField("Cheque/Doc. No");
+        if "Pay Mode" = "pay mode"::"Standing Order" then
+            "Cheque/Doc. No" := '';
+        TestField(Description);
+        //TESTFIELD("Cheque/Doc. No");
+        //TESTFIELD("Transfer To");
 
-          FLine.Reset;
-          FLine.SetRange(FLine."Document No","No.");
-          FLine.SetFilter(FLine."Amount to Receive",'<>%1',0);
-          if FLine.FindSet then begin
+        FLine.Reset;
+        FLine.SetRange(FLine."Document No", "No.");
+        FLine.SetFilter(FLine."Amount to Receive", '<>%1', 0);
+        if FLine.FindSet then begin
             repeat
-              FLine.TestField(FLine."Receiving Bank Account");
-            until FLine.Next=0;
-          end;
+                FLine.TestField(FLine."Receiving Bank Account");
+            until FLine.Next = 0;
+        end;
     end;
 }
 

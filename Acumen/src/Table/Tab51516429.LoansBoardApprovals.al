@@ -4,30 +4,30 @@ Table 51516429 "Loans Board Approvals"
 
     fields
     {
-        field(1;"Loan No.";Code[13])
+        field(1; "Loan No."; Code[13])
         {
             DataClassification = ToBeClassified;
         }
-        field(2;"Committee Member No.";Code[10])
+        field(2; "Committee Member No."; Code[10])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "Member Register"."No." where (colleges=const('1'));
+            TableRelation = Customer."No." where(colleges = const('1'));
         }
-        field(3;Status;Option)
+        field(3; Status; Option)
         {
             DataClassification = ToBeClassified;
             OptionCaption = '  ,Approved,Rejected';
             OptionMembers = "  ",Approved,Rejected;
         }
-        field(4;Comments;Text[100])
+        field(4; Comments; Text[100])
         {
             DataClassification = ToBeClassified;
         }
-        field(5;"Action Date";DateTime)
+        field(5; "Action Date"; DateTime)
         {
             DataClassification = ToBeClassified;
         }
-        field(6;Name;Text[100])
+        field(6; Name; Text[100])
         {
             DataClassification = ToBeClassified;
         }
@@ -35,7 +35,7 @@ Table 51516429 "Loans Board Approvals"
 
     keys
     {
-        key(Key1;"Loan No.")
+        key(Key1; "Loan No.")
         {
             Clustered = true;
         }

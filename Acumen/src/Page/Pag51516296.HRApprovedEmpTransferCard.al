@@ -3,7 +3,7 @@ Page 51516296 "HR Approved Emp Transfer Card"
 {
     PageType = Card;
     SourceTable = "HR Employee Transfer Header";
-    SourceTableView = where(Status=const(Approved));
+    SourceTableView = where(Status = const(Approved));
 
     layout
     {
@@ -11,34 +11,34 @@ Page 51516296 "HR Approved Emp Transfer Card"
         {
             group(General)
             {
-                field("Request No";"Request No")
+                field("Request No"; "Request No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Requested";"Date Requested")
+                field("Date Requested"; "Date Requested")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Approved";"Date Approved")
+                field("Date Approved"; "Date Approved")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Transfer details Updated";"Transfer details Updated")
+                field("Transfer details Updated"; "Transfer details Updated")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1000000021;"Hr Employee Transfer Line")
+            part(Control1000000021; "Hr Employee Transfer Line")
             {
-                SubPageLink = "Request No"=field("Request No");
+                SubPageLink = "Request No" = field("Request No");
             }
         }
     }
@@ -84,7 +84,7 @@ Page 51516296 "HR Approved Emp Transfer Card"
                     trigger OnAction()
                     begin
                         //IF ApprovalsMgmt.CheckSalesApprovalsWorkflowEnabled(Rec) THEN
-                          //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                        //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -107,7 +107,7 @@ Page 51516296 "HR Approved Emp Transfer Card"
 
     var
         ApprovalComments: Page "Approval Comments";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
         ShowWorkflowStatus: Boolean;

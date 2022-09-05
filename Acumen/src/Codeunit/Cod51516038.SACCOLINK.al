@@ -39,7 +39,7 @@ Codeunit 51516038 "SACCOLINK"
         TotCharge: Decimal;
         ATMCompleted: Record ATMTransCompleted;
         ATMPost: Boolean;
-        ATMSetUp: Record UnknownRecord51516074;
+        ATMSetUp: Record "ATM SETUP";
 
 
     procedure GetATMlinkedAccount(CardNumber: Code[20]): Code[20]
@@ -161,7 +161,7 @@ Codeunit 51516038 "SACCOLINK"
             Message(Format(ATMCharges."Transaction Type"));
             if ATMCharges."Transaction Type" <> ATMCharges."transaction type"::"POS - Cash Deposit" then begin
               saccoCharge:=ATMCharges."Sacco Amount";
-              bankCharge:=ATMCharges."Bank Amount";//."Atm Income A/c";
+             // bankCharge:=ATMCharges."Bank Amount";//."Atm Income A/c";
 
               totalCharge:=(saccoCharge+bankCharge);
             end else begin
@@ -482,7 +482,7 @@ Codeunit 51516038 "SACCOLINK"
         
               if ATMCharges."Transaction Type" <> ATMCharges."transaction type"::"POS - Cash Deposit" then begin
                 SaccoCharge:=ATMCharges."Sacco Amount";
-                BankCharge:=ATMCharges."Bank Amount";//."Atm Income A/c";
+               // BankCharge:=ATMCharges."Bank Amount";//."Atm Income A/c";
         
                 TotCharge:=(SaccoCharge+BankCharge+0);//+((ATMCharges."Total Amount")*GenSetup."Excise Duty (%)"/100);
         

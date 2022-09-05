@@ -185,7 +185,7 @@ Table 51516001 "Payment Line."
             else
             if ("Account Type" = const("Fixed Asset")) "Fixed Asset"."No."
             else
-            if ("Account Type" = const(Member)) "Member Register"."No.";
+            if ("Account Type" = const(Member)) Customer."No.";
 
             trigger OnValidate()
             var

@@ -156,7 +156,7 @@ Page 51516521 "Loan Trunch Disburesment"
                     trigger OnAction()
                     var
                         Text001: label 'This transaction is already pending approval';
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalMgt.CheckTrunchApprovalsWorkflowEnabled(Rec) then begin
                             ApprovalMgt.OnSendTrunchForApproval(Rec);
@@ -176,7 +176,7 @@ Page 51516521 "Loan Trunch Disburesment"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         ApprovalMgt.OnCancelTrunchApprovalRequest(Rec);
                     end;
@@ -237,7 +237,7 @@ Page 51516521 "Loan Trunch Disburesment"
         BATCH_NAME: Code[50];
         DOCUMENT_NO: Code[50];
         EnabledApprovalWorkflowsExist: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         CanCancelApprovalForRecord: Boolean;
         EventFilter: Text;
         OpenApprovalEntriesExist: Boolean;

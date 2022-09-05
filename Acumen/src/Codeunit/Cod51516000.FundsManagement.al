@@ -895,7 +895,7 @@ Codeunit 51516000 "Funds Management"
             //ELSE
               //GenJnlLine."Document Type":=GenJnlLine."Document Type"::Payment;
             GenJnlLine."Document No.":=ReceiptHeader."No.";
-            GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+            GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
             GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
             GenJnlLine."Account Type":=GenJnlLine."account type"::"Bank Account";
             GenJnlLine."Account No.":=ReceiptHeader."Bank Code";
@@ -943,7 +943,7 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine."Line No.":=LineNo;
                         GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                         GenJnlLine."Document No.":=ReceiptLine."Document No";
-                        GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                        GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                         GenJnlLine."Account Type":=ReceiptLine."Account Type";
                         GenJnlLine."Account No.":=ReceiptLine."Account Code";
                         GenJnlLine.Validate(GenJnlLine."Account No.");
@@ -1003,7 +1003,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=TaxCodes."Account Type";
                           GenJnlLine."Account No.":=TaxCodes."Account No";
@@ -1053,7 +1053,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=ReceiptLine."Account Type";
                           GenJnlLine."Account No.":=ReceiptLine."Account Code";
@@ -1106,7 +1106,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=TaxCodes."Account Type";
                           GenJnlLine."Account No.":=TaxCodes."Account No";
@@ -1155,7 +1155,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=ReceiptLine."Account Type";
                           GenJnlLine."Account No.":=ReceiptLine."Account Code";
@@ -1286,7 +1286,7 @@ Codeunit 51516000 "Funds Management"
             //ELSE
               //GenJnlLine."Document Type":=GenJnlLine."Document Type"::Payment;
             GenJnlLine."Document No.":=ReceiptHeader."No.";
-            GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+            GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
             GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
             GenJnlLine."Account Type":=GenJnlLine."account type"::"Bank Account";
             GenJnlLine."Account No.":=ReceiptHeader."Bank Code";
@@ -1334,7 +1334,7 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine."Line No.":=LineNo;
                         GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                         GenJnlLine."Document No.":=ReceiptLine."Document No";
-                        GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                        GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                         GenJnlLine."Account Type":=ReceiptLine."Account Type";
                         GenJnlLine."Account No.":=ReceiptLine."Account Code";
                         GenJnlLine.Validate(GenJnlLine."Account No.");
@@ -1394,7 +1394,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=TaxCodes."Account Type";
                           GenJnlLine."Account No.":=TaxCodes."Account No";
@@ -1444,7 +1444,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=ReceiptLine."Account Type";
                           GenJnlLine."Account No.":=ReceiptLine."Account Code";
@@ -1497,7 +1497,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=TaxCodes."Account Type";
                           GenJnlLine."Account No.":=TaxCodes."Account No";
@@ -1546,7 +1546,7 @@ Codeunit 51516000 "Funds Management"
                           GenJnlLine."Source Code":=SourceCode;
                           GenJnlLine."Posting Date":=ReceiptHeader."Posting Date";
                           GenJnlLine."Document No.":=ReceiptLine."Document No";
-                          GenJnlLine."Document Type":=GenJnlLine."document type"::"7";
+                          GenJnlLine."Document Type":=GenJnlLine."document type"::Payment;
                           GenJnlLine."External Document No.":=ReceiptHeader."Cheque No";
                           GenJnlLine."Account Type":=ReceiptLine."Account Type";
                           GenJnlLine."Account No.":=ReceiptLine."Account Code";

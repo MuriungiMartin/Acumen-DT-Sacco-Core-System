@@ -18,7 +18,7 @@ Table 51516557 "General Equiries."
         }
         field(2; "Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -173,16 +173,18 @@ Table 51516557 "General Equiries."
 
             trigger OnLookup()
             var
-                UserMgt: Codeunit "User Management";
+                UserMgt: Codeunit UserManagementCUExt;
+
             begin
-                UserMgt.LookupUserID("Caller Reffered To");
+                UserMgt.LookupUser("Caller Reffered To");
             end;
 
             trigger OnValidate()
             var
-                UserMgt: Codeunit "User Management";
+                UserMgt: Codeunit UserManagementCUExt;
+                User: Record User;
             begin
-                UserMgt.ValidateUserID("Caller Reffered To");
+                UserMgt.ValidateUserName(User, User, "Caller Reffered To");
 
                 ObjUsers.Reset;
                 ObjUsers.SetRange(ObjUsers."User Name", UserId);
@@ -413,7 +415,7 @@ Table 51516557 "General Equiries."
         }
         field(69188; "Referee Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -500,7 +502,7 @@ Table 51516557 "General Equiries."
         ObjUser.Reset;
         ObjUser.SetRange(ObjUser."User Name", UserId);
         if ObjUser.FindSet then begin
-            "Lead Region" := ObjUser."Branch Code";
+            //"Lead Region" := ObjUser."Branch Code";
         end;
     end;
 
@@ -509,13 +511,13 @@ Table 51516557 "General Equiries."
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Loans: Record "Loans Register";
         GenSetUp: Record "Sacco General Set-Up";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         PVApp: Record "Cust. Ledger Entry";
         UserMgt: Codeunit "User Setup Management";
         PRD: Record Customer;
         ObjEmployers: Record "Sacco Employers";
         ObjUser: Record User;
-        ObjCust: Record "Member Register";
+        ObjCust: Record Customer;
         ObjUsers: Record User;
 }
 

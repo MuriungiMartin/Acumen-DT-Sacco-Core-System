@@ -13,96 +13,96 @@ Page 51516254 "HR Training Application Card"
             group(General)
             {
                 Caption = 'General';
-                field("Application No";"Application No")
+                field("Application No"; "Application No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee No.";"Employee No.")
+                field("Employee No."; "Employee No.")
                 {
                     ApplicationArea = Basic;
                     Editable = "Employee No.Editable";
                 }
-                field("Training Group No.";"Training Group No.")
+                field("Training Group No."; "Training Group No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. of Participant";"No. of Participant")
+                field("No. of Participant"; "No. of Participant")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee Name";"Employee Name")
+                field("Employee Name"; "Employee Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Employee Department";"Employee Department")
+                field("Employee Department"; "Employee Department")
                 {
                     ApplicationArea = Basic;
                     Editable = "Employee DepartmentEditable";
                 }
-                field("Course Title";"Course Title")
+                field("Course Title"; "Course Title")
                 {
                     ApplicationArea = Basic;
                     Editable = "Course TitleEditable";
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Purpose of Training";"Purpose of Training")
+                field("Purpose of Training"; "Purpose of Training")
                 {
                     ApplicationArea = Basic;
                     MultiLine = false;
                 }
-                field("From Date";"From Date")
+                field("From Date"; "From Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("To Date";"To Date")
+                field("To Date"; "To Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Duration;Duration)
+                field(Duration; Duration)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Duration Units";"Duration Units")
+                field("Duration Units"; "Duration Units")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Location;Location)
+                field(Location; Location)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cost Of Training";"Cost Of Training")
+                field("Cost Of Training"; "Cost Of Training")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Estimated Cost';
                 }
-                field("Approved Cost";"Approved Cost")
+                field("Approved Cost"; "Approved Cost")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Provider;Provider)
+                field(Provider; Provider)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Provider Name";"Provider Name")
+                field("Provider Name"; "Provider Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                     Editable = "Responsibility CenterEditable";
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
@@ -112,9 +112,9 @@ Page 51516254 "HR Training Application Card"
         }
         area(factboxes)
         {
-            part(Control1102755004;"HR Trainings Factbox")
+            part(Control1102755004; "HR Trainings Factbox")
             {
-                SubPageLink = "Application No"=field("Application No");
+                SubPageLink = "Application No" = field("Application No");
             }
         }
     }
@@ -138,7 +138,7 @@ Page 51516254 "HR Training Application Card"
                     var
                         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,Receipt,"Staff Claim","Staff Advance",AdvanceSurrender,"Bank Slip",Grant,"Grant Surrender","Employee Requisition","Leave Application","Training Application","Transport Requisition";
                     begin
-                        DocumentType:=Documenttype::"Training Application";
+                        DocumentType := Documenttype::"Training Application";
 
                         //ApprovalComments.Setfilters(DATABASE::"HR Training Applications",DocumentType,"Application No");
                         //ApprovalComments.SetUpLine(DATABASE::"HR Training Applications",DocumentType,"Application No");
@@ -165,11 +165,11 @@ Page 51516254 "HR Training Application Card"
                     trigger OnAction()
                     begin
 
-                        Status:=Status::Approved;
+                        Status := Status::Approved;
                         Modify;
                         Message('Fully Approved');
                         //IF ApprovalsMgmt.CheckSalesApprovalsWorkflowEnabled(Rec) THEN
-                          //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                        //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -196,11 +196,11 @@ Page 51516254 "HR Training Application Card"
 
                     trigger OnAction()
                     begin
-                        TestField(Status,Status::Approved);
+                        TestField(Status, Status::Approved);
 
-                        HRTrainingApplications.SetRange(HRTrainingApplications."Application No","Application No");
+                        HRTrainingApplications.SetRange(HRTrainingApplications."Application No", "Application No");
                         if HRTrainingApplications.Find('-') then
-                        Report.Run(51516603,true,true,HRTrainingApplications);
+                            Report.Run(51516603, true, true, HRTrainingApplications);
                     end;
                 }
                 action("<A ction1102755042>")
@@ -214,7 +214,7 @@ Page 51516254 "HR Training Application Card"
 
                     trigger OnAction()
                     begin
-                        Status:=Status::New;
+                        Status := Status::New;
                         Modify;
                     end;
                 }
@@ -225,22 +225,22 @@ Page 51516254 "HR Training Application Card"
     trigger OnAfterGetRecord()
     begin
 
-        if Status=Status::New then begin
-        "Responsibility CenterEditable" :=true;
-        "Application NoEditable" :=true;
-        "Employee No.Editable" :=true;
-        "Employee NameEditable" :=true;
-        "Employee DepartmentEditable" :=true;
-        "Purpose of TrainingEditable" :=true;
-        "Course TitleEditable" :=true;
+        if Status = Status::New then begin
+            "Responsibility CenterEditable" := true;
+            "Application NoEditable" := true;
+            "Employee No.Editable" := true;
+            "Employee NameEditable" := true;
+            "Employee DepartmentEditable" := true;
+            "Purpose of TrainingEditable" := true;
+            "Course TitleEditable" := true;
         end else begin
-        "Responsibility CenterEditable" :=false;
-        "Application NoEditable" :=false;
-        "Employee No.Editable" :=false;
-        "Employee NameEditable" :=false;
-        "Employee DepartmentEditable" :=false;
-        "Purpose of TrainingEditable" :=false;
-        "Course TitleEditable" :=false;
+            "Responsibility CenterEditable" := false;
+            "Application NoEditable" := false;
+            "Employee No.Editable" := false;
+            "Employee NameEditable" := false;
+            "Employee DepartmentEditable" := false;
+            "Purpose of TrainingEditable" := false;
+            "Course TitleEditable" := false;
         end;
     end;
 
@@ -275,7 +275,7 @@ Page 51516254 "HR Training Application Card"
         "Purpose of TrainingEditable": Boolean;
         [InDataSet]
         "Course TitleEditable": Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
         ShowWorkflowStatus: Boolean;

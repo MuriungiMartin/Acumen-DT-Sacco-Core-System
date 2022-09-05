@@ -6,71 +6,71 @@ Table 51516559 "Member Agents App Details"
 
     fields
     {
-        field(1;"Account No";Code[20])
+        field(1; "Account No"; Code[20])
         {
             NotBlank = true;
             TableRelation = "Membership Applications"."No.";
         }
-        field(2;Names;Text[50])
+        field(2; Names; Text[50])
         {
             NotBlank = true;
         }
-        field(3;"Date Of Birth";Date)
+        field(3; "Date Of Birth"; Date)
         {
         }
-        field(4;"Staff/Payroll";Code[20])
+        field(4; "Staff/Payroll"; Code[20])
         {
         }
-        field(5;"ID No.";Code[50])
+        field(5; "ID No."; Code[50])
         {
         }
-        field(6;"Must Sign";Boolean)
+        field(6; "Must Sign"; Boolean)
         {
         }
-        field(8;"Must be Present";Boolean)
+        field(8; "Must be Present"; Boolean)
         {
         }
-        field(9;Picture;MediaSet)
+        field(9; Picture; MediaSet)
         {
             Caption = 'Picture';
         }
-        field(10;Signature;MediaSet)
+        field(10; Signature; MediaSet)
         {
             Caption = 'Signature';
         }
-        field(11;"Expiry Date";Date)
+        field(11; "Expiry Date"; Date)
         {
         }
-        field(12;"BOSA No.";Code[30])
+        field(12; "BOSA No."; Code[30])
         {
-            TableRelation = "Member Register";
+            TableRelation = Customer;
         }
-        field(13;"Email Address";Text[50])
-        {
-        }
-        field(14;Designation;Code[20])
+        field(13; "Email Address"; Text[50])
         {
         }
-        field(15;"Mobile No.";Code[20])
+        field(14; Designation; Code[20])
         {
         }
-        field(16;"Allowed Balance Enquiry";Boolean)
+        field(15; "Mobile No."; Code[20])
         {
         }
-        field(17;"Allowed  Correspondence";Boolean)
+        field(16; "Allowed Balance Enquiry"; Boolean)
         {
         }
-        field(18;"Allowed FOSA Withdrawals";Boolean)
+        field(17; "Allowed  Correspondence"; Boolean)
         {
         }
-        field(19;"Allowed Loan Processing";Boolean)
+        field(18; "Allowed FOSA Withdrawals"; Boolean)
+        {
+        }
+        field(19; "Allowed Loan Processing"; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Account No",Names)
+        key(Key1; "Account No", Names)
         {
             Clustered = true;
         }
@@ -78,7 +78,7 @@ Table 51516559 "Member Agents App Details"
 
     fieldgroups
     {
-        fieldgroup(DropDown;"Account No",Names,"ID No.","Mobile No.","Allowed Balance Enquiry","Allowed  Correspondence","Allowed FOSA Withdrawals","Allowed Loan Processing")
+        fieldgroup(DropDown; "Account No", Names, "ID No.", "Mobile No.", "Allowed Balance Enquiry", "Allowed  Correspondence", "Allowed FOSA Withdrawals", "Allowed Loan Processing")
         {
         }
     }

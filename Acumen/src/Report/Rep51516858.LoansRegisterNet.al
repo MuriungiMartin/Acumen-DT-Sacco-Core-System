@@ -511,10 +511,10 @@ Report 51516858 "Loans Register-Net"
         RPeriod: Decimal;
         BatchL: Code[100];
         Batches: Record "Loan Disburesment-Batching";
-        ApprovalSetup: Codeunit "Approvals Mgmt.";
+        ApprovalSetup: Codeunit WorkflowIntegration;
         LocationFilter: Code[20];
         TotalApproved: Decimal;
-        cust: Record "Member Register";
+        cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
         LAppl: Record "Loans Register";
@@ -542,8 +542,8 @@ Report 51516858 "Loans Register-Net"
         Date________________________Caption_Control1102755005Lbl: label 'Date........................';
         GenSetUp: Record "Sacco General Set-Up";
         LoanApp: Record "Loans Register";
-        CustRec: Record "Member Register";
-        CustRecord: Record "Member Register";
+        CustRec: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanShareRatio: Decimal;

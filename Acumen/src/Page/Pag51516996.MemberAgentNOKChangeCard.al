@@ -10,33 +10,33 @@ Page 51516996 "Member Agent/NOK Change Card"
         {
             group(General)
             {
-                field("Document No";"Document No")
+                field("Document No"; "Document No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Member No";"Member No")
+                field("Member No"; "Member No")
                 {
                     ApplicationArea = Basic;
                     Editable = MemberNoEditable;
                 }
-                field("Member Name";"Member Name")
+                field("Member Name"; "Member Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = AccountTypeEditable;
                     Visible = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Change Type";"Change Type")
+                field("Change Type"; "Change Type")
                 {
                     ApplicationArea = Basic;
                     Editable = ChangeTypeEditable;
@@ -47,40 +47,40 @@ Page 51516996 "Member Agent/NOK Change Card"
                         FnGetListShow();
                     end;
                 }
-                field("Captured By";"Captured By")
+                field("Captured By"; "Captured By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Captured On";"Captured On")
+                field("Captured On"; "Captured On")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Change Effected";"Change Effected")
+                field("Change Effected"; "Change Effected")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
             }
-            part("BOSA Next of Kin";"Members Nominee Details Temp")
+            part("BOSA Next of Kin"; "Members Nominee Details Temp")
             {
-                SubPageLink = "Account No"=field("Member No"),
-                              "Document No"=field("Document No");
+                SubPageLink = "Account No" = field("Member No"),
+                              "Document No" = field("Document No");
             }
-            part("FOSA Next Of Kin";"FOSA Account  NOK Details")
+            part("FOSA Next Of Kin"; "FOSA Account  NOK Details")
             {
-                SubPageLink = "Account No"=field("Account No");
+                SubPageLink = "Account No" = field("Account No");
                 Visible = VarFOSANOKVisible;
             }
-            part("Account Agent";"Agent Account Signatory list")
+            part("Account Agent"; "Agent Account Signatory list")
             {
-                SubPageLink = "Account No"=field("Account No");
+                SubPageLink = "Account No" = field("Account No");
                 Visible = VarAccountAgentVisible;
             }
         }
@@ -103,69 +103,69 @@ Page 51516996 "Member Agent/NOK Change Card"
                 trigger OnAction()
                 begin
                     MembersNomineeTemp.Reset;
-                    MembersNomineeTemp.SetRange("Account No","Member No");
-                    MembersNomineeTemp.SetRange(MembersNomineeTemp."Document No","Document No");
+                    MembersNomineeTemp.SetRange("Account No", "Member No");
+                    MembersNomineeTemp.SetRange(MembersNomineeTemp."Document No", "Document No");
                     if MembersNomineeTemp.Find('-') then begin
-                      repeat
+                        repeat
 
-                        if MembersNomineeTemp."Add New" then begin
-                          MemberNominee.Init;
-                          MemberNominee."%Allocation":=MembersNomineeTemp."%Allocation(New)";
-                          MemberNominee.Relationship:=MembersNomineeTemp."Relationship(New)";
-                          MemberNominee."Date of Birth":=MembersNomineeTemp."Date of Birth(New)";
-                          MemberNominee.Name:=MembersNomineeTemp.Name;
-                          MemberNominee.Address:=MembersNomineeTemp."Address(New)";
-                          MemberNominee.Telephone:=MembersNomineeTemp."Telephone(New)";
-                          MemberNominee.Email:=MembersNomineeTemp."Email(New)";
-                          MemberNominee."ID No.":=MembersNomineeTemp."ID No.(New)";
-                          MemberNominee."Next Of Kin Type":=MembersNomineeTemp."Next Of Kin Type(New)";
-                          MemberNominee.Insert(true);
-                          Commit;
-                        end else begin
-                          MemberNominee.Reset;
-                          MemberNominee.SetRange("Account No","Member No");
-                          MemberNominee.SetRange(Name,MembersNomineeTemp.Name);
+                            if MembersNomineeTemp."Add New" then begin
+                                MemberNominee.Init;
+                                MemberNominee."%Allocation" := MembersNomineeTemp."%Allocation(New)";
+                                MemberNominee.Relationship := MembersNomineeTemp."Relationship(New)";
+                                MemberNominee."Date of Birth" := MembersNomineeTemp."Date of Birth(New)";
+                                MemberNominee.Name := MembersNomineeTemp.Name;
+                                MemberNominee.Address := MembersNomineeTemp."Address(New)";
+                                MemberNominee.Telephone := MembersNomineeTemp."Telephone(New)";
+                                MemberNominee.Email := MembersNomineeTemp."Email(New)";
+                                MemberNominee."ID No." := MembersNomineeTemp."ID No.(New)";
+                                MemberNominee."Next Of Kin Type" := MembersNomineeTemp."Next Of Kin Type(New)";
+                                MemberNominee.Insert(true);
+                                Commit;
+                            end else begin
+                                MemberNominee.Reset;
+                                MemberNominee.SetRange("Account No", "Member No");
+                                MemberNominee.SetRange(Name, MembersNomineeTemp.Name);
                                 //MemberNominee.SETRANGE(Name,MembersNomineeTemp.Name);
-                          if MemberNominee.Find('-') then begin
-                          if MembersNomineeTemp."%Allocation(New)"<>0 then
-                          MemberNominee."%Allocation":=MembersNomineeTemp."%Allocation(New)";
-                          if MembersNomineeTemp."Relationship(New)"<>'' then
-                          MemberNominee.Relationship:=MembersNomineeTemp."Relationship(New)";
-                          if MembersNomineeTemp."Date of Birth(New)"<>0D then
-                          MemberNominee."Date of Birth":=MembersNomineeTemp."Date of Birth(New)";
-                          if MembersNomineeTemp."Address(New)"<>'' then
-                          MemberNominee.Address:=MembersNomineeTemp."Address(New)";
-                          if MembersNomineeTemp."Telephone(New)"<>'' then
-                          MemberNominee.Telephone:=MembersNomineeTemp."Telephone(New)";
-                          if MembersNomineeTemp."Email(New)"<>'' then
-                          MemberNominee.Email:=MembersNomineeTemp."Email(New)";
-                          if MembersNomineeTemp."ID No.(New)"<>'' then
-                          MemberNominee."ID No.":=MembersNomineeTemp."ID No.(New)";
-                          if MembersNomineeTemp."Next Of Kin Type(New)"<>MembersNomineeTemp."next of kin type(new)"::" " then
-                          MemberNominee."Next Of Kin Type":=MembersNomineeTemp."Next Of Kin Type(New)";
+                                if MemberNominee.Find('-') then begin
+                                    if MembersNomineeTemp."%Allocation(New)" <> 0 then
+                                        MemberNominee."%Allocation" := MembersNomineeTemp."%Allocation(New)";
+                                    if MembersNomineeTemp."Relationship(New)" <> '' then
+                                        MemberNominee.Relationship := MembersNomineeTemp."Relationship(New)";
+                                    if MembersNomineeTemp."Date of Birth(New)" <> 0D then
+                                        MemberNominee."Date of Birth" := MembersNomineeTemp."Date of Birth(New)";
+                                    if MembersNomineeTemp."Address(New)" <> '' then
+                                        MemberNominee.Address := MembersNomineeTemp."Address(New)";
+                                    if MembersNomineeTemp."Telephone(New)" <> '' then
+                                        MemberNominee.Telephone := MembersNomineeTemp."Telephone(New)";
+                                    if MembersNomineeTemp."Email(New)" <> '' then
+                                        MemberNominee.Email := MembersNomineeTemp."Email(New)";
+                                    if MembersNomineeTemp."ID No.(New)" <> '' then
+                                        MemberNominee."ID No." := MembersNomineeTemp."ID No.(New)";
+                                    if MembersNomineeTemp."Next Of Kin Type(New)" <> MembersNomineeTemp."next of kin type(new)"::" " then
+                                        MemberNominee."Next Of Kin Type" := MembersNomineeTemp."Next Of Kin Type(New)";
 
-                          MemberNominee.Modify(true);
-                          end;
-                        end;
-                        "Change Effected":=true;
-                      until MembersNomineeTemp.Next=0;
+                                    MemberNominee.Modify(true);
+                                end;
+                            end;
+                            "Change Effected" := true;
+                        until MembersNomineeTemp.Next = 0;
                     end;
                     //Delete old records,
 
                     MembersNomineeTemp.Reset;
-                    MembersNomineeTemp.SetRange("Account No","Member No");
-                    MembersNomineeTemp.SetRange(Remove,true);
+                    MembersNomineeTemp.SetRange("Account No", "Member No");
+                    MembersNomineeTemp.SetRange(Remove, true);
                     if MembersNomineeTemp.Find('-') then begin
                         repeat
-                        MemberNominee.Reset;
-                        MemberNominee.SetRange("Account No","Member No");
-                        MemberNominee.SetRange(Name,MembersNomineeTemp.Name);
-                        if MemberNominee.Find('-') then begin
-                          MemberNominee.Delete;
-                        end;
-                        until MembersNomineeTemp.Next=0;
+                            MemberNominee.Reset;
+                            MemberNominee.SetRange("Account No", "Member No");
+                            MemberNominee.SetRange(Name, MembersNomineeTemp.Name);
+                            if MemberNominee.Find('-') then begin
+                                MemberNominee.Delete;
+                            end;
+                        until MembersNomineeTemp.Next = 0;
                     end;
-                      Message('Record updated Succesfully');
+                    Message('Record updated Succesfully');
                 end;
             }
             action("Send Approval Request")
@@ -181,11 +181,11 @@ Page 51516996 "Member Agent/NOK Change Card"
                 trigger OnAction()
                 var
                     Text001: label 'This request is already pending approval';
-                    ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    ApprovalsMgmt: Codeunit WorkflowIntegration;
                 begin
 
                     if ApprovalsMgmt.CheckMemberAgentNOKChangeApprovalsWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnSendMemberAgentNOKChangeForApproval(Rec);
+                        ApprovalsMgmt.OnSendMemberAgentNOKChangeForApproval(Rec);
                 end;
             }
             action("Cancel Approval Request")
@@ -200,12 +200,12 @@ Page 51516996 "Member Agent/NOK Change Card"
 
                 trigger OnAction()
                 var
-                    Approvalmgt: Codeunit "Approvals Mgmt.";
+                    Approvalmgt: Codeunit WorkflowIntegration;
                 begin
-                    if Confirm('Are you sure you want to cancel this approval request',false)=true then
-                     ApprovalsMgmt.OnCancelMemberAgentNOKChangeApprovalRequest(Rec);
-                      //Status:=Status::Open;
-                      //MODIFY;
+                    if Confirm('Are you sure you want to cancel this approval request', false) = true then
+                        ApprovalsMgmt.OnCancelMemberAgentNOKChangeApprovalRequest(Rec);
+                    //Status:=Status::Open;
+                    //MODIFY;
                 end;
             }
             action(Approval)
@@ -235,34 +235,34 @@ Page 51516996 "Member Agent/NOK Change Card"
 
                 trigger OnAction()
                 begin
-                    if Status=Status::Approved then
-                      Error('You cannot modify an approved document!');
+                    if Status = Status::Approved then
+                        Error('You cannot modify an approved document!');
                     MembersNomineeTemp.Reset;
-                    MembersNomineeTemp.SetRange("Account No","Member No");
-                    MembersNomineeTemp.SetRange(MembersNomineeTemp."Document No","Document No");
+                    MembersNomineeTemp.SetRange("Account No", "Member No");
+                    MembersNomineeTemp.SetRange(MembersNomineeTemp."Document No", "Document No");
                     if MembersNomineeTemp.Find('-') then begin
-                      if Confirm('Loading next of kin details will clear the current changes on the lines,proceed?',false)=true then
-                      MembersNomineeTemp.DeleteAll;
+                        if Confirm('Loading next of kin details will clear the current changes on the lines,proceed?', false) = true then
+                            MembersNomineeTemp.DeleteAll;
                     end;
                     MemberNominee.Reset;
-                    MemberNominee.SetRange("Account No","Member No");
+                    MemberNominee.SetRange("Account No", "Member No");
                     if MemberNominee.Find('-') then begin
-                      repeat
-                        //MembersNomineeTemp.TRANSFERFIELDS(MemberNominee);
-                        MembersNomineeTemp."Entry No":=0;
-                        MembersNomineeTemp."Document No":="Document No";
-                        MembersNomineeTemp.Name:=MemberNominee.Name;
-                        MembersNomineeTemp.Relationship:=MemberNominee.Relationship;
-                        MembersNomineeTemp.Address:=MemberNominee.Address;
-                        MembersNomineeTemp."Date of Birth":=MemberNominee."Date of Birth";
-                        MembersNomineeTemp.Telephone:=MemberNominee.Email;
-                        MembersNomineeTemp."Account No":=MemberNominee."Account No";
-                        MembersNomineeTemp."ID No.":=MemberNominee."ID No.";
-                        MembersNomineeTemp."%Allocation":=MemberNominee."%Allocation";
-                        MembersNomineeTemp."Next Of Kin Type":=MemberNominee."Next Of Kin Type";
-                        MembersNomineeTemp.Existing:=true;
-                        MembersNomineeTemp.Insert;
-                      until MemberNominee.Next=0;
+                        repeat
+                            //MembersNomineeTemp.TRANSFERFIELDS(MemberNominee);
+                            MembersNomineeTemp."Entry No" := 0;
+                            MembersNomineeTemp."Document No" := "Document No";
+                            MembersNomineeTemp.Name := MemberNominee.Name;
+                            MembersNomineeTemp.Relationship := MemberNominee.Relationship;
+                            MembersNomineeTemp.Address := MemberNominee.Address;
+                            MembersNomineeTemp."Date of Birth" := MemberNominee."Date of Birth";
+                            MembersNomineeTemp.Telephone := MemberNominee.Email;
+                            MembersNomineeTemp."Account No" := MemberNominee."Account No";
+                            MembersNomineeTemp."ID No." := MemberNominee."ID No.";
+                            MembersNomineeTemp."%Allocation" := MemberNominee."%Allocation";
+                            MembersNomineeTemp."Next Of Kin Type" := MemberNominee."Next Of Kin Type";
+                            MembersNomineeTemp.Existing := true;
+                            MembersNomineeTemp.Insert;
+                        until MemberNominee.Next = 0;
                     end;
                 end;
             }
@@ -273,83 +273,78 @@ Page 51516996 "Member Agent/NOK Change Card"
     begin
         FnGetListShow();
 
-        EnableCreateMember:=false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
-        EnabledApprovalWorkflowsExist :=true;
+        EnableCreateMember := false;
+        OpenApprovalEntriesExist := Approvmgmt.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approvmgmt.CanCancelApprovalForRecord(RecordId);
+        EnabledApprovalWorkflowsExist := true;
 
-        if ((Rec.Status=Status::Approved) ) then
-            EnableCreateMember:=true;
+        if ((Rec.Status = Status::Approved)) then
+            EnableCreateMember := true;
     end;
 
     trigger OnAfterGetRecord()
     begin
-        if Status=Status::Open then
-          begin
-          MemberNoEditable:=true;
-          AccountTypeEditable:=true;
-          AccountNoEditable:=true;
-          ChangeTypeEditable:=true
-          end else
-            if Status=Status::"Pending Approval" then
-              begin
-              MemberNoEditable:=false;
-              AccountTypeEditable:=false;
-              AccountNoEditable:=false;
-              ChangeTypeEditable:=false
-              end else
-              if Status=Status::Approved then
-                begin
-                  MemberNoEditable:=false;
-                  AccountTypeEditable:=false;
-                  AccountNoEditable:=false;
-                  ChangeTypeEditable:=false;
-                  end;
+        if Status = Status::Open then begin
+            MemberNoEditable := true;
+            AccountTypeEditable := true;
+            AccountNoEditable := true;
+            ChangeTypeEditable := true
+        end else
+            if Status = Status::"Pending Approval" then begin
+                MemberNoEditable := false;
+                AccountTypeEditable := false;
+                AccountNoEditable := false;
+                ChangeTypeEditable := false
+            end else
+                if Status = Status::Approved then begin
+                    MemberNoEditable := false;
+                    AccountTypeEditable := false;
+                    AccountNoEditable := false;
+                    ChangeTypeEditable := false;
+                end;
 
-        EnableCreateMember:=false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
-        EnabledApprovalWorkflowsExist :=true;
+        EnableCreateMember := false;
+        OpenApprovalEntriesExist := Approvmgmt.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approvmgmt.CanCancelApprovalForRecord(RecordId);
+        EnabledApprovalWorkflowsExist := true;
 
-        if ((Rec.Status=Status::Approved) ) then
-            EnableCreateMember:=true;
+        if ((Rec.Status = Status::Approved)) then
+            EnableCreateMember := true;
     end;
 
     trigger OnOpenPage()
     begin
         FnGetListShow();
 
-        if Status=Status::Open then
-          begin
-          MemberNoEditable:=true;
-          AccountTypeEditable:=true;
-          AccountNoEditable:=true;
-          ChangeTypeEditable:=true
-          end else
-            if Status=Status::"Pending Approval" then
-              begin
-              MemberNoEditable:=false;
-              AccountTypeEditable:=false;
-              AccountNoEditable:=false;
-              ChangeTypeEditable:=false
-              end else
-              if Status=Status::Approved then
-                begin
-                  MemberNoEditable:=false;
-                  AccountTypeEditable:=false;
-                  AccountNoEditable:=false;
-                  ChangeTypeEditable:=false;
-                  end;
+        if Status = Status::Open then begin
+            MemberNoEditable := true;
+            AccountTypeEditable := true;
+            AccountNoEditable := true;
+            ChangeTypeEditable := true
+        end else
+            if Status = Status::"Pending Approval" then begin
+                MemberNoEditable := false;
+                AccountTypeEditable := false;
+                AccountNoEditable := false;
+                ChangeTypeEditable := false
+            end else
+                if Status = Status::Approved then begin
+                    MemberNoEditable := false;
+                    AccountTypeEditable := false;
+                    AccountNoEditable := false;
+                    ChangeTypeEditable := false;
+                end;
     end;
 
     var
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"," ","Purchase Requisition",RFQ,"Store Requisition","Payment Voucher",MembershipApplication,LoanApplication,LoanDisbursement,ProductApplication,StandingOrder,MembershipWithdrawal,ATMCard,GuarantorRecovery,ChangeRequest,TreasuryTransactions,FundsTransfer,SaccoTransfers,ChequeDiscounting,ImprestRequisition,ImprestSurrender,LeaveApplication,BulkWithdrawal,PackageLodging,PackageRetrieval,HouseChange,CRMTraining,PettyCash,StaffClaims,MemberAgentNOKChange;
         EnableCreateMember: Boolean;
+        Approvmgmt: Codeunit "Approvals Mgmt.";
         OpenApprovalEntriesExist: Boolean;
         CanCancelApprovalForRecord: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         EnabledApprovalWorkflowsExist: Boolean;
-        ObjCust: Record "Member Register";
+        ObjCust: Record Customer;
         MemberNoEditable: Boolean;
         AccountNoEditable: Boolean;
         ChangeTypeEditable: Boolean;
@@ -362,30 +357,27 @@ Page 51516996 "Member Agent/NOK Change Card"
 
     local procedure FnGetListShow()
     begin
-        VarAccountAgentVisible:=false;
-        VarFOSANOKVisible:=false;
-        VarBOSANOKVisible:=false;
+        VarAccountAgentVisible := false;
+        VarFOSANOKVisible := false;
+        VarBOSANOKVisible := false;
 
 
-        if ("Change Type"="change type"::"Account Next Of Kin Change") and ("Account Type"="account type"::BOSA) then
-          begin
-            VarAccountAgentVisible:=false;
-            VarFOSANOKVisible:=false;
-            VarBOSANOKVisible:=true;
-            end else
-            if ("Change Type"="change type"::"Account Next Of Kin Change") and ("Account Type"="account type"::FOSA) then
-              begin
-                VarAccountAgentVisible:=false;
-                VarFOSANOKVisible:=true;
-                VarBOSANOKVisible:=false;
-                if ("Change Type"="change type"::"Account Agent Change") and ("Account Type"="account type"::FOSA) then
-                  begin
-                    VarAccountAgentVisible:=true;
-                    VarFOSANOKVisible:=false;
-                    VarBOSANOKVisible:=false;
-                    end;
+        if ("Change Type" = "change type"::"Account Next Of Kin Change") and ("Account Type" = "account type"::BOSA) then begin
+            VarAccountAgentVisible := false;
+            VarFOSANOKVisible := false;
+            VarBOSANOKVisible := true;
+        end else
+            if ("Change Type" = "change type"::"Account Next Of Kin Change") and ("Account Type" = "account type"::FOSA) then begin
+                VarAccountAgentVisible := false;
+                VarFOSANOKVisible := true;
+                VarBOSANOKVisible := false;
+                if ("Change Type" = "change type"::"Account Agent Change") and ("Account Type" = "account type"::FOSA) then begin
+                    VarAccountAgentVisible := true;
+                    VarFOSANOKVisible := false;
+                    VarBOSANOKVisible := false;
+                end;
 
-        end;
+            end;
     end;
 }
 

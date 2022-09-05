@@ -8,9 +8,9 @@ Page 51516957 "M_Signatory Picture-Uploaded"
     {
         area(content)
         {
-            field(Picture;Picture)
+            field(Picture; Picture)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture that has been inserted for the member.';
             }
@@ -75,7 +75,7 @@ Page 51516957 "M_Signatory Picture-Uploaded"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         //CameraOptions := CameraOptions.CameraOptions;
         // CameraOptions.Quality := 50;
@@ -97,14 +97,14 @@ Page 51516957 "M_Signatory Picture-Uploaded"
         //    ERROR('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(Picture);
         //Picture.IMPORTFILE(FileName,ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
@@ -130,13 +130,13 @@ Page 51516957 "M_Signatory Picture-Uploaded"
         TestField("Account No");
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(Picture);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     begin
     end;
 }

@@ -8,9 +8,9 @@ Page 51516930 "M_Agent Picture-Appl"
     {
         area(content)
         {
-            field(Picture;Picture)
+            field(Picture; Picture)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture that has been inserted for the member.';
             }
@@ -37,7 +37,7 @@ Page 51516930 "M_Agent Picture-Appl"
                     CameraOptions: dotnet CameraOptions;
                 begin
                     if not CameraAvailable then
-                      exit;
+                        exit;
                     CameraOptions := CameraOptions.CameraOptions;
                     CameraOptions.Quality := 100;
                     CameraProvider.RequestPictureAsync(CameraOptions);
@@ -58,15 +58,15 @@ Page 51516930 "M_Agent Picture-Appl"
                     ClientFileName: Text;
                 begin
                     if Picture.Count > 0 then
-                      if not Confirm(OverrideImageQst) then
+                        if not Confirm(OverrideImageQst) then
+                            exit;
+
+                    FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
+                    if FileName = '' then
                         exit;
 
-                    FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
-                    if FileName = '' then
-                      exit;
-
                     Clear(Picture);
-                    Picture.ImportFile(FileName,ClientFileName);
+                    Picture.ImportFile(FileName, ClientFileName);
                     Modify(true);
                     if FileManagement.DeleteServerFile(FileName) then;
                 end;
@@ -90,11 +90,11 @@ Page 51516930 "M_Agent Picture-Appl"
                     NameValueBuffer.DeleteAll;
                     ExportPath := TemporaryPath + "Account No" + Format(Picture.MediaId);
                     Picture.ExportFile(ExportPath);
-                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer,TemporaryPath);
-                    TempNameValueBuffer.SetFilter(Name,StrSubstNo('%1*',ExportPath));
+                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer, TemporaryPath);
+                    TempNameValueBuffer.SetFilter(Name, StrSubstNo('%1*', ExportPath));
                     TempNameValueBuffer.FindFirst;
-                    ToFile := StrSubstNo('%1 %2.jpg',"Account No",Names);
-                    Download(TempNameValueBuffer.Name,DownloadImageTxt,'','',ToFile);
+                    ToFile := StrSubstNo('%1 %2.jpg', "Account No", Names);
+                    Download(TempNameValueBuffer.Name, DownloadImageTxt, '', '', ToFile);
                     if FileManagement.DeleteServerFile(TempNameValueBuffer.Name) then;
                 end;
             }
@@ -109,7 +109,7 @@ Page 51516930 "M_Agent Picture-Appl"
                 trigger OnAction()
                 begin
                     if not Confirm(DeleteImageQst) then
-                      exit;
+                        exit;
 
                     Clear(Picture);
                     Modify(true);
@@ -134,25 +134,25 @@ Page 51516930 "M_Agent Picture-Appl"
         DeleteExportEnabled := Picture.Count <> 0;
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;
     begin
         if (PictureName = '') or (PictureFilePath = '') then
-          exit;
+            exit;
 
         if Picture.Count > 0 then
-          if not Confirm(OverrideImageQst) then begin
-            if Erase(PictureFilePath) then;
-            exit;
-          end;
+            if not Confirm(OverrideImageQst) then begin
+                if Erase(PictureFilePath) then;
+                exit;
+            end;
 
         File.Open(PictureFilePath);
         File.CreateInstream(Instream);
 
         Clear(Picture);
-        Picture.ImportStream(Instream,PictureName);
+        Picture.ImportStream(Instream, PictureName);
         Modify(true);
 
         File.Close;

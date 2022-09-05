@@ -195,7 +195,7 @@ Table 51516113 "Payment Line"
             else
             if ("Account Type" = const("IC Partner")) "IC Partner"
             else
-            if ("Account Type" = const(Member)) "Member Register";
+            if ("Account Type" = const(Member)) Customer;
 
             trigger OnValidate()
             var
@@ -1130,7 +1130,7 @@ Table 51516113 "Payment Line"
         VendEntrySetApplID: Codeunit "Vend. Entry-SetAppl.ID";
         GenJnlApply: Codeunit "Gen. Jnl.-Apply";
         GenJnILine: Record "Gen. Journal Line";
-        Member: Record "Member Register";
+        Member: Record Customer;
         ApplyVendEntries: Page "Apply Vendor Entries";
         Gen: Record "Sacco General Set-Up";
         PLine: Record "Payments Header";

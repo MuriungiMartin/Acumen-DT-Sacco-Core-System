@@ -423,7 +423,7 @@ Page 51516490 "Salary Processing Header"
         SACCOGEN: Record "Sacco General Set-Up";
         DBranchBOSA: Code[20];
         ReptProcHeader: Record "Checkoff Header-Distributed";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         salarybuffer: Record "Salary Processing Lines";
         SalHeader: Record "Salary Processing Headerr";
         Sto: Record "Standing Orders";

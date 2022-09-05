@@ -7,10 +7,10 @@ Page 51516960 "Cheque Clearing BufferII"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = Transactions;
-    SourceTableView = where(Posted=filter(true),
-                            Type=filter('Cheque Deposit'),
-                            "Clear Cheque"=filter(false),
-                            "Bounce Cheque"=filter(false));
+    SourceTableView = where(Posted = filter(true),
+                            Type = filter('Cheque Deposit'),
+                            "Clear Cheque" = filter(false),
+                            "Bounce Cheque" = filter(false));
     UsageCategory = Lists;
 
     layout
@@ -19,76 +19,76 @@ Page 51516960 "Cheque Clearing BufferII"
         {
             repeater(Control17)
             {
-                field(No;No)
+                field(No; No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; "Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Type";"Transaction Type")
+                field("Transaction Type"; "Transaction Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Expected Maturity Date";"Expected Maturity Date")
+                field("Expected Maturity Date"; "Expected Maturity Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; "Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Amount Discounted";"Amount Discounted")
+                field("Amount Discounted"; "Amount Discounted")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Cheque Type";"Cheque Type")
+                field("Cheque Type"; "Cheque Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Cheque No";"Cheque No")
+                field("Cheque No"; "Cheque No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Cheque Date";"Cheque Date")
+                field("Cheque Date"; "Cheque Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Clear Cheque";"Clear Cheque")
+                field("Clear Cheque"; "Clear Cheque")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bounce Cheque";"Bounce Cheque")
+                field("Bounce Cheque"; "Bounce Cheque")
                 {
                     ApplicationArea = Basic;
                 }
@@ -123,26 +123,26 @@ Page 51516960 "Cheque Clearing BufferII"
 
                     trigger OnAction()
                     begin
-                        if Confirm('Are you sure you want to Bank the selected cheques?',false) = true then begin
+                        if Confirm('Are you sure you want to Bank the selected cheques?', false) = true then begin
 
-                        Transactions.Reset;
-                        Transactions.SetRange(Type,'Bankers Cheque');
-                        Transactions.SetRange(Transactions.Select,true);
-                        //Transactions.SETRANGE(Transactions."Cheque Processed",Transactions."Cheque Processed"::"0");
-                        if Transactions.Find('-') then begin
-                        repeat
+                            Transactions.Reset;
+                            Transactions.SetRange(Type, 'Bankers Cheque');
+                            Transactions.SetRange(Transactions.Select, true);
+                            //Transactions.SETRANGE(Transactions."Cheque Processed",Transactions."Cheque Processed"::"0");
+                            if Transactions.Find('-') then begin
+                                repeat
 
-                        Transactions."Banked By":=UserId;
-                        Transactions."Date Banked":=Today;
-                        Transactions."Time Banked":=Time;
-                        Transactions."Banking Posted":=true;
-                        Transactions."Cheque Processed":=Transactions."cheque processed"::"1";
-                        Transactions.Modify;
-                        until Transactions.Next = 0;
+                                    Transactions."Banked By" := UserId;
+                                    Transactions."Date Banked" := Today;
+                                    Transactions."Time Banked" := Time;
+                                    Transactions."Banking Posted" := true;
+                                    Transactions."Cheque Processed" := true;
+                                    Transactions.Modify;
+                                until Transactions.Next = 0;
 
-                        Message('The selected bankers cheques banked successfully.');
+                                Message('The selected bankers cheques banked successfully.');
 
-                        end;
+                            end;
                         end;
                     end;
                 }
@@ -171,16 +171,16 @@ Page 51516960 "Cheque Clearing BufferII"
                 trigger OnAction()
                 begin
                     Transactions.Reset;
-                    Transactions.SetRange(Type,'Bankers Cheque');
-                    Transactions.SetRange(Transactions.Select,false);
+                    Transactions.SetRange(Type, 'Bankers Cheque');
+                    Transactions.SetRange(Transactions.Select, false);
                     if Transactions.Find('-') then begin
-                    repeat
+                        repeat
 
-                    Transactions.Select:=true;
-                    Transactions.Modify;
-                    until Transactions.Next = 0;
+                            Transactions.Select := true;
+                            Transactions.Modify;
+                        until Transactions.Next = 0;
 
-                    Message('Bankers cheques selected successfully.');
+                        Message('Bankers cheques selected successfully.');
 
                     end;
                 end;

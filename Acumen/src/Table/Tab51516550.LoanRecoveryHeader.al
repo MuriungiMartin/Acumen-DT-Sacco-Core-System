@@ -18,7 +18,7 @@ Table 51516550 "Loan Recovery Header"
         }
         field(2; "Member No"; Code[20])
         {
-            TableRelation = "Member Register"."No." where(Status = const(Active));
+            TableRelation = Customer."No." where(Status = const(Active));
 
             trigger OnValidate()
             begin
@@ -299,7 +299,7 @@ Table 51516550 "Loan Recovery Header"
     var
         SalesSetup: Record "Sacco No. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanDetails: Record "Loan Member Loans";
         LoanRec: Record "Loans Register";
         LoanGuarantors: Record "Loans Guarantee Details";

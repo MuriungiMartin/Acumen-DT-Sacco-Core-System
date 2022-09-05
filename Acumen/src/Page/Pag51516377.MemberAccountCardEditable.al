@@ -8,9 +8,9 @@ Page 51516377 "Member Account Card - Editable"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     RefreshOnActivate = true;
-    SourceTable = "Member Register";
+    SourceTable = Customer;
     SourceTableView = sorting("Employer Code")
-                      where("Customer Type"=const(Member));
+                      where("Customer Type" = const(Member));
 
     layout
     {
@@ -20,44 +20,44 @@ Page 51516377 "Member Account Card - Editable"
             {
                 Caption = 'General';
                 Editable = true;
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Personal No";"Personal No")
+                field("Personal No"; "Personal No")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("FOSA Account No.";"FOSA Account No.")
+                field("FOSA Account No."; "FOSA Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
 
                     trigger OnValidate()
                     begin
-                        FosaName:='';
+                        FosaName := '';
 
                         if "FOSA Account No." <> '' then begin
-                        if Vend.Get("FOSA Account No.") then begin
-                        FosaName:=Vend.Name;
-                        end;
+                            if Vend.Get("FOSA Account No.") then begin
+                                FosaName := Vend.Name;
+                            end;
                         end;
                     end;
                 }
-                field(FosaName;FosaName)
+                field(FosaName; FosaName)
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account Name';
                     Editable = true;
                 }
-                field("Account Category";"Account Category")
+                field("Account Category"; "Account Category")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -73,129 +73,129 @@ Page 51516377 "Member Account Card - Editable"
                         lblMaritalVisible := true;
                         txtMaritalVisible := true;
                         if "Account Category" <> "account category"::Single then begin
-                        lblIDVisible := false;
-                        lblDOBVisible := false;
-                        lblRegNoVisible := true;
-                        lblRegDateVisible := true;
-                        lblGenderVisible := false;
-                        txtGenderVisible := false;
-                        lblMaritalVisible := false;
-                        txtMaritalVisible := false;
+                            lblIDVisible := false;
+                            lblDOBVisible := false;
+                            lblRegNoVisible := true;
+                            lblRegDateVisible := true;
+                            lblGenderVisible := false;
+                            txtGenderVisible := false;
+                            lblMaritalVisible := false;
+                            txtMaritalVisible := false;
 
                         end;
                     end;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID Number';
                     Editable = true;
                 }
-                field("Passport No.";"Passport No.")
+                field("Passport No."; "Passport No.")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Address;Address)
+                field(Address; Address)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Post Code/City';
                     Editable = true;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("StatusPermissions.""User ID""";StatusPermissions."User ID")
+                field("StatusPermissions.""User ID"""; StatusPermissions."User ID")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
                     Editable = true;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer';
                     Editable = true;
                 }
-                field("E-Mail (Personal)";"E-Mail (Personal)")
+                field("E-Mail (Personal)"; "E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pension No";"Pension No")
+                field("Pension No"; "Pension No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Title";"Job title")
+                field("Job Title"; "Job title")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Job Title';
                     Editable = true;
                 }
-                field(PIN;Pin)
+                field(PIN; Pin)
                 {
                     ApplicationArea = Basic;
                     Caption = 'PIN';
                     Editable = true;
                 }
-                field("Registration Date";"Registration Date")
+                field("Registration Date"; "Registration Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(txtMarital;"Marital Status")
+                field(txtMarital; "Marital Status")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status';
                     Visible = txtMaritalVisible;
                 }
-                field("Date of Birth";"Date of Birth")
+                field("Date of Birth"; "Date of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Company Registration Date';
                     Editable = true;
                 }
-                field(Picture;Picture)
+                field(Picture; Picture)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Signature;Signature)
+                field(Signature; Signature)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Posting Group";"Customer Posting Group")
+                field("Customer Posting Group"; "Customer Posting Group")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -203,22 +203,22 @@ Page 51516377 "Member Account Card - Editable"
                     trigger OnValidate()
                     begin
                         StatusPermissions.Reset;
-                        StatusPermissions.SetRange(StatusPermissions."User ID",UserId);
-                        StatusPermissions.SetRange(StatusPermissions."Function",StatusPermissions."function"::Edit);
+                        StatusPermissions.SetRange(StatusPermissions."User ID", UserId);
+                        StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::Edit);
                         if StatusPermissions.Find('-') = false then
-                        Error('You do not have permissions to change the account status.');
+                            Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field(Blocked;Blocked)
+                field(Blocked; Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Modified";"Last Date Modified")
+                field("Last Date Modified"; "Last Date Modified")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Assigned System ID";"Assigned System ID")
+                field("Assigned System ID"; "Assigned System ID")
                 {
                     ApplicationArea = Basic;
                 }
@@ -226,108 +226,108 @@ Page 51516377 "Member Account Card - Editable"
             group(Joint2Details)
             {
                 Caption = 'Joint2Details';
-                field("Name 2";"Name 2")
+                field("Name 2"; "Name 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
                 }
-                field(Address3;Address3)
+                field(Address3; Address3)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Address';
                 }
-                field("Postal Code 2";"Postal Code 2")
+                field("Postal Code 2"; "Postal Code 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Postal Code';
                 }
-                field("Town 2";"Town 2")
+                field("Town 2"; "Town 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Town';
                 }
-                field("Mobile No. Three";"Mobile No. Three")
+                field("Mobile No. Three"; "Mobile No. Three")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
                     ShowMandatory = true;
                 }
-                field("Date of Birth2";"Date of Birth2")
+                field("Date of Birth2"; "Date of Birth2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date of Birth';
                     Editable = false;
                 }
-                field("ID No.2";"ID No.2")
+                field("ID No.2"; "ID No.2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No.';
                     ShowMandatory = true;
                 }
-                field("Passport 2";"Passport 2")
+                field("Passport 2"; "Passport 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Passport No.';
                     Editable = false;
                 }
-                field("Member Parish 2";"Member Parish 2")
+                field("Member Parish 2"; "Member Parish 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member Parish';
                     ShowMandatory = true;
                 }
-                field("Member Parish Name 2";"Member Parish Name 2")
+                field("Member Parish Name 2"; "Member Parish Name 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member Parish Name';
                 }
-                field(Gender2;Gender2)
+                field(Gender2; Gender2)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Gender';
                     Editable = false;
                 }
-                field("Marital Status2";"Marital Status2")
+                field("Marital Status2"; "Marital Status2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status';
                     Editable = false;
                 }
-                field("Home Postal Code2";"Home Postal Code2")
+                field("Home Postal Code2"; "Home Postal Code2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Home Postal Code';
                     Editable = false;
                 }
-                field("Home Town2";"Home Town2")
+                field("Home Town2"; "Home Town2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Home Town';
                     Editable = false;
                 }
-                field("Employer Code2";"Employer Code2")
+                field("Employer Code2"; "Employer Code2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Code';
                     Editable = false;
                 }
-                field("Employer Name2";"Employer Name2")
+                field("Employer Name2"; "Employer Name2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Name';
                     Editable = false;
                 }
-                field("E-Mail (Personal3)";"E-Mail (Personal3)")
+                field("E-Mail (Personal3)"; "E-Mail (Personal3)")
                 {
                     ApplicationArea = Basic;
                     Caption = 'E-Mail (Personal)';
                 }
-                field("Picture 2";"Picture 2")
+                field("Picture 2"; "Picture 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Picture';
                 }
-                field("Signature  2";"Signature  2")
+                field("Signature  2"; "Signature  2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Signature';
@@ -335,111 +335,111 @@ Page 51516377 "Member Account Card - Editable"
             }
             group(Joint3Details)
             {
-                field("Name 3";"Name 3")
+                field("Name 3"; "Name 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
                 }
-                field(Address4;Address4)
+                field(Address4; Address4)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Address';
                 }
-                field("Postal Code 3";"Postal Code 3")
+                field("Postal Code 3"; "Postal Code 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Postal Code';
                 }
-                field("Town 3";"Town 3")
+                field("Town 3"; "Town 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Town';
                     Editable = false;
                 }
-                field("Mobile No. 4";"Mobile No. 4")
+                field("Mobile No. 4"; "Mobile No. 4")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No.';
                     ShowMandatory = true;
                 }
-                field("Last Name";"Last Name")
+                field("Last Name"; "Last Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date of Birth';
                     ShowMandatory = true;
                 }
-                field("ID No.3";"ID No.3")
+                field("ID No.3"; "ID No.3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No.';
                     ShowMandatory = true;
                 }
-                field("Passport 3";"Passport 3")
+                field("Passport 3"; "Passport 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Passport No.';
                     Editable = false;
                 }
-                field("Member Parish 3";"Member Parish 3")
+                field("Member Parish 3"; "Member Parish 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member Parish';
                     Editable = false;
                     ShowMandatory = true;
                 }
-                field("Member Parish Name 3";"Member Parish Name 3")
+                field("Member Parish Name 3"; "Member Parish Name 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member Parish Name';
                     Editable = false;
                 }
-                field(Gender3;Gender3)
+                field(Gender3; Gender3)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Gender';
                     Editable = false;
                 }
-                field("Marital Status3";"Marital Status3")
+                field("Marital Status3"; "Marital Status3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Marital Status';
                     Editable = false;
                 }
-                field("Home Postal Code3";"Home Postal Code3")
+                field("Home Postal Code3"; "Home Postal Code3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Home Postal Code';
                     Editable = false;
                 }
-                field("Home Town3";"Home Town3")
+                field("Home Town3"; "Home Town3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Home Town';
                     Editable = false;
                 }
-                field("Employer Code3";"Employer Code3")
+                field("Employer Code3"; "Employer Code3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Code';
                     Editable = false;
                 }
-                field("Employer Name3";"Employer Name3")
+                field("Employer Name3"; "Employer Name3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Employer Name';
                     Editable = false;
                 }
-                field("E-Mail (Personal2)";"E-Mail (Personal2)")
+                field("E-Mail (Personal2)"; "E-Mail (Personal2)")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Picture 3";"Picture 3")
+                field("Picture 3"; "Picture 3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Picture';
                 }
-                field("Signature  3";"Signature  3")
+                field("Signature  3"; "Signature  3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Signature';
@@ -449,52 +449,52 @@ Page 51516377 "Member Account Card - Editable"
             {
                 Caption = 'Other Details';
                 Editable = true;
-                field("Contact Person";"Contact Person")
+                field("Contact Person"; "Contact Person")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Contact Person Phone";"Contact Person Phone")
+                field("Contact Person Phone"; "Contact Person Phone")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Village/Residence";"Village/Residence")
+                field("Village/Residence"; "Village/Residence")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Home Page";"Home Page")
+                field("Home Page"; "Home Page")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2";"Address 2")
+                field("Address 2"; "Address 2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Physical Address';
                 }
-                field("Withdrawal Application Date";"Withdrawal Application Date")
+                field("Withdrawal Application Date"; "Withdrawal Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Date";"Withdrawal Date")
+                field("Withdrawal Date"; "Withdrawal Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Withdrawal Fee";"Withdrawal Fee")
+                field("Withdrawal Fee"; "Withdrawal Fee")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Status - Withdrawal App.";"Status - Withdrawal App.")
+                field("Status - Withdrawal App."; "Status - Withdrawal App.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mode of Dividend Payment";"Mode of Dividend Payment")
+                field("Mode of Dividend Payment"; "Mode of Dividend Payment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Recruited By";"Recruited By")
+                field("Recruited By"; "Recruited By")
                 {
                     ApplicationArea = Basic;
                 }
@@ -515,7 +515,7 @@ Page 51516377 "Member Account Card - Editable"
                     Caption = 'Member Ledger Entries';
                     Image = CustomerLedger;
                     RunObject = Page "Member Ledger Entries";
-                    RunPageLink = "Customer No."=field("No.");
+                    RunPageLink = "Customer No." = field("No.");
                     RunPageView = sorting("Customer No.");
                 }
                 action(Dimensions)
@@ -523,14 +523,14 @@ Page 51516377 "Member Account Card - Editable"
                     ApplicationArea = Basic;
                     Image = Dimensions;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Bank Account")
                 {
                     ApplicationArea = Basic;
                     Image = Card;
                     RunObject = Page "Customer Bank Account Card";
-                    RunPageLink = "Customer No."=field("No.");
+                    RunPageLink = "Customer No." = field("No.");
                 }
                 action(Contacts)
                 {
@@ -553,7 +553,7 @@ Page 51516377 "Member Account Card - Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Members Nominee Details List";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 action("Account Signatories")
                 {
@@ -562,7 +562,7 @@ Page 51516377 "Member Account Card - Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Member Account Signatory list";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 action("Members Statistics")
                 {
@@ -571,7 +571,7 @@ Page 51516377 "Member Account Card - Editable"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Members Statistics";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 group(ActionGroup18)
                 {
@@ -587,9 +587,9 @@ Page 51516377 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516363,true,false,Cust);
+                            Report.Run(51516363, true, false, Cust);
                     end;
                 }
                 action("Detailed Interest Statement")
@@ -601,9 +601,9 @@ Page 51516377 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516151,true,false,Cust);
+                            Report.Run(51516151, true, false, Cust);
                     end;
                 }
                 action("Account Closure Slip")
@@ -617,9 +617,9 @@ Page 51516377 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(51516390,true,false,Cust);
+                            Report.Run(51516390, true, false, Cust);
                     end;
                 }
                 action("Recover Loans from Gurantors")
@@ -1099,9 +1099,9 @@ Page 51516377 "Member Account Card - Editable"
                     begin
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(50032,true,false,Cust);
+                            Report.Run(50032, true, false, Cust);
                     end;
                 }
                 action("Member is  Guaranteed")
@@ -1113,9 +1113,9 @@ Page 51516377 "Member Account Card - Editable"
                     trigger OnAction()
                     begin
                         Cust.Reset;
-                        Cust.SetRange(Cust."No.","No.");
+                        Cust.SetRange(Cust."No.", "No.");
                         if Cust.Find('-') then
-                        Report.Run(50035,true,false,Cust);
+                            Report.Run(50035, true, false, Cust);
                     end;
                 }
                 group("Issued Documents")
@@ -1131,188 +1131,188 @@ Page 51516377 "Member Account Card - Editable"
 
                     trigger OnAction()
                     begin
-                         /*
-                        
-                        IF Status <> Status::Active THEN
-                        ERROR('you cannot dispatch an inactive file, kindly contact the administrator');
-                        
-                        IF "File Movement Remarks"='' THEN
-                        
-                        "File Movement Remarks":=FORMAT("File Movement Remarks1");
-                        //TESTFIELD("File Movement Remarks");
-                        User:=USERID;
-                        TESTFIELD(User);
-                        //TESTFIELD("Folio Number");
-                        Cust.RESET;
-                        Cust.SETRANGE(Cust."No.","No.");
-                        IF Cust.FIND('-') THEN BEGIN
-                        IF "Bank Code"='' THEN BEGIN
-                        //Cust."Current file location":='REGISTRY';
-                        //"Bank Code":='REGISTRY';
-                        MODIFY;
-                        
-                        
-                        END;
-                        IF (Cust."File MVT Time"<>0T) AND (Cust."file Received"<>TRUE) THEN
-                        ERROR('Please inform this user to receive this file before use %1',Cust.User);
-                        
-                        IF Cust."Current file location"='' THEN
-                        Cust."Current file location":='REGISTRY';
-                        //IF "File Received by"<>USERID THEN ERROR('You do not have permissions to MOVE the file.');
-                        
-                          ApprovalUsers.RESET;
-                          ApprovalUsers.SETRANGE(ApprovalUsers."User ID",USERID);
-                          IF ApprovalUsers.FIND('-') THEN BEGIN
-                          REPEAT
-                           //IF ApprovalUsers."User ID"<>"File Received by" THEN
-                           //ERROR('You do not have permissions to MOVE the file.');
-                          IF CONFIRM('Are You sure you want to move the phisical file to the selected location?')=FALSE THEN
-                           EXIT;
-                        
-                        
-                        {MOVESTATUS.RESET;
-                        MOVESTATUS.SETRANGE(MOVESTATUS."User ID",USERID);
-                        IF MOVESTATUS.FIND('-') THEN BEGIN
-                        REPEAT
-                        IF MOVESTATUS."User ID"<>"File Received by" THEN
-                        ERROR('You do not have permissions to MOVE the file.');
-                        IF CONFIRM('Are You sure you want to move the phisical file to the selected location?')=FALSE THEN
-                        EXIT;}
-                          {
-                        FileMovementTracker.RESET;
-                        FileMovementTracker.SETRANGE(FileMovementTracker."Member No.","No.");
-                        IF FileMovementTracker.FIND('+') THEN BEGIN
-                        IF FileMovementTracker.Stage = "Move to" THEN
-                        ERROR('File already in %1',FileMovementTracker.Station);
-                         }
-                        "File MVT User ID":=USERID;
-                        User:=USERID;
-                        "File MVT Time":=TIME;
-                        "File MVT Date":=TODAY;
-                        "File Previous Location":=FORMAT(Filelocc);
-                        "Current file location":=Cust."Move to description";
-                        "file Received":=FALSE;
-                        "File Received by":='';
-                        "file received date":=0D;
-                        "File received Time":=0T;
-                        MODIFY;
-                        //"Current file location":="Move to";
-                        //MODIFY;
-                        
-                        
-                        ApprovalsSetup.RESET;
-                        ApprovalsSetup.SETRANGE(ApprovalsSetup."Approval Type",ApprovalsSetup."Approval Type"::"File Movement");
-                        ApprovalsSetup.SETRANGE(ApprovalsSetup.Stage,Cust."Move to");
-                        IF ApprovalsSetup.FIND('-') THEN BEGIN
-                        
-                        
-                        
-                        
-                        
-                        FileMovementTracker.RESET;
-                        IF FileMovementTracker.FIND('+') THEN BEGIN
-                        FileMovementTracker."Current Location":=FALSE;
-                        EntryNo:=FileMovementTracker."Entry No.";
-                        END;
-                        FileMovementTracker.INIT;
-                        FileMovementTracker."Entry No.":=EntryNo+1;
-                        FileMovementTracker."Member No.":="No.";
-                        FileMovementTracker."Approval Type":=ApprovalsSetup."Approval Type";
-                        FileMovementTracker.Stage:=ApprovalsSetup.Stage;
-                        FileMovementTracker."Current Location":=TRUE;
-                        FileMovementTracker.Description:=ApprovalsSetup.Description;
-                        FileMovementTracker.Station:=ApprovalsSetup.Station;
-                        FileMovementTracker."Date/Time In":=CREATEDATETIME(TODAY,TIME);
-                        //FileMovementTracker."Date/Time Out":= CREATEDATETIME(TODAY,TIME);
-                        FileMovementTracker."USER ID":=USERID;
-                        FileMovementTracker.Remarks:=Cust."File Movement Remarks";
-                        FileMovementTracker.INSERT(TRUE);
-                        
-                        //END;
-                        END;
-                        
-                        UNTIL ApprovalUsers.NEXT=0;
-                        END;
-                        END;
-                        
-                        {
-                        
-                                       Cust."File MVT User ID":=USERID;
-                                       Cust."File MVT Time":=TIME;
-                                       Cust."File MVT Date":=TODAY;
-                                       Cust."File Previous Location":=Cust."Current file location";
-                                       Cust."Current file location":=Cust."Move to description";
-                                       Cust.MODIFY;
-                        MESSAGE('done');
-                        
-                        
-                        
-                         MOVESTATUS.RESET;
-                          MOVESTATUS.SETRANGE(MOVESTATUS."User ID",USERID);
-                           //MOVESTATUS.SETRANGE(MOVESTATUS.Description,"Current file location");
-                          IF MOVESTATUS.FIND('-') THEN  BEGIN
-                          REPEAT
-                         //IF MOVESTATUS.Description<>"Current file location" THEN
+                        /*
+
+                       IF Status <> Status::Active THEN
+                       ERROR('you cannot dispatch an inactive file, kindly contact the administrator');
+
+                       IF "File Movement Remarks"='' THEN
+
+                       "File Movement Remarks":=FORMAT("File Movement Remarks1");
+                       //TESTFIELD("File Movement Remarks");
+                       User:=USERID;
+                       TESTFIELD(User);
+                       //TESTFIELD("Folio Number");
+                       Cust.RESET;
+                       Cust.SETRANGE(Cust."No.","No.");
+                       IF Cust.FIND('-') THEN BEGIN
+                       IF "Bank Code"='' THEN BEGIN
+                       //Cust."Current file location":='REGISTRY';
+                       //"Bank Code":='REGISTRY';
+                       MODIFY;
+
+
+                       END;
+                       IF (Cust."File MVT Time"<>0T) AND (Cust."file Received"<>TRUE) THEN
+                       ERROR('Please inform this user to receive this file before use %1',Cust.User);
+
+                       IF Cust."Current file location"='' THEN
+                       Cust."Current file location":='REGISTRY';
+                       //IF "File Received by"<>USERID THEN ERROR('You do not have permissions to MOVE the file.');
+
+                         ApprovalUsers.RESET;
+                         ApprovalUsers.SETRANGE(ApprovalUsers."User ID",USERID);
+                         IF ApprovalUsers.FIND('-') THEN BEGIN
+                         REPEAT
+                          //IF ApprovalUsers."User ID"<>"File Received by" THEN
                           //ERROR('You do not have permissions to MOVE the file.');
-                        
-                        
-                        
-                        IF CONFIRM('Are you sure you want to move the physical file to the selected location?') = FALSE THEN
-                        EXIT;
-                        
-                        
-                        
-                        FileMovementTracker.RESET;
-                        FileMovementTracker.SETRANGE(FileMovementTracker."Member No.","No.");
-                        IF FileMovementTracker.FIND('+') THEN BEGIN
-                        IF FileMovementTracker.Stage = "Move to" THEN
-                        ERROR('File already in %1',FileMovementTracker.Station);
-                        END;
-                        
-                        
-                        "File MVT User ID":=USERID;
-                        "File MVT Date":=TODAY;
-                        "File MVT Time":=TIME;
-                        "File Previous Location":="Current file location";
-                        "file Received":=FALSE;
-                        "file received date":=0D;
-                        "File received Time":=0T;
-                        "File Received by":='';
-                        MODIFY;
-                        
-                        
-                        ApprovalsSetup.RESET;
-                        ApprovalsSetup.SETRANGE(ApprovalsSetup."Approval Type",ApprovalsSetup."Approval Type"::"File Movement");
-                        ApprovalsSetup.SETRANGE(ApprovalsSetup.Stage,"Move to");
-                        IF ApprovalsSetup.FIND('-') THEN BEGIN
-                        FileMovementTracker.RESET;
-                        IF FileMovementTracker.FIND('+') THEN
-                        EntryNo:=FileMovementTracker."Entry No.";
-                        
-                        
-                        FileMovementTracker.INIT;
-                        FileMovementTracker."Entry No.":=EntryNo+1;
-                        FileMovementTracker."Member No.":="No.";
-                        FileMovementTracker."Approval Type":=ApprovalsSetup."Approval Type";
-                        FileMovementTracker.Stage:=ApprovalsSetup.Stage;
-                        FileMovementTracker."Current Location":=TRUE;
-                        FileMovementTracker.Description:=ApprovalsSetup.Description;
-                        FileMovementTracker.Station:=ApprovalsSetup.Station;
-                        FileMovementTracker."Date/Time In":=CREATEDATETIME(TODAY,TIME);
-                        FileMovementTracker."Date/Time Out":=CREATEDATETIME(TODAY,TIME);
-                        FileMovementTracker."USER ID":=USERID;
-                        FileMovementTracker.Remarks2:="File Movement Remarks";
-                        FileMovementTracker.INSERT(TRUE);
-                        
-                        //END;
-                        END ELSE
-                          ERROR('SORRY YOU ARE NOT AUTHORISED TO MOVE THIS FILE');
-                        
-                        UNTIL MOVESTATUS.NEXT=0;
-                                 END;
-                        
+                         IF CONFIRM('Are You sure you want to move the phisical file to the selected location?')=FALSE THEN
+                          EXIT;
+
+
+                       {MOVESTATUS.RESET;
+                       MOVESTATUS.SETRANGE(MOVESTATUS."User ID",USERID);
+                       IF MOVESTATUS.FIND('-') THEN BEGIN
+                       REPEAT
+                       IF MOVESTATUS."User ID"<>"File Received by" THEN
+                       ERROR('You do not have permissions to MOVE the file.');
+                       IF CONFIRM('Are You sure you want to move the phisical file to the selected location?')=FALSE THEN
+                       EXIT;}
+                         {
+                       FileMovementTracker.RESET;
+                       FileMovementTracker.SETRANGE(FileMovementTracker."Member No.","No.");
+                       IF FileMovementTracker.FIND('+') THEN BEGIN
+                       IF FileMovementTracker.Stage = "Move to" THEN
+                       ERROR('File already in %1',FileMovementTracker.Station);
                         }
-                         */
+                       "File MVT User ID":=USERID;
+                       User:=USERID;
+                       "File MVT Time":=TIME;
+                       "File MVT Date":=TODAY;
+                       "File Previous Location":=FORMAT(Filelocc);
+                       "Current file location":=Cust."Move to description";
+                       "file Received":=FALSE;
+                       "File Received by":='';
+                       "file received date":=0D;
+                       "File received Time":=0T;
+                       MODIFY;
+                       //"Current file location":="Move to";
+                       //MODIFY;
+
+
+                       ApprovalsSetup.RESET;
+                       ApprovalsSetup.SETRANGE(ApprovalsSetup."Approval Type",ApprovalsSetup."Approval Type"::"File Movement");
+                       ApprovalsSetup.SETRANGE(ApprovalsSetup.Stage,Cust."Move to");
+                       IF ApprovalsSetup.FIND('-') THEN BEGIN
+
+
+
+
+
+                       FileMovementTracker.RESET;
+                       IF FileMovementTracker.FIND('+') THEN BEGIN
+                       FileMovementTracker."Current Location":=FALSE;
+                       EntryNo:=FileMovementTracker."Entry No.";
+                       END;
+                       FileMovementTracker.INIT;
+                       FileMovementTracker."Entry No.":=EntryNo+1;
+                       FileMovementTracker."Member No.":="No.";
+                       FileMovementTracker."Approval Type":=ApprovalsSetup."Approval Type";
+                       FileMovementTracker.Stage:=ApprovalsSetup.Stage;
+                       FileMovementTracker."Current Location":=TRUE;
+                       FileMovementTracker.Description:=ApprovalsSetup.Description;
+                       FileMovementTracker.Station:=ApprovalsSetup.Station;
+                       FileMovementTracker."Date/Time In":=CREATEDATETIME(TODAY,TIME);
+                       //FileMovementTracker."Date/Time Out":= CREATEDATETIME(TODAY,TIME);
+                       FileMovementTracker."USER ID":=USERID;
+                       FileMovementTracker.Remarks:=Cust."File Movement Remarks";
+                       FileMovementTracker.INSERT(TRUE);
+
+                       //END;
+                       END;
+
+                       UNTIL ApprovalUsers.NEXT=0;
+                       END;
+                       END;
+
+                       {
+
+                                      Cust."File MVT User ID":=USERID;
+                                      Cust."File MVT Time":=TIME;
+                                      Cust."File MVT Date":=TODAY;
+                                      Cust."File Previous Location":=Cust."Current file location";
+                                      Cust."Current file location":=Cust."Move to description";
+                                      Cust.MODIFY;
+                       MESSAGE('done');
+
+
+
+                        MOVESTATUS.RESET;
+                         MOVESTATUS.SETRANGE(MOVESTATUS."User ID",USERID);
+                          //MOVESTATUS.SETRANGE(MOVESTATUS.Description,"Current file location");
+                         IF MOVESTATUS.FIND('-') THEN  BEGIN
+                         REPEAT
+                        //IF MOVESTATUS.Description<>"Current file location" THEN
+                         //ERROR('You do not have permissions to MOVE the file.');
+
+
+
+                       IF CONFIRM('Are you sure you want to move the physical file to the selected location?') = FALSE THEN
+                       EXIT;
+
+
+
+                       FileMovementTracker.RESET;
+                       FileMovementTracker.SETRANGE(FileMovementTracker."Member No.","No.");
+                       IF FileMovementTracker.FIND('+') THEN BEGIN
+                       IF FileMovementTracker.Stage = "Move to" THEN
+                       ERROR('File already in %1',FileMovementTracker.Station);
+                       END;
+
+
+                       "File MVT User ID":=USERID;
+                       "File MVT Date":=TODAY;
+                       "File MVT Time":=TIME;
+                       "File Previous Location":="Current file location";
+                       "file Received":=FALSE;
+                       "file received date":=0D;
+                       "File received Time":=0T;
+                       "File Received by":='';
+                       MODIFY;
+
+
+                       ApprovalsSetup.RESET;
+                       ApprovalsSetup.SETRANGE(ApprovalsSetup."Approval Type",ApprovalsSetup."Approval Type"::"File Movement");
+                       ApprovalsSetup.SETRANGE(ApprovalsSetup.Stage,"Move to");
+                       IF ApprovalsSetup.FIND('-') THEN BEGIN
+                       FileMovementTracker.RESET;
+                       IF FileMovementTracker.FIND('+') THEN
+                       EntryNo:=FileMovementTracker."Entry No.";
+
+
+                       FileMovementTracker.INIT;
+                       FileMovementTracker."Entry No.":=EntryNo+1;
+                       FileMovementTracker."Member No.":="No.";
+                       FileMovementTracker."Approval Type":=ApprovalsSetup."Approval Type";
+                       FileMovementTracker.Stage:=ApprovalsSetup.Stage;
+                       FileMovementTracker."Current Location":=TRUE;
+                       FileMovementTracker.Description:=ApprovalsSetup.Description;
+                       FileMovementTracker.Station:=ApprovalsSetup.Station;
+                       FileMovementTracker."Date/Time In":=CREATEDATETIME(TODAY,TIME);
+                       FileMovementTracker."Date/Time Out":=CREATEDATETIME(TODAY,TIME);
+                       FileMovementTracker."USER ID":=USERID;
+                       FileMovementTracker.Remarks2:="File Movement Remarks";
+                       FileMovementTracker.INSERT(TRUE);
+
+                       //END;
+                       END ELSE
+                         ERROR('SORRY YOU ARE NOT AUTHORISED TO MOVE THIS FILE');
+
+                       UNTIL MOVESTATUS.NEXT=0;
+                                END;
+
+                       }
+                        */
 
                     end;
                 }
@@ -1422,12 +1422,12 @@ Page 51516377 "Member Account Card - Editable"
 
     trigger OnAfterGetRecord()
     begin
-        FosaName:='';
+        FosaName := '';
 
         if "FOSA Account No." <> '' then begin
-        if Vend.Get("FOSA Account No.") then begin
-        FosaName:=Vend.Name;
-        end;
+            if Vend.Get("FOSA Account No.") then begin
+                FosaName := Vend.Name;
+            end;
         end;
 
         lblIDVisible := true;
@@ -1440,14 +1440,14 @@ Page 51516377 "Member Account Card - Editable"
         txtMaritalVisible := true;
 
         if "Account Category" <> "account category"::Single then begin
-        lblIDVisible := false;
-        lblDOBVisible := false;
-        lblRegNoVisible := true;
-        lblRegDateVisible := true;
-        lblGenderVisible := false;
-        txtGenderVisible := false;
-        lblMaritalVisible := false;
-        txtMaritalVisible := false;
+            lblIDVisible := false;
+            lblDOBVisible := false;
+            lblRegNoVisible := true;
+            lblRegDateVisible := true;
+            lblGenderVisible := false;
+            txtGenderVisible := false;
+            lblMaritalVisible := false;
+            txtMaritalVisible := false;
 
         end;
         OnAfterGetCurrRecord;
@@ -1476,15 +1476,15 @@ Page 51516377 "Member Account Card - Editable"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Customer Type":="customer type"::Member;
-        Status:=Status::Active;
-        "Customer Posting Group":='BOSA';
-        "Registration Date":=Today;
-        Advice:=true;
-        "Advice Type":="advice type"::"New Member";
+        "Customer Type" := "customer type"::Member;
+        Status := Status::Active;
+        "Customer Posting Group" := 'BOSA';
+        "Registration Date" := Today;
+        Advice := true;
+        "Advice Type" := "advice type"::"New Member";
         if GeneralSetup.Get(0) then begin
-        "Welfare Contribution":=GeneralSetup."Welfare Contribution";
-        "Registration Fee":=GeneralSetup."Registration Fee";
+            "Welfare Contribution" := GeneralSetup."Welfare Contribution";
+            "Registration Fee" := GeneralSetup."Registration Fee";
 
         end;
         OnAfterGetCurrRecord;
@@ -1499,8 +1499,8 @@ Page 51516377 "Member Account Card - Editable"
         IF NOT MapMgt.TestSetup THEN
           CurrForm.MapPoint.VISIBLE(FALSE);
         */
-        
-        
+
+
         /*StatusPermissions.RESET;
         StatusPermissions.SETRANGE(StatusPermissions."User ID",USERID);
         StatusPermissions.SETRANGE(StatusPermissions."Function",StatusPermissions."Function"::Edit);
@@ -1522,7 +1522,7 @@ Page 51516377 "Member Account Card - Editable"
         StatusPermissions: Record "Status Change Permision";
         Charges: Record Charges;
         Vend: Record Vendor;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LineNo: Integer;
         UsersID: Record User;
         GeneralSetup: Record "Sacco General Set-Up";

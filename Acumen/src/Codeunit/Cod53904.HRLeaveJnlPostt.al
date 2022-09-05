@@ -24,26 +24,26 @@ Codeunit 53904 "HR Leave Jnl.-Postt"
     begin
         with HRJournalLine do begin
           HRLeaveJournalTemplate.Get("Product Code");
-          HRLeaveJournalTemplate.TestField("Tax Paid",false);
+          HRLeaveJournalTemplate.TestField("Tax Paid");
 
           if not Confirm(Text000,false) then
             exit;
 
-          TempJnlBatchName := Cycle;
+          TempJnlBatchName := 'Cycle';
 
           HRLeaveJnlPostBatch.Run(HRJournalLine);
 
           if "Max. Installments" = 0 then
             Message(Text001)
           else
-            if TempJnlBatchName = Cycle then
+            if TempJnlBatchName = 'Cycle' then
               Message(Text002)
             else
               Message(
                 Text003,
                 Cycle);
 
-          if not Find('=><') or (TempJnlBatchName <> Cycle) then begin
+          if not Find('=><') or (TempJnlBatchName <> 'Cycle') then begin
             Reset;
             FilterGroup := 2;
             SetRange("Product Code","Product Code");

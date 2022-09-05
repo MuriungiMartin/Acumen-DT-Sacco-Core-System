@@ -41,14 +41,14 @@ tableextension 50033 "FAtableExt" extends "Fixed Asset"
         field(54257; Custodian; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "Fixed Assets Meta Codes".Code;
+            //TableRelation = "Fixed Assets Meta Codes".Code;
 
             trigger OnValidate()
             begin
-                objCustodians.Reset;
-                objCustodians.SetRange(objCustodians.Code, Custodian);
-                if objCustodians.FindSet then
-                    "Custodian Name" := objCustodians.Description;
+                // objCustodians.Reset;
+                // objCustodians.SetRange(objCustodians.Code, Custodian);
+                // if objCustodians.FindSet then
+                //     "Custodian Name" := objCustodians.Description;
             end;
         }
         field(54258; "Custodian Name"; Text[200])
@@ -80,5 +80,5 @@ tableextension 50033 "FAtableExt" extends "Fixed Asset"
     }
 
     var
-        objCustodians: Record "Fixed Assets Meta Codes";
+    /// objCustodians: Record "Fixed Assets Meta Codes";
 }

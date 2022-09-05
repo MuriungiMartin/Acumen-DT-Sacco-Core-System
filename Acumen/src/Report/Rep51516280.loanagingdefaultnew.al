@@ -647,7 +647,7 @@ Report 51516280 "loan aging default new"
         Over3MonthC: Integer;
         NoLoans: Integer;
         PhoneNo: Text[30];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         "StaffNo.": Text[30];
         Deposits: Decimal;
         GrandTotal: Decimal;

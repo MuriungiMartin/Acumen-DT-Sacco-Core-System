@@ -14,7 +14,7 @@ Report 51516880 "Non Contributing Members"
 
     dataset
     {
-        dataitem("Member Register"; "Member Register")
+        dataitem(Customer; Customer)
         {
             PrintOnlyIfDetail = false;
             RequestFilterFields = "No.", Status, "Employer Code", "Personal No", "Current Shares";
@@ -52,34 +52,34 @@ Report 51516880 "Non Contributing Members"
             column(UserId; UserId)
             {
             }
-            column(PersonalNo_MembersRegister; "Member Register"."Personal No")
+            column(PersonalNo_MembersRegister; Customer."Personal No")
             {
             }
-            column(IDNo_MembersRegister; "Member Register"."ID No.")
+            column(IDNo_MembersRegister; Customer."ID No.")
             {
             }
-            column(MobilePhoneNo_MembersRegister; "Member Register"."Mobile Phone No")
+            column(MobilePhoneNo_MembersRegister; Customer."Mobile Phone No")
             {
             }
-            column(No_MembersRegister; "Member Register"."No.")
+            column(No_MembersRegister; Customer."No.")
             {
             }
-            column(Name_MembersRegister; "Member Register".Name)
+            column(Name_MembersRegister; Customer.Name)
             {
             }
-            column(Status_MembersRegister; "Member Register".Status)
+            column(Status_MembersRegister; Customer.Status)
             {
             }
-            column(CurrentShares_MembersRegister; "Member Register"."Current Shares")
+            column(CurrentShares_MembersRegister; Customer."Current Shares")
             {
             }
-            column(GlobalDimension2Code_MembersRegister; "Member Register"."Global Dimension 2 Code")
+            column(GlobalDimension2Code_MembersRegister; Customer."Global Dimension 2 Code")
             {
             }
-            column(EmployerCode_MembersRegister; "Member Register"."Employer Code")
+            column(EmployerCode_MembersRegister; Customer."Employer Code")
             {
             }
-            column(LastDepositContributionDate_MembersRegister; "Member Register"."Last Deposit Contribution Date")
+            column(LastDepositContributionDate_MembersRegister; Customer."Last Deposit Contribution Date")
             {
             }
             column(DaysInArrears; DaysInArrears)
@@ -88,10 +88,10 @@ Report 51516880 "Non Contributing Members"
             trigger OnAfterGetRecord();
             begin
                 FnGetMinTransDate();
-                "Member Register".CalcFields("Member Register"."Last Deposit Contribution Date");
-                if "Member Register"."Last Deposit Contribution Date" <> 0D then begin
-                    if "Member Register"."Last Deposit Contribution Date" < AllowableLastTransDate then begin
-                        DaysInArrears := AllowableLastTransDate - "Member Register"."Last Deposit Contribution Date";
+                Customer.CalcFields(Customer."Last Deposit Contribution Date");
+                if Customer."Last Deposit Contribution Date" <> 0D then begin
+                    if Customer."Last Deposit Contribution Date" < AllowableLastTransDate then begin
+                        DaysInArrears := AllowableLastTransDate - Customer."Last Deposit Contribution Date";
                     end;
                 end;
             end;
@@ -164,7 +164,7 @@ Report 51516880 "Non Contributing Members"
         ApprovalSetup: Record "Table Permission Buffer";
         LocationFilter: Code[20];
         TotalApproved: Decimal;
-        cust: Record "Member Register";
+        cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
         LAppl: Record "Loans Register";
@@ -192,8 +192,8 @@ Report 51516880 "Non Contributing Members"
         Date________________________Caption_Control1102755005Lbl: label 'Date..............';
         GenSetUp: Record "Sacco General Set-Up";
         LoanApp: Record "Loans Register";
-        CustRec: Record "Member Register";
-        CustRecord: Record "Member Register";
+        CustRec: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanShareRatio: Decimal;

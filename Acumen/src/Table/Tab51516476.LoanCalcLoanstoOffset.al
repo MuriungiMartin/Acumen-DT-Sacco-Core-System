@@ -212,7 +212,7 @@ Table 51516476 "Loan Calc. Loans to Offset"
 
     fieldgroups
     {
-        fieldgroup(DropDown; Field3, "Loan Type", "Principle Top Up", "Interest Top Up", "Total Top Up", "Monthly Repayment", "Interest Paid", "Outstanding Balance", "Interest Rate", Commision)
+        fieldgroup(DropDown; "Loan Type", "Principle Top Up", "Interest Top Up", "Total Top Up", "Monthly Repayment", "Interest Paid", "Outstanding Balance", "Interest Rate", Commision)
         {
         }
     }
@@ -221,7 +221,7 @@ Table 51516476 "Loan Calc. Loans to Offset"
         Loans: Record "Loans Register";
         Loantypes: Record "Loan Products Setup";
         Interest: Decimal;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoansTop: Record "Loans Register";
         GenSetUp: Record "Sacco General Set-Up";
 }

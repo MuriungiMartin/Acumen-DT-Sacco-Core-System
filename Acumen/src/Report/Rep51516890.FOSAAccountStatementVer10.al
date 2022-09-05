@@ -654,7 +654,7 @@ Report 51516890 "FOSA Account Statement Ver.1.0"
         TotalCredits: Decimal;
         Totals: Decimal;
         CompanyNamee: Code[50];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Employer: Record "Sacco Employers";
         Company: Record "Company Information";
         Text0001: label 'YOU HAVE A TRANSACTION AWAITING APPROVAL';

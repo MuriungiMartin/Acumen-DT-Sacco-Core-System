@@ -5,9 +5,9 @@ Page 51516895 "MC Group Holders"
     Editable = false;
     ModifyAllowed = false;
     PageType = Card;
-    SourceTable = "Member Register";
-    SourceTableView = where("Customer Posting Group"=const('MICRO'),
-                            "Group Account"=filter(true));
+    SourceTable = Customer;
+    SourceTableView = where("Customer Posting Group" = const('MICRO'),
+                            "Group Account" = filter(true));
 
     layout
     {
@@ -15,101 +15,101 @@ Page 51516895 "MC Group Holders"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Old Account No.";"Old Account No.")
+                field("Old Account No."; "Old Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = false;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("FOSA Account";"FOSA Account")
+                field("FOSA Account"; "FOSA Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Business Loan Officer";"Business Loan Officer")
+                field("Business Loan Officer"; "Business Loan Officer")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pension No";"Pension No")
+                field("Pension No"; "Pension No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Group Account No";"Group Account No")
+                field("Group Account No"; "Group Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2";"Address 2")
+                field("Address 2"; "Address 2")
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Country/Region Code";"Country/Region Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Country/Region Code"; "Country/Region Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Blocked;Blocked)
+                field(Blocked; Blocked)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Certificate No.';
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Picture;Picture)
+                field(Picture; Picture)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Type";"Customer Type")
+                field("Customer Type"; "Customer Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Debtors Type";"Debtors Type")
+                field("Debtors Type"; "Debtors Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category";"Account Category")
+                field("Account Category"; "Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA Account No.";"BOSA Account No.")
+                field("BOSA Account No."; "BOSA Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Registration Date";"Registration Date")
+                field("Registration Date"; "Registration Date")
                 {
                     ApplicationArea = Basic;
                 }
@@ -123,25 +123,25 @@ Page 51516895 "MC Group Holders"
         }
         area(factboxes)
         {
-            part(Control1000000017;"Member Statistics FactBox")
+            part(Control1000000017; "Member Statistics FactBox")
             {
                 Caption = 'Group Statistics FactBox>';
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control1000000016;"Member Picture-Uploaded")
+            part(Control1000000016; "Member Picture-Uploaded")
             {
                 Caption = 'Picture';
                 Editable = false;
                 Enabled = false;
                 ShowFilter = false;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control1000000015;"Member Signature-Uploaded")
+            part(Control1000000015; "Member Signature-Uploaded")
             {
                 Caption = 'Signature';
                 Editable = false;
                 Enabled = false;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -160,7 +160,7 @@ Page 51516895 "MC Group Holders"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = Page "MC Individual Sub-List";
-                    RunPageLink = "Group Account No"=field("No.");
+                    RunPageLink = "Group Account No" = field("No.");
                 }
                 action("Account Signatories ")
                 {
@@ -170,7 +170,7 @@ Page 51516895 "MC Group Holders"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Member Account Signatory list";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 action("Group Statistics")
                 {
@@ -179,7 +179,7 @@ Page 51516895 "MC Group Holders"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Group Statistics";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
             }
         }

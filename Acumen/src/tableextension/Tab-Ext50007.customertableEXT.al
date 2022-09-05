@@ -1063,7 +1063,7 @@ tableextension 50007 "customertableEXT" extends Customer
         }
         field(69054; "Last Share Certificate No"; Integer)
         {
-            CalcFormula = max("Member Register"."Share Certificate No");
+            CalcFormula = max(Customer."Share Certificate No");
             FieldClass = FlowField;
         }
         field(69055; "No Of Days"; Integer)
@@ -1541,7 +1541,7 @@ tableextension 50007 "customertableEXT" extends Customer
         }
         field(69159; "Group Account No"; Code[15])
         {
-            TableRelation = "Member Register"."No." where("Group Account" = filter(true));
+            TableRelation = Customer."No." where("Group Account" = filter(true));
         }
         field(69160; "FOSA Account"; Code[15])
         {
@@ -1586,20 +1586,20 @@ tableextension 50007 "customertableEXT" extends Customer
         }
         field(69169; "No of Group Members"; Integer)
         {
-            CalcFormula = count("Member Register" where("Group Account No" = field("No.")));
+            CalcFormula = count(Customer where("Group Account No" = field("No.")));
             Editable = false;
             FieldClass = FlowField;
         }
         field(69170; "No of Active Group Members"; Integer)
         {
-            CalcFormula = count("Member Register" where("Group Account No" = field("No."),
+            CalcFormula = count(Customer where("Group Account No" = field("No."),
                                                          Status = filter(Active)));
             Editable = false;
             FieldClass = FlowField;
         }
         field(69171; "No of Dormant Group Members"; Integer)
         {
-            CalcFormula = count("Member Register" where("Group Account No" = field("No."),
+            CalcFormula = count(Customer where("Group Account No" = field("No."),
                                                          Status = filter(Dormant)));
             Editable = false;
             FieldClass = FlowField;
@@ -1680,7 +1680,7 @@ tableextension 50007 "customertableEXT" extends Customer
         }
         field(69189; "Referee Member No"; Code[15])
         {
-            TableRelation = "Member Register"."No.";
+            TableRelation = Customer."No.";
 
             trigger OnValidate()
             begin
@@ -1957,6 +1957,10 @@ tableextension 50007 "customertableEXT" extends Customer
         {
             DataClassification = ToBeClassified;
         }
+        field(69246; Piccture; MediaSet)
+        {
+
+        }
     }
 
     keys
@@ -2060,7 +2064,7 @@ tableextension 50007 "customertableEXT" extends Customer
         GenSetUp: Record "Sacco General Set-Up";
         MinShares: Decimal;
         MovementTracker: Record "Movement Tracker";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Vend: Record Vendor;
         CustFosa: Code[20];
         Vend2: Record Vendor;

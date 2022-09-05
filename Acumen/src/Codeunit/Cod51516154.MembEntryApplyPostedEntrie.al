@@ -60,7 +60,7 @@ Codeunit 51516154 "MembEntry-Apply Posted Entrie"
 
             EntryNoBeforeApplication := FindLastApplDtldCustLedgEntry;
 
-            GenJnlPostLine.MemberPostApplyCustLedgEntry(GenJnlLine, Rec);
+            GenJnlPostLine.CustPostApplyCustLedgEntry(GenJnlLine, Rec);
 
             EntryNoAfterApplication := FindLastApplDtldCustLedgEntry;
             if EntryNoAfterApplication = EntryNoBeforeApplication then
@@ -270,7 +270,7 @@ Codeunit 51516154 "MembEntry-Apply Posted Entrie"
             GenJnlLine."Source Currency Code" := DtldCustLedgEntry2."Currency Code";
             GenJnlLine."System-Created Entry" := true;
             Window.Open(Text008);
-            GenJnlPostLine.VendPostApplyVendLedgEntry(GenJnlLine, DtldCustLedgEntry2);
+            //    GenJnlPostLine.VendPostApplyVendLedgEntry(GenJnlLine, DtldCustLedgEntry2);
             DtldCustLedgEntryBuf.DeleteAll;
             DocNo := '';
             PostingDate := 0D;

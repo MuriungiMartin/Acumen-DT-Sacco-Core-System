@@ -979,7 +979,7 @@ Page 51516853 "Loan Application MICRO(Approv)"
         PreviewShedule: Record "Loan Repayment Schedule";
         PeriodInterval: Code[10];
         LnLoans: Record "Loans Register";
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -989,7 +989,7 @@ Page 51516853 "Loan Application MICRO(Approv)"
         LineNo: Integer;
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
         CustRec: Record "Loans Register";
@@ -1028,7 +1028,7 @@ Page 51516853 "Loan Application MICRO(Approv)"
         DActivity: Code[20];
         DBranch: Code[20];
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -1074,7 +1074,7 @@ Page 51516853 "Loan Application MICRO(Approv)"
         RepayFrequencyEditable: Boolean;
         ModeofDisburesmentEdit: Boolean;
         DisbursementDateEditable: Boolean;
-        Memb: Record "Member Register";
+        Memb: Record Customer;
         LoanSecurities: Record "Loans Guarantee Details";
         Text002: label 'Please Insert Securities Details';
         LnSecurities: Record "Loans Guarantee Details";
@@ -1094,7 +1094,7 @@ Page 51516853 "Loan Application MICRO(Approv)"
         OpenApprovalsEntriesExist: Boolean;
         EnabledApprovalWorkflowExist: Boolean;
         CanCancelApprovalForRecord: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         RepaySched: Record "Loan Repayment Schedule";
         LoanReferee1NameEditable: Boolean;
         LoanReferee2NameEditable: Boolean;
@@ -1264,7 +1264,7 @@ Page 51516853 "Loan Application MICRO(Approv)"
         FileName: Text[100];
         Attachment: Text[250];
         CompanyInfo: Record "Company Information";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Email: Text[50];
     begin
         SMTPSetup.Get();
@@ -1290,7 +1290,7 @@ Page 51516853 "Loan Application MICRO(Approv)"
 
     local procedure FnSendGuarantorAppSMS(LoanNo: Code[20])
     var
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Sms: Record "SMS Messages";
     begin
         LGuarantors.Reset;

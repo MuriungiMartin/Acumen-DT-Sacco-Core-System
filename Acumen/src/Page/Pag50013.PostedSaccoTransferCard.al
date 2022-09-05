@@ -151,7 +151,7 @@ Page 50013 "Posted Sacco Transfer Card"
                     trigger OnAction()
                     var
                         Text001: label 'This Batch is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         if FnLimitNumberOfTransactions() then
                             Error(Txt0001);
@@ -170,7 +170,7 @@ Page 50013 "Posted Sacco Transfer Card"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         if ApprovalsMgmt.CheckSaccoTransferApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnCancelSaccoTransferApprovalRequest(Rec);
@@ -509,7 +509,7 @@ Page 50013 "Posted Sacco Transfer Card"
         SourceLoanNoEditable: Boolean;
         RemarkEditable: Boolean;
         TransactionDateEditable: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         ObjSaccoTransfers: Record "Sacco Transfers";
         OpenApprovalEntriesExist: Boolean;
         EnabledApprovalWorkflowExist: Boolean;

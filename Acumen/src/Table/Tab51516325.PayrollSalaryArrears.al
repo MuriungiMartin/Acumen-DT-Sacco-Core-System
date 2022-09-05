@@ -4,50 +4,50 @@ Table 51516325 "Payroll Salary Arrears."
 
     fields
     {
-        field(10;"Employee Code";Code[20])
+        field(10; "Employee Code"; Code[20])
         {
             TableRelation = "HR Job Occupations";
         }
-        field(11;"Transaction Code";Code[20])
+        field(11; "Transaction Code"; Code[20])
         {
         }
-        field(12;"Start Date";Date)
+        field(12; "Start Date"; Date)
         {
             Description = 'From when';
         }
-        field(13;"End Date";Date)
+        field(13; "End Date"; Date)
         {
             Description = 'Upto when';
         }
-        field(14;"Salary Arrears";Decimal)
+        field(14; "Salary Arrears"; Decimal)
         {
         }
-        field(15;"Salary Arrears(LCY)";Decimal)
+        field(15; "Salary Arrears(LCY)"; Decimal)
         {
         }
-        field(16;"PAYE Arrears";Decimal)
+        field(16; "PAYE Arrears"; Decimal)
         {
         }
-        field(17;"PAYE Arrears(LCY)";Decimal)
+        field(17; "PAYE Arrears(LCY)"; Decimal)
         {
         }
-        field(18;"Period Month";Integer)
+        field(18; "Period Month"; Integer)
         {
         }
-        field(19;"Period Year";Integer)
+        field(19; "Period Year"; Integer)
         {
         }
-        field(20;"Current Basic";Decimal)
+        field(20; "Current Basic"; Decimal)
         {
         }
-        field(21;"Current Basic(LCY)";Decimal)
+        field(21; "Current Basic(LCY)"; Decimal)
         {
         }
-        field(22;"Payroll Period";Date)
+        field(22; "Payroll Period"; Date)
         {
-            TableRelation = "HR Job Qualifications".Field10;
+            //  TableRelation = "HR Job Qualifications".Field10;
         }
-        field(23;Number;Integer)
+        field(23; Number; Integer)
         {
             AutoIncrement = true;
             NotBlank = true;
@@ -56,7 +56,7 @@ Table 51516325 "Payroll Salary Arrears."
 
     keys
     {
-        key(Key1;"Employee Code")
+        key(Key1; "Employee Code")
         {
             Clustered = true;
         }

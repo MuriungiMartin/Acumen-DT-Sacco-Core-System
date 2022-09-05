@@ -10,51 +10,51 @@ Page 51516165 "HR Leave Carryover Request"
         {
             group(General)
             {
-                field("Application Code";"Application Code")
+                field("Application Code"; "Application Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Applicant Comments";"Applicant Comments")
+                field("Applicant Comments"; "Applicant Comments")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Names;Names)
+                field(Names; Names)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Tittle";"Job Tittle")
+                field("Job Tittle"; "Job Tittle")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee No";"Employee No")
+                field("Employee No"; "Employee No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved days";"Approved days")
+                field("Approved days"; "Approved days")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Attachments;Attachments)
+                field(Attachments; Attachments)
                 {
                     ApplicationArea = Basic;
                 }
@@ -62,16 +62,16 @@ Page 51516165 "HR Leave Carryover Request"
         }
         area(factboxes)
         {
-            systempart(Control16;Outlook)
+            systempart(Control16; Outlook)
             {
             }
-            systempart(Control17;Notes)
+            systempart(Control17; Notes)
             {
             }
-            systempart(Control18;MyNotes)
+            systempart(Control18; MyNotes)
             {
             }
-            systempart(Control19;Links)
+            systempart(Control19; Links)
             {
             }
         }
@@ -94,8 +94,8 @@ Page 51516165 "HR Leave Carryover Request"
                     DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,Receipt,"Staff Claim","Staff Advance",AdvanceSurrender,"Bank Slip",Grant,"Grant Surrender","Employee Requisition","Leave Application","Training Application","Transport Requisition",Job;
                     ApprovalEntries: Page "Approval Entries";
                 begin
-                    DocumentType:=Documenttype::Job;
-                    ApprovalEntries.Setfilters(Database::"HR Appraisal Header",DocumentType,"Application Code");
+                    DocumentType := Documenttype::Job;
+                    ApprovalEntries.Setfilters(Database::"HR Appraisal Header", DocumentType, "Application Code");
                     ApprovalEntries.Run;
                 end;
             }
@@ -114,7 +114,7 @@ Page 51516165 "HR Leave Carryover Request"
                     trigger OnAction()
                     begin
                         //IF ApprovalsMgmt.CheckSalesApprovalsWorkflowEnabled(Rec) THEN
-                          //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                        //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -137,6 +137,6 @@ Page 51516165 "HR Leave Carryover Request"
 
     var
         OpenApprovalEntriesExist: Boolean;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
 }
 

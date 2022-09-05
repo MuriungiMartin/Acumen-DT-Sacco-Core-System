@@ -4,34 +4,34 @@ Table 51516342 "prEmployer Deductions."
 
     fields
     {
-        field(1;"Employee Code";Code[20])
+        field(1; "Employee Code"; Code[20])
         {
         }
-        field(2;"Transaction Code";Code[20])
+        field(2; "Transaction Code"; Code[20])
         {
         }
-        field(3;Amount;Decimal)
+        field(3; Amount; Decimal)
         {
         }
-        field(4;"Period Month";Integer)
+        field(4; "Period Month"; Integer)
         {
         }
-        field(5;"Period Year";Integer)
+        field(5; "Period Year"; Integer)
         {
         }
-        field(6;"Payroll Period";Date)
+        field(6; "Payroll Period"; Date)
         {
-            TableRelation = Table39003990.Field4;
+            //    TableRelation = Table39003990.Field4;
         }
-        field(7;"Payroll Code";Code[20])
+        field(7; "Payroll Code"; Code[20])
         {
-            TableRelation = Table39004012;
+            //  TableRelation = Table39004012;
         }
     }
 
     keys
     {
-        key(Key1;"Employee Code","Transaction Code","Period Month","Period Year","Payroll Period")
+        key(Key1; "Employee Code", "Transaction Code", "Period Month", "Period Year", "Payroll Period")
         {
             Clustered = true;
             SumIndexFields = Amount;

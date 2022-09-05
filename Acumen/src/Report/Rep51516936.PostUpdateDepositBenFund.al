@@ -5,7 +5,7 @@ Report 51516936 "Post Update Deposit/BenFund"
 
     dataset
     {
-        dataitem("Member Register"; "Member Register")
+        dataitem(Customer; Customer)
         {
             RequestFilterFields = "No.";
             column(ReportForNavId_1; 1)
@@ -24,27 +24,27 @@ Report 51516936 "Post Update Deposit/BenFund"
                 GenJournalLine.DeleteAll;
 
                 //Transfer Share Capital Variance======================================================================================================
-                "Member Register".CalcFields("Member Register"."Current Shares", "Member Register"."Shares Retained");
-                if ("Member Register"."Shares Retained" < ObjGensetup."Retained Shares") and ("Member Register"."Current Shares" > 0) then begin
-                    VarShareCapVariance := (ObjGensetup."Retained Shares" - "Member Register"."Shares Retained");
-                    if "Member Register"."Current Shares" > VarShareCapVariance then begin
+                Customer.CalcFields(Customer."Current Shares", Customer."Shares Retained");
+                if (Customer."Shares Retained" < ObjGensetup."Retained Shares") and (Customer."Current Shares" > 0) then begin
+                    VarShareCapVariance := (ObjGensetup."Retained Shares" - Customer."Shares Retained");
+                    if Customer."Current Shares" > VarShareCapVariance then begin
                         VarAmountPosted := VarShareCapVariance
                     end else
-                        VarAmountPosted := "Member Register"."Current Shares";
+                        VarAmountPosted := Customer."Current Shares";
 
 
                     //------------------------------------1. DEBIT MEMBER DEPOSITS A/C---------------------------------------------------------------------------------------------
                     LineNo := LineNo + 10000;
                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                    GenJournalLine."account type"::Member, "Member Register"."No.", Today, VarAmountPosted, 'BOSA', '',
-                    'Transfer to Share Capital- ' + "Member Register"."No.", '');
+                    GenJournalLine."account type"::Member, Customer."No.", Today, VarAmountPosted, 'BOSA', '',
+                    'Transfer to Share Capital- ' + Customer."No.", '');
                     //--------------------------------(Debit Member Deposit Account)---------------------------------------------
 
                     //------------------------------------2. CREDIT MEMBER FOSA A/C---------------------------------------------------------------------------------------------
                     LineNo := LineNo + 10000;
                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Share Capital",
-                    GenJournalLine."account type"::Member, "Member Register"."No.", Today, VarAmountPosted * -1, 'BOSA', '',
-                    'Transfer to Share Capital- ' + "Member Register"."No.", '');
+                    GenJournalLine."account type"::Member, Customer."No.", Today, VarAmountPosted * -1, 'BOSA', '',
+                    'Transfer to Share Capital- ' + Customer."No.", '');
                     //----------------------------------(Credit Member Fosa Account)------------------------------------------------
 
                     //CU posting
@@ -57,27 +57,27 @@ Report 51516936 "Post Update Deposit/BenFund"
                 //END Transfer Share Capital Variance======================================================================================================
 
                 //Transfer BENEVOLENT Variance======================================================================================================
-                "Member Register".CalcFields("Member Register"."Current Shares", "Member Register"."Shares Retained", "Member Register"."Benevolent Fund");
-                if ("Member Register"."Benevolent Fund" < ObjGensetup."Insurance Contribution") and ("Member Register"."Current Shares" > 0) then begin
-                    VarBenfundVariance := (ObjGensetup."Insurance Contribution" - "Member Register"."Benevolent Fund");
-                    if "Member Register"."Current Shares" > VarBenfundVariance then begin
+                Customer.CalcFields(Customer."Current Shares", Customer."Shares Retained", Customer."Benevolent Fund");
+                if (Customer."Benevolent Fund" < ObjGensetup."Insurance Contribution") and (Customer."Current Shares" > 0) then begin
+                    VarBenfundVariance := (ObjGensetup."Insurance Contribution" - Customer."Benevolent Fund");
+                    if Customer."Current Shares" > VarBenfundVariance then begin
                         VarAmountPosted := VarBenfundVariance
                     end else
-                        VarAmountPosted := "Member Register"."Current Shares";
+                        VarAmountPosted := Customer."Current Shares";
 
 
                     //------------------------------------1. DEBIT MEMBER DEPOSITS A/C---------------------------------------------------------------------------------------------
                     LineNo := LineNo + 10000;
                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                    GenJournalLine."account type"::Member, "Member Register"."No.", Today, VarAmountPosted, 'BOSA', '',
-                    'Transfer to Benfund- ' + "Member Register"."No.", '');
+                    GenJournalLine."account type"::Member, Customer."No.", Today, VarAmountPosted, 'BOSA', '',
+                    'Transfer to Benfund- ' + Customer."No.", '');
                     //--------------------------------(Debit Member Deposit Account)---------------------------------------------
 
                     //------------------------------------2. CREDIT MEMBER FOSA A/C---------------------------------------------------------------------------------------------
                     LineNo := LineNo + 10000;
                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Benevolent Fund",
-                    GenJournalLine."account type"::Member, "Member Register"."No.", Today, VarAmountPosted * -1, 'BOSA', '',
-                    'Transfer to Benfund- ' + "Member Register"."No.", '');
+                    GenJournalLine."account type"::Member, Customer."No.", Today, VarAmountPosted * -1, 'BOSA', '',
+                    'Transfer to Benfund- ' + Customer."No.", '');
                     //----------------------------------(Credit Member Fosa Account)------------------------------------------------
 
                     //CU posting
@@ -128,7 +128,7 @@ Report 51516936 "Post Update Deposit/BenFund"
 
     local procedure FnGetMembersMonthlyContribution(MemberNo: Code[30]) VarMemberMonthlyContribution: Decimal
     var
-        ObjMember: Record "Member Register";
+        ObjMember: Record Customer;
         ObjLoans: Record "Loans Register";
         VarTotalLoansIssued: Decimal;
         ObjDeposittier: Record "Deposit Tier Setup";

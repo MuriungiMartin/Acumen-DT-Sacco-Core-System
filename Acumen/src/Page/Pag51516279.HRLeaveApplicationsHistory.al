@@ -7,7 +7,7 @@ Page 51516279 "HR Leave Applications History"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = "HR Leave Application";
-    SourceTableView = where(Status=const(Approved));
+    SourceTableView = where(Status = const(Approved));
 
     layout
     {
@@ -16,60 +16,60 @@ Page 51516279 "HR Leave Applications History"
             repeater(Control1102755000)
             {
                 Editable = false;
-                field("Application Code";"Application Code")
+                field("Application Code"; "Application Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Application No';
                     StyleExpr = true;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee No";"Employee No")
+                field("Employee No"; "Employee No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Tittle";"Job Tittle")
+                field("Job Tittle"; "Job Tittle")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Type";"Leave Type")
+                field("Leave Type"; "Leave Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Days Applied";"Days Applied")
+                field("Days Applied"; "Days Applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Start Date";"Start Date")
+                field("Start Date"; "Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("End Date";"End Date")
+                field("End Date"; "End Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Return Date";"Return Date")
+                field("Return Date"; "Return Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved days";"Approved days")
+                field("Approved days"; "Approved days")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Reliever Name";"Reliever Name")
+                field("Reliever Name"; "Reliever Name")
                 {
                     ApplicationArea = Basic;
                 }
@@ -77,11 +77,11 @@ Page 51516279 "HR Leave Applications History"
         }
         area(factboxes)
         {
-            part(Control1102755006;"HR Leave Applicaitons Factbox")
+            part(Control1102755006; "HR Leave Applicaitons Factbox")
             {
-                SubPageLink = "No."=field("Employee No");
+                SubPageLink = "No." = field("Employee No");
             }
-            systempart(Control1102755004;Outlook)
+            systempart(Control1102755004; Outlook)
             {
             }
         }
@@ -110,7 +110,7 @@ Page 51516279 "HR Leave Applications History"
                     trigger OnAction()
                     begin
                         //IF ApprovalsMgmt.CheckSalesApprovalsWorkflowEnabled(Rec) THEN
-                          //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                        //ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -137,8 +137,8 @@ Page 51516279 "HR Leave Applications History"
 
                     trigger OnAction()
                     begin
-                                                 Status:=Status::New;
-                                                 Modify;
+                        Status := Status::New;
+                        Modify;
                     end;
                 }
                 action(Print)
@@ -152,9 +152,9 @@ Page 51516279 "HR Leave Applications History"
                     trigger OnAction()
                     begin
                         HRLeaveApp.Reset;
-                        HRLeaveApp.SetRange(HRLeaveApp."Application Code","Application Code");
+                        HRLeaveApp.SetRange(HRLeaveApp."Application Code", "Application Code");
                         if HRLeaveApp.Find('-') then
-                        Report.Run(53919,true,true,HRLeaveApp);
+                            Report.Run(53919, true, true, HRLeaveApp);
                     end;
                 }
                 action("Create Leave Ledger Entries")
@@ -220,36 +220,35 @@ Page 51516279 "HR Leave Applications History"
 
                 trigger OnAction()
                 begin
-                    if Status=Status::Posted then Error('This Leave application has already been posted');
-                    if Status<>Status::Approved then
-                    Error('The Leave Status must be Approved')
+                    if Status = Status::Posted then Error('This Leave application has already been posted');
+                    if Status <> Status::Approved then
+                        Error('The Leave Status must be Approved')
                     else
-                    HRLeaveApp.Reset;
-                    HRLeaveApp.SetRange(HRLeaveApp."Application Code","Application Code");
-                    if HRLeaveApp.Find('-')then begin
-                    HRLeaveApp.CreateLeaveLedgerEntries;
+                        HRLeaveApp.Reset;
+                    HRLeaveApp.SetRange(HRLeaveApp."Application Code", "Application Code");
+                    if HRLeaveApp.Find('-') then begin
+                        HRLeaveApp.CreateLeaveLedgerEntries;
 
                     end;
-                         //Dave---To notify leave applicant
+                    //Dave---To notify leave applicant
 
                     HREmp.Get("Employee No");
                     HREmp.TestField(HREmp."Company E-Mail");
 
                     //GET E-MAIL PARAMETERS FOR GENERAL E-MAILS
                     HREmailParameters.Reset;
-                    HREmailParameters.SetRange(HREmailParameters."Associate With",HREmailParameters."associate with"::"Interview Invitations");
-                    if HREmailParameters.Find('-') then
-                    begin
+                    HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Interview Invitations");
+                    if HREmailParameters.Find('-') then begin
 
 
-                         HREmp.TestField(HREmp."Company E-Mail");
-                         SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",HREmp."Company E-Mail",
-                         HREmailParameters.Subject,'Dear'+' '+ HREmp."First Name" +' '+
-                         HREmailParameters.Body+' '+"Application Code"+' '+ HREmailParameters."Body 2",true);
-                         SMTP.Send();
+                        HREmp.TestField(HREmp."Company E-Mail");
+                        SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+                        HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+                        HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
+                        SMTP.Send();
 
 
-                    Message('Leave applicant has been notified successfully');
+                        Message('Leave applicant has been notified successfully');
                     end;
                 end;
             }
@@ -268,7 +267,7 @@ Page 51516279 "HR Leave Applications History"
     end;
 
     var
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
         ShowWorkflowStatus: Boolean;
@@ -340,11 +339,11 @@ Page 51516279 "HR Leave Applications History"
 
     procedure TESTFIELDS()
     begin
-                                        TestField("Leave Type");
-                                        TestField("Days Applied");
-                                        TestField("Start Date");
-                                        TestField(Reliever);
-                                        TestField(Supervisor);
+        TestField("Leave Type");
+        TestField("Days Applied");
+        TestField("Start Date");
+        TestField(Reliever);
+        TestField(Supervisor);
     end;
 
 
@@ -354,136 +353,133 @@ Page 51516279 "HR Leave Applications History"
         LeaveFamilyEmployees: Record "HR Leave Family Employees";
         Employees: Record "HR Employees";
     begin
-        LeaveFamilyEmployees.SetRange(LeaveFamilyEmployees."Employee No","Employee No");
+        LeaveFamilyEmployees.SetRange(LeaveFamilyEmployees."Employee No", "Employee No");
         if LeaveFamilyEmployees.FindSet then //find the leave family employee is associated with
-        repeat
-          LeaveFamily.SetRange(LeaveFamily.Code,LeaveFamilyEmployees.Family);
-          LeaveFamily.SetFilter(LeaveFamily."Max Employees On Leave",'>0');
-          if LeaveFamily.FindSet then //find the status other employees on the same leave family
-            begin
-              Employees.SetRange(Employees."No.",LeaveFamilyEmployees."Employee No");
-              Employees.SetRange(Employees."Leave Status",Employees."leave status"::" ");
-              if Employees.Count>LeaveFamily."Max Employees On Leave" then
-              Error('The Maximum number of employees on leave for this family has been exceeded, Contact th HR manager for more information');
-            end
-        until LeaveFamilyEmployees.Next = 0;
+            repeat
+                LeaveFamily.SetRange(LeaveFamily.Code, LeaveFamilyEmployees.Family);
+                LeaveFamily.SetFilter(LeaveFamily."Max Employees On Leave", '>0');
+                if LeaveFamily.FindSet then //find the status other employees on the same leave family
+                  begin
+                    Employees.SetRange(Employees."No.", LeaveFamilyEmployees."Employee No");
+                    Employees.SetRange(Employees."Leave Status", Employees."leave status"::" ");
+                    if Employees.Count > LeaveFamily."Max Employees On Leave" then
+                        Error('The Maximum number of employees on leave for this family has been exceeded, Contact th HR manager for more information');
+                end
+            until LeaveFamilyEmployees.Next = 0;
     end;
 
 
     procedure FillVariables()
     begin
-                                    //GET THE APPLICANT DETAILS
+        //GET THE APPLICANT DETAILS
 
-                                    HREmp.Reset;
-                                    if HREmp.Get("Employee No") then
-                                    begin
-                                    EmpName:=HREmp.FullName;
-                                    EmpDept:=HREmp."Global Dimension 2 Code";
-                                    end else begin
-                                    EmpDept:='';
-                                    end;
+        HREmp.Reset;
+        if HREmp.Get("Employee No") then begin
+            EmpName := HREmp.FullName;
+            EmpDept := HREmp."Global Dimension 2 Code";
+        end else begin
+            EmpDept := '';
+        end;
 
-                                    //GET THE JOB DESCRIPTION FRON THE HR JOBS TABLE AND PASS IT TO THE VARIABLE
-                                    HRJobs.Reset;
-                                    if HRJobs.Get("Job Tittle") then
-                                    begin
-                                    EmpJobDesc:=HRJobs."Job Description";
-                                    end else begin
-                                    EmpJobDesc:='';
-                                    end;
+        //GET THE JOB DESCRIPTION FRON THE HR JOBS TABLE AND PASS IT TO THE VARIABLE
+        HRJobs.Reset;
+        if HRJobs.Get("Job Tittle") then begin
+            EmpJobDesc := HRJobs."Job Description";
+        end else begin
+            EmpJobDesc := '';
+        end;
 
-                                    //GET THE APPROVER NAMES
-                                    HREmp.Reset;
-                                    HREmp.SetRange(HREmp."User ID",Supervisor);
-                                    if HREmp.Find('-') then
-                                    begin
-                                    SupervisorName:=HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
-                                    end else begin
-                                    SupervisorName:='';
-                                    end;
+        //GET THE APPROVER NAMES
+        HREmp.Reset;
+        HREmp.SetRange(HREmp."User ID", Supervisor);
+        if HREmp.Find('-') then begin
+            SupervisorName := HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
+        end else begin
+            SupervisorName := '';
+        end;
     end;
 
 
     procedure GetLeaveStats(LeaveType: Text[50])
     begin
 
-                                    dAlloc := 0;
-                                    dEarnd := 0;
-                                    dTaken := 0;
-                                    dLeft := 0;
-                                    cReimbsd := 0;
-                                    cPerDay := 0;
-                                    cbf:=0;
-                                    if HREmp.Get("Employee No") then begin
-                                    //HREmp.SETFILTER(HREmp."Leave Type Filter",LeaveType);
-                                    HREmp.CalcFields(HREmp."Allocated Leave Days");
-                                    dAlloc := HREmp."Allocated Leave Days";
-                                    HREmp.Validate(HREmp."Allocated Leave Days");
-                                    dEarnd := HREmp."Total (Leave Days)";
-                                    HREmp.CalcFields(HREmp."Total Leave Taken");
-                                    dTaken := HREmp."Total Leave Taken";
-                                    dLeft :=  HREmp."Leave Balance";
-                                    cReimbsd :=HREmp."Cash - Leave Earned";
-                                    cPerDay := HREmp."Cash per Leave Day" ;
-                                    cbf:=HREmp."Reimbursed Leave Days";
-                                    end;
+        dAlloc := 0;
+        dEarnd := 0;
+        dTaken := 0;
+        dLeft := 0;
+        cReimbsd := 0;
+        cPerDay := 0;
+        cbf := 0;
+        if HREmp.Get("Employee No") then begin
+            //HREmp.SETFILTER(HREmp."Leave Type Filter",LeaveType);
+            HREmp.CalcFields(HREmp."Allocated Leave Days");
+            dAlloc := HREmp."Allocated Leave Days";
+            HREmp.Validate(HREmp."Allocated Leave Days");
+            dEarnd := HREmp."Total (Leave Days)";
+            HREmp.CalcFields(HREmp."Total Leave Taken");
+            dTaken := HREmp."Total Leave Taken";
+            dLeft := HREmp."Leave Balance";
+            cReimbsd := HREmp."Cash - Leave Earned";
+            cPerDay := HREmp."Cash per Leave Day";
+            cbf := HREmp."Reimbursed Leave Days";
+        end;
     end;
 
 
     procedure Updatecontrols()
     begin
 
-        if Status=Status::New then begin
-        "Application CodeEditable" :=true;
-        "Leave TypeEditable" :=true;
-        "Days AppliedEditable" :=true;
-        "Responsibility CenterEditable" :=true;
-        "Start DateEditable" :=true;
-        "Leave Allowance AmountEditable" :=true;
-        RelieverEditable :=true;
-        RequestLeaveAllowanceEditable :=true;
-        SupervisorEditable :=true;
-        "Cell Phone NumberEditable" :=true;
-        //CurrForm."E-mail Address".EDITABLE:=TRUE;
-        "Details of ExaminationEditable" :=true;
-        "Date of ExamEditable" :=true;
-        NumberofPreviousAttemptsEditab :=true;
+        if Status = Status::New then begin
+            "Application CodeEditable" := true;
+            "Leave TypeEditable" := true;
+            "Days AppliedEditable" := true;
+            "Responsibility CenterEditable" := true;
+            "Start DateEditable" := true;
+            "Leave Allowance AmountEditable" := true;
+            RelieverEditable := true;
+            RequestLeaveAllowanceEditable := true;
+            SupervisorEditable := true;
+            "Cell Phone NumberEditable" := true;
+            //CurrForm."E-mail Address".EDITABLE:=TRUE;
+            "Details of ExaminationEditable" := true;
+            "Date of ExamEditable" := true;
+            NumberofPreviousAttemptsEditab := true;
         end else begin
-        "Application CodeEditable" :=false;
-        "Leave TypeEditable" :=false;
-        "Days AppliedEditable" :=false;
-        "Responsibility CenterEditable" :=false;
-        "Start DateEditable" :=false;
-        "Leave Allowance AmountEditable" :=false;
-        RelieverEditable :=false;
-        RequestLeaveAllowanceEditable :=false;
-        SupervisorEditable :=false;
-        "Cell Phone NumberEditable" :=false;
-        //CurrForm."E-mail Address".EDITABLE:=FALSE;
-        "Details of ExaminationEditable" :=false;
-        "Date of ExamEditable" :=false;
-        NumberofPreviousAttemptsEditab :=false;
+            "Application CodeEditable" := false;
+            "Leave TypeEditable" := false;
+            "Days AppliedEditable" := false;
+            "Responsibility CenterEditable" := false;
+            "Start DateEditable" := false;
+            "Leave Allowance AmountEditable" := false;
+            RelieverEditable := false;
+            RequestLeaveAllowanceEditable := false;
+            SupervisorEditable := false;
+            "Cell Phone NumberEditable" := false;
+            //CurrForm."E-mail Address".EDITABLE:=FALSE;
+            "Details of ExaminationEditable" := false;
+            "Date of ExamEditable" := false;
+            NumberofPreviousAttemptsEditab := false;
         end;
     end;
 
 
-    procedure DetermineLeaveReturnDate(var fBeginDate: Date;var fDays: Decimal) fReturnDate: Date
+    procedure DetermineLeaveReturnDate(var fBeginDate: Date; var fDays: Decimal) fReturnDate: Date
     begin
         varDaysApplied := fDays;
         fReturnDate := fBeginDate;
         repeat
-          if DetermineIfIncludesNonWorking("Leave Type") =false then begin
-            fReturnDate := CalcDate('1D', fReturnDate);
-            if DetermineIfIsNonWorking(fReturnDate) then
-              varDaysApplied := varDaysApplied + 1
-            else
-              varDaysApplied := varDaysApplied;
-            varDaysApplied := varDaysApplied - 1
-          end
-          else begin
-            fReturnDate := CalcDate('1D', fReturnDate);
-            varDaysApplied := varDaysApplied - 1;
-          end;
+            if DetermineIfIncludesNonWorking("Leave Type") = false then begin
+                fReturnDate := CalcDate('1D', fReturnDate);
+                if DetermineIfIsNonWorking(fReturnDate) then
+                    varDaysApplied := varDaysApplied + 1
+                else
+                    varDaysApplied := varDaysApplied;
+                varDaysApplied := varDaysApplied - 1
+            end
+            else begin
+                fReturnDate := CalcDate('1D', fReturnDate);
+                varDaysApplied := varDaysApplied - 1;
+            end;
         until varDaysApplied = 0;
         exit(fReturnDate);
     end;
@@ -492,26 +488,26 @@ Page 51516279 "HR Leave Applications History"
     procedure DetermineIfIncludesNonWorking(var fLeaveCode: Code[10]): Boolean
     begin
         if HRLeaveTypes.Get(fLeaveCode) then begin
-        if HRLeaveTypes."Inclusive of Non Working Days" = true then
-        exit(true);
+            if HRLeaveTypes."Inclusive of Non Working Days" = true then
+                exit(true);
         end;
     end;
 
 
     procedure DetermineIfIsNonWorking(var bcDate: Date) Isnonworking: Boolean
     begin
-        
+
         HRSetup.Find('-');
         HRSetup.TestField(HRSetup."Base Calendar");
-        BaseCalendarChange.SetFilter(BaseCalendarChange."Base Calendar Code",HRSetup."Base Calendar");
+        BaseCalendarChange.SetFilter(BaseCalendarChange."Base Calendar Code", HRSetup."Base Calendar");
         //BaseCalendarChange.SETRANGE(BaseCalendarChange.Date,bcDate);
-        
+
         if BaseCalendarChange.Find('-') then begin
-        if BaseCalendarChange.Nonworking = true then
-        Error('Start date can only be a Working Day Date');
-        exit(true);
+            if BaseCalendarChange.Nonworking = true then
+                Error('Start date can only be a Working Day Date');
+            exit(true);
         end;
-        
+
         /*
         Customized.RESET;
         Customized.SETRANGE(Customized.Date,bcDate);
@@ -531,14 +527,14 @@ Page 51516279 "HR Leave Applications History"
         ReturnDateLoop := true;
         fEndDate := fDate;
         if fEndDate <> 0D then begin
-          fEndDate := CalcDate('-1D', fEndDate);
-          while (ReturnDateLoop) do begin
-          if DetermineIfIsNonWorking(fEndDate) then
-            fEndDate := CalcDate('-1D', fEndDate)
-           else
-            ReturnDateLoop := false;
-          end
-          end;
+            fEndDate := CalcDate('-1D', fEndDate);
+            while (ReturnDateLoop) do begin
+                if DetermineIfIsNonWorking(fEndDate) then
+                    fEndDate := CalcDate('-1D', fEndDate)
+                else
+                    ReturnDateLoop := false;
+            end
+        end;
         exit(fEndDate);
     end;
 
@@ -548,62 +544,62 @@ Page 51516279 "HR Leave Applications History"
         TestField("Approved days");
         HRSetup.Reset;
         if HRSetup.Find('-') then begin
-        
-        LeaveGjline.Reset;
-        LeaveGjline.SetRange("Journal Template Name",HRSetup."Leave Template");
-        LeaveGjline.SetRange("Journal Batch Name",HRSetup."Leave Batch");
-        LeaveGjline.DeleteAll;
-          //Dave
-        //HRSetup.TESTFIELD(HRSetup."Leave Template");
-        //HRSetup.TESTFIELD(HRSetup."Leave Batch");
-        
-        HREmp.Get("Employee No");
-        HREmp.TestField(HREmp."Company E-Mail");
-        
-        //POPULATE JOURNAL LINES
-        
-        "LineNo.":=10000;
-        LeaveGjline.Init;
-        LeaveGjline."Journal Template Name":=HRSetup."Leave Template";
-        LeaveGjline."Journal Batch Name":=HRSetup."Leave Batch";
-        LeaveGjline."Line No.":="LineNo.";
-        LeaveGjline."Leave Period":='2013';
-        LeaveGjline."Document No.":="Application Code";
-        LeaveGjline."Staff No.":="Employee No";
-        LeaveGjline.Validate(LeaveGjline."Staff No.");
-        LeaveGjline."Posting Date":=Today;
-        LeaveGjline."Leave Entry Type":=LeaveGjline."leave entry type"::Negative;
-        LeaveGjline."Leave Approval Date":=Today;
-        LeaveGjline.Description:='Leave Taken';
-        LeaveGjline."Leave Type":="Leave Type";
-        //------------------------------------------------------------
-        //HRSetup.RESET;
-        //HRSetup.FIND('-');
-        HRSetup.TestField(HRSetup."Leave Posting Period[FROM]");
-        HRSetup.TestField(HRSetup."Leave Posting Period[TO]");
-        //------------------------------------------------------------
-        LeaveGjline."Leave Period Start Date":=HRSetup."Leave Posting Period[FROM]";
-        LeaveGjline."Leave Period End Date":=HRSetup."Leave Posting Period[TO]";
-        LeaveGjline."No. of Days":="Approved days";
-        if LeaveGjline."No. of Days"<>0 then
-        LeaveGjline.Insert(true);
-        
-        
-        //Post Journal
-        LeaveGjline.Reset;
-        LeaveGjline.SetRange("Journal Template Name",HRSetup."Leave Template");
-        LeaveGjline.SetRange("Journal Batch Name",HRSetup."Leave Batch");
-        if LeaveGjline.Find('-') then begin
-        Codeunit.Run(Codeunit::Codeunit55560,LeaveGjline);
-        end;
-        Status:=Status::Posted;
-        Modify;
-        
-        /*END ELSE BEGIN
-        ERROR('You must specify no of days');
-        END;
-        END;*/
-        //NotifyApplicant;
+
+            LeaveGjline.Reset;
+            LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
+            LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
+            LeaveGjline.DeleteAll;
+            //Dave
+            //HRSetup.TESTFIELD(HRSetup."Leave Template");
+            //HRSetup.TESTFIELD(HRSetup."Leave Batch");
+
+            HREmp.Get("Employee No");
+            HREmp.TestField(HREmp."Company E-Mail");
+
+            //POPULATE JOURNAL LINES
+
+            "LineNo." := 10000;
+            LeaveGjline.Init;
+            LeaveGjline."Journal Template Name" := HRSetup."Leave Template";
+            LeaveGjline."Journal Batch Name" := HRSetup."Leave Batch";
+            LeaveGjline."Line No." := "LineNo.";
+            LeaveGjline."Leave Period" := '2013';
+            LeaveGjline."Document No." := "Application Code";
+            LeaveGjline."Staff No." := "Employee No";
+            LeaveGjline.Validate(LeaveGjline."Staff No.");
+            LeaveGjline."Posting Date" := Today;
+            LeaveGjline."Leave Entry Type" := LeaveGjline."leave entry type"::Negative;
+            LeaveGjline."Leave Approval Date" := Today;
+            LeaveGjline.Description := 'Leave Taken';
+            LeaveGjline."Leave Type" := "Leave Type";
+            //------------------------------------------------------------
+            //HRSetup.RESET;
+            //HRSetup.FIND('-');
+            HRSetup.TestField(HRSetup."Leave Posting Period[FROM]");
+            HRSetup.TestField(HRSetup."Leave Posting Period[TO]");
+            //------------------------------------------------------------
+            LeaveGjline."Leave Period Start Date" := HRSetup."Leave Posting Period[FROM]";
+            LeaveGjline."Leave Period End Date" := HRSetup."Leave Posting Period[TO]";
+            LeaveGjline."No. of Days" := "Approved days";
+            if LeaveGjline."No. of Days" <> 0 then
+                LeaveGjline.Insert(true);
+
+
+            //Post Journal
+            LeaveGjline.Reset;
+            LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
+            LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
+            if LeaveGjline.Find('-') then begin
+                Codeunit.Run(Codeunit::Codeunit55560, LeaveGjline);
+            end;
+            Status := Status::Posted;
+            Modify;
+
+            /*END ELSE BEGIN
+            ERROR('You must specify no of days');
+            END;
+            END;*/
+            //NotifyApplicant;
         end;
 
     end;
@@ -616,19 +612,18 @@ Page 51516279 "HR Leave Applications History"
 
         //GET E-MAIL PARAMETERS FOR GENERAL E-MAILS
         HREmailParameters.Reset;
-        HREmailParameters.SetRange(HREmailParameters."Associate With",HREmailParameters."associate with"::"Interview Invitations");
-        if HREmailParameters.Find('-') then
-        begin
+        HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Interview Invitations");
+        if HREmailParameters.Find('-') then begin
 
 
-             HREmp.TestField(HREmp."Company E-Mail");
-             SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",HREmp."Company E-Mail",
-             HREmailParameters.Subject,'Dear'+' '+ HREmp."First Name" +' '+
-             HREmailParameters.Body+' '+"Application Code"+' '+ HREmailParameters."Body 2",true);
-             SMTP.Send();
+            HREmp.TestField(HREmp."Company E-Mail");
+            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+            HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+            HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
+            SMTP.Send();
 
 
-        Message('Leave applicant has been notified successfully');
+            Message('Leave applicant has been notified successfully');
         end;
     end;
 }

@@ -8,13 +8,13 @@ Codeunit 59006 "Bank Acc. Recon. Apply Entry"
     end;
 
     var
-        BankAccReconLine2: Record "Bank Acc. Reconciliation Lines";
+        BankAccReconLine2: Record "Bank Acc. Reconciliation Line";
         CheckLedgEntry: Record "Check Ledger Entry";
-        ApplyCheckLedgEntry: Page UnknownPage59005;
+        ApplyCheckLedgEntry: Page "Apply Check Ledger Entries";
         OK: Boolean;
 
 
-    procedure ApplyEntries(var BankAccReconLine: Record "Bank Acc. Reconciliation Lines")
+    procedure ApplyEntries(var BankAccReconLine: Record "Bank Acc. Reconciliation Line")
     begin
         BankAccReconLine2 := BankAccReconLine;
         BankAccReconLine2.TestField("Ready for Application",true);

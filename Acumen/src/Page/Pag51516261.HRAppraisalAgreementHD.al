@@ -5,7 +5,7 @@ Page 51516261 "HR Appraisal Agreement HD"
     InsertAllowed = false;
     PageType = Card;
     SourceTable = "HR Appraisal Header";
-    SourceTableView = where(Status=filter(Approved));
+    SourceTableView = where(Status = filter(Approved));
 
     layout
     {
@@ -13,183 +13,183 @@ Page 51516261 "HR Appraisal Agreement HD"
         {
             group(General)
             {
-                field("Appraisal No";"Appraisal No")
+                field("Appraisal No"; "Appraisal No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Employee No";"Employee No")
+                field("Employee No"; "Employee No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee Name";"Employee Name")
+                field("Employee Name"; "Employee Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date of Employment";"Date of Employment")
+                field("Date of Employment"; "Date of Employment")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Job Title";"Job Title")
+                field("Job Title"; "Job Title")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Contract Type";"Contract Type")
+                field("Contract Type"; "Contract Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Appraisal Period";"Appraisal Period")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field(Status;Status)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("User ID";"User ID")
+                field("Appraisal Period"; "Appraisal Period")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Comments Appraisee";"Comments Appraisee")
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Appraisal Date";"Appraisal Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Evaluation Period Start";"Evaluation Period Start")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Evaluation Period End";"Evaluation Period End")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Responsibility/Duties Agrd Sco";"Responsibility/Duties Agrd Sco")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Attendance&Punctuality Agr Sco";"Attendance&Punctuality Agr Sco")
+                field("Comments Appraisee"; "Comments Appraisee")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Appraisal Date"; "Appraisal Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Evaluation Period Start"; "Evaluation Period Start")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Evaluation Period End"; "Evaluation Period End")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Responsibility/Duties Agrd Sco"; "Responsibility/Duties Agrd Sco")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Communication Agreed Score";"Communication Agreed Score")
+                field("Attendance&Punctuality Agr Sco"; "Attendance&Punctuality Agr Sco")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Cooperation Agreed Score";"Cooperation Agreed Score")
+                field("Communication Agreed Score"; "Communication Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer Service Agreed Score";"Customer Service Agreed Score")
+                field("Cooperation Agreed Score"; "Cooperation Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Initiative Agreed Score";"Initiative Agreed Score")
+                field("Customer Service Agreed Score"; "Customer Service Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Quality Agreed Score";"Quality Agreed Score")
+                field("Initiative Agreed Score"; "Initiative Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Teamwork Agreed Score";"Teamwork Agreed Score")
+                field("Quality Agreed Score"; "Quality Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Sales Skills Agreed Score";"Sales Skills Agreed Score")
+                field("Teamwork Agreed Score"; "Teamwork Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Leadership Agreed Score";"Leadership Agreed Score")
+                field("Sales Skills Agreed Score"; "Sales Skills Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Performance Coaching Agreed Sc";"Performance Coaching Agreed Sc")
+                field("Leadership Agreed Score"; "Leadership Agreed Score")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Responsibility/Duties Comment";"Responsibility/Duties Comment")
+                field("Performance Coaching Agreed Sc"; "Performance Coaching Agreed Sc")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Responsibility/Duties Comment"; "Responsibility/Duties Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Attendance&Punctuality Comment";"Attendance&Punctuality Comment")
+                field("Attendance&Punctuality Comment"; "Attendance&Punctuality Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Communication Agreed Comment";"Communication Agreed Comment")
+                field("Communication Agreed Comment"; "Communication Agreed Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cooperation Agreed Comment";"Cooperation Agreed Comment")
+                field("Cooperation Agreed Comment"; "Cooperation Agreed Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Service Agr Comment";"Customer Service Agr Comment")
+                field("Customer Service Agr Comment"; "Customer Service Agr Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Initiative Agreed Comment";"Initiative Agreed Comment")
+                field("Initiative Agreed Comment"; "Initiative Agreed Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Quality Agreed Comment";"Quality Agreed Comment")
+                field("Quality Agreed Comment"; "Quality Agreed Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Teamwork Agreed Comment";"Teamwork Agreed Comment")
+                field("Teamwork Agreed Comment"; "Teamwork Agreed Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Sales Skills Agreed Comment";"Sales Skills Agreed Comment")
+                field("Sales Skills Agreed Comment"; "Sales Skills Agreed Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leadership Agreed Comment";"Leadership Agreed Comment")
+                field("Leadership Agreed Comment"; "Leadership Agreed Comment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Performance Coaching Comment";"Performance Coaching Comment")
+                field("Performance Coaching Comment"; "Performance Coaching Comment")
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control9;"HR Appraisal Lines-Agreed")
+            part(Control9; "HR Appraisal Lines-Agreed")
             {
-                SubPageLink = "Appraisal No"=field("Appraisal No"),
-                              "Appraisal Period"=field("Appraisal Period"),
-                              "Employee No"=field("Employee No");
+                SubPageLink = "Appraisal No" = field("Appraisal No"),
+                              "Appraisal Period" = field("Appraisal Period"),
+                              "Employee No" = field("Employee No");
                 SubPageView = sorting(Sections)
                               order(ascending);
             }
         }
         area(factboxes)
         {
-            systempart(Control43;Outlook)
+            systempart(Control43; Outlook)
             {
             }
-            systempart(Control44;Notes)
+            systempart(Control44; Notes)
             {
             }
-            systempart(Control45;MyNotes)
+            systempart(Control45; MyNotes)
             {
             }
-            systempart(Control46;Links)
+            systempart(Control46; Links)
             {
             }
         }
@@ -224,7 +224,7 @@ Page 51516261 "HR Appraisal Agreement HD"
         objCurrApprPeriod: Record "HR Lookup Values";
         HREmployees: Record "HR Employees";
         objAppraisalEvaluationAreas: Record "HR Appraisal Eval Areas";
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
         ShowWorkflowStatus: Boolean;
@@ -232,7 +232,7 @@ Page 51516261 "HR Appraisal Agreement HD"
 
     procedure enableDisable() enableDisable: Boolean
     begin
-         enableDisable:=false;
+        enableDisable := false;
     end;
 }
 

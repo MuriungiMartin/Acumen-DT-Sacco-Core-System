@@ -4,8 +4,8 @@ Page 51516736 "Re-Join List"
     ApplicationArea = Basic;
     CardPageID = "Member Account Card Rejoin";
     PageType = List;
-    SourceTable = "Member Register";
-    SourceTableView = where(Status=const(Withdrawal));
+    SourceTable = Customer;
+    SourceTableView = where(Status = const(Withdrawal));
     UsageCategory = History;
 
     layout
@@ -14,46 +14,46 @@ Page 51516736 "Re-Join List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Registration Date";"Registration Date")
+                field("Registration Date"; "Registration Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("FOSA Account No.";"FOSA Account No.")
+                field("FOSA Account No."; "FOSA Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                     Style = Attention;
                     StyleExpr = true;
                 }
-                field("Personal No";"Personal No")
+                field("Personal No"; "Personal No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Payroll No';
                 }
-                field("Customer Type";"Customer Type")
+                field("Customer Type"; "Customer Type")
                 {
                     ApplicationArea = Basic;
                 }
@@ -61,26 +61,26 @@ Page 51516736 "Re-Join List"
         }
         area(factboxes)
         {
-            part(Control5;"Member Statistics FactBox")
+            part(Control5; "Member Statistics FactBox")
             {
                 Caption = 'Member Statistics FactBox';
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
                 Visible = true;
             }
-            part(Control4;"Member Picture-Uploaded")
+            part(Control4; "Member Picture-Uploaded")
             {
                 Caption = 'Picture';
                 Editable = false;
                 Enabled = false;
                 ShowFilter = false;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control3;"Member Signature-Uploaded")
+            part(Control3; "Member Signature-Uploaded")
             {
                 Caption = 'Signature';
                 Editable = false;
                 Enabled = false;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -91,10 +91,9 @@ Page 51516736 "Re-Join List"
 
     trigger OnInit()
     begin
-          if Usersetup.Get(UserId) then
-          begin
-          if Usersetup."Re-Join"=false then Error ('You dont have permissions for Re-Join, Contact your system administrator! ')
-          end;
+        if Usersetup.Get(UserId) then begin
+            if Usersetup."Re-Join" = false then Error('You dont have permissions for Re-Join, Contact your system administrator! ')
+        end;
     end;
 
     var

@@ -5,10 +5,10 @@ Page 51516840 "MC Individual Application Card"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Membership Applications";
-    SourceTableView = where("Account Category"=filter(<>Group),
-                            "Group Account"=const(false),
-                            "Customer Posting Group"=const('MICRO'),
-                            Source=const(Micro));
+    SourceTableView = where("Account Category" = filter(<> Group),
+                            "Group Account" = const(false),
+                            "Customer Posting Group" = const('MICRO'),
+                            Source = const(Micro));
 
     layout
     {
@@ -17,24 +17,24 @@ Page 51516840 "MC Individual Application Card"
             group(General)
             {
                 Caption = 'General';
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("BOSA Account No.";"BOSA Account No.")
+                field("BOSA Account No."; "BOSA Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Created By";"Created By")
+                field("Created By"; "Created By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category";"Account Category")
+                field("Account Category"; "Account Category")
                 {
                     ApplicationArea = Basic;
                     Caption = 'FOSA Account Category';
@@ -43,39 +43,39 @@ Page 51516840 "MC Individual Application Card"
                     trigger OnValidate()
                     begin
 
-                        BosaAccNoVisible:=true;
-                        FosaAccNoVisible:=true;
-                        MemCatVisible:=true;
-                        PayrollVisible:=true;
-                        IDNoVisible:=true;
-                        PassVisible:=true;
-                        MaritalVisible:=true;
-                        GenderVisible:=true;
-                        DoBVisible:=true;
-                        BenvVisible:=true;
-                        WstationVisible:=true;
-                        DeptVisible:=true;
-                        SecVisible:=true;
-                        OccpVisible:=true;
+                        BosaAccNoVisible := true;
+                        FosaAccNoVisible := true;
+                        MemCatVisible := true;
+                        PayrollVisible := true;
+                        IDNoVisible := true;
+                        PassVisible := true;
+                        MaritalVisible := true;
+                        GenderVisible := true;
+                        DoBVisible := true;
+                        BenvVisible := true;
+                        WstationVisible := true;
+                        DeptVisible := true;
+                        SecVisible := true;
+                        OccpVisible := true;
                     end;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("FOSA Account No.";"FOSA Account No.")
+                field("FOSA Account No."; "FOSA Account No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Customer Type";"Customer Type")
+                field("Customer Type"; "Customer Type")
                 {
                     ApplicationArea = Basic;
                     OptionCaption = ' ,,,,,Micro';
                     Visible = false;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No.';
@@ -86,41 +86,41 @@ Page 51516840 "MC Individual Application Card"
 
 
                         Cust.Reset;
-                        Cust.SetRange(Cust."ID No.","ID No.");
-                        Cust.SetFilter(Cust."Account Category",'<>%1',Cust."account category"::Group);
-                        Cust.SetFilter(Cust."Group Account",'%1',false);
-                        Cust.SetRange(Cust."Customer Posting Group",'MICRO');
+                        Cust.SetRange(Cust."ID No.", "ID No.");
+                        Cust.SetFilter(Cust."Account Category", '<>%1', Cust."account category"::Group);
+                        Cust.SetFilter(Cust."Group Account", '%1', false);
+                        Cust.SetRange(Cust."Customer Posting Group", 'MICRO');
                         if Cust.Find('-') then begin
-                          Error(Text005,Cust."Group Account Name");
+                            Error(Text005, Cust."Group Account Name");
                         end;
 
                         CustMember.Reset;
-                        CustMember.SetRange(CustMember."ID No.","ID No.");
-                        CustMember.SetRange(CustMember."Customer Type",CustMember."customer type"::Member);
+                        CustMember.SetRange(CustMember."ID No.", "ID No.");
+                        CustMember.SetRange(CustMember."Customer Type", CustMember."customer type"::Member);
                         if CustMember.Find('-') then
-                         repeat
-                         Validate("BOSA Account No.",CustMember."No.");
-                         until CustMember.Next=0;
+                            repeat
+                                Validate("BOSA Account No.", CustMember."No.");
+                            until CustMember.Next = 0;
                     end;
                 }
-                field("Passport No.";"Passport No.")
+                field("Passport No."; "Passport No.")
                 {
                     ApplicationArea = Basic;
                     Editable = PassEditable;
                     Visible = true;
                 }
-                field(Address;Address)
+                field(Address; Address)
                 {
                     ApplicationArea = Basic;
                     Editable = AddressEditable;
                 }
-                field("Postal Code";"Postal Code")
+                field("Postal Code"; "Postal Code")
                 {
                     ApplicationArea = Basic;
                     Editable = PostCodeEditable;
                     Importance = Promoted;
                 }
-                field(City;City)
+                field(City; City)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Town';
@@ -129,65 +129,65 @@ Page 51516840 "MC Individual Application Card"
                     trigger OnValidate()
                     begin
                         if MembershipApplications.Get("Postal Code") then begin
-                          City:=MembershipApplications.City;
-                          end;
+                            City := MembershipApplications.City;
+                        end;
                     end;
                 }
-                field("Country/Region Code";"Country/Region Code")
+                field("Country/Region Code"; "Country/Region Code")
                 {
                     ApplicationArea = Basic;
                     Editable = CountryEditable;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Marital Status";"Marital Status")
-                {
-                    ApplicationArea = Basic;
-                    Editable = true;
-                    Visible = true;
-                }
-                field(Gender;Gender)
+                field("Marital Status"; "Marital Status")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = true;
                 }
-                field("Date of Birth";"Date of Birth")
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = true;
                 }
-                field("E-Mail (Personal)";"E-Mail (Personal)")
+                field("Date of Birth"; "Date of Birth")
+                {
+                    ApplicationArea = Basic;
+                    Editable = true;
+                    Visible = true;
+                }
+                field("E-Mail (Personal)"; "E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                 }
-                field("Village/Residence";"Village/Residence")
+                field("Village/Residence"; "Village/Residence")
                 {
                     ApplicationArea = Basic;
                     Editable = VillageResidence;
                 }
-                field("Registration Date";"Registration Date")
+                field("Registration Date"; "Registration Date")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Visible = true;
                 }
-                field(Picture;Picture)
+                field(Picture; Picture)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field(Signature;Signature)
+                field(Signature; Signature)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field("Employer Type";"Employer Type")
+                field("Employer Type"; "Employer Type")
                 {
                     ApplicationArea = Basic;
                 }
@@ -195,30 +195,30 @@ Page 51516840 "MC Individual Application Card"
             group("Group Information")
             {
                 Caption = 'Group Information';
-                field("Group Account No";"Group Account No")
+                field("Group Account No"; "Group Account No")
                 {
                     ApplicationArea = Basic;
-                    TableRelation = "Member Register" where ("Group Account No"=filter('YES'),
-                                                             "Customer Posting Group"=filter('MICRO'));
+                    TableRelation = Customer where("Group Account No" = filter('YES'),
+                                                             "Customer Posting Group" = filter('MICRO'));
                 }
-                field("Group Account Name";"Group Account Name")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Recruited By";"Recruited By")
+                field("Group Account Name"; "Group Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Salesperson Name";"Salesperson Name")
+                field("Recruited By"; "Recruited By")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Salesperson Name"; "Salesperson Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'MC OFFICER';
                     Editable = false;
                     Visible = true;
                 }
-                field(Source;Source)
+                field(Source; Source)
                 {
                     ApplicationArea = Basic;
                 }
@@ -226,70 +226,70 @@ Page 51516840 "MC Individual Application Card"
             group("Other Information")
             {
                 Caption = 'Other Information';
-                field("Monthly Contribution";"Monthly Contribution")
+                field("Monthly Contribution"; "Monthly Contribution")
                 {
                     ApplicationArea = Basic;
                     Editable = MonthlyContributionEdit;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Visible = false;
                 }
-                field("Bank Code";"Bank Code")
+                field("Bank Code"; "Bank Code")
                 {
                     ApplicationArea = Basic;
                     Editable = BankAEditable;
                     Visible = false;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; "Bank Name")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Bank Account No";"Bank Account No")
+                field("Bank Account No"; "Bank Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = BankNEditable;
                     Visible = false;
                 }
-                field("Office Branch";"Office Branch")
+                field("Office Branch"; "Office Branch")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Work Station';
                     Editable = OfficeBranchEditable;
                     Visible = false;
                 }
-                field(Department;Department)
+                field(Department; Department)
                 {
                     ApplicationArea = Basic;
                     Editable = DeptEditable;
                     Visible = false;
                 }
-                field(Section;Section)
+                field(Section; Section)
                 {
                     ApplicationArea = Basic;
                     Editable = SectionEditable;
                     Visible = false;
                 }
-                field(Occupation;Occupation)
+                field(Occupation; Occupation)
                 {
                     ApplicationArea = Basic;
                     Editable = OccupationEditable;
                     Visible = false;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = GlobalDim2Editable;
                 }
-                field("FOSA Account Type";"FOSA Account Type")
+                field("FOSA Account Type"; "FOSA Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -299,21 +299,21 @@ Page 51516840 "MC Individual Application Card"
         }
         area(factboxes)
         {
-            part(Control1000000026;"Member Picture-App")
+            part(Control1000000026; "Member Picture-App")
             {
                 ApplicationArea = All;
                 Caption = 'Picture';
                 Editable = MobileEditable;
                 Enabled = MobileEditable;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control1000000024;"Member Signature-App")
+            part(Control1000000024; "Member Signature-App")
             {
                 ApplicationArea = All;
                 Caption = 'Signature';
                 Editable = MobileEditable;
                 Enabled = MobileEditable;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -333,7 +333,7 @@ Page 51516840 "MC Individual Application Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Membership App Nominee Detail";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 action("Account Signatories ")
                 {
@@ -343,7 +343,7 @@ Page 51516840 "MC Individual Application Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Membership App Signatories";
-                    RunPageLink = "Account No"=field("No.");
+                    RunPageLink = "Account No" = field("No.");
                 }
                 group(Approvals)
                 {
@@ -361,8 +361,8 @@ Page 51516840 "MC Individual Application Card"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        DocumentType:=Documenttype::MembershipApplication;
-                        ApprovalEntries.Setfilters(Database::"Membership Applications",DocumentType,"No.");
+                        DocumentType := Documenttype::MembershipApplication;
+                        ApprovalEntries.Setfilters(Database::"Membership Applications", DocumentType, "No.");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -379,11 +379,11 @@ Page 51516840 "MC Individual Application Card"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        if (Status<>Status::Open) then
-                          Error('Status must be Open');
+                        if (Status <> Status::Open) then
+                            Error('Status must be Open');
                         //SendEmail();
-                         //IF ApprovalsMgmt.CheckMembershipApplicationApprovalsWorkflowEnabled(Rec) THEN
-                           //ApprovalsMgmt.OnSendMembershipApplicationForApproval(Rec);
+                        //IF ApprovalsMgmt.CheckMembershipApplicationApprovalsWorkflowEnabled(Rec) THEN
+                        //ApprovalsMgmt.OnSendMembershipApplicationForApproval(Rec);
 
                     end;
                 }
@@ -405,152 +405,152 @@ Page 51516840 "MC Individual Application Card"
                     trigger OnAction()
                     begin
 
-                        if Status<>Status::Approved then
-                        Error('This application has not been approved');
+                        if Status <> Status::Approved then
+                            Error('This application has not been approved');
 
-                        if Confirm('Are you sure you want to Create Account Application?',false)=true then begin
+                        if Confirm('Are you sure you want to Create Account Application?', false) = true then begin
 
-                        GenSetUp.Get;
+                            GenSetUp.Get;
 
-                        if "ID No."<>'' then begin
-                        Cust.Reset;
-                        Cust.SetRange(Cust."ID No.","ID No.");
-                        Cust.SetRange(Cust."Customer Posting Group",'MICRO');
-                        if Cust.Find('-') then begin
-                        if Cust."No." <> "No." then
-                        Error('This Member Account has Already been Created');
-                        end;
-                        end;
-
-                        //Create Micro Account
-
-
-
-                        Saccosetup.Get();
-                        NewMembNo:="Group Account No" + '/' +"BOSA Account No.";
-
-                        //Create BOSA account
-
-                        TestField("Global Dimension 2 Code");
-                        Cust."No.":=Format(NewMembNo);
-                        Cust.Name:=UpperCase(Name);
-                        Cust.Address:=Address;
-                        Cust."Post Code":="Postal Code";
-                        Cust.City:=City;
-                        Cust.County:=City;
-                        Cust."Country/Region Code":="Country/Region Code";
-                        Cust."Phone No.":="Phone No.";
-                        Cust."Global Dimension 1 Code":="Global Dimension 1 Code" ;
-                        Cust."Global Dimension 2 Code":="Global Dimension 2 Code";
-                        Cust."Customer Posting Group":="Customer Posting Group";
-                        Cust."Registration Date":=Today;//Registration date must be the day the application is converted to a member and not day of capture
-                        Cust.Status:=Cust.Status::"Non-Active";
-                        Cust."Employer Code":="Employer Code";
-                        Cust."Date of Birth":="Date of Birth";
-                        Cust."Station/Department":="Station/Department";
-                        Cust."E-Mail":="E-Mail (Personal)";
-                        Cust.Location:=Location;
-                        Cust."Group Account Name":="Group Account Name";
-
-
-                        //**
-                        Cust."Office Branch":="Office Branch";
-                        Cust.Department:=Department;
-                        Cust.Occupation:=Format(Occupation);
-                        Cust.Designation:=Designation;
-                        Cust."Bank Code":="Bank Code";
-                        //Cust."Bank Branch Code":="Bank Name";
-                        Cust."Bank Account No.":="Bank Account No";
-                        //**
-                        Cust."Sub-Location":="Sub-Location";
-                        Cust.District:=District;
-                        //Cust."Payroll/Staff No":="Payroll/Staff No";
-                        Cust."ID No.":="ID No.";
-                        Cust."Passport No.":="Passport No.";
-                        //Cust."Business Loan Officer":="Salesperson Code";
-                        Cust."Mobile Phone No":="Mobile Phone No";
-                        Cust."Marital Status":="Marital Status";
-                        Cust."Customer Type":=Cust."customer type"::MicroFinance;
-                        Cust.Gender:=Gender;
-
-                        //CALCFIELDS(Signature,Picture);
-                        Cust.Picture:=Picture;
-                        Cust.Signature:=Signature;
-                        Cust."Monthly Contribution":="Monthly Contribution";
-                        Cust."Account Category":="Account Category";
-                        Cust."Contact Person":="Contact Person";
-                        Cust."Contact Person Phone":="Contact Person Phone";
-                        Cust."ContactPerson Relation":="ContactPerson Relation";
-                        Cust."Recruited By":="Recruited By";
-                        Cust."Business Loan Officer":="Salesperson Name";
-                        Cust."ContactPerson Occupation":="ContactPerson Occupation";
-                        Cust."Village/Residence":="Village/Residence";
-                        Cust."Group Account":="Group Account";
-                        Cust."Group Account No":="Group Account No";
-                        Cust."Group Account Name":="Group Account Name";
-                        Cust."FOSA Account":="FOSA Account No.";
-                        Cust.Status:=Cust.Status::Active;
-                        Cust.Insert(true);
-
-                        Cust.Reset;
-                        if Cust.Get(BOSAACC) then begin
-                        Cust.Validate(Cust.Name);
-                        Cust.Validate(Cust."Global Dimension 1 Code");
-                        Cust.Validate(Cust."Global Dimension 2 Code");
-                        Cust.Modify;
-                        end;
-
-                        Saccosetup.BosaNumber:=IncStr(Saccosetup.BosaNumber);
-                        Saccosetup.Modify;
-                        BOSAACC:=Cust."No.";
-                        Status:=Status::Approved;
-                        "Created By":=UserId;
-                        Message('The member account has been created successfully, the member no. is %1',BOSAACC);
-
-
-
-
-                          AccountSignatoriesApp.Reset;
-                          AccountSignatoriesApp.SetRange(AccountSignatoriesApp."Account No","No.");
-                          if AccountSignatoriesApp.Find('-') then begin
-
-                          AccountSignatoriesApp.Reset;
-                          AccountSignatoriesApp.SetRange(AccountSignatoriesApp."Account No","No.");
-                          AccountSignatoriesApp.SetRange(AccountSignatoriesApp."Send SMS",false);
-                          if AccountSignatoriesApp.Find('-') then begin
-                           repeat
-
-                            SMSMessage.Reset;
-                            if SMSMessage.Find('+') then begin
-                            iEntryNo:=SMSMessage."Entry No";
-                            iEntryNo:=iEntryNo+1;
-                            end
-                            else begin
-                            iEntryNo:=1;
+                            if "ID No." <> '' then begin
+                                Cust.Reset;
+                                Cust.SetRange(Cust."ID No.", "ID No.");
+                                Cust.SetRange(Cust."Customer Posting Group", 'MICRO');
+                                if Cust.Find('-') then begin
+                                    if Cust."No." <> "No." then
+                                        Error('This Member Account has Already been Created');
+                                end;
                             end;
 
+                            //Create Micro Account
 
-                            SMSMessage.Init;
-                            SMSMessage."Entry No":=iEntryNo;
-                            //SMSMessage."Account No":="Payroll/Staff No";
-                            SMSMessage."Date Entered":=Today;
-                            SMSMessage."Time Entered":=Time;
-                            SMSMessage.Source:='MEMBERACCOUNT';
-                            SMSMessage."Entered By":=UserId;
-                            SMSMessage."System Created Entry":=true;
-                            SMSMessage."Document No":="No.";
-                            SMSMessage."Sent To Server":=SMSMessage."sent to server"::No;
-                            SMSMessage."SMS Message":=Name+' has been succesfuly created. NAFAKA SACCO';
-                            SMSMessage."Telephone No":=AccountSignatoriesApp."Mobile Phone No.";
-                            SMSMessage.Insert;
 
-                            AccountSignatoriesApp."Send SMS":=true;
-                            AccountSignatoriesApp.Modify;
 
-                             until AccountSignatoriesApp.Next=0;
+                            Saccosetup.Get();
+                            NewMembNo := "Group Account No" + '/' + "BOSA Account No.";
+
+                            //Create BOSA account
+
+                            TestField("Global Dimension 2 Code");
+                            Cust."No." := Format(NewMembNo);
+                            Cust.Name := UpperCase(Name);
+                            Cust.Address := Address;
+                            Cust."Post Code" := "Postal Code";
+                            Cust.City := City;
+                            Cust.County := City;
+                            Cust."Country/Region Code" := "Country/Region Code";
+                            Cust."Phone No." := "Phone No.";
+                            Cust."Global Dimension 1 Code" := "Global Dimension 1 Code";
+                            Cust."Global Dimension 2 Code" := "Global Dimension 2 Code";
+                            Cust."Customer Posting Group" := "Customer Posting Group";
+                            Cust."Registration Date" := Today;//Registration date must be the day the application is converted to a member and not day of capture
+                            Cust.Status := Cust.Status::"Non-Active";
+                            Cust."Employer Code" := "Employer Code";
+                            Cust."Date of Birth" := "Date of Birth";
+                            Cust."Station/Department" := "Station/Department";
+                            Cust."E-Mail" := "E-Mail (Personal)";
+                            Cust.Location := Location;
+                            Cust."Group Account Name" := "Group Account Name";
+
+
+                            //**
+                            Cust."Office Branch" := "Office Branch";
+                            Cust.Department := Department;
+                            Cust.Occupation := Format(Occupation);
+                            Cust.Designation := Designation;
+                            Cust."Bank Code" := "Bank Code";
+                            //Cust."Bank Branch Code":="Bank Name";
+                            Cust."Bank Account No." := "Bank Account No";
+                            //**
+                            Cust."Sub-Location" := "Sub-Location";
+                            Cust.District := District;
+                            //Cust."Payroll/Staff No":="Payroll/Staff No";
+                            Cust."ID No." := "ID No.";
+                            Cust."Passport No." := "Passport No.";
+                            //Cust."Business Loan Officer":="Salesperson Code";
+                            Cust."Mobile Phone No" := "Mobile Phone No";
+                            Cust."Marital Status" := "Marital Status";
+                            Cust."Customer Type" := Cust."customer type"::MicroFinance;
+                            Cust.Gender := Gender;
+
+                            //CALCFIELDS(Signature,Picture);
+                            Cust.Picture := Picture;
+                            Cust.Signature := Signature;
+                            Cust."Monthly Contribution" := "Monthly Contribution";
+                            Cust."Account Category" := "Account Category";
+                            Cust."Contact Person" := "Contact Person";
+                            Cust."Contact Person Phone" := "Contact Person Phone";
+                            Cust."ContactPerson Relation" := "ContactPerson Relation";
+                            Cust."Recruited By" := "Recruited By";
+                            Cust."Business Loan Officer" := "Salesperson Name";
+                            Cust."ContactPerson Occupation" := "ContactPerson Occupation";
+                            Cust."Village/Residence" := "Village/Residence";
+                            Cust."Group Account" := "Group Account";
+                            Cust."Group Account No" := "Group Account No";
+                            Cust."Group Account Name" := "Group Account Name";
+                            Cust."FOSA Account" := "FOSA Account No.";
+                            Cust.Status := Cust.Status::Active;
+                            Cust.Insert(true);
+
+                            Cust.Reset;
+                            if Cust.Get(BOSAACC) then begin
+                                Cust.Validate(Cust.Name);
+                                Cust.Validate(Cust."Global Dimension 1 Code");
+                                Cust.Validate(Cust."Global Dimension 2 Code");
+                                Cust.Modify;
                             end;
-                         end;
-                         end;
+
+                            Saccosetup.BosaNumber := IncStr(Saccosetup.BosaNumber);
+                            Saccosetup.Modify;
+                            BOSAACC := Cust."No.";
+                            Status := Status::Approved;
+                            "Created By" := UserId;
+                            Message('The member account has been created successfully, the member no. is %1', BOSAACC);
+
+
+
+
+                            AccountSignatoriesApp.Reset;
+                            AccountSignatoriesApp.SetRange(AccountSignatoriesApp."Account No", "No.");
+                            if AccountSignatoriesApp.Find('-') then begin
+
+                                AccountSignatoriesApp.Reset;
+                                AccountSignatoriesApp.SetRange(AccountSignatoriesApp."Account No", "No.");
+                                AccountSignatoriesApp.SetRange(AccountSignatoriesApp."Send SMS", false);
+                                if AccountSignatoriesApp.Find('-') then begin
+                                    repeat
+
+                                        SMSMessage.Reset;
+                                        if SMSMessage.Find('+') then begin
+                                            iEntryNo := SMSMessage."Entry No";
+                                            iEntryNo := iEntryNo + 1;
+                                        end
+                                        else begin
+                                            iEntryNo := 1;
+                                        end;
+
+
+                                        SMSMessage.Init;
+                                        SMSMessage."Entry No" := iEntryNo;
+                                        //SMSMessage."Account No":="Payroll/Staff No";
+                                        SMSMessage."Date Entered" := Today;
+                                        SMSMessage."Time Entered" := Time;
+                                        SMSMessage.Source := 'MEMBERACCOUNT';
+                                        SMSMessage."Entered By" := UserId;
+                                        SMSMessage."System Created Entry" := true;
+                                        SMSMessage."Document No" := "No.";
+                                        SMSMessage."Sent To Server" := SMSMessage."sent to server"::No;
+                                        SMSMessage."SMS Message" := Name + ' has been succesfuly created. NAFAKA SACCO';
+                                        SMSMessage."Telephone No" := AccountSignatoriesApp."Mobile Phone No.";
+                                        SMSMessage.Insert;
+
+                                        AccountSignatoriesApp."Send SMS" := true;
+                                        AccountSignatoriesApp.Modify;
+
+                                    until AccountSignatoriesApp.Next = 0;
+                                end;
+                            end;
+                        end;
                         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                         // SEND SMS
                         //ELSE
@@ -570,45 +570,45 @@ Page 51516840 "MC Individual Application Card"
     begin
         //"Responsibility Centre" := UserMgt.GetSalesFilter;
 
-        "Customer Type":="customer type"::Member;
-        "Global Dimension 1 Code":='MICRO';
-        "Customer Posting Group":='MICRO';
-        Source:=Source::Micro;
-        "Account Type":="account type"::Single;
-        "Account Category":="account category"::Single;
-        "Group Account":=false;
+        "Customer Type" := "customer type"::Member;
+        "Global Dimension 1 Code" := 'MICRO';
+        "Customer Posting Group" := 'MICRO';
+        Source := Source::Micro;
+        "Account Type" := "account type"::Single;
+        "Account Category" := "account category"::Single;
+        "Group Account" := false;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
-        "Customer Type":="customer type"::Member;
-        "Global Dimension 1 Code":='MICRO';
-        "Customer Posting Group":='MICRO';
-        Source:=Source::Micro;
-        "Account Type":="account type"::Single;
-        "Account Category":="account category"::Single;
-        "Group Account":=false
+        "Customer Type" := "customer type"::Member;
+        "Global Dimension 1 Code" := 'MICRO';
+        "Customer Posting Group" := 'MICRO';
+        Source := Source::Micro;
+        "Account Type" := "account type"::Single;
+        "Account Category" := "account category"::Single;
+        "Group Account" := false
     end;
 
     trigger OnOpenPage()
     begin
 
-        if Status=Status::Approved then
-        CurrPage.Editable:=false;
+        if Status = Status::Approved then
+            CurrPage.Editable := false;
 
-        "Customer Type":="customer type"::Member;
-        "Global Dimension 1 Code":='MICRO';
-        "Customer Posting Group":='MICRO';
-        Source:=Source::Micro;
-        "Account Type":="account type"::Single;
-        "Account Category":="account category"::Single;
-        "Group Account":=false;
+        "Customer Type" := "customer type"::Member;
+        "Global Dimension 1 Code" := 'MICRO';
+        "Customer Posting Group" := 'MICRO';
+        Source := Source::Micro;
+        "Account Type" := "account type"::Single;
+        "Account Category" := "account category"::Single;
+        "Group Account" := false;
     end;
 
     var
         StatusPermissions: Record "Status Change Permision";
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         Accounts: Record Vendor;
         NextOfKinApp: Record "Members Nominee";
         NextofKinFOSA: Record "FOSA Account NOK Details";
@@ -678,7 +678,7 @@ Page 51516840 "MC Individual Application Card"
         text003: label 'You must specify Signatories for this type of membership';
         GetAccountType: Record "Account Types-Saving Products";
         Text004: label 'You MUST specify the next of kin Benevolent';
-        CustMember: Record "Member Register";
+        CustMember: Record Customer;
         "BenvNo.": Code[10];
         BankAEditable: Boolean;
         MemEditable: Boolean;
@@ -701,14 +701,14 @@ Page 51516840 "MC Individual Application Card"
         DeptVisible: Boolean;
         SecVisible: Boolean;
         OccpVisible: Boolean;
-        MembCust: Record "Member Register";
+        MembCust: Record Customer;
         AccountSignatoriesApp: Record "FOSA Account App Signatories";
         SMSMessage: Record "SMS Messages";
         iEntryNo: Integer;
         AccoutTypes: Record "Account Types-Saving Products";
         Text005: label 'Member already belongs to group %1.';
         MembrCount: Integer;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         Saccosetup: Record "Sacco No. Series";
         AcctNo: Code[50];
         BCode: Code[20];
@@ -727,98 +727,98 @@ Page 51516840 "MC Individual Application Card"
     procedure UpdateControls()
     begin
 
-             if Status=Status::Approved then begin
-             NameEditable:=false;
-             AddressEditable:=false;
-             GlobalDim1Editable:=false;
-             GlobalDim2Editable:=false;
-             CustPostingGroupEdit:=false;
-             PhoneEditable:=false;
-             MaritalstatusEditable:=false;
-             IDNoEditable:=false;
-             PhoneEditable:=false;
-             RegistrationDateEdit:=false;
-             OfficeBranchEditable:=false;
-             DeptEditable:=false;
-             SectionEditable:=false;
-             OccupationEditable:=false;
-             DesignationEdiatble:=false;
-             EmployerCodeEditable:=false;
-             DOBEditable:=false;
-             EmailEdiatble:=false;
-             StaffNoEditable:=false;
-             GenderEditable:=false;
-             MonthlyContributionEdit:=false;
-             PostCodeEditable:=false;
-             CityEditable:=false;
-             WitnessEditable:=false;
-             BankCodeEditable:=false;
-             BranchCodeEditable:=false;
-             BankAccountNoEditable:=false;
-             VillageResidence:=false;
-             ForceNo:=false;
-             ContPhone:=false;
-             ContRelation:=false;
-             ContOcuppation:=false;
-             Recruitedby:=false;
-             PassEditable:=false;
-             EmployerEditable:=false;
-             CountryEditable:=false;
-             SalesEditable:=false;
-             AccountCategory:=false;
-             BankAEditable:=false;
-             MemEditable:=false;
-             BenvEditable:=false;
-             BankNEditable:=false;
-             MobileEditable:=false;
-             end;
+        if Status = Status::Approved then begin
+            NameEditable := false;
+            AddressEditable := false;
+            GlobalDim1Editable := false;
+            GlobalDim2Editable := false;
+            CustPostingGroupEdit := false;
+            PhoneEditable := false;
+            MaritalstatusEditable := false;
+            IDNoEditable := false;
+            PhoneEditable := false;
+            RegistrationDateEdit := false;
+            OfficeBranchEditable := false;
+            DeptEditable := false;
+            SectionEditable := false;
+            OccupationEditable := false;
+            DesignationEdiatble := false;
+            EmployerCodeEditable := false;
+            DOBEditable := false;
+            EmailEdiatble := false;
+            StaffNoEditable := false;
+            GenderEditable := false;
+            MonthlyContributionEdit := false;
+            PostCodeEditable := false;
+            CityEditable := false;
+            WitnessEditable := false;
+            BankCodeEditable := false;
+            BranchCodeEditable := false;
+            BankAccountNoEditable := false;
+            VillageResidence := false;
+            ForceNo := false;
+            ContPhone := false;
+            ContRelation := false;
+            ContOcuppation := false;
+            Recruitedby := false;
+            PassEditable := false;
+            EmployerEditable := false;
+            CountryEditable := false;
+            SalesEditable := false;
+            AccountCategory := false;
+            BankAEditable := false;
+            MemEditable := false;
+            BenvEditable := false;
+            BankNEditable := false;
+            MobileEditable := false;
+        end;
 
-             if Status=Status::Open then begin
-             NameEditable:=true;
-             AddressEditable:=true;
-             GlobalDim1Editable:=false;
-             GlobalDim2Editable:=true;
-             CustPostingGroupEdit:=false;
-             PhoneEditable:=true;
-             MaritalstatusEditable:=true;
-             IDNoEditable:=true;
-             PhoneEditable:=true;
-             RegistrationDateEdit:=true;
-             OfficeBranchEditable:=true;
-             DeptEditable:=true;
-             SectionEditable:=true;
-             OccupationEditable:=true;
-             DesignationEdiatble:=true;
-             EmployerCodeEditable:=true;
-             DOBEditable:=true;
-             EmailEdiatble:=true;
-             StaffNoEditable:=true;
-             GenderEditable:=true;
-             MonthlyContributionEdit:=true;
-             PostCodeEditable:=true;
-             CityEditable:=false;
-             WitnessEditable:=true;
-             BankCodeEditable:=true;
-             BranchCodeEditable:=true;
-             BankAccountNoEditable:=true;
-             VillageResidence:=true;
-             ForceNo:=true;
-             ContPhone:=true;
-             ContRelation:=true;
-             ContOcuppation:=true;
-             Recruitedby:=true;
-             PassEditable:=true;
-             EmployerEditable:=true;
-             CountryEditable:=true;
-             SalesEditable:=true;
-             AccountCategory:=true;
-             BankAEditable:=true;
-             MemEditable:=true;
-             BenvEditable:=true;
-             BankNEditable:=true;
-             MobileEditable:=true;
+        if Status = Status::Open then begin
+            NameEditable := true;
+            AddressEditable := true;
+            GlobalDim1Editable := false;
+            GlobalDim2Editable := true;
+            CustPostingGroupEdit := false;
+            PhoneEditable := true;
+            MaritalstatusEditable := true;
+            IDNoEditable := true;
+            PhoneEditable := true;
+            RegistrationDateEdit := true;
+            OfficeBranchEditable := true;
+            DeptEditable := true;
+            SectionEditable := true;
+            OccupationEditable := true;
+            DesignationEdiatble := true;
+            EmployerCodeEditable := true;
+            DOBEditable := true;
+            EmailEdiatble := true;
+            StaffNoEditable := true;
+            GenderEditable := true;
+            MonthlyContributionEdit := true;
+            PostCodeEditable := true;
+            CityEditable := false;
+            WitnessEditable := true;
+            BankCodeEditable := true;
+            BranchCodeEditable := true;
+            BankAccountNoEditable := true;
+            VillageResidence := true;
+            ForceNo := true;
+            ContPhone := true;
+            ContRelation := true;
+            ContOcuppation := true;
+            Recruitedby := true;
+            PassEditable := true;
+            EmployerEditable := true;
+            CountryEditable := true;
+            SalesEditable := true;
+            AccountCategory := true;
+            BankAEditable := true;
+            MemEditable := true;
+            BenvEditable := true;
+            BankNEditable := true;
+            MobileEditable := true;
 
-             end
+        end
     end;
 
     local procedure SendEmail()
@@ -831,13 +831,13 @@ Page 51516840 "MC Individual Application Card"
 
 
 
-        notifymail.CreateMessage(' Kenversity sacco Ltd Membership',GenSetUp."Sender Address","E-Mail (Personal)",'You membership application was received',
+            notifymail.CreateMessage(' Kenversity sacco Ltd Membership', GenSetUp."Sender Address", "E-Mail (Personal)", 'You membership application was received',
 
-                        'Your Membership Application No is '+ "No." + ' Thank you for Kenversity sacco Ltd',false);
+                            'Your Membership Application No is ' + "No." + ' Thank you for Kenversity sacco Ltd', false);
 
 
 
-        notifymail.Send;
+            notifymail.Send;
 
 
 
@@ -854,13 +854,13 @@ Page 51516840 "MC Individual Application Card"
 
 
 
-        notifymail.CreateMessage(' Kenversity sacco Ltd Membership',GenSetUp."Sender Address","E-Mail (Personal)",'You membership application was received and approved',
+            notifymail.CreateMessage(' Kenversity sacco Ltd Membership', GenSetUp."Sender Address", "E-Mail (Personal)", 'You membership application was received and approved',
 
-                        'Your Membership no is '+ Cust."No." + ' Thank you for Kenversity sacco Ltd',false);
+                            'Your Membership no is ' + Cust."No." + ' Thank you for Kenversity sacco Ltd', false);
 
 
 
-        notifymail.Send;
+            notifymail.Send;
 
 
 

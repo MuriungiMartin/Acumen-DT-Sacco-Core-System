@@ -12,7 +12,7 @@ Page 51516503 "Loan Calculator"
         {
             group(General)
             {
-                field("Loan Calculator Type";"Loan Calculator Type")
+                field("Loan Calculator Type"; "Loan Calculator Type")
                 {
                     ApplicationArea = Basic;
 
@@ -24,86 +24,86 @@ Page 51516503 "Loan Calculator"
                 group(MemberDetails)
                 {
                     Visible = MemberNoVisible;
-                    field("Member No";"Member No")
+                    field("Member No"; "Member No")
                     {
                         ApplicationArea = Basic;
                         Enabled = MemberNoVisible;
                     }
-                    field("Member Name";"Member Name")
+                    field("Member Name"; "Member Name")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Current Deposits";"Current Deposits")
+                    field("Current Deposits"; "Current Deposits")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Basic Pay";"Basic Pay")
+                    field("Basic Pay"; "Basic Pay")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Total Deduction";"Total Deduction")
+                    field("Total Deduction"; "Total Deduction")
                     {
                         ApplicationArea = Basic;
                     }
-                    field("Total Loans Outstanding";"Total Loans Outstanding")
+                    field("Total Loans Outstanding"; "Total Loans Outstanding")
                     {
                         ApplicationArea = Basic;
                     }
                 }
-                field("Loan Product Type";"Loan Product Type")
+                field("Loan Product Type"; "Loan Product Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Product Description";"Product Description")
+                field("Product Description"; "Product Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Installments;Installments)
+                field(Installments; Installments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Method";"Repayment Method")
+                field("Repayment Method"; "Repayment Method")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest rate";"Interest rate")
+                field("Interest rate"; "Interest rate")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount";"Requested Amount")
+                field("Requested Amount"; "Requested Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Loans To Offset";"Total Loans To Offset")
+                field("Total Loans To Offset"; "Total Loans To Offset")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Principle Repayment";"Principle Repayment")
+                field("Principle Repayment"; "Principle Repayment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interest Repayment";"Interest Repayment")
+                field("Interest Repayment"; "Interest Repayment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Monthly Repayment";"Total Monthly Repayment")
+                field("Total Monthly Repayment"; "Total Monthly Repayment")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Repayment Start Date";"Repayment Start Date")
+                field("Repayment Start Date"; "Repayment Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Instalment Period";"Instalment Period")
+                field("Instalment Period"; "Instalment Period")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Grace Period - Principle (M)";"Grace Period - Principle (M)")
+                field("Grace Period - Principle (M)"; "Grace Period - Principle (M)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Grace Period - Interest (M)";"Grace Period - Interest (M)")
+                field("Grace Period - Interest (M)"; "Grace Period - Interest (M)")
                 {
                     ApplicationArea = Basic;
                 }
@@ -112,39 +112,39 @@ Page 51516503 "Loan Calculator"
             {
                 Caption = 'Qualification Analysis';
                 Visible = QualificationAnalysisVisible;
-                field("Qualification As Per Deposit";"Qualification As Per Deposit")
+                field("Qualification As Per Deposit"; "Qualification As Per Deposit")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("2/3rds";"2/3rds")
+                field("2/3rds"; "2/3rds")
                 {
                     ApplicationArea = Basic;
                 }
-                field("1/3rd";"1/3rd")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Qualification As Per Salary";"Qualification As Per Salary")
+                field("1/3rd"; "1/3rd")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Eligible Amount";"Eligible Amount")
+                field("Qualification As Per Salary"; "Qualification As Per Salary")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Deficit on Deposit";"Deficit on Deposit")
+                field("Eligible Amount"; "Eligible Amount")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Deficit on Deposit"; "Deficit on Deposit")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
             }
-            part(Control1000000035;"Loan Repayment Schedule")
+            part(Control1000000035; "Loan Repayment Schedule")
             {
-                SubPageLink = "Loan No."=field("Member No");
+                SubPageLink = "Loan No." = field("Member No");
             }
         }
     }
@@ -159,7 +159,7 @@ Page 51516503 "Loan Calculator"
                 Promoted = true;
                 PromotedCategory = Process;
                 RunObject = Page "Loan Calc. Loans to Offset";
-                RunPageLink = "Client Code"=field("Member No");
+                RunPageLink = "Client Code" = field("Member No");
             }
             action("Reset Calculator")
             {
@@ -170,10 +170,10 @@ Page 51516503 "Loan Calculator"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Are you Sure You Want to Reset the Calculator?',false)=true then begin
-                    Rec.DeleteAll;
-                    ScheduleRep.DeleteAll;
-                    LoanCalctoTopup.DeleteAll;
+                    if Confirm('Are you Sure You Want to Reset the Calculator?', false) = true then begin
+                        Rec.DeleteAll;
+                        ScheduleRep.DeleteAll;
+                        LoanCalctoTopup.DeleteAll;
                     end;
                 end;
             }
@@ -191,194 +191,202 @@ Page 51516503 "Loan Calculator"
                     //IF Posted=TRUE THEN
                     //ERROR('Loan has been posted, Can only preview schedule');
 
-                    if "Repayment Frequency"="repayment frequency"::Daily then
-                    Evaluate(InPeriod,'1D')
-                    else if "Repayment Frequency"="repayment frequency"::Weekly then
-                    Evaluate(InPeriod,'1W')
-                    else if "Repayment Frequency"="repayment frequency"::Monthly then
-                    Evaluate(InPeriod,'1M')
-                    else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                    Evaluate(InPeriod,'1Q');
+                    if "Repayment Frequency" = "repayment frequency"::Daily then
+                        Evaluate(InPeriod, '1D')
+                    else
+                        if "Repayment Frequency" = "repayment frequency"::Weekly then
+                            Evaluate(InPeriod, '1W')
+                        else
+                            if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                Evaluate(InPeriod, '1M')
+                            else
+                                if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                    Evaluate(InPeriod, '1Q');
 
 
-                    QCounter:=0;
-                    QCounter:=3;
-                    ScheduleBal:=0;
+                    QCounter := 0;
+                    QCounter := 3;
+                    ScheduleBal := 0;
                     //EVALUATE(InPeriod,'1D');
-                    GrPrinciple:="Grace Period - Principle (M)";
-                    GrInterest:="Grace Period - Interest (M)";
-                    InitialGraceInt:="Grace Period - Interest (M)";
+                    GrPrinciple := "Grace Period - Principle (M)";
+                    GrInterest := "Grace Period - Interest (M)";
+                    InitialGraceInt := "Grace Period - Interest (M)";
 
                     LoansR.Reset;
-                    LoansR.SetRange(LoansR."Member No","Member No");
+                    LoansR.SetRange(LoansR."Member No", "Member No");
                     if LoansR.Find('-') then begin
 
-                    "Loan Disbursement Date":=Today;
-                    "Repayment Start Date":=Today;
+                        "Loan Disbursement Date" := Today;
+                        "Repayment Start Date" := Today;
 
-                    RSchedule.Reset;
-                    RSchedule.SetRange(RSchedule."Loan No.","Member No");
-                    RSchedule.DeleteAll;
+                        RSchedule.Reset;
+                        RSchedule.SetRange(RSchedule."Loan No.", "Member No");
+                        RSchedule.DeleteAll;
 
-                    LoanAmount:="Requested Amount";
-                    InterestRate:="Interest rate";
-                    RepayPeriod:=Installments;
-                    InitialInstal:=LoansR.Installments+"Grace Period - Principle (M)";
-                    LBalance:="Requested Amount";
-                    LNBalance:="Requested Amount";
-                    RunDate:="Repayment Start Date";
+                        LoanAmount := "Requested Amount";
+                        InterestRate := "Interest rate";
+                        RepayPeriod := Installments;
+                        InitialInstal := LoansR.Installments + "Grace Period - Principle (M)";
+                        LBalance := "Requested Amount";
+                        LNBalance := "Requested Amount";
+                        RunDate := "Repayment Start Date";
 
-                    InstalNo:=0;
-                    Evaluate(RepayInterval,'1W');
+                        InstalNo := 0;
+                        Evaluate(RepayInterval, '1W');
 
-                    //Repayment Frequency
-                    if "Repayment Frequency"="repayment frequency"::Daily then
-                    RunDate:=CalcDate('-1D',RunDate)
-                    else if "Repayment Frequency"="repayment frequency"::Weekly then
-                    RunDate:=CalcDate('-1W',RunDate)
-                    else if "Repayment Frequency"="repayment frequency"::Monthly then
-                    RunDate:=CalcDate('-1M',RunDate)
-                    else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                    RunDate:=CalcDate('-1Q',RunDate);
-                    //Repayment Frequency
-
-
-                    repeat
-                    InstalNo:=InstalNo+1;
-                    ScheduleBal:=LBalance;
-
-                    //*************Repayment Frequency***********************//
-                    if "Repayment Frequency"="repayment frequency"::Daily then
-                    RunDate:=CalcDate('1D',RunDate)
-                    else if "Repayment Frequency"="repayment frequency"::Weekly then
-                    RunDate:=CalcDate('1W',RunDate)
-                    else if "Repayment Frequency"="repayment frequency"::Monthly then
-                    RunDate:=CalcDate('1M',RunDate)
-                    else if "Repayment Frequency"="repayment frequency"::Quaterly then
-                    RunDate:=CalcDate('1Q',RunDate);
+                        //Repayment Frequency
+                        if "Repayment Frequency" = "repayment frequency"::Daily then
+                            RunDate := CalcDate('-1D', RunDate)
+                        else
+                            if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                RunDate := CalcDate('-1W', RunDate)
+                            else
+                                if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                    RunDate := CalcDate('-1M', RunDate)
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                        RunDate := CalcDate('-1Q', RunDate);
+                        //Repayment Frequency
 
 
+                        repeat
+                            InstalNo := InstalNo + 1;
+                            ScheduleBal := LBalance;
 
-
-
-
-                    //*******************If Amortised****************************//
-                    if "Repayment Method"="repayment method"::Amortised then begin
-                    TestField(Installments);
-                    TestField("Interest rate");
-                    TestField(Installments);
-                    TotalMRepay:=ROUND((InterestRate/12/100) / (1 - Power((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount,1,'>');
-                    TotalMRepay:=(InterestRate/12/100) / (1 - Power((1 + (InterestRate/12/100)),- RepayPeriod)) * LoanAmount;
-                    LInterest:=ROUND(LBalance / 100 / 12 * InterestRate);
-
-                    LPrincipal:=TotalMRepay-LInterest;
-
-                    ObjProductCharge.Reset;
-                    ObjProductCharge.SetRange(ObjProductCharge."Product Code","Loan Product Type");
-                    ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type",ObjProductCharge."loan charge type"::"Loan Insurance");
-                    if ObjProductCharge.FindSet then begin
-                      LInsurance:="Requested Amount"*(ObjProductCharge.Percentage/100);
-                      end;
-                    end;
+                            //*************Repayment Frequency***********************//
+                            if "Repayment Frequency" = "repayment frequency"::Daily then
+                                RunDate := CalcDate('1D', RunDate)
+                            else
+                                if "Repayment Frequency" = "repayment frequency"::Weekly then
+                                    RunDate := CalcDate('1W', RunDate)
+                                else
+                                    if "Repayment Frequency" = "repayment frequency"::Monthly then
+                                        RunDate := CalcDate('1M', RunDate)
+                                    else
+                                        if "Repayment Frequency" = "repayment frequency"::Quaterly then
+                                            RunDate := CalcDate('1Q', RunDate);
 
 
 
-                    if "Repayment Method"="repayment method"::"Straight Line" then begin
-                    TestField(Installments);
-                    LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                    if ("Loan Product Type" = 'INST') or ("Loan Product Type" = 'MAZAO') then begin
-                    LInterest:=0;
-                    end else begin
-                    LInterest:=ROUND((InterestRate/1200)*LoanAmount,1,'>');
-
-                    ObjProductCharge.Reset;
-                    ObjProductCharge.SetRange(ObjProductCharge."Product Code","Loan Product Type");
-                    ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type",ObjProductCharge."loan charge type"::"Loan Insurance");
-                    if ObjProductCharge.FindSet then begin
-                      LInsurance:="Requested Amount"*(ObjProductCharge.Percentage/100);
-                      end;
-                    end;
-
-                    Repayment:=LPrincipal+LInterest;
-                    "Loan Principle Repayment":=LPrincipal;
-                    "Loan Interest Repayment":=LInterest;
-                    end;
 
 
-                    if "Repayment Method"="repayment method"::"Reducing Balance" then begin
-                    TestField("Interest rate");
-                    TestField(Installments);
-                    LPrincipal:=ROUND(LoanAmount/RepayPeriod,1,'>');
-                    LInterest:=ROUND((InterestRate/12/100)*LBalance,1,'>');
 
-                    ObjProductCharge.Reset;
-                    ObjProductCharge.SetRange(ObjProductCharge."Product Code","Loan Product Type");
-                    ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type",ObjProductCharge."loan charge type"::"Loan Insurance");
-                    if ObjProductCharge.FindSet then begin
-                      LInsurance:="Requested Amount"*(ObjProductCharge.Percentage/100);
-                      end;
-                    end;
+                            //*******************If Amortised****************************//
+                            if "Repayment Method" = "repayment method"::Amortised then begin
+                                TestField(Installments);
+                                TestField("Interest rate");
+                                TestField(Installments);
+                                TotalMRepay := ROUND((InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -RepayPeriod)) * LoanAmount, 1, '>');
+                                TotalMRepay := (InterestRate / 12 / 100) / (1 - Power((1 + (InterestRate / 12 / 100)), -RepayPeriod)) * LoanAmount;
+                                LInterest := ROUND(LBalance / 100 / 12 * InterestRate);
 
-                    if "Repayment Method"="repayment method"::Constants then begin
-                    TestField(Repayment);
-                    if LBalance < Repayment then
-                    LPrincipal:=LBalance
-                    else
-                    LPrincipal:=Repayment;
-                    LInterest:="Interest rate";
+                                LPrincipal := TotalMRepay - LInterest;
 
-                    ObjProductCharge.Reset;
-                    ObjProductCharge.SetRange(ObjProductCharge."Product Code","Loan Product Type");
-                    ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type",ObjProductCharge."loan charge type"::"Loan Insurance");
-                    if ObjProductCharge.FindSet then begin
-                      LInsurance:="Requested Amount"*(ObjProductCharge.Percentage/100);
-                      end;
-                    end;
+                                ObjProductCharge.Reset;
+                                ObjProductCharge.SetRange(ObjProductCharge."Product Code", "Loan Product Type");
+                                ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type", ObjProductCharge."loan charge type"::"Loan Insurance");
+                                if ObjProductCharge.FindSet then begin
+                                    LInsurance := "Requested Amount" * (ObjProductCharge.Percentage / 100);
+                                end;
+                            end;
 
 
-                    //Grace Period
-                    if GrPrinciple > 0 then begin
-                    LPrincipal:=0
-                    end else begin
-                    if "Instalment Period" <> InPeriod then
-                    LBalance:=LBalance-LPrincipal;
-                    ScheduleBal:=ScheduleBal-LPrincipal;
-                    end;
 
-                    if GrInterest > 0 then
-                    LInterest:=0;
+                            if "Repayment Method" = "repayment method"::"Straight Line" then begin
+                                TestField(Installments);
+                                LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
+                                if ("Loan Product Type" = 'INST') or ("Loan Product Type" = 'MAZAO') then begin
+                                    LInterest := 0;
+                                end else begin
+                                    LInterest := ROUND((InterestRate / 1200) * LoanAmount, 1, '>');
 
-                    GrPrinciple:=GrPrinciple-1;
-                    GrInterest:=GrInterest-1;
+                                    ObjProductCharge.Reset;
+                                    ObjProductCharge.SetRange(ObjProductCharge."Product Code", "Loan Product Type");
+                                    ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type", ObjProductCharge."loan charge type"::"Loan Insurance");
+                                    if ObjProductCharge.FindSet then begin
+                                        LInsurance := "Requested Amount" * (ObjProductCharge.Percentage / 100);
+                                    end;
+                                end;
 
-                    //Grace Period
-                    RSchedule.Init;
-                    RSchedule."Repayment Code":=RepayCode;
-                    RSchedule."Loan No.":="Member No";
-                    RSchedule."Loan Amount":=LoanAmount;
-                    RSchedule."Instalment No":=InstalNo;
-                    RSchedule."Repayment Date":=RunDate;
-                    RSchedule."Member No.":="Member No";
-                    RSchedule."Loan Category":="Loan Product Type";
-                    RSchedule."Monthly Repayment":=LInterest + LPrincipal+LInsurance;
-                    RSchedule."Monthly Interest":=LInterest;
-                    RSchedule."Principal Repayment":=LPrincipal;
-                    RSchedule."Loan Balance":=ScheduleBal;
-                    RSchedule."Monthly Insurance":=LInsurance;
-                    RSchedule.Insert;
-                    WhichDay:=Date2dwy(RSchedule."Repayment Date",1);
+                                Repayment := LPrincipal + LInterest;
+                                "Loan Principle Repayment" := LPrincipal;
+                                "Loan Interest Repayment" := LInterest;
+                            end;
 
 
-                    until LBalance < 1
+                            if "Repayment Method" = "repayment method"::"Reducing Balance" then begin
+                                TestField("Interest rate");
+                                TestField(Installments);
+                                LPrincipal := ROUND(LoanAmount / RepayPeriod, 1, '>');
+                                LInterest := ROUND((InterestRate / 12 / 100) * LBalance, 1, '>');
+
+                                ObjProductCharge.Reset;
+                                ObjProductCharge.SetRange(ObjProductCharge."Product Code", "Loan Product Type");
+                                ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type", ObjProductCharge."loan charge type"::"Loan Insurance");
+                                if ObjProductCharge.FindSet then begin
+                                    LInsurance := "Requested Amount" * (ObjProductCharge.Percentage / 100);
+                                end;
+                            end;
+
+                            if "Repayment Method" = "repayment method"::Constants then begin
+                                TestField(Repayment);
+                                if LBalance < Repayment then
+                                    LPrincipal := LBalance
+                                else
+                                    LPrincipal := Repayment;
+                                LInterest := "Interest rate";
+
+                                ObjProductCharge.Reset;
+                                ObjProductCharge.SetRange(ObjProductCharge."Product Code", "Loan Product Type");
+                                ObjProductCharge.SetRange(ObjProductCharge."Loan Charge Type", ObjProductCharge."loan charge type"::"Loan Insurance");
+                                if ObjProductCharge.FindSet then begin
+                                    LInsurance := "Requested Amount" * (ObjProductCharge.Percentage / 100);
+                                end;
+                            end;
+
+
+                            //Grace Period
+                            if GrPrinciple > 0 then begin
+                                LPrincipal := 0
+                            end else begin
+                                if "Instalment Period" <> InPeriod then
+                                    LBalance := LBalance - LPrincipal;
+                                ScheduleBal := ScheduleBal - LPrincipal;
+                            end;
+
+                            if GrInterest > 0 then
+                                LInterest := 0;
+
+                            GrPrinciple := GrPrinciple - 1;
+                            GrInterest := GrInterest - 1;
+
+                            //Grace Period
+                            RSchedule.Init;
+                            RSchedule."Repayment Code" := RepayCode;
+                            RSchedule."Loan No." := "Member No";
+                            RSchedule."Loan Amount" := LoanAmount;
+                            RSchedule."Instalment No" := InstalNo;
+                            RSchedule."Repayment Date" := RunDate;
+                            RSchedule."Member No." := "Member No";
+                            RSchedule."Loan Category" := "Loan Product Type";
+                            RSchedule."Monthly Repayment" := LInterest + LPrincipal + LInsurance;
+                            RSchedule."Monthly Interest" := LInterest;
+                            RSchedule."Principal Repayment" := LPrincipal;
+                            RSchedule."Loan Balance" := ScheduleBal;
+                            RSchedule."Monthly Insurance" := LInsurance;
+                            RSchedule.Insert;
+                            WhichDay := Date2dwy(RSchedule."Repayment Date", 1);
+
+
+                        until LBalance < 1
 
                     end;
 
                     Commit;
 
                     ObjLoanCalc.Reset;
-                    ObjLoanCalc.SetRange(ObjLoanCalc."Loan Product Type","Loan Product Type");
-                    if ObjLoanCalc.Find('-') then
-                      begin
+                    ObjLoanCalc.SetRange(ObjLoanCalc."Loan Product Type", "Loan Product Type");
+                    if ObjLoanCalc.Find('-') then begin
                         //REPORT.RUN(51516922,TRUE,FALSE,ObjLoanCalc);
                     end;
                 end;
@@ -418,7 +426,7 @@ Page 51516503 "Loan Calculator"
         ScheduleCode: Code[20];
         PreviewShedule: Record "Loan Repay Schedule-Calc";
         PeriodInterval: Code[10];
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -428,10 +436,10 @@ Page 51516503 "Loan Calculator"
         LineNo: Integer;
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sacco General Set-Up";
         PCharges: Record "Loan Product Charges";
@@ -467,7 +475,7 @@ Page 51516503 "Loan Calculator"
         DActivity: Code[20];
         DBranch: Code[20];
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -520,7 +528,7 @@ Page 51516503 "Loan Calculator"
         Table_id: Integer;
         Doc_No: Code[20];
         Doc_Type: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,TransportRequest,Maintenance,Fuel,ImporterExporter,"Import Permit","Export Permit",TR,"Safari Notice","Student Applications","Water Research","Consultancy Requests","Consultancy Proposals","Meals Bookings","General Journal","Student Admissions","Staff Claim",KitchenStoreRequisition,"Leave Application","Account Opening","Member Closure",Loan;
-        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+        ApprovalsMgmt: Codeunit WorkflowIntegration;
         GrossPay: Decimal;
         Nettakehome: Decimal;
         TotalDeductions: Decimal;
@@ -571,27 +579,25 @@ Page 51516503 "Loan Calculator"
 
     local procedure FnShowFields()
     begin
-         if ("Loan Calculator Type"="loan calculator type"::" ") or ("Loan Calculator Type"="loan calculator type"::"Product Specific") then
-           begin
-              MemberNoVisible:=false;
-              MemberNameVisible:=false;
-              MemberDepositVisible:=false;
-              MemberBasicPayVisible:=false;
-              MemberTotalDeductionsVisible:=false;
-              MemberTotalLoansOustandingVisible:=false;
-              QualificationAnalysisVisible:=false;
-              end;
+        if ("Loan Calculator Type" = "loan calculator type"::" ") or ("Loan Calculator Type" = "loan calculator type"::"Product Specific") then begin
+            MemberNoVisible := false;
+            MemberNameVisible := false;
+            MemberDepositVisible := false;
+            MemberBasicPayVisible := false;
+            MemberTotalDeductionsVisible := false;
+            MemberTotalLoansOustandingVisible := false;
+            QualificationAnalysisVisible := false;
+        end;
 
-                if "Loan Calculator Type"="loan calculator type"::"Member Specific" then
-                  begin
-                  MemberNoVisible:=true;
-                  MemberNameVisible:=true;
-                  MemberDepositVisible:=true;
-                  MemberBasicPayVisible:=true;
-                  MemberTotalDeductionsVisible:=true;
-                  MemberTotalLoansOustandingVisible:=true;
-                  QualificationAnalysisVisible:=true;
-                  end;
+        if "Loan Calculator Type" = "loan calculator type"::"Member Specific" then begin
+            MemberNoVisible := true;
+            MemberNameVisible := true;
+            MemberDepositVisible := true;
+            MemberBasicPayVisible := true;
+            MemberTotalDeductionsVisible := true;
+            MemberTotalLoansOustandingVisible := true;
+            QualificationAnalysisVisible := true;
+        end;
 
 
 

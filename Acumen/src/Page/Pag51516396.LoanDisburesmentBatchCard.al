@@ -231,7 +231,7 @@ Page 51516396 "Loan Disburesment Batch Card"
                     trigger OnAction()
                     var
                         Text001: label 'This Batch is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        ApprovalsMgmt: Codeunit WorkflowIntegration;
                     begin
                         LoanApps.Reset;
                         LoanApps.SetRange(LoanApps."Batch No.", "Batch No.");
@@ -268,7 +268,7 @@ Page 51516396 "Loan Disburesment Batch Card"
 
                     trigger OnAction()
                     var
-                        ApprovalMgt: Codeunit "Approvals Mgmt.";
+                        ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
                         //IF ApprovalMgt.CancelBatchAppr(Rec,TRUE,TRUE) THEN;
                     end;
@@ -375,7 +375,7 @@ Page 51516396 "Loan Disburesment Batch Card"
         ScheduleCode: Code[20];
         PreviewShedule: Record "Loan Repayment Schedule";
         PeriodInterval: Code[10];
-        CustomerRecord: Record "Member Register";
+        CustomerRecord: Record Customer;
         Gnljnline: Record "Gen. Journal Line";
         Jnlinepost: Codeunit "Gen. Jnl.-Post Line";
         CumInterest: Decimal;
@@ -385,10 +385,10 @@ Page 51516396 "Loan Disburesment Batch Card"
         LineNo: Integer;
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
-        CustRec: Record "Member Register";
+        CustRec: Record Customer;
         CustPostingGroup: Record "Customer Posting Group";
         GenSetUp: Record "Sacco General Set-Up";
         PCharges: Record "Loan Product Charges";
@@ -425,7 +425,7 @@ Page 51516396 "Loan Disburesment Batch Card"
         DBranch: Code[20];
         UsersID: Record User;
         TotalTopupComm: Decimal;
-        CustE: Record "Member Register";
+        CustE: Record Customer;
         DocN: Text[50];
         DocM: Text[100];
         DNar: Text[250];
@@ -481,7 +481,7 @@ Page 51516396 "Loan Disburesment Batch Card"
         Jtemplate: Code[30];
         JBatch: Code[30];
         LBatches: Record "Loan Disburesment-Batching";
-        ApprovalMgt: Codeunit "Approvals Mgmt.";
+        ApprovalMgt: Codeunit WorkflowIntegration;
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"," ","Purchase Requisition",RFQ,"Store Requisition","Payment Voucher",MembershipApplication,LoanApplication,LoanDisbursement,ProductApplication,StandingOrder,MembershipWithdrawal;
         DescriptionEditable: Boolean;
         ModeofDisburementEditable: Boolean;
@@ -511,7 +511,7 @@ Page 51516396 "Loan Disburesment Batch Card"
         InsuranceAcc: Code[20];
         PTEN: Code[20];
         LoanTypes: Record "Loan Products Setup";
-        Customer: Record "Member Register";
+        Customer: Record Customer;
         DataSheet: Record "Data Sheet Main";
         SMSAcc: Code[10];
         SMSFee: Decimal;

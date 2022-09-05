@@ -5,10 +5,10 @@ Page 51516894 "MC Account Holders"
     Editable = false;
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
-    SourceTable = "Member Register";
-    SourceTableView = where("Customer Posting Group"=const('MICRO'),
-                            "Global Dimension 1 Code"=const('MICRO'),
-                            "BRID No"=const('NO'));
+    SourceTable = Customer;
+    SourceTableView = where("Customer Posting Group" = const('MICRO'),
+                            "Global Dimension 1 Code" = const('MICRO'),
+                            "BRID No" = const('NO'));
 
     layout
     {
@@ -16,74 +16,74 @@ Page 51516894 "MC Account Holders"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Old Account No.";"Old Account No.")
+                field("Old Account No."; "Old Account No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Address;Address)
+                field(Address; Address)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Address 2";"Address 2")
+                field("Address 2"; "Address 2")
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; City)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Phone No.";"Phone No.")
+                field("Phone No."; "Phone No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Country/Region Code";"Country/Region Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Blocked;Blocked)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Balance (LCY)";"Balance (LCY)")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("ID No.";"ID No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Status;Status)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Gender;Gender)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Group Code";"Group Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date of Birth";"Date of Birth")
+                field("Country/Region Code"; "Country/Region Code")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Blocked; Blocked)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Balance (LCY)"; "Balance (LCY)")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("ID No."; "ID No.")
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Status; Status)
+                {
+                    ApplicationArea = Basic;
+                }
+                field(Gender; Gender)
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Group Code"; "Group Code")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Date of Birth"; "Date of Birth")
                 {
                     ApplicationArea = Basic;
                 }
@@ -97,24 +97,24 @@ Page 51516894 "MC Account Holders"
         }
         area(factboxes)
         {
-            part(Control1000000002;"Member Statistics FactBox")
+            part(Control1000000002; "Member Statistics FactBox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control1000000001;"Member Picture-Uploaded")
+            part(Control1000000001; "Member Picture-Uploaded")
             {
                 Caption = 'Picture';
                 Editable = false;
                 Enabled = false;
                 ShowFilter = false;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            part(Control1000000000;"Member Signature-Uploaded")
+            part(Control1000000000; "Member Signature-Uploaded")
             {
                 Caption = 'Signature';
                 Editable = false;
                 Enabled = false;
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
         }
     }

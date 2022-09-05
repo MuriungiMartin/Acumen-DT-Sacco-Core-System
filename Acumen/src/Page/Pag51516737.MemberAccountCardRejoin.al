@@ -6,7 +6,7 @@ Page 51516737 "Member Account Card Rejoin"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     RefreshOnActivate = true;
-    SourceTable = "Member Register";
+    SourceTable = Customer;
     SourceTableView = sorting("Employer Code")
                       where("Customer Type" = const(Member));
 
@@ -1290,7 +1290,7 @@ Page 51516737 "Member Account Card Rejoin"
         StatusPermissions: Record "Status Change Permision";
         Charges: Record Charges;
         Vend: Record Vendor;
-        Cust: Record "Member Register";
+        Cust: Record Customer;
         LineNo: Integer;
         UsersID: Record User;
         GeneralSetup: Record "Sacco General Set-Up";
@@ -1367,7 +1367,7 @@ Page 51516737 "Member Account Card Rejoin"
         ObjMembershipApp: Record "Membership Applications";
         OnlineUser: Record "Online Users";
         AdminPortal: Codeunit AdminPortal;
-        CustMembr: Record "Member Register";
+        CustMembr: Record Customer;
 
 
     procedure ActivateFields()

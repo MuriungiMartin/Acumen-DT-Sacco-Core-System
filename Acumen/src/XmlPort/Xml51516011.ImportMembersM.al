@@ -7,52 +7,52 @@ XmlPort 51516011 "Import MembersM"
     {
         textelement(root)
         {
-            tableelement("Member Register";"Member Register")
+            tableelement(Customer; Customer)
             {
                 XmlName = 'Member';
-                fieldelement(Root;"Member Register"."No.")
+                fieldelement(Root; Customer."No.")
                 {
                 }
-                fieldelement(B;"Member Register".Name)
+                fieldelement(B; Customer.Name)
                 {
                 }
-                fieldelement(X;"Member Register"."ID No.")
+                fieldelement(X; Customer."ID No.")
                 {
                 }
-                fieldelement(Q;"Member Register"."Date of Birth")
+                fieldelement(Q; Customer."Date of Birth")
                 {
                 }
-                fieldelement(AA;"Member Register".Gender)
+                fieldelement(AA; Customer.Gender)
                 {
                 }
-                fieldelement(F;"Member Register"."Phone No.")
+                fieldelement(F; Customer."Phone No.")
                 {
                 }
-                fieldelement(N;"Member Register".Status)
+                fieldelement(N; Customer.Status)
                 {
                 }
-                fieldelement(C;"Member Register"."Registration Date")
+                fieldelement(C; Customer."Registration Date")
                 {
                 }
-                fieldelement(K;"Member Register"."E-Mail")
+                fieldelement(K; Customer."E-Mail")
                 {
                 }
-                fieldelement(D;"Member Register"."Introduced By")
+                fieldelement(D; Customer."Introduced By")
                 {
                 }
-                fieldelement(E;"Member Register"."E-Mail")
+                fieldelement(E; Customer."E-Mail")
                 {
                 }
-                fieldelement(O;"Member Register"."FOSA Account")
+                fieldelement(O; Customer."FOSA Account")
                 {
                 }
-                fieldelement(G;"Member Register"."Personal No")
+                fieldelement(G; Customer."Personal No")
                 {
                 }
-                fieldelement(I;"Member Register"."Customer Posting Group")
+                fieldelement(I; Customer."Customer Posting Group")
                 {
                 }
-                fieldelement(L;"Member Register"."Customer Type")
+                fieldelement(L; Customer."Customer Type")
                 {
                 }
             }

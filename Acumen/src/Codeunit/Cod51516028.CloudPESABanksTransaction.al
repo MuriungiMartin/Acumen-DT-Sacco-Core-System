@@ -19,7 +19,7 @@ Codeunit 51516028 "CloudPESA Banks Transaction"
         Loans: Integer;
         LoansRegister: Record "Loans Register";
         LoanProductsSetup: Record "Loan Products Setup";
-        Members: Record "Member Register";
+        Members: Record Customer;
         dateExpression: Text[20];
         DetailedVendorLedgerEntry: Record "Detailed Vendor Ledg. Entry";
         dashboardDataFilter: Date;
@@ -534,7 +534,7 @@ Codeunit 51516028 "CloudPESA Banks Transaction"
 
     procedure fnSetMemberPhoto()
     var
-        MemberApp: Record "Member Register";
+        MemberApp: Record Customer;
     begin
         MembApp.Get(MembApp."No.");
         MembApp.Picture.ImportFile('E:\IPRS\PHotos\' + MembApp."ID No." + '.jpg', 'Demo image for item ');
@@ -562,8 +562,8 @@ Codeunit 51516028 "CloudPESA Banks Transaction"
                 else begin
                     MembApp.Gender := MembApp.Gender::Female;
                 end;
-                MembApp."Member House Group" := 'TRUE';
-                MembApp."Send E-Statements" := true;
+                // MembApp."Member House Group" := 'TRUE';
+                // MembApp."Send E-Statements" := true;
                 // ImportFile.
 
                 MembApp.Picture.ImportFile('E:\IPRS\PHotos\' + MembApp."ID No." + '.jpg', 'PHOTO ');
@@ -579,26 +579,26 @@ Codeunit 51516028 "CloudPESA Banks Transaction"
 
     procedure GnSendIdDetails() Result: Code[250]
     begin
-        MembApp.Reset;
-        MembApp.SetRange(MembApp."Send E-Statements", false);
-        if MembApp.Find('-') then begin
-            if MembApp."Application Category" = MembApp."application category"::"New Application" then begin
+        // MembApp.Reset;
+        // MembApp.SetRange(MembApp."Send E-Statements", false);
+        // if MembApp.Find('-') then begin
+        //     if MembApp."Application Category" = MembApp."application category"::"New Application" then begin
 
-                if MembApp."Identification Document" = MembApp."identification document"::"0" then begin
-                    Idtype := 'NATIONAL_ID';
-                end;
-                if MembApp."Identification Document" = MembApp."identification document"::"1" then begin
-                    Idtype := 'NATIONAL_ID';
-                end;
-                IDLength := StrLen(MembApp."ID No.");
+        //         if MembApp."Identification Document" = MembApp."identification document"::"0" then begin
+        //             Idtype := 'NATIONAL_ID';
+        //         end;
+        //         if MembApp."Identification Document" = MembApp."identification document"::"1" then begin
+        //             Idtype := 'NATIONAL_ID';
+        //         end;
+        //         IDLength := StrLen(MembApp."ID No.");
 
 
-                if IDLength > 6 then begin
-                    Result := Idtype + ':::' + 'ID' + ':::' + Format(MembApp."ID No.");
-                end;
+        //         if IDLength > 6 then begin
+        //             Result := Idtype + ':::' + 'ID' + ':::' + Format(MembApp."ID No.");
+        //         end;
 
-            end;
-        end;
+        //     end;
+        // end;
     end;
 
 
@@ -607,9 +607,9 @@ Codeunit 51516028 "CloudPESA Banks Transaction"
         MembApp.Reset;
         MembApp.SetRange(MembApp."ID No.", IdNumber);
         if MembApp.Find('-') then begin
-            MembApp."Member House Group" := errocode;
-            MembApp."Send E-Statements" := true;
-            MembApp.Modify;
+            // MembApp."Member House Group" := errocode;
+            // MembApp."Send E-Statements" := true;
+            // MembApp.Modify;
         end;
     end;
 }
