@@ -282,6 +282,7 @@ Codeunit 51516120 "PORTALIntegration"
         Outputstream: OutStream;
     begin
 
+
         objMember.Reset;
         objMember.SetRange(objMember."No.", MemberNo);
 

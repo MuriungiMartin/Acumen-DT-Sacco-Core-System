@@ -144,11 +144,11 @@ Page 51516071 "Imprest Acct. List"
                     trigger OnAction()
                     begin
                         //Post Committment Reversals
-                        TestField(Status, Status::"9");
+                        TestField(Status, Status::Approved);
                         if Confirm(Text002, true) then begin
                             Doc_Type := Doc_type::Imprest;
                             BudgetControl.ReverseEntries(Doc_Type, "Imprest Issue Doc. No");
-                            Status := Status::"5";
+                            Status := Status::Rejected;
                             Modify;
                         end;
                     end;
@@ -171,7 +171,7 @@ Page 51516071 "Imprest Acct. List"
 
 
 
-                    TestField(Status, Status::"9");
+                    TestField(Status, Status::Approved);
 
                     if Posted then
                         Error('The transaction has already been posted.');
@@ -336,7 +336,7 @@ Page 51516071 "Imprest Acct. List"
 
                     if JournalPostSuccessful.PostedSuccessfully then begin
                         Posted := true;
-                        Status := Status::"4";
+                        Status := Status::Posted;
                         "Date Posted" := Today;
                         "Time Posted" := Time;
                         "Posted By" := UserId;
@@ -514,7 +514,7 @@ Page 51516071 "Imprest Acct. List"
     procedure UpdateforNoActualSpent()
     begin
         Posted := true;
-        Status := Status::"4";
+        Status := Status::Posted;
         "Date Posted" := Today;
         "Time Posted" := Time;
         "Posted By" := UserId;

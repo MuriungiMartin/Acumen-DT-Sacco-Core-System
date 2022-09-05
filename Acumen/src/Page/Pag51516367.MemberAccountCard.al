@@ -233,7 +233,7 @@ Page 51516367 "Member Account Card"
                             Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                     Editable = false;

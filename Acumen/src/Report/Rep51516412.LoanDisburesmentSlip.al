@@ -911,13 +911,13 @@ Report 51516412 "Loan Disburesment Slip"
         Members_Signature______________________CaptionLbl: label 'Members Signature:_____________________';
         Credit_Committe_Minute_No______________________CaptionLbl: label 'Credit Committe Minute No._____________________';
         Date___________________Caption_Control1102755074Lbl: label 'Date:__________________';
-        Comment______________________________________________________________________________________CaptionLbl: label 'Comment :____________________________________________________________________________________';
+        Comment____________________________________CaptionLbl: label 'Comment :____________________________________________________________________________________';
         Amount_Approved______________________CaptionLbl: label 'Amount Approved:_____________________';
         Signatory_1__________________CaptionLbl: label 'Signatory 1:_________________';
         Signatory_2__________________CaptionLbl: label 'Signatory 2:_________________';
         Signatory_3__________________CaptionLbl: label 'Signatory 3:_________________';
         FOSA_SIGNATORIES_CaptionLbl: label 'FOSA SIGNATORIES:';
-        Comment______________________________________________________________________________________Caption_Control1102755070Lbl: label 'Comment :____________________________________________________________________________________';
+        Comment____________________________________Caption_Control1102755070Lbl: label 'Comment :____________________________________________________________________________________';
         FINANCE_CaptionLbl: label 'FINANCE:';
         Disbursed_By__________________CaptionLbl: label 'Disbursed By:_________________';
         Signature__________________Caption_Control1102755081Lbl: label 'Signature:_________________';

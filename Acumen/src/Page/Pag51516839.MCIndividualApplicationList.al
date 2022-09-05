@@ -35,10 +35,10 @@ Page 51516839 "MC Individual Application List"
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = "Membership Applications";
-    SourceTableView = where("Account Category"=filter(<>Group),
-                            "Group Account"=const(false),
-                            "Customer Posting Group"=const('MICRO'),
-                            Source=const(Micro));
+    SourceTableView = where("Account Category" = filter(<> Group),
+                            "Group Account" = const(false),
+                            "Customer Posting Group" = const('MICRO'),
+                            Source = const(Micro));
     UsageCategory = Lists;
 
     layout
@@ -47,88 +47,88 @@ Page 51516839 "MC Individual Application List"
         {
             repeater(Control1102755000)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Search Name";"Search Name")
+                field("Search Name"; "Search Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Centre";"Responsibility Centre")
+                field("Responsibility Centre"; "Responsibility Centre")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Customer Type";"Customer Type")
+                field("Customer Type"; "Customer Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Category;Category)
+                field(Category; Category)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account No";"Bank Account No")
+                field("Bank Account No"; "Bank Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; "Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Code";"Bank Code")
+                field("Bank Code"; "Bank Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("BOSA Account No.";"BOSA Account No.")
+                field("BOSA Account No."; "BOSA Account No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Membership No.';
                 }
-                field("Recruited By";"Recruited By")
+                field("Recruited By"; "Recruited By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Category";"Account Category")
+                field("Account Category"; "Account Category")
                 {
                     ApplicationArea = Basic;
                 }
-                field("ID No.";"ID No.")
+                field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Mobile Phone No";"Mobile Phone No")
+                field("Mobile Phone No"; "Mobile Phone No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Marital Status";"Marital Status")
+                field("Marital Status"; "Marital Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Monthly Contribution";"Monthly Contribution")
+                field("Monthly Contribution"; "Monthly Contribution")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date of Birth";"Date of Birth")
+                field("Date of Birth"; "Date of Birth")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail (Personal)";"E-Mail (Personal)")
+                field("E-Mail (Personal)"; "E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Source;Source)
+                field(Source; Source)
                 {
                     ApplicationArea = Basic;
                 }
@@ -156,7 +156,7 @@ Page 51516839 "MC Individual Application List"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        
+
                         /*DocumentType:=DocumentType::"Account Opening";
                         ApprovalEntries.Setfilters(DATABASE::"Member Application",DocumentType,"No.");
                         ApprovalEntries.RUN;
@@ -274,7 +274,7 @@ Page 51516839 "MC Individual Application List"
                         Accounts."Post Code":="Post Code";
                         Accounts.County:=City;
                         Accounts."BOSA Account No":=Cust."No.";
-                        Accounts.Picture:=Picture;
+                        Accounts.Piccture:=Picture;
                         Accounts.Signature:=Signature;
                         Accounts."Passport No.":="Passport No.";
                         Accounts."Company Code":="Employer Code";

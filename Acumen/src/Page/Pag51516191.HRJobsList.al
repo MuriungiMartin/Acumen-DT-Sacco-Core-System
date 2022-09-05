@@ -19,30 +19,30 @@ Page 51516191 "HR Jobs List"
         {
             repeater(Control1102755000)
             {
-                field("Job ID";"Job ID")
+                field("Job ID"; "Job ID")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Job Description";"Job Description")
+                field("Job Description"; "Job Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("No of Posts";"No of Posts")
+                field("No of Posts"; "No of Posts")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Responsibility Center";"Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Date Created";"Date Created")
+                field("Date Created"; "Date Created")
                 {
                     ApplicationArea = Basic;
                     StyleExpr = true;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Style = StandardAccent;
@@ -52,11 +52,11 @@ Page 51516191 "HR Jobs List"
         }
         area(factboxes)
         {
-            part(Control1102755002;"HR Jobs Factbox")
+            part(Control1102755002; "HR Jobs Factbox")
             {
-                SubPageLink = "Job ID"=field("Job ID");
+                SubPageLink = "Job ID" = field("Job ID");
             }
-            systempart(Control1102755004;Outlook)
+            systempart(Control1102755004; Outlook)
             {
             }
         }
@@ -82,8 +82,8 @@ Page 51516191 "HR Jobs List"
                         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,Receipt,"Staff Claim","Staff Advance",AdvanceSurrender,"Bank Slip",Grant,"Grant Surrender","Employee Requisition","Leave Application","Training Application","Transport Requisition",Job;
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        DocumentType:=Documenttype::Job;
-                        ApprovalEntries.Setfilters(Database::"HR Jobss",DocumentType,"Job ID");
+                        DocumentType := Documenttype::Job;
+                        ApprovalEntries.Setfilters(Database::"HR Jobss", DocumentType, "Job ID");
                         ApprovalEntries.Run;
                     end;
                 }
@@ -133,7 +133,7 @@ Page 51516191 "HR Jobs List"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Employee Requisitions List";
-                    RunPageLink = "Job ID"=field("Job ID");
+                    RunPageLink = "Job ID" = field("Job ID");
                     RunPageOnRec = false;
 
                     trigger OnAction()
@@ -149,7 +149,7 @@ Page 51516191 "HR Jobs List"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Job Requirement Lines";
-                    RunPageLink = "Job Id"=field("Job ID");
+                    RunPageLink = "Job Id" = field("Job ID");
                 }
                 action(Responsibilities)
                 {
@@ -159,7 +159,7 @@ Page 51516191 "HR Jobs List"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Job Responsiblities Lines";
-                    RunPageLink = "Job ID"=field("Job ID");
+                    RunPageLink = "Job ID" = field("Job ID");
                 }
                 action(Occupants)
                 {
@@ -169,7 +169,7 @@ Page 51516191 "HR Jobs List"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Job Occupants";
-                    RunPageLink = "Job ID"=field("Job ID");
+                    RunPageLink = "Job ID" = field("Job ID");
                 }
             }
         }
@@ -183,7 +183,7 @@ Page 51516191 "HR Jobs List"
                 Promoted = true;
                 PromotedCategory = Category6;
                 RunObject = Page "HR Job Requirements";
-                RunPageLink = "Job ID"=field("Job ID");
+                RunPageLink = "Job ID" = field("Job ID");
             }
             action(Action1102755018)
             {
@@ -202,7 +202,7 @@ Page 51516191 "HR Jobs List"
                 Promoted = true;
                 PromotedCategory = Category6;
                 RunObject = Page "HR Job Responsibilities";
-                RunPageLink = "Job ID"=field("Job ID");
+                RunPageLink = "Job ID" = field("Job ID");
             }
             action("Appraisal Evaluation Areas")
             {
@@ -211,7 +211,7 @@ Page 51516191 "HR Jobs List"
                 Image = Evaluate;
                 Promoted = true;
                 PromotedCategory = Category6;
-                RunObject = Page UnknownPage55633;
+                // RunObject = Page UnknownPage55633;
             }
             action("Lookup Values")
             {
@@ -250,7 +250,7 @@ Page 51516191 "HR Jobs List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55583;
+                //  //ownReport55583;
             }
             action("<Report HR Jobs (Occupied)>")
             {
@@ -259,7 +259,7 @@ Page 51516191 "HR Jobs List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55584;
+                // //ownReport55584;
             }
             action("<Report HR Job Responsibilities>")
             {
@@ -268,7 +268,7 @@ Page 51516191 "HR Jobs List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55590;
+                //ownReport55590;
             }
             action("<Report HR Job Requirements>")
             {
@@ -277,7 +277,7 @@ Page 51516191 "HR Jobs List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55591;
+                //ownReport55591;
             }
         }
     }

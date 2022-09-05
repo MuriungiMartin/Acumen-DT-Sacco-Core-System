@@ -215,7 +215,7 @@ Page 51516737 "Member Account Card Rejoin"
                             Error('You do not have permissions to change the account status.');
                     end;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                 }

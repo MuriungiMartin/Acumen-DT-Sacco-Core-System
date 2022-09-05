@@ -146,7 +146,7 @@ Page 51516616 "Loan Recovery Header"
                 {
                     ApplicationArea = Basic;
                     Editable = Global1Editable;
-                    OptionCaption = 'Activity';
+
                 }
                 field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
@@ -335,7 +335,7 @@ Page 51516616 "Loan Recovery Header"
                                     LoanDetails."Outstanding Balance" := LoanGuarantors."Outstanding Balance";
                                     LoanDetails."Outstanding Interest" := FnGetInterestForLoanToAttach();
                                     LoanDetails."Defaulter Loan" := LoanGuarantors."Amont Guaranteed";
-                                    ROUND(FnGetDefaultorLoanAmount("Loan Distributed to Guarantors", LoanGuarantors."Amont Guaranteed", LoanGuarantors."Total Loans Guaranteed", GCount), 0.1, '=');
+                                    //ROUND(FnGetDefaultorLoanAmount("Loan Distributed to Guarantors", LoanGuarantors."Amont Guaranteed", LoanGuarantors."Total Loans Guaranteed", GCount), 0.1, '=');
                                     LoanDetails.Insert;
                                 until LoanGuarantors.Next = 0;
                             end;
@@ -413,12 +413,14 @@ Page 51516616 "Loan Recovery Header"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        Approv: Codeunit "Approvals Mgmt.";
     begin
         UpdateControls();
         UpdateControls();
         EnableCreateMember := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec.Status = Status::Approved then begin
             OpenApprovalEntriesExist := false;

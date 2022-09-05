@@ -13,34 +13,34 @@ Page 51516250 "HR Asset Return Form"
         {
             repeater(Control1102755000)
             {
-                field("Misc. Article Code";"Misc. Article Code")
+                field("Misc. Article Code"; "Misc. Article Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Returned;Returned)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Status On Return";"Status On Return")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Returned";"Date Returned")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Recommendations;Recommendations)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Received By";"Received By")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field(Returned;Returned)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Status On Return";"Status On Return")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Date Returned";"Date Returned")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(Recommendations;Recommendations)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Received By";"Received By")
+                // {
+                //     ApplicationArea = Basic;
+                // }
             }
         }
     }
@@ -55,7 +55,7 @@ Page 51516250 "HR Asset Return Form"
 
     procedure refresh()
     begin
-                        CurrPage.Update(false);
+        CurrPage.Update(false);
     end;
 }
 

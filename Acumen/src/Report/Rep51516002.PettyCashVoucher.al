@@ -259,7 +259,7 @@ Report 51516002 "PettyCash Voucher"
 					  begin
 						DimValName:=DimVal.Name;
 					  end;
-					TTotal:=TTotal + "PO/INV No" ;
+					//TTotal:=TTotal + "PO/INV No" ;
 				end;
 				
 			}

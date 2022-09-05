@@ -8,8 +8,8 @@ Page 51516541 "Loans Appeal  List"
     ModifyAllowed = true;
     PageType = List;
     SourceTable = "Loans Register";
-    SourceTableView = where(Posted=filter(false),
-                            "Loan to Appeal"=filter(<>''));
+    SourceTableView = where(Posted = filter(false),
+                            "Loan to Appeal" = filter(<> ''));
 
     layout
     {
@@ -17,80 +17,80 @@ Page 51516541 "Loans Appeal  List"
         {
             repeater(Group)
             {
-                field("Loan  No.";"Loan  No.")
+                field("Loan  No."; "Loan  No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Product Type";"Loan Product Type")
+                field("Loan Product Type"; "Loan Product Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Code";"Client Code")
+                field("Client Code"; "Client Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Member  No';
                 }
-                field("Group Code";"Group Code")
+                field("Group Code"; "Group Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Client Name";"Client Name")
+                field("Client Name"; "Client Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Requested Amount";"Requested Amount")
+                field("Requested Amount"; "Requested Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan to Appeal";"Loan to Appeal")
+                field("Loan to Appeal"; "Loan to Appeal")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan to Appeal Approved Amount";"Loan to Appeal Approved Amount")
+                field("Loan to Appeal Approved Amount"; "Loan to Appeal Approved Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan to Appeal issued Date";"Loan to Appeal issued Date")
+                field("Loan to Appeal issued Date"; "Loan to Appeal issued Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Amount";"Approved Amount")
+                field("Approved Amount"; "Approved Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Loan Status";"Loan Status")
+                field("Loan Status"; "Loan Status")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Issued Date";"Issued Date")
+                field("Issued Date"; "Issued Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Expected Date of Completion";"Expected Date of Completion")
+                field("Expected Date of Completion"; "Expected Date of Completion")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Installments;Installments)
+                field(Installments; Installments)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Repayment;Repayment)
+                field(Repayment; Repayment)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejection  Remark";"Rejection  Remark")
+                field("Rejection  Remark"; "Rejection  Remark")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Outstanding Balance";"Outstanding Balance")
+                field("Outstanding Balance"; "Outstanding Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Oustanding Interest";"Oustanding Interest")
+                field("Oustanding Interest"; "Oustanding Interest")
                 {
                     ApplicationArea = Basic;
                 }
@@ -98,9 +98,9 @@ Page 51516541 "Loans Appeal  List"
         }
         area(factboxes)
         {
-            part(Control1000000001;"Member Statistics FactBox")
+            part(Control1000000001; "Member Statistics FactBox")
             {
-                SubPageLink = "No."=field("Client Code");
+                SubPageLink = "No." = field("Client Code");
             }
         }
     }

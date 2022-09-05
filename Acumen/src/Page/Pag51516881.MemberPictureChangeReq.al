@@ -8,9 +8,9 @@ Page 51516881 "Member Picture-Change Req"
     {
         area(content)
         {
-            field(Picture;Picture)
+            field(Picture; Picture)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture that has been inserted for the member.';
             }
@@ -116,7 +116,7 @@ Page 51516881 "Member Picture-Change Req"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         ///CameraOptions := CameraOptions.CameraOptions;
         ///CameraOptions.
@@ -135,18 +135,18 @@ Page 51516881 "Member Picture-Change Req"
         //TESTFIELD(Description);
 
         if Picture.Count > 0 then
-          if not Confirm(OverrideImageQst) then
-            Error('');
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(Picture);
-        Picture.ImportFile(FileName,ClientFileName);
+        Picture.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
@@ -172,13 +172,13 @@ Page 51516881 "Member Picture-Change Req"
         TestField(No);
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(Picture);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     begin
     end;
 }

@@ -9,13 +9,13 @@ Page 51516595 "Marketing Officer Role Centre"
         {
             group(Control1000000012)
             {
-                part("Member Processor";"Membership Processor")
+                part("Member Processor"; "Membership Processor")
                 {
                 }
                 group(Control1000000008)
                 {
                 }
-                systempart(Control1000000007;Outlook)
+                systempart(Control1000000007; Outlook)
                 {
                 }
             }
@@ -24,19 +24,19 @@ Page 51516595 "Marketing Officer Role Centre"
             }
             group(Control1000000005)
             {
-                systempart(Control1000000004;MyNotes)
+                systempart(Control1000000004; MyNotes)
                 {
                 }
                 group(Control1000000003)
                 {
                 }
-                chartpart("S-MEMBER";"S-MEMBER")
+                chartpart("S-MEMBER"; "S-MEMBER")
                 {
                 }
                 group(Control1000000002)
                 {
                 }
-                chartpart(BLN;BLN)
+                chartpart(BLN; BLN)
                 {
                 }
             }
@@ -52,7 +52,7 @@ Page 51516595 "Marketing Officer Role Centre"
                 ApplicationArea = Basic;
                 Caption = 'Member Balances';
                 Image = "Report";
-                RunObject = Report "Member Accounts  balances";
+                // RunObject = Report "Member Accounts  balances";
             }
             action("Member Statement")
             {
@@ -194,7 +194,7 @@ Page 51516595 "Marketing Officer Role Centre"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Vendor List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
         }
         area(sections)

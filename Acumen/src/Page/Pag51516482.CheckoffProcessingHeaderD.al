@@ -673,7 +673,7 @@ Page 51516482 "Checkoff Processing Header-D"
 
                 trigger OnAction()
                 begin
-                    ApprovalsMgt.OnSendCheckoffForApproval(Rec);
+                    //  ApprovalsMgt.OnSendCheckoffForApproval(Rec);
                 end;
             }
             action(Journal)
@@ -687,7 +687,7 @@ Page 51516482 "Checkoff Processing Header-D"
 
                 trigger OnAction()
                 begin
-                    ApprovalsMgt.OnSendCheckoffForApproval(Rec);
+                    //  ApprovalsMgt.OnSendCheckoffForApproval(Rec);
                 end;
             }
             action("Mark As posted")

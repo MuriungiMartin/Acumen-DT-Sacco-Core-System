@@ -208,7 +208,7 @@ Page 51516610 "Funeral Expense Card"
                     GenJournalLine.Description := 'Funeral Rider';
                     GenJournalLine.Amount := Generalsetup."Funeral Expense Amount";
                     GenJournalLine.Validate(GenJournalLine.Amount);
-                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"48";
+                    //   GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"48";
                     GenJournalLine."Bal. Account No." := "Paying Bank";
                     GenJournalLine."Bal. Account Type" := GenJournalLine."bal. account type"::"Bank Account";
                     GenJournalLine."Shortcut Dimension 1 Code" := DActivity;

@@ -70,7 +70,7 @@ Report 51516388 "Monthly Advice"
             column(Outstanding_Bal; Customer."Outstanding Balance")
             {
             }
-            column(COMPPIC; Customer.Picture)
+            column(COMPPIC; Customer.Piccture)
             {
             }
             column(NAME1; Customer.Name)
@@ -213,7 +213,7 @@ Report 51516388 "Monthly Advice"
         ApprovalSetup: Record "Table Permission Buffer";
         LocationFilter: Code[20];
         TotalApproved: Decimal;
-        cust: Record UnknownRecord51516223;
+        cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
         LAppl: Record test;
@@ -241,8 +241,8 @@ Report 51516388 "Monthly Advice"
         Date________________________Caption_Control1102755005Lbl: label 'Date........................';
         GenSetUp: Record "HR Leave Planner Lines";
         LoanApp: Record test;
-        CustRec: Record UnknownRecord51516223;
-        CustRecord: Record UnknownRecord51516223;
+        CustRec: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanShareRatio: Decimal;

@@ -65,7 +65,7 @@ Report 51516869 "Recover Loan Repayment SavingB"
                                 GeneralJnl."Line No." := LineNo;
                                 GeneralJnl."Account No." := "No.";
                                 GeneralJnl."Account Type" := GeneralJnl."account type"::Employee;
-                                GeneralJnl."Transaction Type" := GeneralJnl."transaction type"::"23";
+                                GeneralJnl."Transaction Type" := GeneralJnl."transaction type"::"Recovery Account";
                                 GeneralJnl."Loan No" := Loans."Loan  No.";
                                 if RunBal > Loans."Penalty Charged" then
                                     GeneralJnl.Amount := (Loans."Penalty Charged" * -1)

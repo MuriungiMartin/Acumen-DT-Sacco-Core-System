@@ -269,7 +269,7 @@ Page 51516369 "Member Ledger Entries"
                     begin
                         MemberLedger := Rec;
                         CurrPage.SetSelectionFilter(MemberLedger);
-                        MemberLedger.EmailRecords(true);
+                       // MemberLedger.EmailRecords(true);
                     end;
                 }
             }

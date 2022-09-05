@@ -70,6 +70,7 @@ Page 51516142 "New Paybill Card"
 
     actions
     {
+        /*
         area(processing)
         {
             group(Posting)
@@ -231,7 +232,7 @@ Page 51516142 "New Paybill Card"
                             //Post
                             Posted:=TRUE;
                             MODIFY;
-                            */
+                           
 
                         end;
 
@@ -274,11 +275,12 @@ Page 51516142 "New Paybill Card"
                 }
             }
         }
+        */
     }
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        "Expected Return Date" := "expected return date"::"2";
+        //  "Expected Return Date" := "expected return date"::"2";
     end;
 
     var

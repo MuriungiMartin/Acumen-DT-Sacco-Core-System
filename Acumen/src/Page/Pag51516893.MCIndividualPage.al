@@ -158,7 +158,7 @@ Page 51516893 "MC Individual Page"
                     Caption = 'Date of Birth';
                     Editable = true;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                 }
@@ -409,7 +409,7 @@ Page 51516893 "MC Individual Page"
                     Image = Card;
                     Promoted = true;
                     RunObject = Page "HR Disciplinary Cases";
-                    RunPageLink = "No." = field("Last Deposit Contribution Date");
+                    RunPageLink = "No." = field("No.");
                     Visible = false;
                 }
                 action("Member Card Slip")

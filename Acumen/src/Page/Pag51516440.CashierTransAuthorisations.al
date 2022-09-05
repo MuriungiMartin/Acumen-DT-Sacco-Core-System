@@ -9,9 +9,9 @@ Page 51516440 "Cashier Trans Authorisations"
     PageType = Card;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     SourceTable = Transactions;
-    SourceTableView = where("Supervisor Checked"=const(false),
-                            "Needs Approval"=const(Yes),
-                            "Post Attempted"=const(true));
+    SourceTableView = where("Supervisor Checked" = const(false),
+                            "Needs Approval" = const(Yes),
+                            "Post Attempted" = const(true));
     UsageCategory = Lists;
 
     layout
@@ -20,65 +20,65 @@ Page 51516440 "Cashier Trans Authorisations"
         {
             repeater(Control1102760000)
             {
-                field(No;No)
+                field(No; No)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; "Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Type";"Account Type")
+                field("Account Type"; "Account Type")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Description";"Transaction Description")
+                field("Transaction Description"; "Transaction Description")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Transaction';
                     Editable = false;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Cashier;Cashier)
+                field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Transaction Date";"Transaction Date")
+                field("Transaction Date"; "Transaction Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date';
                     Editable = false;
                 }
-                field("Transaction Time";"Transaction Time")
+                field("Transaction Time"; "Transaction Time")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Time';
                     Editable = false;
                 }
-                field("Authorisation Requirement";"Authorisation Requirement")
+                field("Authorisation Requirement"; "Authorisation Requirement")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Authorisation Req.';
                     Editable = false;
                 }
-                field(Authorised;Authorised)
+                field(Authorised; Authorised)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Select;Select)
+                field(Select; Select)
                 {
                     ApplicationArea = Basic;
                 }
@@ -98,7 +98,7 @@ Page 51516440 "Cashier Trans Authorisations"
                     ApplicationArea = Basic;
                     Caption = 'Account Card';
                     RunObject = Page "FOSA Account Card";
-                    RunPageLink = "No."=field("Account No");
+                    RunPageLink = "No." = field("Account No");
                 }
             }
         }
@@ -114,11 +114,11 @@ Page 51516440 "Cashier Trans Authorisations"
 
                 trigger OnAction()
                 begin
-                     MailContent:='Transaction of Kshs.' + ' '+Format(Amount)+' ' +'for'+' '+"Account Name"+
-                     ' '+'has been authorized.';
+                    MailContent := 'Transaction of Kshs.' + ' ' + Format(Amount) + ' ' + 'for' + ' ' + "Account Name" +
+                    ' ' + 'has been authorized.';
 
 
-                      SENDMAIL;
+                    SENDMAIL;
                 end;
             }
             action(Process)
@@ -154,57 +154,57 @@ Page 51516440 "Cashier Trans Authorisations"
                     //END;
                     MESSAGE('The selected transactions have been processed.');
                     */
-                    
-                    
-                    
-                    
-                    
-                    if Confirm('Are you sure you want to process the selected transactions?',false) = true then begin
-                    
-                    Transactions.Reset;
-                    Transactions.SetRange(Transactions.Select,true);
-                    Transactions.SetRange(Transactions."Supervisor Checked",false);
-                    Transactions.SetRange(Transactions."Needs Approval",Transactions."needs approval"::Yes);
-                    if Transactions.Find('-') then
-                    repeat
-                    
-                    //Check authorisation limits
-                    if Transactions.Authorised<>Transactions.Authorised::No then begin
-                    SupervisorApprovals.Reset;
-                    SupervisorApprovals.SetRange(SupervisorApprovals."Supervisor ID",UpperCase(UserId));
-                    if Transactions."Transaction Type" = 'Cash Deposit' then
-                    SupervisorApprovals.SetRange(SupervisorApprovals."Transaction Type",SupervisorApprovals."transaction type"::"Cash Deposits");
-                    if Transactions."Transaction Type" = 'Cheque Deposit' then
-                    SupervisorApprovals.SetRange(SupervisorApprovals."Transaction Type",SupervisorApprovals."transaction type"::"Cheque Deposits");
-                    if Transactions."Transaction Type" = 'Withdrawal' then
-                    SupervisorApprovals.SetRange(SupervisorApprovals."Transaction Type",SupervisorApprovals."transaction type"::Withdrawals);
-                    if SupervisorApprovals.Find('-') then begin
-                    if Transactions.Amount > SupervisorApprovals."Maximum Approval Amount" then
-                    Error('You cannot approve the deposit because it is above your approval limit.');
-                    end else begin
-                    Error('You are not authorised to approve the selected deposits.');
-                    end;
-                    
-                    /*IF Transactions."Authorisation Requirement" = 'Over Draft' THEN BEGIN
-                    Transactions.Overdraft:=TRUE;
-                    Transactions.MODIFY;
-                    END;*/
-                    
-                    
-                    if Transactions."Authorisation Requirement" = 'Withdrawal Freq.' then
-                    Transactions."Withdrawal FrequencyAuthorised":=Transactions."withdrawal frequencyauthorised"::Yes;
-                    Transactions."Supervisor Checked":=true;
-                    Transactions."Status Date":=Today;
-                    Transactions."Status Time":=Time;
-                    Transactions."Checked By":=UserId;
-                    Transactions.Modify;
-                    end;
-                    
-                    until Transactions.Next = 0;
-                    
-                    SENDMAIL;
-                    Message('The selected transactions have been processed.');
-                    
+
+
+
+
+
+                    if Confirm('Are you sure you want to process the selected transactions?', false) = true then begin
+
+                        Transactions.Reset;
+                        Transactions.SetRange(Transactions.Select, true);
+                        Transactions.SetRange(Transactions."Supervisor Checked", false);
+                        Transactions.SetRange(Transactions."Needs Approval", Transactions."needs approval"::Yes);
+                        if Transactions.Find('-') then
+                            repeat
+
+                                //Check authorisation limits
+                                if Transactions.Authorised <> Transactions.Authorised::No then begin
+                                    SupervisorApprovals.Reset;
+                                    SupervisorApprovals.SetRange(SupervisorApprovals."Supervisor ID", UpperCase(UserId));
+                                    if Transactions."Transaction Type" = 'Cash Deposit' then
+                                        SupervisorApprovals.SetRange(SupervisorApprovals."Transaction Type", SupervisorApprovals."transaction type"::"Cash Deposits");
+                                    if Transactions."Transaction Type" = 'Cheque Deposit' then
+                                        SupervisorApprovals.SetRange(SupervisorApprovals."Transaction Type", SupervisorApprovals."transaction type"::"Cheque Deposits");
+                                    if Transactions."Transaction Type" = 'Withdrawal' then
+                                        SupervisorApprovals.SetRange(SupervisorApprovals."Transaction Type", SupervisorApprovals."transaction type"::Withdrawals);
+                                    if SupervisorApprovals.Find('-') then begin
+                                        if Transactions.Amount > SupervisorApprovals."Maximum Approval Amount" then
+                                            Error('You cannot approve the deposit because it is above your approval limit.');
+                                    end else begin
+                                        Error('You are not authorised to approve the selected deposits.');
+                                    end;
+
+                                    /*IF Transactions."Authorisation Requirement" = 'Over Draft' THEN BEGIN
+                                    Transactions.Overdraft:=TRUE;
+                                    Transactions.MODIFY;
+                                    END;*/
+
+
+                                    if Transactions."Authorisation Requirement" = 'Withdrawal Freq.' then
+                                        Transactions."Withdrawal FrequencyAuthorised" := Transactions."withdrawal frequencyauthorised"::Yes;
+                                    Transactions."Supervisor Checked" := true;
+                                    Transactions."Status Date" := Today;
+                                    Transactions."Status Time" := Time;
+                                    Transactions."Checked By" := UserId;
+                                    Transactions.Modify;
+                                end;
+
+                            until Transactions.Next = 0;
+
+                        SENDMAIL;
+                        Message('The selected transactions have been processed.');
+
                     end;
 
                 end;
@@ -221,23 +221,23 @@ Page 51516440 "Cashier Trans Authorisations"
 
                     UserSetUp.Reset;
                     if UserSetUp.Get(Cashier) then begin
-                     /// MESSAGE(FORMAT(USERID));
-                      if UserSetUp."Cashier Authorization"=false then
-                       Error('%1,You do not have Permission to Authorize Cashier Transaction, Kindly Contact your System Administrator.',Cashier);
+                        /// MESSAGE(FORMAT(USERID));
+                        if UserSetUp."Cashier Authorization" = false then
+                            Error('%1,You do not have Permission to Authorize Cashier Transaction, Kindly Contact your System Administrator.', Cashier);
                     end;
 
-                    if Confirm('Are you Sure you want to Authorization THIS TRANSACTION?',true)=false then
-                      exit;
+                    if Confirm('Are you Sure you want to Authorization THIS TRANSACTION?', true) = false then
+                        exit;
 
-                    "Supervisor Checked":=true;
-                    "Needs Approval":="needs approval"::"2";
-                    "Post Attempted":=true;
-                    Authorised:=Authorised::Yes;
+                    "Supervisor Checked" := true;
+                    "Needs Approval" := "needs approval"::Yes;
+                    "Post Attempted" := true;
+                    Authorised := Authorised::Yes;
                     //"Above Teller Limit App Status":="Above Teller Limit App Status"::"3";
-                    if Type='Withdrawals' then begin
-                    "Authorisation Requirement":='Withdaral Above Cashier Limits'
+                    if Type = 'Withdrawals' then begin
+                        "Authorisation Requirement" := 'Withdaral Above Cashier Limits'
                     end else
-                    "Authorisation Requirement":='Deposit Above Cashier Limits';
+                        "Authorisation Requirement" := 'Deposit Above Cashier Limits';
                     Modify;
                     Message('Authorized Successfully, Thank you');
                 end;

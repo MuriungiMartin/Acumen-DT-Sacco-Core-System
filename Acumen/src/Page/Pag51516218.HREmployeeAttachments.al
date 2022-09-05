@@ -15,7 +15,7 @@ Page 51516218 "HR Employee Attachments"
             group("Employee Details")
             {
                 Caption = 'Employee Details';
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -23,7 +23,7 @@ Page 51516218 "HR Employee Attachments"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field(FullName;FullName)
+                field(FullName; FullName)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
@@ -32,7 +32,7 @@ Page 51516218 "HR Employee Attachments"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Job Title";"Job Title")
+                field("Job Title"; "Job Title")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -40,21 +40,21 @@ Page 51516218 "HR Employee Attachments"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Postal Address";"Postal Address")
+                field("Postal Address"; "Postal Address")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -62,14 +62,14 @@ Page 51516218 "HR Employee Attachments"
                     StyleExpr = true;
                     Visible = false;
                 }
-                field("Cell Phone Number";"Cell Phone Number")
+                field("Cell Phone Number"; "Cell Phone Number")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -77,7 +77,7 @@ Page 51516218 "HR Employee Attachments"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -85,19 +85,19 @@ Page 51516218 "HR Employee Attachments"
                     StyleExpr = true;
                 }
             }
-            part(Attachments;"HR Employee Attachments SF")
+            part(Attachments; "HR Employee Attachments SF")
             {
                 Caption = 'Employee Attachments';
-                SubPageLink = "Employee No"=field("No.");
+                SubPageLink = "Employee No" = field("No.");
             }
         }
         area(factboxes)
         {
-            systempart(Control1102755005;"HR Employees Factbox")
+            part(Control1102755005; "HR Employees Factbox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            systempart(Control1102755001;Outlook)
+            systempart(Control1102755001; Outlook)
             {
             }
         }
@@ -126,24 +126,22 @@ Page 51516218 "HR Employee Attachments"
                     var
                         InteractTemplLanguage: Record "Interaction Tmpl. Language";
                     begin
-                        if DocLink.Get("No.",CurrPage.Attachments.Page.GetDocument) then
-                        begin
-                        InteractTemplLanguage.Reset;
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code",DocLink."Employee No");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code",DocLink."Language Code (Default)");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage.Description,DocLink."Document Description");
-                        if not InteractTemplLanguage.FindFirst then
-                        begin
-                          InteractTemplLanguage.Init;
-                          InteractTemplLanguage."Interaction Template Code" := "No.";
-                          InteractTemplLanguage."Language Code" := DocLink."Language Code (Default)";
-                          InteractTemplLanguage.Description := DocLink."Document Description";
-                          InteractTemplLanguage.Insert;
-                        end;
-                        InteractTemplLanguage.ImportAttachment;
-                        CurrPage.Update;
-                        DocLink.Attachment:=DocLink.Attachment::Yes;
-                        DocLink.Modify;
+                        if DocLink.Get("No.", CurrPage.Attachments.Page.GetDocument) then begin
+                            InteractTemplLanguage.Reset;
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code", DocLink."Employee No");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code", DocLink."Language Code (Default)");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage.Description, DocLink."Document Description");
+                            if not InteractTemplLanguage.FindFirst then begin
+                                InteractTemplLanguage.Init;
+                                InteractTemplLanguage."Interaction Template Code" := "No.";
+                                InteractTemplLanguage."Language Code" := DocLink."Language Code (Default)";
+                                InteractTemplLanguage.Description := DocLink."Document Description";
+                                InteractTemplLanguage.Insert;
+                            end;
+                            InteractTemplLanguage.ImportAttachment;
+                            CurrPage.Update;
+                            DocLink.Attachment := DocLink.Attachment::Yes;
+                            DocLink.Modify;
                         end;
                     end;
                 }
@@ -162,15 +160,14 @@ Page 51516218 "HR Employee Attachments"
                     var
                         InteractTemplLanguage: Record "Interaction Tmpl. Language";
                     begin
-                        if DocLink.Get("No.",CurrPage.Attachments.Page.GetDocument) then
-                        begin
-                        InteractTemplLanguage.Reset;
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code",DocLink."Employee No");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code",DocLink."Language Code (Default)");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage.Description,DocLink."Document Description");
-                        if InteractTemplLanguage.FindFirst then begin
-                          InteractTemplLanguage.ExportAttachment;
-                        end;
+                        if DocLink.Get("No.", CurrPage.Attachments.Page.GetDocument) then begin
+                            InteractTemplLanguage.Reset;
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code", DocLink."Employee No");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code", DocLink."Language Code (Default)");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage.Description, DocLink."Document Description");
+                            if InteractTemplLanguage.FindFirst then begin
+                                InteractTemplLanguage.ExportAttachment;
+                            end;
                         end
                     end;
                 }
@@ -188,15 +185,14 @@ Page 51516218 "HR Employee Attachments"
                     var
                         InteractTemplLanguage: Record "Interaction Tmpl. Language";
                     begin
-                        if DocLink.Get("No.",CurrPage.Attachments.Page.GetDocument) then
-                        begin
-                        InteractTemplLanguage.Reset;
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code",DocLink."Employee No");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code",DocLink."Language Code (Default)");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage.Description,DocLink."Document Description");
-                        if InteractTemplLanguage.FindFirst then begin
-                          InteractTemplLanguage.OpenAttachment;
-                        end;
+                        if DocLink.Get("No.", CurrPage.Attachments.Page.GetDocument) then begin
+                            InteractTemplLanguage.Reset;
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code", DocLink."Employee No");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code", DocLink."Language Code (Default)");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage.Description, DocLink."Document Description");
+                            if InteractTemplLanguage.FindFirst then begin
+                                InteractTemplLanguage.OpenAttachment;
+                            end;
                         end
                     end;
                 }
@@ -215,24 +211,23 @@ Page 51516218 "HR Employee Attachments"
                     var
                         InteractTemplLanguage: Record "Interaction Tmpl. Language";
                     begin
-                        if DocLink.Get("No.",CurrPage.Attachments.Page.GetDocument) then
-                        begin
-                        InteractTemplLanguage.Reset;
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code",DocLink."Employee No");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code",DocLink."Language Code (Default)");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage.Description,DocLink."Document Description");
-                        if InteractTemplLanguage.FindFirst then begin
+                        if DocLink.Get("No.", CurrPage.Attachments.Page.GetDocument) then begin
+                            InteractTemplLanguage.Reset;
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code", DocLink."Employee No");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code", DocLink."Language Code (Default)");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage.Description, DocLink."Document Description");
+                            if InteractTemplLanguage.FindFirst then begin
 
-                          InteractTemplLanguage.Init;
-                          InteractTemplLanguage."Interaction Template Code" := "No.";
-                          InteractTemplLanguage."Language Code" := DocLink."Language Code (Default)";
-                          InteractTemplLanguage.Description := CurrPage.Attachments.Page.GetDocument;
+                                InteractTemplLanguage.Init;
+                                InteractTemplLanguage."Interaction Template Code" := "No.";
+                                InteractTemplLanguage."Language Code" := DocLink."Language Code (Default)";
+                                InteractTemplLanguage.Description := CurrPage.Attachments.Page.GetDocument;
 
-                        end;
-                        InteractTemplLanguage.CreateAttachment;
-                        CurrPage.Update;
-                        DocLink.Attachment:=DocLink.Attachment::Yes;
-                        DocLink.Modify;
+                            end;
+                            InteractTemplLanguage.CreateAttachment;
+                            CurrPage.Update;
+                            DocLink.Attachment := DocLink.Attachment::Yes;
+                            DocLink.Modify;
                         end;
                     end;
                 }
@@ -251,18 +246,17 @@ Page 51516218 "HR Employee Attachments"
                     var
                         InteractTemplLanguage: Record "Interaction Tmpl. Language";
                     begin
-                        if DocLink.Get("No.",CurrPage.Attachments.Page.GetDocument) then
-                        begin
-                        InteractTemplLanguage.Reset;
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code",DocLink."Employee No");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code",DocLink."Language Code (Default)");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage.Description,DocLink."Document Description");
-                        if InteractTemplLanguage.FindFirst then begin
-                        InteractTemplLanguage.CopyFromAttachment;
-                        CurrPage.Update;
-                        DocLink.Attachment:=DocLink.Attachment::Yes;
-                        DocLink.Modify;
-                        end;
+                        if DocLink.Get("No.", CurrPage.Attachments.Page.GetDocument) then begin
+                            InteractTemplLanguage.Reset;
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code", DocLink."Employee No");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code", DocLink."Language Code (Default)");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage.Description, DocLink."Document Description");
+                            if InteractTemplLanguage.FindFirst then begin
+                                InteractTemplLanguage.CopyFromAttachment;
+                                CurrPage.Update;
+                                DocLink.Attachment := DocLink.Attachment::Yes;
+                                DocLink.Modify;
+                            end;
                         end
                     end;
                 }
@@ -281,19 +275,18 @@ Page 51516218 "HR Employee Attachments"
                     var
                         InteractTemplLanguage: Record "Interaction Tmpl. Language";
                     begin
-                        if DocLink.Get("No.",CurrPage.Attachments.Page.GetDocument) then
-                        begin
-                        Error('%1',DocLink."Document Description");
-                        InteractTemplLanguage.Reset;
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code",DocLink."Employee No");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code",DocLink."Language Code (Default)");
-                        InteractTemplLanguage.SetRange(InteractTemplLanguage.Description,DocLink."Document Description");
-                        if InteractTemplLanguage.FindFirst then begin
+                        if DocLink.Get("No.", CurrPage.Attachments.Page.GetDocument) then begin
+                            Error('%1', DocLink."Document Description");
+                            InteractTemplLanguage.Reset;
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Interaction Template Code", DocLink."Employee No");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage."Language Code", DocLink."Language Code (Default)");
+                            InteractTemplLanguage.SetRange(InteractTemplLanguage.Description, DocLink."Document Description");
+                            if InteractTemplLanguage.FindFirst then begin
 
-                          InteractTemplLanguage.RemoveAttachment(true);
-                          DocLink.Attachment:=DocLink.Attachment::No;
-                          DocLink.Modify;
-                        end;
+                                InteractTemplLanguage.RemoveAttachment(true);
+                                DocLink.Attachment := DocLink.Attachment::No;
+                                DocLink.Modify;
+                            end;
                         end;
                     end;
                 }

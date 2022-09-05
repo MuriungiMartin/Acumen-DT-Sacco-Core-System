@@ -746,7 +746,7 @@ Page 51516151 "Posted  Leave Application Card"
             LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
             LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
             if LeaveGjline.Find('-') then begin
-                Codeunit.Run(Codeunit::Codeunit55560, LeaveGjline);
+                //  Codeunit.Run(Codeunit::Codeunit55560, LeaveGjline);
             end;
             Status := Status::Posted;
             Modify;
@@ -762,6 +762,8 @@ Page 51516151 "Posted  Leave Application Card"
 
 
     procedure NotifyApplicant()
+    var
+        Recipient: list of [Text];
     begin
         HREmp.Get("Employee No");
         HREmp.TestField(HREmp."Company E-Mail");
@@ -773,7 +775,8 @@ Page 51516151 "Posted  Leave Application Card"
 
 
             HREmp.TestField(HREmp."Company E-Mail");
-            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+            Recipient.Add(HREmp."Company E-Mail");
+            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", Recipient,
             HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
             HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
             SMTP.Send();

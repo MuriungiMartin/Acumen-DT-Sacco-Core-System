@@ -1509,8 +1509,8 @@ Page 51516852 "Loan Application MICRO(Apprai)"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Loans Guarantee Details";
-                    RunPageLink = "Loan No" = field("Loan  No."),
-                                  "Member Cell" = field(Discard);
+                    RunPageLink = "Loan No" = field("Loan  No.");
+                    //  "Member Cell" = field(Discard);
                 }
                 separator(Action1102755001)
                 {

@@ -87,7 +87,7 @@ Page 51516398 "Posted Loans Batch Card"
                     Image = SuggestPayment;
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Process;
-                    RunObject = Report UnknownReport51516231;
+                 //   RunObject = Report UnknownReport51516231;
 
                     trigger OnAction()
                     begin
@@ -108,7 +108,7 @@ Page 51516398 "Posted Loans Batch Card"
                     Image = Customer;
                     Promoted = true;
                     PromotedCategory = Process;
-                    RunObject = Report UnknownReport51516279;
+                    //RunObject = Report UnknownReport51516279;
 
                     trigger OnAction()
                     begin

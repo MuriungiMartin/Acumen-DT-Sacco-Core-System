@@ -223,7 +223,7 @@ Page 51516514 "Product Details Editable"
                 {
                     ApplicationArea = Basic;
                     Image = import;
-                    RunObject = XMLport UnknownXMLport50054;
+                  //  RunObject = XMLport UnknownXMLport50054;
                 }
             }
         }

@@ -137,7 +137,7 @@ Report 51516383 "New Member List"
             column(CreditComSign3; CreditComSign3)
             {
             }
-            column(COMPPIC; Customer.Picture)
+            column(COMPPIC; Customer.Piccture)
             {
             }
             column(NAME1; Customer.Name)

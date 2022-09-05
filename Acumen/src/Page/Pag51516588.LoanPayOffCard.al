@@ -386,8 +386,8 @@ Page 51516588 "Loan PayOff Card"
         "Approved PayOff Amount" := "Total PayOut Amount";
 
         EnablePosting := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
 
         if ((Rec.Status = Status::Approved)) then
@@ -403,8 +403,8 @@ Page 51516588 "Loan PayOff Card"
     trigger OnOpenPage()
     begin
         EnablePosting := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
 
         if ((Rec.Status = Status::Approved)) then
@@ -424,5 +424,6 @@ Page 51516588 "Loan PayOff Card"
         ApprovalsMgmt: Codeunit WorkflowIntegration;
         EnabledApprovalWorkflowsExist: Boolean;
         GenBatch: Record "Gen. Journal Batch";
+        Approv: Codeunit "Approvals Mgmt.";
 }
 

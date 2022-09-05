@@ -203,7 +203,7 @@ Page 51516436 "FOSA Account Card"
                     Editable = false;
                     Importance = Additional;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -2519,7 +2519,7 @@ Page 51516436 "FOSA Account Card"
                         Cust.Status := Cust.Status::Active;
                         Cust."Employer Code" := "Employer Code";
                         Cust."Date of Birth" := "Date of Birth";
-                        Cust.Picture := Picture;
+                        Cust.Piccture := Picture;
                         Cust.Signature := Signature;
                         //Cust."Station/Department":="Station/Department";
                         Cust."E-Mail" := "E-Mail";
@@ -2600,7 +2600,7 @@ Page 51516436 "FOSA Account Card"
                         //PictureExists:=Picture.HASVALUE;
                         //SignatureExists:=Signature.HASVALUE;
                         //IF (PictureExists=TRUE) AND (SignatureExists=TRUE) THEN BEGIN
-                        Cust.Picture := Picture;
+                        Cust.Piccture := Picture;
                         Cust.Signature := Signature;
                         //END ELSE
                         //ERROR('Kindly upload a Picture and signature');

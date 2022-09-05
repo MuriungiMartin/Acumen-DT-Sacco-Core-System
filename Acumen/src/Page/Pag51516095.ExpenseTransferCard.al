@@ -10,89 +10,89 @@ Page 51516095 "Expense Transfer Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pay Mode";"Pay Mode")
+                field("Pay Mode"; "Pay Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Date";"Document Date")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Posting Date";"Posting Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Paying Bank Account";"Paying Bank Account")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Paying Bank Name";"Paying Bank Name")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bank Balance";"Bank Balance")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bank Account No.";"Bank Account No.")
+                field("Document Date"; "Document Date")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Currency Code";"Currency Code")
+                field("Posting Date"; "Posting Date")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Paying Bank Account"; "Paying Bank Account")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Paying Bank Name"; "Paying Bank Name")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Bank Balance"; "Bank Balance")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Bank Account No."; "Bank Account No.")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Amount to Transfer";"Amount to Transfer")
+                field("Currency Code"; "Currency Code")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Amount to Transfer"; "Amount to Transfer")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount to Transfer(LCY)";"Amount to Transfer(LCY)")
+                field("Amount to Transfer(LCY)"; "Amount to Transfer(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Line Amount";"Total Line Amount")
+                field("Total Line Amount"; "Total Line Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Line Amount(LCY)";"Total Line Amount(LCY)")
+                field("Total Line Amount(LCY)"; "Total Line Amount(LCY)")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque/Doc. No";"Cheque/Doc. No")
+                field("Cheque/Doc. No"; "Cheque/Doc. No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Created By";"Created By")
+                field("Created By"; "Created By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Created";"Date Created")
+                field("Date Created"; "Date Created")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Time Created";"Time Created")
+                field("Time Created"; "Time Created")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
             }
-            part(Control24;"Expense Transfer Lines")
+            part(Control24; "Expense Transfer Lines")
             {
-                SubPageLink = "Document No"=field("No.");
+                SubPageLink = "Document No" = field("No.");
             }
         }
     }
@@ -111,19 +111,20 @@ Page 51516095 "Expense Transfer Card"
 
                 trigger OnAction()
                 begin
-                      CheckRequiredItems;
-                      CalcFields("Total Line Amount");
-                      TestField("Amount to Transfer","Total Line Amount");
+                    CheckRequiredItems;
+                    CalcFields("Total Line Amount");
+                    TestField("Amount to Transfer", "Total Line Amount");
 
-                      if FundsUser.Get(UserId) then begin
+                    if FundsUser.Get(UserId) then begin
                         FundsUser.TestField(FundsUser."FundsTransfer Template Name");
                         FundsUser.TestField(FundsUser."FundsTransfer Batch Name");
-                        JTemplate:=FundsUser."FundsTransfer Template Name";JBatch:=FundsUser."FundsTransfer Batch Name";
+                        JTemplate := FundsUser."FundsTransfer Template Name";
+                        JBatch := FundsUser."FundsTransfer Batch Name";
                         //Post Transfer
-                        FundsManager.PostFundsTransfer(Rec,JTemplate,JBatch);
-                      end else begin
+                        FundsManager.PostFundsTransfer(Rec, JTemplate, JBatch);
+                    end else begin
                         Error('User Account Not Setup, Contact the System Administrator');
-                      end
+                    end
                 end;
             }
             action(Print)
@@ -136,17 +137,17 @@ Page 51516095 "Expense Transfer Card"
 
                 trigger OnAction()
                 begin
-                      /*FHeader.RESET;
-                      FHeader.SETRANGE(FHeader."No.","No.");
-                      IF FHeader.FINDFIRST THEN BEGIN
-                        REPORT.RUNMODAL(REPORT::"Funds Transfer Voucher",TRUE,FALSE,FHeader);
-                      END;
-                      */
-                    
+                    /*FHeader.RESET;
+                    FHeader.SETRANGE(FHeader."No.","No.");
+                    IF FHeader.FINDFIRST THEN BEGIN
+                      REPORT.RUNMODAL(REPORT::"Funds Transfer Voucher",TRUE,FALSE,FHeader);
+                    END;
+                    */
+
                     FHeader.Reset;
-                    FHeader.SetRange(FHeader."No.","No.");
+                    FHeader.SetRange(FHeader.Code, "No.");
                     if FHeader.FindFirst then
-                       Report.Run(51516011,true,true,FHeader);
+                        Report.Run(51516011, true, true, FHeader);
 
                 end;
             }
@@ -155,8 +156,8 @@ Page 51516095 "Expense Transfer Card"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-          //"Pay Mode":="Pay Mode"::Cash;
-          "Transfer Type":="transfer type"::InterBank;
+        //"Pay Mode":="Pay Mode"::Cash;
+        "Transfer Type" := "transfer type"::InterBank;
     end;
 
     var
@@ -169,22 +170,22 @@ Page 51516095 "Expense Transfer Card"
 
     local procedure CheckRequiredItems()
     begin
-          TestField("Posting Date");
-          TestField("Paying Bank Account");
-          TestField("Amount to Transfer");
-          if "Pay Mode"="pay mode"::Cheque then
+        TestField("Posting Date");
+        TestField("Paying Bank Account");
+        TestField("Amount to Transfer");
+        if "Pay Mode" = "pay mode"::Cheque then
             TestField("Cheque/Doc. No");
-          TestField(Description);
-          //TESTFIELD("Transfer To");
+        TestField(Description);
+        //TESTFIELD("Transfer To");
 
-          FLine.Reset;
-          FLine.SetRange(FLine."Document No","No.");
-          FLine.SetFilter(FLine."Amount to Receive",'<>%1',0);
-          if FLine.FindSet then begin
+        FLine.Reset;
+        FLine.SetRange(FLine."Document No", "No.");
+        FLine.SetFilter(FLine."Amount to Receive", '<>%1', 0);
+        if FLine.FindSet then begin
             repeat
-              FLine.TestField(FLine."Receiving Bank Account");
-            until FLine.Next=0;
-          end;
+                FLine.TestField(FLine."Receiving Bank Account");
+            until FLine.Next = 0;
+        end;
     end;
 }
 

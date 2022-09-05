@@ -368,7 +368,7 @@ Page 51516404 "Checkoff Processing H(Block)"
         DOCUMENT_NO: Code[40];
         GenJournalLine: Record "Gen. Journal Line";
         ActionEnabled: Boolean;
-        XMLCheckOff: XmlPort UnknownXmlPort51516003;
+        XMLCheckOff: XmlPort "Import Checkoff Distributed";
         Window: Dialog;
         TotalCount: Integer;
         Counter: Integer;

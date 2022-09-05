@@ -15,7 +15,7 @@ Page 51516215 "HR Employee Qualifications"
             group("Employee Details")
             {
                 Caption = 'Employee Details';
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -23,7 +23,7 @@ Page 51516215 "HR Employee Qualifications"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field(FullName;FullName)
+                field(FullName; FullName)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
@@ -32,7 +32,7 @@ Page 51516215 "HR Employee Qualifications"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Job Title";"Job Title")
+                field("Job Title"; "Job Title")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -40,21 +40,21 @@ Page 51516215 "HR Employee Qualifications"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Postal Address";"Postal Address")
+                field("Postal Address"; "Postal Address")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -62,14 +62,14 @@ Page 51516215 "HR Employee Qualifications"
                     StyleExpr = true;
                     Visible = false;
                 }
-                field("Cell Phone Number";"Cell Phone Number")
+                field("Cell Phone Number"; "Cell Phone Number")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -77,7 +77,7 @@ Page 51516215 "HR Employee Qualifications"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -85,22 +85,22 @@ Page 51516215 "HR Employee Qualifications"
                     StyleExpr = true;
                 }
             }
-            part(Control1102755019;"HR Employee Qualification Line")
+            part(Control1102755019; "HR Employee Qualification Line")
             {
                 Caption = 'Employee Qualifications';
-                SubPageLink = "Employee No."=field("No.");
+                SubPageLink = "Employee No." = field("No.");
             }
-            systempart(Control1102755011;Outlook)
+            systempart(Control1102755011; Outlook)
             {
             }
         }
         area(factboxes)
         {
-            systempart(Control1102755012;"HR Employees Factbox")
+            part(Control1102755012; "HR Employees Factbox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            systempart(Control1102755010;Outlook)
+            systempart(Control1102755010; Outlook)
             {
             }
         }

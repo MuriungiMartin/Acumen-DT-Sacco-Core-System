@@ -12,7 +12,7 @@ Page 51516614 "Member Signature"
     {
         area(content)
         {
-            field(Signature;Signature)
+            field(Signature; Signature)
             {
                 ApplicationArea = Basic;
             }
@@ -75,11 +75,11 @@ Page 51516614 "Member Signature"
                     NameValueBuffer.DeleteAll;
                     ExportPath := TemporaryPath + "No." + Format(Picture.MediaId);
                     Picture.ExportFile(ExportPath);
-                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer,TemporaryPath);
-                    TempNameValueBuffer.SetFilter(Name,StrSubstNo('%1*',ExportPath));
+                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer, TemporaryPath);
+                    TempNameValueBuffer.SetFilter(Name, StrSubstNo('%1*', ExportPath));
                     TempNameValueBuffer.FindFirst;
-                    ToFile := StrSubstNo('%1 %2.jpg',"No.",ConvertStr("No.",'"/\','___'));
-                    Download(TempNameValueBuffer.Name,DownloadImageTxt,'','',ToFile);
+                    ToFile := StrSubstNo('%1 %2.jpg', "No.", ConvertStr("No.", '"/\', '___'));
+                    Download(TempNameValueBuffer.Name, DownloadImageTxt, '', '', ToFile);
                     if FileManagement.DeleteServerFile(TempNameValueBuffer.Name) then;
                 end;
             }
@@ -109,7 +109,7 @@ Page 51516614 "Member Signature"
     begin
         CameraAvailable := CameraProvider.IsAvailable;
         if CameraAvailable then
-          CameraProvider := CameraProvider.Create;
+            CameraProvider := CameraProvider.Create;
     end;
 
     var
@@ -133,7 +133,7 @@ Page 51516614 "Member Signature"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         CameraOptions := CameraOptions.CameraOptions;
         CameraOptions.Quality := 50;
@@ -151,18 +151,18 @@ Page 51516614 "Member Signature"
         //TESTFIELD(Description);
 
         if Picture.Count > 0 then
-          if not Confirm(OverrideImageQst) then
-            Error('');
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(Picture);
-        Picture.ImportFile(FileName,ClientFileName);
+        Picture.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
@@ -188,13 +188,13 @@ Page 51516614 "Member Signature"
         TestField("No.");
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(Picture);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     begin
     end;
 }

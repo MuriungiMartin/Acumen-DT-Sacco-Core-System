@@ -133,7 +133,7 @@ Report 51516382 "Members With No Shares"
             column(CreditComSign3; CreditComSign3)
             {
             }
-            column(COMPPIC; Customer.Picture)
+            column(COMPPIC; Customer.Piccture)
             {
             }
             column(NAME1; Customer.Name)
@@ -276,7 +276,7 @@ Report 51516382 "Members With No Shares"
         ApprovalSetup: Record "Table Permission Buffer";
         LocationFilter: Code[20];
         TotalApproved: Decimal;
-        cust: Record UnknownRecord51516223;
+        cust: Record Customer;
         BOSABal: Decimal;
         SuperBal: Decimal;
         LAppl: Record test;
@@ -304,8 +304,8 @@ Report 51516382 "Members With No Shares"
         Date________________________Caption_Control1102755005Lbl: label 'Date........................';
         GenSetUp: Record "HR Leave Planner Lines";
         LoanApp: Record test;
-        CustRec: Record UnknownRecord51516223;
-        CustRecord: Record UnknownRecord51516223;
+        CustRec: Record Customer;
+        CustRecord: Record Customer;
         TShares: Decimal;
         TLoans: Decimal;
         LoanShareRatio: Decimal;

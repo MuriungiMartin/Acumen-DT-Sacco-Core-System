@@ -13,12 +13,12 @@ Page 51516252 "HR Employee Card"
             group("General Details")
             {
                 Caption = 'General Details';
-                field("Contract Type";"Contract Type")
+                field("Contract Type"; "Contract Type")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     AssistEdit = true;
@@ -26,123 +26,123 @@ Page 51516252 "HR Employee Card"
 
                     trigger OnAssistEdit()
                     begin
-                         // IF AssistEdit() THEN
-                          CurrPage.Update;
+                        // IF AssistEdit() THEN
+                        CurrPage.Update;
                     end;
                 }
-                field(Title;Title)
+                field(Title; Title)
                 {
                     ApplicationArea = Basic;
                 }
-                field("First Name";"First Name")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Promoted;
-                }
-                field("Middle Name";"Middle Name")
+                field("First Name"; "First Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Last Name";"Last Name")
+                field("Middle Name"; "Middle Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("ID Number";"ID Number")
+                field("Last Name"; "Last Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Passport Number";"Passport Number")
+                field("ID Number"; "ID Number")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Citizenship;Citizenship)
+                field("Passport Number"; "Passport Number")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Promoted;
+                }
+                field(Citizenship; Citizenship)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Citizenship Text";"Citizenship Text")
+                field("Citizenship Text"; "Citizenship Text")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Country / Region Code';
                     Editable = false;
                 }
-                field(Office;Office)
+                field(Office; Office)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Department';
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Postal Address";"Postal Address")
+                field("Postal Address"; "Postal Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field(City;City)
+                field(City; City)
                 {
                     ApplicationArea = Basic;
                 }
-                field(County;County)
+                field(County; County)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Picture;Picture)
+                field(Picture; Picture)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Date Modified";"Last Date Modified")
+                field("Last Date Modified"; "Last Date Modified")
                 {
                     ApplicationArea = Basic;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
 
                     trigger OnValidate()
                     begin
-                        SupervisorNames:=GetSupervisor("User ID");
+                        SupervisorNames := GetSupervisor("User ID");
                     end;
                 }
-                field("Fosa Account";"Fosa Account")
+                field("Fosa Account"; "Fosa Account")
                 {
                     ApplicationArea = Basic;
                 }
-                field(SupervisorNames;SupervisorNames)
+                field(SupervisorNames; SupervisorNames)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Supervisor ';
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                     Style = Strong;
                     StyleExpr = true;
                 }
-                field("Employee Classification";"Employee Classification")
+                field("Employee Classification"; "Employee Classification")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Institutional Base";"Institutional Base")
+                field("Institutional Base"; "Institutional Base")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Supervisor;Supervisor)
+                field(Supervisor; Supervisor)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Is Supervisor';
@@ -151,40 +151,40 @@ Page 51516252 "HR Employee Card"
             group("Communication Details")
             {
                 Caption = 'Communication Details';
-                field("Cell Phone Number";"Cell Phone Number")
+                field("Cell Phone Number"; "Cell Phone Number")
                 {
                     ApplicationArea = Basic;
                     ExtendedDatatype = PhoneNo;
                     Importance = Promoted;
                 }
-                field("Home Phone Number";"Home Phone Number")
+                field("Home Phone Number"; "Home Phone Number")
                 {
                     ApplicationArea = Basic;
                     ExtendedDatatype = PhoneNo;
                     Importance = Promoted;
                 }
-                field("Fax Number";"Fax Number")
+                field("Fax Number"; "Fax Number")
                 {
                     ApplicationArea = Basic;
                     ExtendedDatatype = PhoneNo;
                     Importance = Promoted;
                 }
-                field("Work Phone Number";"Work Phone Number")
+                field("Work Phone Number"; "Work Phone Number")
                 {
                     ApplicationArea = Basic;
                     ExtendedDatatype = PhoneNo;
                 }
-                field("Ext.";"Ext.")
+                field("Ext."; "Ext.")
                 {
                     ApplicationArea = Basic;
                     ExtendedDatatype = PhoneNo;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                     ExtendedDatatype = EMail;
                 }
-                field("Company E-Mail";"Company E-Mail")
+                field("Company E-Mail"; "Company E-Mail")
                 {
                     ApplicationArea = Basic;
                     ExtendedDatatype = EMail;
@@ -194,117 +194,117 @@ Page 51516252 "HR Employee Card"
             group("Personal Details")
             {
                 Caption = 'Personal Details';
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Marital Status";"Marital Status")
+                field("Marital Status"; "Marital Status")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Signature;Signature)
+                field(Signature; Signature)
                 {
                     ApplicationArea = Basic;
                 }
-                field("First Language (R/W/S)";"First Language (R/W/S)")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Promoted;
-                    Visible = false;
-                }
-                field("First Language Read";"First Language Read")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("First Language Write";"First Language Write")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("First Language Speak";"First Language Speak")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Second Language (R/W/S)";"Second Language (R/W/S)")
+                field("First Language (R/W/S)"; "First Language (R/W/S)")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                     Visible = false;
                 }
-                field("Second Language Read";"Second Language Read")
+                field("First Language Read"; "First Language Read")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Second Language Write";"Second Language Write")
+                field("First Language Write"; "First Language Write")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Second Language Speak";"Second Language Speak")
+                field("First Language Speak"; "First Language Speak")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Additional Language";"Additional Language")
+                field("Second Language (R/W/S)"; "Second Language (R/W/S)")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Promoted;
+                    Visible = false;
+                }
+                field("Second Language Read"; "Second Language Read")
                 {
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Vehicle Registration Number";"Vehicle Registration Number")
+                field("Second Language Write"; "Second Language Write")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Second Language Speak"; "Second Language Speak")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Additional Language"; "Additional Language")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Vehicle Registration Number"; "Vehicle Registration Number")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Number Of Dependants";"Number Of Dependants")
+                field("Number Of Dependants"; "Number Of Dependants")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Disabled;Disabled)
+                field(Disabled; Disabled)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Health Assesment?";"Health Assesment?")
+                field("Health Assesment?"; "Health Assesment?")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical Scheme No.";"Medical Scheme No.")
+                field("Medical Scheme No."; "Medical Scheme No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical Scheme Head Member";"Medical Scheme Head Member")
+                field("Medical Scheme Head Member"; "Medical Scheme Head Member")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical Scheme Name";"Medical Scheme Name")
+                field("Medical Scheme Name"; "Medical Scheme Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical Out-Patient Limit";"Medical Out-Patient Limit")
+                field("Medical Out-Patient Limit"; "Medical Out-Patient Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical In-Patient Limit";"Medical In-Patient Limit")
+                field("Medical In-Patient Limit"; "Medical In-Patient Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical Maximum Cover";"Medical Maximum Cover")
+                field("Medical Maximum Cover"; "Medical Maximum Cover")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Medical No Of Dependants";"Medical No Of Dependants")
+                field("Medical No Of Dependants"; "Medical No Of Dependants")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cause of Inactivity Code";"Cause of Inactivity Code")
+                field("Cause of Inactivity Code"; "Cause of Inactivity Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Health Assesment Date";"Health Assesment Date")
+                field("Health Assesment Date"; "Health Assesment Date")
                 {
                     ApplicationArea = Basic;
                 }
@@ -312,27 +312,27 @@ Page 51516252 "HR Employee Card"
             group("Bank Details")
             {
                 Caption = 'Bank Details';
-                field("Main Bank";"Main Bank")
+                field("Main Bank"; "Main Bank")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("<Bank Code>";"Bank Code")
+                field("<Bank Code>"; "Bank Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Bank Code';
                 }
-                field("Branch Bank";"Branch Bank")
+                field("Branch Bank"; "Branch Bank")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("<Branch Code>";"Branch Code")
+                field("<Branch Code>"; "Branch Code")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Branch Code';
                 }
-                field("Bank Account Number";"Bank Account Number")
+                field("Bank Account Number"; "Bank Account Number")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -341,7 +341,7 @@ Page 51516252 "HR Employee Card"
             group("Important Dates")
             {
                 Caption = 'Important Dates';
-                field("Date Of Birth";"Date Of Birth")
+                field("Date Of Birth"; "Date Of Birth")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -349,12 +349,12 @@ Page 51516252 "HR Employee Card"
                     trigger OnValidate()
                     begin
                         if "Date Of Birth" >= Today then begin
-                          Error('Invalid Entry');
+                            Error('Invalid Entry');
                         end;
-                        DAge:= Dates.DetermineAge("Date Of Birth",Today);
+                        DAge := Dates.DetermineAge("Date Of Birth", Today);
                     end;
                 }
-                field(DAge;DAge)
+                field(DAge; DAge)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Age';
@@ -362,7 +362,7 @@ Page 51516252 "HR Employee Card"
                     Enabled = false;
                     Importance = Promoted;
                 }
-                field("Date Of Join";"Date Of Join")
+                field("Date Of Join"; "Date Of Join")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -370,46 +370,46 @@ Page 51516252 "HR Employee Card"
 
                     trigger OnValidate()
                     begin
-                            DService:= Dates.DetermineAge("Date Of Join",Today);
+                        DService := Dates.DetermineAge("Date Of Join", Today);
                     end;
                 }
-                field(DService;DService)
+                field(DService; DService)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Length of Service';
                     Editable = false;
                     Enabled = false;
                 }
-                field("End Of Probation Date";"End Of Probation Date")
+                field("End Of Probation Date"; "End Of Probation Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pension Scheme Join Date";"Pension Scheme Join Date")
-                {
-                    ApplicationArea = Basic;
-
-                    trigger OnValidate()
-                    begin
-                        DPension:= Dates.DetermineAge("Pension Scheme Join Date",Today);
-                    end;
-                }
-                field("Medical Scheme Join Date";"Medical Scheme Join Date")
+                field("Pension Scheme Join Date"; "Pension Scheme Join Date")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnValidate()
                     begin
-                        DMedical:= Dates.DetermineAge("Medical Scheme Join Date",Today);
+                        DPension := Dates.DetermineAge("Pension Scheme Join Date", Today);
                     end;
                 }
-                field(DMedical;DMedical)
+                field("Medical Scheme Join Date"; "Medical Scheme Join Date")
+                {
+                    ApplicationArea = Basic;
+
+                    trigger OnValidate()
+                    begin
+                        DMedical := Dates.DetermineAge("Medical Scheme Join Date", Today);
+                    end;
+                }
+                field(DMedical; DMedical)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Time On Medical Aid Scheme';
                     Editable = false;
                     Enabled = false;
                 }
-                field("Wedding Anniversary";"Wedding Anniversary")
+                field("Wedding Anniversary"; "Wedding Anniversary")
                 {
                     ApplicationArea = Basic;
                 }
@@ -417,26 +417,26 @@ Page 51516252 "HR Employee Card"
             group("Job Details")
             {
                 Caption = 'Job Details';
-                field("Job Specification";"Job Specification")
+                field("Job Specification"; "Job Specification")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Job Title";"Job Title")
+                field("Job Title"; "Job Title")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Grade;Grade)
+                field(Grade; Grade)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Payroll Code";"Payroll Code")
+                field("Payroll Code"; "Payroll Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Group";"Posting Group")
+                field("Posting Group"; "Posting Group")
                 {
                     ApplicationArea = Basic;
                 }
@@ -444,26 +444,26 @@ Page 51516252 "HR Employee Card"
             group("Terms of Service")
             {
                 Caption = 'Terms of Service';
-                field("Secondment Institution";"Secondment Institution")
+                field("Secondment Institution"; "Secondment Institution")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Seondment';
                 }
-                field("Contract End Date";"Contract End Date")
+                field("Contract End Date"; "Contract End Date")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
                     Importance = Promoted;
                 }
-                field("Notice Period";"Notice Period")
+                field("Notice Period"; "Notice Period")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Send Alert to";"Send Alert to")
+                field("Send Alert to"; "Send Alert to")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Full / Part Time";"Full / Part Time")
+                field("Full / Part Time"; "Full / Part Time")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -472,17 +472,17 @@ Page 51516252 "HR Employee Card"
             group("Payment Information")
             {
                 Caption = 'Payment Information';
-                field("PIN No.";"PIN No.")
+                field("PIN No."; "PIN No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("NSSF No.";"NSSF No.")
+                field("NSSF No."; "NSSF No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("NHIF No.";"NHIF No.")
+                field("NHIF No."; "NHIF No.")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -491,14 +491,14 @@ Page 51516252 "HR Employee Card"
             group("Separation Details")
             {
                 Caption = 'Separation Details';
-                field("Date Of Leaving the Company";"Date Of Leaving the Company")
+                field("Date Of Leaving the Company"; "Date Of Leaving the Company")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        
+
                         /*
                         FrmCalendar.SetDate("Date Of Leaving the Company");
                         FrmCalendar.RUNMODAL;
@@ -512,17 +512,17 @@ Page 51516252 "HR Employee Card"
 
                     end;
                 }
-                field("Termination Grounds";"Termination Grounds")
+                field("Termination Grounds"; "Termination Grounds")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Exit Interview Date";"Exit Interview Date")
+                field("Exit Interview Date"; "Exit Interview Date")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Exit Interview Done by";"Exit Interview Done by")
+                field("Exit Interview Done by"; "Exit Interview Done by")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -531,72 +531,72 @@ Page 51516252 "HR Employee Card"
             group("Leave Details/Medical Claims")
             {
                 Caption = 'Leave Details/Medical Claims';
-                field("Reimbursed Leave Days";"Reimbursed Leave Days")
+                field("Reimbursed Leave Days"; "Reimbursed Leave Days")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Allocated Leave Days";"Allocated Leave Days")
+                field("Allocated Leave Days"; "Allocated Leave Days")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Total (Leave Days)";"Total (Leave Days)")
+                field("Total (Leave Days)"; "Total (Leave Days)")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Total Leave Taken";"Total Leave Taken")
+                field("Total Leave Taken"; "Total Leave Taken")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field("Leave Balance";"Leave Balance")
+                field("Leave Balance"; "Leave Balance")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                     Importance = Promoted;
                 }
-                field("Acrued Leave Days";"Acrued Leave Days")
+                field("Acrued Leave Days"; "Acrued Leave Days")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Cash per Leave Day";"Cash per Leave Day")
+                field("Cash per Leave Day"; "Cash per Leave Day")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Cash - Leave Earned";"Cash - Leave Earned")
+                field("Cash - Leave Earned"; "Cash - Leave Earned")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Leave Status";"Leave Status")
+                field("Leave Status"; "Leave Status")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Leave Type Filter";"Leave Type Filter")
+                field("Leave Type Filter"; "Leave Type Filter")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Leave Period Filter";"Leave Period Filter")
+                field("Leave Period Filter"; "Leave Period Filter")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Claim Limit";"Claim Limit")
+                field("Claim Limit"; "Claim Limit")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Claim Amount Used";"Claim Amount Used")
+                field("Claim Amount Used"; "Claim Amount Used")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Claim Remaining Amount";"Claim Remaining Amount")
+                field("Claim Remaining Amount"; "Claim Remaining Amount")
                 {
                     ApplicationArea = Basic;
                 }
@@ -604,14 +604,14 @@ Page 51516252 "HR Employee Card"
         }
         area(factboxes)
         {
-            part(Control1102755004;"HR Employees Factbox")
+            part(Control1102755004; "HR Employees Factbox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            systempart(Control1102755002;Outlook)
+            systempart(Control1102755002; Outlook)
             {
             }
-            systempart(Control1;Links)
+            systempart(Control1; Links)
             {
             }
         }
@@ -636,9 +636,9 @@ Page 51516252 "HR Employee Card"
                     trigger OnAction()
                     begin
                         HREmp.Reset;
-                        HREmp.SetRange(HREmp."No.","No.");
+                        HREmp.SetRange(HREmp."No.", "No.");
                         if HREmp.Find('-') then
-                        Report.Run(55585,true,true,HREmp);
+                            Report.Run(55585, true, true, HREmp);
                     end;
                 }
                 action("Misc. Article Info")
@@ -653,9 +653,9 @@ Page 51516252 "HR Employee Card"
                     trigger OnAction()
                     begin
                         Misc.Reset;
-                        Misc.SetRange(Misc."Employee No.","No.");
+                        Misc.SetRange(Misc."Employee No.", "No.");
                         if Misc.Find('-') then
-                        Report.Run(5202,true,true,Misc);
+                            Report.Run(5202, true, true, Misc);
                     end;
                 }
                 action("Confidential Info")
@@ -671,9 +671,9 @@ Page 51516252 "HR Employee Card"
                     trigger OnAction()
                     begin
                         Conf.Reset;
-                        Conf.SetRange(Conf."Employee No.","No.");
+                        Conf.SetRange(Conf."Employee No.", "No.");
                         if Conf.Find('-') then
-                        Report.Run(5203,true,true,Conf);
+                            Report.Run(5203, true, true, Conf);
                     end;
                 }
                 action(Label)
@@ -689,9 +689,9 @@ Page 51516252 "HR Employee Card"
                     trigger OnAction()
                     begin
                         HREmp.Reset;
-                        HREmp.SetRange(HREmp."No.","No.");
+                        HREmp.SetRange(HREmp."No.", "No.");
                         if HREmp.Find('-') then
-                        Report.Run(5200,true,true,HREmp);
+                            Report.Run(5200, true, true, HREmp);
                     end;
                 }
                 action(Addresses)
@@ -706,9 +706,9 @@ Page 51516252 "HR Employee Card"
                     trigger OnAction()
                     begin
                         HREmp.Reset;
-                        HREmp.SetRange(HREmp."No.","No.");
+                        HREmp.SetRange(HREmp."No.", "No.");
                         if HREmp.Find('-') then
-                        Report.Run(5207,true,true,HREmp);
+                            Report.Run(5207, true, true, HREmp);
                     end;
                 }
                 action("Alt. Addresses")
@@ -723,9 +723,9 @@ Page 51516252 "HR Employee Card"
                     trigger OnAction()
                     begin
                         HREmp.Reset;
-                        HREmp.SetRange(HREmp."No.","No.");
+                        HREmp.SetRange(HREmp."No.", "No.");
                         if HREmp.Find('-') then
-                        Report.Run(5213,true,true,HREmp);
+                            Report.Run(5213, true, true, HREmp);
                     end;
                 }
                 action("Phone Nos")
@@ -740,9 +740,9 @@ Page 51516252 "HR Employee Card"
                     trigger OnAction()
                     begin
                         HREmp.Reset;
-                        HREmp.SetRange(HREmp."No.","No.");
+                        HREmp.SetRange(HREmp."No.", "No.");
                         if HREmp.Find('-') then
-                        Report.Run(5210,true,true,HREmp);
+                            Report.Run(5210, true, true, HREmp);
                     end;
                 }
             }
@@ -757,8 +757,8 @@ Page 51516252 "HR Employee Card"
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "HR Employee Kin SF";
-                    RunPageLink = "Employee Code"=field("No.");
-                    RunPageView = where(Type=filter("Next of Kin"));
+                    RunPageLink = "Employee Code" = field("No.");
+                    RunPageView = where(Type = filter("Next of Kin"));
                 }
                 action(Beneficiaries)
                 {
@@ -768,8 +768,8 @@ Page 51516252 "HR Employee Card"
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "HR Employee Kin SF";
-                    RunPageLink = "Employee Code"=field("No.");
-                    RunPageView = where(Type=filter(Beneficiary));
+                    RunPageLink = "Employee Code" = field("No.");
+                    RunPageView = where(Type = filter(Beneficiary));
                 }
                 action("Co&mments")
                 {
@@ -780,8 +780,8 @@ Page 51516252 "HR Employee Card"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Category6;
                     RunObject = Page "Human Resource Comment Sheet";
-                    RunPageLink = "Table Name"=const(Employee),
-                                  "No."=field("No.");
+                    RunPageLink = "Table Name" = const(Employee),
+                                  "No." = field("No.");
                 }
                 action(Qualifications)
                 {
@@ -791,7 +791,7 @@ Page 51516252 "HR Employee Card"
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "HR Employee Qualification Line";
-                    RunPageLink = "Employee No."=field("No.");
+                    RunPageLink = "Employee No." = field("No.");
                 }
                 action("Employment History")
                 {
@@ -801,7 +801,7 @@ Page 51516252 "HR Employee Card"
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "HR Employment History Lines";
-                    RunPageLink = "Employee No."=field("No.");
+                    RunPageLink = "Employee No." = field("No.");
                 }
                 action("Alternative Addresses")
                 {
@@ -812,7 +812,7 @@ Page 51516252 "HR Employee Card"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Category6;
                     RunObject = Page "Alternative Address Card";
-                    RunPageLink = "Employee No."=field("No.");
+                    RunPageLink = "Employee No." = field("No.");
                 }
                 action("Misc. Articles")
                 {
@@ -822,7 +822,7 @@ Page 51516252 "HR Employee Card"
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "Misc. Article Information";
-                    RunPageLink = "Employee No."=field("No.");
+                    RunPageLink = "Employee No." = field("No.");
                 }
                 action("Misc. Articles Overview")
                 {
@@ -842,7 +842,7 @@ Page 51516252 "HR Employee Card"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Category6;
                     RunObject = Page "Confidential Information";
-                    RunPageLink = "Employee No."=field("No.");
+                    RunPageLink = "Employee No." = field("No.");
                 }
                 action("Co&nfidential Info. Overview")
                 {
@@ -861,7 +861,7 @@ Page 51516252 "HR Employee Card"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Category6;
                     RunObject = Page "Employee Absences";
-                    RunPageLink = "Employee No."=field("No.");
+                    RunPageLink = "Employee No." = field("No.");
                 }
                 action(Dimensions)
                 {
@@ -872,29 +872,29 @@ Page 51516252 "HR Employee Card"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = Category6;
                     RunObject = Page "Default Dimensions";
-                    RunPageLink = "Table ID"=const(5200),
-                                  "No."=field("No.");
+                    RunPageLink = "Table ID" = const(5200),
+                                  "No." = field("No.");
                 }
                 action("Education Sponsor")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Education Sponsor';
                     RunObject = Page "HR Education Assistance List";
-                    RunPageLink = "Employee No."=field("No.");
+                    RunPageLink = "Employee No." = field("No.");
                 }
                 action("Leave Family Employees List")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Leave Family Employees List';
                     RunObject = Page "HR Leave Family Employees List";
-                    RunPageLink = "Employee No"=field("No.");
+                    RunPageLink = "Employee No" = field("No.");
                 }
                 action(Grievances)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Grievances';
                     RunObject = Page "HR Leave Period List";
-                    RunPageLink = "Starting Date"=field("No.");
+                    //RunPageLink = "Starting Date"=field("No.");
                 }
                 action(Supervisees)
                 {
@@ -914,11 +914,11 @@ Page 51516252 "HR Employee Card"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Page "HR Employee Attachments";
-                RunPageLink = "No."=field("No.");
+                RunPageLink = "No." = field("No.");
 
                 trigger OnAction()
                 begin
-                      //PAGE.RUN(55699,Rec);
+                    //PAGE.RUN(55699,Rec);
                 end;
             }
         }
@@ -926,37 +926,37 @@ Page 51516252 "HR Employee Card"
 
     trigger OnAfterGetRecord()
     begin
-        DAge:='';
-        DService:='';
-        DPension:='';
-        DMedical:='';
+        DAge := '';
+        DService := '';
+        DPension := '';
+        DMedical := '';
 
         //Recalculate Important Dates
-          if ("Date Of Leaving the Company" = 0D) then begin
-            if  ("Date Of Birth" <> 0D) then
-            DAge:= Dates.DetermineAge("Date Of Birth",Today);
-            if  ("Date Of Joining the Company" <> 0D) then
-            DService:= Dates.DetermineAge("Date Of Joining the Company",Today);
-            if  ("Pension Scheme Join Date" <> 0D) then
-            DPension:= Dates.DetermineAge("Pension Scheme Join Date",Today);
-            if  ("Medical Scheme Join Date" <> 0D) then
-            DMedical:= Dates.DetermineAge("Medical Scheme Join Date",Today);
+        if ("Date Of Leaving the Company" = 0D) then begin
+            if ("Date Of Birth" <> 0D) then
+                DAge := Dates.DetermineAge("Date Of Birth", Today);
+            if ("Date Of Joining the Company" <> 0D) then
+                DService := Dates.DetermineAge("Date Of Joining the Company", Today);
+            if ("Pension Scheme Join Date" <> 0D) then
+                DPension := Dates.DetermineAge("Pension Scheme Join Date", Today);
+            if ("Medical Scheme Join Date" <> 0D) then
+                DMedical := Dates.DetermineAge("Medical Scheme Join Date", Today);
             //MODIFY;
-          end else begin
-            if  ("Date Of Birth" <> 0D) then
-            DAge:= Dates.DetermineAge("Date Of Birth","Date Of Leaving the Company");
-            if  ("Date Of Joining the Company" <> 0D) then
-            DService:= Dates.DetermineAge("Date Of Joining the Company","Date Of Leaving the Company");
-            if  ("Pension Scheme Join Date" <> 0D) then
-            DPension:= Dates.DetermineAge("Pension Scheme Join Date","Date Of Leaving the Company");
-            if  ("Medical Scheme Join Date" <> 0D) then
-            DMedical:= Dates.DetermineAge("Medical Scheme Join Date","Date Of Leaving the Company");
+        end else begin
+            if ("Date Of Birth" <> 0D) then
+                DAge := Dates.DetermineAge("Date Of Birth", "Date Of Leaving the Company");
+            if ("Date Of Joining the Company" <> 0D) then
+                DService := Dates.DetermineAge("Date Of Joining the Company", "Date Of Leaving the Company");
+            if ("Pension Scheme Join Date" <> 0D) then
+                DPension := Dates.DetermineAge("Pension Scheme Join Date", "Date Of Leaving the Company");
+            if ("Medical Scheme Join Date" <> 0D) then
+                DMedical := Dates.DetermineAge("Medical Scheme Join Date", "Date Of Leaving the Company");
             //MODIFY;
-          end;
+        end;
 
         //Recalculate Leave Days
         Validate("Allocated Leave Days");
-        SupervisorNames:=GetSupervisor("User ID");
+        SupervisorNames := GetSupervisor("User ID");
     end;
 
     trigger OnClosePage()
@@ -1018,29 +1018,27 @@ Page 51516252 "HR Employee Card"
     var
         UserSetup: Record "User Setup";
     begin
-                                if sUserID<>'' then
-                                begin
-                                        UserSetup.Reset;
-                                        if UserSetup.Get(sUserID) then
-                                        begin
+        if sUserID <> '' then begin
+            UserSetup.Reset;
+            if UserSetup.Get(sUserID) then begin
 
-                                        SupervisorName:=UserSetup."Approver ID";
-                                            if SupervisorName<>'' then begin
+                SupervisorName := UserSetup."Approver ID";
+                if SupervisorName <> '' then begin
 
-                                            HREmp.SetRange(HREmp."User ID",SupervisorName);
-                                            if HREmp.Find('-') then
-                                            SupervisorName:=HREmp.FullName;
+                    HREmp.SetRange(HREmp."User ID", SupervisorName);
+                    if HREmp.Find('-') then
+                        SupervisorName := HREmp.FullName;
 
-                                            end else begin
-                                            SupervisorName:='';
-                                            end;
+                end else begin
+                    SupervisorName := '';
+                end;
 
 
-                                        end else begin
-                                        Error('User'+' '+ sUserID +' '+ 'does not exist in the user setup table');
-                                        SupervisorName:='';
-                                        end;
-                                  end;
+            end else begin
+                Error('User' + ' ' + sUserID + ' ' + 'does not exist in the user setup table');
+                SupervisorName := '';
+            end;
+        end;
     end;
 
 
@@ -1049,25 +1047,21 @@ Page 51516252 "HR Employee Card"
         UserSetup: Record "User Setup";
         SupervisorID: Code[20];
     begin
-                                if EmpUserID<>'' then
-                                begin
-                                     SupervisorID:='';
+        if EmpUserID <> '' then begin
+            SupervisorID := '';
 
-                                     UserSetup.Reset;
-                                     if UserSetup.Get(EmpUserID) then
-                                     begin
-                                        SupervisorID:=UserSetup."Approver ID";
-                                        if SupervisorID <> '' then
-                                        begin
-                                           SID:=SupervisorID;
-                                        end else
-                                        begin
-                                           SID:='';
-                                        end;
-                                     end else begin
-                                     Error('User'+' '+ EmpUserID +' '+ 'does not exist in the user setup table');
-                                     end;
-                                  end;
+            UserSetup.Reset;
+            if UserSetup.Get(EmpUserID) then begin
+                SupervisorID := UserSetup."Approver ID";
+                if SupervisorID <> '' then begin
+                    SID := SupervisorID;
+                end else begin
+                    SID := '';
+                end;
+            end else begin
+                Error('User' + ' ' + EmpUserID + ' ' + 'does not exist in the user setup table');
+            end;
+        end;
     end;
 }
 

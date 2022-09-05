@@ -42,7 +42,7 @@ Page 51516439 "Cashier Transactions Card"
 
                         CalcAvailableBal;
 
-                        Clear(AccP.Picture);
+                        Clear(AccP.Piccture);
                         Clear(AccP.Signature);
                         if AccP.Get("Account No") then begin
                             /*//Hide Accounts
@@ -53,12 +53,12 @@ Page 51516439 "Cashier Transactions Card"
                             END;
                             END; */
                             //Hide Accounts
-                            //AccP.CALCFIELDS(AccP.Picture,AccP.Signature);
+                            //AccP.CALCFIELDS(AccP.Piccture,AccP.Signature);
                         end;
 
                         CalcFields("Uncleared Cheques");
                         if AccP.Get("Account No") then begin
-                            Picture := AccP.Picture;
+                            Picture := AccP.Piccture;
                             Signature := AccP.Signature;
 
                         end;

@@ -8,16 +8,16 @@ Page 51516082 "Teller Role Centre"
     {
         area(rolecenter)
         {
-            part(Control1000000018;"Member List")
+            part(Control1000000018; "Member List")
             {
             }
             group(Control1000000015)
             {
             }
-            part(Control1000000001;"Copy Profile")
+            part(Control1000000001; "Copy Profile")
             {
             }
-            systempart(Control1000000000;MyNotes)
+            systempart(Control1000000000; MyNotes)
             {
             }
         }
@@ -32,7 +32,7 @@ Page 51516082 "Teller Role Centre"
                 ApplicationArea = Basic;
                 Caption = 'Member Balances';
                 Image = "Report";
-                RunObject = Report "Member Accounts  balances";
+                //  RunObject = Report "Member Accounts  balances";
             }
             action("Member Statement")
             {
@@ -174,7 +174,7 @@ Page 51516082 "Teller Role Centre"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Vendor List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
         }
         area(sections)

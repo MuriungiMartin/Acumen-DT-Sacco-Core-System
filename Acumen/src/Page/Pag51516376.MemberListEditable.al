@@ -166,6 +166,7 @@ Page 51516376 "Member List-Editable"
                         LGurantors.SetRange(LGurantors."Loan No", "No.");
                         if LGurantors.Find('-') then
 ;
+                    end;
                 }
                 separator(Action7)
                 {

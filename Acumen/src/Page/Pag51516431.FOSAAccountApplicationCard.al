@@ -554,7 +554,8 @@ Page 51516431 "FOSA Account Application Card"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "FOSA Accounts App Sign. Detail";
-                    RunPageLink = "Account No" = field("No.");
+                    //RunPageView =where("No." = field())
+                    ///RunPageLink =  ;
                 }
                 action("Account Agent Details")
                 {
@@ -693,7 +694,7 @@ Page 51516431 "FOSA Account Application Card"
                             Accounts."Registration Date" := "Registration Date";
                             //Accounts."Marital Status":="Marital Status";
                             Accounts."BOSA Account No" := "BOSA Account No";
-                            Accounts.Picture := Picture;
+                            Accounts.Piccture := Picture;
                             Accounts.Signature := Signature;
                             Accounts."Passport No." := "Passport No.";
                             Accounts."Employer Code" := "Employer Code";
@@ -940,7 +941,7 @@ Page 51516431 "FOSA Account Application Card"
                             Accounts."Registration Date" := "Registration Date";
                             Accounts."Employer Code" := "Employer Code";
                             Accounts."BOSA Account No" := "BOSA Account No";
-                            Accounts.Picture := Picture;
+                            Accounts.Piccture := Picture;
                             Accounts.Signature := Signature;
                             Accounts."Passport No." := "Passport No.";
                             Accounts.Status := Accounts.Status::Active;

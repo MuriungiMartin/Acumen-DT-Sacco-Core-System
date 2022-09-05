@@ -620,7 +620,7 @@ Page 51516723 "Checkoff Processing Header-D p"
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedOnly = true;
-                RunObject = XMLport UnknownXMLport51516003;
+                RunObject = XMLport "Import Checkoff Distributed";
             }
             group(ActionGroup1102755021)
             {
@@ -676,7 +676,7 @@ Page 51516723 "Checkoff Processing Header-D p"
 
                 trigger OnAction()
                 begin
-                    ApprovalsMgt.OnSendCheckoffForApproval(Rec);
+                    //ApprovalsMgt.OnSendCheckoffForApproval(Rec);
                 end;
             }
             action(Journal)
@@ -690,7 +690,7 @@ Page 51516723 "Checkoff Processing Header-D p"
 
                 trigger OnAction()
                 begin
-                    ApprovalsMgt.OnSendCheckoffForApproval(Rec);
+                //    ApprovalsMgt.OnSendCheckoffForApproval(Rec);
                 end;
             }
             action("Mark As posted")

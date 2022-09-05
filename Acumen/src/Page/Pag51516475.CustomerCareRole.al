@@ -30,7 +30,7 @@ Page 51516475 "Customer Care Role"
             {
                 ApplicationArea = Basic;
                 Image = AdjustEntries;
-                RunObject = Page UnknownPage50026;
+                RunObject = Page "Loan Calculator";
             }
             action("Membership Applications")
             {
@@ -57,7 +57,7 @@ Page 51516475 "Customer Care Role"
             {
                 ApplicationArea = Basic;
                 Image = View;
-                RunObject = Page "HR Applicant Referees";
+                //RunObject = Page "HR Applicant Referees";
             }
             action("Fosa Accounts")
             {

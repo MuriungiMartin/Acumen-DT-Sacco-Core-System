@@ -220,7 +220,7 @@ Page 51516430 "FOSA Accounts Applications"
                         Accounts."Registration Date" := "Registration Date";
                         //Accounts."Marital Status":="Marital Status";
                         Accounts."BOSA Account No" := "BOSA Account No";
-                        Accounts.Picture := Picture;
+                        Accounts.Piccture := Picture;
                         Accounts.Signature := Signature;
                         Accounts."Passport No." := "Passport No.";
                         Accounts."Employer Code" := "Employer Code";
@@ -436,7 +436,7 @@ Page 51516430 "FOSA Accounts Applications"
                             Accounts."Registration Date" := "Registration Date";
                             Accounts."Employer Code" := "Employer Code";
                             Accounts."BOSA Account No" := "BOSA Account No";
-                            Accounts.Picture := Picture;
+                            Accounts.Piccture := Picture;
                             Accounts.Signature := Signature;
                             Accounts."Passport No." := "Passport No.";
                             Accounts.Status := Accounts.Status::Active;

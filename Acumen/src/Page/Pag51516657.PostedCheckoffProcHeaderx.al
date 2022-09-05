@@ -86,19 +86,19 @@ Page 51516657 "Posted Checkoff Proc. Headerx"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Scheduled"; "Total Scheduled")
-                {
-                    ApplicationArea = Basic;
-                    Enabled = false;
-                    Importance = Promoted;
-                    Style = Strong;
-                    StyleExpr = true;
-                }
+                // field("Total Scheduled"; "Total Scheduled")
+                // {
+                //     ApplicationArea = Basic;
+                //     Enabled = false;
+                //     Importance = Promoted;
+                //     Style = Strong;
+                //     StyleExpr = true;
+                // }
             }
             part("Checkoff Lines-Distributed"; "Checkoff Processing Lines-D")
             {
                 Caption = 'Checkoff Lines-Distributed';
-                SubPageLink = "Staff Not Found" = field(No);
+                //SubPageLink = "Staff Not Found" = field(No);
             }
         }
     }
@@ -116,7 +116,7 @@ Page 51516657 "Posted Checkoff Proc. Headerx"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedOnly = true;
-                RunObject = XMLport UnknownXMLport51516003;
+                RunObject = XMLport "Import Checkoff Distributed";
             }
             group(ActionGroup1102755021)
             {
@@ -149,37 +149,37 @@ Page 51516657 "Posted Checkoff Proc. Headerx"
                     if MembLedg.Find('-') = true then
                         Error('Sorry,You have already posted this Document. Validation not Allowed.');
                     ReceiptLine.Reset;
-                    ReceiptLine.SetRange(ReceiptLine."Staff Not Found", No);
+                    // ReceiptLine.SetRange(ReceiptLine."Staff Not Found", No);
                     if ReceiptLine.FindSet(true, true) then begin
                         repeat
-                            ReceiptLine."No Repayment" := '';
-                            ReceiptLine."Total Amount" := '';
-                            ReceiptLine.TOTAL_DISTRIBUTED := 0;
+                            ReceiptLine."No Repayment" := false;
+                            // ReceiptLine."Total Amount" := '';
+                            // ReceiptLine.TOTAL_DISTRIBUTED := 0;
                             ReceiptLine.Modify;
                         until ReceiptLine.Next = 0;
                     end;
 
-                    ReceiptLine.Reset;
-                    ReceiptLine.SetRange(ReceiptLine."Staff Not Found", No);
-                    if ReceiptLine.Find('-') then begin
-                        repeat
-                            Memb.Reset;
-                            Memb.SetRange("Personal No", ReceiptLine."Checkoff No");
-                            if Memb.Find('-') then begin
-                                ReceiptLine."No Repayment" := Memb."No.";
-                                ReceiptLine."Total Amount" := Memb.Name;
-                                ReceiptLine.TOTAL_DISTRIBUTED := ReceiptLine."Date Filter" + ReceiptLine."Car Loan" + ReceiptLine.Development + ReceiptLine.Sambamba + ReceiptLine.Emergency + ReceiptLine."School Fees" + ReceiptLine.Benevolent + ReceiptLine."Deposit Contribution" +
-                          ReceiptLine
-                        WDefaulter+
-                          ReceiptLine."Account Not Found"+ReceiptLine."Okoa Jahazi"+ReceiptLine."School Fees"+ReceiptLine.Benevolent+ReceiptLine."Account Name"+ReceiptLine."40 Years"+ReceiptLine."Account No."+ReceiptLine."Staff/Payroll No"+ReceiptLine.
-                    "Employee Name"+
-                    Wrong Expre.TOTAL_DISTRIBUTED+ReceiptLine.PHONE_I+
-                          ReceiptLine.ADVANCENSE_P+ReceiptLine.ADVANCENSE_I+ReceiptLine.SHARES;
-                                ReceiptLine.Modify;
-                            end;
-                        until ReceiptLine.Next = 0;
-                    end;
-                    Message('Validation was successfully completed');
+                    // ReceiptLine.Reset;
+                    // ReceiptLine.SetRange(ReceiptLine."Staff Not Found", No);
+                    // if ReceiptLine.Find('-') then begin
+                    //     repeat
+                    //         Memb.Reset;
+                    //         Memb.SetRange("Personal No", ReceiptLine."Checkoff No");
+                    //         if Memb.Find('-') then begin
+                    //             ReceiptLine."No Repayment" := Memb."No.";
+                    //             ReceiptLine."Total Amount" := Memb.Name;
+                    //             ReceiptLine.TOTAL_DISTRIBUTED := ReceiptLine."Date Filter" + ReceiptLine."Car Loan" + ReceiptLine.Development + ReceiptLine.Sambamba + ReceiptLine.Emergency + ReceiptLine."School Fees" + ReceiptLine.Benevolent + ReceiptLine."Deposit Contribution" +
+                    //       ReceiptLine
+                    //     WDefaulter+
+                    //       ReceiptLine."Account Not Found"+ReceiptLine."Okoa Jahazi"+ReceiptLine."School Fees"+ReceiptLine.Benevolent+ReceiptLine."Account Name"+ReceiptLine."40 Years"+ReceiptLine."Account No."+ReceiptLine."Staff/Payroll No"+ReceiptLine.
+                    // "Employee Name"+
+                    // Wrong Expre.TOTAL_DISTRIBUTED+ReceiptLine.PHONE_I+
+                    //       ReceiptLine.ADVANCENSE_P+ReceiptLine.ADVANCENSE_I+ReceiptLine.SHARES;
+                    //             ReceiptLine.Modify;
+                    //         end;
+                    //     until ReceiptLine.Next = 0;
+                    // end;
+                    // Message('Validation was successfully completed');
                 end;
             }
             action("Unallocated Funds")
@@ -212,216 +212,216 @@ Page 51516657 "Posted Checkoff Proc. Headerx"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Are you sure you want to Transfer this Checkoff to Journals ?') = true then begin
-                        TestField("Document No");
-                        TestField(Amount);
-                        if Amount <> "Total Scheduled" then
-                            Error('Scheduled Amount must be equal to the Cheque Amount');
+                    // if Confirm('Are you sure you want to Transfer this Checkoff to Journals ?') = true then begin
+                    //     TestField("Document No");
+                    //     TestField(Amount);
+                    //     if Amount <> "Total Scheduled" then
+                    //         Error('Scheduled Amount must be equal to the Cheque Amount');
 
-                        BATCH_TEMPLATE := 'GENERAL';
-                        BATCH_NAME := 'CHECKOFF';
-                        DOCUMENT_NO := Remarks;
-                        GenJournalLine.Reset;
-                        GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);
-                        GenJournalLine.SetRange("Journal Batch Name", BATCH_NAME);
-                        GenJournalLine.DeleteAll;
-                        LineNo := 0;
-                        ReceiptLine.Reset;
-                        ReceiptLine.SetRange("Staff Not Found", No);
-                        if ReceiptLine.Find('-') then begin
-                            repeat
-                                if ReceiptLine."No Repayment" <> '' then begin
-                                    //----------------------------1. DEPOSITS----------------------------------------------------------------
-                                    LineNo := LineNo + 10000;
-                                    SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                    GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Date Filter" * -1, 'BOSA', "Document No",
-                                    Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-
-
-                                    //----------------------------2. NORM_P------------------------------------------------------------------
-                                    if FnCheckLoanErrors('NORM', ReceiptLine."Car Loan", ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Car Loan" + ReceiptLine.Development) * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Car Loan" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NORM'));
-                                        //----------------------------3. NORM_I------------------------------------------------------------------
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Development * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NORM'));
-                                    end;
+                    //     BATCH_TEMPLATE := 'GENERAL';
+                    //     BATCH_NAME := 'CHECKOFF';
+                    //     DOCUMENT_NO := Remarks;
+                    //     GenJournalLine.Reset;
+                    //     GenJournalLine.SetRange("Journal Template Name", BATCH_TEMPLATE);
+                    //     GenJournalLine.SetRange("Journal Batch Name", BATCH_NAME);
+                    //     GenJournalLine.DeleteAll;
+                    //     LineNo := 0;
+                    //     ReceiptLine.Reset;
+                    //     ReceiptLine.SetRange("Staff Not Found", No);
+                    //     if ReceiptLine.Find('-') then begin
+                    //         repeat
+                    //             if ReceiptLine."No Repayment" <> '' then begin
+                    //                 //----------------------------1. DEPOSITS----------------------------------------------------------------
+                    //                 LineNo := LineNo + 10000;
+                    //                 SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                 GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Date Filter" * -1, 'BOSA', "Document No",
+                    //                 Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
 
 
-                                    //----------------------------4. REFIN_P------------------------------------------------------------------
-                                    if FnCheckLoanErrors('REFIN', ReceiptLine.Sambamba, ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine.Sambamba + ReceiptLine.Emergency) * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Sambamba * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'REFIN'));
-                                        //----------------------------5. REFIN_I------------------------------------------------------------------
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Emergency * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'REFIN'));
-                                    end;
+                    //                 //----------------------------2. NORM_P------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('NORM', ReceiptLine."Car Loan", ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Car Loan" + ReceiptLine.Development) * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Car Loan" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NORM'));
+                    //                     //----------------------------3. NORM_I------------------------------------------------------------------
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Development * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NORM'));
+                    //                 end;
 
 
-                                    //----------------------------6. EMER_P------------------------------------------------------------------
-                                    if FnCheckLoanErrors('EMER', ReceiptLine."School Fees", ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."School Fees" + ReceiptLine.Benevolent) * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."School Fees" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'EMER'));
-                                        //----------------------------7. EMER_I------------------------------------------------------------------
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Benevolent * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'EMER'));
-                                    end;
+                    //                 //----------------------------4. REFIN_P------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('REFIN', ReceiptLine.Sambamba, ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine.Sambamba + ReceiptLine.Emergency) * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Sambamba * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'REFIN'));
+                    //                     //----------------------------5. REFIN_I------------------------------------------------------------------
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Emergency * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'REFIN'));
+                    //                 end;
 
 
-                                    //----------------------------8. SCHOOL_P------------------------------------------------------------------
-                                    if FnCheckLoanErrors('SCH LOAN', ReceiptLine."Deposit Contribution", ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Deposit Contribution" + ReceiptLine.Defaulter) * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Deposit Contribution" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SCH LOAN'));
-                                        //----------------------------9. SCHOOL_I------------------------------------------------------------------
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Defaulter * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SCH LOAN'));
-                                    end;
+                    //                 //----------------------------6. EMER_P------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('EMER', ReceiptLine."School Fees", ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."School Fees" + ReceiptLine.Benevolent) * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."School Fees" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'EMER'));
+                    //                     //----------------------------7. EMER_I------------------------------------------------------------------
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Benevolent * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'EMER'));
+                    //                 end;
 
 
-                                    //----------------------------10. SPECIAL_P------------------------------------------------------------------
-                                    if FnCheckLoanErrors('SP', ReceiptLine."Account Not Found", ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Account Not Found" + ReceiptLine."Okoa Jahazi") * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        FnCheckLoanErrors('SP', ReceiptLine."Account Not Found", ReceiptLine."No Repayment");
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Account Not Found" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SP'));
-                                        //----------------------------11. SPECIAL_I------------------------------------------------------------------
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Okoa Jahazi" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SP'));
-                                    end;
+                    //                 //----------------------------8. SCHOOL_P------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('SCH LOAN', ReceiptLine."Deposit Contribution", ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Deposit Contribution" + ReceiptLine.Defaulter) * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Deposit Contribution" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SCH LOAN'));
+                    //                     //----------------------------9. SCHOOL_I------------------------------------------------------------------
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.Defaulter * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SCH LOAN'));
+                    //                 end;
 
 
-                                    //----------------------------12.INSURANCE-------------------------------------------------------------------
-
-                                    LineNo := LineNo + 10000;
-                                    SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Insurance Contribution",
-                                    GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Account Name" * -1, 'BOSA', "Document No",
-                                    Format(GenJournalLine."transaction type"::"Insurance Contribution"), '');
-
-                                    //----------------------------13.GOLDSAVE-------------------------------------------------------------------
-                                    LineNo := LineNo + 10000;
-                                    SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::" ",
-                                    GenJournalLine."account type"::Vendor, FnGetFosaAccountNo(ReceiptLine."No Repayment", 'GOLDSAVE'), "Posting date", ReceiptLine."Account No." * -1, 'BOSA', "Document No",
-                                    'Gold Save', '');
-
-                                    //----------------------------15.THIRDPARTY------------------------------------------------------------------
-                                    if FnCheckLoanErrors('GUR', ReceiptLine."Vuka Special", ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Vuka Special") * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Vuka Special" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'GUR'));
-                                    end;
-                                    //---------------------------16.BENEVOLENT------------------------------------------------------------------
-                                    LineNo := LineNo + 10000;
-                                    SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Benevolent Fund",
-                                    GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."40 Years" * -1, 'BOSA', "Document No",
-                                    Format(GenJournalLine."transaction type"::"Benevolent Fund"), '');
+                    //                 //----------------------------10. SPECIAL_P------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('SP', ReceiptLine."Account Not Found", ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Account Not Found" + ReceiptLine."Okoa Jahazi") * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     FnCheckLoanErrors('SP', ReceiptLine."Account Not Found", ReceiptLine."No Repayment");
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Account Not Found" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SP'));
+                    //                     //----------------------------11. SPECIAL_I------------------------------------------------------------------
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Okoa Jahazi" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SP'));
+                    //                 end;
 
 
-                                    //----------------------------17.ADVANCE_P------------------------------------------------------------------
-                                    if FnCheckLoanErrors('SAL ADV', ReceiptLine."Staff/Payroll No", ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Staff/Payroll No" + ReceiptLine."Employee Name") * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Staff/Payroll No" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SAL ADV'));
-                                        //----------------------------18.ADVANCE_I------------------------------------------------------------------
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Employee Name" * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SAL ADV'));
-                                    end;
-                                    //17.PHONE_P
-                                    //18.PHONE_I
+                    //                 //----------------------------12.INSURANCE-------------------------------------------------------------------
 
-                                    //----------------------------19.ADVANCENSE_P------------------------------------------------------------------
-                                    if FnCheckLoanErrors('NSE', ReceiptLine.ADVANCENSE_P, ReceiptLine."No Repayment") then begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine.ADVANCENSE_P + ReceiptLine.ADVANCENSE_I) * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
-                                    end else begin
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.ADVANCENSE_P * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NSE'));
+                    //                 LineNo := LineNo + 10000;
+                    //                 SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Insurance Contribution",
+                    //                 GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Account Name" * -1, 'BOSA', "Document No",
+                    //                 Format(GenJournalLine."transaction type"::"Insurance Contribution"), '');
 
-                                        //----------------------------20.ADVANCENSE_I------------------------------------------------------------------
-                                        LineNo := LineNo + 10000;
-                                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
-                                        GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.ADVANCENSE_I * -1, 'BOSA', "Document No",
-                                        Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NSE'));
-                                    end;
-                                    //-----------------------------21.SHARES--------------------------------------------------------------------
-                                    LineNo := LineNo + 10000;
-                                    SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Share Capital",
-                                    GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.SHARES * -1, 'BOSA', "Document No",
-                                    Format(GenJournalLine."transaction type"::"Share Capital"), '');
-                                end;
-                            until ReceiptLine.Next = 0;
-                        end;
-                        //Balancing Journal Entry
-                        LineNo := LineNo + 10000;
-                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::" ",
-                        "Account Type", "Account No", "Posting date", Amount, 'BOSA', "Document No",
-                        Remarks, '');
+                    //                 //----------------------------13.GOLDSAVE-------------------------------------------------------------------
+                    //                 LineNo := LineNo + 10000;
+                    //                 SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::" ",
+                    //                 GenJournalLine."account type"::Vendor, FnGetFosaAccountNo(ReceiptLine."No Repayment", 'GOLDSAVE'), "Posting date", ReceiptLine."Account No." * -1, 'BOSA', "Document No",
+                    //                 'Gold Save', '');
+
+                    //                 //----------------------------15.THIRDPARTY------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('GUR', ReceiptLine."Vuka Special", ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Vuka Special") * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Vuka Special" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'GUR'));
+                    //                 end;
+                    //                 //---------------------------16.BENEVOLENT------------------------------------------------------------------
+                    //                 LineNo := LineNo + 10000;
+                    //                 SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Benevolent Fund",
+                    //                 GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."40 Years" * -1, 'BOSA', "Document No",
+                    //                 Format(GenJournalLine."transaction type"::"Benevolent Fund"), '');
 
 
+                    //                 //----------------------------17.ADVANCE_P------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('SAL ADV', ReceiptLine."Staff/Payroll No", ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine."Staff/Payroll No" + ReceiptLine."Employee Name") * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Staff/Payroll No" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SAL ADV'));
+                    //                     //----------------------------18.ADVANCE_I------------------------------------------------------------------
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine."Employee Name" * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'SAL ADV'));
+                    //                 end;
+                    //                 //17.PHONE_P
+                    //                 //18.PHONE_I
 
-                        Message('Checkoff successfully Generated Jouranls ready for posting');
-                    end;
+                    //                 //----------------------------19.ADVANCENSE_P------------------------------------------------------------------
+                    //                 if FnCheckLoanErrors('NSE', ReceiptLine.ADVANCENSE_P, ReceiptLine."No Repayment") then begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Deposit Contribution",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", (ReceiptLine.ADVANCENSE_P + ReceiptLine.ADVANCENSE_I) * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Deposit Contribution"), '');
+                    //                 end else begin
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Loan Repayment",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.ADVANCENSE_P * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Loan Repayment"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NSE'));
+
+                    //                     //----------------------------20.ADVANCENSE_I------------------------------------------------------------------
+                    //                     LineNo := LineNo + 10000;
+                    //                     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Interest Paid",
+                    //                     GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.ADVANCENSE_I * -1, 'BOSA', "Document No",
+                    //                     Format(GenJournalLine."transaction type"::"Interest Paid"), FnGetLoanNumber(ReceiptLine."No Repayment", 'NSE'));
+                    //                 end;
+                    //                 //-----------------------------21.SHARES--------------------------------------------------------------------
+                    //                 LineNo := LineNo + 10000;
+                    //                 SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::"Share Capital",
+                    //                 GenJournalLine."account type"::Employee, ReceiptLine."No Repayment", "Posting date", ReceiptLine.SHARES * -1, 'BOSA', "Document No",
+                    //                 Format(GenJournalLine."transaction type"::"Share Capital"), '');
+                    //             end;
+                    //         until ReceiptLine.Next = 0;
+                    //     end;
+                    //     //Balancing Journal Entry
+                    //     LineNo := LineNo + 10000;
+                    //     SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, DOCUMENT_NO, LineNo, GenJournalLine."transaction type"::" ",
+                    //     "Account Type", "Account No", "Posting date", Amount, 'BOSA', "Document No",
+                    //     Remarks, '');
+
+
+
+                    //     Message('Checkoff successfully Generated Jouranls ready for posting');
+                    // end;
                 end;
             }
             action("Process Checkoff Unallocated")

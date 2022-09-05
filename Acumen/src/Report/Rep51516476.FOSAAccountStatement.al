@@ -267,7 +267,7 @@ Report 51516476 "FOSA Account Statement"
                     column(StartBalanceLCY___StartBalAdjLCY____Vendor_Ledger_Entry___Amount__LCY_____Correction___ApplicationRounding___13; (StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1)
                     {
                     }
-                    column(DataItem11027600193; ((StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1) - "Uncleared Cheques" - MinBal)
+                    column(DataItem11027600193; ((StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1) - Vendor."Uncleared Cheques" - MinBal)
                     {
                     }
                     column(VendBalanceLCY__1_Control402; VendBalanceLCY * -1)
@@ -296,7 +296,7 @@ Report 51516476 "FOSA Account Statement"
                     column(StartBalanceLCY___StartBalAdjLCY____Vendor_Ledger_Entry___Amount__LCY_____Correction___ApplicationRounding___14; (StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1)
                     {
                     }
-                    column(DataItem11027600194; ((StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1) - "Uncleared Cheques" - MinBal)
+                    column(DataItem11027600194; ((StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1) - Vendor."Uncleared Cheques" - MinBal)
                     {
                     }
                     trigger OnPreDataItem();
@@ -355,7 +355,7 @@ Report 51516476 "FOSA Account Statement"
                 column(StartBalanceLCY___StartBalAdjLCY____Vendor_Ledger_Entry___Amount__LCY_____Correction___ApplicationRounding___12; (StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1)
                 {
                 }
-                column(DataItem11027600192; ((StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1) - "Uncleared Cheques" - MinBal)
+                column(DataItem11027600192; ((StartBalanceLCY + StartBalAdjLCY + "Vendor Ledger Entry"."Amount (LCY)" + Correction + ApplicationRounding) * -1) - Vendor."Uncleared Cheques" - MinBal)
                 {
                 }
                 trigger OnAfterGetRecord();

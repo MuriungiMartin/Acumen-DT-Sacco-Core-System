@@ -12,81 +12,81 @@ Page 51516253 "HR Job Applications Card"
             group(General)
             {
                 Caption = 'General';
-                field("Application No";"Application No")
+                field("Application No"; "Application No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field("Date Applied";"Date Applied")
+                field("Date Applied"; "Date Applied")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field("First Name";"First Name")
+                field("First Name"; "First Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Middle Name";"Middle Name")
+                field("Middle Name"; "Middle Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Last Name";"Last Name")
+                field("Last Name"; "Last Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Initials;Initials)
+                field(Initials; Initials)
                 {
                     ApplicationArea = Basic;
                 }
-                field("First Language (R/W/S)";"First Language (R/W/S)")
+                field("First Language (R/W/S)"; "First Language (R/W/S)")
                 {
                     ApplicationArea = Basic;
                     Caption = '1st Language (R/W/S)';
                     Importance = Promoted;
                 }
-                field("First Language Read";"First Language Read")
+                field("First Language Read"; "First Language Read")
                 {
                     ApplicationArea = Basic;
                     Caption = '1st Language Read';
                 }
-                field("First Language Write";"First Language Write")
+                field("First Language Write"; "First Language Write")
                 {
                     ApplicationArea = Basic;
                     Caption = '1st Language Write';
                 }
-                field("First Language Speak";"First Language Speak")
+                field("First Language Speak"; "First Language Speak")
                 {
                     ApplicationArea = Basic;
                     Caption = '1st Language Speak';
                 }
-                field("Second Language (R/W/S)";"Second Language (R/W/S)")
+                field("Second Language (R/W/S)"; "Second Language (R/W/S)")
                 {
                     ApplicationArea = Basic;
                     Caption = '2nd Language (R/W/S)';
                     Importance = Promoted;
                 }
-                field("Second Language Read";"Second Language Read")
+                field("Second Language Read"; "Second Language Read")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Second Language Write";"Second Language Write")
+                field("Second Language Write"; "Second Language Write")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Second Language Speak";"Second Language Speak")
+                field("Second Language Speak"; "Second Language Speak")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Additional Language";"Additional Language")
+                field("Additional Language"; "Additional Language")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Applicant Type";"Applicant Type")
+                field("Applicant Type"; "Applicant Type")
                 {
                     ApplicationArea = Basic;
                     Editable = true;
@@ -94,37 +94,37 @@ Page 51516253 "HR Job Applications Card"
                     Style = Strong;
                     StyleExpr = true;
                 }
-                field("Employee No";"Employee No")
+                field("Employee No"; "Employee No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Internal';
                     Editable = true;
                 }
-                field("ID Number";"ID Number")
+                field("ID Number"; "ID Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Citizenship;Citizenship)
+                field(Citizenship; Citizenship)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Country Details";"Citizenship Details")
+                field("Country Details"; "Citizenship Details")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Employee Requisition No";"Employee Requisition No")
+                field("Employee Requisition No"; "Employee Requisition No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Application Reff No.';
                     Importance = Promoted;
                 }
-                field("Job Applied For";"Job Applied For")
+                field("Job Applied For"; "Job Applied For")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Position Applied For';
@@ -132,18 +132,18 @@ Page 51516253 "HR Job Applications Card"
                     Enabled = true;
                     Importance = Promoted;
                 }
-                field(Expatriate;Expatriate)
+                field(Expatriate; Expatriate)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interview Invitation Sent";"Interview Invitation Sent")
+                field("Interview Invitation Sent"; "Interview Invitation Sent")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Qualification Status";"Qualification Status")
+                field("Qualification Status"; "Qualification Status")
                 {
                     ApplicationArea = Basic;
                 }
@@ -151,33 +151,33 @@ Page 51516253 "HR Job Applications Card"
             group(Personal)
             {
                 Caption = 'Personal';
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Marital Status";"Marital Status")
+                field("Marital Status"; "Marital Status")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Ethnic Origin";"Ethnic Origin")
+                field("Ethnic Origin"; "Ethnic Origin")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Disabled;Disabled)
+                field(Disabled; Disabled)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Health Assesment?";"Health Assesment?")
+                field("Health Assesment?"; "Health Assesment?")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Health Assesment Date";"Health Assesment Date")
+                field("Health Assesment Date"; "Health Assesment Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Date Of Birth";"Date Of Birth")
+                field("Date Of Birth"; "Date Of Birth")
                 {
                     ApplicationArea = Basic;
 
@@ -185,13 +185,13 @@ Page 51516253 "HR Job Applications Card"
                     begin
 
                         if "Date Of Birth" >= Today then begin
-                          Error('Invalid Entry');
+                            Error('Invalid Entry');
                         end;
-                        DAge:= Dates.DetermineAge("Date Of Birth",Today);
-                         Age:=DAge;
+                        DAge := Dates.DetermineAge("Date Of Birth", Today);
+                        Age := DAge;
                     end;
                 }
-                field(Age;Age)
+                field(Age; Age)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -201,66 +201,66 @@ Page 51516253 "HR Job Applications Card"
             group(Communication)
             {
                 Caption = 'Communication';
-                field("Home Phone Number";"Home Phone Number")
+                field("Home Phone Number"; "Home Phone Number")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Postal Address";"Postal Address")
+                field("Postal Address"; "Postal Address")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Postal Address2";"Postal Address2")
+                field("Postal Address2"; "Postal Address2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Postal Address 2';
                 }
-                field("Postal Address3";"Postal Address3")
+                field("Postal Address3"; "Postal Address3")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Postal Address 3';
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Residential Address";"Residential Address")
+                field("Residential Address"; "Residential Address")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Residential Address2";"Residential Address2")
+                field("Residential Address2"; "Residential Address2")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Residential Address3";"Residential Address3")
+                field("Residential Address3"; "Residential Address3")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Post Code2";"Post Code2")
+                field("Post Code2"; "Post Code2")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Post Code 2';
                 }
-                field("Cell Phone Number";"Cell Phone Number")
+                field("Cell Phone Number"; "Cell Phone Number")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Work Phone Number";"Work Phone Number")
+                field("Work Phone Number"; "Work Phone Number")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Ext.";"Ext.")
+                field("Ext."; "Ext.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Fax Number";"Fax Number")
+                field("Fax Number"; "Fax Number")
                 {
                     ApplicationArea = Basic;
                 }
@@ -268,14 +268,14 @@ Page 51516253 "HR Job Applications Card"
         }
         area(factboxes)
         {
-            part(Control1102755009;"HR Job Applications Factbox")
+            part(Control1102755009; "HR Job Applications Factbox")
             {
-                SubPageLink = "Application No"=field("Application No");
+                SubPageLink = "Application No" = field("Application No");
             }
-            systempart(Control1102755008;Outlook)
+            systempart(Control1102755008; Outlook)
             {
             }
-            systempart(Control3;Links)
+            systempart(Control3; Links)
             {
             }
         }
@@ -296,7 +296,7 @@ Page 51516253 "HR Job Applications Card"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Applicant Qualifications";
-                    RunPageLink = "Application No"=field("Application No");
+                    RunPageLink = "Application No" = field("Application No");
                 }
                 action("Page HR Training Needs Card")
                 {
@@ -313,8 +313,8 @@ Page 51516253 "HR Job Applications Card"
                     Image = ContactReference;
                     Promoted = true;
                     PromotedCategory = Category5;
-                    RunObject = Page "HR Applicant Referees";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    //    RunObject = Page "HR Applicant Referees";
+                    // RunPageLink = "Job Application No"=field("Application No");
                 }
                 action(Hobbies)
                 {
@@ -324,7 +324,7 @@ Page 51516253 "HR Job Applications Card"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Applicant Hobbies";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    RunPageLink = "Job Application No" = field("Application No");
                 }
                 action("Generate Offer Letter")
                 {
@@ -341,7 +341,7 @@ Page 51516253 "HR Job Applications Card"
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "HR Employee Attachments SF";
-                    RunPageLink = "Employee No"=field("Application No");
+                    RunPageLink = "Employee No" = field("Application No");
                     Visible = false;
                 }
             }
@@ -361,8 +361,8 @@ Page 51516253 "HR Job Applications Card"
                         TestField(Qualified);
 
 
-                        HRJobApplications.SetFilter(HRJobApplications."Application No","Application No");
-                        Report.Run(53940,false,false,HRJobApplications);
+                        HRJobApplications.SetFilter(HRJobApplications."Application No", "Application No");
+                        Report.Run(53940, false, false, HRJobApplications);
                     end;
                 }
                 action("&Upload to Employee Card")
@@ -376,11 +376,11 @@ Page 51516253 "HR Job Applications Card"
                     trigger OnAction()
                     begin
                         if "Employee No" = '' then begin
-                        //IF NOT CONFIRM('Are you sure you want to Upload Applicants information to the Employee Card',FALSE) THEN EXIT;
-                        HRJobApplications.SetFilter(HRJobApplications."Application No","Application No");
-                        Report.Run(55600,true,false,HRJobApplications);
+                            //IF NOT CONFIRM('Are you sure you want to Upload Applicants information to the Employee Card',FALSE) THEN EXIT;
+                            HRJobApplications.SetFilter(HRJobApplications."Application No", "Application No");
+                            Report.Run(55600, true, false, HRJobApplications);
                         end else begin
-                        Message('This applicants information already exists in the employee card');
+                            Message('This applicants information already exists in the employee card');
                         end;
                     end;
                 }
@@ -396,9 +396,9 @@ Page 51516253 "HR Job Applications Card"
                     trigger OnAction()
                     begin
                         HRJobApplications.Reset;
-                        HRJobApplications.SetRange(HRJobApplications."Application No","Application No");
+                        HRJobApplications.SetRange(HRJobApplications."Application No", "Application No");
                         if HRJobApplications.Find('-') then
-                        Report.Run(55523,true,true,HRJobApplications);
+                            Report.Run(55523, true, true, HRJobApplications);
                     end;
                 }
             }

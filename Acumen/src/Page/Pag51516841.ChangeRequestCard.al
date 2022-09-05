@@ -550,7 +550,7 @@ Page 51516841 "Change Request Card"
                             vend.Status := "Status.(New)";
                             if "Member class (New)" <> "member class (new)"::" " then
                                 vend."Member class" := "Member class (New)";
-                            vend.Picture := Picture;
+                            Vend.Piccture := Picture;
                             vend.Modify;
 
                             /*
@@ -684,7 +684,7 @@ Page 51516841 "Change Request Card"
                                 vend.Status := "Status.(New)";
                                 if "Member class (New)" <> "member class (new)"::" " then
                                     vend."Member class" := "Member class (New)";
-                                vend.Picture := Picture;
+                                Vend.Piccture := Picture;
                                 vend."Signature  2" := signatures2;
                                 vend.Modify;
                                 if "Charge Reactivation Fee" = true then begin

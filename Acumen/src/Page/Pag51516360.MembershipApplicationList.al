@@ -191,7 +191,7 @@ Page 51516360 "Membership Application List"
                                         Cust.Status := Cust.Status::Active;
                                         Cust."Employer Code" := "Employer Code";
                                         Cust."Date of Birth" := "Date of Birth";
-                                        Cust.Picture := Picture;
+                                        Cust.Piccture := Picture;
                                         Cust.Signature := Signature;
                                         Cust."Station/Department" := "Station/Department";
                                         Cust."E-Mail" := "E-Mail (Personal)";
@@ -270,7 +270,7 @@ Page 51516360 "Membership Application List"
                                         Cust."Customer Type" := Cust."customer type"::Member;
                                         Cust.Gender := Gender;
 
-                                        Cust.Picture := Picture;
+                                        Cust.Piccture := Picture;
                                         Cust.Signature := Signature;
 
                                         Cust."Monthly Contribution" := "Monthly Contribution";
@@ -418,7 +418,7 @@ Page 51516360 "Membership Application List"
                                     Accounts."Post Code" := "Postal Code";
                                     Accounts.County := City;
                                     Accounts."BOSA Account No" := Cust."No.";
-                                    Accounts.Picture := Picture;
+                                    Accounts.Piccture := Picture;
                                     Accounts.Signature := Signature;
                                     Accounts."Passport No." := "Passport No.";
                                     Accounts."Employer Code" := "Employer Code";

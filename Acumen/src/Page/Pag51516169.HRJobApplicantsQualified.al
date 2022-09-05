@@ -5,7 +5,7 @@ Page 51516169 "HR Job Applicants Qualified"
     CardPageID = "HR Applicants Qualified Card";
     PageType = List;
     SourceTable = "HR Job Applications";
-    SourceTableView = where("Qualification Status"=filter(Qualified));
+    SourceTableView = where("Qualification Status" = filter(Qualified));
     UsageCategory = Lists;
 
     layout
@@ -14,35 +14,35 @@ Page 51516169 "HR Job Applicants Qualified"
         {
             repeater(Group)
             {
-                field("Application No";"Application No")
+                field("Application No"; "Application No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("First Name";"First Name")
+                field("First Name"; "First Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Middle Name";"Middle Name")
+                field("Middle Name"; "Middle Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Name";"Last Name")
+                field("Last Name"; "Last Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Applied for Description";"Job Applied for Description")
+                field("Job Applied for Description"; "Job Applied for Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Regret Notice Sent";"Regret Notice Sent")
+                field("Regret Notice Sent"; "Regret Notice Sent")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interview Type";"Interview Type")
+                field("Interview Type"; "Interview Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Applied For";"Job Applied For")
+                field("Job Applied For"; "Job Applied For")
                 {
                     ApplicationArea = Basic;
                 }
@@ -67,34 +67,36 @@ Page 51516169 "HR Job Applicants Qualified"
                     PromotedIsBig = true;
 
                     trigger OnAction()
+                    var
+                        Recipient: List of [Text];
                     begin
 
                         //IF CONFIRM('Send this Requisition for Approval?',TRUE)=FALSE THEN EXIT;
-                        if not Confirm(Text002,false) then exit;
+                        if not Confirm(Text002, false) then exit;
 
-                        TestField(Qualified,Qualified::"1");
-                        HRJobApplications.SetRange(HRJobApplications."Application No","Application No");
+                        TestField(Qualified, true);
+                        HRJobApplications.SetRange(HRJobApplications."Application No", "Application No");
                         CurrPage.SetSelectionFilter(HRJobApplications);
                         if HRJobApplications.Find('-') then
-                        //GET E-MAIL PARAMETERS FOR JOB APPLICATIONS
-                        HREmailParameters.Reset;
-                        HREmailParameters.SetRange(HREmailParameters."Associate With",HREmailParameters."associate with"::"Interview Invitations");
-                        if HREmailParameters.Find('-') then
-                        begin
-                             repeat
-                             HRJobApplications.TestField(HRJobApplications."E-Mail");
-                             SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",HRJobApplications."E-Mail",
-                             HREmailParameters.Subject,'Dear'+' '+HRJobApplications."First Name"+' '+HREmailParameters.Body+' '+HRJobApplications."Job Applied for Description"+' '+'applied on'+Format("Date Applied")+' '+HREmailParameters."Body 2"+//,TRUE);
-                             Format(HRJobApplications."Date of Interview")+' '+'Starting '+' '+Format(HRJobApplications."From Time")+' '+'to'+Format(HRJobApplications."To Time")+' '+'at'+HRJobApplications.Venue+'.',true);
-                             //HREmailParameters.Body,TRUE);
-                             SMTP.Send();
-                             until HRJobApplications.Next=0;
+                            //GET E-MAIL PARAMETERS FOR JOB APPLICATIONS
+                            HREmailParameters.Reset;
+                        HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Interview Invitations");
+                        if HREmailParameters.Find('-') then begin
+                            repeat
+                                HRJobApplications.TestField(HRJobApplications."E-Mail");
+                                Recipient.Add(HRJobApplications."E-Mail");
+                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", Recipient,
+                                HREmailParameters.Subject, 'Dear' + ' ' + HRJobApplications."First Name" + ' ' + HREmailParameters.Body + ' ' + HRJobApplications."Job Applied for Description" + ' ' + 'applied on' + Format("Date Applied") + ' ' + HREmailParameters."Body 2" +//,TRUE);
+                                Format(HRJobApplications."Date of Interview") + ' ' + 'Starting ' + ' ' + Format(HRJobApplications."From Time") + ' ' + 'to' + Format(HRJobApplications."To Time") + ' ' + 'at' + HRJobApplications.Venue + '.', true);
+                                //HREmailParameters.Body,TRUE);
+                                SMTP.Send();
+                            until HRJobApplications.Next = 0;
 
-                        if Confirm('Do you want to send this invitation alert?',false) = true then begin
-                        "Interview Invitation Sent":=true;
-                        Modify;
-                        Message('All Qualified shortlisted candidates have been invited for the interview ')
-                        end;
+                            if Confirm('Do you want to send this invitation alert?', false) = true then begin
+                                "Interview Invitation Sent" := true;
+                                Modify;
+                                Message('All Qualified shortlisted candidates have been invited for the interview ')
+                            end;
                         end;
                     end;
                 }
@@ -107,7 +109,7 @@ Page 51516169 "HR Job Applicants Qualified"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Page "HR Job Applications Card";
-                    RunPageLink = "Application No"=field("Application No");
+                    RunPageLink = "Application No" = field("Application No");
                 }
                 action(Qualifications)
                 {
@@ -118,7 +120,7 @@ Page 51516169 "HR Job Applicants Qualified"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Page "HR Applicant Qualifications";
-                    RunPageLink = "Application No"=field("Application No");
+                    RunPageLink = "Application No" = field("Application No");
                 }
                 action(Referees)
                 {
@@ -128,8 +130,8 @@ Page 51516169 "HR Job Applicants Qualified"
                     Promoted = false;
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
-                    RunObject = Page "HR Applicant Referees";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    // RunObject = Page "HR Applicant Referees";
+                    // RunPageLink = "Job Application No" = field("Application No");
                 }
                 action(Hobbies)
                 {
@@ -140,7 +142,7 @@ Page 51516169 "HR Job Applicants Qualified"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Page "HR Applicant Hobbies";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    RunPageLink = "Job Application No" = field("Application No");
                 }
             }
             group(Print)
@@ -157,9 +159,9 @@ Page 51516169 "HR Job Applicants Qualified"
                     trigger OnAction()
                     begin
                         HRJobApplications.Reset;
-                        HRJobApplications.SetRange(HRJobApplications."Application No","Application No");
+                        HRJobApplications.SetRange(HRJobApplications."Application No", "Application No");
                         if HRJobApplications.Find('-') then
-                        Report.Run(53925,true,true,HRJobApplications);
+                            Report.Run(53925, true, true, HRJobApplications);
                     end;
                 }
             }

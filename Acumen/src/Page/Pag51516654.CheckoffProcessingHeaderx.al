@@ -101,7 +101,7 @@ Page 51516654 "Checkoff Processing Headerx"
             part("Checkoff Lines-Distributed"; "Checkoff Processing Lines-D")
             {
                 Caption = 'Checkoff Lines-Distributed';
-                SubPageLink = "Staff Not Found" = field(No);
+              //  SubPageLink = "Staff Not Found" = field(false);
             }
         }
     }
@@ -145,7 +145,7 @@ Page 51516654 "Checkoff Processing Headerx"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedOnly = true;
-                RunObject = XMLport UnknownXMLport51516003;
+                RunObject = XMLport "Import Checkoff Distributed";
             }
             group(ActionGroup1102755021)
             {
@@ -421,7 +421,7 @@ Page 51516654 "Checkoff Processing Headerx"
         DOCUMENT_NO: Code[40];
         GenJournalLine: Record "Gen. Journal Line";
         ActionEnabled: Boolean;
-        XMLCheckOff: XmlPort UnknownXmlPort51516003;
+        XMLCheckOff: XmlPort "Import Checkoff Distributed";
         Window: Dialog;
         TotalCount: Integer;
         Counter: Integer;

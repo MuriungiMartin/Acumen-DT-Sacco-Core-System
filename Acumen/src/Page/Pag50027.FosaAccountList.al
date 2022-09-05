@@ -300,7 +300,7 @@ Page 50027 "Fosa Account List"
                             DefaultDimMultiple: Page "Default Dimensions-Multiple";
                         begin
                             CurrPage.SetSelectionFilter(Vend);
-                            DefaultDimMultiple.SetMultiVendor(Vend);
+                            // DefaultDimMultiple.SetMultiVendor(Vend);
                             DefaultDimMultiple.RunModal;
                         end;
                     }
@@ -669,7 +669,7 @@ Page 50027 "Fosa Account List"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit WorkflowIntegration;
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
                         if ApprovalsMgmt.CheckVendorApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnSendVendorForApproval(Rec);
@@ -685,7 +685,7 @@ Page 50027 "Fosa Account List"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit WorkflowIntegration;
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
                         ApprovalsMgmt.OnCancelVendorApprovalRequest(Rec);
                         WorkflowWebhookManagement.FindAndCancel(RecordId);
@@ -936,7 +936,7 @@ Page 50027 "Fosa Account List"
         WorkflowWebhookManagement.GetCanRequestAndCanCancel(RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
 
         // Contextual Power BI FactBox: send data to filter the report in the FactBox
-        CurrPage."Power BI Report FactBox".Page.SetCurrentListSelection("No.", false);
+        CurrPage."Power BI Report FactBox".Page.SetCurrentListSelection("No.", false, false);
     end;
 
     trigger OnInit()
@@ -957,7 +957,7 @@ Page 50027 "Fosa Account List"
     var
         PowerBIUserConfiguration: Record "Power BI User Configuration";
         SetPowerBIUserConfig: Codeunit "Set Power BI User Config";
-        ApprovalsMgmt: Codeunit WorkflowIntegration;
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         ReadSoftOCRMasterDataSync: Codeunit "ReadSoft OCR Master Data Sync";
         WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
         [InDataSet]

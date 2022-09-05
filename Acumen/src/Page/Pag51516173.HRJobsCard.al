@@ -183,8 +183,8 @@ Page 51516173 "HR Jobs Card"
                         if Status <> Status::New then
                             Error('Stats must be New.');
 
-                        if ApprovalsMgmt.CheckNewJobApprovalWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnSendNewJobForApproval(Rec);
+                        // if ApprovalsMgmt.CheckNewJobApprovalWorkflowEnabled(Rec) then
+                        //     ApprovalsMgmt.OnSendNewJobForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -203,8 +203,8 @@ Page 51516173 "HR Jobs Card"
                         if Confirm('Are you sure you want to cancel the approval request ?', true) = false then
                             exit;
 
-                        if ApprovalsMgmt.CheckNewJobApprovalWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnCancelNewJobApprovalRequest(Rec);
+                        // if ApprovalsMgmt.CheckNewJobApprovalWorkflowEnabled(Rec) then
+                        //     ApprovalsMgmt.OnCancelNewJobApprovalRequest(Rec);
                     end;
                 }
             }
@@ -230,7 +230,7 @@ Page 51516173 "HR Jobs Card"
 
     var
         HREmployees: Record "HR Employees";
-        ApprovalsMgmt: Codeunit WorkflowIntegration;
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
         ShowWorkflowStatus: Boolean;

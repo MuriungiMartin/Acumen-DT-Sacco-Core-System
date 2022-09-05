@@ -457,7 +457,7 @@ Page 51516059 "Payment Request Header"
                 action("Print preview")
                 {
                     ApplicationArea = Basic;
-                    RunObject = Report UnknownReport55884;
+                    //   RunObject = Report UnknownReport55884;
                     Visible = false;
                 }
                 action(Action1102755028)
@@ -537,7 +537,7 @@ Page 51516059 "Payment Request Header"
                         PayLine.SetRange(PayLine."Received From", "No.");
                         if PayLine.Find('-') then begin
                             repeat
-                                PayLine."Cashier Bank Account" := false;
+                                // PayLine."Cashier Bank Account" := false;
                                 PayLine.Modify;
                             until PayLine.Next = 0;
                         end;
@@ -597,7 +597,7 @@ Page 51516059 "Payment Request Header"
                     ApplicationArea = Basic;
                     Caption = 'Co&mments';
                     Image = ViewComments;
-                    RunObject = Page UnknownPage51516697;
+                    // RunObject = Page UnknownPage51516697;
                     Visible = false;
                 }
                 separator(Action1102756005)
@@ -744,7 +744,7 @@ Page 51516059 "Payment Request Header"
         CheckBudgetAvail: Codeunit "Budgetary Control";
         Commitments: Record Committment;
         UserMgt: Codeunit "User Setup Management BRr";
-        JournlPosted: Codeunit UnknownCodeunit55486;
+        //JournlPosted: Codeunit UnknownCodeunit55486;
         Doc_Type: Option LPO,Requisition,Imprest,"Payment Voucher";
         DocumentType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,Receipt,"Staff Claim","Staff Advance",AdvanceSurrender,Load,Discharge,"Express Pv";
         DocPrint: Codeunit "Document-Print";
@@ -819,7 +819,7 @@ Page 51516059 "Payment Request Header"
             end;
 
             Post := false;
-            Post := JournlPosted.PostedSuccessfully();
+            //Post := JournlPosted.PostedSuccessfully();
             if Post then begin
                 Posted := true;
                 Status := Payments.Status::Posted;
@@ -904,12 +904,12 @@ Page 51516059 "Payment Request Header"
         GenJnlLine."Bal. Account No." := '';
 
         GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
-        GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
-        GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
-        GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
-        GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-        GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
-        GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
+        // GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
+        // GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
+        // GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
+        // GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
+        // GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
+        // GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
 
         GenJnlLine.Description := CopyStr("Payment Description", 1, 50);//COPYSTR('Pay To:' + Payments.Payee,1,50);
         GenJnlLine.Validate(GenJnlLine.Description);
@@ -998,7 +998,7 @@ Page 51516059 "Payment Request Header"
         Exists := false;
         PayLine.Reset;
         PayLine.SetRange(PayLine."Received From", "No.");
-        PayLine.SetRange(PayLine."Cashier Bank Account", false);
+        //  PayLine.SetRange(PayLine."Cashier Bank Account", false);
         //PayLine.SETRANGE(PayLine."Budgetary Control A/C",TRUE);
         if PayLine.Find('-') then
             Exists := true;

@@ -13,9 +13,9 @@ Page 51516958 "M_Signatory Signature-Uploaded"
     {
         area(content)
         {
-            field(Signature;Signature)
+            field(Signature; Signature)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 Editable = false;
                 Enabled = false;
                 Importance = Promoted;
@@ -82,11 +82,11 @@ Page 51516958 "M_Signatory Signature-Uploaded"
                     NameValueBuffer.DeleteAll;
                     ExportPath := TemporaryPath + "Account No" + Format(Signature.MediaId);
                     Signature.ExportFile(ExportPath);
-                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer,TemporaryPath);
-                    TempNameValueBuffer.SetFilter(Name,StrSubstNo('%1*',ExportPath));
+                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer, TemporaryPath);
+                    TempNameValueBuffer.SetFilter(Name, StrSubstNo('%1*', ExportPath));
                     TempNameValueBuffer.FindFirst;
-                    ToFile := StrSubstNo('%1 %2.jpg',"Account No",ConvertStr("Account No",'"/\','___'));
-                    Download(TempNameValueBuffer.Name,DownloadImageTxt,'','',ToFile);
+                    ToFile := StrSubstNo('%1 %2.jpg', "Account No", ConvertStr("Account No", '"/\', '___'));
+                    Download(TempNameValueBuffer.Name, DownloadImageTxt, '', '', ToFile);
                     if FileManagement.DeleteServerFile(TempNameValueBuffer.Name) then;
                 end;
             }
@@ -128,7 +128,7 @@ Page 51516958 "M_Signatory Signature-Uploaded"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         CameraOptions := CameraOptions.CameraOptions;
         CameraOptions.Quality := 50;
@@ -146,18 +146,18 @@ Page 51516958 "M_Signatory Signature-Uploaded"
         //TESTFIELD(Description);
 
         if Signature.Count > 0 then
-          if not Confirm(OverrideImageQst) then
-            Error('');
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(Signature);
-        Signature.ImportFile(FileName,ClientFileName);
+        Signature.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
@@ -183,13 +183,13 @@ Page 51516958 "M_Signatory Signature-Uploaded"
         TestField("Account No");
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(Signature);
         Modify(true);
     end;
 
-    trigger CameraProvider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     begin
     end;
 }

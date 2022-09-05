@@ -40,7 +40,7 @@ Codeunit 53908 "HR Leave Jnl.-Post Linee"
         InsCoverageLedgEntry2: Record "Loan Product Charges";
         InsuranceReg: Record "Payroll Employee Transact New";
         InsuranceJnlCheckLine: Codeunit "HR Leave Jnl.-Check Linee";
-        MakeInsCoverageLedgEntry: Codeunit "HR Make Leave Ledg. Entryy";
+        //  MakeInsCoverageLedgEntry: Codeunit "HR Make Leave Ledg. Entryy";
         DimMgt: Codeunit DimensionManagement;
         NextEntryNo: Integer;
         TempJnlLineDim: Record "HR Leave Planner Header";

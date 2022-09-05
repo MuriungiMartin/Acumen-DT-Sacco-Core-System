@@ -183,7 +183,7 @@ Page 51516279 "HR Leave Applications History"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55587;
+                //nReport55587;
             }
             action("Leave Reimbursements")
             {
@@ -192,7 +192,7 @@ Page 51516279 "HR Leave Applications History"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55601;
+                //nReport55601;
             }
             action("Leave Applications List")
             {
@@ -201,7 +201,7 @@ Page 51516279 "HR Leave Applications History"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55604;
+                //nReport55604;
             }
             action("Leave Statement")
             {
@@ -210,7 +210,7 @@ Page 51516279 "HR Leave Applications History"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55599;
+                //nReport55599;
             }
             action("&Post Leave Application")
             {
@@ -241,11 +241,11 @@ Page 51516279 "HR Leave Applications History"
                     if HREmailParameters.Find('-') then begin
 
 
-                        HREmp.TestField(HREmp."Company E-Mail");
-                        SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
-                        HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
-                        HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
-                        SMTP.Send();
+                        // HREmp.TestField(HREmp."Company E-Mail");
+                        // SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+                        // HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+                        // HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
+                        // SMTP.Send();
 
 
                         Message('Leave applicant has been notified successfully');
@@ -465,23 +465,23 @@ Page 51516279 "HR Leave Applications History"
 
     procedure DetermineLeaveReturnDate(var fBeginDate: Date; var fDays: Decimal) fReturnDate: Date
     begin
-        varDaysApplied := fDays;
-        fReturnDate := fBeginDate;
-        repeat
-            if DetermineIfIncludesNonWorking("Leave Type") = false then begin
-                fReturnDate := CalcDate('1D', fReturnDate);
-                if DetermineIfIsNonWorking(fReturnDate) then
-                    varDaysApplied := varDaysApplied + 1
-                else
-                    varDaysApplied := varDaysApplied;
-                varDaysApplied := varDaysApplied - 1
-            end
-            else begin
-                fReturnDate := CalcDate('1D', fReturnDate);
-                varDaysApplied := varDaysApplied - 1;
-            end;
-        until varDaysApplied = 0;
-        exit(fReturnDate);
+        // varDaysApplied := fDays;
+        // fReturnDate := fBeginDate;
+        // repeat
+        //     if DetermineIfIncludesNonWorking("Leave Type") = false then begin
+        //         fReturnDate := CalcDate('1D', fReturnDate);
+        //         if DetermineIfIsNonWorking(fReturnDate,lvty) then
+        //             varDaysApplied := varDaysApplied + 1
+        //         else
+        //             varDaysApplied := varDaysApplied;
+        //         varDaysApplied := varDaysApplied - 1
+        //     end
+        //     else begin
+        //         fReturnDate := CalcDate('1D', fReturnDate);
+        //         varDaysApplied := varDaysApplied - 1;
+        //     end;
+        // until varDaysApplied = 0;
+        // exit(fReturnDate);
     end;
 
 
@@ -524,18 +524,18 @@ Page 51516279 "HR Leave Applications History"
 
     procedure DeterminethisLeaveEndDate(var fDate: Date) fEndDate: Date
     begin
-        ReturnDateLoop := true;
-        fEndDate := fDate;
-        if fEndDate <> 0D then begin
-            fEndDate := CalcDate('-1D', fEndDate);
-            while (ReturnDateLoop) do begin
-                if DetermineIfIsNonWorking(fEndDate) then
-                    fEndDate := CalcDate('-1D', fEndDate)
-                else
-                    ReturnDateLoop := false;
-            end
-        end;
-        exit(fEndDate);
+        // ReturnDateLoop := true;
+        // fEndDate := fDate;
+        // if fEndDate <> 0D then begin
+        //     fEndDate := CalcDate('-1D', fEndDate);
+        //     while (ReturnDateLoop) do begin
+        //         if DetermineIfIsNonWorking(fEndDate) then
+        //             fEndDate := CalcDate('-1D', fEndDate)
+        //         else
+        //             ReturnDateLoop := false;
+        //     end
+        // end;
+        // exit(fEndDate);
     end;
 
 
@@ -590,7 +590,7 @@ Page 51516279 "HR Leave Applications History"
             LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
             LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
             if LeaveGjline.Find('-') then begin
-                Codeunit.Run(Codeunit::Codeunit55560, LeaveGjline);
+                Codeunit.Run(Codeunit::"HR Leave Jnl.-Post", LeaveGjline);
             end;
             Status := Status::Posted;
             Modify;
@@ -616,11 +616,11 @@ Page 51516279 "HR Leave Applications History"
         if HREmailParameters.Find('-') then begin
 
 
-            HREmp.TestField(HREmp."Company E-Mail");
-            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
-            HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
-            HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
-            SMTP.Send();
+            // HREmp.TestField(HREmp."Company E-Mail");
+            // SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+            // HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+            // HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
+            // SMTP.Send();
 
 
             Message('Leave applicant has been notified successfully');

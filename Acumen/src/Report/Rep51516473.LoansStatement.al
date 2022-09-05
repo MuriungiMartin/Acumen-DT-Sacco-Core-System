@@ -13,10 +13,10 @@ Report 51516473 "Loans Statement"
             column(ReportForNavId_1000000000; 1000000000)
             {
             }
-            column(No; "Members Register"."No.")
+            column(No; Customer."No.")
             {
             }
-            column(Name; "Members Register".Name)
+            column(Name; Customer.Name)
             {
             }
             dataitem("Loans Register"; "Loans Register")
@@ -36,7 +36,7 @@ Report 51516473 "Loans Statement"
                 }
                 dataitem(CustL2; "Cust. Ledger Entry")
                 {
-                    DataItemLink = "Member No." = field("Client Code"), "Posting Date" = field("Date filter"), "Loan No" = field("Loan  No.");
+                    //DataItemLink "Customer No." = field("Client Code"), "Posting Date" = field("Date filter"), "Loan No" = field("Loan  No.");
                     column(ReportForNavId_1000000012; 1000000012)
                     {
                     }

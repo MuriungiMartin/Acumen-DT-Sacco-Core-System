@@ -1,8 +1,8 @@
 #pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0424, AW0006 // ForNAV settings
 Table 51516381 "Loan Products Setup"
 {
-    //nownPage51516410;
-    //nownPage51516410;
+    DrillDownPageID = "Loan Products Setup List";
+    LookupPageID = "Loan Products Setup List";
 
     fields
     {
@@ -253,8 +253,7 @@ Table 51516381 "Loan Products Setup"
         }
         field(82; "Recovery Mode"; Option)
         {
-            OptionCaption = ' ,Checkoff,Standing Order,Salary,Pension,Recover From FOSA,Cash';
-            OptionMembers = " ",Checkoff,"Standing Order",Salary,Pension,"Recover From FOSA",Cash;
+            OptionMembers = Checkoff,"Standing Order",Salary,Dividend;
         }
         field(83; "Deposits Multiplier"; Decimal)
         {
@@ -301,7 +300,7 @@ Table 51516381 "Loan Products Setup"
                 TestNoEntriesExist(FieldCaption("Receivable Interest Account"), "Receivable Interest Account")
             end;
         }
-        field(100; "Special Code"; Code[20])
+        field(100; "Special Code Principle"; Code[20])
         {
         }
         field(101; "Interest In Arrears Account"; Code[20])
@@ -355,16 +354,16 @@ Table 51516381 "Loan Products Setup"
         field(114; "Allowable Loan Offset(%)"; Decimal)
         {
         }
-        field(115; "Accrue Total Insurance&Interes"; Boolean)
+        field(115; "Accrue Total Insurance"; Boolean)
         {
         }
         field(116; "Minimum Deposit For Loan Appl"; Decimal)
         {
         }
-        field(117; "Graduated Interest"; boolean)
+        field(117; "Graduated Interest"; Boolean)
         {
         }
-        field(118; "Min Installments Period"; integer)
+        field(118; "Min Installments Period"; Integer)
         {
         }
         field(119; "Accrue Loan Interest"; Boolean)
@@ -375,27 +374,34 @@ Table 51516381 "Loan Products Setup"
         }
         field(121; "Is Disabled"; Boolean)
         {
+            DataClassification = ToBeClassified;
         }
         field(122; "Salary Appraisal Percentage"; Decimal)
         {
+            DataClassification = ToBeClassified;
         }
         field(123; "Special Code Balance"; Code[20])
         {
+            DataClassification = ToBeClassified;
         }
-        field(124; "Special Code Interestl"; Code[20])
+        field(124; "Special Code Interest"; Code[20])
         {
+            DataClassification = ToBeClassified;
         }
-        field(125; "Type Of Loan"; option)
+        field(125; "Type Of Loan"; Option)
         {
-            optionmembers = ,"Short Term","Long Term";
+            DataClassification = ToBeClassified;
+            OptionCaption = ',Short Term,Long Term';
+            OptionMembers = ,"Short Term","Long Term";
         }
-        field(126; "Charge Interest Upfront"; boolean)
+        field(126; "Charge Interest Upfront"; Boolean)
         {
+            DataClassification = ToBeClassified;
         }
-        field(127; "Appraise Collateral."; boolean)
+        field(127; "Appraise Collateral."; Boolean)
         {
+            DataClassification = ToBeClassified;
         }
-
     }
 
     keys
@@ -421,7 +427,6 @@ Table 51516381 "Loan Products Setup"
         TestNoEntriesExist(FieldCaption("Loan Account"), "Loan Account");
         TestNoEntriesExist(FieldCaption("Loan Interest Account"), "Loan Interest Account");
         TestNoEntriesExist(FieldCaption("Receivable Interest Account"), "Receivable Interest Account");
-
     end;
 
     trigger OnModify()
@@ -430,7 +435,6 @@ Table 51516381 "Loan Products Setup"
         TestNoEntriesExist(FieldCaption("Loan Account"), "Loan Account");
         TestNoEntriesExist(FieldCaption("Loan Interest Account"), "Loan Interest Account");
         TestNoEntriesExist(FieldCaption("Receivable Interest Account"), "Receivable Interest Account");
-
     end;
 
     trigger OnRename()
@@ -438,7 +442,6 @@ Table 51516381 "Loan Products Setup"
         TestNoEntriesExist(FieldCaption("Loan Account"), "Loan Account");
         TestNoEntriesExist(FieldCaption("Loan Interest Account"), "Loan Interest Account");
         TestNoEntriesExist(FieldCaption("Receivable Interest Account"), "Receivable Interest Account");
-
     end;
 
     var

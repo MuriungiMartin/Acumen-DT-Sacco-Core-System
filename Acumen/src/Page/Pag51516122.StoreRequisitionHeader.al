@@ -320,8 +320,8 @@ Page 51516122 "Store Requisition Header"
                         //Release the Imprest for Approval
                         //IF ApprovalMgt.SendSRequestApprovalRequest(Rec) THEN;
 
-                        if ApprovalsMgmt.CheckSReqApplicationApprovalsWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnSendSReqApplicationForApproval(Rec);
+                        // if ApprovalsMgmt.CheckSReqApplicationApprovalsWorkflowEnabled(Rec) then
+                        //     ApprovalsMgmt.OnSendSReqApplicationForApproval(Rec);
                     end;
                 }
                 action("Cancel Approval Re&quest")
@@ -341,7 +341,7 @@ Page 51516122 "Store Requisition Header"
                         MODIFY;
                         */
 
-                        ApprovalsMgmt.OnCancelSReqApplicationApprovalRequest(Rec);
+                        //  ApprovalsMgmt.OnCancelSReqApplicationApprovalRequest(Rec);
 
                     end;
                 }
@@ -602,22 +602,22 @@ Page 51516122 "Store Requisition Header"
             SignFactor := CreateReservEntry.SignFactor(ReservationEntry);
             repeat
                 // Only Item where no SerialNo or LotNo is required
-                Item.Get(PurchLineToCheck."No.");
-                if Item."Item Tracking Code" <> '' then begin
-                    Inbound := (PurchLineToCheck.Quantity * SignFactor) > 0;
-                    ItemTrackingCode.Code := Item."Item Tracking Code";
-                    ItemTrackingManagement.GetItemTrackingSettings(ItemTrackingCode,
-                      GenJnline."entry type"::"Negative Adjmt.",
-                      Inbound,
-                      SNRequired,
-                      LotRequired,
-                      SNInfoRequired,
-                      LotInfoReguired);
-                    CheckPurchLine := (SNRequired = false) and (LotRequired = false);
-                    if CheckPurchLine then
-                        CheckPurchLine := GetTrackingQuantities(PurchLineToCheck, 0, TrackingQtyToHandle, TrackingQtyHandled);
-                end else
-                    CheckPurchLine := false;
+                // Item.Get(PurchLineToCheck."No.");
+                // if Item."Item Tracking Code" <> '' then begin
+                //     Inbound := (PurchLineToCheck.Quantity * SignFactor) > 0;
+                //     ItemTrackingCode.Code := Item."Item Tracking Code";
+                //     // ItemTrackingManagement.GetItemTrackingSettings(ItemTrackingCode,
+                //     GenJnline."entry type"::"Negative Adjmt.",
+                //       Inbound,
+                //       SNRequired,
+                //       LotRequired,
+                //       SNInfoRequired,
+                //       LotInfoReguired);
+                //     CheckPurchLine := (SNRequired = false) and (LotRequired = false);
+                //     if CheckPurchLine then
+                //         CheckPurchLine := GetTrackingQuantities(PurchLineToCheck, 0, TrackingQtyToHandle, TrackingQtyHandled);
+                // end else
+                //     CheckPurchLine := false;
 
                 TrackingQtyToHandle := 0;
                 TrackingQtyHandled := 0;

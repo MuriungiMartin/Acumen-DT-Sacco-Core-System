@@ -18,7 +18,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
             {
                 Editable = false;
                 Visible = TopBannerVisible and (Step <> Step::Done);
-                field(MediaResourcesStandard;MediaResourcesStandard."Media Reference")
+                field(MediaResourcesStandard; MediaResourcesStandard."Media Reference")
                 {
                     ApplicationArea = FixedAssets;
                     Editable = false;
@@ -29,7 +29,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
             {
                 Editable = false;
                 Visible = TopBannerVisible and (Step = Step::Done);
-                field(MediaResourcesDone;MediaResourcesDone."Media Reference")
+                field(MediaResourcesDone; MediaResourcesDone."Media Reference")
                 {
                     ApplicationArea = FixedAssets;
                     Editable = false;
@@ -66,7 +66,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                 group("Para2.1")
                 {
                     Caption = 'Provide information about the fixed asset.';
-                    field(AcquisitionCost;Amount)
+                    field(AcquisitionCost; Amount)
                     {
                         ApplicationArea = FixedAssets;
                         Caption = 'Disposal Cost Incl. VAT';
@@ -76,7 +76,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                             ValidateCurrentStep(Step);
                         end;
                     }
-                    field(AcquisitionDate;"Posting Date")
+                    field(AcquisitionDate; "Posting Date")
                     {
                         ApplicationArea = FixedAssets;
                         Caption = 'Disposal  Date';
@@ -95,7 +95,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                 group("Para3.1")
                 {
                     Caption = 'Which ledger do you want to post the acquisition to?';
-                    field(TypeOfAcquisitions;AcquisitionOptions)
+                    field(TypeOfAcquisitions; AcquisitionOptions)
                     {
                         ApplicationArea = FixedAssets;
                         Caption = 'Post to';
@@ -104,12 +104,12 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                         trigger OnValidate()
                         begin
                             case AcquisitionOptions of
-                              Acquisitionoptions::"G/L Account":
-                                Validate("Bal. Account Type","bal. account type"::"G/L Account");
-                              Acquisitionoptions::Vendor:
-                                "Bal. Account Type" := "bal. account type"::Vendor;
-                              Acquisitionoptions::"Bank Account":
-                                Validate("Bal. Account Type","bal. account type"::"Bank Account");
+                                Acquisitionoptions::"G/L Account":
+                                    Validate("Bal. Account Type", "bal. account type"::"G/L Account");
+                                Acquisitionoptions::Vendor:
+                                    "Bal. Account Type" := "bal. account type"::Vendor;
+                                Acquisitionoptions::"Bank Account":
+                                    Validate("Bal. Account Type", "bal. account type"::"Bank Account");
                             end;
                             ValidateCurrentStep(Step);
                         end;
@@ -117,7 +117,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                     group(Control34)
                     {
                         Visible = AcquisitionOptions = AcquisitionOptions::"G/L Account";
-                        field(BalancingAccountNo;"Bal. Account No.")
+                        field(BalancingAccountNo; "Bal. Account No.")
                         {
                             ApplicationArea = FixedAssets;
                             Caption = 'Balancing Account No.';
@@ -131,12 +131,12 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                     group(Control27)
                     {
                         Visible = AcquisitionOptions = AcquisitionOptions::Vendor;
-                        field(VendorNo;"Bal. Account No.")
+                        field(VendorNo; "Bal. Account No.")
                         {
                             ApplicationArea = FixedAssets;
                             Caption = 'Vendor';
                         }
-                        field(ExternalDocNo;"External Document No.")
+                        field(ExternalDocNo; "External Document No.")
                         {
                             ApplicationArea = FixedAssets;
                             Caption = 'External Document No.';
@@ -150,7 +150,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                     group(Control30)
                     {
                         Visible = AcquisitionOptions = AcquisitionOptions::"Bank Account";
-                        field("Bank Account";"Bal. Account No.")
+                        field("Bank Account"; "Bal. Account No.")
                         {
                             ApplicationArea = FixedAssets;
                             Caption = 'Bank Account';
@@ -176,7 +176,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                 {
                     Caption = '';
                     InstructionalText = 'Choose Finish to automatically post the fixed asset G/L journal lines.';
-                    field(OpenFAGLJournal;OpenFAGLJournal)
+                    field(OpenFAGLJournal; OpenFAGLJournal)
                     {
                         ApplicationArea = FixedAssets;
                         Caption = 'Upon Finish, open the FA G/L journal.';
@@ -246,17 +246,17 @@ Page 51516664 "Fixed Asset Disposal Wizard"
                     GenJnlLine: Record "Gen. Journal Line";
                     PageGenJnlLine: Record "Gen. Journal Line";
                 begin
-                    if Step <> Step::"Already In Journal" then
-                      CreateFADisposalLines(GenJnlLine);
+                    // if Step <> Step::"Already In Journal" then
+                    //   CreateFADisposalLines(GenJnlLine);
 
                     if OpenFAGLJournal then begin
-                      PageGenJnlLine.Validate("Journal Template Name","Journal Template Name");
-                      PageGenJnlLine.Validate("Journal Batch Name","Journal Batch Name");
-                      PageGenJnlLine.SetRange("Journal Template Name","Journal Template Name");
-                      PageGenJnlLine.SetRange("Journal Batch Name","Journal Batch Name");
-                      Page.Run(Page::"Fixed Asset G/L Journal",PageGenJnlLine);
+                        PageGenJnlLine.Validate("Journal Template Name", "Journal Template Name");
+                        PageGenJnlLine.Validate("Journal Batch Name", "Journal Batch Name");
+                        PageGenJnlLine.SetRange("Journal Template Name", "Journal Template Name");
+                        PageGenJnlLine.SetRange("Journal Batch Name", "Journal Batch Name");
+                        Page.Run(Page::"Fixed Asset G/L Journal", PageGenJnlLine);
                     end else
-                      Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch",GenJnlLine);
+                        Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJnlLine);
 
                     CurrPage.Close;
                 end;
@@ -283,15 +283,15 @@ Page 51516664 "Fixed Asset Disposal Wizard"
     begin
         // We could check if values like FA Posting code, descirption are in the temp
         if not Get then begin
-          Init;
-          "Journal Template Name" := FixedAssetAcquisitionWizard.SelectFATemplate;
-          "Journal Batch Name" := FixedAssetAcquisitionWizard.GetAutogenJournalBatch;
-          "Document Type" := "document type"::Invoice;
-          "Account Type" := "account type"::"Fixed Asset";
-          "FA Posting Type" := "fa posting type"::"Acquisition Cost";
-          "Posting Date" := WorkDate;
-          SetAccountNoFromFilter;
-          Insert;
+            Init;
+            "Journal Template Name" := FixedAssetAcquisitionWizard.SelectFATemplate;
+            "Journal Batch Name" := FixedAssetAcquisitionWizard.GetAutogenJournalBatch;
+            "Document Type" := "document type"::Invoice;
+            "Account Type" := "account type"::"Fixed Asset";
+            "FA Posting Type" := "fa posting type"::"Acquisition Cost";
+            "Posting Date" := WorkDate;
+            SetAccountNoFromFilter;
+            Insert;
         end;
 
         EnableOpenFAGLJournal := JournalBatchIsEmpty;
@@ -307,7 +307,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
         MediaResourcesDone: Record "Media Resources";
         TempBalancingGenJournalLine: Record "Gen. Journal Line" temporary;
         FixedAssetAcquisitionWizard: Codeunit "Fixed Asset Acquisition Wizard";
-        ClientTypeManagement: Codeunit ClientTypeManagement;
+        //  ClientTypeManagement: Codeunit ClientTypeManagement;
         Step: Option Intro,"FA Details","Register Details",Done,"Already In Journal";
         TopBannerVisible: Boolean;
         AcquisitionOptions: Option "G/L Account",Vendor,"Bank Account";
@@ -318,17 +318,17 @@ Page 51516664 "Fixed Asset Disposal Wizard"
     local procedure NextStep(Backwards: Boolean)
     begin
         if Backwards then
-          Step := Step - 1
+            Step := Step - 1
         else
-          Step := Step + 1;
+            Step := Step + 1;
         ValidateCurrentStep(Step);
 
         if Step = Step::Done then begin
-          TempBalancingGenJournalLine.Init;
-          TempBalancingGenJournalLine.TransferFields(Rec);
-          TempBalancingGenJournalLine."Account No." := '';
-          if not TempBalancingGenJournalLine.Insert then
-            TempBalancingGenJournalLine.Modify(true);
+            TempBalancingGenJournalLine.Init;
+            TempBalancingGenJournalLine.TransferFields(Rec);
+            TempBalancingGenJournalLine."Account No." := '';
+            if not TempBalancingGenJournalLine.Insert then
+                TempBalancingGenJournalLine.Modify(true);
         end;
 
         CurrPage.Update(true);
@@ -336,32 +336,32 @@ Page 51516664 "Fixed Asset Disposal Wizard"
 
     local procedure LoadTopBanners()
     begin
-        if MediaRepositoryStandard.Get('AssistedSetup-NoText-400px.png',Format(ClientTypeManagement.GetCurrentClientType)) and
-           MediaRepositoryDone.Get('AssistedSetupDone-NoText-400px.png',Format(ClientTypeManagement.GetCurrentClientType))
-        then
-          if MediaResourcesStandard.Get(MediaRepositoryStandard."Media Resources Ref") and
-             MediaResourcesDone.Get(MediaRepositoryDone."Media Resources Ref")
-          then
-            TopBannerVisible := MediaResourcesDone."Media Reference".Hasvalue;
+        // if MediaRepositoryStandard.Get('AssistedSetup-NoText-400px.png',Format(ClientTypeManagement.GetCurrentClientType)) and
+        //    MediaRepositoryDone.Get('AssistedSetupDone-NoText-400px.png',Format(ClientTypeManagement.GetCurrentClientType))
+        // then
+        //   if MediaResourcesStandard.Get(MediaRepositoryStandard."Media Resources Ref") and
+        //      MediaResourcesDone.Get(MediaRepositoryDone."Media Resources Ref")
+        //   then
+        //     TopBannerVisible := MediaResourcesDone."Media Reference".Hasvalue;
     end;
 
     local procedure ValidateCurrentStep(CurrentStep: Option)
     begin
         case CurrentStep of
-          Step::Intro:
-            CurrStepIsValid := true;
-          Step::"FA Details":
-            CurrStepIsValid := (Amount >= 0.0) and ("Posting Date" <> 0D);
-          Step::"Register Details":
-            begin
-              CurrStepIsValid := "Bal. Account No." <> '';
-              if AcquisitionOptions = Acquisitionoptions::Vendor then
-                CurrStepIsValid := CurrStepIsValid and ("External Document No." <> '');
-            end;
-          Step::Done:
-            CurrStepIsValid := true;
-          else
-            CurrStepIsValid := true;
+            Step::Intro:
+                CurrStepIsValid := true;
+            Step::"FA Details":
+                CurrStepIsValid := (Amount >= 0.0) and ("Posting Date" <> 0D);
+            Step::"Register Details":
+                begin
+                    CurrStepIsValid := "Bal. Account No." <> '';
+                    if AcquisitionOptions = Acquisitionoptions::Vendor then
+                        CurrStepIsValid := CurrStepIsValid and ("External Document No." <> '');
+                end;
+            Step::Done:
+                CurrStepIsValid := true;
+            else
+                CurrStepIsValid := true;
         end;
     end;
 
@@ -369,7 +369,7 @@ Page 51516664 "Fixed Asset Disposal Wizard"
     var
         GenJournalLine: Record "Gen. Journal Line";
     begin
-        GenJournalLine.SetRange("Journal Batch Name","Journal Batch Name");
+        GenJournalLine.SetRange("Journal Batch Name", "Journal Batch Name");
         exit(GenJournalLine.Count = 0);
     end;
 
@@ -377,14 +377,14 @@ Page 51516664 "Fixed Asset Disposal Wizard"
     var
         GenJournalLine: Record "Gen. Journal Line";
     begin
-        GenJournalLine.SetRange("Account No.","Account No.");
-        GenJournalLine.SetRange("Account Type",GenJournalLine."account type"::"Fixed Asset");
-        GenJournalLine.SetRange("FA Posting Type","fa posting type"::"Acquisition Cost");
+        GenJournalLine.SetRange("Account No.", "Account No.");
+        GenJournalLine.SetRange("Account Type", GenJournalLine."account type"::"Fixed Asset");
+        GenJournalLine.SetRange("FA Posting Type", "fa posting type"::"Acquisition Cost");
         if GenJournalLine.FindFirst then begin
-          Step := Step::"Already In Journal";
-          OpenFAGLJournal := true;
-          Copy(GenJournalLine);
-          Insert;
+            Step := Step::"Already In Journal";
+            OpenFAGLJournal := true;
+            Copy(GenJournalLine);
+            Insert;
         end
     end;
 }

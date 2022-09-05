@@ -84,9 +84,9 @@ Report 51516171 "HR Company Activities"
 				}
 				column(FullName; HREmp."First Name"+' '+HREmp."Middle Name")
 				{
-					Description = FullName;
-					IncludeCaption = false;
-					OptionCaption = 'FullName';
+					// Description = FullName;
+					// IncludeCaption = false;
+					// OptionCaption = 'FullName';
 				}
 				trigger OnAfterGetRecord();
 				begin

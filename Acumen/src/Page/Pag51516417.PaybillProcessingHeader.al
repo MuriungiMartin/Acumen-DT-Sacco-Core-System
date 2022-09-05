@@ -603,7 +603,7 @@ Page 51516417 "Paybill Processing Header"
             {
                 ApplicationArea = Basic;
                 Caption = 'Import Paybill Transactions';
-                RunObject = XMLport UnknownXMLport51516039;
+                // RunObject = XMLport import pa;
             }
             group(ActionGroup1102755021)
             {
@@ -699,7 +699,7 @@ Page 51516417 "Paybill Processing Header"
                                 Gnljnline."Transaction Type" := Gnljnline."transaction type"::Loan
                             end else
                                 if (RcptBufLines."Transaction Prefix" = 'FOSA') then begin
-                                    Gnljnline."Transaction Type" := Gnljnline."transaction type"::"41"
+                                    // Gnljnline."Transaction Type" := Gnljnline."transaction type"::"41"
                                 end else
                                     if (RcptBufLines."Transaction Prefix" = 'UNALLOCATED') then begin
                                         Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Loan Insurance Paid";
@@ -756,7 +756,7 @@ Page 51516417 "Paybill Processing Header"
                                 Gnljnline."Transaction Type" := Gnljnline."transaction type"::Loan
                             end else
                                 if (RcptBufLines."Transaction Prefix" = 'FOSA') then begin
-                                    Gnljnline."Transaction Type" := Gnljnline."transaction type"::"41"
+                                    //  Gnljnline."Transaction Type" := Gnljnline."transaction type"::"41"
                                 end else
                                     if (RcptBufLines."Transaction Prefix" = 'UNALLOCATED') then begin
                                         Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Loan Insurance Paid";

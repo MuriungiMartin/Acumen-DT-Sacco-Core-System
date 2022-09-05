@@ -12,12 +12,12 @@ Page 51516882 "Member Signature-Change Req"
     {
         area(content)
         {
-            field(signinature;signinature)
+            field(signinature; signinature)
             {
                 ApplicationArea = Basic;
                 Visible = true;
             }
-            field(signatures2;signatures2)
+            field(signatures2; signatures2)
             {
                 ApplicationArea = Basic;
             }
@@ -80,7 +80,7 @@ Page 51516882 "Member Signature-Change Req"
                     ExportPath := TemporaryPath + No + Format(Picture.MediaId);
                     Picture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
 
-                    FileManagement.ExportImage(ExportPath,ToFile);
+                    FileManagement.ExportImage(ExportPath, ToFile);
                 end;
             }
             action(DeletePicture)
@@ -109,7 +109,7 @@ Page 51516882 "Member Signature-Change Req"
     begin
         CameraAvailable := CameraProvider.IsAvailable;
         if CameraAvailable then
-          CameraProvider := CameraProvider.Create;
+            CameraProvider := CameraProvider.Create;
     end;
 
     var
@@ -132,7 +132,7 @@ Page 51516882 "Member Signature-Change Req"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         CameraOptions := CameraOptions.CameraOptions;
         CameraOptions.Quality := 50;
@@ -151,19 +151,18 @@ Page 51516882 "Member Signature-Change Req"
         //TESTFIELD(Description);
 
         if signinature.Count > 0 then
-
-          if not Confirm(OverrideImageQst) then
-            Error('');
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(signinature);
-        signinature.ImportFile(FileName,ClientFileName);
+        signinature.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
@@ -189,33 +188,33 @@ Page 51516882 "Member Signature-Change Req"
         TestField(No);
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(signinature);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;
     begin
         if (PictureName = '') or (PictureFilePath = '') then
-          exit;
+            exit;
 
         if signinature.Count > 0 then
-          if not Confirm(OverrideImageQst) then begin
-            if Erase(PictureFilePath) then;
-            exit;
-          end;
+            if not Confirm(OverrideImageQst) then begin
+                if Erase(PictureFilePath) then;
+                exit;
+            end;
 
         File.Open(PictureFilePath);
         File.CreateInstream(Instream);
 
         Clear(Picture);
-        signinature.ImportStream(Instream,PictureName);
+        signinature.ImportStream(Instream, PictureName);
         if not Modify(true) then
-          Insert(true);
+            Insert(true);
 
         File.Close;
         if Erase(PictureFilePath) then;

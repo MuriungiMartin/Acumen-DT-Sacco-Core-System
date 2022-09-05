@@ -12,52 +12,52 @@ Page 51516259 "HR Disciplinary Cases List"
             repeater(General)
             {
                 Caption = 'General';
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field(EmpNames;EmpNames)
+                field(EmpNames; EmpNames)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
                     Editable = false;
                     Importance = Promoted;
                 }
-                field("Job Specification";"Job Specification")
+                field("Job Specification"; "Job Specification")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field("Postal Address";"Postal Address")
+                field("Postal Address"; "Postal Address")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Cell Phone Number";"Cell Phone Number")
+                field("Cell Phone Number"; "Cell Phone Number")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -67,10 +67,10 @@ Page 51516259 "HR Disciplinary Cases List"
         }
         area(factboxes)
         {
-            systempart(Control1000000001;Outlook)
+            systempart(Control1000000001; Outlook)
             {
             }
-            systempart(Control1000000002;Notes)
+            systempart(Control1000000002; Notes)
             {
             }
         }
@@ -91,32 +91,30 @@ Page 51516259 "HR Disciplinary Cases List"
                     trigger OnAction()
                     begin
                         HRDisciplinary.Reset;
-                        HRDisciplinary.SetRange(HRDisciplinary.Selected,true);
-                        HRDisciplinary.SetRange(HRDisciplinary."Employee No","No.");
-                        if HRDisciplinary.Find('-')then
-                         begin
+                        HRDisciplinary.SetRange(HRDisciplinary.Selected, true);
+                        HRDisciplinary.SetRange(HRDisciplinary."Employee No", "No.");
+                        if HRDisciplinary.Find('-') then begin
 
-                         //ENSURE SELECTED RECORDS DO NOT EXCEED ONE
-                         Number:=0;
-                         Number:=HRDisciplinary.Count;
-                         if Number > 1 then
-                         begin
-                         Error('You cannot have more than one application selected');
-                        // ERROR(FORMAT(Number)+' applications selected');
+                            //ENSURE SELECTED RECORDS DO NOT EXCEED ONE
+                            Number := 0;
+                            Number := HRDisciplinary.Count;
+                            if Number > 1 then begin
+                                Error('You cannot have more than one application selected');
+                                // ERROR(FORMAT(Number)+' applications selected');
 
-                         end;
-                                if HRDisciplinary.Status=HRDisciplinary.Status::Open then begin
-                                HRDisciplinary.Status:=HRDisciplinary.Status::Closed;
+                            end;
+                            if HRDisciplinary.Status = HRDisciplinary.Status::Open then begin
+                                HRDisciplinary.Status := HRDisciplinary.Status::Closed;
                                 HRDisciplinary.Modify;
-                                HRDisciplinary."Closed By":="Employee UserID";
-                                end else begin
-                                HRDisciplinary.Status:=HRDisciplinary.Status::Open;
+                                HRDisciplinary."Closed By" := "Employee UserID";
+                            end else begin
+                                HRDisciplinary.Status := HRDisciplinary.Status::Open;
                                 HRDisciplinary.Modify;
-                                HRDisciplinary."Closed By":="Employee UserID";
-                                end;
+                                HRDisciplinary."Closed By" := "Employee UserID";
+                            end;
 
                         end else begin
-                        Error('No disciplinary case selected');
+                            Error('No disciplinary case selected');
                         end;
                     end;
                 }
@@ -131,20 +129,19 @@ Page 51516259 "HR Disciplinary Cases List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55597;
+                //RunObject = Report UnknownReport55597;
             }
         }
     }
 
     trigger OnAfterGetRecord()
     begin
-                                    HREmp.Reset;
-                                    if HREmp.Get("No.") then
-                                    begin
-                                    EmpNames:=HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
-                                    end else begin
-                                    EmpNames:='';
-                                    end;
+        HREmp.Reset;
+        if HREmp.Get("No.") then begin
+            EmpNames := HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
+        end else begin
+            EmpNames := '';
+        end;
     end;
 
     var

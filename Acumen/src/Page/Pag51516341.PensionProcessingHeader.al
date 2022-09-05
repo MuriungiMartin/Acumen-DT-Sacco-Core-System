@@ -103,7 +103,7 @@ Page 51516341 "Pension Processing Header"
             {
                 ApplicationArea = Basic;
                 Caption = 'Import Salaries';
-                RunObject = XMLport UnknownXMLport50025;
+                //RunObject = XMLport UnknownXMLport50025;
             }
             group(ActionGroup1102755021)
             {
@@ -219,7 +219,7 @@ Page 51516341 "Pension Processing Header"
                 action("Mark as processed")
                 {
                     ApplicationArea = Basic;
-                    RunObject = Report UnknownReport39004375;
+                    //    RunObject = Report UnknownReport39004375;
 
                     trigger OnAction()
                     begin

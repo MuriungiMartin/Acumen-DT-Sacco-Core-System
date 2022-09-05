@@ -101,7 +101,7 @@ Page 51516013 "Guarantor Sub Card"
                     //
                     // ApprovalEntries.Setfilters(DATABASE::"Guarantorship Substitution H",DocumentType,"Document No");
                     // ApprovalEntries.RUN;
-                    ApprovalsMgmt.OpenApprovalEntriesPage(RecordId);
+                    Approv.OpenApprovalEntriesPage(RecordId);
                 end;
             }
             action("Send Approval Request")
@@ -120,8 +120,8 @@ Page 51516013 "Guarantor Sub Card"
                     if Status <> Status::Open then
                         Error('Status must be open.');
 
-                    if ApprovalsMgmt.CheckGuarSubApprovalWorkflowEnabled(Rec) then
-                        ApprovalsMgmt.OnSendGuarSubForApproval(Rec);
+                    if ApprovalsMgmt.CheckGuarantorSubstitutionApprovalsWorkflowEnabled(Rec) then
+                        ApprovalsMgmt.OnSendGuarantorSubstitutionForApproval(Rec);
 
                     //Status:=Status::Approved;
                     //MODIFY;
@@ -144,8 +144,8 @@ Page 51516013 "Guarantor Sub Card"
                     if Status <> Status::Pending then
                         Error(text001);
 
-                    if ApprovalsMgmt.CheckGuarSubApprovalWorkflowEnabled(Rec) then
-                        ApprovalsMgmt.OnCancelGuarSubApprovalRequest(Rec);
+                    if ApprovalsMgmt.CheckGuarantorSubstitutionApprovalsWorkflowEnabled(Rec) then
+                        ApprovalsMgmt.OnCancelGuarantorSubstitutionApprovalRequest(Rec);
                 end;
             }
             action("Process Substitution")
@@ -242,6 +242,8 @@ Page 51516013 "Guarantor Sub Card"
         TotalReplaced: Decimal;
         Commited: Decimal;
         NewLGuar: Record "Loans Guarantee Details";
+        Approv: codeunit "Approvals Mgmt.";
+
 
     local procedure FNAddRecordRestriction()
     begin

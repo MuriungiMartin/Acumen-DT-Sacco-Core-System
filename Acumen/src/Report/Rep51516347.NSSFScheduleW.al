@@ -193,7 +193,7 @@ Report 51516347 "NSSF Schedule W.."
 				PeriodTrans.Reset;
 				PeriodTrans.SetRange(PeriodTrans."Employee Code","No.");
 				PeriodTrans.SetRange(PeriodTrans."Payroll Period",SelectedPeriod);
-				PeriodTrans.SetFilter(PeriodTrans."Transaction Code",Format(427));  Nssf Code
+				PeriodTrans.SetFilter(PeriodTrans."Transaction Code",Format(427)); // Nssf Code
 				PeriodTrans.SetCurrentkey(PeriodTrans."Employee Code",PeriodTrans."Period Month",PeriodTrans."Period Year",
 				PeriodTrans."Group Order",PeriodTrans."Sub Group Order");
 				"Volume Amount":=0;

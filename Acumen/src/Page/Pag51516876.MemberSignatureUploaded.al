@@ -79,8 +79,8 @@ Page 51516876 "Member Signature-Uploaded"
                     //TESTFIELD(Description);
 
                     ToFile := DummyPictureEntity.GetDefaultMediaDescription(Rec);
-                    ExportPath := TemporaryPath + "No." + Format(Picture.MediaId);
-                    Picture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
+                    ExportPath := TemporaryPath + "No." + Format(Piccture.MediaId);
+                    Piccture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
 
                     FileManagement.ExportImage(ExportPath, ToFile);
                 end;
@@ -171,7 +171,7 @@ Page 51516876 "Member Signature-Uploaded"
 
     local procedure SetEditableOnPictureActions()
     begin
-        DeleteExportEnabled := Picture.Count <> 0;
+        DeleteExportEnabled := Piccture.Count <> 0;
     end;
 
     procedure IsCameraAvailable(): Boolean
@@ -196,7 +196,7 @@ Page 51516876 "Member Signature-Uploaded"
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;
@@ -213,7 +213,7 @@ Page 51516876 "Member Signature-Uploaded"
         File.Open(PictureFilePath);
         File.CreateInstream(Instream);
 
-        Clear(Picture);
+        Clear(Piccture);
         Signature.ImportStream(Instream, PictureName);
         if not Modify(true) then
             Insert(true);

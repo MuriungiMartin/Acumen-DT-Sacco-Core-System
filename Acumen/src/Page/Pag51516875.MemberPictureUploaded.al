@@ -13,7 +13,7 @@ Page 51516875 "Member Picture-Uploaded"
     {
         area(content)
         {
-            field(Picture; Picture)
+            field(Picture; Piccture)
             {
                 ApplicationArea = Basic, Suite, Invoicing;
                 ShowCaption = false;
@@ -81,8 +81,8 @@ Page 51516875 "Member Picture-Uploaded"
                     //TESTFIELD(Description);
 
                     ToFile := DummyPictureEntity.GetDefaultMediaDescription(Rec);
-                    ExportPath := TemporaryPath + "No." + Format(Picture.MediaId);
-                    Picture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
+                    ExportPath := TemporaryPath + "No." + Format(Piccture.MediaId);
+                    Piccture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
 
                     FileManagement.ExportImage(ExportPath, ToFile);
                 end;
@@ -154,7 +154,7 @@ Page 51516875 "Member Picture-Uploaded"
         TestField("No.");
         //TESTFIELD(Description);
 
-        if Picture.Count > 0 then
+        if Piccture.Count > 0 then
             if not Confirm(OverrideImageQst) then
                 Error('');
 
@@ -163,8 +163,8 @@ Page 51516875 "Member Picture-Uploaded"
         if FileName = '' then
             Error('');
 
-        Clear(Picture);
-        Picture.ImportFile(FileName, ClientFileName);
+        Clear(Piccture);
+        Piccture.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
             Modify(true);
 
@@ -173,7 +173,7 @@ Page 51516875 "Member Picture-Uploaded"
 
     local procedure SetEditableOnPictureActions()
     begin
-        DeleteExportEnabled := Picture.Count <> 0;
+        DeleteExportEnabled := Piccture.Count <> 0;
     end;
 
     procedure IsCameraAvailable(): Boolean
@@ -194,11 +194,11 @@ Page 51516875 "Member Picture-Uploaded"
         if not Confirm(DeleteImageQst) then
             exit;
 
-        Clear(Picture);
+        Clear(Piccture);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;
@@ -206,7 +206,7 @@ Page 51516875 "Member Picture-Uploaded"
         if (PictureName = '') or (PictureFilePath = '') then
             exit;
 
-        if Picture.Count > 0 then
+        if Piccture.Count > 0 then
             if not Confirm(OverrideImageQst) then begin
                 if Erase(PictureFilePath) then;
                 exit;
@@ -215,8 +215,8 @@ Page 51516875 "Member Picture-Uploaded"
         File.Open(PictureFilePath);
         File.CreateInstream(Instream);
 
-        Clear(Picture);
-        Picture.ImportStream(Instream, PictureName);
+        Clear(Piccture);
+        Piccture.ImportStream(Instream, PictureName);
         if not Modify(true) then
             Insert(true);
 

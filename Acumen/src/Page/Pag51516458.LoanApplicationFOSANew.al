@@ -416,11 +416,13 @@ Page 51516458 "Loan Application FOSA(New)"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        Approv: codeunit "Approvals Mgmt.";
     begin
         EnableCreateMember := false;
         EditableAction := true;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec."Approval Status" = "approval status"::Approved then begin
             OpenApprovalEntriesExist := false;

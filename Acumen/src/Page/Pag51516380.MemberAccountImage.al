@@ -8,7 +8,7 @@ Page 51516380 "Member Account Image"
     {
         area(content)
         {
-            field(Picture; Picture)
+            field(Picture; Piccture)
             {
                 ApplicationArea = Basic;
             }

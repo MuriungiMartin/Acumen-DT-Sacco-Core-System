@@ -211,6 +211,10 @@ Table 51516002 "Receipt Header"
         field(55; "Account No"; Code[20])
         {
         }
+        field(56; Cashier; Code[20])
+        {
+            TableRelation = "User Setup"."User ID";
+        }
     }
 
     keys

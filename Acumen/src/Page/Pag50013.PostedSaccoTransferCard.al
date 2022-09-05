@@ -437,12 +437,14 @@ Page 50013 "Posted Sacco Transfer Card"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        approv: codeunit "Approvals Mgmt.";
     begin
         AddRecordRestriction();
 
         EnablePost := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalFOrRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalFOrRecord := approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowExist := true;
         if Rec.Status = Status::Approved then begin
             OpenApprovalEntriesExist := false;

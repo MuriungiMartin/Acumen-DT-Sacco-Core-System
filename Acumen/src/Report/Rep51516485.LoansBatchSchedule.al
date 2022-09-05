@@ -117,16 +117,16 @@ Report 51516485 "Loans Batch Schedule"
             column(Batches__No_of_Loans_Caption; FieldCaption("No of Loans"))
             {
             }
-            column(APPROVED_BY________________________________________________________________________________________________Caption; APPROVED_BY________________________________________________________________________________________________CaptionLbl)
+            column(APPROVED_BY______________________________________________Caption; APPROVED_BY______________________________________________CaptionLbl)
             {
             }
             column(Grand_TotalsCaption; Grand_TotalsCaptionLbl)
             {
             }
-            column(CHECKED_BY________________________________________________________________________________________________Caption; CHECKED_BY________________________________________________________________________________________________CaptionLbl)
+            column(CHECKED_BY______________________________________________Caption; CHECKED_BY______________________________________________CaptionLbl)
             {
             }
-            column(AUTHORISED_BY________________________________________________________________________________________________Caption; AUTHORISED_BY________________________________________________________________________________________________CaptionLbl)
+            column(AUTHORISED_BY______________________________________________Caption; AUTHORISED_BY______________________________________________CaptionLbl)
             {
             }
             column(V1st__SignatoryCaption; V1st__SignatoryCaptionLbl)
@@ -411,10 +411,10 @@ Report 51516485 "Loans Batch Schedule"
         Loans_ScheduleCaptionLbl: label 'Loans Schedule';
         CurrReport_PAGENOCaptionLbl: label 'Page';
         Batch_TypeCaptionLbl: label 'Batch Type';
-        APPROVED_BY________________________________________________________________________________________________CaptionLbl: label 'APPROVED BY:...............................................................................................';
+        APPROVED_BY______________________________________________CaptionLbl: label 'APPROVED BY:...............................................................................................';
         Grand_TotalsCaptionLbl: label 'Grand Totals';
-        CHECKED_BY________________________________________________________________________________________________CaptionLbl: label 'CHECKED BY:...............................................................................................';
-        AUTHORISED_BY________________________________________________________________________________________________CaptionLbl: label 'AUTHORISED BY:...............................................................................................';
+        CHECKED_BY______________________________________________CaptionLbl: label 'CHECKED BY:...............................................................................................';
+        AUTHORISED_BY______________________________________________CaptionLbl: label 'AUTHORISED BY:...............................................................................................';
         V1st__SignatoryCaptionLbl: label '1st  Signatory';
         V2nd_SignatoryCaptionLbl: label '2nd Signatory';
         V3rd_SignatoryCaptionLbl: label '3rd Signatory';

@@ -15,69 +15,69 @@ Page 51516258 "HR Transport Allocations List"
             repeater(General)
             {
                 Caption = 'General';
-                field("Transport Allocation No";"Transport Allocation No")
+                field("Transport Allocation No"; "Transport Allocation No")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Destination(s)";"Destination(s)")
+                field("Destination(s)"; "Destination(s)")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Vehicle Reg Number";"Vehicle Reg Number")
+                field("Vehicle Reg Number"; "Vehicle Reg Number")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Passenger Capacity";"Passenger Capacity")
+                field("Passenger Capacity"; "Passenger Capacity")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Assigned Driver";"Assigned Driver")
+                field("Assigned Driver"; "Assigned Driver")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Driver Name";"Driver Name")
+                field("Driver Name"; "Driver Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field("Date of Allocation";"Date of Allocation")
+                field("Date of Allocation"; "Date of Allocation")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Importance = Promoted;
                 }
-                field("Date of Trip";"Date of Trip")
+                field("Date of Trip"; "Date of Trip")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Time of Trip";"Time of Trip")
+                field("Time of Trip"; "Time of Trip")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Comments;Comments)
+                field(Comments; Comments)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Linked to Invoice No";"Linked to Invoice No")
+                field("Linked to Invoice No"; "Linked to Invoice No")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("<Invoice Posting Description>";"Invoice Description")
+                field("<Invoice Posting Description>"; "Invoice Description")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Invoice Posting Description';
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
@@ -88,12 +88,12 @@ Page 51516258 "HR Transport Allocations List"
         }
         area(factboxes)
         {
-            part(Control1102755002;"HR Transport Alloc. Factbox")
+            part(Control1102755002; "HR Transport Alloc. Factbox")
             {
                 Caption = 'HR Transport Allocations Factbox';
-                SubPageLink = "Transport Allocation No"=field("Transport Allocation No");
+                SubPageLink = "Transport Allocation No" = field("Transport Allocation No");
             }
-            systempart(Control1102755006;Outlook)
+            systempart(Control1102755006; Outlook)
             {
             }
         }
@@ -117,9 +117,9 @@ Page 51516258 "HR Transport Allocations List"
                     trigger OnAction()
                     begin
                         HRTransportAllocationsH.Reset;
-                        HRTransportAllocationsH.SetRange(HRTransportAllocationsH."Transport Allocation No","Transport Allocation No");
+                        HRTransportAllocationsH.SetRange(HRTransportAllocationsH."Transport Allocation No", "Transport Allocation No");
                         if HRTransportAllocationsH.Find('-') then
-                        Report.Run(53929,true,true,HRTransportAllocationsH);
+                            Report.Run(53929, true, true, HRTransportAllocationsH);
                     end;
                 }
                 action("<Action1102755035>p")
@@ -132,9 +132,9 @@ Page 51516258 "HR Transport Allocations List"
 
                     trigger OnAction()
                     begin
-                        Status:=Status::Open;
+                        Status := Status::Open;
                         Modify;
-                        Message('Transport Allocation No :: :: has been Re-Opened',"Transport Allocation No");
+                        Message('Transport Allocation No :: :: has been Re-Opened', "Transport Allocation No");
                     end;
                 }
                 action(Release)
@@ -147,12 +147,11 @@ Page 51516258 "HR Transport Allocations List"
 
                     trigger OnAction()
                     begin
-                        Question:=Text001;
-                        if Confirm(Question) then
-                        begin
-                            Status:=Status::Released;
+                        Question := Text001;
+                        if Confirm(Question) then begin
+                            Status := Status::Released;
                             Modify;
-                            Message('Transport Allocation No :: :: has been released',"Transport Allocation No");
+                            Message('Transport Allocation No :: :: has been released', "Transport Allocation No");
                         end else begin
                             Message('You selected :: NO :: Release Cancelled');
                         end;
@@ -169,7 +168,7 @@ Page 51516258 "HR Transport Allocations List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55596;
+                // RunObject = Report UnknownReport55596;
             }
         }
     }

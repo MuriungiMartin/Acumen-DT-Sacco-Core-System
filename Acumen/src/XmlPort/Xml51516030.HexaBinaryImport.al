@@ -8,15 +8,15 @@ XmlPort 51516030 "Hexa Binary Import"
         textelement(aa)
         {
             XmlName = 'HexaBinary';
-            tableelement(SaccoLinkCharges;SaccoLinkCharges)
+            tableelement(SaccoLinkCharges; SaccoLinkCharges)
             {
                 XmlName = 'HexaBinary';
-                fieldelement(Header;"Hexa Binary".Field1)
-                {
-                }
-                fieldelement(No;"Hexa Binary".Field2)
-                {
-                }
+                // fieldelement(Header;"Hexa Binary".Field1)
+                // {
+                // }
+                // fieldelement(No;"Hexa Binary".Field2)
+                // {
+                // }
             }
         }
     }

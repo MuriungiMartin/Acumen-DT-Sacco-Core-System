@@ -1208,13 +1208,13 @@ Report 51516399 "Loan Appraisal-Official"
         Members_Signature______________________CaptionLbl: label 'Members Signature:_____________________';
         Credit_Committe_Minute_No______________________CaptionLbl: label 'Credit Committe Minute No._____________________';
         Date___________________Caption_Control1102755074Lbl: label 'Date:__________________';
-        Comment______________________________________________________________________________________CaptionLbl: label 'Comment :____________________________________________________________________________________';
+        Comment____________________________________CaptionLbl: label 'Comment :____________________________________________________________________________________';
         Amount_Approved______________________CaptionLbl: label 'Amount Approved:_____________________';
         Signatory_1__________________CaptionLbl: label 'Signatory 1:_________________';
         Signatory_2__________________CaptionLbl: label 'Signatory 2:_________________';
         Signatory_3__________________CaptionLbl: label 'Signatory 3:_________________';
         FOSA_SIGNATORIES_CaptionLbl: label 'FOSA SIGNATORIES:';
-        Comment______________________________________________________________________________________Caption_Control1102755070Lbl: label 'Comment :____________________________________________________________________________________';
+        Comment____________________________________Caption_Control1102755070Lbl: label 'Comment :____________________________________________________________________________________';
         FINANCE_CaptionLbl: label 'FINANCE:';
         Disbursed_By__________________CaptionLbl: label 'Disbursed By:_________________';
         Signature__________________Caption_Control1102755081Lbl: label 'Signature:_________________';
@@ -1424,8 +1424,8 @@ Report 51516399 "Loan Appraisal-Official"
                 until LoanTopUp.Next = 0;
             end;
             LOANBALANCE := LOANBALANCE - TotalBridgeAmount;
-			 /*   //**********Get Topup**********//
-				LoanTopUp.Reset;
+            /*   //**********Get Topup**********/
+            LoanTopUp.Reset;
             LoanTopUp.SetRange(LoanTopUp."Loan No.", "Loans Register"."Loan  No.");
             LoanTopUp.SetRange(LoanTopUp."Client Code", "Loans Register"."Client Code");
             if LoanTopUp.Find('-') then begin
@@ -1440,9 +1440,9 @@ Report 51516399 "Loan Appraisal-Official"
             TotalRepayments := TotalRepayments - BridgedRepayment;
             TotalLoanBal := (LOANBALANCE + "Loans Register"."Approved Amount") - BRIGEDAMOUNT;
             LBalance := LOANBALANCE - BRIGEDAMOUNT;
-				*/
-			//************Find Loan Balances BOSA********************//
-			end;//LoanType.GET("Loans Register"."Loan Product Type")
+
+            //************Find Loan Balances BOSA********************//
+        end;//LoanType.GET("Loans Register"."Loan Product Type")
         TotalLoanBal := LOANBALANCE;
         DepX := DEpMultiplier;//-TotalLoanBal;//Commented By Engineer Advised By Njoro
                               //MESSAGE('Deps %1 Loan Balance %2 Net Loans %3 Diff %4',DEpMultiplier,LOANBALANCE,TotalLoanBal,DepX);

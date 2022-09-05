@@ -244,11 +244,11 @@ Page 51516072 "Imprest Surrender"
                     trigger OnAction()
                     begin
                         //Post Committment Reversals
-                        TestField(Status, Status::"9");
+                        TestField(Status, Status::approved);
                         if Confirm(Text002, true) then begin
                             Doc_Type := Doc_type::Imprest;
                             BudgetControl.ReverseEntries(Doc_Type, "Imprest Issue Doc. No");
-                            Status := Status::"5";
+                            Status := Status::canceled;
                             Modify;
                         end;
                     end;
@@ -448,7 +448,7 @@ Page 51516072 "Imprest Surrender"
                     "Date Posted" := Today;
                     "Time Posted" := Time;
                     "Posted By" := UserId;
-                    Status := Status::"4";
+                    Status := Status::Posted;
                     Modify;
                     //END;
                     Message('Transaction Posted Succesfully');
@@ -463,7 +463,7 @@ Page 51516072 "Imprest Surrender"
 
 
                     Posted := true;
-                    Status := Status::"4";
+                    Status := Status::Posted;
                     "Date Posted" := Today;
                     "Time Posted" := Time;
                     "Posted By" := UserId;
@@ -686,7 +686,7 @@ Page 51516072 "Imprest Surrender"
     procedure UpdateforNoActualSpent()
     begin
         Posted := true;
-        Status := Status::"4";
+        Status := Status::Posted;
         "Date Posted" := Today;
         "Time Posted" := Time;
         "Posted By" := UserId;

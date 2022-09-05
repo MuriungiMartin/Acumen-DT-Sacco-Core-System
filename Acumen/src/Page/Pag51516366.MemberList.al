@@ -283,6 +283,7 @@ Page 51516366 "Member List"
                         LGurantors.SetRange(LGurantors."Loan No", "No.");
                         if LGurantors.Find('-') then
 ;
+                    end;
                 }
                 action("Check Off Slip")
                 {

@@ -81,7 +81,7 @@ Report 51516856 "Recover Loan Repayment FOSA Ac"
                                 GeneralJnl."Line No." := LineNo;
                                 GeneralJnl."Account No." := "Client Code";
                                 GeneralJnl."Account Type" := GeneralJnl."account type"::Employee;
-                                GeneralJnl."Transaction Type" := GeneralJnl."transaction type"::"23";
+                                GeneralJnl."Transaction Type" := GeneralJnl."transaction type"::"Recovery Account";
                                 GeneralJnl."Loan No" := Loans."Loan  No.";
                                 if RunBal > Loans."Penalty Charged" then
                                     GeneralJnl.Amount := (Loans."Penalty Charged" * -1)

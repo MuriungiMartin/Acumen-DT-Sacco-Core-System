@@ -304,12 +304,14 @@ Page 51516567 "Cheque Discounting card"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        Approv: Codeunit "Approvals Mgmt.";
     begin
         FnAddRecordRestriction();
 
         EnablePosting := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec.Status = Status::Approved then begin
             OpenApprovalEntriesExist := false;

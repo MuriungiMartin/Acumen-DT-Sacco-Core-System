@@ -16,7 +16,7 @@ Page 51516232 "HR Employment History"
             {
                 Caption = 'Employmee Details';
                 Editable = false;
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -24,7 +24,7 @@ Page 51516232 "HR Employment History"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field(FullName;FullName)
+                field(FullName; FullName)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
@@ -33,7 +33,7 @@ Page 51516232 "HR Employment History"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Job Title";"Job Title")
+                field("Job Title"; "Job Title")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -41,21 +41,21 @@ Page 51516232 "HR Employment History"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Postal Address";"Postal Address")
+                field("Postal Address"; "Postal Address")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field(Gender;Gender)
+                field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field("Post Code";"Post Code")
+                field("Post Code"; "Post Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -63,14 +63,14 @@ Page 51516232 "HR Employment History"
                     StyleExpr = true;
                     Visible = false;
                 }
-                field("Cell Phone Number";"Cell Phone Number")
+                field("Cell Phone Number"; "Cell Phone Number")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Enabled = false;
                     StyleExpr = true;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -78,7 +78,7 @@ Page 51516232 "HR Employment History"
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
@@ -86,19 +86,19 @@ Page 51516232 "HR Employment History"
                     StyleExpr = true;
                 }
             }
-            part(Control1000000028;"HR Employment History Lines")
+            part(Control1000000028; "HR Employment History Lines")
             {
                 Caption = 'Employment History Details';
-                SubPageLink = "Employee No."=field("No.");
+                SubPageLink = "Employee No." = field("No.");
             }
         }
         area(factboxes)
         {
-            systempart(Control1102755010;"HR Employees Factbox")
+            part(Control1102755010; "HR Employees Factbox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            systempart(Control1102755009;Outlook)
+            systempart(Control1102755009; Outlook)
             {
             }
         }
@@ -110,13 +110,12 @@ Page 51516232 "HR Employment History"
 
     trigger OnAfterGetRecord()
     begin
-                                    HREmp.Reset;
-                                    if HREmp.Get("No.") then
-                                    begin
-                                    EmpNames:=HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
-                                    end else begin
-                                    EmpNames:='';
-                                    end;
+        HREmp.Reset;
+        if HREmp.Get("No.") then begin
+            EmpNames := HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
+        end else begin
+            EmpNames := '';
+        end;
     end;
 
     var

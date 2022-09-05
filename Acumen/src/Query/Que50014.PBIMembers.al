@@ -342,21 +342,6 @@ Query 50014 "PBIMembers"
             column(Allow_Line_Disc; "Allow Line Disc.")
             {
             }
-            column(No_of_Approved_Loans; "No. of Approved Loans")
-            {
-            }
-            column(No_of_Issued_Loans; "No. of Issued Loans")
-            {
-            }
-            column(No_of_Rejected_Loans; "No. of Rejected Loans")
-            {
-            }
-            column(No_of_Invoices; "No. of Invoices")
-            {
-            }
-            column(No_of_Members_Guaranteed; "No. of Members Guaranteed")
-            {
-            }
             column(No_of_Credit_Memos; "No. of Credit Memos")
             {
             }

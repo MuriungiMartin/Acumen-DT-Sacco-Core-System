@@ -405,7 +405,7 @@ Page 51516884 "Loan Application FOS(Pending)"
                         Caption = 'Monthly Income';
                     }
                 }
-                group("Monthly Expenses Details")
+                group("Monthly Expenses Detailss")
                 {
                     field("SExpenses Rent"; "SExpenses Rent")
                     {

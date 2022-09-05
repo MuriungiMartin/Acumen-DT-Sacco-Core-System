@@ -16,67 +16,67 @@ Page 51516263 "HR Setup List"
         {
             repeater(Control1102755000)
             {
-                field("Leave Posting Period[FROM]";"Leave Posting Period[FROM]")
+                field("Leave Posting Period[FROM]"; "Leave Posting Period[FROM]")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Posting Period[TO]";"Leave Posting Period[TO]")
+                field("Leave Posting Period[TO]"; "Leave Posting Period[TO]")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Default Leave Posting Template";"Default Leave Posting Template")
+                field("Default Leave Posting Template"; "Default Leave Posting Template")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Positive Leave Posting Batch";"Positive Leave Posting Batch")
+                field("Positive Leave Posting Batch"; "Positive Leave Posting Batch")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Base Calendar";"Base Calendar")
+                field("Base Calendar"; "Base Calendar")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee Nos.";"Employee Nos.")
+                field("Employee Nos."; "Employee Nos.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Training Application Nos.";"Training Application Nos.")
+                field("Training Application Nos."; "Training Application Nos.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Application Nos.";"Leave Application Nos.")
+                field("Leave Application Nos."; "Leave Application Nos.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Disciplinary Cases Nos.";"Disciplinary Cases Nos.")
+                field("Disciplinary Cases Nos."; "Disciplinary Cases Nos.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee Requisition Nos.";"Employee Requisition Nos.")
+                field("Employee Requisition Nos."; "Employee Requisition Nos.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Application Nos";"Job Application Nos")
+                field("Job Application Nos"; "Job Application Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Exit Interview Nos";"Exit Interview Nos")
+                field("Exit Interview Nos"; "Exit Interview Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Appraisal Nos";"Appraisal Nos")
+                field("Appraisal Nos"; "Appraisal Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company Activities";"Company Activities")
+                field("Company Activities"; "Company Activities")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Interview Nos";"Job Interview Nos")
+                field("Job Interview Nos"; "Job Interview Nos")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Leave Reimbursment Nos.";"Leave Reimbursment Nos.")
+                field("Leave Reimbursment Nos."; "Leave Reimbursment Nos.")
                 {
                     ApplicationArea = Basic;
                 }
@@ -95,7 +95,7 @@ Page 51516263 "HR Setup List"
                 Image = Planning;
                 Promoted = true;
                 PromotedCategory = Category4;
-                RunObject = Page "HR Policies";
+                //RunObject = Page "HR Policies";
             }
             action("E-Mail Parameters")
             {
@@ -132,8 +132,8 @@ Page 51516263 "HR Setup List"
 
         Reset;
         if not Get then begin
-          Init;
-          Insert;
+            Init;
+            Insert;
         end;
     end;
 }

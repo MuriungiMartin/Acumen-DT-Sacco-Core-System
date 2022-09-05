@@ -530,6 +530,8 @@ Page 51516860 "Fixed Deposit Placement Card"
     }
 
     trigger OnAfterGetRecord()
+    var
+        Approv: Codeunit "Approvals Mgmt.";
     begin
         if Status = Status::Open then begin
             VarMemberNoEditable := true;
@@ -558,8 +560,8 @@ Page 51516860 "Fixed Deposit Placement Card"
 
 
         EnablePlaceFixedDeposit := false;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
 
         if ((Rec.Status = Status::Approved)) then

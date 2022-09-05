@@ -89,7 +89,7 @@ Page 51516895 "MC Group Holders"
                 {
                     ApplicationArea = Basic;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                 }

@@ -37,22 +37,22 @@ Page 51516251 "HR Leave Application Comments"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Start Date";"Approved Start Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Approved Return Date";"Approved Return Date")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Reason;Reason)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Leave Allowance Granted";"Leave Allowance Granted")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Approved Start Date";"Approved Start Date")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Approved Return Date";"Approved Return Date")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(Reason;Reason)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Leave Allowance Granted";"Leave Allowance Granted")
+                // {
+                //     ApplicationArea = Basic;
+                // }
             }
         }
     }

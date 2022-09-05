@@ -152,6 +152,8 @@ Page 51516184 "HR Employee Requisition Card"
                     PromotedCategory = Category4;
 
                     trigger OnAction()
+                    var
+                        Recipient: List of [Text];
                     begin
                         if Status <> Status::Approved then
                             Error('The job position should first be approved');
@@ -160,7 +162,8 @@ Page 51516184 "HR Employee Requisition Card"
                         HREmp.SetRange(HREmp."No.");
                         repeat
                             HREmp.TestField(HREmp."Company E-Mail");
-                            SMTP.CreateMessage('Job Advertisement', 'info@NacicoSacco.coop', HREmp."Company E-Mail",
+                            Recipient.Add(HREmp."Company E-Mail");
+                            SMTP.CreateMessage('Job Advertisement', 'info@NacicoSacco.coop', Recipient,
                             'Nacico Job Vacancy', 'A vacancy with the job description' + "Job Description" + 'is open for applications', true);
                             SMTP.Send();
                         until HREmp.Next = 0;
@@ -176,7 +179,8 @@ Page 51516184 "HR Employee Requisition Card"
                         if HREmailParameters.Find('-') then begin
                             repeat
                                 HREmp.TestField(HREmp."Company E-Mail");
-                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+                                Recipient.Add(HREmp."Company E-Mail");
+                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", Recipient,
                                 HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
                                 HREmailParameters.Body + ' ' + "Job Description" + ' ' + HREmailParameters."Body 2" + ' ' + Format("Closing Date") + '. ' +
                                 HREmailParameters."Body 3", true);
@@ -283,8 +287,8 @@ Page 51516184 "HR Employee Requisition Card"
                         if Confirm('Send Document for Approval?', true) = false then
                             exit;
 
-                        if ApprovalsMgmt.CheckEmpReqApprovalWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnSendEmpReqForApproval(Rec);
+                        // if ApprovalsMgmt.CheckEmpReqApprovalWorkflowEnabled(Rec) then
+                        //     ApprovalsMgmt.OnSendEmpReqForApproval(Rec);
                     end;
                 }
                 action(CancelApprovalRequest)
@@ -303,8 +307,8 @@ Page 51516184 "HR Employee Requisition Card"
                         if Confirm('Cancel Document?', true) = false then
                             exit;
 
-                        if ApprovalsMgmt.CheckEmpReqApprovalWorkflowEnabled(Rec) then
-                            ApprovalsMgmt.OnSendEmpReqForApproval(Rec);
+                        // if ApprovalsMgmt.CheckEmpReqApprovalWorkflowEnabled(Rec) then
+                        //     ApprovalsMgmt.OnSendEmpReqForApproval(Rec);
                     end;
                 }
             }

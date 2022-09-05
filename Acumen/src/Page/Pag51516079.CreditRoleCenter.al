@@ -8,16 +8,16 @@ Page 51516079 "Credit Role Center"
     {
         area(rolecenter)
         {
-            part(Control1000000018;"Member List")
+            part(Control1000000018; "Member List")
             {
             }
             group(Control1000000015)
             {
             }
-            part(Control1000000001;"Copy Profile")
+            part(Control1000000001; "Copy Profile")
             {
             }
-            systempart(Control1000000000;MyNotes)
+            systempart(Control1000000000; MyNotes)
             {
             }
         }
@@ -32,7 +32,7 @@ Page 51516079 "Credit Role Center"
                 ApplicationArea = Basic;
                 Caption = 'Member Balances';
                 Image = "Report";
-                RunObject = Report "Member Accounts  balances";
+                // RunObject = Report "Member Accounts  balances";
             }
             action("Member Statement")
             {
@@ -174,7 +174,7 @@ Page 51516079 "Credit Role Center"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Vendor List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
             action("Purchase Orders")
             {
@@ -221,7 +221,7 @@ Page 51516079 "Credit Role Center"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Customer List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
             action("Sales Orders")
             {
@@ -280,14 +280,14 @@ Page 51516079 "Credit Role Center"
                     ApplicationArea = Basic;
                     Caption = 'Open Loans';
                     RunObject = Page "Loans Applied  List";
-                    RunPageView = where("Approval Status"=const(Open));
+                    RunPageView = where("Approval Status" = const(Open));
                 }
                 action("Pending Loans")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Pending Loans';
                     RunObject = Page "Loans Applied  List";
-                    RunPageView = where("Approval Status"=const(Pending));
+                    RunPageView = where("Approval Status" = const(Pending));
                 }
                 action("Approved Loans")
                 {
@@ -295,7 +295,7 @@ Page 51516079 "Credit Role Center"
                     Caption = 'Approved Loans';
                     Image = Journals;
                     RunObject = Page "Loans Applied  List";
-                    RunPageView = where("Approval Status"=const(Approved));
+                    RunPageView = where("Approval Status" = const(Approved));
                 }
                 action("Issued Loans")
                 {
@@ -309,7 +309,7 @@ Page 51516079 "Credit Role Center"
                     ApplicationArea = Basic;
                     Caption = 'Rejected Loans';
                     RunObject = Page "Loans Applied  List";
-                    RunPageView = where("Approval Status"=const(Rejected));
+                    RunPageView = where("Approval Status" = const(Rejected));
                 }
             }
             group("Credit Processing")
@@ -436,7 +436,7 @@ Page 51516079 "Credit Role Center"
                     ApplicationArea = Basic;
                     Caption = 'Deposit';
                     Image = DepositSlip;
-                    RunObject = Page UnknownPage36646;
+                    //  RunObject = Page UnknownPage36646;
                 }
                 action("Bank Rec.")
                 {
@@ -500,7 +500,7 @@ Page 51516079 "Credit Role Center"
                 ApplicationArea = Basic;
                 Caption = 'Sacco General Setup';
                 Image = Setup;
-                RunObject = Page UnknownPage51516271;
+                //   RunObject = Page UnknownPage51516271;
             }
             action("Sacco No Series")
             {
@@ -529,7 +529,7 @@ Page 51516079 "Credit Role Center"
                 Caption = 'Import Checkoff Distributed';
                 Ellipsis = true;
                 Image = Import;
-                RunObject = XMLport UnknownXMLport51516003;
+                RunObject = XMLport "Import Checkoff Distributed";
             }
             action("Import Checkoff Block")
             {

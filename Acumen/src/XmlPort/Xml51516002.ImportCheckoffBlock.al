@@ -7,21 +7,21 @@ XmlPort 51516002 "Import Checkoff Block"
     {
         textelement(root)
         {
-            tableelement("Checkoff Processing Lin(Block)";"Checkoff Processing Lin(Block)")
+            tableelement("Checkoff Processing Lin(Block)"; "Checkoff Processing Lin(Block)")
             {
                 XmlName = 'Checkoff';
-                fieldelement(Header_No;"ReceiptsProcessing_L-Checkoff"."Receipt Header No")
-                {
-                }
-                fieldelement(Entry_No;"ReceiptsProcessing_L-Checkoff"."Receipt Line No")
-                {
-                }
-                fieldelement(Member_No;"ReceiptsProcessing_L-Checkoff"."Member No")
-                {
-                }
-                fieldelement(Amount;"ReceiptsProcessing_L-Checkoff".Amount)
-                {
-                }
+                // fieldelement(Header_No;"ReceiptsProcessing_L-Checkoff"."Receipt Header No")
+                // {
+                // }
+                // fieldelement(Entry_No;"ReceiptsProcessing_L-Checkoff"."Receipt Line No")
+                // {
+                // }
+                // fieldelement(Member_No;"ReceiptsProcessing_L-Checkoff"."Member No")
+                // {
+                // }
+                // fieldelement(Amount;"ReceiptsProcessing_L-Checkoff".Amount)
+                // {
+                // }
             }
         }
     }

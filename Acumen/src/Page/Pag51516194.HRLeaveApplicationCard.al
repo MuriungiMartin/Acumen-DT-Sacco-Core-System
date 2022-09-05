@@ -459,6 +459,8 @@ Page 51516194 "HR Leave Application Card"
                     PromotedIsBig = true;
 
                     trigger OnAction()
+                    var
+                        Recipient: list of [Text];
                     begin
                         //IF Status=Status::"10" THEN ERROR('This Leave application has already been posted');
                         if Status <> Status::Approved then
@@ -479,7 +481,8 @@ Page 51516194 "HR Leave Application Card"
                             HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Leave Notifications");
                             if HREmailParameters.Find('-') then begin
                                 HREmp.TestField(HREmp."Company E-Mail");
-                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+                                Recipient.add(Hremp."Company E-Mail");
+                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", Recipient,
                                 HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
                                 HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
                                 SMTP.Send();
@@ -848,7 +851,7 @@ Page 51516194 "HR Leave Application Card"
             LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
             LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
             if LeaveGjline.Find('-') then begin
-                Codeunit.Run(Codeunit::Codeunit55560, LeaveGjline);
+                Codeunit.Run(Codeunit::"HR Leave Jnl.-Post", LeaveGjline);
             end;
             Status := Status::Posted;
             Modify;
@@ -864,6 +867,8 @@ Page 51516194 "HR Leave Application Card"
 
 
     procedure NotifyApplicant()
+    var
+        Recipient: list of [text];
     begin
         HREmp.Get("Employee No");
         HREmp.TestField(HREmp."Company E-Mail");
@@ -875,7 +880,8 @@ Page 51516194 "HR Leave Application Card"
 
 
             HREmp.TestField(HREmp."Company E-Mail");
-            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+            Recipient.add(Hremp."Company E-Mail");
+            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", Recipient,
             HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
             HREmailParameters.Body + ' ' + "Application Code" + ' ' + HREmailParameters."Body 2", true);
             SMTP.Send();

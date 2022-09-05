@@ -174,7 +174,7 @@ Report 51516404 "Member Saving Listing"
             column(CreditComSign3; CreditComSign3)
             {
             }
-            column(COMPPIC; Customer.Picture)
+            column(COMPPIC; Customer.Piccture)
             {
             }
             column(NAME1; Customer.Name)

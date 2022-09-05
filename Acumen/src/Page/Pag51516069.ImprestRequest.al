@@ -372,7 +372,7 @@ Page 51516069 "Imprest Request"
                             //Post Committment Reversals
                             Doc_Type := Doc_type::Imprest;
                             BudgetControl.ReverseEntries(Doc_Type, "No.");
-                            Status := Status::"5";
+                            Status := Status::Canceled;
                             Modify;
                         end else
                             Error(Text001);

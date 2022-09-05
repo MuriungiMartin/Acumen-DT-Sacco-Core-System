@@ -7,9 +7,9 @@ Page 51516176 "HR Employee List"
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Employee';
     SourceTable = "HR Employees";
-    SourceTableView = where(Status=const(Active),
-                            IsCommette=const(false),
-                            IsBoard=const(false));
+    SourceTableView = where(Status = const(Active),
+                            IsCommette = const(false),
+                            IsBoard = const(false));
     UsageCategory = Lists;
 
     layout
@@ -19,41 +19,41 @@ Page 51516176 "HR Employee List"
             repeater(Control1102755000)
             {
                 Editable = false;
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     StyleExpr = true;
                 }
-                field("First Name";"First Name")
+                field("First Name"; "First Name")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Middle Name";"Middle Name")
+                field("Middle Name"; "Middle Name")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Last Name";"Last Name")
+                field("Last Name"; "Last Name")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Job Title";"Job Title")
+                field("Job Title"; "Job Title")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("User ID";"User ID")
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Company E-Mail";"Company E-Mail")
+                field("Company E-Mail"; "Company E-Mail")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                 }
-                field("Cellular Phone Number";"Cellular Phone Number")
+                field("Cellular Phone Number"; "Cellular Phone Number")
                 {
                     ApplicationArea = Basic;
                 }
@@ -61,11 +61,11 @@ Page 51516176 "HR Employee List"
         }
         area(factboxes)
         {
-            systempart(Control1102755002;"HR Employees Factbox")
+            part(Control1102755002; "HR Employees Factbox")
             {
-                SubPageLink = "No."=field("No.");
+                SubPageLink = "No." = field("No.");
             }
-            systempart(Control1102755003;Outlook)
+            systempart(Control1102755003; Outlook)
             {
             }
         }
@@ -87,7 +87,7 @@ Page 51516176 "HR Employee List"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     RunObject = Page "HR Employee Card";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Kin/Beneficiaries")
                 {
@@ -98,7 +98,7 @@ Page 51516176 "HR Employee List"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     RunObject = Page "HR Employee Kin";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Employee Attachments")
                 {
@@ -109,7 +109,7 @@ Page 51516176 "HR Employee List"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     RunObject = Page "HR Employee Attachments";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                     Visible = false;
                 }
                 action("Employement History")
@@ -121,7 +121,7 @@ Page 51516176 "HR Employee List"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     RunObject = Page "HR Employment History";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Employee Qualifications")
                 {
@@ -132,7 +132,7 @@ Page 51516176 "HR Employee List"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     RunObject = Page "HR Employee Qualifications";
-                    RunPageLink = "No."=field("No.");
+                    RunPageLink = "No." = field("No.");
                 }
                 action("Assigned Assets")
                 {
@@ -143,7 +143,7 @@ Page 51516176 "HR Employee List"
                     PromotedCategory = Category4;
                     PromotedIsBig = true;
                     RunObject = Page "Fixed Asset List";
-                    RunPageLink = "Responsible Employee"=field("No.");
+                    RunPageLink = "Responsible Employee" = field("No.");
                 }
             }
         }

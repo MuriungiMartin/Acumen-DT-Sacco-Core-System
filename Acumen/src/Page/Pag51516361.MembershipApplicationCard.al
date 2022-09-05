@@ -902,7 +902,7 @@ Page 51516361 "Membership Application Card"
                                         Cust.County := "Member County";
                                         Cust.Dioces := "Member Dioces";
                                         Cust."Arch Dioces" := "Member Arch Dioces";
-                                        Cust.Picture := Picture;
+                                        Cust.Piccture := Picture;
                                         Cust.Signature := Signature;
                                         Cust."Member class" := "Member class";
                                         Cust.County := County;
@@ -921,7 +921,7 @@ Page 51516361 "Membership Application Card"
                                             Cust."Employer Name" := ObjEmployer.Description;
                                         Cust.Occupation := Occupation;
                                         Cust."Date of Birth" := "Date of Birth";
-                                        Cust.Picture := Picture;
+                                        Cust.Piccture := Picture;
                                         Cust.Signature := Signature;
                                         Cust."Station/Department" := Section;
                                         Cust."E-Mail" := "E-Mail (Personal)";
@@ -999,7 +999,7 @@ Page 51516361 "Membership Application Card"
                                         Cust.Gender := Gender;
                                         Cust."Member class" := "Member class";
 
-                                        Cust.Picture := Picture;
+                                        Cust.Piccture := Picture;
                                         Cust.Signature := Signature;
 
                                         Cust."Monthly Contribution" := "Monthly Contribution";
@@ -1188,7 +1188,7 @@ Page 51516361 "Membership Application Card"
                                     Accounts."Post Code" := "Postal Code";
                                     Accounts.County := City;
                                     Accounts."BOSA Account No" := Cust."No.";
-                                    Accounts.Picture := Picture;
+                                    Accounts.Piccture := Picture;
                                     Accounts.Signature := Signature;
                                     Accounts."Passport No." := "Passport No.";
                                     Accounts."Employer Code" := "Employer Code";
@@ -1238,7 +1238,7 @@ Page 51516361 "Membership Application Card"
                                     Accounts."Member's Residence" := "Member's Residence";
                                     if Cust."Account Category" = Cust."account category"::Joint then
                                         Accounts."Joint Account Name" := "Joint Account Name";
-                                    "First Name"+' '+"First Name2";
+                                    // "First Name"+' '+"First Name2";
 
 
                                     Accounts."Name 3" := "Name 3";

@@ -746,9 +746,9 @@ Page 51516062 "Voucher Payment Header"
 
         //Confirm whether Bank Has the Cash
         if "Payment Mode" = "payment mode"::Cash then
-            CheckBudgetAvail.CheckFundsAvailability(Rec);
+            //  CheckBudgetAvail.CheckFundsAvailability(Rec);
 
-        /*Check if the user has selected all the relevant fields*/
+            /*Check if the user has selected all the relevant fields*/
         Temp.Get(UserId);
 
         JTemplate := Temp."Payment Journal Template";

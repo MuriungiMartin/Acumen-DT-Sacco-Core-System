@@ -32,7 +32,9 @@ Report 51516364 "Statement Send via E-Mail"
                     CompanyInfo.CalcFields(Picture);
             end;
 
-            trigger OnAfterGetRecord();
+            trigger OnAfterGetRecord()
+            var
+                Recipient: list of [Text];
             begin
                 //This report should print to Adobe Printer[The customer Statment]
                 //Adobe printer setup should print without opening report
@@ -54,9 +56,10 @@ Report 51516364 "Statement Send via E-Mail"
                     Time2 := Time;
                     ElapsedTime := Time2 - Time1;
                 until ElapsedTime > 40 * 1000;
+                Recipient.Add(Customer."E-Mail");
                 //Create the Message Here
                 //Email Address used is the one on UserSetup for Sender and Customer Card Email for Receipient
-                SMTP.CreateMessage(COMPANYNAME, UserSetup."E-Mail", Customer."E-Mail", Text001, Text000, false);
+                SMTP.CreateMessage(COMPANYNAME, UserSetup."E-Mail", Recipient, Text001, Text000, false);
                 //Add the attachment Here
                 //Note the path is predefined in the pdf Printer so the path and report name should be
                 //entered as below or use a setup. for this case the pdf printer saves using the name of the report C:\Users\Franc\Documents\Member Statement.pdf

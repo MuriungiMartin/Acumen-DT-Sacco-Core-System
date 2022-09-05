@@ -201,23 +201,23 @@ Report 51516532 "Process Pension Batch"
                                                         if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Benevolent Fund" then
                                                             GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Benevolent Fund"
                                                         else
-                                                            if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"45" then
-                                                                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"45"
+                                                            // if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"45" then
+                                                            //     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"45"
+                                                            // else
+                                                            if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::Loan then
+                                                                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Loan
                                                             else
-                                                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::Loan then
-                                                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Loan
+                                                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Charged" then
+                                                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Commission
                                                                 else
-                                                                    if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Loan Insurance Charged" then
-                                                                        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Commission
+                                                                    if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Interest Paid" then
+                                                                        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Interest Paid"
                                                                     else
-                                                                        if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Interest Paid" then
-                                                                            GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Interest Paid"
+                                                                        if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Registration Fee" then
+                                                                            GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Registration Fee"
                                                                         else
-                                                                            if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Registration Fee" then
-                                                                                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Registration Fee"
-                                                                            else
-                                                                                if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Recovery Account" then
-                                                                                    GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Recovery Account";
+                                                                            if ReceiptAllocations."Transaction Type" = ReceiptAllocations."transaction type"::"Recovery Account" then
+                                                                                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Recovery Account";
                                                         GenJournalLine."Loan No" := ReceiptAllocations."Loan No.";
                                                         //IF GenJournalLine.Amount<>0 THEN
                                                         GenJournalLine.Insert;

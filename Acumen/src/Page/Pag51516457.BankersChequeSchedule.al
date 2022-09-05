@@ -140,7 +140,7 @@ Page 51516457 "Bankers Cheque Schedule"
                         Transactions."Date Banked":=Today;
                         Transactions."Time Banked":=Time;
                         Transactions."Banking Posted":=true;
-                        Transactions."Cheque Processed":=Transactions."cheque processed"::"1";
+                        Transactions."Cheque Processed":=true;
                         Transactions.Modify;
                         until Transactions.Next = 0;
 

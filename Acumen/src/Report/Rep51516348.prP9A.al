@@ -204,10 +204,10 @@ Report 51516348 "prP9A.."
 			column(IMPORTANTCaption; IMPORTANTCaptionLbl)
 			{
 			}
-			column(DataItem1102756145; NAMES_OF_MORTGAGE_FINANCIAL_INSTITUTION______________________________________________________________________________________Lbl)
+			column(DataItem1102756145; NAMES_OF_MORTGAGE_FINANCIAL_INSTITUTION____________Lbl)
 			{
 			}
-			column(DataItem1102756146; L_R__No__OF_OWNER_OCCUPIED_HOUSE_____________________________________________________________________________DATE_OF_OCCUPATILbl)
+			column(DataItem1102756146; L_R__No__OF_OWNER_OCCUPIED_HOUSE___________________DATE_OF_OCCUPATILbl)
 			{
 			}
 			column(DATE_OF_OCCUPATION; DATE_OF_OCCUPATION)
@@ -526,8 +526,8 @@ Report 51516348 "prP9A.."
 		Employee_PINCaptionLbl: label 'Employee PIN';
 		Tobe_completed_by_Employer_at_end_of_yearCaptionLbl: label 'Tobe completed by Employer at end of year';
 		IMPORTANTCaptionLbl: label 'IMPORTANT';
-		NAMES_OF_MORTGAGE_FINANCIAL_INSTITUTION______________________________________________________________________________________Lbl: label 'NAMES OF MORTGAGE FINANCIAL INSTITUTION .....................................................';
-		L_R__No__OF_OWNER_OCCUPIED_HOUSE_____________________________________________________________________________DATE_OF_OCCUPATILbl: label 'L.R. No. OF OWNER OCCUPIED HOUSE........................................................................';
+		NAMES_OF_MORTGAGE_FINANCIAL_INSTITUTION____________Lbl: label 'NAMES OF MORTGAGE FINANCIAL INSTITUTION .....................................................';
+		L_R__No__OF_OWNER_OCCUPIED_HOUSE___________________DATE_OF_OCCUPATILbl: label 'L.R. No. OF OWNER OCCUPIED HOUSE........................................................................';
 		DATE_OF_OCCUPATION: label 'DATE OF OCCUPATION...............................................................................................';
 		TotalCaptionLbl: label 'Total';
 		TOTAL_CHARGEABLE_PAY__COL_h__KshsCaptionLbl: label 'TOTAL CHARGEABLE PAY (COL h) Kshs';

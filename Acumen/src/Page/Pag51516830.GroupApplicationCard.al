@@ -96,12 +96,12 @@ Page 51516830 "Group Application Card"
                     ApplicationArea = Basic;
                     Caption = 'Group/Cooperate Logo';
                 }
-                field("Personal No"; "Personal No")
-                {
-                    ApplicationArea = Basic;
-                    Editable = StaffNoEditable;
-                    Visible = PayrollVisible;
-                }
+                // field("Personal No"; "Personal No")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = StaffNoEditable;
+                //     Visible = PayrollVisible;
+                // }
                 field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
@@ -188,29 +188,29 @@ Page 51516830 "Group Application Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("No. Of Male Members"; "No. Of Male Members")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("No. Of Female Members"; "No. Of Female Members")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Meeting Days"; "Meeting Days")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field("Meeting Venue"; "Meeting Venue")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
-                field("Meeting Time"; "Meeting Time")
-                {
-                    ApplicationArea = Basic;
-                    ShowMandatory = true;
-                }
+                // field("No. Of Male Members"; "No. Of Male Members")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("No. Of Female Members"; "No. Of Female Members")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Meeting Days"; "Meeting Days")
+                // {
+                //     ApplicationArea = Basic;
+                //     ShowMandatory = true;
+                // }
+                // field("Meeting Venue"; "Meeting Venue")
+                // {
+                //     ApplicationArea = Basic;
+                //     ShowMandatory = true;
+                // }
+                // field("Meeting Time"; "Meeting Time")
+                // {
+                //     ApplicationArea = Basic;
+                //     ShowMandatory = true;
+                // }
             }
             group("Other Information")
             {
@@ -462,15 +462,15 @@ Page 51516830 "Group Application Card"
                             end;
 
                             //****
-                            Dimen.Reset;
-                            Dimen.SetRange(Dimen.Code, "Global Dimension 2 Code");
-                            if Dimen.Find('-') then begin
-                                if "No." = '' then begin
-                                    Dimen.TestField(Dimen."No. Series");
-                                    NoSeriesMgt.InitSeries(Dimen."No. Series", xRec."No. Series", 0D, "No.", "No. Series");
+                            // Dimen.Reset;
+                            // Dimen.SetRange(Dimen.Code, "Global Dimension 2 Code");
+                            // if Dimen.Find('-') then begin
+                            //     if "No." = '' then begin
+                            //         Dimen.TestField(Dimen."No. Series");
+                            //         NoSeriesMgt.InitSeries(Dimen."No. Series", xRec."No. Series", 0D, "No.", "No. Series");
 
-                                end;
-                            end;
+                            //     end;
+                            // end;
 
 
 
@@ -655,15 +655,15 @@ Page 51516830 "Group Application Card"
                             Accounts."No." := AcctNo;
                             Accounts."Date of Birth" := "Date of Birth";
                             Accounts.Name := Name;
-                            Accounts."Creditor Type" := Accounts."creditor type"::Account;
-                            Accounts."Personal No." := "Personal No";
+                            // Accounts."Creditor Type" := Accounts."creditor type"::Account;
+                            // Accounts."Personal No." := "Personal No";
                             Accounts."ID No." := "ID No.";
                             Accounts."Mobile Phone No" := "Mobile Phone No";
                             Accounts."Registration Date" := "Registration Date";
                             Accounts."Post Code" := "Postal Code";
                             Accounts.County := City;
                             Accounts."BOSA Account No" := Cust."No.";
-                            Accounts.Picture := Picture;
+                            Accounts.Piccture := Picture;
                             Accounts.Signature := Signature;
                             Accounts."Passport No." := "Passport No.";
                             Accounts."Employer Code" := "Employer Code";

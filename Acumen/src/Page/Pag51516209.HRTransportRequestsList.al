@@ -12,29 +12,29 @@ Page 51516209 "HR Transport Requests List"
         {
             repeater(Control1102755000)
             {
-                field("Application Code";"Application Code")
+                field("Application Code"; "Application Code")
                 {
                     ApplicationArea = Basic;
                     Style = Strong;
                     StyleExpr = true;
                 }
-                field("Employee No";"Employee No")
+                field("Employee No"; "Employee No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Names;Names)
+                field(Names; Names)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Tittle";"Job Tittle")
+                field("Job Tittle"; "Job Tittle")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Days Applied";"Days Applied")
+                field("Days Applied"; "Days Applied")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Supervisor;Supervisor)
+                field(Supervisor; Supervisor)
                 {
                     ApplicationArea = Basic;
                 }
@@ -42,10 +42,10 @@ Page 51516209 "HR Transport Requests List"
         }
         area(factboxes)
         {
-            systempart(Control1102755004;Outlook)
+            systempart(Control1102755004; Outlook)
             {
             }
-            systempart(Control1102755006;Notes)
+            systempart(Control1102755006; Notes)
             {
             }
         }
@@ -62,7 +62,7 @@ Page 51516209 "HR Transport Requests List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55605;
+
             }
         }
     }

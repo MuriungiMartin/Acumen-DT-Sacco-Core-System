@@ -39,7 +39,7 @@ Table 51516549 "Funeral Expense Payment"
                     "Member Name" := Cust.Name;
                     Cust.CalcFields(Cust."Current Savings", Cust."Risk Fund", Cust.Piccture, Cust.Signature);
                     "Member No." := Cust."No.";
-                    //Picture:=Cust.Picture;
+                    //Picture:=Cust.Piccture;
                     //Signature:=Cust.Signature;
                     "Member ID No" := Cust."ID No.";
                     "Member Status" := Cust.Status;

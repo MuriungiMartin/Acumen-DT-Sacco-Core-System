@@ -66,7 +66,7 @@ Report 51516505 "Accrue Risk Fund"
                 GenJournalLine."Line No." := LineNo;
                 GenJournalLine."Account Type" := GenJournalLine."account type"::Employee;
                 GenJournalLine."Account No." := Customer."No.";
-                GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"44";
+                //GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::r;
                 GenJournalLine.Validate(GenJournalLine."Account No.");
                 GenJournalLine."Document No." := DocNo;
                 GenJournalLine."Posting Date" := PostDate;

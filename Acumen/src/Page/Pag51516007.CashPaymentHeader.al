@@ -364,9 +364,11 @@ Page 51516007 "Cash Payment Header"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        approv: codeunit "Approvals Mgmt.";
     begin
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec.Status = Status::Approved then begin
             OpenApprovalEntriesExist := false;

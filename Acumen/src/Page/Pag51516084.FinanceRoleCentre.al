@@ -8,14 +8,14 @@ Page 51516084 "Finance Role Centre"
     {
         area(rolecenter)
         {
-            part(Control1000000041;"SO Processor Activities")
+            part(Control1000000041; "SO Processor Activities")
             {
                 Caption = 'Finance Activities';
             }
             group(Control1000000015)
             {
             }
-            systempart(Control1000000000;MyNotes)
+            systempart(Control1000000000; MyNotes)
             {
             }
         }
@@ -54,7 +54,7 @@ Page 51516084 "Finance Role Centre"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Vendor List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
             action("Bank Account List")
             {
@@ -357,7 +357,7 @@ Page 51516084 "Finance Role Centre"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Inhouse Cheque Clearing List';
-                    RunObject = Page UnknownPage50006;
+                    // RunObject = Page UnknownPage50006;
                 }
             }
             group("Document Approvals")

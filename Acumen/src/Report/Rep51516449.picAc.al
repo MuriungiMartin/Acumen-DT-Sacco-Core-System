@@ -22,7 +22,7 @@ Report 51516449 "picAc"
                 Mreg.Reset;
                 Mreg.SetRange(Mreg."No.", ImportPic.No);
                 if Mreg.Find('-') then begin
-                    Mreg.Picture := ImportPic.Picture;
+                    Mreg.Piccture := ImportPic.Picture;
                     Mreg.Modify;
                     Message(Mreg."No.")
                 end;

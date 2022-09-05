@@ -10,40 +10,40 @@ Page 51516081 "Accounting Role Center-M"
         {
             group(Control1900724808)
             {
-                part(Control99;"Finance Performance")
+                part(Control99; "Finance Performance")
                 {
                     Visible = false;
                 }
-                part(Control1902304208;"Account Manager Activities")
+                part(Control1902304208; "Account Manager Activities")
                 {
                 }
-                part(Control1907692008;"My Customers")
+                part(Control1907692008; "My Customers")
                 {
                 }
             }
             group(Control1900724708)
             {
-                part(Control103;"Trailing Sales Orders Chart")
+                part(Control103; "Trailing Sales Orders Chart")
                 {
                     Visible = false;
                 }
-                part(Control106;"My Job Queue")
+                part(Control106; "My Job Queue")
                 {
                     Visible = false;
                 }
-                part(Control100;"Cash Flow Forecast Chart")
+                part(Control100; "Cash Flow Forecast Chart")
                 {
                 }
-                part(Control1902476008;"My Vendors")
+                part(Control1902476008; "My Vendors")
                 {
                 }
-                part(Control108;"Report Inbox Part")
+                part(Control108; "Report Inbox Part")
                 {
                 }
-                part(Control1903012608;"Copy Profile")
+                part(Control1903012608; "Copy Profile")
                 {
                 }
-                systempart(Control1901377608;MyNotes)
+                systempart(Control1901377608; MyNotes)
                 {
                 }
             }
@@ -59,14 +59,14 @@ Page 51516081 "Accounting Role Center-M"
                 ApplicationArea = Basic;
                 Caption = '&G/L Trial Balance';
                 Image = "Report";
-                RunObject = Report UnknownReport10022;
+                //wnReport10022;
             }
             action("Chart of Accounts")
             {
                 ApplicationArea = Basic;
                 Caption = 'Chart of Accounts';
                 Image = "Report";
-                RunObject = Report UnknownReport10002;
+                //wnReport10002;
             }
             action("&Bank Detail Trial Balance")
             {
@@ -80,7 +80,7 @@ Page 51516081 "Accounting Role Center-M"
                 ApplicationArea = Basic;
                 Caption = 'Account Schedule Layout';
                 Image = "Report";
-                RunObject = Report UnknownReport10000;
+                //wnReport10000;
             }
             action("&Account Schedule")
             {
@@ -94,14 +94,14 @@ Page 51516081 "Accounting Role Center-M"
                 ApplicationArea = Basic;
                 Caption = 'Account Balances by GIFI Code';
                 Image = "Report";
-                RunObject = Report UnknownReport10004;
+                //wnReport10004;
             }
             action(Budget)
             {
                 ApplicationArea = Basic;
                 Caption = 'Budget';
                 Image = "Report";
-                RunObject = Report UnknownReport10001;
+                //wnReport10001;
             }
             action("&Fiscal Year Balance")
             {
@@ -122,14 +122,14 @@ Page 51516081 "Accounting Role Center-M"
                 ApplicationArea = Basic;
                 Caption = '&Closing Trial Balance';
                 Image = "Report";
-                RunObject = Report UnknownReport10003;
+                //wnReport10003;
             }
             action("Consol. Trial Balance")
             {
                 ApplicationArea = Basic;
                 Caption = 'Consol. Trial Balance';
                 Image = "Report";
-                RunObject = Report UnknownReport10007;
+                //wnReport10007;
             }
             separator(Action49)
             {
@@ -149,14 +149,14 @@ Page 51516081 "Accounting Role Center-M"
                 ApplicationArea = Basic;
                 Caption = 'Aged Accounts &Receivable';
                 Image = "Report";
-                RunObject = Report UnknownReport10040;
+                //wnReport10040;
             }
             action("Aged Accounts Pa&yable")
             {
                 ApplicationArea = Basic;
                 Caption = 'Aged Accounts Pa&yable';
                 Image = "Report";
-                RunObject = Report UnknownReport10085;
+                //wnReport10085;
             }
             separator(Action1000000017)
             {
@@ -285,7 +285,7 @@ Page 51516081 "Accounting Role Center-M"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Vendor List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
             action("Purchase Orders")
             {
@@ -332,7 +332,7 @@ Page 51516081 "Accounting Role Center-M"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Customer List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
             action("Sales Orders")
             {
@@ -374,14 +374,14 @@ Page 51516081 "Accounting Role Center-M"
                     ApplicationArea = Basic;
                     Caption = 'Purchase Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const(Purchases),Recurring=const(false));
+                    RunPageView = where("Template Type" = const(Purchases), Recurring = const(false));
                 }
                 action("Sales Journals")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Sales Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const(Sales),Recurring=const(false));
+                    RunPageView = where("Template Type" = const(Sales), Recurring = const(false));
                 }
                 action("Cash Receipt Journals")
                 {
@@ -389,7 +389,7 @@ Page 51516081 "Accounting Role Center-M"
                     Caption = 'Cash Receipt Journals';
                     Image = Journals;
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const("Cash Receipts"),Recurring=const(false));
+                    RunPageView = where("Template Type" = const("Cash Receipts"), Recurring = const(false));
                 }
                 action("Payment Journals")
                 {
@@ -397,14 +397,14 @@ Page 51516081 "Accounting Role Center-M"
                     Caption = 'Payment Journals';
                     Image = Journals;
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const(Payments),Recurring=const(false));
+                    RunPageView = where("Template Type" = const(Payments), Recurring = const(false));
                 }
                 action("IC General Journals")
                 {
                     ApplicationArea = Basic;
                     Caption = 'IC General Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const(Intercompany),Recurring=const(false));
+                    RunPageView = where("Template Type" = const(Intercompany), Recurring = const(false));
                 }
                 action("General Journals")
                 {
@@ -412,7 +412,7 @@ Page 51516081 "Accounting Role Center-M"
                     Caption = 'General Journals';
                     Image = Journal;
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const(General),Recurring=const(false));
+                    RunPageView = where("Template Type" = const(General), Recurring = const(false));
                 }
                 action("Intrastat Journals")
                 {
@@ -443,14 +443,14 @@ Page 51516081 "Accounting Role Center-M"
                     ApplicationArea = Basic;
                     Caption = 'Fixed Assets G/L Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const(Assets),Recurring=const(false));
+                    RunPageView = where("Template Type" = const(Assets), Recurring = const(false));
                 }
                 action("Fixed Assets Journals")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Fixed Assets Journals';
                     RunObject = Page "FA Journal Batches";
-                    RunPageView = where(Recurring=const(false));
+                    RunPageView = where(Recurring = const(false));
                 }
                 action("Fixed Assets Reclass. Journals")
                 {
@@ -469,14 +469,14 @@ Page 51516081 "Accounting Role Center-M"
                     ApplicationArea = Basic;
                     Caption = 'Recurring General Journals';
                     RunObject = Page "General Journal Batches";
-                    RunPageView = where("Template Type"=const(General),Recurring=const(true));
+                    RunPageView = where("Template Type" = const(General), Recurring = const(true));
                 }
                 action("Recurring Fixed Asset Journals")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Recurring Fixed Asset Journals';
                     RunObject = Page "FA Journal Batches";
-                    RunPageView = where(Recurring=const(true));
+                    RunPageView = where(Recurring = const(true));
                 }
             }
             group("Payments & Loan Disbursement")
@@ -487,21 +487,21 @@ Page 51516081 "Accounting Role Center-M"
                     ApplicationArea = Basic;
                     Caption = 'New Payment Vouchers';
                     RunObject = Page "Payment List.";
-                    RunPageView = where(Status=const(New));
+                    RunPageView = where(Status = const(New));
                 }
                 action("Pending Payment  Vouchers List")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Pending Payment  Vouchers List';
                     RunObject = Page "Payment List.";
-                    RunPageView = where(Status=const("Pending Approval"));
+                    RunPageView = where(Status = const("Pending Approval"));
                 }
                 action("Approved Payment Vouchers")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Approved Payment Vouchers';
                     RunObject = Page "Payment List.";
-                    RunPageView = where(Status=const(Approved));
+                    RunPageView = where(Status = const(Approved));
                 }
             }
             group("Receipts & Bank Transfer")
@@ -607,13 +607,13 @@ Page 51516081 "Accounting Role Center-M"
                     ApplicationArea = Basic;
                     Caption = 'Posted Deposits';
                     Image = PostedDeposit;
-                    RunObject = Page UnknownPage10147;
+                    //ownPage10147;
                 }
                 action("Posted Bank Recs.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Posted Bank Recs.';
-                    RunObject = Page UnknownPage10129;
+                    //ownPage10129;
                 }
                 action("Bank Statements")
                 {
@@ -676,13 +676,13 @@ Page 51516081 "Accounting Role Center-M"
                     ApplicationArea = Basic;
                     Caption = 'IRS 1099 Form-Box';
                     Image = "1099Form";
-                    RunObject = Page UnknownPage10015;
+                    //ownPage10015;
                 }
                 action("GIFI Codes")
                 {
                     ApplicationArea = Basic;
                     Caption = 'GIFI Codes';
-                    RunObject = Page UnknownPage10017;
+                    //ownPage10017;
                 }
                 action("Tax Areas")
                 {
@@ -736,7 +736,7 @@ Page 51516081 "Accounting Role Center-M"
                     ApplicationArea = Basic;
                     Caption = 'Deposit';
                     Image = DepositSlip;
-                    RunObject = Page UnknownPage36646;
+                    //ownPage36646;
                 }
                 action("Bank Rec.")
                 {
@@ -815,7 +815,7 @@ Page 51516081 "Accounting Role Center-M"
                 ApplicationArea = Basic;
                 Caption = 'Deposit';
                 Image = DepositSlip;
-                RunObject = Page UnknownPage10140;
+                //ownPage10140;
             }
             separator(Action67)
             {
@@ -972,7 +972,7 @@ Page 51516081 "Accounting Role Center-M"
                 ApplicationArea = Basic;
                 Caption = 'Export GIFI Info. to Excel';
                 Image = ExportToExcel;
-                RunObject = Report UnknownReport10005;
+                //wnReport10005;
             }
         }
     }

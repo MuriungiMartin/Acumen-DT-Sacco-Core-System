@@ -428,6 +428,7 @@ Page 51516400 "BOSA Receipt Card"
                         CurrPage.Close;
 
                     end;
+                end;
             }
             action("Reprint Frecipt")
             {

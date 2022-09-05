@@ -158,8 +158,8 @@ Page 51516521 "Loan Trunch Disburesment"
                         Text001: label 'This transaction is already pending approval';
                         ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                        if ApprovalMgt.CheckTrunchApprovalsWorkflowEnabled(Rec) then begin
-                            ApprovalMgt.OnSendTrunchForApproval(Rec);
+                        if ApprovalMgt.CheckLoanTrunchDisbursementApprovalsWorkflowEnabled(Rec) then begin
+                            ApprovalMgt.OnSendLoanTrunchDisbursementForApproval(Rec);
                             Message('here');
                         end
                     end;
@@ -178,7 +178,7 @@ Page 51516521 "Loan Trunch Disburesment"
                     var
                         ApprovalMgt: Codeunit WorkflowIntegration;
                     begin
-                        ApprovalMgt.OnCancelTrunchApprovalRequest(Rec);
+                        ApprovalMgt.OnCancelLoanTrunchDisbursementApprovalRequest(Rec);
                     end;
                 }
                 action(Approval)
@@ -218,9 +218,11 @@ Page 51516521 "Loan Trunch Disburesment"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        Approv: codeunit "Approvals Mgmt.";
     begin
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec.Status = Status::Approved then begin
             OpenApprovalEntriesExist := false;

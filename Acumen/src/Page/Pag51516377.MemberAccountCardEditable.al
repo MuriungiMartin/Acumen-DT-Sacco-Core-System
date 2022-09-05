@@ -173,7 +173,7 @@ Page 51516377 "Member Account Card - Editable"
                     Caption = 'Company Registration Date';
                     Editable = true;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                 }

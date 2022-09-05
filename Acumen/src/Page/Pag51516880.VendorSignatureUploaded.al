@@ -12,12 +12,12 @@ Page 51516880 "Vendor Signature-Uploaded"
     {
         area(content)
         {
-            field(Signature;Signature)
+            field(Signature; Signature)
             {
                 ApplicationArea = Basic;
                 Visible = true;
             }
-            field("Signature  2";"Signature  2")
+            field("Signature  2"; "Signature  2")
             {
                 ApplicationArea = Basic;
             }
@@ -77,10 +77,10 @@ Page 51516880 "Vendor Signature-Uploaded"
                     //TESTFIELD(Description);
 
                     ToFile := DummyPictureEntity.GetDefaultMediaDescription(Rec);
-                    ExportPath := TemporaryPath + "No." + Format(Picture.MediaId);
-                    Picture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
+                    ExportPath := TemporaryPath + "No." + Format(Piccture.MediaId);
+                    Piccture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
 
-                    FileManagement.ExportImage(ExportPath,ToFile);
+                    FileManagement.ExportImage(ExportPath, ToFile);
                 end;
             }
             action(DeletePicture)
@@ -109,7 +109,7 @@ Page 51516880 "Vendor Signature-Uploaded"
     begin
         CameraAvailable := CameraProvider.IsAvailable;
         if CameraAvailable then
-          CameraProvider := CameraProvider.Create;
+            CameraProvider := CameraProvider.Create;
     end;
 
     var
@@ -132,7 +132,7 @@ Page 51516880 "Vendor Signature-Uploaded"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         CameraOptions := CameraOptions.CameraOptions;
         CameraOptions.Quality := 50;
@@ -151,25 +151,25 @@ Page 51516880 "Vendor Signature-Uploaded"
         //TESTFIELD(Description);
 
         if Signature.Count > 0 then
-          if not Confirm(OverrideImageQst) then
-            Error('');
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(Signature);
-        Signature.ImportFile(FileName,ClientFileName);
+        Signature.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
 
     local procedure SetEditableOnPictureActions()
     begin
-        DeleteExportEnabled := Picture.Count <> 0;
+        DeleteExportEnabled := Piccture.Count <> 0;
     end;
 
     procedure IsCameraAvailable(): Boolean
@@ -188,33 +188,33 @@ Page 51516880 "Vendor Signature-Uploaded"
         TestField("No.");
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(Signature);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;
     begin
         if (PictureName = '') or (PictureFilePath = '') then
-          exit;
+            exit;
 
         if Signature.Count > 0 then
-          if not Confirm(OverrideImageQst) then begin
-            if Erase(PictureFilePath) then;
-            exit;
-          end;
+            if not Confirm(OverrideImageQst) then begin
+                if Erase(PictureFilePath) then;
+                exit;
+            end;
 
         File.Open(PictureFilePath);
         File.CreateInstream(Instream);
 
-        Clear(Picture);
-        Signature.ImportStream(Instream,PictureName);
+        Clear(Piccture);
+        Signature.ImportStream(Instream, PictureName);
         if not Modify(true) then
-          Insert(true);
+            Insert(true);
 
         File.Close;
         if Erase(PictureFilePath) then;

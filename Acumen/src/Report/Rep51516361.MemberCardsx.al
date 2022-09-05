@@ -122,7 +122,7 @@ Report 51516361 "Member Cardsx"
             begin
                 RecordNo := RecordNo + 1;
                 ColumnNo := ColumnNo + 1;
-                FormatAddr.Member(CustAddr[ColumnNo], "Members Register");
+                FormatAddr.Customer(CustAddr[ColumnNo], Customer);
                 if RecordNo = NoOfRecords then begin
                     for i := ColumnNo + 1 to NoOfColumns do
                         Clear(CustAddr[i]);

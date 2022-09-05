@@ -5,7 +5,7 @@ Page 51516346 "Cheque Trans Verification"
     Editable = false;
     PageType = List;
     SourceTable = "Cheque Issue Lines-Family";
-    SourceTableView = where(dert=const(0));
+    SourceTableView = where(dert = const(0));
 
     layout
     {
@@ -13,62 +13,62 @@ Page 51516346 "Cheque Trans Verification"
         {
             repeater(Group)
             {
-                field(test;test)
+                field(test; test)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cheque Serial No";"Cheque Serial No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Account No.";"Account No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Account Name";"Account Name")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date _Refference No.";"Date _Refference No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Transaction Code";"Transaction Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Branch Code";"Branch Code")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Amount;Amount)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(dert;dert)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Cheque No";"Cheque No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field(FrontImage;FrontImage)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(FrontGrayImage;FrontGrayImage)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(BackImages;BackImages)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Account Balance";"Account Balance")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Cheque Serial No";"Cheque Serial No")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Account No.";"Account No.")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Account Name";"Account Name")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Date _Refference No.";"Date _Refference No.")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Transaction Code";"Transaction Code")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Branch Code";"Branch Code")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(Amount;Amount)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(dert;dert)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Cheque No";"Cheque No")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(FrontImage;FrontImage)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(FrontGrayImage;FrontGrayImage)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(BackImages;BackImages)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Account Balance";"Account Balance")
+                // {
+                //     ApplicationArea = Basic;
+                // }
             }
         }
     }

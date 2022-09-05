@@ -271,10 +271,10 @@ Page 51516001 "Payment Card."
                         PayLine.SetRange(PayLine."Received From", "No.");
                         if PayLine.Find('-') then begin
                             repeat
-                                if PayLine."Total Commitments" = '' then Error('Please specify Invoice to be Paid!');
-                                if PayLine."Date Posted" = '' then Error('Enter Account No!');
-                                if PayLine.Amount = '' then Error('Enter Remarks!');
-                                if PayLine.Remarks = 0 then Error('Enter Amount!');
+                                if PayLine."Total Commitments" = 0 then Error('Please specify Invoice to be Paid!');
+                                if PayLine."Date Posted" = 0D then Error('Enter Account No!');
+                                if PayLine.Amount = 0 then Error('Enter Remarks!');
+                                if PayLine.Remarks = '' then Error('Enter Amount!');
                             until PayLine.Next = 0;
                         end;
                         if not LinesExists then
@@ -374,7 +374,7 @@ Page 51516001 "Payment Card."
                         PayLine.SetRange(PayLine."Received From", "No.");
                         if PayLine.Find('-') then begin
                             repeat
-                                PayLine."Cashier Bank Account" := false;
+                                PayLine."Cashier Bank Account" := '';
                                 PayLine.Modify;
                             until PayLine.Next = 0;
                         end;
@@ -855,12 +855,12 @@ Page 51516001 "Payment Card."
         GenJnlLine."Bal. Account No." := '';
 
         GenJnlLine.Validate(GenJnlLine."Bal. Account No.");
-        GenJnlLine."Shortcut Dimension 1 Code" := PayLine."PV Type";
+        GenJnlLine."Shortcut Dimension 1 Code" := '';
         GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 1 Code");
         GenJnlLine."Shortcut Dimension 2 Code" := PayLine."Apply to";
         GenJnlLine.Validate(GenJnlLine."Shortcut Dimension 2 Code");
-        GenJnlLine.ValidateShortcutDimCode(3, PayLine."Apply to ID");
-        GenJnlLine.ValidateShortcutDimCode(4, PayLine."No of Units");
+        GenJnlLine.ValidateShortcutDimCode(3, PayLine."Shortcut Dimension 2 Code");
+        GenJnlLine.ValidateShortcutDimCode(4, PayLine."Shortcut Dimension 4 Code");
 
         GenJnlLine.Description := CopyStr("Payment Description", 1, 50);//COPYSTR('Pay To:' + Payments.Payee,1,50);
         GenJnlLine.Validate(GenJnlLine.Description);
@@ -944,7 +944,7 @@ Page 51516001 "Payment Card."
         Exists := false;
         PayLine.Reset;
         PayLine.SetRange(PayLine."Received From", "No.");
-        PayLine.SetRange(PayLine."Cashier Bank Account", false);
+        PayLine.SetRange(PayLine."Cashier Bank Account", "Bank Account");
         PayLine.SetRange(PayLine."Budgetary Control A/C", true);
         if PayLine.Find('-') then
             Exists := true;

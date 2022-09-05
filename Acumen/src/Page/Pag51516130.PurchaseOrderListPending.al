@@ -434,7 +434,7 @@ Page 51516130 "Purchase Order List-Pending"
                     trigger OnAction()
                     var
                         ICInOutboxMgt: Codeunit ICInboxOutboxMgt;
-                        ApprovalsMgmt: Codeunit WorkflowIntegration;
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
                         if ApprovalsMgmt.PrePostApprovalCheckPurch(Rec) then
                             ICInOutboxMgt.SendPurchDoc(Rec, false);
@@ -453,7 +453,7 @@ Page 51516130 "Purchase Order List-Pending"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit WorkflowIntegration;
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
                         if ApprovalsMgmt.CheckPurchaseApprovalPossible(Rec) then
                             ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
@@ -468,7 +468,7 @@ Page 51516130 "Purchase Order List-Pending"
 
                     trigger OnAction()
                     var
-                        ApprovalsMgmt: Codeunit WorkflowIntegration;
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     begin
                         ApprovalsMgmt.OnCancelPurchaseApprovalRequest(Rec);
                     end;
@@ -632,7 +632,7 @@ Page 51516130 "Purchase Order List-Pending"
 
     local procedure SetControlAppearance()
     var
-        ApprovalsMgmt: Codeunit WorkflowIntegration;
+        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
     begin
         OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
     end;

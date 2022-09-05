@@ -33,15 +33,13 @@ Table 51516363 "Member App Signatories"
         field(8; "Must be Present"; Boolean)
         {
         }
-        field(9; Picture; Blob)
+        field(9; Picture; MediaSet)
         {
             Caption = 'Picture';
-            SubType = Bitmap;
         }
-        field(10; Signature; Blob)
+        field(10; Signature; MediaSet)
         {
             Caption = 'Signature';
-            SubType = Bitmap;
         }
         field(11; "Expiry Date"; Date)
         {
@@ -53,13 +51,13 @@ Table 51516363 "Member App Signatories"
             trigger OnValidate()
             begin
                 if Cust.Get("BOSA No.") then begin
-                    //Cust.CALCFIELDS(Cust.Picture,Cust.Signature);
+                    //Cust.CALCFIELDS(Cust.Piccture,Cust.Signature);
                     Names := Cust.Name;
                     "ID No." := Cust."ID No.";
                     "Email Address" := Cust."E-Mail (Personal)";
                     "Date Of Birth" := Cust."Date of Birth";
                     "Staff/Payroll" := Cust."Personal No";
-                    //Picture:=Cust.Picture;
+                    //Picture:=Cust.Piccture;
                     //Signature:=Cust.Signature;
                     "Mobile No." := Cust."Mobile Phone No";
                 end;
@@ -100,7 +98,7 @@ Table 51516363 "Member App Signatories"
                         "Email Address" := App."E-Mail (Personal)";
                         "Date Of Birth" := App."Date of Birth";
                         "Staff/Payroll" := App."Payroll No";
-                        //Picture:=Cust.Picture;
+                        //Picture:=Cust.Piccture;
                         //Signature:=Cust.Signature;
                         "Mobile No." := App."Mobile Phone No";
 

@@ -5,7 +5,7 @@ Page 51516305 "HR Applicants UnQualified List"
     CardPageID = "HR Applicants UnQualified Card";
     PageType = List;
     SourceTable = "HR Job Applications";
-    SourceTableView = where("Qualification Status"=filter(UnQualified));
+    SourceTableView = where("Qualification Status" = filter(UnQualified));
     UsageCategory = Lists;
 
     layout
@@ -14,35 +14,35 @@ Page 51516305 "HR Applicants UnQualified List"
         {
             repeater(Group)
             {
-                field("Application No";"Application No")
+                field("Application No"; "Application No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("First Name";"First Name")
+                field("First Name"; "First Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Middle Name";"Middle Name")
+                field("Middle Name"; "Middle Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Last Name";"Last Name")
+                field("Last Name"; "Last Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Applied for Description";"Job Applied for Description")
+                field("Job Applied for Description"; "Job Applied for Description")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Regret Notice Sent";"Regret Notice Sent")
+                field("Regret Notice Sent"; "Regret Notice Sent")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interview Type";"Interview Type")
+                field("Interview Type"; "Interview Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Job Applied For";"Job Applied For")
+                field("Job Applied For"; "Job Applied For")
                 {
                     ApplicationArea = Basic;
                 }
@@ -66,30 +66,32 @@ Page 51516305 "HR Applicants UnQualified List"
                     PromotedCategory = Category4;
 
                     trigger OnAction()
+                    var
+                        Recipient: List of [Text];
                     begin
 
                         //IF CONFIRM('Send this Requisition for Approval?',TRUE)=FALSE THEN EXIT;
-                        if not Confirm(Text002,false) then exit;
+                        if not Confirm(Text002, false) then exit;
 
-                        TestField(Qualified,Qualified::"0");
-                        HRJobApplications.SetRange(HRJobApplications."Application No","Application No");
+                        TestField(Qualified, false);
+                        HRJobApplications.SetRange(HRJobApplications."Application No", "Application No");
                         CurrPage.SetSelectionFilter(HRJobApplications);
                         if HRJobApplications.Find('-') then
-                        //GET E-MAIL PARAMETERS FOR JOB APPLICATIONS
-                        HREmailParameters.Reset;
-                        HREmailParameters.SetRange(HREmailParameters."Associate With",HREmailParameters."associate with"::"Regret Notification");
-                        if HREmailParameters.Find('-') then
-                        begin
-                             repeat
-                             HRJobApplications.TestField(HRJobApplications."E-Mail");
-                             SMTP.CreateMessage(HREmailParameters."Sender Name",HREmailParameters."Sender Address",HRJobApplications."E-Mail",
-                             HREmailParameters.Subject,'Dear'+' '+HRJobApplications."First Name"+' '+HREmailParameters.Body+' '+HRJobApplications."Job Applied for Description"+' '+'applied on'+' '+Format("Date Applied")+' '+HREmailParameters."Body 2",true);
-                             //HREmailParameters."Body 2"+' '+ FORMAT("Date Applied")+'. '+
-                            // HREmailParameters.Body,TRUE);
-                             SMTP.Send();
-                             until HRJobApplications.Next=0;
+                            //GET E-MAIL PARAMETERS FOR JOB APPLICATIONS
+                            HREmailParameters.Reset;
+                        HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Regret Notification");
+                        if HREmailParameters.Find('-') then begin
+                            repeat
+                                HRJobApplications.TestField(HRJobApplications."E-Mail");
+                                Recipient.Add(HRJobApplications."E-Mail");
+                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", Recipient,
+                                HREmailParameters.Subject, 'Dear' + ' ' + HRJobApplications."First Name" + ' ' + HREmailParameters.Body + ' ' + HRJobApplications."Job Applied for Description" + ' ' + 'applied on' + ' ' + Format("Date Applied") + ' ' + HREmailParameters."Body 2", true);
+                                //HREmailParameters."Body 2"+' '+ FORMAT("Date Applied")+'. '+
+                                // HREmailParameters.Body,TRUE);
+                                SMTP.Send();
+                            until HRJobApplications.Next = 0;
 
-                        Message('All Unqualified  candidates have been sent regret alerts');
+                            Message('All Unqualified  candidates have been sent regret alerts');
                         end;
                     end;
                 }
@@ -102,7 +104,7 @@ Page 51516305 "HR Applicants UnQualified List"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Page "HR Job Applications Card";
-                    RunPageLink = "Application No"=field("Application No");
+                    RunPageLink = "Application No" = field("Application No");
                 }
                 action(Qualifications)
                 {
@@ -113,7 +115,7 @@ Page 51516305 "HR Applicants UnQualified List"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Page "HR Applicant Qualifications";
-                    RunPageLink = "Application No"=field("Application No");
+                    RunPageLink = "Application No" = field("Application No");
                 }
                 action(Referees)
                 {
@@ -123,8 +125,8 @@ Page 51516305 "HR Applicants UnQualified List"
                     Promoted = false;
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
-                    RunObject = Page "HR Applicant Referees";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    // RunObject = Page "HR Applicant Referees";
+                    // RunPageLink = "Job Application No" = field("Application No");
                 }
                 action(Hobbies)
                 {
@@ -135,7 +137,7 @@ Page 51516305 "HR Applicants UnQualified List"
                     //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedCategory = "Report";
                     RunObject = Page "HR Applicant Hobbies";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    RunPageLink = "Job Application No" = field("Application No");
                 }
             }
             group(Print)
@@ -152,9 +154,9 @@ Page 51516305 "HR Applicants UnQualified List"
                     trigger OnAction()
                     begin
                         HRJobApplications.Reset;
-                        HRJobApplications.SetRange(HRJobApplications."Application No","Application No");
+                        HRJobApplications.SetRange(HRJobApplications."Application No", "Application No");
                         if HRJobApplications.Find('-') then
-                        Report.Run(53925,true,true,HRJobApplications);
+                            Report.Run(53925, true, true, HRJobApplications);
                     end;
                 }
             }

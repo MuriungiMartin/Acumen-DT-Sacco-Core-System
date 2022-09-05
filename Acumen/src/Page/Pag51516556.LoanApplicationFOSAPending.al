@@ -317,8 +317,8 @@ Page 51516556 "Loan Application FOSA(Pending)"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "HR Job Requirements";
-                    RunPageLink = "Job ID" = field("Loan  No."),
-                                  "No of Posts" = field("Client Code");
+                    RunPageLink = "Job ID" = field("Loan  No.");
+                    // "No of Posts" = field("Client Code");
                 }
             }
             group(Approvals)
@@ -391,11 +391,13 @@ Page 51516556 "Loan Application FOSA(Pending)"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        Approv: Codeunit "Approvals Mgmt.";
     begin
         EnableCreateMember := false;
         EditableAction := true;
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec."Approval Status" = "approval status"::Approved then begin
             OpenApprovalEntriesExist := false;

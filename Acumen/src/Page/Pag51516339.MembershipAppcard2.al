@@ -929,7 +929,7 @@ Page 51516339 "Membership App card 2"
                                         //PictureExists:=Picture.HASVALUE;
                                         //SignatureExists:=Signature.HASVALUE;
                                         //IF (PictureExists=TRUE) AND (SignatureExists=TRUE) THEN BEGIN
-                                        Cust.Picture := Picture;
+                                        Cust.Piccture := Picture;
                                         Cust.Signature := Signature;
                                         //END ELSE
                                         //ERROR('Kindly upload a Picture and signature');
@@ -1026,7 +1026,7 @@ Page 51516339 "Membership App card 2"
                                     Accounts."Post Code" := "Postal Code";
                                     Accounts.County := City;
                                     Accounts."BOSA Account No" := Cust."No.";
-                                    Accounts.Picture := Picture;
+                                    Accounts.Piccture := Picture;
                                     Accounts.Signature := Signature;
                                     Accounts."Passport No." := "Passport No.";
                                     Accounts."Employer Code" := "Employer Code";

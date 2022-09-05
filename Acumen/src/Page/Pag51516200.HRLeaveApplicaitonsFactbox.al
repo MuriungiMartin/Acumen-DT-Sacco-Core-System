@@ -15,31 +15,31 @@ Page 51516200 "HR Leave Applicaitons Factbox"
                 Style = StrongAccent;
                 StyleExpr = true;
             }
-            field("No.";"No.")
+            field("No."; "No.")
             {
                 ApplicationArea = Basic;
             }
-            field("First Name";"First Name")
+            field("First Name"; "First Name")
             {
                 ApplicationArea = Basic;
             }
-            field("Middle Name";"Middle Name")
+            field("Middle Name"; "Middle Name")
             {
                 ApplicationArea = Basic;
             }
-            field("Last Name";"Last Name")
+            field("Last Name"; "Last Name")
             {
                 ApplicationArea = Basic;
             }
-            field("Job Title";"Job Title")
+            field("Job Title"; "Job Title")
             {
                 ApplicationArea = Basic;
             }
-            field(Status;Status)
+            field(Status; Status)
             {
                 ApplicationArea = Basic;
             }
-            field("E-Mail";"E-Mail")
+            field("E-Mail"; "E-Mail")
             {
                 ApplicationArea = Basic;
             }
@@ -56,45 +56,45 @@ Page 51516200 "HR Leave Applicaitons Factbox"
                 Style = StrongAccent;
                 StyleExpr = true;
             }
-            field("Total Leave Taken";"Total Leave Taken")
+            field("Total Leave Taken"; "Total Leave Taken")
             {
                 ApplicationArea = Basic;
             }
-            field("Total (Leave Days)";"Total (Leave Days)")
+            field("Total (Leave Days)"; "Total (Leave Days)")
             {
                 ApplicationArea = Basic;
             }
-            field("Reimbursed Leave Days";"Reimbursed Leave Days")
+            field("Reimbursed Leave Days"; "Reimbursed Leave Days")
             {
                 ApplicationArea = Basic;
             }
-            field("Allocated Leave Days";"Allocated Leave Days")
+            field("Allocated Leave Days"; "Allocated Leave Days")
             {
                 ApplicationArea = Basic;
             }
-            field("Outstanding Leave Balance";"Outstanding Leave Balance")
+            field("Outstanding Leave Balance"; "Outstanding Leave Balance")
             {
                 ApplicationArea = Basic;
                 Style = Favorable;
                 StyleExpr = true;
             }
-            field("Compassionate Leave Acc.";"Compassionate Leave Acc.")
+            field("Compassionate Leave Acc."; "Compassionate Leave Acc.")
             {
                 ApplicationArea = Basic;
             }
-            field("Maternity Leave Acc.";"Maternity Leave Acc.")
+            field("Maternity Leave Acc."; "Maternity Leave Acc.")
             {
                 ApplicationArea = Basic;
             }
-            field("Paternity Leave Acc.";"Paternity Leave Acc.")
+            field("Paternity Leave Acc."; "Paternity Leave Acc.")
             {
                 ApplicationArea = Basic;
             }
-            field("Sick Leave Acc.";"Sick Leave Acc.")
+            field("Sick Leave Acc."; "Sick Leave Acc.")
             {
                 ApplicationArea = Basic;
             }
-            field("Study Leave Acc";"Study Leave Acc")
+            field("Study Leave Acc"; "Study Leave Acc")
             {
                 ApplicationArea = Basic;
             }
@@ -108,6 +108,6 @@ Page 51516200 "HR Leave Applicaitons Factbox"
     var
         Text1: label 'Employee Details';
         Text2: label 'Employeee Leave Details';
-        Text3: ;
+
 }
 

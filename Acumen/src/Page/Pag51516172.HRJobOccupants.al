@@ -16,20 +16,20 @@ Page 51516172 "HR Job Occupants"
             {
                 Caption = 'Job Details';
                 Editable = false;
-                field("Job ID";"Job ID")
+                field("Job ID"; "Job ID")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                     Importance = Promoted;
                 }
-                field("Job Description";"Job Description")
+                field("Job Description"; "Job Description")
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
                     Importance = Promoted;
                 }
             }
-            part(Control1102755000;"HR Employee List")
+            part(Control1102755000; "HR Employee List")
             {
                 Caption = 'Job Occupants';
                 Editable = false;
@@ -37,10 +37,10 @@ Page 51516172 "HR Job Occupants"
         }
         area(factboxes)
         {
-            part(Control1102755005;"HR Job Applications Factbox")
+            part(Control1102755005; "HR Job Applications Factbox")
             {
             }
-            systempart(Control1102755003;Outlook)
+            systempart(Control1102755003; Outlook)
             {
             }
         }
@@ -56,15 +56,15 @@ Page 51516172 "HR Job Occupants"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55582;
+                // RunObject = Report UnknownReport55582;
             }
         }
     }
 
     trigger OnOpenPage()
     begin
-              if IsEmpty then
-              Error('No jobs have been setup');
+        if IsEmpty then
+            Error('No jobs have been setup');
     end;
 
     var

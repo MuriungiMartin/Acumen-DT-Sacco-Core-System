@@ -7,15 +7,15 @@ XmlPort 51516025 "Import FOSA Charges"
     {
         textelement(Salaries_Processing)
         {
-            tableelement("Images Buffer";"Images Buffer")
+            tableelement("Images Buffer"; "Images Buffer")
             {
                 XmlName = 'ChequeImport';
-                fieldelement(No;"Member Import Buffer".No)
-                {
-                }
-                fieldelement(Date;"Member Import Buffer"."FOSA No")
-                {
-                }
+                // fieldelement(No;"Member Import Buffer".No)
+                // {
+                // }
+                // fieldelement(Date;"Member Import Buffer"."FOSA No")
+                // {
+                // }
             }
         }
     }

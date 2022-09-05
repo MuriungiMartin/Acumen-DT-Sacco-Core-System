@@ -390,7 +390,7 @@ Page 51516409 "Membership Exit Card"
                     var
                         ApprovalEntries: Page "Approval Entries";
                     begin
-                        ApprovalsMgmt.OpenApprovalEntriesPage(RecordId);
+                        Approv.OpenApprovalEntriesPage(RecordId);
                     end;
                 }
                 action("Account closure Slip")
@@ -432,8 +432,8 @@ Page 51516409 "Membership Exit Card"
     trigger OnAfterGetCurrRecord()
     begin
         UpdateControl();
-        OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
-        CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+        OpenApprovalEntriesExist := Approv.HasOpenApprovalEntries(RecordId);
+        CanCancelApprovalForRecord := Approv.CanCancelApprovalForRecord(RecordId);
         EnabledApprovalWorkflowsExist := true;
         if Rec.Status = Status::Approved then begin
             OpenApprovalEntriesExist := false;
@@ -537,6 +537,7 @@ Page 51516409 "Membership Exit Card"
         ApprovalsMgmt: Codeunit WorkflowIntegration;
         CanCancelApprovalForRecord: Boolean;
         EventFilter: Text;
+        Approv: codeunit "Approvals Mgmt.";
         OpenApprovalEntriesExist: Boolean;
         MWithdrawalGraduatedCharges: Record "MWithdrawal Graduated Charges";
         MemberRegister: Record Customer;

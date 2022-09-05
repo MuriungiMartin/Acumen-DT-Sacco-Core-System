@@ -12,28 +12,28 @@ Page 51516476 "Credit Processor Role"
             cuegroup("Loan Activities")
             {
                 Caption = 'Loan Activities';
-                field("Application Loans";"Application Loans")
+                field("Application Loans"; "Application Loans")
                 {
                     ApplicationArea = Basic;
                     DrillDownPageID = "Employee Common Activities";
                 }
-                field("Appraisal Loans";"Appraisal Loans")
+                field("Appraisal Loans"; "Appraisal Loans")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Loans";"Approved Loans")
+                field("Approved Loans"; "Approved Loans")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Rejected Loans";"Rejected Loans")
+                field("Rejected Loans"; "Rejected Loans")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Pending Loan Batches";"Pending Loan Batches")
+                field("Pending Loan Batches"; "Pending Loan Batches")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Approved Loan Batches";"Approved Loan Batches")
+                field("Approved Loan Batches"; "Approved Loan Batches")
                 {
                     ApplicationArea = Basic;
                 }
@@ -48,7 +48,7 @@ Page 51516476 "Credit Processor Role"
             action("Loans Calculator")
             {
                 ApplicationArea = Basic;
-                RunObject = Page UnknownPage50026;
+                //ownPage50026;
             }
             action("Members  List")
             {
@@ -61,6 +61,5 @@ Page 51516476 "Credit Processor Role"
                 RunObject = Page "HR Job Responsibilities";
             }
         }
-Page "HR Applicant Referees";
-Page ""HR ;""
-
+    }
+}

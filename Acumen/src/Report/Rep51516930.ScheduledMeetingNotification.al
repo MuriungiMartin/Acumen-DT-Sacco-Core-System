@@ -34,7 +34,8 @@ Report 51516930 "Scheduled Meeting Notification"
                         Error('Email Address Missing for User' + '-' + ObjMeetings."User to Notify");
                     end;
                     if ObjMeetings."User Email" <> '' then
-                        SMTPMail.CreateMessage(SMTPSetup."Email Sender Name", SMTPSetup."Email Sender Address", ObjMeetings."User Email", 'Meeting Notification', '', true);
+                        Recipient.Add(ObjMeetings."User Email");
+                    SMTPMail.CreateMessage(SMTPSetup."Email Sender Name", SMTPSetup."Email Sender Address", Recipient, 'Meeting Notification', '', true);
                     SMTPMail.AppendBody(StrSubstNo(MeetingsMessage, ObjMeetings."User to Notify", VarGroupName, ObjMeetings."Meeting Date", ObjMeetings."Meeting Place", UserId));
                     SMTPMail.AppendBody(SMTPSetup."Email Sender Name");
                     SMTPMail.AppendBody('<br><br>');
@@ -54,7 +55,8 @@ Report 51516930 "Scheduled Meeting Notification"
                         exit;
                     end;
                     if VarCustEmail <> '' then
-                        SMTPMail.CreateMessage(SMTPSetup."Email Sender Name", SMTPSetup."Email Sender Address", VarCustEmail, 'Meeting Notification', '', true);
+                        Recipient.Add(VarCustEmail);
+                    SMTPMail.CreateMessage(SMTPSetup."Email Sender Name", SMTPSetup."Email Sender Address", Recipient, 'Meeting Notification', '', true);
                     SMTPMail.AppendBody(StrSubstNo(MeetingsMessage, VarCustName, ObjMeetings."User to Notify", ObjMeetings."Meeting Date", ObjMeetings."Meeting Place", UserId));
                     SMTPMail.AppendBody(SMTPSetup."Email Sender Name");
                     SMTPMail.AppendBody('<br><br>');
@@ -149,6 +151,7 @@ Report 51516930 "Scheduled Meeting Notification"
         VarGroupName: Code[80];
         ObjLeads: Record "Lead Management";
         VarCustEmail: Text[30];
+        Recipient: List of [Text];
         VarCustName: Code[50];
         SurestpFactory: Codeunit "SURESTEP Factory.";
         VarSmsBody: Text;

@@ -700,7 +700,7 @@ Page 51516724 "Checkoff Processing Header-Dne"
 
                 trigger OnAction()
                 begin
-                    ApprovalsMgt.OnSendCheckoffForApproval(Rec);
+                    //ApprovalsMgt.OnSendCheckoffForApproval(Rec);
                 end;
             }
             action(Journal)
@@ -714,7 +714,7 @@ Page 51516724 "Checkoff Processing Header-Dne"
 
                 trigger OnAction()
                 begin
-                    ApprovalsMgt.OnSendCheckoffForApproval(Rec);
+                    // ApprovalsMgt.OnSendCheckoffForApproval(Rec);
                 end;
             }
             action("Mark As posted")

@@ -538,14 +538,14 @@ Page 51516561 "Loans Approved Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field(GrossPay; GrossPay)
-                {
-                    ApplicationArea = Basic;
-                }
-                field(Nettakehome; Nettakehome)
-                {
-                    ApplicationArea = Basic;
-                }
+                // field(GrossPay; GrossPay)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field(Nettakehome; Nettakehome)
+                // {
+                //     ApplicationArea = Basic;
+                // }
             }
             group("Non-Taxable Deductions")
             {
@@ -607,11 +607,11 @@ Page 51516561 "Loans Approved Card"
                     ApplicationArea = Basic;
                     Caption = 'Bank Loan Repayments';
                 }
-                field(TotalDeductions; TotalDeductions)
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Total Deductions';
-                }
+                // field(TotalDeductions; TotalDeductions)
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Total Deductions';
+                // }
                 field(UtilizableAmount; "Utilizable Amount")
                 {
                     ApplicationArea = Basic;
@@ -621,11 +621,11 @@ Page 51516561 "Loans Approved Card"
                     ApplicationArea = Basic;
                     Caption = 'Cleared Loan Repayment';
                 }
-                field(NetUtilizable; NetUtilizable)
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Net Utilizable Amount';
-                }
+                // field(NetUtilizable; NetUtilizable)
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Net Utilizable Amount';
+                // }
             }
             part(Control1000000004; "Loans Guarantee Details")
             {

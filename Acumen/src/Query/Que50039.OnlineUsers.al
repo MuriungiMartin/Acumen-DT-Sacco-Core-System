@@ -4,30 +4,27 @@ Query 50039 "OnlineUsers"
 
     elements
     {
-        dataitem(Online_Users;"Online Users")
+        dataitem(Online_Users; "Online Users")
         {
-            column(User_Name;"User Name")
+            column(User_Name; "User Name")
             {
             }
-            column(Password;Password)
+            column(Password; Password)
             {
             }
-            column(Email;Email)
+            column(Email; Email)
             {
             }
-            column(Date_Created;"Date Created")
+            column(Date_Created; "Date Created")
             {
             }
-            column(Changed_Password;"Changed Password")
+            column(Changed_Password; "Changed Password")
             {
             }
-            column(Number_Of_Logins;"Number Of Logins")
+            column(Number_Of_Logins; "Number Of Logins")
             {
             }
-            column(Field7;Field7)
-            {
-            }
-            column(User_Type;"User Type")
+            column(User_Type; "User Type")
             {
             }
         }

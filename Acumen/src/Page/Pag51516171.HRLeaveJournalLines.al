@@ -125,7 +125,7 @@ Page 51516171 "HR Leave Journal Lines"
                     Image = Allocate;
                     Promoted = true;
                     PromotedCategory = Category4;
-                    RunObject = Report UnknownReport53932;
+                    //  RunObject = Report UnknownReport53932;
 
                     trigger OnAction()
                     begin

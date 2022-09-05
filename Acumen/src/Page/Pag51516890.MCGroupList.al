@@ -192,7 +192,7 @@ Page 51516890 "MC Group List"
                 separator(Action1102755016)
                 {
                 }
-                action("Account Closure Slip")
+                action("Account Closure Slipp")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account Closure Slip';
@@ -754,7 +754,7 @@ Page 51516890 "MC Group List"
                             Gnljnline.Description := 'Insurance Refundable';
                             Gnljnline.Amount := "Insurance Fund" * -1;
                             Gnljnline.Validate(Gnljnline.Amount);
-                            Gnljnline."Transaction Type" := Gnljnline."transaction type"::"45";
+                            Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Insurance Contribution";
                             if Gnljnline.Amount <> 0 then
                                 Gnljnline.Insert;
                         end;
@@ -779,7 +779,7 @@ Page 51516890 "MC Group List"
                             Gnljnline.Description := 'Insurance Retension';
                             Gnljnline.Amount := "Insurance Fund" * -1;
                             Gnljnline.Validate(Gnljnline.Amount);
-                            Gnljnline."Transaction Type" := Gnljnline."transaction type"::"45";
+                            Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Insurance Contribution";
                             Gnljnline."Bal. Account Type" := Gnljnline."bal. account type"::"G/L Account";
                             Gnljnline."Bal. Account No." := GeneralSetup."Insurance Retension Account";
                             Gnljnline.Validate(Gnljnline."Bal. Account No.");

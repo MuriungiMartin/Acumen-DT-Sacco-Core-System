@@ -239,7 +239,7 @@ Page 51516557 "Membership App Unemployed"
                             Cust."Marital Status" := "Marital Status";
                             Cust."Customer Type" := Cust."customer type"::Member;
                             Cust.Gender := Gender;
-                            Cust.Picture := Picture;
+                            Cust.Piccture := Picture;
                             Cust.Signature := Signature;
                             Cust."Monthly Contribution" := "Monthly Contribution";
                             Cust."Contact Person" := "Contact Person";
@@ -272,7 +272,7 @@ Page 51516557 "Membership App Unemployed"
                             Accounts."Post Code":="Post Code";
                             Accounts.County:=City;
                             Accounts."BOSA Account No":=Cust."No.";
-                            Accounts.Picture:=Picture;
+                            Accounts.Piccture:=Picture;
                             Accounts.Signature:=Signature;
                             Accounts."Passport No.":="Passport No.";
                             Accounts."Company Code":="Employer Code";

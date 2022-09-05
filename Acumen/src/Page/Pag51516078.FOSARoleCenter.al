@@ -8,17 +8,17 @@ Page 51516078 "FOSA Role Center"
     {
         area(rolecenter)
         {
-            part(Control1000000018;"HR Emp Transfer List")
+            part(Control1000000018; "HR Emp Transfer List")
             {
                 Caption = 'FOSA Account Holders';
             }
             group(Control1000000015)
             {
             }
-            part(Control1000000001;"Copy Profile")
+            part(Control1000000001; "Copy Profile")
             {
             }
-            systempart(Control1000000000;MyNotes)
+            systempart(Control1000000000; MyNotes)
             {
             }
         }
@@ -40,56 +40,56 @@ Page 51516078 "FOSA Role Center"
                 ApplicationArea = Basic;
                 Caption = 'Process Standing Orders';
                 Image = "Report";
-                RunObject = Report UnknownReport51516272;
+                //  RunObject = Report UnknownReport51516272;
             }
             action("Generate FOSA Interest")
             {
                 ApplicationArea = Basic;
                 Caption = 'Generate FOSA Interest';
                 Image = "Report";
-                RunObject = Report UnknownReport51516273;
+                // RunObject = Report UnknownReport51516273;
             }
             action("Transfer FOSA Interest")
             {
                 ApplicationArea = Basic;
                 Caption = 'Transfer FOSA Interest';
                 Image = "Report";
-                RunObject = Report UnknownReport51516274;
+                // RunObject = Report UnknownReport51516274;
             }
             action("Calculate Fixed Int")
             {
                 ApplicationArea = Basic;
                 Caption = 'Calculate Fixed Int';
                 Image = "Report";
-                RunObject = Report UnknownReport51516275;
+                //  RunObject = Report UnknownReport51516275;
             }
             action("Accounts Status")
             {
                 ApplicationArea = Basic;
                 Caption = 'Accounts Status';
                 Image = "Report";
-                RunObject = Report UnknownReport51516276;
+                //  RunObject = Report UnknownReport51516276;
             }
             action("Accounts Balances")
             {
                 ApplicationArea = Basic;
                 Caption = 'Accounts Balances';
                 Image = "Report";
-                RunObject = Report UnknownReport51516277;
+                //  RunObject = Report UnknownReport51516277;
             }
             action("Generate Dormant Accounts")
             {
                 ApplicationArea = Basic;
                 Caption = 'Generate Dormant Accounts';
                 Image = "Report";
-                RunObject = Report UnknownReport51516278;
+                // RunObject = Report UnknownReport51516278;
             }
             action("Loans Register")
             {
                 ApplicationArea = Basic;
                 Caption = 'Loans Register';
                 Image = "Report";
-                RunObject = Report UnknownReport51516227;
+                // RunObject = Report UnknownReport51516227;
             }
             action("Cashier Report")
             {
@@ -121,7 +121,7 @@ Page 51516078 "FOSA Role Center"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Vendor List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
             action("Purchase Orders")
             {
@@ -168,7 +168,7 @@ Page 51516078 "FOSA Role Center"
                 Caption = 'Balance';
                 Image = Balance;
                 RunObject = Page "Customer List";
-                RunPageView = where("Balance (LCY)"=filter(<>0));
+                RunPageView = where("Balance (LCY)" = filter(<> 0));
             }
             action("Sales Orders")
             {
@@ -255,7 +255,7 @@ Page 51516078 "FOSA Role Center"
                 {
                     ApplicationArea = Basic;
                     Caption = 'ATM Transactions';
-                    RunObject = Page "Cheque Transactions Card.";
+                    // RunObject = Page "Cheque Transactions Card.";
                 }
                 action("EFT List")
                 {
@@ -285,7 +285,7 @@ Page 51516078 "FOSA Role Center"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Receipts list-BOSA';
-                    RunObject = Page UnknownPage51516241;
+                    // RunObject = Page UnknownPage51516241;
                 }
                 action("Posted BOSA Receipts List")
                 {
@@ -366,7 +366,7 @@ Page 51516078 "FOSA Role Center"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Posted Batches';
-                    RunObject = Page UnknownPage51516257;
+                    //RunObject = Page UnknownPage51516257;
                 }
             }
             group("Cheque Management")
@@ -449,13 +449,13 @@ Page 51516078 "FOSA Role Center"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Supervisor Approvals Levels';
-                    RunObject = Page UnknownPage51516329;
+                    //RunObject = Page UnknownPage51516329;
                 }
                 action("ATM Charges")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ATM Charges';
-                    RunObject = Page UnknownPage51516330;
+                    // RunObject = Page UnknownPage51516330;
                 }
                 action("Status Change Permisions")
                 {

@@ -7,7 +7,7 @@ Page 51516228 "HR Job Applications List"
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Applicant,Functions,Print';
     SourceTable = "HR Job Applications";
-    SourceTableView = where("Qualification Status"=filter(" "));
+    SourceTableView = where("Qualification Status" = filter(" "));
     UsageCategory = Lists;
 
     layout
@@ -17,49 +17,49 @@ Page 51516228 "HR Job Applications List"
             repeater(Control1000000000)
             {
                 Editable = false;
-                field("Application No";"Application No")
+                field("Application No"; "Application No")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                     StyleExpr = true;
                 }
-                field("Date Applied";"Date Applied")
+                field("Date Applied"; "Date Applied")
                 {
                     ApplicationArea = Basic;
                     StyleExpr = true;
                 }
-                field("Job Applied For";"Job Applied For")
+                field("Job Applied For"; "Job Applied For")
                 {
                     ApplicationArea = Basic;
                 }
-                field("First Name";"First Name")
-                {
-                    ApplicationArea = Basic;
-                    Importance = Promoted;
-                }
-                field("Middle Name";"Middle Name")
+                field("First Name"; "First Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field("Last Name";"Last Name")
+                field("Middle Name"; "Middle Name")
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Qualified;Qualified)
+                field("Last Name"; "Last Name")
+                {
+                    ApplicationArea = Basic;
+                    Importance = Promoted;
+                }
+                field(Qualified; Qualified)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Interview Invitation Sent";"Interview Invitation Sent")
+                field("Interview Invitation Sent"; "Interview Invitation Sent")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Qualification Status";"Qualification Status")
+                field("Qualification Status"; "Qualification Status")
                 {
                     ApplicationArea = Basic;
                 }
@@ -67,11 +67,11 @@ Page 51516228 "HR Job Applications List"
         }
         area(factboxes)
         {
-            part(Control1102755009;"HR Job Applications Factbox")
+            part(Control1102755009; "HR Job Applications Factbox")
             {
-                SubPageLink = "Application No"=field("Application No");
+                SubPageLink = "Application No" = field("Application No");
             }
-            systempart(Control1;Links)
+            systempart(Control1; Links)
             {
             }
         }
@@ -92,7 +92,7 @@ Page 51516228 "HR Job Applications List"
                     Promoted = true;
                     PromotedCategory = Category4;
                     RunObject = Page "HR Job Applications Card";
-                    RunPageLink = "Application No"=field("Application No");
+                    RunPageLink = "Application No" = field("Application No");
                 }
                 action("&Upload to Employee Card")
                 {
@@ -104,14 +104,14 @@ Page 51516228 "HR Job Applications List"
 
                     trigger OnAction()
                     begin
-                        if not Confirm(Text001,false) then exit;
-                          if "Employee No" = '' then begin
-                          //IF NOT CONFIRM('Are you sure you want to Upload Applications Information to the Employee Card',FALSE) THEN EXIT;
-                          HRJobApplications.SetFilter(HRJobApplications."Application No","Application No");
-                          Report.Run(55600,true,false,HRJobApplications);
-                          end else begin
-                          Message('This applicants information already exists in the employee card');
-                          end;
+                        if not Confirm(Text001, false) then exit;
+                        if "Employee No" = '' then begin
+                            //IF NOT CONFIRM('Are you sure you want to Upload Applications Information to the Employee Card',FALSE) THEN EXIT;
+                            HRJobApplications.SetFilter(HRJobApplications."Application No", "Application No");
+                            Report.Run(55600, true, false, HRJobApplications);
+                        end else begin
+                            Message('This applicants information already exists in the employee card');
+                        end;
                     end;
                 }
                 action("Send Interview Invitation")
@@ -124,19 +124,18 @@ Page 51516228 "HR Job Applications List"
 
                     trigger OnAction()
                     begin
-                        if not Confirm(Text002,false) then exit;
+                        if not Confirm(Text002, false) then exit;
 
                         HRJobApplications.Reset;
-                        HRJobApplications.SetFilter(HRJobApplications."Application No","Application No");
-                        HRJobApplications.SetRange(HRJobApplications.Qualified,true);
+                        HRJobApplications.SetFilter(HRJobApplications."Application No", "Application No");
+                        HRJobApplications.SetRange(HRJobApplications.Qualified, true);
                         //REPORT.RUN(53940,TRUE,FALSE,HRJobApplications);
-                        if HRJobApplications.Find('-') then
-                        begin
-                         repeat
+                        if HRJobApplications.Find('-') then begin
+                            repeat
 
 
-                          Message('Invitation Email sent to '+Format(HRJobApplications."Application No"));
-                         until HRJobApplications.Next=0;
+                                Message('Invitation Email sent to ' + Format(HRJobApplications."Application No"));
+                            until HRJobApplications.Next = 0;
                         end;
                     end;
                 }
@@ -148,7 +147,7 @@ Page 51516228 "HR Job Applications List"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Applicant Qualifications";
-                    RunPageLink = "Application No"=field("Application No");
+                    RunPageLink = "Application No" = field("Application No");
                 }
                 action(Referees)
                 {
@@ -157,8 +156,8 @@ Page 51516228 "HR Job Applications List"
                     Image = ContactReference;
                     Promoted = true;
                     PromotedCategory = Category5;
-                    RunObject = Page "HR Applicant Referees";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    // RunObject = Page "HR Applicant Referees";
+                    // RunPageLink = "Job Application No" = field("Application No");
                 }
                 action(Hobbies)
                 {
@@ -168,7 +167,7 @@ Page 51516228 "HR Job Applications List"
                     Promoted = true;
                     PromotedCategory = Category5;
                     RunObject = Page "HR Applicant Hobbies";
-                    RunPageLink = "Job Application No"=field("Application No");
+                    RunPageLink = "Job Application No" = field("Application No");
                 }
                 action(Attachments)
                 {
@@ -182,9 +181,9 @@ Page 51516228 "HR Job Applications List"
                     trigger OnAction()
                     begin
                         HRJobApplications.Reset;
-                        HRJobApplications.SetRange(HRJobApplications."Application No","Application No");
+                        HRJobApplications.SetRange(HRJobApplications."Application No", "Application No");
                         if HRJobApplications.Find('-') then
-                        Report.Run(53925,true,true,HRJobApplications);
+                            Report.Run(53925, true, true, HRJobApplications);
                     end;
                 }
                 action("Generate Offer Letter")
@@ -192,7 +191,7 @@ Page 51516228 "HR Job Applications List"
                     ApplicationArea = Basic;
                     Caption = 'Generate Offer Letter';
                     Promoted = true;
-                    RunObject = Report UnknownReport55606;
+                    //  RunObject = Report UnknownReport55606;
                 }
                 action("Upload Attachments")
                 {
@@ -202,7 +201,7 @@ Page 51516228 "HR Job Applications List"
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "HR Employee Attachments SF";
-                    RunPageLink = "Employee No"=field("Application No");
+                    RunPageLink = "Employee No" = field("Application No");
                 }
             }
             group(Print)
@@ -219,9 +218,9 @@ Page 51516228 "HR Job Applications List"
                     trigger OnAction()
                     begin
                         HRJobApplications.Reset;
-                        HRJobApplications.SetRange(HRJobApplications."Application No","Application No");
+                        HRJobApplications.SetRange(HRJobApplications."Application No", "Application No");
                         if HRJobApplications.Find('-') then
-                        Report.Run(53925,true,true,HRJobApplications);
+                            Report.Run(53925, true, true, HRJobApplications);
                     end;
                 }
             }
@@ -235,7 +234,7 @@ Page 51516228 "HR Job Applications List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55592;
+                //    RunObject = Report UnknownReport55592;
             }
             action("Shortlisted Candidates")
             {
@@ -244,7 +243,7 @@ Page 51516228 "HR Job Applications List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55593;
+                // RunObject = Report UnknownReport55593;
             }
         }
     }

@@ -70,7 +70,7 @@ Page 51516249 "HR Exit Interview List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55594;
+                //RunObject = Report UnknownReport55594;
             }
         }
     }

@@ -138,7 +138,7 @@ Page 51516524 "Customer Care Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                 }
@@ -306,7 +306,7 @@ Page 51516524 "Customer Care Card"
                         Cust.Reset;
                         Cust.SetRange(Cust."No.", "No.");
                         if Cust.FindFirst then begin
-                            Report.Run(Report::Report51516279, true, false, Cust);
+                            // Report.Run(Report::Report51516279, true, false, Cust);
                         end;
                     end;
                 }

@@ -612,7 +612,7 @@ Page 51516420 "Posted Paybill Processing_H"
             {
                 ApplicationArea = Basic;
                 Caption = 'Validate Paybill';
-                RunObject = Report UnknownReport50074;
+                //  RunObject = Report UnknownReport50074;
             }
             group(ActionGroup1102755019)
             {
@@ -762,7 +762,7 @@ Page 51516420 "Posted Paybill Processing_H"
                                                             // INSURANCE:=ROUND(LoanApp."Outstanding Balance"*0.00016667,1,'>');
                                                             //MESSAGE('INSURANCE%1',ROUND(LoanApp."Outstanding Balance"*0.00016667,1,'>'));
                                                             Gnljnline.Validate(Gnljnline.Amount);
-                                                            Gnljnline."Transaction Type" := Gnljnline."transaction type"::"37";
+                                                            Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Loan Insurance Paid";
                                                             Gnljnline."Loan No" := LoanApp."Loan  No.";
                                                             if Gnljnline.Amount <> 0 then
                                                                 Gnljnline.Insert;
@@ -1147,7 +1147,7 @@ Page 51516420 "Posted Paybill Processing_H"
                     Gnljnline.SetRange("Journal Template Name", 'GENERAL');
                     Gnljnline.SetRange("Journal Batch Name", No);
                     if Gnljnline.Find('-') then begin
-                        Codeunit.Run(Codeunit::Codeunit50013, Gnljnline);
+                        //  Codeunit.Run(Codeunit::Codeunit50013, Gnljnline);
                     end;
                     //Posted:=TRUE;
                     "Posted By" := No;

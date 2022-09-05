@@ -13,31 +13,31 @@ Page 51516352 "Checkoff Process-D List"
         {
             repeater(Group)
             {
-                field(No;No)
+                field(No; No)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posted By";"Posted By")
+                field("Posted By"; "Posted By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No";"Document No")
+                field("Document No"; "Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; "Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employer Code";"Employer Code")
+                field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
                 }

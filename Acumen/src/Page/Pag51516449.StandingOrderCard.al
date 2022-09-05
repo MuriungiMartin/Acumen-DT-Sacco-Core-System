@@ -376,7 +376,7 @@ Page 51516449 "Standing Order Card"
                         
                         IF ApprovalsMgmt.CheckStandingOrderApprovalsWorkflowEnabled(Rec) THEN
                           ApprovalsMgmt.OnSendStandingOrderForApproval(Rec);*/
-                        ApprovalsMgmt.OnSendSTOforApproval(Rec);
+                        // ApprovalsMgmt.OnSendSTOforApproval(Rec);
                         Status := Status::Approved;
                         CurrPage.Close;
 

@@ -176,7 +176,7 @@ Page 51516515 "Product Card Editable"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                     Editable = true;

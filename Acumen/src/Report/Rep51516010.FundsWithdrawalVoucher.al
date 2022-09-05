@@ -22,9 +22,9 @@ Report 51516010 "Funds Withdrawal Voucher"
 			column(Dated; "Receipts and Payment Types"."Bank Account")
 			{
 			}
-			column(ChequeNo; "Receipts and Payment Types"."Cheque/Doc. No")
-			{
-			}
+			// column(ChequeNo; "Receipts and Payment Types".doc)
+			// {
+			// }
 			column(PayingAcc; "Receipts and Payment Types"."Transation Remarks")
 			{
 			}

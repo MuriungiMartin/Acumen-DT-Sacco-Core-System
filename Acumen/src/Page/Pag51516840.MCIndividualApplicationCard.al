@@ -474,7 +474,7 @@ Page 51516840 "MC Individual Application Card"
                             Cust.Gender := Gender;
 
                             //CALCFIELDS(Signature,Picture);
-                            Cust.Picture := Picture;
+                            Cust.Piccture := Picture;
                             Cust.Signature := Signature;
                             Cust."Monthly Contribution" := "Monthly Contribution";
                             Cust."Account Category" := "Account Category";

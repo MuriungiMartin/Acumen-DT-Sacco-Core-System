@@ -361,7 +361,7 @@ Page 51516665 "Posted Teller & Treasury"
                     ("Transaction Type" = "transaction type"::"Intra-Day to Treasury") or
                     ("Transaction Type" = "transaction type"::"Intra-Day to Teller") or
                     ("Transaction Type" = "transaction type"::"Teller to Intra-Day") or
-                    ("Transaction Type" = "transaction type"::"11") or
+                 //   ("Transaction Type" = "transaction type"::"11") or
                     ("Transaction Type" = "transaction type"::"Treasury to Intra-Day")
                      then begin
                         if Issued = Issued::Yes then

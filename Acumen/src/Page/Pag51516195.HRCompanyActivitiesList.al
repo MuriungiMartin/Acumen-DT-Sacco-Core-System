@@ -15,35 +15,35 @@ Page 51516195 "HR Company Activities List"
             repeater(Control1102755000)
             {
                 Editable = false;
-                field("Code";Code)
+                field("Code"; Code)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Venue;Venue)
+                field(Venue; Venue)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Costs;Costs)
+                field(Costs; Costs)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee Responsible";"Employee Name")
+                field("Employee Responsible"; "Employee Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Closed;Closed)
+                field(Closed; Closed)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Activity  Status>";Status)
+                field("Activity  Status>"; Status)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Activity  Status';
@@ -54,9 +54,9 @@ Page 51516195 "HR Company Activities List"
         }
         area(factboxes)
         {
-            part(Control1102755004;"HR Company Activities Factbox")
+            part(Control1102755004; "HR Company Activities Factbox")
             {
-                SubPageLink = Code=field(Code);
+                SubPageLink = Code = field(Code);
             }
         }
     }
@@ -72,7 +72,7 @@ Page 51516195 "HR Company Activities List"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55588;
+                // RunObject = Report UnknownReport55588;
             }
         }
     }

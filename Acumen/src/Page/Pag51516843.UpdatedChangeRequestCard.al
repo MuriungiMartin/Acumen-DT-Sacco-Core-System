@@ -546,11 +546,11 @@ Page 51516843 "Updated Change Request Card"
                         vend.Reset;
                         vend.SetRange(vend."No.", "Account No");
                         if vend.Find('-') then
-                            vend.CalcFields(vend.Picture, vend.Signature);
+                            vend.CalcFields(vend.Piccture, vend.Signature);
                         vend.Name := Name;
                         vend."Global Dimension 2 Code" := Branch;
                         vend.Address := "Address(New Value)";
-                        vend.Picture := Picture;
+                        vend.Piccture := Picture;
                         vend.Signature := signinature;
                         vend."E-Mail" := "Email(New Value)";
                         vend."Mobile Phone No" := "Mobile No(New Value)";

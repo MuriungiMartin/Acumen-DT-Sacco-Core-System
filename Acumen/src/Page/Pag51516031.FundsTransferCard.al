@@ -205,9 +205,9 @@ Page 51516031 "Funds Transfer Card"
                 var
                     Text001: label 'This request is already pending approval';
                 begin
-                    if ApprovalsMgmt.CheckFundsTransferApprovalsWorkflowEnabled(Rec) then
-                        ApprovalsMgmt.OnSendFundsTransferForApproval(Rec);
-                    Message('Approval request sent');
+                    // if ApprovalsMgmt.CheckFundsTransferApprovalsWorkflowEnabled(Rec) then
+                    //     ApprovalsMgmt.OnSendFundsTransferForApproval(Rec);
+                    // Message('Approval request sent');
                 end;
             }
             action("Cancel Approval Request")
@@ -225,7 +225,7 @@ Page 51516031 "Funds Transfer Card"
                     Approvalmgt: Codeunit WorkflowIntegration;
                 begin
                     if Confirm('Are you sure you want to cancel this approval request', false) = true then begin
-                        ApprovalsMgmt.OnCancelFundsTransferApprovalRequest(Rec);
+                        // ApprovalsMgmt.OnCancelFundsTransferApprovalRequest(Rec);
                     end;
                 end;
             }

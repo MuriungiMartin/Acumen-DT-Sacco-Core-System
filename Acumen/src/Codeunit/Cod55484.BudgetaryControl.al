@@ -524,7 +524,7 @@ Codeunit 55484 "Budgetary Control"
     end;
 
 
-    procedure CheckPayments(var PaymentHeader: Record "Payments Header")
+    procedure CheckPayments(var PaymentHeader: Record "Payment Header.")
     var
         PayLine: Record "Payment Line";
         Commitments: Record Committment;

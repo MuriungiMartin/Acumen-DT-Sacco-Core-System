@@ -4,20 +4,20 @@ Table 51516455 "ImportPic"
 
     fields
     {
-        field(1;No;Code[20])
+        field(1; No; Code[20])
         {
             DataClassification = ToBeClassified;
         }
-        field(2;Picture;Blob)
+        field(2; Picture; mediaset)
         {
             DataClassification = ToBeClassified;
-            SubType = Bitmap;
+
         }
     }
 
     keys
     {
-        key(Key1;No)
+        key(Key1; No)
         {
             Clustered = true;
         }

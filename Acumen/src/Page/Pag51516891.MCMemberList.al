@@ -206,7 +206,7 @@ Page 51516891 "MC Member List"
                 separator(Action1102755016)
                 {
                 }
-                action("Account Closure Slip")
+                action("Account Closure Slipp")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account Closure Slip';

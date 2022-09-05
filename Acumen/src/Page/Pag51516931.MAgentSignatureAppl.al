@@ -8,9 +8,9 @@ Page 51516931 "M_Agent Signature-Appl"
     {
         area(content)
         {
-            field(Signature;Signature)
+            field(Signature; Signature)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture that has been inserted for the signature.';
             }
@@ -37,7 +37,7 @@ Page 51516931 "M_Agent Signature-Appl"
                     CameraOptions: dotnet CameraOptions;
                 begin
                     if not CameraAvailable then
-                      exit;
+                        exit;
                     CameraOptions := CameraOptions.CameraOptions;
                     CameraOptions.Quality := 100;
                     CameraProvider.RequestPictureAsync(CameraOptions);
@@ -58,15 +58,15 @@ Page 51516931 "M_Agent Signature-Appl"
                     ClientFileName: Text;
                 begin
                     if Signature.Count > 0 then
-                      if not Confirm(OverrideImageQst) then
+                        if not Confirm(OverrideImageQst) then
+                            exit;
+
+                    FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
+                    if FileName = '' then
                         exit;
 
-                    FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
-                    if FileName = '' then
-                      exit;
-
                     Clear(Signature);
-                    Signature.ImportFile(FileName,ClientFileName);
+                    Signature.ImportFile(FileName, ClientFileName);
                     Modify(true);
                     if FileManagement.DeleteServerFile(FileName) then;
                 end;
@@ -90,11 +90,11 @@ Page 51516931 "M_Agent Signature-Appl"
                     NameValueBuffer.DeleteAll;
                     ExportPath := TemporaryPath + "Account No" + Format(Signature.MediaId);
                     Signature.ExportFile(ExportPath);
-                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer,TemporaryPath);
-                    TempNameValueBuffer.SetFilter(Name,StrSubstNo('%1*',ExportPath));
+                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer, TemporaryPath);
+                    TempNameValueBuffer.SetFilter(Name, StrSubstNo('%1*', ExportPath));
                     TempNameValueBuffer.FindFirst;
-                    ToFile := StrSubstNo('%1 %2.jpg',"Account No",Names);
-                    Download(TempNameValueBuffer.Name,DownloadImageTxt,'','',ToFile);
+                    ToFile := StrSubstNo('%1 %2.jpg', "Account No", Names);
+                    Download(TempNameValueBuffer.Name, DownloadImageTxt, '', '', ToFile);
                     if FileManagement.DeleteServerFile(TempNameValueBuffer.Name) then;
                 end;
             }
@@ -109,7 +109,7 @@ Page 51516931 "M_Agent Signature-Appl"
                 trigger OnAction()
                 begin
                     if not Confirm(DeleteImageQst) then
-                      exit;
+                        exit;
 
                     Clear(Signature);
                     Modify(true);
@@ -134,25 +134,25 @@ Page 51516931 "M_Agent Signature-Appl"
         DeleteExportEnabled := Signature.Count <> 0;
     end;
 
-    trigger CameraProvider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;
     begin
         if (PictureName = '') or (PictureFilePath = '') then
-          exit;
+            exit;
 
         if Signature.Count > 0 then
-          if not Confirm(OverrideImageQst) then begin
-            if Erase(PictureFilePath) then;
-            exit;
-          end;
+            if not Confirm(OverrideImageQst) then begin
+                if Erase(PictureFilePath) then;
+                exit;
+            end;
 
         File.Open(PictureFilePath);
         File.CreateInstream(Instream);
 
         Clear(Signature);
-        Signature.ImportStream(Instream,PictureName);
+        Signature.ImportStream(Instream, PictureName);
         Modify(true);
 
         File.Close;

@@ -10,70 +10,72 @@ Page 51516044 "CloudPESA MPESA Change Card"
         {
             group(General)
             {
-                field(idx;idx)
+                field(idx; idx)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document No";"Document No")
+                field("Document No"; "Document No")
                 {
                     ApplicationArea = Basic;
 
                     trigger OnLookup(var Text: Text): Boolean
+                    var
+                        cloudpesaMpesaTrans: Record "CloudPESA MPESA Trans";
                     begin
                         cloudpesaMpesaTrans.Reset;
-                        cloudpesaMpesaTrans.SetRange("Document No",xRec."Document No");
+                        cloudpesaMpesaTrans.SetRange("Document No", xRec."Document No");
                         if cloudpesaMpesaTrans.Find('-') then begin
-                          xRec."Original Account No":=cloudpesaMpesaTrans."Account No";
-                          xRec."Account Name":=cloudpesaMpesaTrans."Account Name";
-                          xRec.Amount:=cloudpesaMpesaTrans.Amount;
-                          xRec."Document Date":=cloudpesaMpesaTrans."Transaction Date";
-                          xRec."Document Time":=cloudpesaMpesaTrans."Transaction Time";
-                          xRec.Telephone:=cloudpesaMpesaTrans.Telephone;
-                          xRec."Changed By":=UserId;
+                            xRec."Original Account No" := cloudpesaMpesaTrans."Account No";
+                            xRec."Account Name" := cloudpesaMpesaTrans."Account Name";
+                            xRec.Amount := cloudpesaMpesaTrans.Amount;
+                            xRec."Document Date" := cloudpesaMpesaTrans."Transaction Date";
+                            xRec."Document Time" := cloudpesaMpesaTrans."Transaction Time";
+                            xRec.Telephone := cloudpesaMpesaTrans.Telephone;
+                            xRec."Changed By" := UserId;
                         end;
                     end;
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; "Document Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Time";"Document Time")
+                field("Document Time"; "Document Time")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Original Account No";"Original Account No")
+                field("Original Account No"; "Original Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Change Date";"Document Change Date")
+                field("Document Change Date"; "Document Change Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; "Account Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Telephone;Telephone)
+                field(Telephone; Telephone)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Changed By";"Changed By")
+                field("Changed By"; "Changed By")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Change Status";"Change Status")
+                field("Change Status"; "Change Status")
                 {
                     ApplicationArea = Basic;
                 }
             }
         }
     }
-
+}

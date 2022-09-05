@@ -11,57 +11,57 @@ Page 51516042 "CloudPESA PIN Reset Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account No";"Account No")
+                field("Account No"; "Account No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Account Name";"Account Name")
+                field("Account Name"; "Account Name")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Telephone;Telephone)
+                field(Telephone; Telephone)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("ID No";"ID No")
+                field("ID No"; "ID No")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Date Applied";"Date Applied")
+                field("Date Applied"; "Date Applied")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Time Applied";"Time Applied")
+                field("Time Applied"; "Time Applied")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Created By";"Created By")
+                field("Created By"; "Created By")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Last Pin Reset";"Last Pin Reset")
+                field("Last Pin Reset"; "Last Pin Reset")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(SentToServer;SentToServer)
+                field(SentToServer; SentToServer)
                 {
                     ApplicationArea = Basic;
                     Enabled = false;
@@ -87,34 +87,34 @@ Page 51516042 "CloudPESA PIN Reset Card"
                 var
                     UserSetup: Record "User Setup";
                 begin
-                     UserSetup.Get(UserId);
-                     //UserSetup.TESTFIELD("Reset Pin");
+                    UserSetup.Get(UserId);
+                    //UserSetup.TESTFIELD("Reset Pin");
 
-                    if SentToServer=false then begin
-                     // ERROR('Pin reset has already been Requested');
+                    if SentToServer = false then begin
+                        // ERROR('Pin reset has already been Requested');
                     end else begin
 
-                      "Last Pin Reset" := Today;
-                      "Created By" :=UserId;
-                       SentToServer:=false;
-                       "PIN Requested":=true;
-                       pinResetLogs.Insert:=true;
+                        "Last Pin Reset" := Today;
+                        "Created By" := UserId;
+                        SentToServer := false;
+                        "PIN Requested" := true;
+                        pinResetLogs.Insert(true);
 
-                    pinResetLogs.Reset;
-                    pinResetLogs.Init;
-                    pinResetLogs."Account Name":="Account Name";
-                    pinResetLogs.No:="No.";
-                    pinResetLogs."ID No":="ID No";
-                    pinResetLogs."Account No":="Account No";
-                    pinResetLogs.Telephone:=Telephone;
-                    pinResetLogs.Date:=CurrentDatetime;
-                    pinResetLogs."Last PIN Reset":=CurrentDatetime;
-                    pinResetLogs."Reset By":=UserId;
-                    pinResetLogs.Insert:=true;
-                    if pinResetLogs.Insert=true then
-                      Message('Pin reset has been successfully been sent');
+                        pinResetLogs.Reset;
+                        pinResetLogs.Init;
+                        pinResetLogs."Account Name" := "Account Name";
+                        pinResetLogs.No := "No.";
+                        pinResetLogs."ID No" := "ID No";
+                        pinResetLogs."Account No" := "Account No";
+                        pinResetLogs.Telephone := Telephone;
+                        pinResetLogs.Date := CurrentDatetime;
+                        pinResetLogs."Last PIN Reset" := CurrentDatetime;
+                        pinResetLogs."Reset By" := UserId;
+                        pinResetLogs.Insert(true);
+                        if pinResetLogs.Insert = true then
+                            Message('Pin reset has been successfully been sent');
 
-                      end;
+                    end;
                 end;
             }
             action("PIN Reset Entries")
@@ -125,7 +125,7 @@ Page 51516042 "CloudPESA PIN Reset Card"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Page "Pin Reset List";
-                RunPageLink = No=field("No.");
+                RunPageLink = No = field("No.");
                 RunPageOnRec = false;
                 RunPageView = sorting("Entry No")
                               order(descending);

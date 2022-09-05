@@ -92,31 +92,31 @@ Report 51516455 "Loan Defaulter Ageing Customis"
             }
             trigger OnAfterGetRecord();
             begin
-                PrevMonthDate := CUSurefactory.FnGetPreviousMonthLastDate("Loans Register"."Loan  No.", AsAt);
-                ScheduledBalance := CUSurefactory.FnGetScheduledExpectedBalance("Loans Register"."Loan  No.", PrevMonthDate);
-                LoanBalance := CUSurefactory.FnGetLoanBalance("Loans Register"."Loan  No.", PrevMonthDate);
-                LoanArrears := CUSurefactory.FnCalculateLoanArrears(ScheduledBalance, LoanBalance, AsAt, "Loans Register"."Expected Date of Completion");
-                PeriodArrears := CUSurefactory.FnCalculatePeriodInArrears(LoanArrears, "Loans Register".Repayment, AsAt, "Loans Register"."Expected Date of Completion");
-                Class := CUSurefactory.FnClassifyLoans("Loans Register"."Loan  No.", PeriodArrears, LoanArrears);
-                Performing := 0;
-                Watch := 0;
-                Substandard := 0;
-                doubtful := 0;
-                Loss := 0;
-                case Class of
-                    Class::"1":
-                        Performing := LoanBalance;
-                    Class::"2":
-                        Watch := LoanBalance;
-                    Class::"3":
-                        Substandard := LoanBalance;
-                    Class::"4":
-                        doubtful := LoanBalance;
-                    Class::"5":
-                        Loss := LoanBalance;
-                end;
-                if (Performing = 0) and (Watch = 0) and (Substandard = 0) and (doubtful = 0) and (Loss = 0) then
-                    CurrReport.Skip;
+                // PrevMonthDate := CUSurefactory.FnGetPreviousMonthLastDate("Loans Register"."Loan  No.", AsAt);
+                // ScheduledBalance := CUSurefactory.FnGetScheduledExpectedBalance("Loans Register"."Loan  No.", PrevMonthDate);
+                // LoanBalance := CUSurefactory.FnGetLoanBalance("Loans Register"."Loan  No.", PrevMonthDate);
+                // LoanArrears := CUSurefactory.FnCalculateLoanArrears(ScheduledBalance, LoanBalance, AsAt, "Loans Register"."Expected Date of Completion");
+                // PeriodArrears := CUSurefactory.FnCalculatePeriodInArrears(LoanArrears, "Loans Register".Repayment, AsAt, "Loans Register"."Expected Date of Completion");
+                // Class := CUSurefactory.FnClassifyLoans("Loans Register"."Loan  No.", PeriodArrears, LoanArrears);
+                // Performing := 0;
+                // Watch := 0;
+                // Substandard := 0;
+                // doubtful := 0;
+                // Loss := 0;
+                // case Class of
+                //     Class::"1":
+                //         Performing := LoanBalance;
+                //     Class::"2":
+                //         Watch := LoanBalance;
+                //     Class::"3":
+                //         Substandard := LoanBalance;
+                //     Class::"4":
+                //         doubtful := LoanBalance;
+                //     Class::"5":
+                //         Loss := LoanBalance;
+                // end;
+                // if (Performing = 0) and (Watch = 0) and (Substandard = 0) and (doubtful = 0) and (Loss = 0) then
+                //     CurrReport.Skip;
             end;
 
         }

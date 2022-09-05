@@ -91,7 +91,7 @@ Page 51516178 "HR Employee Kin"
         }
         area(factboxes)
         {
-            systempart(Control1102755004;"HR Employees Factbox")
+            part(Control1102755004;"HR Employees Factbox")
             {
                 SubPageLink = "No."=field("No.");
             }

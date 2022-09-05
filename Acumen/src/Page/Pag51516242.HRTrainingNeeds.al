@@ -15,51 +15,51 @@ Page 51516242 "HR Training Needs"
             repeater(Control1000000000)
             {
                 Editable = false;
-                field("Code";Code)
+                field("Code"; Code)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                     Importance = Promoted;
                 }
-                field(Duration;Duration)
+                field(Duration; Duration)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Duration Units";"Duration Units")
+                field("Duration Units"; "Duration Units")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Start Date";"Start Date")
+                field("Start Date"; "Start Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("End Date";"End Date")
+                field("End Date"; "End Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Re-Assessment Date";"Re-Assessment Date")
+                field("Re-Assessment Date"; "Re-Assessment Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Location;Location)
+                field(Location; Location)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Provider;Provider)
+                field(Provider; Provider)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cost Of Training";"Cost Of Training")
+                field("Cost Of Training"; "Cost Of Training")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted;Posted)
+                field(Posted; Posted)
                 {
                     ApplicationArea = Basic;
                 }
@@ -67,10 +67,10 @@ Page 51516242 "HR Training Needs"
         }
         area(factboxes)
         {
-            systempart(Control1102755003;Outlook)
+            systempart(Control1102755003; Outlook)
             {
             }
-            systempart(Control1102755005;Notes)
+            systempart(Control1102755005; Notes)
             {
             }
         }
@@ -91,7 +91,7 @@ Page 51516242 "HR Training Needs"
                     Promoted = true;
                     PromotedCategory = Category4;
                     RunObject = Page "HR Training Needs";
-                    RunPageLink = Code=field(Code);
+                    RunPageLink = Code = field(Code);
                 }
             }
         }
@@ -104,7 +104,7 @@ Page 51516242 "HR Training Needs"
                 Image = "Report";
                 Promoted = true;
                 PromotedCategory = "Report";
-                RunObject = Report UnknownReport55595;
+                //RunObject = Report UnknownReport55595;
             }
         }
     }

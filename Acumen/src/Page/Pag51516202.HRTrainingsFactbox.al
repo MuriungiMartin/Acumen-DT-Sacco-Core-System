@@ -17,51 +17,51 @@ Page 51516202 "HR Trainings Factbox"
                     Style = StrongAccent;
                     StyleExpr = true;
                 }
-                field("Application No";"Application No")
+                field("Application No"; "Application No")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Application Date";"Application Date")
+                field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Course Title";"Course Title")
+                field("Course Title"; "Course Title")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Location;Location)
+                field(Location; Location)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Provider Name";"Provider Name")
+                field("Provider Name"; "Provider Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field("From Date";"From Date")
+                field("From Date"; "From Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("To Date";"To Date")
+                field("To Date"; "To Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Duration Units";"Duration Units")
+                field("Duration Units"; "Duration Units")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Duration;Duration)
+                field(Duration; Duration)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Cost Of Training";"Cost Of Training")
+                field("Cost Of Training"; "Cost Of Training")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
                     ApplicationArea = Basic;
                 }
@@ -75,7 +75,6 @@ Page 51516202 "HR Trainings Factbox"
 
     var
         Text1: label 'Training Details';
-        Text2: ;
-        Text3: ;
+
 }
 

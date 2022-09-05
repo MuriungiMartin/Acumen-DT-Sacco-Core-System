@@ -7,27 +7,27 @@ XmlPort 51516031 "Import/Export ISO Data"
     {
         textelement(root)
         {
-            tableelement("Data Sheet Header";"Data Sheet Header")
+            tableelement("Data Sheet Header"; "Data Sheet Header")
             {
                 XmlName = 'tbl';
-                fieldelement(a;"ISO-Defined Data Elements".Code)
-                {
-                }
-                fieldelement(b;"ISO-Defined Data Elements"."Period Month")
-                {
-                }
-                fieldelement(c;"ISO-Defined Data Elements"."Period Code")
-                {
-                }
-                fieldelement(d;"ISO-Defined Data Elements"."User ID")
-                {
-                }
-                fieldelement(e;"ISO-Defined Data Elements"."Total Schedule Amount")
-                {
-                }
-                fieldelement(f;"ISO-Defined Data Elements"."Total Schedule Amount P")
-                {
-                }
+                // fieldelement(a;"ISO-Defined Data Elements".Code)
+                // {
+                // }
+                // fieldelement(b;"ISO-Defined Data Elements"."Period Month")
+                // {
+                // }
+                // fieldelement(c;"ISO-Defined Data Elements"."Period Code")
+                // {
+                // }
+                // fieldelement(d;"ISO-Defined Data Elements"."User ID")
+                // {
+                // }
+                // fieldelement(e;"ISO-Defined Data Elements"."Total Schedule Amount")
+                // {
+                // }
+                // fieldelement(f;"ISO-Defined Data Elements"."Total Schedule Amount P")
+                // {
+                // }
             }
         }
     }

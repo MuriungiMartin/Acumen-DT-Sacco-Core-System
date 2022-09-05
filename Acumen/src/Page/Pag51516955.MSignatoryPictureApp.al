@@ -8,9 +8,9 @@ Page 51516955 "M_Signatory Picture-App"
     {
         area(content)
         {
-            field(Picture;Picture)
+            field(Picture; Picture)
             {
-                ApplicationArea = Basic,Suite;
+                ApplicationArea = Basic, Suite;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture that has been inserted for the member.';
             }
@@ -73,11 +73,11 @@ Page 51516955 "M_Signatory Picture-App"
                     NameValueBuffer.DeleteAll;
                     ExportPath := TemporaryPath + "Account No" + Format(Picture.MediaId);
                     Picture.ExportFile(ExportPath);
-                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer,TemporaryPath);
-                    TempNameValueBuffer.SetFilter(Name,StrSubstNo('%1*',ExportPath));
+                    FileManagement.GetServerDirectoryFilesList(TempNameValueBuffer, TemporaryPath);
+                    TempNameValueBuffer.SetFilter(Name, StrSubstNo('%1*', ExportPath));
                     TempNameValueBuffer.FindFirst;
-                    ToFile := StrSubstNo('%1 %2.jpg',"Account No",ConvertStr("Account No",'"/\','___'));
-                    Download(TempNameValueBuffer.Name,DownloadImageTxt,'','',ToFile);
+                    ToFile := StrSubstNo('%1 %2.jpg', "Account No", ConvertStr("Account No", '"/\', '___'));
+                    Download(TempNameValueBuffer.Name, DownloadImageTxt, '', '', ToFile);
                     if FileManagement.DeleteServerFile(TempNameValueBuffer.Name) then;
                 end;
             }
@@ -119,7 +119,7 @@ Page 51516955 "M_Signatory Picture-App"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         CameraOptions := CameraOptions.CameraOptions;
         CameraOptions.Quality := 50;
@@ -137,18 +137,18 @@ Page 51516955 "M_Signatory Picture-App"
         //TESTFIELD(Description);
 
         if Picture.Count > 0 then
-          if not Confirm(OverrideImageQst) then
-            Error('');
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
         Clear(Picture);
-        Picture.ImportFile(FileName,ClientFileName);
+        Picture.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
@@ -174,13 +174,13 @@ Page 51516955 "M_Signatory Picture-App"
         TestField("Account No");
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
         Clear(Picture);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     begin
     end;
 }

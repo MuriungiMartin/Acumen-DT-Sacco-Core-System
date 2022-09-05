@@ -605,6 +605,7 @@ Page 51516909 "Loan Disb Batch Card(MICRO)"
         Attachment: Text[250];
         CompanyInfo: Record "Company Information";
         Email: Text[30];
+        Recipient: List of [text];
     begin
         SMTPSetup.Get();
 
@@ -618,7 +619,8 @@ Page 51516909 "Loan Disb Batch Card(MICRO)"
                 Error('Email Address Missing for Loan Application number' + '-' + LoanRec."Loan  No.");
             end;
             if Email <> '' then
-                SMTPMail.CreateMessage(SMTPSetup."Email Sender Name", SMTPSetup."Email Sender Address", Email, 'Loan Disburesment', '', true);
+                Recipient.add(Email);
+            SMTPMail.CreateMessage(SMTPSetup."Email Sender Name", SMTPSetup."Email Sender Address", recipient, 'Loan Disburesment', '', true);
             SMTPMail.AppendBody(StrSubstNo(DisburesmentMessage, LoanRec."Client Name", LoanRec."Loan Product Type Name", UserId));
             SMTPMail.AppendBody(SMTPSetup."Email Sender Name");
             SMTPMail.AppendBody('<br><br>');

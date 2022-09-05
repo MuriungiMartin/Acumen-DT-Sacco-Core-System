@@ -12,14 +12,14 @@ Page 51516879 "Vendor Picture-Uploaded"
     {
         area(content)
         {
-            field(Picture;Picture)
+            field(Picture; Piccture)
             {
-                ApplicationArea = Basic,Suite,Invoicing;
+                ApplicationArea = Basic, Suite, Invoicing;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture that has been inserted for the item.';
                 Visible = true;
             }
-            field("Picture 2";"Picture 2")
+            field("Picture 2"; "Picture 2")
             {
                 ApplicationArea = Basic;
             }
@@ -79,10 +79,10 @@ Page 51516879 "Vendor Picture-Uploaded"
                     //TESTFIELD(Description);
 
                     ToFile := DummyPictureEntity.GetDefaultMediaDescription(Rec);
-                    ExportPath := TemporaryPath + "No." + Format(Picture.MediaId);
-                    Picture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
+                    ExportPath := TemporaryPath + "No." + Format(Piccture.MediaId);
+                    Piccture.ExportFile(ExportPath + '.' + DummyPictureEntity.GetDefaultExtension);
 
-                    FileManagement.ExportImage(ExportPath,ToFile);
+                    FileManagement.ExportImage(ExportPath, ToFile);
                 end;
             }
             action(DeletePicture)
@@ -111,7 +111,7 @@ Page 51516879 "Vendor Picture-Uploaded"
     begin
         CameraAvailable := CameraProvider.IsAvailable;
         if CameraAvailable then
-          CameraProvider := CameraProvider.Create;
+            CameraProvider := CameraProvider.Create;
     end;
 
     var
@@ -134,7 +134,7 @@ Page 51516879 "Vendor Picture-Uploaded"
         //TESTFIELD(Description);
 
         if not CameraAvailable then
-          exit;
+            exit;
 
         CameraOptions := CameraOptions.CameraOptions;
         CameraOptions.Quality := 50;
@@ -152,26 +152,26 @@ Page 51516879 "Vendor Picture-Uploaded"
         TestField("No.");
         //TESTFIELD(Description);
 
-        if Picture.Count > 0 then
-          if not Confirm(OverrideImageQst) then
-            Error('');
+        if Piccture.Count > 0 then
+            if not Confirm(OverrideImageQst) then
+                Error('');
 
         ClientFileName := '';
-        FileName := FileManagement.UploadFile(SelectPictureTxt,ClientFileName);
+        FileName := FileManagement.UploadFile(SelectPictureTxt, ClientFileName);
         if FileName = '' then
-          Error('');
+            Error('');
 
-        Clear(Picture);
-        Picture.ImportFile(FileName,ClientFileName);
+        Clear(Piccture);
+        Piccture.ImportFile(FileName, ClientFileName);
         if not Insert(true) then
-          Modify(true);
+            Modify(true);
 
         if FileManagement.DeleteServerFile(FileName) then;
     end;
 
     local procedure SetEditableOnPictureActions()
     begin
-        DeleteExportEnabled := Picture.Count <> 0;
+        DeleteExportEnabled := Piccture.Count <> 0;
     end;
 
     procedure IsCameraAvailable(): Boolean
@@ -190,33 +190,33 @@ Page 51516879 "Vendor Picture-Uploaded"
         TestField("No.");
 
         if not Confirm(DeleteImageQst) then
-          exit;
+            exit;
 
-        Clear(Picture);
+        Clear(Piccture);
         Modify(true);
     end;
 
-    trigger Cameraprovider::PictureAvailable(PictureName: Text;PictureFilePath: Text)
+    trigger CameraProvider::PictureAvailable(PictureName: Text; PictureFilePath: Text)
     var
         File: File;
         Instream: InStream;
     begin
         if (PictureName = '') or (PictureFilePath = '') then
-          exit;
-
-        if Picture.Count > 0 then
-          if not Confirm(OverrideImageQst) then begin
-            if Erase(PictureFilePath) then;
             exit;
-          end;
+
+        if Piccture.Count > 0 then
+            if not Confirm(OverrideImageQst) then begin
+                if Erase(PictureFilePath) then;
+                exit;
+            end;
 
         File.Open(PictureFilePath);
         File.CreateInstream(Instream);
 
-        Clear(Picture);
-        Picture.ImportStream(Instream,PictureName);
+        Clear(Piccture);
+        Piccture.ImportStream(Instream, PictureName);
         if not Modify(true) then
-          Insert(true);
+            Insert(true);
 
         File.Close;
         if Erase(PictureFilePath) then;

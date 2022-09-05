@@ -614,8 +614,8 @@ Page 51516392 "Loans Rejected Card"
                     ApplicationArea = Basic;
                     Caption = 'Loans Top Up';
                     RunObject = Page "HR Job Requirements";
-                    RunPageLink = "Job ID" = field("Loan  No."),
-                                  "No of Posts" = field("Client Code");
+                    RunPageLink = "Job ID" = field("Loan  No.");
+                                  //"No of Posts" = field("Client Code");
                     Visible = false;
                 }
                 separator(Action1102760039)

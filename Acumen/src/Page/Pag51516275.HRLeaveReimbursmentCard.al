@@ -26,15 +26,15 @@ Page 51516275 "HR Leave Reimbursment Card"
                         CurrPage.Update;
                     end;
                 }
-                field("Leave Application No"; "Leave Application No")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Responsibility Center"; "Responsibility Center")
-                {
-                    ApplicationArea = Basic;
-                    Editable = "Responsibility CenterEditable";
-                }
+                // field("Leave Application No"; "Leave Application No")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Responsibility Center"; "Responsibility Center")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = "Responsibility CenterEditable";
+                // }
                 field("No Repayment"; "No Repayment")
                 {
                     ApplicationArea = Basic;
@@ -43,7 +43,7 @@ Page 51516275 "HR Leave Reimbursment Card"
 
                     trigger OnValidate()
                     begin
-                        GetLeaveStats("No Repayment");
+                        // GetLeaveStats("No Repayment");
                         //                    CurrPage.UPDATE;
                     end;
                 }
@@ -56,9 +56,9 @@ Page 51516275 "HR Leave Reimbursment Card"
                     trigger OnValidate()
                     begin
                         //HREmp.GET("Employee No");
-                        if "No Repayment" = 'ANNUAL' then
-                            if "Staff Not Found" > dLeft then
-                                Error('Days applied cannot exceed leave balance');
+                        // if "No Repayment" = 'ANNUAL' then
+                        //     if "Staff Not Found" > dLeft then
+                        //         Error('Days applied cannot exceed leave balance');
 
                         /*
                          IF "Days Applied">HREmp."Acrued Leave Days" THEN
@@ -78,14 +78,14 @@ Page 51516275 "HR Leave Reimbursment Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Employee No"; "Employee No")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Employee No.';
-                    Editable = false;
-                    Enabled = false;
-                    Importance = Promoted;
-                }
+                // field("Employee No"; "Employee No")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Employee No.';
+                //     Editable = false;
+                //     Enabled = false;
+                //     Importance = Promoted;
+                // }
                 field(EmpName; EmpName)
                 {
                     ApplicationArea = Basic;
@@ -94,14 +94,14 @@ Page 51516275 "HR Leave Reimbursment Card"
                     Enabled = false;
                     Importance = Promoted;
                 }
-                field("Job Tittle"; "Job Tittle")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Job Title';
-                    Editable = false;
-                    Enabled = false;
-                    Importance = Promoted;
-                }
+                // field("Job Tittle"; "Job Tittle")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Job Title';
+                //     Editable = false;
+                //     Enabled = false;
+                //     Importance = Promoted;
+                // }
                 field(EmpJobDesc; EmpJobDesc)
                 {
                     ApplicationArea = Basic;
@@ -117,35 +117,35 @@ Page 51516275 "HR Leave Reimbursment Card"
                     Editable = false;
                     Enabled = false;
                 }
-                field(Supervisor; Supervisor)
-                {
-                    ApplicationArea = Basic;
-                    Editable = SupervisorEditable;
+                // field(Supervisor; Supervisor)
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = SupervisorEditable;
 
-                    trigger OnValidate()
-                    begin
-                        //GET THE APPROVER NAMES
-                        HREmp.Reset;
-                        HREmp.SetRange(HREmp."User ID", Supervisor);
-                        if HREmp.Find('-') then begin
-                            SupervisorName := HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
-                        end else begin
-                            SupervisorName := '';
-                        end;
-                    end;
-                }
+                //     trigger OnValidate()
+                //     begin
+                //         //GET THE APPROVER NAMES
+                //         HREmp.Reset;
+                //         HREmp.SetRange(HREmp."User ID", Supervisor);
+                //         if HREmp.Find('-') then begin
+                //             SupervisorName := HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
+                //         end else begin
+                //             SupervisorName := '';
+                //         end;
+                //     end;
+                // }
                 field(SupervisorName; SupervisorName)
                 {
                     ApplicationArea = Basic;
                     Caption = 'Supervisor Name';
                     Editable = false;
                 }
-                field("Supervisor Email"; "Supervisor Email")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Supervisor Email';
-                    Editable = false;
-                }
+                // field("Supervisor Email"; "Supervisor Email")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Supervisor Email';
+                //     Editable = false;
+                // }
                 field(dEarnd; dEarnd)
                 {
                     ApplicationArea = Basic;
@@ -171,12 +171,12 @@ Page 51516275 "HR Leave Reimbursment Card"
                     Style = Strong;
                     StyleExpr = true;
                 }
-                field("Application Date"; "Application Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    StyleExpr = true;
-                }
+                // field("Application Date"; "Application Date")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                //     StyleExpr = true;
+                // }
                 field(Name; Name)
                 {
                     ApplicationArea = Basic;
@@ -251,7 +251,7 @@ Page 51516275 "HR Leave Reimbursment Card"
 
                     trigger OnAction()
                     begin
-                        Name := Name::"0";
+                        // Name := Name::"0";
                         Modify;
                     end;
                 }
@@ -294,36 +294,36 @@ Page 51516275 "HR Leave Reimbursment Card"
 
                     trigger OnAction()
                     begin
-                        if Name = Name::"10" then Error('This Leave Reimbursement has already been posted');
-                        if Name <> Name::"7" then
-                            Error('The Leave Status must be Approved')
-                        else
-                            HRLeaveApp.Reset;
-                        HRLeaveApp.SetRange(HRLeaveApp."Application Code", "Staff/Payroll No");
-                        if HRLeaveApp.Find('-') then begin
-                            HRLeaveApp.CreateLeaveLedgerEntries;
+                        // if Name = Name::"10" then Error('This Leave Reimbursement has already been posted');
+                        // if Name <> Name::"7" then
+                        //     Error('The Leave Status must be Approved')
+                        // else
+                        //     HRLeaveApp.Reset;
+                        // HRLeaveApp.SetRange(HRLeaveApp."Application Code", "Staff/Payroll No");
+                        // if HRLeaveApp.Find('-') then begin
+                        //     HRLeaveApp.CreateLeaveLedgerEntries;
 
-                        end;
-                        //Dave---To notify leave applicant
+                        // end;
+                        // //Dave---To notify leave applicant
 
-                        HREmp.Get("Employee No");
-                        HREmp.TestField(HREmp."Company E-Mail");
+                        // HREmp.Get("Employee No");
+                        // HREmp.TestField(HREmp."Company E-Mail");
 
-                        //GET E-MAIL PARAMETERS FOR GENERAL E-MAILS
-                        HREmailParameters.Reset;
-                        HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Interview Invitations");
-                        if HREmailParameters.Find('-') then begin
-
-
-                            HREmp.TestField(HREmp."Company E-Mail");
-                            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
-                            HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
-                            HREmailParameters.Body + ' ' + "Staff/Payroll No" + ' ' + HREmailParameters."Body 2", true);
-                            SMTP.Send();
+                        // //GET E-MAIL PARAMETERS FOR GENERAL E-MAILS
+                        // HREmailParameters.Reset;
+                        // HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Interview Invitations");
+                        // if HREmailParameters.Find('-') then begin
 
 
-                            Message('Leave applicant has been notified successfully');
-                        end;
+                        //     HREmp.TestField(HREmp."Company E-Mail");
+                        //     SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+                        //     HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+                        //     HREmailParameters.Body + ' ' + "Staff/Payroll No" + ' ' + HREmailParameters."Body 2", true);
+                        //     SMTP.Send();
+
+
+                        //     Message('Leave applicant has been notified successfully');
+                        // end;
                     end;
                 }
             }
@@ -338,7 +338,7 @@ Page 51516275 "HR Leave Reimbursment Card"
         //PASS VALUES TO VARIABLES ON THE FORM
         FillVariables;
         //GET LEAVE STATS FOR THIS EMPLOYEE FROM THE EMPLOYEE TABLE
-        GetLeaveStats("No Repayment");
+        //GetLeaveStats("No Repayment");
         //TO PREVENT USER FROM SEEING OTHER PEOPLES LEAVE APPLICATIONS
         //SETFILTER("User ID",USERID);
 
@@ -437,30 +437,30 @@ Page 51516275 "HR Leave Reimbursment Card"
     begin
         //GET THE APPLICANT DETAILS
 
-        HREmp.Reset;
-        if HREmp.Get("Employee No") then begin
-            EmpName := HREmp.FullName;
-            EmpDept := HREmp."Global Dimension 2 Code";
-        end else begin
-            EmpDept := '';
-        end;
+        // HREmp.Reset;
+        // if HREmp.Get("Employee No") then begin
+        //     EmpName := HREmp.FullName;
+        //     EmpDept := HREmp."Global Dimension 2 Code";
+        // end else begin
+        //     EmpDept := '';
+        // end;
 
         //GET THE JOB DESCRIPTION FRON THE HR JOBS TABLE AND PASS IT TO THE VARIABLE
-        HRJobs.Reset;
-        if HRJobs.Get("Job Tittle") then begin
-            EmpJobDesc := HREmp."Job Title";
-        end else begin
-            EmpJobDesc := '';
-        end;
+        // HRJobs.Reset;
+        // if HRJobs.Get("Job Tittle") then begin
+        //     EmpJobDesc := HREmp."Job Title";
+        // end else begin
+        //     EmpJobDesc := '';
+        // end;
 
-        //GET THE APPROVER NAMES
-        HREmp.Reset;
-        HREmp.SetRange(HREmp."User ID", Supervisor);
-        if HREmp.Find('-') then begin
-            SupervisorName := HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
-        end else begin
-            SupervisorName := '';
-        end;
+        // //GET THE APPROVER NAMES
+        // HREmp.Reset;
+        // HREmp.SetRange(HREmp."User ID", Supervisor);
+        // if HREmp.Find('-') then begin
+        //     SupervisorName := HREmp."First Name" + ' ' + HREmp."Middle Name" + ' ' + HREmp."Last Name";
+        // end else begin
+        //     SupervisorName := '';
+        // end;
     end;
 
 
@@ -474,19 +474,19 @@ Page 51516275 "HR Leave Reimbursment Card"
         cReimbsd := 0;
         cPerDay := 0;
         cbf := 0;
-        if HREmp.Get("Employee No") then begin
-            //HREmp.SETFILTER(HREmp."Leave Type Filter",LeaveType);
-            HREmp.CalcFields(HREmp."Allocated Leave Days");
-            dAlloc := HREmp."Allocated Leave Days";
-            HREmp.Validate(HREmp."Allocated Leave Days");
-            dEarnd := HREmp."Total (Leave Days)";
-            HREmp.CalcFields(HREmp."Total Leave Taken");
-            dTaken := HREmp."Total Leave Taken";
-            dLeft := HREmp."Leave Balance";
-            cReimbsd := HREmp."Cash - Leave Earned";
-            cPerDay := HREmp."Cash per Leave Day";
-            cbf := HREmp."Reimbursed Leave Days";
-        end;
+        // if HREmp.Get("Employee No") then begin
+        //     //HREmp.SETFILTER(HREmp."Leave Type Filter",LeaveType);
+        //     HREmp.CalcFields(HREmp."Allocated Leave Days");
+        //     dAlloc := HREmp."Allocated Leave Days";
+        //     HREmp.Validate(HREmp."Allocated Leave Days");
+        //     dEarnd := HREmp."Total (Leave Days)";
+        //     HREmp.CalcFields(HREmp."Total Leave Taken");
+        //     dTaken := HREmp."Total Leave Taken";
+        //     dLeft := HREmp."Leave Balance";
+        //     cReimbsd := HREmp."Cash - Leave Earned";
+        //     cPerDay := HREmp."Cash per Leave Day";
+        //     cbf := HREmp."Reimbursed Leave Days";
+        // end;
     end;
 
 
@@ -495,45 +495,45 @@ Page 51516275 "HR Leave Reimbursment Card"
         TestField("No Repayment");
         TestField("Staff Not Found");
         TestField("Date Filter");
-        TestField(Reliever);
-        TestField(Supervisor);
+        // TestField(Reliever);
+        // TestField(Supervisor);
     end;
 
 
     procedure Updatecontrols()
     begin
 
-        if Name = Name::"0" then begin
-            "Application CodeEditable" := true;
-            "Leave TypeEditable" := true;
-            "Days AppliedEditable" := true;
-            "Responsibility CenterEditable" := true;
-            "Start DateEditable" := true;
-            "Leave Allowance AmountEditable" := true;
-            RelieverEditable := true;
-            RequestLeaveAllowanceEditable := true;
-            SupervisorEditable := true;
-            "Cell Phone NumberEditable" := true;
-            //CurrForm."E-mail Address".EDITABLE:=TRUE;
-            "Details of ExaminationEditable" := true;
-            "Date of ExamEditable" := true;
-            NumberofPreviousAttemptsEditab := true;
-        end else begin
-            "Application CodeEditable" := false;
-            "Leave TypeEditable" := false;
-            "Days AppliedEditable" := false;
-            "Responsibility CenterEditable" := false;
-            "Start DateEditable" := false;
-            "Leave Allowance AmountEditable" := false;
-            RelieverEditable := false;
-            RequestLeaveAllowanceEditable := false;
-            SupervisorEditable := false;
-            "Cell Phone NumberEditable" := false;
-            //CurrForm."E-mail Address".EDITABLE:=FALSE;
-            "Details of ExaminationEditable" := false;
-            "Date of ExamEditable" := false;
-            NumberofPreviousAttemptsEditab := false;
-        end;
+        // if Name = Name::"0" then begin
+        //     "Application CodeEditable" := true;
+        //     "Leave TypeEditable" := true;
+        //     "Days AppliedEditable" := true;
+        //     "Responsibility CenterEditable" := true;
+        //     "Start DateEditable" := true;
+        //     "Leave Allowance AmountEditable" := true;
+        //     RelieverEditable := true;
+        //     RequestLeaveAllowanceEditable := true;
+        //     SupervisorEditable := true;
+        //     "Cell Phone NumberEditable" := true;
+        //     //CurrForm."E-mail Address".EDITABLE:=TRUE;
+        //     "Details of ExaminationEditable" := true;
+        //     "Date of ExamEditable" := true;
+        //     NumberofPreviousAttemptsEditab := true;
+        // end else begin
+        //     "Application CodeEditable" := false;
+        //     "Leave TypeEditable" := false;
+        //     "Days AppliedEditable" := false;
+        //     "Responsibility CenterEditable" := false;
+        //     "Start DateEditable" := false;
+        //     "Leave Allowance AmountEditable" := false;
+        //     RelieverEditable := false;
+        //     RequestLeaveAllowanceEditable := false;
+        //     SupervisorEditable := false;
+        //     "Cell Phone NumberEditable" := false;
+        //     //CurrForm."E-mail Address".EDITABLE:=FALSE;
+        //     "Details of ExaminationEditable" := false;
+        //     "Date of ExamEditable" := false;
+        //     NumberofPreviousAttemptsEditab := false;
+        // end;
     end;
 
 
@@ -543,41 +543,41 @@ Page 51516275 "HR Leave Reimbursment Card"
         LeaveFamilyEmployees: Record "HR Leave Family Employees";
         Employees: Record "HR Employees";
     begin
-        LeaveFamilyEmployees.SetRange(LeaveFamilyEmployees."Employee No", "Employee No");
-        if LeaveFamilyEmployees.FindSet then //find the leave family employee is associated with
-            repeat
-                LeaveFamily.SetRange(LeaveFamily.Code, LeaveFamilyEmployees.Family);
-                LeaveFamily.SetFilter(LeaveFamily."Max Employees On Leave", '>0');
-                if LeaveFamily.FindSet then //find the status other employees on the same leave family
-                  begin
-                    Employees.SetRange(Employees."No.", LeaveFamilyEmployees."Employee No");
-                    Employees.SetRange(Employees."Leave Status", Employees."leave status"::" ");
-                    if Employees.Count > LeaveFamily."Max Employees On Leave" then
-                        Error('The Maximum number of employees on leave for this family has been exceeded, Contact th HR manager for more information');
-                end
-            until LeaveFamilyEmployees.Next = 0;
+        // LeaveFamilyEmployees.SetRange(LeaveFamilyEmployees."Employee No", "Employee No");
+        // if LeaveFamilyEmployees.FindSet then //find the leave family employee is associated with
+        //     repeat
+        //         LeaveFamily.SetRange(LeaveFamily.Code, LeaveFamilyEmployees.Family);
+        //         LeaveFamily.SetFilter(LeaveFamily."Max Employees On Leave", '>0');
+        //         if LeaveFamily.FindSet then //find the status other employees on the same leave family
+        //           begin
+        //             Employees.SetRange(Employees."No.", LeaveFamilyEmployees."Employee No");
+        //             Employees.SetRange(Employees."Leave Status", Employees."leave status"::" ");
+        //             if Employees.Count > LeaveFamily."Max Employees On Leave" then
+        //                 Error('The Maximum number of employees on leave for this family has been exceeded, Contact th HR manager for more information');
+        //         end
+        //     until LeaveFamilyEmployees.Next = 0;
     end;
 
 
     procedure DetermineLeaveReturnDate(var fBeginDate: Date; var fDays: Decimal) fReturnDate: Date
     begin
-        varDaysApplied := fDays;
-        fReturnDate := fBeginDate;
-        repeat
-            if DetermineIfIncludesNonWorking("No Repayment") = false then begin
-                fReturnDate := CalcDate('1D', fReturnDate);
-                if DetermineIfIsNonWorking(fReturnDate) then
-                    varDaysApplied := varDaysApplied + 1
-                else
-                    varDaysApplied := varDaysApplied;
-                varDaysApplied := varDaysApplied - 1
-            end
-            else begin
-                fReturnDate := CalcDate('1D', fReturnDate);
-                varDaysApplied := varDaysApplied - 1;
-            end;
-        until varDaysApplied = 0;
-        exit(fReturnDate);
+        // varDaysApplied := fDays;
+        // fReturnDate := fBeginDate;
+        // repeat
+        //     if DetermineIfIncludesNonWorking("No Repayment") = false then begin
+        //         fReturnDate := CalcDate('1D', fReturnDate);
+        //         if DetermineIfIsNonWorking(fReturnDate) then
+        //             varDaysApplied := varDaysApplied + 1
+        //         else
+        //             varDaysApplied := varDaysApplied;
+        //         varDaysApplied := varDaysApplied - 1
+        //     end
+        //     else begin
+        //         fReturnDate := CalcDate('1D', fReturnDate);
+        //         varDaysApplied := varDaysApplied - 1;
+        //     end;
+        // until varDaysApplied = 0;
+        // exit(fReturnDate);
     end;
 
 
@@ -637,88 +637,88 @@ Page 51516275 "HR Leave Reimbursment Card"
 
     procedure CreateLeaveLedgerEntries()
     begin
-        HRSetup.Reset;
-        if HRSetup.Find('-') then begin
+        // HRSetup.Reset;
+        // if HRSetup.Find('-') then begin
 
-            LeaveGjline.Reset;
-            LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
-            LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
-            LeaveGjline.DeleteAll;
-            //Dave
-            //HRSetup.TESTFIELD(HRSetup."Leave Template");
-            //HRSetup.TESTFIELD(HRSetup."Leave Batch");
+        //     LeaveGjline.Reset;
+        //     LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
+        //     LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
+        //     LeaveGjline.DeleteAll;
+        //     //Dave
+        //     //HRSetup.TESTFIELD(HRSetup."Leave Template");
+        //     //HRSetup.TESTFIELD(HRSetup."Leave Batch");
 
-            HREmp.Get("Employee No");
-            HREmp.TestField(HREmp."Company E-Mail");
+        //     HREmp.Get("Employee No");
+        //     HREmp.TestField(HREmp."Company E-Mail");
 
-            //POPULATE JOURNAL LINES
+        //     //POPULATE JOURNAL LINES
 
-            "LineNo." := 10000;
-            LeaveGjline.Init;
-            LeaveGjline."Journal Template Name" := HRSetup."Leave Template";
-            LeaveGjline."Journal Batch Name" := HRSetup."Leave Batch";
-            LeaveGjline."Line No." := "LineNo.";
-            LeaveGjline."Leave Period" := '2013';
-            LeaveGjline."Document No." := "Staff/Payroll No";
-            LeaveGjline."Staff No." := "Employee No";
-            LeaveGjline.Validate(LeaveGjline."Staff No.");
-            LeaveGjline."Posting Date" := Today;
-            LeaveGjline."Leave Entry Type" := LeaveGjline."leave entry type"::Negative;
-            LeaveGjline."Leave Approval Date" := Today;
-            LeaveGjline.Description := 'Leave Taken';
-            LeaveGjline."Leave Type" := "No Repayment";
-            //------------------------------------------------------------
-            //HRSetup.RESET;
-            //HRSetup.FIND('-');
-            HRSetup.TestField(HRSetup."Leave Posting Period[FROM]");
-            HRSetup.TestField(HRSetup."Leave Posting Period[TO]");
-            //------------------------------------------------------------
-            LeaveGjline."Leave Period Start Date" := HRSetup."Leave Posting Period[FROM]";
-            LeaveGjline."Leave Period End Date" := HRSetup."Leave Posting Period[TO]";
-            if LeaveGjline."No. of Days" <> 0 then
-                LeaveGjline.Insert(true);
+        //     "LineNo." := 10000;
+        //     LeaveGjline.Init;
+        //     LeaveGjline."Journal Template Name" := HRSetup."Leave Template";
+        //     LeaveGjline."Journal Batch Name" := HRSetup."Leave Batch";
+        //     LeaveGjline."Line No." := "LineNo.";
+        //     LeaveGjline."Leave Period" := '2013';
+        //     LeaveGjline."Document No." := "Staff/Payroll No";
+        //     LeaveGjline."Staff No." := "Employee No";
+        //     LeaveGjline.Validate(LeaveGjline."Staff No.");
+        //     LeaveGjline."Posting Date" := Today;
+        //     LeaveGjline."Leave Entry Type" := LeaveGjline."leave entry type"::Negative;
+        //     LeaveGjline."Leave Approval Date" := Today;
+        //     LeaveGjline.Description := 'Leave Taken';
+        //     LeaveGjline."Leave Type" := "No Repayment";
+        //     //------------------------------------------------------------
+        //     //HRSetup.RESET;
+        //     //HRSetup.FIND('-');
+        //     HRSetup.TestField(HRSetup."Leave Posting Period[FROM]");
+        //     HRSetup.TestField(HRSetup."Leave Posting Period[TO]");
+        //     //------------------------------------------------------------
+        //     LeaveGjline."Leave Period Start Date" := HRSetup."Leave Posting Period[FROM]";
+        //     LeaveGjline."Leave Period End Date" := HRSetup."Leave Posting Period[TO]";
+        //     if LeaveGjline."No. of Days" <> 0 then
+        //         LeaveGjline.Insert(true);
 
 
-            //Post Journal
-            LeaveGjline.Reset;
-            LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
-            LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
-            if LeaveGjline.Find('-') then begin
-                Codeunit.Run(Codeunit::Codeunit55560, LeaveGjline);
-            end;
-            Name := Name::"10";
-            Modify;
+        //     //Post Journal
+        //     LeaveGjline.Reset;
+        //     LeaveGjline.SetRange("Journal Template Name", HRSetup."Leave Template");
+        //     LeaveGjline.SetRange("Journal Batch Name", HRSetup."Leave Batch");
+        //     if LeaveGjline.Find('-') then begin
+        //         Codeunit.Run(Codeunit::Codeunit55560, LeaveGjline);
+        //     end;
+        //     Name := Name::"10";
+        //     Modify;
 
-            /*END ELSE BEGIN
-            ERROR('You must specify no of days');
-            END;
-            END;*/
-            //NotifyApplicant;
-        end;
+        /*END ELSE BEGIN
+        ERROR('You must specify no of days');
+        END;
+        END;*/
+        //NotifyApplicant;
+        //end;
 
     end;
 
 
-    procedure NotifyApplicant()
-    begin
-        HREmp.Get("Employee No");
-        HREmp.TestField(HREmp."Company E-Mail");
+    // procedure NotifyApplicant()
+    // begin
+    //     HREmp.Get("Employee No");
+    //     HREmp.TestField(HREmp."Company E-Mail");
 
-        //GET E-MAIL PARAMETERS FOR GENERAL E-MAILS
-        HREmailParameters.Reset;
-        HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Interview Invitations");
-        if HREmailParameters.Find('-') then begin
-
-
-            HREmp.TestField(HREmp."Company E-Mail");
-            SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
-            HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
-            HREmailParameters.Body + ' ' + "Staff/Payroll No" + ' ' + HREmailParameters."Body 2", true);
-            SMTP.Send();
+    //     //GET E-MAIL PARAMETERS FOR GENERAL E-MAILS
+    //     HREmailParameters.Reset;
+    //     HREmailParameters.SetRange(HREmailParameters."Associate With", HREmailParameters."associate with"::"Interview Invitations");
+    //     if HREmailParameters.Find('-') then begin
 
 
-            Message('Leave applicant has been notified successfully');
-        end;
-    end;
+    //         HREmp.TestField(HREmp."Company E-Mail");
+    //         SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+    //         HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
+    //         HREmailParameters.Body + ' ' + "Staff/Payroll No" + ' ' + HREmailParameters."Body 2", true);
+    //         SMTP.Send();
+
+
+    //         Message('Leave applicant has been notified successfully');
+    //     end;
+    // end;
 }
 

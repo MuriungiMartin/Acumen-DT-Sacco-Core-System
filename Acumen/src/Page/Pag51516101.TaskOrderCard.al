@@ -354,7 +354,7 @@ Page 51516101 "Task Order Card"
                 action("Award Schedule")
                 {
                     ApplicationArea = Basic;
-                    RunObject = Page UnknownPage55947;
+                    // RunObject = Page UnknownPage55947;
                 }
                 action("Re&open")
                 {
@@ -537,7 +537,7 @@ Page 51516101 "Task Order Card"
                     end;
                 }
             }
-            group("Make Order")
+            group("Make Orderr")
             {
                 Caption = 'Make Order';
                 Image = MakeOrder;

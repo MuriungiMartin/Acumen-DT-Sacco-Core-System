@@ -127,7 +127,7 @@ Page 51516538 "Group/Corporate Card"
                     ApplicationArea = Basic;
                     ShowMandatory = true;
                 }
-                field(Picture; Picture)
+                field(Picture; Piccture)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;

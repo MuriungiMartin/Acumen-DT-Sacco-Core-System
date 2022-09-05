@@ -64,6 +64,7 @@ Report 50003 "Update FOSA Account Nos"
                 Message(Format(BUFFER."Payroll number"));
                 if BUFFER.Find('-') then
             ;
+            end;
 
 
         }

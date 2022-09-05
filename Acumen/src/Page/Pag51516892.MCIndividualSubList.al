@@ -200,7 +200,7 @@ Page 51516892 "MC Individual Sub-List"
                 separator(Action1102755016)
                 {
                 }
-                action("Account Closure Slip")
+                action("Account Closure Slipp")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Account Closure Slip';

@@ -121,6 +121,8 @@ Page 51516185 "HR Employee Requisitions List"
                     PromotedCategory = Category5;
 
                     trigger OnAction()
+                    var
+                        Recipient: list of [Text];
                     begin
                         /*
                         HREmp.RESET;
@@ -141,7 +143,8 @@ Page 51516185 "HR Employee Requisitions List"
                         if HREmailParameters.Find('-') then begin
                             repeat
                                 HREmp.TestField(HREmp."Company E-Mail");
-                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", HREmp."Company E-Mail",
+                                Recipient.add(hremp."Company E-Mail");
+                                SMTP.CreateMessage(HREmailParameters."Sender Name", HREmailParameters."Sender Address", Recipient,
                                 HREmailParameters.Subject, 'Dear' + ' ' + HREmp."First Name" + ' ' +
                                 HREmailParameters.Body + ' ' + "Job Description" + ' ' + HREmailParameters."Body 2" + ' ' + Format("Closing Date") + '. ' +
                                 HREmailParameters."Body 3", true);

@@ -7,21 +7,21 @@ XmlPort 51516055 "Loan Purpose"
     {
         textelement(root)
         {
-            tableelement("Tranch Disburesment Details";"Tranch Disburesment Details")
+            tableelement("Tranch Disburesment Details"; "Tranch Disburesment Details")
             {
                 XmlName = 'table';
-                fieldelement(A;"Loan Stages"."Loan No")
-                {
-                }
-                fieldelement(B;"Loan Stages"."Client Code")
-                {
-                }
-                fieldelement(C;"Loan Stages"."Client Name")
-                {
-                }
-                fieldelement(D;"Loan Stages"."Loan Product Type")
-                {
-                }
+                // fieldelement(A;"Loan Stages"."Loan No")
+                // {
+                // }
+                // fieldelement(B;"Loan Stages"."Client Code")
+                // {
+                // }
+                // fieldelement(C;"Loan Stages"."Client Name")
+                // {
+                // }
+                // fieldelement(D;"Loan Stages"."Loan Product Type")
+                // {
+                // }
             }
         }
     }
